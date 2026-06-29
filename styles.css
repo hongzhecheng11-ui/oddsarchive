@@ -1,15 +1,17 @@
 :root {
-  color-scheme: dark;
-  --bg: #101827;
-  --surface: #172235;
-  --surface-strong: #1f2d44;
-  --ink: #f7f7f2;
-  --muted: #c3ccda;
-  --line: #33425a;
-  --accent: #f2cf4a;
-  --accent-strong: #ffe27a;
-  --warning: #f2cf4a;
-  --button-ink: #11150f;
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --surface-strong: #eef3f7;
+  --ink: #17212f;
+  --muted: #617083;
+  --line: #d9e1ea;
+  --accent: #16735d;
+  --accent-strong: #0f5f4d;
+  --warning: #c28a16;
+  --button-ink: #ffffff;
+  --soft-accent: #fff4c4;
+  --soft-accent-line: #ecd47b;
 }
 
 * {
@@ -45,6 +47,7 @@ body {
   padding: 28px 32px 20px;
   border-bottom: 1px solid var(--line);
   background: var(--surface);
+  box-shadow: 0 1px 0 rgba(23, 33, 47, 0.02);
 }
 
 .brand-lockup {
@@ -57,7 +60,7 @@ body {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 24px rgba(23, 33, 47, 0.12);
 }
 
 .account-pill {
@@ -113,9 +116,9 @@ h1 {
   align-items: center;
   min-height: 22px;
   padding: 0 7px;
-  border: 1px solid rgba(242, 207, 74, 0.35);
+  border: 1px solid rgba(22, 115, 93, 0.18);
   border-radius: 999px;
-  background: rgba(242, 207, 74, 0.12);
+  background: rgba(22, 115, 93, 0.08);
   color: var(--accent-strong);
   font-size: 11px;
   font-weight: 700;
@@ -131,7 +134,7 @@ button {
   border: 1px solid var(--accent);
   border-radius: 8px;
   background: var(--accent);
-  color: #11150f;
+  color: var(--button-ink);
   font-weight: 700;
   cursor: pointer;
 }
@@ -167,7 +170,7 @@ button {
 
 .nav-item.active,
 .nav-item:hover {
-  background: var(--surface-strong);
+  background: #e7f3ee;
   color: var(--accent-strong);
 }
 
@@ -230,8 +233,8 @@ button {
   padding: 12px 14px;
   border: 1px solid var(--accent);
   border-radius: 8px;
-  background: #191500;
-  color: var(--accent-strong);
+  background: #fff8db;
+  color: #7a5b08;
   font-size: 14px;
   font-weight: 700;
 }
@@ -451,7 +454,7 @@ button {
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f8fafc;
   text-align: left;
 }
 
@@ -674,7 +677,7 @@ button {
 
 .save-actions button:disabled {
   border-color: var(--line);
-  background: #2a2f29;
+  background: #eef3f7;
   color: var(--muted);
   cursor: not-allowed;
 }
@@ -717,7 +720,7 @@ button {
 
 .danger-action:disabled {
   border-color: var(--line);
-  background: #222621;
+  background: #eef3f7;
   color: var(--muted);
   cursor: not-allowed;
 }
@@ -808,7 +811,7 @@ tbody tr:last-child td {
 
 .search-panel > .panel-body {
   border-radius: 8px;
-  background: #121c2c;
+  background: #f7f9fb;
   padding-top: 8px;
 }
 
@@ -824,9 +827,9 @@ tbody tr:last-child td {
   gap: 4px;
   min-height: 24px;
   padding: 0 7px;
-  border: 1px solid rgba(242, 207, 74, 0.2);
+  border: 1px solid #dce6ef;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
   color: var(--muted);
   font-size: 10px;
 }
@@ -852,11 +855,11 @@ tbody tr:last-child td {
   display: grid;
   gap: 12px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #1b2940;
-  color: #f8fbf6;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  color: var(--ink);
+  box-shadow: 0 8px 22px rgba(23, 33, 47, 0.08);
 }
 
 .simple-card-heading {
@@ -875,30 +878,30 @@ tbody tr:last-child td {
 }
 
 .simple-search-card label {
-  color: #d7ded8;
+  color: var(--muted);
 }
 
 .simple-search-card input,
 .simple-search-card select {
   min-height: 46px;
-  border-color: rgba(255, 255, 255, 0.12);
-  background: #111a29;
-  color: #fff;
+  border-color: var(--line);
+  background: #f8fafc;
+  color: var(--ink);
   font-size: 16px;
 }
 
 .simple-search-card input::placeholder {
-  color: #8f9992;
+  color: #99a6b4;
 }
 
 .today-analysis-panel {
   display: grid;
   gap: 14px;
   padding: 16px;
-  border: 1px solid rgba(242, 207, 74, 0.22);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #172538;
-  color: #f8fbf6;
+  background: #ffffff;
+  color: var(--ink);
 }
 
 .today-analysis-heading {
@@ -915,7 +918,7 @@ tbody tr:last-child td {
 
 .today-analysis-heading span,
 .today-analysis-heading small {
-  color: #f2cf4a;
+  color: var(--accent-strong);
   font-size: 13px;
   font-weight: 800;
 }
@@ -933,15 +936,15 @@ tbody tr:last-child td {
 }
 
 .today-analysis-form label {
-  color: #d7ded8;
+  color: var(--muted);
 }
 
 .today-analysis-form input,
 .today-analysis-form select {
   min-height: 44px;
-  border-color: rgba(255, 255, 255, 0.12);
-  background: #101a27;
-  color: #fff;
+  border-color: var(--line);
+  background: #f8fafc;
+  color: var(--ink);
 }
 
 .today-analysis-form button {
@@ -964,20 +967,20 @@ tbody tr:last-child td {
   display: grid;
   gap: 4px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #101a27;
+  background: #f8fafc;
 }
 
 .today-center-summary span,
 .today-center-card span {
-  color: #b8c3bc;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 700;
 }
 
 .today-center-summary strong {
-  color: #fff;
+  color: var(--ink);
   font-size: 18px;
 }
 
@@ -987,9 +990,9 @@ tbody tr:last-child td {
   gap: 10px;
   align-items: center;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #101a27;
+  background: #f8fafc;
 }
 
 .toto-round-toolbar div {
@@ -999,13 +1002,13 @@ tbody tr:last-child td {
 }
 
 .toto-round-toolbar span {
-  color: #f2cf4a;
+  color: var(--accent-strong);
   font-size: 12px;
   font-weight: 800;
 }
 
 .toto-round-toolbar strong {
-  color: #fff;
+  color: var(--ink);
   font-size: 14px;
   line-height: 1.35;
 }
@@ -1024,9 +1027,9 @@ tbody tr:last-child td {
   display: grid;
   gap: 10px;
   padding: 14px;
-  border: 1px solid rgba(242, 207, 74, 0.16);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #111d2c;
+  background: #ffffff;
 }
 
 .today-center-card-header {
@@ -1041,7 +1044,7 @@ tbody tr:last-child td {
 
 .today-center-card p {
   margin: 0;
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 13px;
   font-weight: 700;
 }
@@ -1075,22 +1078,22 @@ tbody tr:last-child td {
   gap: 4px;
   min-width: 0;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #101a27;
+  background: #f8fafc;
 }
 
 .today-summary-grid span,
 .today-sample-list span,
 .today-sample-list small {
-  color: #b8c3bc;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 700;
 }
 
 .today-summary-grid strong,
 .today-sample-list strong {
-  color: #fff;
+  color: var(--ink);
   font-size: 15px;
   line-height: 1.35;
 }
@@ -1108,18 +1111,18 @@ tbody tr:last-child td {
 
 .tolerance-chip {
   min-height: 36px;
-  border-color: rgba(242, 207, 74, 0.32);
-  background: rgba(242, 207, 74, 0.1);
-  color: #f6df85;
+  border-color: #d4e3dc;
+  background: #f0f7f4;
+  color: var(--accent-strong);
   font-size: 13px;
 }
 
 .tolerance-chip.active,
 .tolerance-chip:hover {
-  border-color: #fff0a8;
-  background: var(--accent-strong);
+  border-color: var(--accent);
+  background: var(--accent);
   color: var(--button-ink);
-  box-shadow: 0 0 0 2px rgba(242, 207, 74, 0.28);
+  box-shadow: 0 0 0 2px rgba(22, 115, 93, 0.14);
 }
 
 .simple-odds-form {
@@ -1134,9 +1137,9 @@ tbody tr:last-child td {
   width: auto;
   min-height: 46px;
   padding: 0 22px;
-  border-color: #f2cf4a;
-  background: #f2cf4a;
-  color: #12160f;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--button-ink);
   font-size: 15px;
 }
 
@@ -1210,9 +1213,9 @@ tbody tr:last-child td {
   display: grid;
   gap: 8px;
   padding: 10px;
-  border: 1px solid rgba(242, 207, 74, 0.22);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: #18243a;
+  background: #ffffff;
 }
 
 .live-api-heading {
@@ -1234,7 +1237,7 @@ tbody tr:last-child td {
 
 .live-api-heading span,
 .live-api-controls label {
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 11px;
   line-height: 1.25;
 }
@@ -1288,7 +1291,7 @@ tbody tr:last-child td {
 .today-csv-picker {
   display: grid;
   gap: 4px;
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 11px;
 }
 
@@ -1317,13 +1320,13 @@ tbody tr:last-child td {
   gap: 1px;
   padding: 5px 6px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  background: #f8fafc;
 }
 
 .today-center-summary span,
 .today-card-stats span,
 .today-summary-grid span {
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 10px;
 }
 
@@ -1343,9 +1346,9 @@ tbody tr:last-child td {
   display: grid;
   gap: 5px;
   padding: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #dce6ef;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #ffffff;
 }
 
 .today-center-card-header {
@@ -1356,7 +1359,7 @@ tbody tr:last-child td {
 .today-center-card-header span,
 .today-center-card p {
   margin: 0;
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 10px;
   line-height: 1.15;
 }
@@ -1389,13 +1392,13 @@ tbody tr:last-child td {
 }
 
 .collapsed-tools {
-  border-color: rgba(255, 255, 255, 0.08);
-  background: #162236;
-  color: #eef4ef;
+  border-color: #dce6ef;
+  background: #ffffff;
+  color: var(--ink);
 }
 
 .collapsed-tools > summary {
-  color: #eef4ef;
+  color: var(--ink);
 }
 
 .collapsed-tools label,
@@ -1448,17 +1451,17 @@ tbody tr:last-child td {
 }
 
 .search-panel .search-status-card {
-  border-color: rgba(255, 255, 255, 0.08);
-  background: #1b2940;
+  border-color: #dce6ef;
+  background: #ffffff;
 }
 
 .search-panel .search-status-card span,
 .search-panel .search-status-card small {
-  color: #d7ded8;
+  color: var(--muted);
 }
 
 .search-panel .search-status-card strong {
-  color: #fff;
+  color: var(--ink);
 }
 
 .search-status-card span,
@@ -1607,7 +1610,7 @@ tbody tr:last-child td {
   min-height: 22px;
   padding: 2px 7px;
   border-radius: 999px;
-  background: rgba(242, 207, 74, 0.16);
+  background: #e7f3ee;
   color: var(--accent-strong);
   font-size: 11px;
 }
@@ -1630,7 +1633,7 @@ tbody tr:last-child td {
   padding: 5px 6px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
 }
 
 .result-odds-strip small {
@@ -1701,7 +1704,7 @@ select {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0 12px;
-  background: #090b09;
+  background: #ffffff;
   color: var(--ink);
   font: inherit;
 }
@@ -1751,7 +1754,7 @@ select {
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
 }
 
 .search-history-card.favorite {
@@ -1844,7 +1847,7 @@ select {
 
 .odds-pattern-panel span,
 .odds-pattern-row small {
-  color: #d7ded8;
+  color: var(--muted);
   font-size: 10px;
   line-height: 1.1;
 }
@@ -1858,9 +1861,9 @@ select {
 .odds-pattern-chip {
   min-height: 24px;
   padding: 0 6px;
-  border-color: rgba(242, 207, 74, 0.28);
-  background: rgba(242, 207, 74, 0.08);
-  color: #f6df85;
+  border-color: #d4e3dc;
+  background: #f0f7f4;
+  color: var(--accent-strong);
   font-size: 10px;
   line-height: 1.1;
 }
@@ -2087,7 +2090,7 @@ select {
   padding: 0 10px;
   border: 1px solid var(--accent);
   border-radius: 8px;
-  background: #121c2c;
+  background: #ffffff;
   color: var(--ink);
   font-size: 13px;
 }
@@ -2194,8 +2197,8 @@ select {
   display: grid;
   gap: 8px;
   padding: 14px 16px;
-  border-color: #6f6028;
-  background: #171407;
+  border-color: #ecd47b;
+  background: #fff8db;
 }
 
 .notice-band h2 {
