@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="오즈아카이브">
+  <rect width="128" height="128" rx="28" fill="#0f3d2e"/>
+  <path d="M24 91h80" stroke="#2b6a51" stroke-width="4" stroke-linecap="round"/>
+  <path d="M28 34h72M28 34v52M100 34v52M28 60h72" stroke="#2b6a51" stroke-width="3" stroke-linecap="round"/>
+  <text x="64" y="63" text-anchor="middle" font-family="Arial, sans-serif" font-size="31" font-weight="800" fill="#f2cf4a">1.85</text>
+  <circle cx="78" cy="80" r="13" fill="none" stroke="#f7f7f2" stroke-width="6"/>
+  <path d="M88 90l13 13" stroke="#f7f7f2" stroke-width="7" stroke-linecap="round"/>
+</svg>

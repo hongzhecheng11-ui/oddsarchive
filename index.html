@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>오즈아카이브 - 축구 배당 과거 기록 검색 무료 베타</title>
+    <meta name="description" content="홈승, 무승부, 원정승 배당을 입력하면 5대 리그 과거 경기 데이터에서 비슷한 배당 조합과 결과 기록을 찾아볼 수 있는 무료 베타 도구입니다.">
+    <meta name="theme-color" content="#101827">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="오즈아카이브 - 축구 배당 과거 기록 검색">
+    <meta property="og:description" content="축구 배당을 입력하고 비슷한 과거 경기 결과를 검색해보는 무료 베타입니다.">
+    <meta property="og:image" content="assets/app-icon.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="오즈아카이브 - 축구 배당 과거 기록 검색">
+    <meta name="twitter:description" content="홈승/무/원정승 배당으로 과거 경기 기록을 찾아보는 무료 베타 도구입니다.">
+    <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/app-icon.svg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand-lockup">
+        <img class="app-icon" src="assets/app-icon.svg" alt="" aria-hidden="true">
+        <div>
+          <p class="eyebrow">Football odds archive</p>
+          <h1>오즈아카이브 <span class="beta-badge">무료 베타</span></h1>
+        </div>
+      </div>
+      <a class="account-pill" href="#account">
+        <span>내 계정</span>
+        <strong id="account-display-name">로그인 전</strong>
+      </a>
+    </header>
+
+    <main class="app-shell">
+      <nav class="side-nav" aria-label="주요 화면">
+        <a class="nav-item active" href="#search">배당 검색</a>
+        <a class="nav-item" href="#matches">저장 경기</a>
+        <a class="nav-item" href="#saved">즐겨찾기</a>
+        <a class="nav-item" href="#upload">데이터 추가</a>
+        <a class="nav-item" href="#account">내 계정</a>
+      </nav>
+
+      <section class="content-area">
+        <section class="flow-stack">
+          <details class="panel flow-panel search-panel" id="search" open>
+            <summary>
+              <span>
+                <small>오늘 경기</small>
+                <strong>오늘 경기 배당 비교</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <section class="simple-search-stack" aria-label="간단 검색">
+                <section class="live-api-panel" aria-label="오늘 경기 CSV">
+                  <div class="live-api-heading">
+                    <div>
+                      <strong>오늘 경기/배당</strong>
+                      <span>경기 카드를 누르면 비슷했던 과거 배당 결과를 바로 볼 수 있습니다.</span>
+                    </div>
+                    <div class="live-api-actions">
+                      <button type="button" id="load-live-odds">API로 불러오기</button>
+                      <button type="button" id="download-today-csv-sample">CSV 샘플</button>
+                    </div>
+                  </div>
+                  <div class="live-api-controls">
+                    <label>
+                      날짜
+                      <input id="live-odds-date" type="date">
+                    </label>
+                    <label>
+                      리그
+                      <select id="live-odds-league">
+                        <option value="ALL">5대 리그 전체</option>
+                        <option value="EPL">EPL</option>
+                        <option value="LALIGA">라리가</option>
+                        <option value="SERIEA">세리에A</option>
+                        <option value="BUNDESLIGA">분데스리가</option>
+                        <option value="LIGUE1">리그앙</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label class="today-csv-picker">
+                    오늘 경기 CSV 선택
+                    <input id="today-csv-input" type="file" accept=".csv,text/csv" multiple>
+                  </label>
+                  <p class="match-count" id="live-odds-status" aria-live="polite">오늘 경기와 배당을 불러오면 과거 유사 배당을 바로 볼 수 있습니다.</p>
+                  <div class="today-center-summary">
+                    <div><span>불러온 경기</span><strong id="today-center-count">0</strong></div>
+                    <div><span>유사 검색 가능</span><strong id="today-center-ready-count">0</strong></div>
+                    <div><span>결과 확인 수</span><strong id="today-center-known-count">0</strong></div>
+                  </div>
+                  <div class="today-center-list" id="today-center-list">
+                    <div class="empty-state compact-empty">API 또는 CSV로 오늘 경기를 불러오면 여기에 표시됩니다.</div>
+                  </div>
+                  <div class="today-analysis-result" id="today-analysis-result" hidden></div>
+                </section>
+                <article class="simple-search-card" id="simple-odds-card">
+                  <section class="top-data-status" id="top-data-status" aria-label="현재 데이터 상태">
+                    <span>검색 가능 <strong id="top-status-match-count">0</strong></span>
+                    <span>최근 확인 <strong id="top-status-last-update">확인 전</strong></span>
+                    <span>저장 방식 <strong id="top-status-storage-mode">브라우저 저장</strong></span>
+                  </section>
+                  <div class="simple-card-heading">
+                    <strong>직접 배당 입력</strong>
+                    <span>경기 카드가 없을 때 홈승/무/원정승 배당을 직접 넣어 검색합니다.</span>
+                  </div>
+                  <label>
+                    <span>리그/대회 선택</span>
+                    <select id="search-league">
+                      <option value="ALL">전체</option>
+                      <option value="EPL">EPL</option>
+                      <option value="LALIGA">라리가</option>
+                      <option value="SERIEA">세리에A</option>
+                      <option value="BUNDESLIGA">분데스리가</option>
+                      <option value="LIGUE1">리그앙</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>팀명 포함</span>
+                    <input id="search-team-query" type="search" placeholder="예: 아스널, 첼시, 토트넘">
+                  </label>
+                  <div class="tolerance-chip-row" aria-label="허용 오차 빠른 선택">
+                    <button class="tolerance-chip active" id="tolerance-chip-0" type="button" data-tolerance-value="0.00" aria-pressed="true">동배당</button>
+                    <button class="tolerance-chip" id="tolerance-chip-001" type="button" data-tolerance-value="0.01" aria-pressed="false">±0.01</button>
+                    <button class="tolerance-chip" id="tolerance-chip-003" type="button" data-tolerance-value="0.03" aria-pressed="false">±0.03</button>
+                    <button class="tolerance-chip" id="tolerance-chip-005" type="button" data-tolerance-value="0.05" aria-pressed="false">±0.05</button>
+                    <button class="tolerance-chip" id="tolerance-chip-010" type="button" data-tolerance-value="0.10" aria-pressed="false">±0.10</button>
+                  </div>
+                  <form class="search-form odds-grid-form simple-odds-form" id="odds-search-form">
+                    <div class="odds-grid">
+                      <div class="odds-grid-inputs">
+                        <label>
+                          <span>홈승</span>
+                          <input id="search-home-odds" type="text" placeholder="홈승" inputmode="decimal">
+                        </label>
+                        <label>
+                          <span>무승부</span>
+                          <input id="search-draw-odds" type="text" placeholder="무승부" inputmode="decimal">
+                        </label>
+                        <label>
+                          <span>원정승</span>
+                          <input id="search-away-odds" type="text" placeholder="원정승" inputmode="decimal">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="odds-pattern-panel" aria-label="과거 배당 조합">
+                      <span>과거 배당 조합</span>
+                      <small>저장된 과거 기록에서 자주 보이는 홈승/무/원정승 배당 조합입니다.</small>
+                      <div class="odds-pattern-row" id="odds-pattern-suggestions"></div>
+                    </div>
+                    <label class="visually-hidden">
+                      허용 오차
+                      <select id="search-tolerance">
+                        <option value="0.00">정확히 일치</option>
+                        <option value="0.01">±0.01</option>
+                        <option value="0.03">±0.03</option>
+                        <option value="0.05">±0.05</option>
+                        <option value="0.10">±0.10</option>
+                      </select>
+                    </label>
+                  </form>
+                  <button class="primary-search-button" type="button" id="run-odds-search">유사 배당 검색</button>
+                </article>
+                <div class="inline-result-anchor" id="odds-result-anchor"></div>
+              </section>
+
+              <section class="search-history-panel" aria-label="최근 검색">
+                <div class="history-heading">
+                  <strong>최근 검색</strong>
+                  <span>즐겨찾기한 배당은 위에 고정됩니다.</span>
+                </div>
+                <div class="search-history-list" id="search-history-list">
+                  <div class="empty-state compact-empty">아직 검색한 배당이 없습니다.</div>
+                </div>
+              </section>
+
+              <p class="upload-error" id="odds-search-error" role="alert" aria-live="polite"></p>
+
+              <div class="search-status-card" aria-live="polite">
+                <span>검색 상태</span>
+                <strong id="odds-search-status">배당값을 입력하거나 저장 경기에서 이 배당으로 검색을 눌러주세요.</strong>
+                <small id="searchable-match-status">검색 가능 경기: 기본 데이터팩 + 내 저장 경기 합계 0개</small>
+                <small>검색 결과 개수 <b id="odds-search-count">0</b></small>
+                <div class="empty-data-actions" id="empty-data-actions" hidden>
+                  <span>먼저 데이터를 준비해주세요.</span>
+                  <button type="button" id="empty-import-data">기본 데이터 가져오기</button>
+                  <button class="ghost-action" type="button" id="empty-open-upload">데이터 추가로 이동</button>
+                </div>
+              </div>
+
+              <section class="analysis-card compact-analysis" id="analysis" aria-label="과거 결과 비율" hidden>
+                <div class="analysis-heading">
+                  <strong>과거 결과 비율</strong>
+                  <span>검색 결과 기준</span>
+                </div>
+                <div class="ratio-list ratio-grid">
+                  <div><span>전체</span><strong id="breakdown-total">0</strong></div>
+                  <div><span>확인</span><strong id="breakdown-known">0</strong></div>
+                  <div><span>미확인</span><strong id="breakdown-unknown">0</strong></div>
+                  <div><span>홈승</span><strong id="breakdown-home">0 / 0%</strong></div>
+                  <div><span>무승부</span><strong id="breakdown-draw">0 / 0%</strong></div>
+                  <div><span>원정승</span><strong id="breakdown-away">0 / 0%</strong></div>
+                </div>
+                <p class="analysis-memo" id="breakdown-memo">결과 확인 경기 수가 적어 해석에 주의가 필요합니다.</p>
+              </section>
+              <details class="subsection compact-results" id="odds-results-section" open hidden>
+                <summary id="search-results-title">검색 결과</summary>
+                <div class="result-card-list" id="search-result-cards"></div>
+                <div class="preview-shell">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>날짜</th>
+                        <th>리그</th>
+                        <th>홈팀</th>
+                        <th>원정팀</th>
+                        <th>홈배당</th>
+                        <th>무배당</th>
+                        <th>원정배당</th>
+                        <th>결과</th>
+                        <th>스코어</th>
+                        <th>검색</th>
+                      </tr>
+                    </thead>
+                    <tbody id="odds-search-results-body">
+                      <tr>
+                        <td colspan="10">조건에 맞는 유사 배당 경기가 없습니다.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <button class="show-more-button" type="button" id="show-more-odds-results" hidden>더보기</button>
+              </details>
+            </div>
+          </details>
+
+          <details class="panel flow-panel" id="matches" open>
+            <summary>
+              <span>
+                <small>데이터</small>
+                <strong>저장 경기</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <details class="subsection compact">
+                <summary>필터</summary>
+                <form class="match-filters" id="match-filters">
+                  <label>
+                    리그
+                    <select id="filter-league">
+                      <option value="ALL">전체</option>
+                    </select>
+                  </label>
+                  <label>
+                    팀명 검색
+                    <select id="filter-team">
+                      <option value="ALL">전체 팀</option>
+                    </select>
+                  </label>
+                  <label>
+                    결과값 <span class="field-hint">팀 선택 시 선택팀 기준</span>
+                    <select id="filter-result">
+                      <option value="ALL">전체</option>
+                      <option value="H">홈승</option>
+                      <option value="D">무승부</option>
+                      <option value="A">원정승</option>
+                      <option value="UNKNOWN">결과 미확인</option>
+                    </select>
+                  </label>
+                </form>
+              </details>
+              <p class="match-count">표시 경기 수 <strong id="visible-match-count">0</strong></p>
+              <section class="analysis-card match-data-breakdown-card" id="match-breakdown-section" aria-label="저장 경기 결과 비율">
+                <div class="analysis-heading">
+                  <div>
+                    <span>저장 경기 결과 비율</span>
+                    <strong>현재 필터 기준</strong>
+                  </div>
+                </div>
+                <div class="analysis-grid">
+                  <div><span>전체 경기 수</span><strong id="match-breakdown-total">0</strong></div>
+                  <div><span>결과 확인 경기 수</span><strong id="match-breakdown-known">0</strong></div>
+                  <div><span>결과 미확인 경기 수</span><strong id="match-breakdown-unknown">0</strong></div>
+                  <div><span>홈승</span><strong id="match-breakdown-home">0 / 0%</strong></div>
+                  <div><span>무승부</span><strong id="match-breakdown-draw">0 / 0%</strong></div>
+                  <div><span>원정승</span><strong id="match-breakdown-away">0 / 0%</strong></div>
+                </div>
+                <p class="analysis-memo" id="match-breakdown-memo">결과 확인 경기 수가 적어 해석에 주의가 필요합니다.</p>
+              </section>
+              <div class="data-actions">
+                <button class="danger-action" type="button" id="clear-stored-matches">저장 경기 전체 삭제</button>
+                <span id="clear-matches-status" aria-live="polite">잘못 올린 저장 경기를 비울 수 있습니다.</span>
+              </div>
+              <div class="stored-match-cards" id="stored-match-cards">
+                <div class="empty-state">저장된 경기가 없습니다.</div>
+              </div>
+              <div class="preview-shell technical-table" hidden>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>날짜</th>
+                      <th>리그</th>
+                      <th>홈팀</th>
+                      <th>원정팀</th>
+                      <th>홈배당</th>
+                      <th>무배당</th>
+                      <th>원정배당</th>
+                      <th>결과</th>
+                      <th>스코어</th>
+                      <th>검색</th>
+                    </tr>
+                  </thead>
+                  <tbody id="matches-table-body">
+                    <tr>
+                      <td colspan="10">저장된 경기가 없습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+
+          <details class="panel flow-panel" id="saved" open>
+            <summary>
+              <span>
+                <small>보관</small>
+                <strong>즐겨찾기</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <div class="saved-searches-list" id="saved-searches-list">
+                <div class="empty-state">즐겨찾기한 배당이 없습니다.</div>
+              </div>
+            </div>
+          </details>
+
+          <details class="panel flow-panel" id="upload">
+            <summary>
+              <span>
+                <small>추가</small>
+                <strong>데이터 추가</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <div class="default-data-box">
+                <div class="option-grid">
+                  <label>
+                    리그
+                    <select id="default-data-league">
+                      <option value="EPL">EPL</option>
+                      <option value="LALIGA">라리가</option>
+                      <option value="SERIEA">세리에A</option>
+                      <option value="BUNDESLIGA">분데스리가</option>
+                      <option value="LIGUE1">리그앙</option>
+                    </select>
+                  </label>
+                  <label>
+                    시즌
+                    <select id="default-data-season">
+                      <option value="2019-2026">2019-2026 데이터팩</option>
+                      <option value="2020-2026">5대 리그 2020-2026 데이터팩</option>
+                      <option value="2025-2026">2025-2026</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="default-data-actions">
+                  <button type="button" id="fetch-default-data">기본 데이터 가져오기</button>
+                  <button class="ghost-action" type="button" id="default-data-download-link">다운로드 주소 보기</button>
+                </div>
+                <div class="data-helper-copy">
+                  <p>2019-2026은 가장 넓게 시작할 때 사용하세요.</p>
+                  <p>기본 데이터 가져오기는 선택한 리그와 시즌을 내 저장 경기로 추가합니다.</p>
+                  <p>5대 리그 데이터팩 확인은 최신 데이터가 있는지 다시 확인합니다.</p>
+                </div>
+                <p class="match-count" id="default-data-status" aria-live="polite">5대 리그 2019-2026 데이터팩을 바로 불러올 수 있습니다.</p>
+                <p class="match-count" id="auto-update-status" aria-live="polite">자동 업데이트: 앱 시작 후 최신 데이터를 확인합니다.</p>
+                <section class="auto-update-panel" id="auto-update-panel" aria-label="자동 업데이트 관리">
+                  <div class="auto-update-summary">
+                    <div><span>대상 리그</span><strong id="auto-update-league-summary">5대 리그</strong></div>
+                    <div><span>마지막 확인</span><strong id="auto-update-last-check">확인 전</strong></div>
+                    <div><span>최근 결과</span><strong id="auto-update-result-summary">대기 중</strong></div>
+                  </div>
+                  <button type="button" id="update-five-leagues">5대 리그 데이터팩 확인</button>
+                  <p class="match-count" id="update-five-leagues-status" aria-live="polite">버튼을 누르면 5대 리그 데이터팩을 다시 확인합니다.</p>
+                </section>
+              </div>
+
+              <div class="upload-box">
+                <div class="upload-guide">
+                  <strong>파일을 넣으면 배당 검색에 쓸 과거 경기 데이터가 늘어납니다.</strong>
+                  <span>샘플 파일을 받아 같은 모양으로 채우거나, Football-Data 파일을 그대로 선택하세요.</span>
+                </div>
+                <button class="sample-button" type="button" id="download-sample-csv">샘플 파일 받기</button>
+                <label class="file-picker">
+                  경기 데이터 파일 선택
+                  <input id="csv-file-input" type="file" accept=".csv,text/csv" multiple>
+                </label>
+                <div class="result-guide" aria-label="결과값 안내">
+                  <span>결과값 안내</span>
+                  <strong>홈승=H</strong>
+                  <strong>무승부=D</strong>
+                  <strong>원정승=A</strong>
+                  <strong>미확인=UNKNOWN</strong>
+                </div>
+                <small>여러 파일을 한 번에 선택할 수 있습니다. 한글 컬럼명도 자동으로 인식합니다. 이 기기에 저장됩니다.</small>
+                <p class="upload-error" id="csv-error" role="alert" aria-live="polite"></p>
+              </div>
+
+              <div class="validation-summary" aria-label="검증 결과">
+                <div>
+                  <span>정상 행</span>
+                  <strong id="valid-row-count">0</strong>
+                </div>
+                <div>
+                  <span>오류 행</span>
+                  <strong id="error-row-count">0</strong>
+                </div>
+                <div>
+                  <span>중복 행</span>
+                  <strong id="duplicate-row-count">0</strong>
+                </div>
+              </div>
+
+              <div class="save-actions">
+                <button type="button" id="save-valid-rows" disabled>저장하기</button>
+                <div class="save-status-card" aria-live="polite">
+                  <span>저장 상태</span>
+                  <strong id="save-status">검증 완료 후 정상 행이 있으면 저장할 수 있습니다.</strong>
+                  <small id="stored-match-status">현재 저장된 전체 경기 수: 0개</small>
+                </div>
+              </div>
+
+              <details class="subsection" id="preview">
+                <summary>파일 내용 확인</summary>
+                <div class="preview-shell">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>날짜</th>
+                        <th>리그</th>
+                        <th>홈팀</th>
+                        <th>원정팀</th>
+                        <th>홈배당</th>
+                        <th>무배당</th>
+                        <th>원정배당</th>
+                        <th>결과</th>
+                        <th>스코어</th>
+                      </tr>
+                    </thead>
+                    <tbody id="preview-table-body">
+                      <tr>
+                        <td colspan="9">파일을 선택하면 내용 확인 화면이 표시됩니다.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+
+              <details class="subsection" id="validation">
+                <summary>문제 있는 줄 확인</summary>
+                <div class="preview-shell">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>줄 번호</th>
+                        <th>구분</th>
+                        <th>문제</th>
+                      </tr>
+                    </thead>
+                    <tbody id="validation-errors-body">
+                      <tr>
+                        <td colspan="3">CSV 파일을 선택하면 검증 결과가 표시됩니다.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </details>
+            </div>
+          </details>
+
+          <details class="panel flow-panel" id="account">
+            <summary>
+              <span>
+                <small>계정</small>
+                <strong>내 계정</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <section class="account-card">
+                <div class="simple-card-heading">
+                  <strong>이 기기 전용 계정</strong>
+                  <span>닉네임, 즐겨찾기, 저장 데이터는 이 브라우저에 저장됩니다. 다른 기기에서는 이어지지 않습니다.</span>
+                </div>
+                <form class="account-form" id="account-form">
+                  <label>
+                    닉네임
+                    <input id="account-nickname" type="text" placeholder="예: 오즈메이트" maxlength="20">
+                  </label>
+                  <div class="account-actions">
+                    <button type="submit" id="save-local-account">계정 저장</button>
+                    <button class="ghost-action" type="button" id="clear-local-account">계정 해제</button>
+                  </div>
+                </form>
+                <p class="match-count" id="account-status" aria-live="polite">닉네임을 저장하면 이 기기에서 내 계정처럼 표시됩니다.</p>
+                <p class="account-help">계정 해제는 닉네임만 지우고 저장 경기와 즐겨찾기는 남습니다.</p>
+                <div class="account-summary">
+                  <div><span>현재 계정</span><strong id="account-summary-name">로그인 전</strong></div>
+                  <div><span>저장 방식</span><strong id="account-summary-mode">로컬 계정</strong></div>
+                </div>
+                <div class="account-data-grid" aria-label="내 데이터 현황">
+                  <div><span>내 저장 경기</span><strong id="account-data-stored-count">0</strong></div>
+                  <div><span>분석 가능 경기</span><strong id="account-data-analyzable-count">0</strong></div>
+                  <div><span>즐겨찾기</span><strong id="account-data-saved-search-count">0</strong></div>
+                  <div><span>마지막 업데이트</span><strong id="account-data-last-update">확인 전</strong></div>
+                </div>
+              </section>
+              <section class="share-card" aria-label="공유하기">
+                <div class="simple-card-heading">
+                  <strong>공유하기</strong>
+                  <span>무료 베타 테스트 링크를 복사해서 지인이나 커뮤니티에 공유할 수 있습니다.</span>
+                </div>
+                <div class="share-url-row">
+                  <code id="share-url">https://oddsarchive-beta.netlify.app</code>
+                  <button type="button" id="copy-share-url">주소 복사</button>
+                </div>
+                <p class="share-copy">
+                  축구 배당 과거 기록 검색용 무료 베타입니다. 홈승/무/원정승 배당을 입력하면 비슷한 과거 경기 결과를 찾아볼 수 있습니다.
+                </p>
+                <p class="match-count" id="share-copy-status" aria-live="polite">테스트 사용자에게 공유한 뒤 불편한 점을 받아보세요.</p>
+              </section>
+            </div>
+          </details>
+        </section>
+
+        <section class="summary-grid" id="dashboard" aria-label="대시보드 요약">
+          <article class="metric-card">
+            <span>전체 저장 경기</span>
+            <strong id="total-match-count">0</strong>
+            <small>저장된 전체 경기 수</small>
+          </article>
+          <article class="metric-card">
+            <span>분석 가능 경기</span>
+            <strong id="analyzable-match-count">0</strong>
+            <small>결과가 홈승, 무승부, 원정승인 경기 기준</small>
+          </article>
+          <article class="metric-card">
+            <span>최근 즐겨찾기</span>
+            <strong>없음</strong>
+            <small>즐겨찾기한 배당을 불러올 수 있습니다.</small>
+          </article>
+        </section>
+        <p class="storage-mode-status" id="storage-mode-status" hidden>
+          현재 환경에서는 브라우저 저장소가 차단되어 임시 저장 모드로 작동합니다. 새로고침하면 데이터가 사라질 수 있습니다.
+        </p>
+        <section class="data-status-grid" aria-label="데이터 상태">
+          <div><span>현재 저장 경기 수</span><strong id="data-status-stored-count">0</strong></div>
+          <div><span>분석 가능 경기 수</span><strong id="data-status-analyzable-count">0</strong></div>
+          <div><span>결과 미확인 경기 수</span><strong id="data-status-unknown-count">0</strong></div>
+          <div><span>마지막 데이터 업데이트</span><strong id="data-status-last-update">확인 전</strong></div>
+          <div><span>현재 저장 방식</span><strong id="data-status-storage-mode">브라우저 저장</strong></div>
+        </section>
+
+        <section class="notice-band" id="notice">
+          <h2>정보 제공 안내</h2>
+          <p>이 앱은 사용자가 보유한 축구 배당 CSV 데이터를 기록, 검색, 분석하기 위한 정보 제공용 도구입니다. 구매 연결, 구매 대행, 사설 사이트 연결 기능은 제공하지 않습니다.</p>
+        </section>
+      </section>
+    </main>
+    <script src="data/football-data-pack.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

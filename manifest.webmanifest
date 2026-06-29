@@ -1,0 +1,19 @@
+{
+  "name": "오즈아카이브",
+  "short_name": "오즈아카이브",
+  "description": "오늘 경기 배당과 비슷했던 과거 경기 결과를 비교하는 정보 제공용 웹앱입니다.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
