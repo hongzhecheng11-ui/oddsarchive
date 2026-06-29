@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v1";
+const CACHE_NAME = "oddsarchive-v2-light-theme";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -31,6 +31,24 @@ self.addEventListener("fetch", (event) => {
 
   if (url.pathname.startsWith("/api/")) return;
   if (request.method !== "GET") return;
+
+  if (
+    request.mode === "navigate" ||
+    url.pathname.endsWith(".html") ||
+    url.pathname.endsWith(".css") ||
+    url.pathname.endsWith(".js")
+  ) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(request).then((cached) => {
