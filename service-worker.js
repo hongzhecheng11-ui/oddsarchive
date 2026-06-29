@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v2-light-theme";
+const CACHE_NAME = "oddsarchive-v3-season-presets";
 const CORE_ASSETS = [
   "/",
   "/index.html",

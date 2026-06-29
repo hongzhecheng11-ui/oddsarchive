@@ -1820,6 +1820,14 @@ function getNextWeekendKey(baseDate = new Date()) {
   return getTodayKey(date);
 }
 
+function getPreviousWeekendKey(baseDate = new Date()) {
+  const date = new Date(baseDate);
+  const day = date.getDay();
+  const daysSinceSaturday = (day - 6 + 7) % 7 || 7;
+  date.setDate(date.getDate() - daysSinceSaturday);
+  return getTodayKey(date);
+}
+
 function getCurrentTimestamp() {
   return new Date().toLocaleString("ko-KR");
 }
@@ -3143,7 +3151,13 @@ function wireTodayCsvImport() {
   });
   document.querySelectorAll("[data-live-date-weekend]").forEach((button) => {
     button.addEventListener("click", () => {
-      setLiveOddsDate(getNextWeekendKey());
+      const weekendMode = button.dataset.liveDateWeekend || "next";
+      setLiveOddsDate(weekendMode === "previous" ? getPreviousWeekendKey() : getNextWeekendKey());
+    });
+  });
+  document.querySelectorAll("[data-live-date-preset]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setLiveOddsDate(button.dataset.liveDatePreset);
     });
   });
   document.getElementById("live-odds-date")?.addEventListener("change", () => {
