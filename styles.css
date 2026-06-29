@@ -1272,6 +1272,19 @@ tbody tr:last-child td {
   color: var(--ink);
 }
 
+.date-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.date-quick-actions button {
+  min-height: 28px;
+  padding: 0 6px;
+  font-size: 10px;
+  border-radius: 7px;
+}
+
 .today-csv-picker {
   display: grid;
   gap: 4px;

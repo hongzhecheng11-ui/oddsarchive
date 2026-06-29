@@ -1806,6 +1806,20 @@ function getTodayKey(date = new Date()) {
   return date.toISOString().slice(0, 10);
 }
 
+function getDateOffsetKey(offsetDays = 0, baseDate = new Date()) {
+  const date = new Date(baseDate);
+  date.setDate(date.getDate() + Number(offsetDays || 0));
+  return getTodayKey(date);
+}
+
+function getNextWeekendKey(baseDate = new Date()) {
+  const date = new Date(baseDate);
+  const day = date.getDay();
+  const daysUntilSaturday = (6 - day + 7) % 7 || 7;
+  date.setDate(date.getDate() + daysUntilSaturday);
+  return getTodayKey(date);
+}
+
 function getCurrentTimestamp() {
   return new Date().toLocaleString("ko-KR");
 }
@@ -2908,6 +2922,13 @@ function initializeLiveOddsControls() {
   renderTodayCenter();
 }
 
+function setLiveOddsDate(dateText, shouldLoad = true) {
+  const dateInput = document.getElementById("live-odds-date");
+  if (dateInput) dateInput.value = getTodayKey(dateText || getTodayKey());
+  setLiveOddsStatus("날짜를 바꿨습니다. 해당 날짜의 경기/배당을 다시 확인합니다.");
+  if (shouldLoad) loadLiveOddsFromApi();
+}
+
 function getLiveOddsCriteria() {
   const date = document.getElementById("live-odds-date")?.value || getTodayKey();
   const league = document.getElementById("live-odds-league")?.value || "ALL";
@@ -2987,7 +3008,8 @@ async function loadLiveOddsFromApi() {
     }
 
     if (result.matches.length === 0) {
-      setLiveOddsStatus("조건에 맞는 API 경기/배당이 없습니다. CSV로도 넣을 수 있습니다.");
+      const leagueText = criteria.league === "ALL" ? "5대 리그" : getLeagueLabel(criteria.league);
+      setLiveOddsStatus(`${criteria.date} ${leagueText} API 경기/배당이 없습니다. 비시즌이거나 배당 제공 전일 수 있으니 다른 날짜를 눌러보세요.`);
       renderTodayCenter();
       return result;
     }
@@ -3114,8 +3136,18 @@ function wireTodayCsvImport() {
   if (sampleButton) {
     sampleButton.addEventListener("click", downloadTodayCsvSample);
   }
+  document.querySelectorAll("[data-live-date-offset]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setLiveOddsDate(getDateOffsetKey(button.dataset.liveDateOffset || 0));
+    });
+  });
+  document.querySelectorAll("[data-live-date-weekend]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setLiveOddsDate(getNextWeekendKey());
+    });
+  });
   document.getElementById("live-odds-date")?.addEventListener("change", () => {
-    setLiveOddsStatus("날짜를 바꿨습니다. CSV를 다시 선택하면 해당 날짜만 반영됩니다.");
+    setLiveOddsStatus("날짜를 바꿨습니다. API로 불러오기 또는 CSV 선택을 다시 실행하세요.");
   });
   document.getElementById("live-odds-league")?.addEventListener("change", () => {
     setLiveOddsStatus("리그를 바꿨습니다. CSV를 다시 선택하면 해당 리그만 반영됩니다.");
