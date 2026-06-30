@@ -53,15 +53,14 @@
             </summary>
             <div class="panel-body">
               <section class="simple-search-stack" aria-label="간단 검색">
-                <section class="live-api-panel" aria-label="오늘 경기 CSV">
+                <section class="live-api-panel" aria-label="경기 자동 업데이트">
                   <div class="live-api-heading">
                     <div>
-                      <strong>오늘 경기/배당</strong>
-                      <span>경기 카드를 누르면 비슷했던 과거 배당 결과를 바로 볼 수 있습니다.</span>
+                      <strong>경기 자동 업데이트</strong>
+                      <span>경기 일정은 자동으로 불러오고, 배당이 있는 경기만 과거 유사 배당을 볼 수 있습니다.</span>
                     </div>
                     <div class="live-api-actions">
-                      <button type="button" id="load-live-odds">API로 불러오기</button>
-                      <button type="button" id="download-today-csv-sample">CSV 샘플</button>
+                      <button type="button" id="load-live-odds">경기 업데이트</button>
                     </div>
                   </div>
                   <div class="live-api-controls">
@@ -90,11 +89,17 @@
                     <button type="button" data-live-date-preset="2024-08-16">2024-25 개막</button>
                     <button type="button" data-live-date-preset="2023-08-11">2023-24 개막</button>
                   </div>
-                  <label class="today-csv-picker">
-                    오늘 경기 CSV 선택
-                    <input id="today-csv-input" type="file" accept=".csv,text/csv" multiple>
-                  </label>
-                  <p class="match-count" id="live-odds-status" aria-live="polite">오늘 경기와 배당을 불러오면 과거 유사 배당을 바로 볼 수 있습니다.</p>
+                  <details class="today-csv-tools" id="today-csv-tools">
+                    <summary>CSV 직접 추가</summary>
+                    <div>
+                      <label class="today-csv-picker">
+                        오늘 경기 CSV 선택
+                        <input id="today-csv-input" type="file" accept=".csv,text/csv" multiple>
+                      </label>
+                      <button type="button" id="download-today-csv-sample">CSV 샘플</button>
+                    </div>
+                  </details>
+                  <p class="match-count" id="live-odds-status" aria-live="polite">날짜를 고르고 경기 업데이트를 누르세요.</p>
                   <div class="today-center-summary">
                     <div><span>불러온 경기</span><strong id="today-center-count">0</strong></div>
                     <div><span>유사 검색 가능</span><strong id="today-center-ready-count">0</strong></div>

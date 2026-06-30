@@ -62,6 +62,28 @@ function normalizeOddsItem(item, leagueKey, dateText) {
   };
 }
 
+function normalizeFixtureItem(item, leagueKey, dateText) {
+  const fixture = item.fixture || {};
+  const teams = item.teams || {};
+  const goals = item.goals || {};
+  const scoreText = Number.isFinite(goals.home) && Number.isFinite(goals.away) ? `${goals.home}-${goals.away}` : "";
+
+  return {
+    id: fixture.id ? `api-football-${fixture.id}` : `api-football-fixture-${leagueKey}-${dateText}-${teams.home?.name || ""}-${teams.away?.name || ""}`,
+    fixtureId: fixture.id || "",
+    date: String(fixture.date || dateText).slice(0, 10),
+    league: leagueKey,
+    homeTeam: teams.home?.name || "",
+    awayTeam: teams.away?.name || "",
+    homeOdds: "",
+    drawOdds: "",
+    awayOdds: "",
+    result: "UNKNOWN",
+    score: scoreText,
+    source: "API-Football Fixtures"
+  };
+}
+
 async function fetchApiFootball(path, apiKey) {
   const response = await fetch(`https://${API_HOST}${path}`, {
     headers: {
@@ -83,6 +105,38 @@ async function loadLeagueOdds({ date, leagueKey, apiKey }) {
   const payload = await fetchApiFootball(path, apiKey);
   const rows = Array.isArray(payload.response) ? payload.response : [];
   return rows.map((item) => normalizeOddsItem(item, leagueKey, date));
+}
+
+async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
+  const leagueId = LEAGUE_IDS[leagueKey];
+  const season = getSeason(date);
+  const path = `/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`;
+  const payload = await fetchApiFootball(path, apiKey);
+  const rows = Array.isArray(payload.response) ? payload.response : [];
+  return rows.map((item) => normalizeFixtureItem(item, leagueKey, date));
+}
+
+function mergeFixturesWithOdds(fixtures, odds) {
+  const oddsByFixtureId = new Map(odds.filter((match) => match.fixtureId).map((match) => [String(match.fixtureId), match]));
+  const merged = fixtures.map((fixture) => {
+    const odd = oddsByFixtureId.get(String(fixture.fixtureId));
+    return odd ? { ...fixture, ...odd, source: "API-Football" } : fixture;
+  });
+  const fixtureIds = new Set(merged.map((match) => String(match.fixtureId)).filter(Boolean));
+  const oddsOnly = odds.filter((match) => !match.fixtureId || !fixtureIds.has(String(match.fixtureId)));
+  return [...merged, ...oddsOnly];
+}
+
+async function loadLeagueMatches({ date, leagueKey, apiKey }) {
+  const [fixtures, odds] = await Promise.all([
+    loadLeagueFixtures({ date, leagueKey, apiKey }),
+    loadLeagueOdds({ date, leagueKey, apiKey })
+  ]);
+  return {
+    matches: mergeFixturesWithOdds(fixtures, odds),
+    fixtureCount: fixtures.length,
+    oddsCount: odds.length
+  };
 }
 
 module.exports = async function handler(request, response) {
@@ -108,15 +162,17 @@ module.exports = async function handler(request, response) {
   }
 
   try {
-    const results = await Promise.all(leagueKeys.map((leagueKey) => loadLeagueOdds({ date, leagueKey, apiKey })));
-    const matches = results.flat().filter((match) => match.homeTeam && match.awayTeam);
+    const results = await Promise.all(leagueKeys.map((leagueKey) => loadLeagueMatches({ date, leagueKey, apiKey })));
+    const matches = results.flatMap((result) => result.matches).filter((match) => match.homeTeam && match.awayTeam);
     return sendJson(response, 200, {
       matches,
       meta: {
         provider: "API-Football",
         date,
         leagues: leagueKeys,
-        count: matches.length
+        count: matches.length,
+        fixtureCount: results.reduce((sum, result) => sum + result.fixtureCount, 0),
+        oddsCount: results.reduce((sum, result) => sum + result.oddsCount, 0)
       }
     });
   } catch (error) {

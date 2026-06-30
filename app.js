@@ -2760,6 +2760,10 @@ function createTodaySampleItem(match) {
 }
 
 function getTodayMatchAnalysis(match, matches = getSearchableMatches()) {
+  if (!hasCompleteOdds(match)) {
+    return { error: "배당 대기중", matches: [], breakdown: calculateResultBreakdown([]), label: `${match.homeTeam} vs ${match.awayTeam}` };
+  }
+
   return analyzeTodayMatch(matches, {
     homeTeam: match.homeTeam,
     awayTeam: match.awayTeam,
@@ -2769,6 +2773,10 @@ function getTodayMatchAnalysis(match, matches = getSearchableMatches()) {
     awayOdds: match.awayOdds,
     tolerance: match.tolerance
   });
+}
+
+function hasCompleteOdds(match = {}) {
+  return ["homeOdds", "drawOdds", "awayOdds"].every((field) => parseSearchNumber(match[field]) !== null);
 }
 
 function setTodaySearchFromMatch(match) {
@@ -2797,7 +2805,10 @@ function createTodayCenterCard(match, analysis) {
   header.append(meta, title);
 
   const odds = document.createElement("p");
-  odds.textContent = `배당 ${match.homeOdds || "-"} / ${match.drawOdds || "-"} / ${match.awayOdds || "-"} · 허용 오차 ${match.tolerance || "0.05"}`;
+  const hasOdds = hasCompleteOdds(match);
+  odds.textContent = hasOdds
+    ? `배당 ${match.homeOdds} / ${match.drawOdds} / ${match.awayOdds} · 허용 오차 ${match.tolerance || "0.05"}`
+    : "배당 대기중 · 경기 일정만 확인됨";
 
   const breakdown = analysis.breakdown || calculateResultBreakdown([]);
   const stats = document.createElement("div");
@@ -2813,8 +2824,10 @@ function createTodayCenterCard(match, analysis) {
   actions.className = "today-card-actions";
   const detailButton = document.createElement("button");
   detailButton.type = "button";
-  detailButton.textContent = "과거 유사 배당 보기";
+  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 대기중";
+  detailButton.disabled = !hasOdds;
   detailButton.addEventListener("click", () => {
+    if (!hasOdds) return;
     renderTodayMatchAnalysis(analysis);
     setTodayAnalysisStatus(`${analysis.label} 상세 흐름을 표시했습니다.`);
     setTodaySearchFromMatch(match);
@@ -2861,7 +2874,7 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
 
   const searchableMatches = getSearchableMatches();
   const analyses = todayMatches.map((match) => getTodayMatchAnalysis(match, searchableMatches));
-  const readyCount = analyses.filter((analysis) => !analysis.error && analysis.matches.length > 0).length;
+  const readyCount = todayMatches.filter(hasCompleteOdds).length;
   const knownCount = analyses.reduce((sum, analysis) => sum + (analysis.breakdown?.knownMatches || 0), 0);
   const values = {
     "today-center-count": String(todayMatches.length),
@@ -3006,29 +3019,30 @@ async function loadLiveOddsFromApi() {
   const criteria = getLiveOddsCriteria();
 
   if (button) button.disabled = true;
-  setLiveOddsStatus("API에서 경기와 배당을 불러오는 중입니다.");
+  setLiveOddsStatus("경기 일정과 배당을 확인하는 중입니다.");
 
   try {
     const result = await fetchLiveOdds(criteria);
     if (result.error) {
-      setLiveOddsStatus(`${result.error} CSV로도 넣을 수 있습니다.`);
+      setLiveOddsStatus(`${result.error} 잠시 후 다시 시도하거나 CSV 직접 추가를 이용하세요.`);
       return result;
     }
 
     if (result.matches.length === 0) {
       const leagueText = criteria.league === "ALL" ? "5대 리그" : getLeagueLabel(criteria.league);
-      setLiveOddsStatus(`${criteria.date} ${leagueText} API 경기/배당이 없습니다. 비시즌이거나 배당 제공 전일 수 있으니 다른 날짜를 눌러보세요.`);
+      setLiveOddsStatus(`${criteria.date} ${leagueText} 경기 일정이 없습니다. 다른 날짜나 리그를 선택해보세요.`);
       renderTodayCenter();
       return result;
     }
 
     const merged = mergeTodayMatches(result.matches);
     renderTodayCenter(merged.matches);
-    setLiveOddsStatus(`API 경기 ${result.matches.length}개 반영 / 새로 추가 ${merged.addedCount}개 / 중복 제외 ${merged.duplicateCount}개`);
+    const oddsCount = result.meta?.oddsCount ?? result.matches.filter(hasCompleteOdds).length;
+    setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / 배당 확인 ${oddsCount}개 / 새로 추가 ${merged.addedCount}개`);
     return { ...result, ...merged };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
-    setLiveOddsStatus(`API 호출 중 문제가 발생했습니다. ${message} CSV로도 넣을 수 있습니다.`);
+    setLiveOddsStatus(`경기 업데이트 중 문제가 발생했습니다. ${message}`);
     return { error: message, matches: [] };
   } finally {
     if (button) button.disabled = false;
