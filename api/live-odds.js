@@ -5,7 +5,8 @@ const LEAGUE_IDS = {
   LALIGA: 140,
   SERIEA: 135,
   BUNDESLIGA: 78,
-  LIGUE1: 61
+  LIGUE1: 61,
+  WORLDCUP: 1
 };
 
 function sendJson(response, statusCode, body) {
@@ -15,10 +16,11 @@ function sendJson(response, statusCode, body) {
   response.end(JSON.stringify(body));
 }
 
-function getSeason(dateText) {
+function getSeason(dateText, leagueKey = "") {
   const date = new Date(`${dateText}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return String(new Date().getUTCFullYear());
   const year = date.getUTCFullYear();
+  if (leagueKey === "WORLDCUP") return String(year);
   const month = date.getUTCMonth() + 1;
   return String(month < 7 ? year - 1 : year);
 }
@@ -100,7 +102,7 @@ async function fetchApiFootball(path, apiKey) {
 
 async function loadLeagueOdds({ date, leagueKey, apiKey }) {
   const leagueId = LEAGUE_IDS[leagueKey];
-  const season = getSeason(date);
+  const season = getSeason(date, leagueKey);
   const path = `/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1`;
   const payload = await fetchApiFootball(path, apiKey);
   const rows = Array.isArray(payload.response) ? payload.response : [];
@@ -109,7 +111,7 @@ async function loadLeagueOdds({ date, leagueKey, apiKey }) {
 
 async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
   const leagueId = LEAGUE_IDS[leagueKey];
-  const season = getSeason(date);
+  const season = getSeason(date, leagueKey);
   const path = `/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`;
   const payload = await fetchApiFootball(path, apiKey);
   const rows = Array.isArray(payload.response) ? payload.response : [];

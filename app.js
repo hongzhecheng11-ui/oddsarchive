@@ -1352,7 +1352,8 @@ const LEAGUE_FILTERS = {
   LALIGA: ["LALIGA", "라리가", "SP1"],
   SERIEA: ["SERIEA", "세리에A", "I1"],
   BUNDESLIGA: ["BUNDESLIGA", "분데스리가", "D1"],
-  LIGUE1: ["LIGUE1", "리그앙", "F1"]
+  LIGUE1: ["LIGUE1", "리그앙", "F1"],
+  WORLDCUP: ["WORLDCUP", "월드컵", "WORLD CUP", "FIFA WORLD CUP"]
 };
 const FIXTURE_LEAGUE_OPTIONS = [
   { value: "ALL", label: "전체" },
@@ -1360,7 +1361,8 @@ const FIXTURE_LEAGUE_OPTIONS = [
   { value: "LALIGA", label: "라리가" },
   { value: "SERIEA", label: "세리에A" },
   { value: "BUNDESLIGA", label: "분데스리가" },
-  { value: "LIGUE1", label: "리그앙" }
+  { value: "LIGUE1", label: "리그앙" },
+  { value: "WORLDCUP", label: "월드컵" }
 ];
 
 function leagueMatchesFixture(matchLeague, selectedLeague) {
@@ -1833,6 +1835,7 @@ function getCurrentTimestamp() {
 }
 
 function getLeagueLabel(league) {
+  if (league === "WORLDCUP") return "월드컵";
   return DEFAULT_DATA_PACK_LEAGUES[league]?.label || league;
 }
 
