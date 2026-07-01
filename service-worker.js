@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v18-match-card-search";
+const CACHE_NAME = "oddsarchive-v19-hide-season-presets";
 const CORE_ASSETS = [
   "/",
   "/index.html",
