@@ -67,14 +67,18 @@ function normalizeOddsItem(item, leagueKey, dateText) {
 function normalizeFixtureItem(item, leagueKey, dateText) {
   const fixture = item.fixture || {};
   const teams = item.teams || {};
+  const league = item.league || {};
   const goals = item.goals || {};
   const scoreText = Number.isFinite(goals.home) && Number.isFinite(goals.away) ? `${goals.home}-${goals.away}` : "";
+  const leagueLabel = leagueKey === "GLOBAL"
+    ? [league.name, league.country].filter(Boolean).join(" / ") || "GLOBAL"
+    : leagueKey;
 
   return {
     id: fixture.id ? `api-football-${fixture.id}` : `api-football-fixture-${leagueKey}-${dateText}-${teams.home?.name || ""}-${teams.away?.name || ""}`,
     fixtureId: fixture.id || "",
     date: String(fixture.date || dateText).slice(0, 10),
-    league: leagueKey,
+    league: leagueLabel,
     homeTeam: teams.home?.name || "",
     awayTeam: teams.away?.name || "",
     homeOdds: "",
@@ -116,6 +120,13 @@ async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
   const payload = await fetchApiFootball(path, apiKey);
   const rows = Array.isArray(payload.response) ? payload.response : [];
   return rows.map((item) => normalizeFixtureItem(item, leagueKey, date));
+}
+
+async function loadGlobalFixtures({ date, apiKey }) {
+  const path = `/fixtures?date=${encodeURIComponent(date)}`;
+  const payload = await fetchApiFootball(path, apiKey);
+  const rows = Array.isArray(payload.response) ? payload.response : [];
+  return rows.slice(0, 80).map((item) => normalizeFixtureItem(item, "GLOBAL", date));
 }
 
 function mergeFixturesWithOdds(fixtures, odds) {
@@ -165,7 +176,17 @@ module.exports = async function handler(request, response) {
 
   try {
     const results = await Promise.all(leagueKeys.map((leagueKey) => loadLeagueMatches({ date, leagueKey, apiKey })));
-    const matches = results.flatMap((result) => result.matches).filter((match) => match.homeTeam && match.awayTeam);
+    let matches = results.flatMap((result) => result.matches).filter((match) => match.homeTeam && match.awayTeam);
+    let fixtureCount = results.reduce((sum, result) => sum + result.fixtureCount, 0);
+    let oddsCount = results.reduce((sum, result) => sum + result.oddsCount, 0);
+
+    if (requestedLeague === "ALL" && matches.length === 0) {
+      const globalFixtures = await loadGlobalFixtures({ date, apiKey });
+      matches = globalFixtures.filter((match) => match.homeTeam && match.awayTeam);
+      fixtureCount = matches.length;
+      oddsCount = 0;
+    }
+
     return sendJson(response, 200, {
       matches,
       meta: {
@@ -173,8 +194,8 @@ module.exports = async function handler(request, response) {
         date,
         leagues: leagueKeys,
         count: matches.length,
-        fixtureCount: results.reduce((sum, result) => sum + result.fixtureCount, 0),
-        oddsCount: results.reduce((sum, result) => sum + result.oddsCount, 0)
+        fixtureCount,
+        oddsCount
       }
     });
   } catch (error) {

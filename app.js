@@ -2869,7 +2869,7 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
     if (list) {
       const empty = document.createElement("div");
       empty.className = "empty-state compact-empty";
-      empty.textContent = "오늘 경기 CSV를 넣으면 여기에 표시됩니다.";
+      empty.textContent = "불러온 경기가 없습니다. 날짜나 리그를 바꿔 다시 업데이트해보세요.";
       list.replaceChildren(empty);
     }
     return;
@@ -3032,9 +3032,9 @@ async function loadLiveOddsFromApi() {
     }
 
     if (result.matches.length === 0) {
-      const leagueText = criteria.league === "ALL" ? "5대 리그" : getLeagueLabel(criteria.league);
-      setLiveOddsStatus(`${criteria.date} ${leagueText} 경기 일정이 없습니다. 다른 날짜나 리그를 선택해보세요.`);
-      renderTodayCenter();
+      const leagueText = criteria.league === "ALL" ? "전체 리그" : getLeagueLabel(criteria.league);
+      setLiveOddsStatus(`${criteria.date} ${leagueText} 경기 일정이 없습니다. 비시즌이거나 API 제공 전일 수 있습니다. 날짜를 바꾸거나 CSV로 직접 추가해보세요.`);
+      renderTodayCenter([]);
       return result;
     }
 
