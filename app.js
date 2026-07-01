@@ -225,7 +225,58 @@ const TEAM_NAME_LABELS = {
   Dijon: "디종",
   Nimes: "님",
   Ajaccio: "아작시오",
-  "Paris FC": "파리 FC"
+  "Paris FC": "파리 FC",
+  Argentina: "아르헨티나",
+  Australia: "호주",
+  Austria: "오스트리아",
+  Belgium: "벨기에",
+  Brazil: "브라질",
+  Cameroon: "카메룬",
+  Canada: "캐나다",
+  Chile: "칠레",
+  Colombia: "콜롬비아",
+  "Costa Rica": "코스타리카",
+  Croatia: "크로아티아",
+  Denmark: "덴마크",
+  Ecuador: "에콰도르",
+  Egypt: "이집트",
+  England: "잉글랜드",
+  France: "프랑스",
+  Germany: "독일",
+  Ghana: "가나",
+  Iran: "이란",
+  Italy: "이탈리아",
+  Japan: "일본",
+  "Korea Republic": "대한민국",
+  "South Korea": "대한민국",
+  Korea: "대한민국",
+  Mexico: "멕시코",
+  Morocco: "모로코",
+  Netherlands: "네덜란드",
+  Nigeria: "나이지리아",
+  Norway: "노르웨이",
+  Paraguay: "파라과이",
+  Peru: "페루",
+  Poland: "폴란드",
+  Portugal: "포르투갈",
+  Qatar: "카타르",
+  Romania: "루마니아",
+  Russia: "러시아",
+  "Saudi Arabia": "사우디아라비아",
+  Scotland: "스코틀랜드",
+  Senegal: "세네갈",
+  Serbia: "세르비아",
+  Spain: "스페인",
+  Sweden: "스웨덴",
+  Switzerland: "스위스",
+  Tunisia: "튀니지",
+  Turkey: "튀르키예",
+  Turkiye: "튀르키예",
+  Ukraine: "우크라이나",
+  Uruguay: "우루과이",
+  USA: "미국",
+  "United States": "미국",
+  Wales: "웨일스"
 };
 
 function getNormalizedLabelKey(value) {
@@ -1281,7 +1332,7 @@ function formatMatchResultText(match) {
 
 function formatTeamName(teamName) {
   const originalName = String(teamName || "").trim();
-  return TEAM_NAME_LABELS[originalName] || originalName;
+  return normalizeTeamNameForStorage(originalName);
 }
 
 function formatTableValue(header, value) {
@@ -2804,7 +2855,7 @@ function createTodayCenterCard(match, analysis) {
   const meta = document.createElement("span");
   const title = document.createElement("strong");
   meta.textContent = `${match.date || getTodayKey()} · ${getLeagueLabel(match.league || "EPL")}`;
-  title.textContent = `${match.homeTeam} vs ${match.awayTeam}`;
+  title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
   header.append(meta, title);
 
   const odds = document.createElement("p");
