@@ -1443,6 +1443,7 @@ function leagueMatchesFixture(matchLeague, selectedLeague) {
 
   const aliases = LEAGUE_FILTERS[selected] || [selected];
   const normalizedLeague = normalizeTeamSearchText(matchLeague);
+  if (selected === "WORLDCUP" && normalizedLeague.includes("worldcup")) return true;
   return aliases.some((alias) => normalizedLeague === normalizeTeamSearchText(alias));
 }
 
@@ -3119,10 +3120,11 @@ async function loadLiveOddsFromApi() {
     }
 
     const merged = mergeTodayMatches(result.matches);
-    renderTodayCenter(merged.matches);
+    const visibleMatches = filterTodayCsvMatches(merged.matches, criteria);
+    renderTodayCenter(visibleMatches);
     const oddsCount = result.meta?.oddsCount ?? result.matches.filter(hasCompleteOdds).length;
     setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / 배당 확인 ${oddsCount}개 / 새로 추가 ${merged.addedCount}개`);
-    return { ...result, ...merged };
+    return { ...result, ...merged, visibleMatches };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setLiveOddsStatus(`경기 업데이트 중 문제가 발생했습니다. ${message}`);
@@ -3209,9 +3211,10 @@ async function loadTodayCsvFiles(files) {
     }
 
     const merged = mergeTodayMatches(result.matches);
-    renderTodayCenter(merged.matches);
+    const visibleMatches = filterTodayCsvMatches(merged.matches, criteria);
+    renderTodayCenter(visibleMatches);
     setLiveOddsStatus(`CSV 경기 ${result.matches.length}개 반영 / 새로 추가 ${merged.addedCount}개 / 중복 제외 ${merged.duplicateCount}개`);
-    return { ...result, ...merged };
+    return { ...result, ...merged, visibleMatches };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setLiveOddsStatus(`CSV 처리 중 문제가 발생했습니다. ${message}`);
