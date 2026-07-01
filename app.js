@@ -88,6 +88,13 @@ const DEFAULT_DATA_PACK_LEAGUES = {
 const FIVE_MAJOR_LEAGUES = ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1"];
 const DEFAULT_DATA_PACK_2019_SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526"];
 const DEFAULT_DATA_PACK_SEASONS = ["2021", "2122", "2223", "2324", "2425", "2526"];
+const LEAGUE_NAME_LABELS = {
+  "World Cup": "월드컵",
+  FIFA: "FIFA",
+  World: "세계",
+  USA: "미국",
+  Chile: "칠레"
+};
 const TEAM_NAME_LABELS = {
   Arsenal: "아스널",
   Chelsea: "첼시",
@@ -1335,6 +1342,18 @@ function formatTeamName(teamName) {
   return normalizeTeamNameForStorage(originalName);
 }
 
+function formatLeagueName(leagueName) {
+  const originalName = String(leagueName || "").trim();
+  if (!originalName) return "";
+  return originalName
+    .split("/")
+    .map((part) => {
+      const label = part.trim();
+      return LEAGUE_NAME_LABELS[label] || label;
+    })
+    .join(" / ");
+}
+
 function formatTableValue(header, value) {
   if (header === "result") return formatResultLabel(value);
   if (header === "homeTeam" || header === "awayTeam") return formatTeamName(value);
@@ -2464,7 +2483,7 @@ function renderStoredMatches(matches = getSearchableMatches()) {
       card.className = "stored-match-card";
 
       const meta = document.createElement("span");
-      meta.textContent = `${match.date} · ${match.league}`;
+      meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
 
       const title = document.createElement("strong");
       title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
@@ -2488,7 +2507,7 @@ function renderStoredMatches(matches = getSearchableMatches()) {
     const row = document.createElement("tr");
     const values = [
       match.date,
-      match.league,
+      formatLeagueName(match.league),
       formatTeamName(match.homeTeam),
       formatTeamName(match.awayTeam),
       formatOdds(match.homeOdds),
@@ -2543,7 +2562,7 @@ function createSearchResultCard(match) {
   header.className = "result-card-header";
 
   const meta = document.createElement("span");
-  meta.textContent = `${match.date} · ${match.league}`;
+  meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
 
   const resultPill = document.createElement("strong");
   resultPill.className = "result-pill";
@@ -2680,7 +2699,7 @@ function renderTeamMatchResults(matches, message = "", options = {}) {
     const row = document.createElement("tr");
     const values = [
       match.date,
-      match.league,
+      formatLeagueName(match.league),
       formatTeamName(match.homeTeam),
       formatTeamName(match.awayTeam),
       formatOdds(match.homeOdds),
@@ -2806,7 +2825,7 @@ function createTodaySampleItem(match) {
   const title = document.createElement("strong");
   const detail = document.createElement("small");
 
-  meta.textContent = `${match.date} · ${match.league}`;
+  meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
   title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
   detail.textContent = `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)} · ${formatMatchResultText(match)}`;
   item.append(meta, title, detail);
@@ -2854,7 +2873,7 @@ function createTodayCenterCard(match, analysis) {
   header.className = "today-center-card-header";
   const meta = document.createElement("span");
   const title = document.createElement("strong");
-  meta.textContent = `${match.date || getTodayKey()} · ${getLeagueLabel(match.league || "EPL")}`;
+  meta.textContent = `${match.date || getTodayKey()} · ${formatLeagueName(getLeagueLabel(match.league || "EPL"))}`;
   title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
   header.append(meta, title);
 
