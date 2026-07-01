@@ -117,6 +117,14 @@ async function loadLeagueOdds({ date, leagueKey, apiKey }) {
   return rows.map((item) => normalizeOddsItem(item, leagueKey, date));
 }
 
+async function loadFixtureOdds({ fixtureId, leagueKey, date, apiKey }) {
+  if (!fixtureId) return [];
+  const path = `/odds?fixture=${encodeURIComponent(fixtureId)}&bet=1`;
+  const payload = await fetchApiFootball(path, apiKey);
+  const rows = Array.isArray(payload.response) ? payload.response : [];
+  return rows.map((item) => normalizeOddsItem(item, leagueKey, date));
+}
+
 async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
   const leagueId = LEAGUE_IDS[leagueKey];
   const season = getSeason(date, leagueKey);
@@ -143,6 +151,14 @@ async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
   }
   const filteredRows = typeof filter === "function" ? rows.filter(filter) : rows;
   return filteredRows.slice(0, 80).map((item) => normalizeFixtureItem(item, "GLOBAL", date));
+}
+
+async function loadOddsForFixtures({ fixtures, leagueKey, date, apiKey }) {
+  const limitedFixtures = fixtures.filter((match) => match.fixtureId).slice(0, 12);
+  const results = await Promise.all(limitedFixtures.map((match) => (
+    loadFixtureOdds({ fixtureId: match.fixtureId, leagueKey, date, apiKey }).catch(() => [])
+  )));
+  return results.flat();
 }
 
 function mergeFixturesWithOdds(fixtures, odds) {
@@ -202,9 +218,15 @@ module.exports = async function handler(request, response) {
         apiKey,
         filter: requestedLeague === "WORLDCUP" ? isWorldCupFixture : undefined
       });
-      matches = globalFixtures.filter((match) => match.homeTeam && match.awayTeam);
+      const fixtureOdds = await loadOddsForFixtures({
+        fixtures: globalFixtures,
+        leagueKey: requestedLeague === "WORLDCUP" ? "WORLDCUP" : "GLOBAL",
+        date,
+        apiKey
+      });
+      matches = mergeFixturesWithOdds(globalFixtures, fixtureOdds).filter((match) => match.homeTeam && match.awayTeam);
       fixtureCount = matches.length;
-      oddsCount = 0;
+      oddsCount = fixtureOdds.length;
     }
 
     return sendJson(response, 200, {
