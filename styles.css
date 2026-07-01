@@ -2690,3 +2690,142 @@ select {
     font-size: 11px;
   }
 }
+
+@media (max-width: 520px) {
+  .app-shell {
+    gap: 0;
+  }
+
+  .side-nav {
+    gap: 8px;
+    padding: 8px 10px 6px;
+  }
+
+  .nav-item {
+    min-width: max-content;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .content-area {
+    padding: 5px;
+  }
+
+  .panel,
+  .live-api-panel {
+    border-radius: 7px;
+  }
+
+  .panel-body,
+  .simple-search-stack {
+    gap: 5px;
+  }
+
+  .live-api-panel {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .live-api-heading {
+    gap: 5px;
+  }
+
+  .live-api-heading span {
+    display: none;
+  }
+
+  .live-api-heading strong {
+    font-size: 13px;
+    line-height: 1.1;
+  }
+
+  .live-api-heading button,
+  #load-live-odds {
+    min-height: 34px;
+    border-radius: 7px;
+    font-size: 13px;
+  }
+
+  .live-api-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .live-api-controls label {
+    gap: 3px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .live-api-controls input,
+  .live-api-controls select {
+    min-height: 34px;
+    padding: 0 10px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .date-quick-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .date-quick-actions button {
+    min-height: 32px;
+    padding: 0 4px;
+    border-radius: 7px;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .today-csv-tools > summary,
+  .match-count {
+    padding: 6px 8px;
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .today-center-list {
+    gap: 5px;
+  }
+
+  .today-center-card {
+    gap: 3px;
+    padding: 7px 8px;
+    border-radius: 7px;
+  }
+
+  .today-center-card-header {
+    gap: 1px;
+  }
+
+  .today-center-card-header span,
+  .today-center-card p {
+    font-size: 9px;
+    line-height: 1.18;
+  }
+
+  .today-center-card-header strong {
+    font-size: 12px;
+    line-height: 1.18;
+  }
+
+  .today-center-card .inline-odds-rate {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .today-card-actions {
+    gap: 5px;
+    margin-top: 2px;
+  }
+
+  .today-card-actions button {
+    min-height: 30px;
+    border-radius: 7px;
+    font-size: 11px;
+  }
+}
