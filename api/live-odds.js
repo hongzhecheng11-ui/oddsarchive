@@ -12,7 +12,7 @@ const LEAGUE_IDS = {
 function sendJson(response, statusCode, body) {
   response.statusCode = statusCode;
   response.setHeader("content-type", "application/json; charset=utf-8");
-  response.setHeader("cache-control", "public, max-age=300");
+  response.setHeader("cache-control", "no-store, max-age=0");
   response.end(JSON.stringify(body));
 }
 

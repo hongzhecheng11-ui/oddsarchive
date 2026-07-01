@@ -2994,8 +2994,10 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   const params = new URLSearchParams();
   params.set("date", criteria.date || getTodayKey());
   params.set("league", criteria.league || "ALL");
+  params.set("_", String(Date.now()));
 
   const response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
+    cache: "no-store",
     headers: { Accept: "application/json" }
   });
 
