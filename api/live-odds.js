@@ -165,7 +165,19 @@ function mergeFixturesWithOdds(fixtures, odds) {
   const oddsByFixtureId = new Map(odds.filter((match) => match.fixtureId).map((match) => [String(match.fixtureId), match]));
   const merged = fixtures.map((fixture) => {
     const odd = oddsByFixtureId.get(String(fixture.fixtureId));
-    return odd ? { ...fixture, ...odd, source: "API-Football" } : fixture;
+    return odd ? {
+      ...fixture,
+      id: odd.id || fixture.id,
+      fixtureId: odd.fixtureId || fixture.fixtureId,
+      date: odd.date || fixture.date,
+      league: fixture.league || odd.league,
+      homeTeam: odd.homeTeam || fixture.homeTeam,
+      awayTeam: odd.awayTeam || fixture.awayTeam,
+      homeOdds: odd.homeOdds || "",
+      drawOdds: odd.drawOdds || "",
+      awayOdds: odd.awayOdds || "",
+      source: "API-Football"
+    } : fixture;
   });
   const fixtureIds = new Set(merged.map((match) => String(match.fixtureId)).filter(Boolean));
   const oddsOnly = odds.filter((match) => !match.fixtureId || !fixtureIds.has(String(match.fixtureId)));
