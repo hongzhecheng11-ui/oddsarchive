@@ -3034,27 +3034,7 @@ function createTodayCenterCard(match, analysis) {
     event.stopImmediatePropagation();
     openOddsSearchForTodayMatch(match, analysis);
   });
-  detailButton.addEventListener("click", () => {
-    if (!hasOdds) {
-      renderTodayMatchAnalysis(analysis);
-      openManualOddsEntryForMatch(match);
-      setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}는 아직 API 배당이 없어 직접 입력으로 검색을 준비했습니다.`);
-      return;
-    }
-    renderTodayMatchAnalysis(analysis);
-    setTodayAnalysisStatus(`${analysis.label} 상세 흐름을 표시했습니다.`);
-    setTodaySearchFromMatch(match);
-  });
-
-  const deleteButton = document.createElement("button");
-  deleteButton.type = "button";
-  deleteButton.className = "ghost-action";
-  deleteButton.textContent = "삭제";
-  deleteButton.addEventListener("click", () => {
-    renderTodayCenter(deleteTodayMatch(match.id));
-    setTodayAnalysisStatus("관심 경기에서 삭제했습니다.");
-  });
-  actions.append(detailButton, deleteButton);
+  actions.append(detailButton);
 
   card.append(header, odds, inlineRate, actions);
   card.addEventListener("click", (event) => {

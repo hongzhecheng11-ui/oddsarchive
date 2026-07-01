@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v24-compact-mobile-ui";
+const CACHE_NAME = "oddsarchive-v25-mobile-focus";
 const CORE_ASSETS = [
   "/",
   "/index.html",
