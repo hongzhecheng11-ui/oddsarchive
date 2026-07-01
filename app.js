@@ -3120,7 +3120,7 @@ async function loadLiveOddsFromApi() {
     }
 
     const merged = mergeTodayMatches(result.matches);
-    const visibleMatches = filterTodayCsvMatches(merged.matches, criteria);
+    const visibleMatches = result.matches;
     renderTodayCenter(visibleMatches);
     const oddsCount = result.meta?.oddsCount ?? result.matches.filter(hasCompleteOdds).length;
     setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / 배당 확인 ${oddsCount}개 / 새로 추가 ${merged.addedCount}개`);
@@ -3211,7 +3211,7 @@ async function loadTodayCsvFiles(files) {
     }
 
     const merged = mergeTodayMatches(result.matches);
-    const visibleMatches = filterTodayCsvMatches(merged.matches, criteria);
+    const visibleMatches = filterTodayCsvMatches(result.matches, criteria);
     renderTodayCenter(visibleMatches);
     setLiveOddsStatus(`CSV 경기 ${result.matches.length}개 반영 / 새로 추가 ${merged.addedCount}개 / 중복 제외 ${merged.duplicateCount}개`);
     return { ...result, ...merged, visibleMatches };
