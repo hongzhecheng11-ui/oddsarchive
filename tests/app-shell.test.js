@@ -78,3 +78,39 @@ test("formats inline odds rate as sample shortage without known results", () => 
 
   assert(summary.includes("표본 부족"));
 });
+
+test("falls back to all leagues and wider tolerance for live match analysis", () => {
+  const analysis = app.analyzeLiveMatchOdds([
+    { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "2.18", drawOdds: "2.80", awayOdds: "3.92", result: "H" },
+    { league: "EPL", homeTeam: "C", awayTeam: "D", homeOdds: "2.23", drawOdds: "2.76", awayOdds: "3.88", result: "A" },
+    { league: "LALIGA", homeTeam: "E", awayTeam: "F", homeOdds: "2.19", drawOdds: "2.79", awayOdds: "3.91", result: "D" }
+  ], {
+    league: "WORLDCUP",
+    homeTeam: "Mexico",
+    awayTeam: "Ecuador",
+    homeOdds: "2.20",
+    drawOdds: "2.78",
+    awayOdds: "3.90"
+  });
+
+  assert.strictEqual(analysis.matches.length, 3);
+  assert.strictEqual(analysis.breakdown.knownMatches, 3);
+  assert.strictEqual(analysis.scope, "전체 과거");
+});
+
+test("falls back to closest historical odds when tolerance search has no matches", () => {
+  const analysis = app.analyzeLiveMatchOdds([
+    { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "1.50", drawOdds: "4.00", awayOdds: "6.00", result: "H" },
+    { league: "LALIGA", homeTeam: "C", awayTeam: "D", homeOdds: "3.00", drawOdds: "3.00", awayOdds: "2.20", result: "A" }
+  ], {
+    league: "WORLDCUP",
+    homeTeam: "Mexico",
+    awayTeam: "Ecuador",
+    homeOdds: "2.20",
+    drawOdds: "2.78",
+    awayOdds: "3.90"
+  });
+
+  assert.strictEqual(analysis.matches.length, 2);
+  assert.strictEqual(analysis.scope, "가까운 과거");
+});

@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v20-inline-odds-rate";
+const CACHE_NAME = "oddsarchive-v22-closest-odds-rate";
 const CORE_ASSETS = [
   "/",
   "/index.html",

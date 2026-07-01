@@ -1771,6 +1771,77 @@ function analyzeTodayMatch(matches, criteria = {}) {
   };
 }
 
+function analyzeLiveMatchOdds(matches, criteria = {}) {
+  const attempts = [
+    { tolerance: criteria.tolerance || "0.05", league: criteria.league || "ALL", scope: "같은 리그" },
+    { tolerance: "0.10", league: "ALL", scope: "전체 과거" },
+    { tolerance: "0.20", league: "ALL", scope: "전체 과거" }
+  ];
+
+  let fallbackAnalysis = null;
+
+  for (const attempt of attempts) {
+    const analysis = analyzeTodayMatch(matches, {
+      ...criteria,
+      tolerance: attempt.tolerance,
+      league: attempt.league
+    });
+    analysis.scope = attempt.scope;
+    analysis.tolerance = attempt.tolerance;
+    analysis.breakdown.scope = attempt.scope;
+    analysis.breakdown.tolerance = attempt.tolerance;
+
+    if (!fallbackAnalysis) fallbackAnalysis = analysis;
+    if (analysis.breakdown.knownMatches > 0) return analysis;
+    if (analysis.matches.length > 0 && fallbackAnalysis.breakdown.knownMatches === 0) fallbackAnalysis = analysis;
+  }
+
+  const closestMatches = getClosestOddsMatches(matches, criteria, 30);
+  if (closestMatches.length > 0) {
+    const breakdown = calculateResultBreakdown(closestMatches);
+    return {
+      error: "",
+      matches: closestMatches,
+      breakdown: {
+        ...breakdown,
+        scope: "가까운 과거",
+        tolerance: ""
+      },
+      label: `${criteria.homeTeam || ""} vs ${criteria.awayTeam || ""}`,
+      scope: "가까운 과거",
+      tolerance: ""
+    };
+  }
+
+  return fallbackAnalysis || analyzeTodayMatch(matches, criteria);
+}
+
+function getClosestOddsMatches(matches, criteria = {}, limit = 30) {
+  const targetHomeOdds = parseSearchNumber(criteria.homeOdds);
+  const targetDrawOdds = parseSearchNumber(criteria.drawOdds);
+  const targetAwayOdds = parseSearchNumber(criteria.awayOdds);
+  const activeTargets = [
+    { field: "homeOdds", value: targetHomeOdds },
+    { field: "drawOdds", value: targetDrawOdds },
+    { field: "awayOdds", value: targetAwayOdds }
+  ].filter((target) => target.value !== null);
+
+  if (activeTargets.length === 0) return [];
+
+  return matches
+    .filter((match) => activeTargets.every((target) => Number.isFinite(Number(match[target.field]))))
+    .map((match) => ({
+      match,
+      distance: activeTargets.reduce((total, target) => total + Math.abs(Number(match[target.field]) - target.value), 0)
+    }))
+    .sort((left, right) => {
+      if (left.distance !== right.distance) return left.distance - right.distance;
+      return String(right.match.date || "").localeCompare(String(left.match.date || ""));
+    })
+    .slice(0, limit)
+    .map((item) => item.match);
+}
+
 function formatRate(count, knownMatches) {
   if (knownMatches === 0) return "0%";
   return `${((count / knownMatches) * 100).toFixed(1)}%`;
@@ -1799,13 +1870,16 @@ function calculateResultBreakdown(matches) {
 function getInlineOddsRateText(breakdown = {}) {
   const totalMatches = Number(breakdown.totalMatches || 0);
   const knownMatches = Number(breakdown.knownMatches || 0);
+  const scope = breakdown.scope ? `${breakdown.scope} ` : "";
+  const tolerance = breakdown.tolerance || "0.05";
+  const title = tolerance ? `${scope}유사배당(±${tolerance}) 승률` : `${scope}유사배당 승률`;
 
   if (knownMatches <= 0) {
-    return `동배당(±0.05) 승률: 표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
+    return `${title}: 표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
   }
 
   return [
-    `동배당(±0.05) 승률`,
+    title,
     `홈승 ${breakdown.homeRate || "0%"}`,
     `무 ${breakdown.drawRate || "0%"}`,
     `원정승 ${breakdown.awayRate || "0%"}`,
@@ -2857,7 +2931,7 @@ function getTodayMatchAnalysis(match, matches = getSearchableMatches()) {
     return { error: "배당 대기중", matches: [], breakdown: calculateResultBreakdown([]), label: `${match.homeTeam} vs ${match.awayTeam}` };
   }
 
-  return analyzeTodayMatch(matches, {
+  return analyzeLiveMatchOdds(matches, {
     homeTeam: match.homeTeam,
     awayTeam: match.awayTeam,
     league: match.league,
@@ -4693,6 +4767,7 @@ if (typeof module !== "undefined") {
     autoUpdateDefaultData,
     autoUpdateLeagues,
     analyzeTodayMatch,
+    analyzeLiveMatchOdds,
     calculateResultBreakdown,
     deleteSavedSearch,
     deleteSearchHistoryEntry,
