@@ -2900,23 +2900,31 @@ function createTodayCenterCard(match, analysis) {
   const hasOdds = hasCompleteOdds(match);
   odds.textContent = hasOdds
     ? `배당 ${match.homeOdds} / ${match.drawOdds} / ${match.awayOdds} · 허용 오차 ${match.tolerance || "0.05"}`
-    : "배당 대기중 · 경기 일정만 확인됨";
+    : "API 배당 대기중 · 직접 입력으로 검색 가능";
 
   const breakdown = analysis.breakdown || calculateResultBreakdown([]);
   const stats = document.createElement("div");
   stats.className = "today-card-stats";
-  stats.append(
-    createTodaySummaryItem("유사 경기", String(breakdown.totalMatches)),
-    createTodaySummaryItem("결과 확인", String(breakdown.knownMatches)),
-    createTodaySummaryItem("홈승", `${breakdown.homeWins} / ${breakdown.homeRate}`),
-    createTodaySummaryItem("무/원정", `${breakdown.draws} / ${breakdown.drawRate} · ${breakdown.awayWins} / ${breakdown.awayRate}`)
-  );
+  if (hasOdds) {
+    stats.append(
+      createTodaySummaryItem("유사 경기", String(breakdown.totalMatches)),
+      createTodaySummaryItem("결과 확인", String(breakdown.knownMatches)),
+      createTodaySummaryItem("홈승", `${breakdown.homeWins} / ${breakdown.homeRate}`),
+      createTodaySummaryItem("무/원정", `${breakdown.draws} / ${breakdown.drawRate} · ${breakdown.awayWins} / ${breakdown.awayRate}`)
+    );
+  } else {
+    stats.append(
+      createTodaySummaryItem("일정", "확인됨"),
+      createTodaySummaryItem("API 배당", "대기"),
+      createTodaySummaryItem("검색", "직접 입력")
+    );
+  }
 
   const actions = document.createElement("div");
   actions.className = "today-card-actions";
   const detailButton = document.createElement("button");
   detailButton.type = "button";
-  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "직접 배당 입력";
+  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 직접 입력";
   detailButton.addEventListener("click", () => {
     if (!hasOdds) {
       renderTodayMatchAnalysis(analysis);
@@ -3140,7 +3148,10 @@ async function loadLiveOddsFromApi() {
     const visibleMatches = result.matches;
     renderTodayCenter(visibleMatches);
     const oddsCount = result.meta?.oddsCount ?? result.matches.filter(hasCompleteOdds).length;
-    setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / 배당 확인 ${oddsCount}개 / 새로 추가 ${merged.addedCount}개`);
+    const oddsMessage = oddsCount > 0
+      ? `배당 확인 ${oddsCount}개`
+      : "API 배당 0개 · 경기 카드에서 직접 배당 입력 가능";
+    setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / ${oddsMessage} / 새로 추가 ${merged.addedCount}개`);
     return { ...result, ...merged, visibleMatches };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";

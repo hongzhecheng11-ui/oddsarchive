@@ -1407,6 +1407,10 @@ tbody tr:last-child td {
   font-size: 10px;
 }
 
+.today-card-actions button:first-child {
+  font-weight: 800;
+}
+
 .today-analysis-result {
   display: grid;
   gap: 6px;
@@ -2329,6 +2333,10 @@ select {
   .table-row {
     grid-template-columns: 1fr;
   }
+
+  .today-card-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 520px) {
@@ -2643,5 +2651,28 @@ select {
 
   .date-quick-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .today-center-list {
+    gap: 3px;
+  }
+
+  .today-center-card {
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .today-card-stats {
+    gap: 3px;
+  }
+
+  .today-card-stats div {
+    min-height: 34px;
+    padding: 4px 5px;
+  }
+
+  .today-card-actions button {
+    min-height: 32px;
+    font-size: 11px;
   }
 }
