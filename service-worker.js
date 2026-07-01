@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v17-preserve-fixture-teams";
+const CACHE_NAME = "oddsarchive-v18-match-card-search";
 const CORE_ASSETS = [
   "/",
   "/index.html",

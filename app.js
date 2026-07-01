@@ -2856,37 +2856,54 @@ function hasCompleteOdds(match = {}) {
 }
 
 function setTodaySearchFromMatch(match) {
-  setOddsSearchCriteria({
-    homeOdds: match.homeOdds,
-    drawOdds: match.drawOdds,
-    awayOdds: match.awayOdds,
-    tolerance: match.tolerance || "0.05",
-    sortOrder: "CLOSEST",
-    customTolerance: "",
-    league: match.league || "ALL"
-  });
+  setOddsSearchCriteria(getDirectOddsSearchCriteriaFromMatch(match));
   runOddsSearchFromCurrentCriteria();
 }
 
-function openManualOddsEntryForMatch(match) {
-  setOddsSearchCriteria({
-    homeOdds: "",
-    drawOdds: "",
-    awayOdds: "",
-    tolerance: "0.05",
+function getDirectOddsSearchCriteriaFromMatch(match = {}) {
+  const hasOdds = hasCompleteOdds(match);
+  return {
+    homeOdds: hasOdds ? String(match.homeOdds || "").trim() : "",
+    drawOdds: hasOdds ? String(match.drawOdds || "").trim() : "",
+    awayOdds: hasOdds ? String(match.awayOdds || "").trim() : "",
+    tolerance: match.tolerance || "0.05",
     sortOrder: "CLOSEST",
     customTolerance: "",
     league: match.league || "ALL",
-    teamQuery: `${formatTeamName(match.homeTeam)} ${formatTeamName(match.awayTeam)}`
-  });
-  setOddsSearchStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당이 아직 없습니다. 홈승/무/원정승 배당을 직접 입력하면 과거 유사 배당을 검색할 수 있습니다.`);
+    teamQuery: [formatTeamName(match.homeTeam), formatTeamName(match.awayTeam)].filter(Boolean).join(" ")
+  };
+}
+
+function openManualOddsEntryForMatch(match) {
+  setOddsSearchCriteria(getDirectOddsSearchCriteriaFromMatch({ ...match, homeOdds: "", drawOdds: "", awayOdds: "" }));
+  setOddsSearchStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당을 직접 입력하면 과거 유사 배당을 바로 확인할 수 있습니다.`);
   document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
   window.setTimeout(() => document.getElementById("search-home-odds")?.focus(), 350);
+}
+
+function openOddsSearchForTodayMatch(match, analysis) {
+  if (!hasCompleteOdds(match)) {
+    renderTodayMatchAnalysis(analysis);
+    openManualOddsEntryForMatch(match);
+    setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} API 배당이 아직 없어서 직접 입력 모드로 열었습니다.`);
+    return;
+  }
+
+  renderTodayMatchAnalysis(analysis);
+  setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당으로 과거 유사 결과를 검색했습니다.`);
+  setTodaySearchFromMatch(match);
+}
+
+function isInteractiveElement(element) {
+  return Boolean(element?.closest?.("button, a, input, select, textarea, label"));
 }
 
 function createTodayCenterCard(match, analysis) {
   const card = document.createElement("article");
   card.className = "today-center-card";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당 검색 열기`);
 
   const header = document.createElement("div");
   header.className = "today-center-card-header";
@@ -2924,7 +2941,11 @@ function createTodayCenterCard(match, analysis) {
   actions.className = "today-card-actions";
   const detailButton = document.createElement("button");
   detailButton.type = "button";
-  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 직접 입력";
+  detailButton.textContent = hasOdds ? "유사 배당 검색" : "배당 직접 입력";
+  detailButton.addEventListener("click", (event) => {
+    event.stopImmediatePropagation();
+    openOddsSearchForTodayMatch(match, analysis);
+  });
   detailButton.addEventListener("click", () => {
     if (!hasOdds) {
       renderTodayMatchAnalysis(analysis);
@@ -2948,6 +2969,16 @@ function createTodayCenterCard(match, analysis) {
   actions.append(detailButton, deleteButton);
 
   card.append(header, odds, stats, actions);
+  card.addEventListener("click", (event) => {
+    if (isInteractiveElement(event.target)) return;
+    openOddsSearchForTodayMatch(match, analysis);
+  });
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    if (isInteractiveElement(event.target)) return;
+    event.preventDefault();
+    openOddsSearchForTodayMatch(match, analysis);
+  });
   return card;
 }
 
@@ -4662,6 +4693,7 @@ if (typeof module !== "undefined") {
     getBaseMatches,
     getCurrentTimestamp,
     getResultBreakdownMemo,
+    getDirectOddsSearchCriteriaFromMatch,
     getFixtureLeagueOptions,
     getMatchLeagueOptions,
     getMatchTeamOptions,
