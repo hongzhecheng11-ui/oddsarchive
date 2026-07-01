@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v10-worldcup-filter";
+const CACHE_NAME = "oddsarchive-v11-worldcup-click";
 const CORE_ASSETS = [
   "/",
   "/index.html",

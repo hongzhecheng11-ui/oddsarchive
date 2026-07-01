@@ -243,6 +243,8 @@ const TEAM_NAME_LABELS = {
   Chile: "칠레",
   Colombia: "콜롬비아",
   "Costa Rica": "코스타리카",
+  "Congo DR": "콩고민주공화국",
+  "DR Congo": "콩고민주공화국",
   Croatia: "크로아티아",
   Denmark: "덴마크",
   Ecuador: "에콰도르",
@@ -2897,10 +2899,13 @@ function createTodayCenterCard(match, analysis) {
   actions.className = "today-card-actions";
   const detailButton = document.createElement("button");
   detailButton.type = "button";
-  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 대기중";
-  detailButton.disabled = !hasOdds;
+  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 없음";
   detailButton.addEventListener("click", () => {
-    if (!hasOdds) return;
+    if (!hasOdds) {
+      renderTodayMatchAnalysis(analysis);
+      setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}는 아직 배당이 없어 과거 유사 배당 검색을 할 수 없습니다.`);
+      return;
+    }
     renderTodayMatchAnalysis(analysis);
     setTodayAnalysisStatus(`${analysis.label} 상세 흐름을 표시했습니다.`);
     setTodaySearchFromMatch(match);

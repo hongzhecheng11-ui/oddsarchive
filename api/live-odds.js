@@ -129,10 +129,7 @@ async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
 function isWorldCupFixture(item = {}) {
   const league = item.league || {};
   const name = String(league.name || "").toLowerCase();
-  return (
-    name.includes("world cup") ||
-    name.includes("fifa")
-  );
+  return name === "world cup";
 }
 
 async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
