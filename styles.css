@@ -1395,6 +1395,11 @@ tbody tr:last-child td {
   line-height: 1.15;
 }
 
+.today-center-card .inline-odds-rate {
+  color: #0f766e;
+  font-weight: 800;
+}
+
 .today-center-card-header strong {
   color: var(--ink);
   font-size: 12px;

@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v19-hide-season-presets";
+const CACHE_NAME = "oddsarchive-v20-inline-odds-rate";
 const CORE_ASSETS = [
   "/",
   "/index.html",

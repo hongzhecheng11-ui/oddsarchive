@@ -1796,6 +1796,23 @@ function calculateResultBreakdown(matches) {
   };
 }
 
+function getInlineOddsRateText(breakdown = {}) {
+  const totalMatches = Number(breakdown.totalMatches || 0);
+  const knownMatches = Number(breakdown.knownMatches || 0);
+
+  if (knownMatches <= 0) {
+    return `동배당(±0.05) 승률: 표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
+  }
+
+  return [
+    `동배당(±0.05) 승률`,
+    `홈승 ${breakdown.homeRate || "0%"}`,
+    `무 ${breakdown.drawRate || "0%"}`,
+    `원정승 ${breakdown.awayRate || "0%"}`,
+    `표본 ${knownMatches}/${totalMatches}`
+  ].join(" · ");
+}
+
 function getResultBreakdownMemo(breakdown) {
   const parts = [];
 
@@ -2920,6 +2937,9 @@ function createTodayCenterCard(match, analysis) {
     : "API 배당 대기중 · 직접 입력으로 검색 가능";
 
   const breakdown = analysis.breakdown || calculateResultBreakdown([]);
+  const inlineRate = document.createElement("p");
+  inlineRate.className = "inline-odds-rate";
+  inlineRate.textContent = hasOdds ? getInlineOddsRateText(breakdown) : "동배당 승률: 배당 입력 후 확인 가능";
   const stats = document.createElement("div");
   stats.className = "today-card-stats";
   if (hasOdds) {
@@ -2968,7 +2988,7 @@ function createTodayCenterCard(match, analysis) {
   });
   actions.append(detailButton, deleteButton);
 
-  card.append(header, odds, stats, actions);
+  card.append(header, odds, inlineRate, stats, actions);
   card.addEventListener("click", (event) => {
     if (isInteractiveElement(event.target)) return;
     openOddsSearchForTodayMatch(match, analysis);
@@ -4694,6 +4714,7 @@ if (typeof module !== "undefined") {
     getCurrentTimestamp,
     getResultBreakdownMemo,
     getDirectOddsSearchCriteriaFromMatch,
+    getInlineOddsRateText,
     getFixtureLeagueOptions,
     getMatchLeagueOptions,
     getMatchTeamOptions,

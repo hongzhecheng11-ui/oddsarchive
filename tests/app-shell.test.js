@@ -52,3 +52,29 @@ test("builds direct odds search criteria from a live match without odds", () => 
     teamQuery: "잉글랜드 콩고민주공화국"
   });
 });
+
+test("formats inline odds rate when known historical results exist", () => {
+  const summary = app.getInlineOddsRateText({
+    totalMatches: 5,
+    knownMatches: 4,
+    homeRate: "50.0%",
+    drawRate: "25.0%",
+    awayRate: "25.0%"
+  });
+
+  assert(summary.includes("50.0%"));
+  assert(summary.includes("25.0%"));
+  assert(summary.includes("4/5"));
+});
+
+test("formats inline odds rate as sample shortage without known results", () => {
+  const summary = app.getInlineOddsRateText({
+    totalMatches: 2,
+    knownMatches: 0,
+    homeRate: "0%",
+    drawRate: "0%",
+    awayRate: "0%"
+  });
+
+  assert(summary.includes("표본 부족"));
+});
