@@ -104,6 +104,10 @@ async function fetchApiFootball(path, apiKey) {
   return payload;
 }
 
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function loadLeagueOdds({ date, leagueKey, apiKey }) {
   const leagueId = LEAGUE_IDS[leagueKey];
   const season = getSeason(date, leagueKey);
@@ -124,8 +128,13 @@ async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
 
 async function loadGlobalFixtures({ date, apiKey }) {
   const path = `/fixtures?date=${encodeURIComponent(date)}`;
-  const payload = await fetchApiFootball(path, apiKey);
-  const rows = Array.isArray(payload.response) ? payload.response : [];
+  let payload = await fetchApiFootball(path, apiKey);
+  let rows = Array.isArray(payload.response) ? payload.response : [];
+  if (rows.length === 0) {
+    await wait(700);
+    payload = await fetchApiFootball(path, apiKey);
+    rows = Array.isArray(payload.response) ? payload.response : [];
+  }
   return rows.slice(0, 80).map((item) => normalizeFixtureItem(item, "GLOBAL", date));
 }
 
