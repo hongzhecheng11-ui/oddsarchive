@@ -3086,7 +3086,10 @@ async function loadLiveOddsFromApi() {
 
     if (result.matches.length === 0) {
       const leagueText = criteria.league === "ALL" ? "전체 리그" : getLeagueLabel(criteria.league);
-      setLiveOddsStatus(`${criteria.date} ${leagueText} 경기 일정이 없습니다. 비시즌이거나 API 제공 전일 수 있습니다. 날짜를 바꾸거나 CSV로 직접 추가해보세요.`);
+      const emptyReason = criteria.league === "WORLDCUP"
+        ? "월드컵 일정이 API에 아직 제공되지 않았습니다."
+        : "경기 일정이 없습니다. 비시즌이거나 API 제공 전일 수 있습니다.";
+      setLiveOddsStatus(`${criteria.date} ${leagueText} ${emptyReason} 날짜를 바꾸거나 CSV로 직접 추가해보세요.`);
       renderTodayCenter([]);
       return result;
     }

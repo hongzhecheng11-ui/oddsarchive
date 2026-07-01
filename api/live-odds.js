@@ -126,7 +126,19 @@ async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
   return rows.map((item) => normalizeFixtureItem(item, leagueKey, date));
 }
 
-async function loadGlobalFixtures({ date, apiKey }) {
+function isWorldCupFixture(item = {}) {
+  const league = item.league || {};
+  const name = String(league.name || "").toLowerCase();
+  const country = String(league.country || "").toLowerCase();
+  return (
+    name.includes("world cup") ||
+    name.includes("fifa") ||
+    name.includes("club world cup") ||
+    country.includes("world")
+  );
+}
+
+async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
   const path = `/fixtures?date=${encodeURIComponent(date)}`;
   let payload = await fetchApiFootball(path, apiKey);
   let rows = Array.isArray(payload.response) ? payload.response : [];
@@ -135,7 +147,8 @@ async function loadGlobalFixtures({ date, apiKey }) {
     payload = await fetchApiFootball(path, apiKey);
     rows = Array.isArray(payload.response) ? payload.response : [];
   }
-  return rows.slice(0, 80).map((item) => normalizeFixtureItem(item, "GLOBAL", date));
+  const filteredRows = typeof filter === "function" ? rows.filter(filter) : rows;
+  return filteredRows.slice(0, 80).map((item) => normalizeFixtureItem(item, "GLOBAL", date));
 }
 
 function mergeFixturesWithOdds(fixtures, odds) {
@@ -189,8 +202,12 @@ module.exports = async function handler(request, response) {
     let fixtureCount = results.reduce((sum, result) => sum + result.fixtureCount, 0);
     let oddsCount = results.reduce((sum, result) => sum + result.oddsCount, 0);
 
-    if (requestedLeague === "ALL" && matches.length === 0) {
-      const globalFixtures = await loadGlobalFixtures({ date, apiKey });
+    if ((requestedLeague === "ALL" || requestedLeague === "WORLDCUP") && matches.length === 0) {
+      const globalFixtures = await loadGlobalFixtures({
+        date,
+        apiKey,
+        filter: requestedLeague === "WORLDCUP" ? isWorldCupFixture : undefined
+      });
       matches = globalFixtures.filter((match) => match.homeTeam && match.awayTeam);
       fixtureCount = matches.length;
       oddsCount = 0;
