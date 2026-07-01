@@ -1872,19 +1872,13 @@ function getInlineOddsRateText(breakdown = {}) {
   const knownMatches = Number(breakdown.knownMatches || 0);
   const scope = breakdown.scope ? `${breakdown.scope} ` : "";
   const tolerance = breakdown.tolerance || "0.05";
-  const title = tolerance ? `${scope}유사배당(±${tolerance}) 승률` : `${scope}유사배당 승률`;
+  const title = tolerance ? `${scope}유사배당 ±${tolerance}` : `${scope}유사배당`;
 
   if (knownMatches <= 0) {
-    return `${title}: 표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
+    return `${title}\n표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
   }
 
-  return [
-    title,
-    `홈승 ${breakdown.homeRate || "0%"}`,
-    `무 ${breakdown.drawRate || "0%"}`,
-    `원정승 ${breakdown.awayRate || "0%"}`,
-    `표본 ${knownMatches}/${totalMatches}`
-  ].join(" · ");
+  return `${title}\n홈승 ${breakdown.homeRate || "0%"} · 무 ${breakdown.drawRate || "0%"} · 원정승 ${breakdown.awayRate || "0%"} · 표본 ${knownMatches}/${totalMatches}`;
 }
 
 function getResultBreakdownMemo(breakdown) {
@@ -3062,7 +3056,7 @@ function createTodayCenterCard(match, analysis) {
   });
   actions.append(detailButton, deleteButton);
 
-  card.append(header, odds, inlineRate, stats, actions);
+  card.append(header, odds, inlineRate, actions);
   card.addEventListener("click", (event) => {
     if (isInteractiveElement(event.target)) return;
     openOddsSearchForTodayMatch(match, analysis);
