@@ -2868,6 +2868,22 @@ function setTodaySearchFromMatch(match) {
   runOddsSearchFromCurrentCriteria();
 }
 
+function openManualOddsEntryForMatch(match) {
+  setOddsSearchCriteria({
+    homeOdds: "",
+    drawOdds: "",
+    awayOdds: "",
+    tolerance: "0.05",
+    sortOrder: "CLOSEST",
+    customTolerance: "",
+    league: match.league || "ALL",
+    teamQuery: `${formatTeamName(match.homeTeam)} ${formatTeamName(match.awayTeam)}`
+  });
+  setOddsSearchStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당이 아직 없습니다. 홈승/무/원정승 배당을 직접 입력하면 과거 유사 배당을 검색할 수 있습니다.`);
+  document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => document.getElementById("search-home-odds")?.focus(), 350);
+}
+
 function createTodayCenterCard(match, analysis) {
   const card = document.createElement("article");
   card.className = "today-center-card";
@@ -2900,11 +2916,12 @@ function createTodayCenterCard(match, analysis) {
   actions.className = "today-card-actions";
   const detailButton = document.createElement("button");
   detailButton.type = "button";
-  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "배당 없음";
+  detailButton.textContent = hasOdds ? "과거 유사 배당 보기" : "직접 배당 입력";
   detailButton.addEventListener("click", () => {
     if (!hasOdds) {
       renderTodayMatchAnalysis(analysis);
-      setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}는 아직 배당이 없어 과거 유사 배당 검색을 할 수 없습니다.`);
+      openManualOddsEntryForMatch(match);
+      setTodayAnalysisStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}는 아직 API 배당이 없어 직접 입력으로 검색을 준비했습니다.`);
       return;
     }
     renderTodayMatchAnalysis(analysis);
