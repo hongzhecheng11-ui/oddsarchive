@@ -79,6 +79,47 @@ test("formats inline odds rate as sample shortage without known results", () => 
   assert(summary.includes("표본 부족"));
 });
 
+test("adds confidence label to inline odds rate", () => {
+  const high = app.getInlineOddsConfidence({ knownMatches: 30 });
+  const medium = app.getInlineOddsConfidence({ knownMatches: 12 });
+  const low = app.getInlineOddsConfidence({ knownMatches: 3 });
+
+  assert.strictEqual(high.label, "신뢰도 높음");
+  assert.strictEqual(medium.label, "신뢰도 보통");
+  assert.strictEqual(low.label, "참고용");
+});
+
+test("formats today analysis odds summary in one line", () => {
+  const summary = app.getTodayOddsSummaryText({
+    knownMatches: 45,
+    homeWins: 31,
+    homeRate: "68.9%",
+    draws: 10,
+    drawRate: "22.2%",
+    awayWins: 4,
+    awayRate: "8.9%"
+  });
+
+  assert.strictEqual(summary, "홈승 31/68.9% · 무 10/22.2% · 원정승 4/8.9% · 표본 45");
+});
+
+test("writes stronger analysis memo with sample confidence", () => {
+  const memo = app.getResultBreakdownMemo({
+    totalMatches: 45,
+    knownMatches: 45,
+    homeWins: 31,
+    homeRate: "68.9%",
+    draws: 10,
+    drawRate: "22.2%",
+    awayWins: 4,
+    awayRate: "8.9%"
+  });
+
+  assert(memo.includes("45경기 표본"));
+  assert(memo.includes("홈승 흐름"));
+  assert(memo.includes("신뢰도 높음"));
+});
+
 test("falls back to all leagues and wider tolerance for live match analysis", () => {
   const analysis = app.analyzeLiveMatchOdds([
     { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "2.18", drawOdds: "2.80", awayOdds: "3.92", result: "H" },

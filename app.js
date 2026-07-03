@@ -1873,36 +1873,58 @@ function getInlineOddsRateText(breakdown = {}) {
   const scope = breakdown.scope ? `${breakdown.scope} ` : "";
   const tolerance = breakdown.tolerance || "0.05";
   const title = tolerance ? `${scope}유사배당 ±${tolerance}` : `${scope}유사배당`;
+  const confidence = getInlineOddsConfidence(breakdown);
 
   if (knownMatches <= 0) {
-    return `${title}\n표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
+    return `${title} · ${confidence.label}\n표본 부족${totalMatches > 0 ? ` · 결과 확인 0/${totalMatches}` : ""}`;
   }
 
-  return `${title}\n홈승 ${breakdown.homeRate || "0%"} · 무 ${breakdown.drawRate || "0%"} · 원정승 ${breakdown.awayRate || "0%"} · 표본 ${knownMatches}/${totalMatches}`;
+  return `${title} · ${confidence.label}\n홈승 ${breakdown.homeRate || "0%"} · 무 ${breakdown.drawRate || "0%"} · 원정승 ${breakdown.awayRate || "0%"} · 표본 ${knownMatches}/${totalMatches}`;
+}
+
+function getInlineOddsConfidence(breakdown = {}) {
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  if (knownMatches >= 30) return { label: "신뢰도 높음", className: "confidence-high" };
+  if (knownMatches >= 10) return { label: "신뢰도 보통", className: "confidence-medium" };
+  return { label: "참고용", className: "confidence-low" };
+}
+
+function getTodayOddsSummaryText(breakdown = {}) {
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  if (knownMatches <= 0) return "승률 요약: 결과 표본이 아직 부족합니다.";
+
+  return [
+    `홈승 ${breakdown.homeWins || 0}/${breakdown.homeRate || "0%"}`,
+    `무 ${breakdown.draws || 0}/${breakdown.drawRate || "0%"}`,
+    `원정승 ${breakdown.awayWins || 0}/${breakdown.awayRate || "0%"}`,
+    `표본 ${knownMatches}`
+  ].join(" · ");
 }
 
 function getResultBreakdownMemo(breakdown) {
-  const parts = [];
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const totalMatches = Number(breakdown.totalMatches || 0);
 
-  if (breakdown.knownMatches > 0) {
-    const resultCounts = [
-      { label: "홈승", count: breakdown.homeWins },
-      { label: "무승부", count: breakdown.draws },
-      { label: "원정승", count: breakdown.awayWins }
-    ];
-    const topResult = resultCounts.reduce((top, item) => (item.count > top.count ? item : top), resultCounts[0]);
-
-    if (topResult.count > 0) {
-      const wording = topResult.label === "무승부" ? "비교적 많이 나타났습니다." : "가장 많이 나타났습니다.";
-      parts.push(`과거 데이터 기준, 이 배당대에서는 ${topResult.label} 결과가 ${wording}`);
-    }
+  if (knownMatches <= 0) {
+    return totalMatches > 0
+      ? `비슷한 배당 경기는 ${totalMatches}개 찾았지만 아직 결과 표본이 없습니다. 경기 후 결과가 쌓이면 신뢰도가 올라갑니다.`
+      : "아직 비교할 과거 표본이 없습니다. 배당이 쌓이면 이 자리에서 흐름을 바로 확인할 수 있습니다.";
   }
 
-  if (breakdown.knownMatches < 10) {
-    parts.push("결과 확인 경기 수가 적어 해석에 주의가 필요합니다.");
-  }
+  const resultCounts = [
+    { label: "홈승", count: breakdown.homeWins, rate: breakdown.homeRate },
+    { label: "무승부", count: breakdown.draws, rate: breakdown.drawRate },
+    { label: "원정승", count: breakdown.awayWins, rate: breakdown.awayRate }
+  ];
+  const topResult = resultCounts.reduce((top, item) => (item.count > top.count ? item : top), resultCounts[0]);
+  const confidence = getInlineOddsConfidence({ knownMatches });
+  const leadText = topResult.count > 0
+    ? `${knownMatches}경기 표본 기준, 이 배당대는 ${topResult.label} 흐름이 가장 강합니다. ${topResult.count}번 / ${topResult.rate || "0%"}로 기록되어 ${confidence.label} 지표로 볼 수 있습니다.`
+    : `${knownMatches}경기 표본을 확인했지만 뚜렷하게 앞서는 결과는 아직 없습니다.`;
 
-  return parts.join(" ");
+  if (knownMatches < 10) return `${leadText} 표본이 적으니 확정 판단보다는 참고 흐름으로 보세요.`;
+
+  return `${leadText} 단, 실제 경기는 라인업과 일정 변수를 함께 확인하세요.`;
 }
 
 function downloadSampleCsv() {
@@ -3006,7 +3028,7 @@ function createTodayCenterCard(match, analysis) {
 
   const breakdown = analysis.breakdown || calculateResultBreakdown([]);
   const inlineRate = document.createElement("p");
-  inlineRate.className = "inline-odds-rate";
+  inlineRate.className = `inline-odds-rate ${getInlineOddsConfidence(breakdown).className}`;
   inlineRate.textContent = hasOdds ? getInlineOddsRateText(breakdown) : "동배당 승률: 배당 입력 후 확인 가능";
   const stats = document.createElement("div");
   stats.className = "today-card-stats";
@@ -3116,11 +3138,14 @@ function renderTodayMatchAnalysis(analysis) {
   summary.className = "today-summary-grid";
   summary.append(
     createTodaySummaryItem("유사 경기", String(breakdown.totalMatches)),
-    createTodaySummaryItem("결과 확인", String(breakdown.knownMatches)),
-    createTodaySummaryItem("홈승 비율", `${breakdown.homeWins} / ${breakdown.homeRate}`),
-    createTodaySummaryItem("무승부/원정승", `${breakdown.draws} / ${breakdown.drawRate} · ${breakdown.awayWins} / ${breakdown.awayRate}`)
+    createTodaySummaryItem("표본", String(breakdown.knownMatches))
   );
   resultElement.appendChild(summary);
+
+  const oddsSummary = document.createElement("p");
+  oddsSummary.className = "today-odds-summary-line";
+  oddsSummary.textContent = getTodayOddsSummaryText(breakdown);
+  resultElement.appendChild(oddsSummary);
 
   const memo = document.createElement("p");
   memo.className = "analysis-memo";
@@ -4764,6 +4789,8 @@ if (typeof module !== "undefined") {
     getResultBreakdownMemo,
     getDirectOddsSearchCriteriaFromMatch,
     getInlineOddsRateText,
+    getInlineOddsConfidence,
+    getTodayOddsSummaryText,
     getFixtureLeagueOptions,
     getMatchLeagueOptions,
     getMatchTeamOptions,

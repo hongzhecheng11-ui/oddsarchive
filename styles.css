@@ -1068,7 +1068,7 @@ tbody tr:last-child td {
 
 .today-summary-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -1095,6 +1095,18 @@ tbody tr:last-child td {
 .today-sample-list strong {
   color: var(--ink);
   font-size: 15px;
+  line-height: 1.35;
+}
+
+.today-odds-summary-line {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #b91c1c;
+  font-size: 14px;
+  font-weight: 900;
   line-height: 1.35;
 }
 
@@ -1334,7 +1346,7 @@ tbody tr:last-child td {
 .today-card-stats,
 .today-summary-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 4px;
 }
 
@@ -1403,6 +1415,18 @@ tbody tr:last-child td {
   word-break: keep-all;
 }
 
+.today-center-card .inline-odds-rate.confidence-high {
+  color: #047857;
+}
+
+.today-center-card .inline-odds-rate.confidence-medium {
+  color: #b45309;
+}
+
+.today-center-card .inline-odds-rate.confidence-low {
+  color: #dc2626;
+}
+
 .today-center-card-header strong {
   color: var(--ink);
   font-size: 12px;
@@ -1432,6 +1456,19 @@ tbody tr:last-child td {
 
 .today-analysis-result[hidden] {
   display: none;
+}
+
+.today-analysis-result .today-odds-summary-line {
+  padding: 7px 8px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.today-analysis-result .analysis-memo {
+  border-color: #99f6e4;
+  background: #ecfeff;
+  color: #0f766e;
+  font-weight: 800;
 }
 
 .collapsed-tools {
@@ -2832,5 +2869,252 @@ select {
     min-height: 30px;
     border-radius: 7px;
     font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-panel .simple-search-card {
+    gap: 5px;
+    padding: 7px 8px;
+  }
+
+  .search-panel .top-data-status,
+  .search-panel .simple-card-heading span,
+  .search-panel .odds-pattern-panel small,
+  .search-panel .search-status-card small {
+    display: none;
+  }
+
+  .search-panel .simple-card-heading strong {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .search-panel .simple-search-card label {
+    gap: 2px;
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .search-panel .simple-search-card input,
+  .search-panel .simple-search-card select {
+    min-height: 30px;
+    padding: 0 7px;
+    border-radius: 6px;
+    font-size: 11px;
+  }
+
+  .search-panel .odds-grid {
+    gap: 4px;
+  }
+
+  .search-panel .odds-grid-inputs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .search-panel .odds-grid-inputs label {
+    gap: 2px;
+  }
+
+  .search-panel .odds-grid-inputs label > span {
+    display: block;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .search-panel .odds-grid-inputs input {
+    min-height: 31px;
+    padding: 0 4px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .search-panel .tolerance-chip-row {
+    gap: 3px;
+  }
+
+  .search-panel .tolerance-chip {
+    min-height: 26px;
+    font-size: 9px;
+  }
+
+  .search-panel .odds-pattern-panel {
+    gap: 4px;
+    padding: 5px 6px;
+  }
+
+  .search-panel .odds-pattern-panel > span {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .search-panel .odds-pattern-row {
+    gap: 3px;
+  }
+
+  .search-panel .primary-search-button {
+    min-height: 32px;
+    width: 100%;
+    font-size: 11px;
+  }
+
+  .search-panel .search-status-card {
+    gap: 2px;
+    padding: 5px 6px;
+  }
+
+  .search-panel .search-status-card span,
+  .search-panel .search-status-card strong {
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .search-panel .compact-analysis {
+    gap: 3px;
+    padding: 5px;
+  }
+
+  .search-panel .compact-analysis .analysis-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .search-panel .compact-analysis .analysis-heading strong,
+  .search-panel .compact-analysis .analysis-heading span {
+    font-size: 10px;
+  }
+
+  .search-panel .compact-analysis .ratio-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .search-panel .compact-analysis .ratio-grid div,
+  .search-panel .compact-analysis .ratio-grid div:last-child {
+    min-height: 30px;
+    padding: 3px 2px;
+    border-radius: 5px;
+  }
+
+  .search-panel .compact-analysis .ratio-grid span {
+    font-size: 8px;
+  }
+
+  .search-panel .compact-analysis .ratio-grid strong {
+    font-size: 9px;
+  }
+
+  .search-panel .compact-analysis .analysis-memo {
+    margin: 0;
+    padding: 4px 5px;
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
+  .search-panel .compact-results > summary {
+    padding: 5px 6px;
+    font-size: 10px;
+  }
+
+  .search-panel .compact-results .result-card-list {
+    gap: 2px;
+    margin: 0 4px 4px;
+  }
+
+  .search-panel .compact-results .search-result-card {
+    gap: 1px;
+    padding: 4px 5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-panel .simple-odds-form .odds-grid-inputs {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+  }
+
+  .search-panel .simple-odds-form .odds-grid-inputs label {
+    min-width: 0;
+  }
+
+  .search-panel .simple-odds-form .odds-grid-inputs label > span {
+    display: block !important;
+    margin: 0 0 2px;
+    overflow: hidden;
+    color: #64748b;
+    font-size: 9px;
+    line-height: 1;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-panel .simple-odds-form .odds-grid-inputs input {
+    width: 100%;
+    min-height: 30px;
+    padding: 0 3px;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .search-panel .compact-analysis .ratio-grid {
+    display: none;
+  }
+
+  .search-panel .compact-analysis .analysis-memo {
+    border-color: #99f6e4;
+    background: #ecfeff;
+    color: #0f766e;
+    font-weight: 800;
+  }
+
+  .search-panel .compact-results .search-result-card {
+    display: grid;
+    grid-template-columns: minmax(88px, auto) minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 5px;
+    row-gap: 3px;
+  }
+
+  .search-panel .compact-results .result-card-header {
+    display: contents;
+  }
+
+  .search-panel .compact-results .result-card-header span {
+    overflow: hidden;
+    color: #64748b;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-panel .compact-results .result-match-title {
+    overflow: hidden;
+    min-width: 0;
+    font-size: 10px;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-panel .compact-results .result-pill {
+    min-height: 18px;
+    padding: 1px 5px;
+    font-size: 9px;
+  }
+
+  .search-panel .compact-results .result-odds-strip,
+  .search-panel .compact-results .result-score-line {
+    grid-column: 1 / -1;
   }
 }
