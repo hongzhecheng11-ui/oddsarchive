@@ -1624,6 +1624,18 @@ tbody tr:last-child td {
   line-height: 1.35;
 }
 
+.odds-verdict {
+  margin: 0;
+  padding: 9px 10px;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  background: #f0fdf4;
+  color: #047857;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
 .result-card-list {
   display: grid;
   gap: 10px;
@@ -1670,6 +1682,34 @@ tbody tr:last-child td {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface-strong);
+}
+
+.result-card-summary {
+  display: grid;
+  gap: 5px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.result-card-summary::-webkit-details-marker {
+  display: none;
+}
+
+.result-card-summary::after {
+  content: "상세";
+  justify-self: end;
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.search-result-card[open] .result-card-summary::after {
+  content: "접기";
+}
+
+.result-card-details {
+  display: grid;
+  gap: 5px;
 }
 
 .result-card-header {
@@ -2067,6 +2107,12 @@ select {
   padding: 5px 6px;
   font-size: 10px;
   line-height: 1.12;
+}
+
+.search-panel .compact-analysis .odds-verdict {
+  padding: 5px 6px;
+  font-size: 10px;
+  line-height: 1.15;
 }
 
 .search-panel .compact-results > summary {
@@ -3017,6 +3063,12 @@ select {
     line-height: 1.15;
   }
 
+  .search-panel .compact-analysis .odds-verdict {
+    padding: 4px 5px;
+    font-size: 9px;
+    line-height: 1.15;
+  }
+
   .search-panel .compact-results > summary {
     padding: 5px 6px;
     font-size: 10px;
@@ -3078,10 +3130,15 @@ select {
 
   .search-panel .compact-results .search-result-card {
     display: grid;
-    grid-template-columns: minmax(88px, auto) minmax(0, 1fr) auto;
+    gap: 3px;
+  }
+
+  .search-panel .compact-results .result-card-summary {
+    display: grid;
+    grid-template-columns: minmax(82px, auto) minmax(0, 1fr) auto auto;
     align-items: center;
     column-gap: 5px;
-    row-gap: 3px;
+    row-gap: 2px;
   }
 
   .search-panel .compact-results .result-card-header {
@@ -3107,14 +3164,25 @@ select {
     white-space: nowrap;
   }
 
+  .search-panel .compact-results .result-card-summary::after {
+    min-width: 24px;
+    font-size: 9px;
+    text-align: right;
+  }
+
   .search-panel .compact-results .result-pill {
     min-height: 18px;
     padding: 1px 5px;
     font-size: 9px;
   }
 
+  .search-panel .compact-results .result-card-details {
+    display: grid;
+    gap: 3px;
+  }
+
   .search-panel .compact-results .result-odds-strip,
   .search-panel .compact-results .result-score-line {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 }

@@ -1847,6 +1847,33 @@ function formatRate(count, knownMatches) {
   return `${((count / knownMatches) * 100).toFixed(1)}%`;
 }
 
+function getMatchSeasonStartYear(match = {}) {
+  const dateValue = String(match.date || "");
+  const matchDate = dateValue.match(/^(\d{4})-(\d{2})-\d{2}$/);
+  if (!matchDate) return null;
+
+  const year = Number(matchDate[1]);
+  const month = Number(matchDate[2]);
+  if (!Number.isFinite(year) || !Number.isFinite(month)) return null;
+
+  return month >= 7 ? year : year - 1;
+}
+
+function getRecentSeasonMatches(matches = [], seasonCount = 3) {
+  const seasons = matches
+    .map(getMatchSeasonStartYear)
+    .filter((season) => Number.isFinite(season));
+
+  if (seasons.length === 0) return [];
+
+  const latestSeason = Math.max(...seasons);
+  const earliestSeason = latestSeason - Math.max(1, seasonCount) + 1;
+  return matches.filter((match) => {
+    const season = getMatchSeasonStartYear(match);
+    return Number.isFinite(season) && season >= earliestSeason && season <= latestSeason;
+  });
+}
+
 function calculateResultBreakdown(matches) {
   const homeWins = matches.filter((match) => match.result === "H").length;
   const draws = matches.filter((match) => match.result === "D").length;
@@ -1901,6 +1928,75 @@ function getTodayOddsSummaryText(breakdown = {}) {
   ].join(" · ");
 }
 
+function getTopBreakdownResult(breakdown = {}) {
+  const resultCounts = [
+    { key: "H", label: "홈승", count: breakdown.homeWins || 0, rate: breakdown.homeRate || "0%" },
+    { key: "D", label: "무승부", count: breakdown.draws || 0, rate: breakdown.drawRate || "0%" },
+    { key: "A", label: "원정승", count: breakdown.awayWins || 0, rate: breakdown.awayRate || "0%" }
+  ];
+  return resultCounts.reduce((top, item) => (item.count > top.count ? item : top), resultCounts[0]);
+}
+
+function parseRateValue(value) {
+  const numberValue = Number(String(value || "0").replace("%", ""));
+  return Number.isFinite(numberValue) ? numberValue : 0;
+}
+
+function getOddsPatternLabel(criteria = {}) {
+  const homeOdds = parseSearchNumber(criteria.homeOdds);
+  const drawOdds = parseSearchNumber(criteria.drawOdds);
+  const awayOdds = parseSearchNumber(criteria.awayOdds);
+
+  if (homeOdds === null || drawOdds === null || awayOdds === null) return "배당 패턴 준비중";
+
+  const favorite = Math.min(homeOdds, awayOdds);
+  const spread = Math.abs(homeOdds - awayOdds);
+
+  if (favorite <= 1.55) return homeOdds < awayOdds ? "강한 홈 정배형" : "강한 원정 정배형";
+  if (spread <= 0.25) return "균형형";
+  if (homeOdds < awayOdds && homeOdds <= 2.05) return "홈 우세형";
+  if (awayOdds < homeOdds && awayOdds <= 2.05) return "원정 우세형";
+  if (drawOdds <= 3.15) return "무승부 경계형";
+  return "혼전 배당형";
+}
+
+function getOddsRiskSignals(breakdown = {}, recentBreakdown = null) {
+  const signals = [];
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const drawRate = parseRateValue(breakdown.drawRate);
+
+  if (knownMatches > 0 && knownMatches < 10) signals.push("표본 부족");
+  if (drawRate >= 25) signals.push("무승부 높음");
+
+  if (recentBreakdown && Number(recentBreakdown.knownMatches || 0) > 0) {
+    const top = getTopBreakdownResult(breakdown);
+    const recentTop = getTopBreakdownResult(recentBreakdown);
+    if (top.key !== recentTop.key) signals.push("최근 흐름 다름");
+  }
+
+  return signals;
+}
+
+function getOddsSearchVerdictText(breakdown = {}, criteria = {}, recentBreakdown = null) {
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const totalMatches = Number(breakdown.totalMatches || 0);
+  const patternLabel = getOddsPatternLabel(criteria);
+  const confidence = getInlineOddsConfidence({ knownMatches });
+  const riskSignals = getOddsRiskSignals(breakdown, recentBreakdown);
+  const riskText = riskSignals.length > 0 ? ` · 주의: ${riskSignals.join(", ")}` : "";
+
+  if (knownMatches <= 0) {
+    return `${patternLabel} · ${confidence.label} · 비슷한 배당 ${totalMatches}경기, 결과 표본은 아직 부족합니다.${riskText}`;
+  }
+
+  const top = getTopBreakdownResult(breakdown);
+  const recentKnown = Number(recentBreakdown?.knownMatches || 0);
+  const recentText = recentKnown > 0
+    ? ` · 최근3시즌 ${getTopBreakdownResult(recentBreakdown).label} ${getTopBreakdownResult(recentBreakdown).rate}`
+    : "";
+  return `${patternLabel} · ${top.label} 우세 ${top.rate}${recentText} · ${confidence.label} · 표본 ${knownMatches}/${totalMatches}${riskText}`;
+}
+
 function getResultBreakdownMemo(breakdown) {
   const knownMatches = Number(breakdown.knownMatches || 0);
   const totalMatches = Number(breakdown.totalMatches || 0);
@@ -1911,12 +2007,7 @@ function getResultBreakdownMemo(breakdown) {
       : "아직 비교할 과거 표본이 없습니다. 배당이 쌓이면 이 자리에서 흐름을 바로 확인할 수 있습니다.";
   }
 
-  const resultCounts = [
-    { label: "홈승", count: breakdown.homeWins, rate: breakdown.homeRate },
-    { label: "무승부", count: breakdown.draws, rate: breakdown.drawRate },
-    { label: "원정승", count: breakdown.awayWins, rate: breakdown.awayRate }
-  ];
-  const topResult = resultCounts.reduce((top, item) => (item.count > top.count ? item : top), resultCounts[0]);
+  const topResult = getTopBreakdownResult(breakdown);
   const confidence = getInlineOddsConfidence({ knownMatches });
   const leadText = topResult.count > 0
     ? `${knownMatches}경기 표본 기준, 이 배당대는 ${topResult.label} 흐름이 가장 강합니다. ${topResult.count}번 / ${topResult.rate || "0%"}로 기록되어 ${confidence.label} 지표로 볼 수 있습니다.`
@@ -2665,8 +2756,11 @@ function setTeamResultVisibility(show) {
 }
 
 function createSearchResultCard(match) {
-  const card = document.createElement("article");
+  const card = document.createElement("details");
   card.className = "search-result-card";
+
+  const summary = document.createElement("summary");
+  summary.className = "result-card-summary";
 
   const header = document.createElement("div");
   header.className = "result-card-header";
@@ -2683,6 +2777,7 @@ function createSearchResultCard(match) {
   const title = document.createElement("strong");
   title.className = "result-match-title";
   title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+  summary.append(header, title);
 
   const odds = document.createElement("div");
   odds.className = "result-odds-strip";
@@ -2704,7 +2799,11 @@ function createSearchResultCard(match) {
   result.className = "result-score-line";
   result.textContent = formatMatchResultText(match);
 
-  card.append(header, title, odds, result);
+  const details = document.createElement("div");
+  details.className = "result-card-details";
+  details.append(odds, result);
+
+  card.append(summary, details);
   return card;
 }
 
@@ -2899,8 +2998,9 @@ function showMoreTeamMatches() {
   renderTeamMatchResults(currentTeamMatchResults, "조건에 맞는 팀별 경기 기록이 없습니다.");
 }
 
-function renderResultBreakdown(matches) {
+function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
   const breakdown = calculateResultBreakdown(matches);
+  const recentBreakdown = calculateResultBreakdown(getRecentSeasonMatches(matches));
   const values = {
     "breakdown-total": String(breakdown.totalMatches),
     "breakdown-known": String(breakdown.knownMatches),
@@ -2917,6 +3017,9 @@ function renderResultBreakdown(matches) {
 
   const memo = document.getElementById("breakdown-memo");
   if (memo) memo.textContent = getResultBreakdownMemo(breakdown);
+
+  const verdict = document.getElementById("odds-verdict");
+  if (verdict) verdict.textContent = getOddsSearchVerdictText(breakdown, criteria, recentBreakdown);
 }
 
 function createTodaySummaryItem(label, value) {
@@ -4031,7 +4134,7 @@ function runOddsSearchFromCurrentCriteria() {
       updateEmptyDataActions([]);
       resetOddsResultLimit();
       renderOddsSearchResults([], "저장된 경기 데이터가 없습니다.");
-      renderResultBreakdown([]);
+      renderResultBreakdown([], criteria);
       return;
     }
 
@@ -4062,14 +4165,14 @@ function runOddsSearchFromCurrentCriteria() {
     );
     resetOddsResultLimit();
     renderOddsSearchResults(result.matches, "조건에 맞는 유사 배당 경기가 없습니다.");
-    renderResultBreakdown(result.matches);
+    renderResultBreakdown(result.matches, criteria);
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setOddsSearchError("검색 중 문제가 발생했습니다.");
     setOddsSearchStatus(`검색 중 문제가 발생했습니다. ${message}`);
     resetOddsResultLimit();
     renderOddsSearchResults([], "검색 중 문제가 발생했습니다.");
-    renderResultBreakdown([]);
+    renderResultBreakdown([], getOddsSearchCriteria());
   }
 }
 
@@ -4791,6 +4894,10 @@ if (typeof module !== "undefined") {
     getInlineOddsRateText,
     getInlineOddsConfidence,
     getTodayOddsSummaryText,
+    getOddsSearchVerdictText,
+    getOddsPatternLabel,
+    getOddsRiskSignals,
+    getRecentSeasonMatches,
     getFixtureLeagueOptions,
     getMatchLeagueOptions,
     getMatchTeamOptions,
