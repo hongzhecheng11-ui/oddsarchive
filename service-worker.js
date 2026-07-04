@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v30-compact-mobile-header";
+const CACHE_NAME = "oddsarchive-v31-example-odds";
 const CORE_ASSETS = [
   "/",
   "/index.html",

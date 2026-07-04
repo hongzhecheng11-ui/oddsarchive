@@ -3377,7 +3377,7 @@ async function loadLiveOddsFromApi() {
     const oddsCount = result.meta?.oddsCount ?? result.matches.filter(hasCompleteOdds).length;
     const oddsMessage = oddsCount > 0
       ? `배당 확인 ${oddsCount}개`
-      : "API 배당 0개 · 경기 카드에서 직접 배당 입력 가능";
+      : "API가 일정은 줬지만 배당은 아직 제공하지 않았습니다. 경기 카드의 배당 직접 입력으로 검색할 수 있습니다.";
     setLiveOddsStatus(`경기 ${result.matches.length}개 업데이트 / ${oddsMessage} / 새로 추가 ${merged.addedCount}개`);
     return { ...result, ...merged, visibleMatches };
   } catch (error) {
@@ -4118,6 +4118,26 @@ function wireSimpleToleranceButtons() {
   }
 }
 
+function wireExampleOddsButtons() {
+  document.querySelectorAll("[data-example-odds]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const [homeOdds, drawOdds, awayOdds] = String(button.dataset.exampleOdds || "").split("|");
+      setOddsSearchCriteria({
+        homeOdds,
+        drawOdds,
+        awayOdds,
+        tolerance: "0.05",
+        sortOrder: "CLOSEST",
+        customTolerance: "",
+        league: "ALL",
+        teamQuery: ""
+      });
+      setOddsSearchStatus("예시 배당으로 바로 검색합니다.");
+      runOddsSearchFromCurrentCriteria();
+    });
+  });
+}
+
 function runOddsSearchFromCurrentCriteria() {
   moveSearchResultsTo("odds-result-anchor");
   setSearchResultsTitle("검색 결과");
@@ -4824,6 +4844,7 @@ if (typeof document !== "undefined") {
   wireTodayAnalysis();
   wireOddsSearch();
   wireSimpleToleranceButtons();
+  wireExampleOddsButtons();
   wireFixtureSearch();
   wireTeamMatchSearch();
   wireShowMoreResults();

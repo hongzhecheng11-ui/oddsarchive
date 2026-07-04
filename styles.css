@@ -1978,6 +1978,23 @@ select {
   flex-wrap: wrap;
 }
 
+.example-odds-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.example-odds-row button {
+  min-height: 28px;
+  padding: 0 7px;
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: #047857;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
 .odds-pattern-chip {
   min-height: 24px;
   padding: 0 6px;
