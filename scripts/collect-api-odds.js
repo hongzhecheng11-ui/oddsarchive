@@ -156,9 +156,10 @@ function normalizeFixture(item = {}, leagueKey, dateText) {
   const fixture = item.fixture || {};
   const teams = item.teams || {};
   const goals = item.goals || {};
-  const homeGoals = Number(goals.home);
-  const awayGoals = Number(goals.away);
-  const hasScore = Number.isFinite(homeGoals) && Number.isFinite(awayGoals);
+  const hasScore = goals.home !== null && goals.home !== undefined && goals.away !== null && goals.away !== undefined;
+  const homeGoals = hasScore ? Number(goals.home) : NaN;
+  const awayGoals = hasScore ? Number(goals.away) : NaN;
+  const hasValidScore = hasScore && Number.isFinite(homeGoals) && Number.isFinite(awayGoals);
 
   return {
     fixtureId: fixture.id || "",
@@ -166,8 +167,8 @@ function normalizeFixture(item = {}, leagueKey, dateText) {
     league: leagueKey,
     homeTeam: teams.home?.name || "",
     awayTeam: teams.away?.name || "",
-    result: hasScore ? (homeGoals > awayGoals ? "H" : homeGoals < awayGoals ? "A" : "D") : "UNKNOWN",
-    score: hasScore ? `${homeGoals}-${awayGoals}` : ""
+    result: hasValidScore ? (homeGoals > awayGoals ? "H" : homeGoals < awayGoals ? "A" : "D") : "UNKNOWN",
+    score: hasValidScore ? `${homeGoals}-${awayGoals}` : ""
   };
 }
 

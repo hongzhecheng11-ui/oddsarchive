@@ -93,3 +93,14 @@ test("builds a date window around today for automatic collection", () => {
     process.argv = originalArgv;
   }
 });
+
+test("keeps unfinished fixtures as unknown results", () => {
+  const match = collector.normalizeFixture({
+    fixture: { id: 1, date: "2026-07-11T10:00:00+00:00" },
+    teams: { home: { name: "FC Seoul" }, away: { name: "Gangwon FC" } },
+    goals: { home: null, away: null }
+  }, "KLEAGUE1", "2026-07-11");
+
+  assert.strictEqual(match.result, "UNKNOWN");
+  assert.strictEqual(match.score, "");
+});
