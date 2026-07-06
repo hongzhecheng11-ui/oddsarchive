@@ -76,3 +76,20 @@ test("reads API key from local env text without exposing it in code", () => {
   assert.strictEqual(env.API_FOOTBALL_KEY, "test_secret_key");
   assert.strictEqual(env.OTHER, "value");
 });
+
+test("builds a date window around today for automatic collection", () => {
+  const originalArgv = process.argv;
+  process.argv = ["node", "collect-api-odds.js", "--date=2026-07-06", "--past-days=2", "--future-days=2"];
+
+  try {
+    assert.deepStrictEqual(collector.getDateRange(), [
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-08"
+    ]);
+  } finally {
+    process.argv = originalArgv;
+  }
+});

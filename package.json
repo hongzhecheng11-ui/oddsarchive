@@ -3,6 +3,7 @@
     "collect:api-odds": "node scripts/collect-api-odds.js",
     "collect:api-odds:30d": "node scripts/collect-api-odds.js --days=30",
     "collect:api-odds:major": "node scripts/collect-api-odds.js --days=30 --leagues=EPL,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,J1LEAGUE,ACL,INTL_FRIENDLIES",
+    "collect:api-odds:auto": "node scripts/collect-api-odds.js --past-days=3 --future-days=14 --leagues=EPL,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,J1LEAGUE,ACL,INTL_FRIENDLIES",
     "audit:football-data": "node scripts/audit-football-data-pack.js",
     "update:football-data": "node scripts/update-football-data-pack.js",
     "test": "node tests/app-shell.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js"

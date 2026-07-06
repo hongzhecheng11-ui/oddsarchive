@@ -84,6 +84,25 @@ function getDateRange() {
     return dates;
   }
 
+  const pastDaysArg = getArg("past-days");
+  const futureDaysArg = getArg("future-days");
+  if (pastDaysArg || futureDaysArg) {
+    const pastDays = Math.max(0, Math.min(Number(pastDaysArg || "0") || 0, 30));
+    const futureDays = Math.max(0, Math.min(Number(futureDaysArg || "0") || 0, 30));
+    const baseText = getArg("date") || new Date().toISOString().slice(0, 10);
+    const base = new Date(`${baseText.slice(0, 10)}T00:00:00Z`);
+    const safeBase = Number.isNaN(base.getTime()) ? new Date() : base;
+    const dates = [];
+
+    for (let offset = -pastDays; offset <= futureDays; offset += 1) {
+      const date = new Date(safeBase);
+      date.setUTCDate(safeBase.getUTCDate() + offset);
+      dates.push(date.toISOString().slice(0, 10));
+    }
+
+    return dates;
+  }
+
   const days = Math.max(1, Math.min(Number(getArg("days", "7")) || 7, 60));
   const endText = getArg("date") || getArg("to") || new Date().toISOString().slice(0, 10);
   const end = new Date(`${endText.slice(0, 10)}T00:00:00Z`);
