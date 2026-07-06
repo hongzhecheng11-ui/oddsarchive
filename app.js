@@ -3365,6 +3365,7 @@ function setTeamResultVisibility(show) {
 function createSearchResultCard(match) {
   const card = document.createElement("details");
   card.className = "search-result-card";
+  card.open = true;
 
   const summary = document.createElement("summary");
   summary.className = "result-card-summary";
@@ -3375,15 +3376,11 @@ function createSearchResultCard(match) {
   const meta = document.createElement("span");
   meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
 
-  const sourceBadge = document.createElement("small");
-  sourceBadge.className = "source-badge";
-  sourceBadge.textContent = formatDataSourceLabel(match);
-
   const resultPill = document.createElement("strong");
   resultPill.className = "result-pill";
   resultPill.textContent = formatResultLabel(match.result);
 
-  header.append(meta, sourceBadge, resultPill);
+  header.append(meta, resultPill);
 
   const title = document.createElement("strong");
   title.className = "result-match-title";
@@ -3714,7 +3711,10 @@ function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
   if (memo) memo.textContent = getResultBreakdownMemo(breakdown);
 
   const sourceSummary = document.getElementById("odds-source-summary");
-  if (sourceSummary) sourceSummary.textContent = getOddsResultSourceSummary(matches).text;
+  if (sourceSummary) {
+    sourceSummary.textContent = "";
+    sourceSummary.hidden = true;
+  }
 
   const verdict = document.getElementById("odds-verdict");
   renderMatchJudgementSummary(verdict, judgement);
