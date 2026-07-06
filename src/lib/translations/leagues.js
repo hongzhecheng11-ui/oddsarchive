@@ -25,10 +25,19 @@
       ACL: "AFC 챔피언스리그",
       WCQ: "월드컵 예선",
       INTL_FRIENDLIES: "국가대표 친선경기",
+      "Premier League": "EPL",
+      "English Premier League": "EPL",
+      "La Liga": "라리가",
+      "Primera Division": "라리가",
+      "Serie A": "세리에A",
+      Bundesliga: "분데스리가",
+      "Ligue 1": "리그앙",
       "World Cup": "월드컵",
       "FIFA World Cup": "월드컵",
       "UEFA Champions League": "챔피언스리그",
+      "Champions League": "챔피언스리그",
       "UEFA Europa League": "유로파리그",
+      "Europa League": "유로파리그",
       "K League 1": "K리그1",
       "J1 League": "J리그1",
       "AFC Champions League": "AFC 챔피언스리그",
@@ -36,7 +45,10 @@
       "FIFA World Cup Qualification": "월드컵 예선",
       "World Cup Qualification": "월드컵 예선",
       "International Friendlies": "국가대표 친선경기",
-      Friendlies: "국가대표 친선경기"
+      Friendlies: "국가대표 친선경기",
+      World: "세계",
+      Europe: "유럽",
+      Asia: "아시아"
     },
     categories: [
       {

@@ -42,11 +42,42 @@ test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatTeamName("Unknown FC"), "Unknown FC");
 });
 
+test("translates common API team names and aliases for Korean users", () => {
+  assert.strictEqual(app.translateTeamName("Mexico"), "멕시코");
+  assert.strictEqual(app.translateTeamName("England"), "잉글랜드");
+  assert.strictEqual(app.translateTeamName("Manchester United"), "맨체스터 유나이티드");
+  assert.strictEqual(app.translateTeamName("Man Utd"), "맨체스터 유나이티드");
+  assert.strictEqual(app.translateTeamName("Real Madrid"), "레알 마드리드");
+  assert.strictEqual(app.translateTeamName("Vissel Kobe"), "비셀 고베");
+  assert.strictEqual(app.translateTeamName("FK Partizan"), "파르티잔");
+  assert.strictEqual(app.translateTeamName("Ulaanbaatar"), "Ulaanbaatar");
+});
+
 test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
   assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
   assert.strictEqual(app.leagueMatchesFixture("International Friendlies", "INTL_FRIENDLIES"), true);
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "KLEAGUE1"), false);
+});
+
+test("cleans compound league labels for display", () => {
+  assert.strictEqual(app.translateLeagueName("World Cup / World"), "월드컵");
+  assert.strictEqual(app.translateLeagueName("UEFA Champions League / World"), "챔피언스리그");
+  assert.strictEqual(app.translateLeagueName("EPL / Mongolia"), "EPL");
+});
+
+test("filters today's major matches to supported leagues only", () => {
+  const matches = app.getMajorTodayMatches([
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea" },
+    { league: "World Cup / World", homeTeam: "Mexico", awayTeam: "Ecuador" },
+    { league: "Premier League / Mongolia", homeTeam: "A", awayTeam: "B" },
+    { league: "Club Friendlies", homeTeam: "A", awayTeam: "B" }
+  ]);
+
+  assert.strictEqual(matches.length, 2);
+  assert(matches.some((match) => match.league === "EPL"));
+  assert(matches.some((match) => match.league === "World Cup / World"));
+  assert.strictEqual(app.isMajorTodayMatch({ league: "EPL / Mongolia" }), false);
 });
 
 test("includes Korean priority leagues in fixture league options", () => {
@@ -63,8 +94,8 @@ test("includes Korean priority leagues in fixture league options", () => {
 test("builds Korean home today card view models", () => {
   const view = app.getHomeTodayCardViewModel({
     league: "UEFA Champions League",
-    homeTeam: "FC Seoul",
-    awayTeam: "Unknown FC",
+    homeTeam: "Mexico",
+    awayTeam: "Ecuador",
     startTime: "19:30",
     status: "NS",
     homeOdds: "1.80",
@@ -72,7 +103,7 @@ test("builds Korean home today card view models", () => {
     awayOdds: "4.20"
   }, "2026. 7. 6.");
 
-  assert.strictEqual(view.title, "FC서울 vs Unknown FC");
+  assert.strictEqual(view.title, "멕시코 vs 에콰도르");
   assert.strictEqual(view.league, "챔피언스리그");
   assert.strictEqual(view.startTime, "19:30");
   assert.strictEqual(view.status, "경기 전");
@@ -146,6 +177,23 @@ test("judges favorite hit rate tiers", () => {
   assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 53, draws: 22, awayWins: 25 }, criteria).risk, "보통");
   assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 45, draws: 25, awayWins: 30 }, criteria).judgement, "이변 주의");
   assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 38, draws: 25, awayWins: 37 }, criteria).risk, "매우 높음");
+});
+
+test("calculates upset probability from historical odds and match context", () => {
+  const base = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 },
+    { homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", league: "EPL" }
+  );
+  const adjusted = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 20, draws: 18, awayWins: 62 },
+    { homeOdds: "4.20", drawOdds: "3.20", awayOdds: "1.80", league: "WORLDCUP" }
+  );
+
+  assert.strictEqual(Math.round(base.baseUpsetProbability), 38);
+  assert.strictEqual(Math.round(base.upsetProbability), 40);
+  assert.strictEqual(Math.round(adjusted.baseUpsetProbability), 38);
+  assert.strictEqual(Math.round(adjusted.upsetProbability), 49);
+  assert(adjusted.signals.includes("원정 정배"));
 });
 
 test("adds draw and underdog judgement badges", () => {

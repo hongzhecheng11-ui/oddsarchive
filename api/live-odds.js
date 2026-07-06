@@ -17,6 +17,15 @@ const LEAGUE_IDS = {
 };
 const CALENDAR_YEAR_LEAGUES = new Set(["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]);
 
+function getLeagueKeyByApiLeague(league = {}) {
+  const leagueId = Number(league.id || 0);
+  if (!leagueId) return "";
+
+  return Object.entries(LEAGUE_IDS).find(([, value]) => (
+    (Array.isArray(value) ? value : [value]).map(Number).includes(leagueId)
+  ))?.[0] || "";
+}
+
 function sendJson(response, statusCode, body) {
   response.statusCode = statusCode;
   response.setHeader("content-type", "application/json; charset=utf-8");
@@ -104,8 +113,12 @@ function normalizeFixtureItem(item, leagueKey, dateText) {
   const league = item.league || {};
   const goals = item.goals || {};
   const scoreText = Number.isFinite(goals.home) && Number.isFinite(goals.away) ? `${goals.home}-${goals.away}` : "";
+  const result = Number.isFinite(goals.home) && Number.isFinite(goals.away)
+    ? goals.home > goals.away ? "H" : goals.home < goals.away ? "A" : "D"
+    : "UNKNOWN";
+  const matchedLeagueKey = getLeagueKeyByApiLeague(league);
   const leagueLabel = leagueKey === "GLOBAL"
-    ? [league.name, league.country].filter(Boolean).join(" / ") || "GLOBAL"
+    ? matchedLeagueKey || league.name || "GLOBAL"
     : leagueKey;
 
   return {
@@ -120,7 +133,7 @@ function normalizeFixtureItem(item, leagueKey, dateText) {
     homeOdds: "",
     drawOdds: "",
     awayOdds: "",
-    result: "UNKNOWN",
+    result,
     score: scoreText,
     source: "API-Football Fixtures"
   };
@@ -147,6 +160,17 @@ function wait(ms) {
 function getLeagueIds(leagueKey) {
   const value = LEAGUE_IDS[leagueKey];
   return Array.isArray(value) ? value : [value];
+}
+
+function getDateRange(endDateText, days = 7) {
+  const endDate = new Date(`${String(endDateText || "").slice(0, 10)}T00:00:00Z`);
+  const safeEndDate = Number.isNaN(endDate.getTime()) ? new Date() : endDate;
+  const safeDays = Math.max(1, Math.min(Number(days || 7), 14));
+  return Array.from({ length: safeDays }, (_, index) => {
+    const date = new Date(safeEndDate);
+    date.setUTCDate(safeEndDate.getUTCDate() - index);
+    return date.toISOString().slice(0, 10);
+  });
 }
 
 async function loadLeagueOdds({ date, leagueKey, leagueId, apiKey }) {
@@ -181,26 +205,7 @@ function isWorldCupFixture(item = {}) {
 
 function isSupportedFixture(item = {}) {
   const league = item.league || {};
-  const leagueId = Number(league.id || 0);
-  const supportedIds = new Set(Object.values(LEAGUE_IDS).flat().map(Number));
-  if (supportedIds.has(leagueId)) return true;
-
-  const name = String(league.name || "").toLowerCase();
-  return [
-    "premier league",
-    "la liga",
-    "serie a",
-    "bundesliga",
-    "ligue 1",
-    "uefa champions league",
-    "uefa europa league",
-    "k league 1",
-    "j1 league",
-    "afc champions league",
-    "world cup",
-    "world cup qualification",
-    "friendlies"
-  ].some((label) => name.includes(label));
+  return Boolean(getLeagueKeyByApiLeague(league));
 }
 
 async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
@@ -268,6 +273,21 @@ async function loadLeagueMatches({ date, leagueKey, apiKey }) {
   };
 }
 
+async function loadHistoricalLeagueMatches({ date, leagueKey, apiKey, days }) {
+  const dates = getDateRange(date, days);
+  const results = [];
+  for (const dateText of dates) {
+    try {
+      const result = await loadLeagueMatches({ date: dateText, leagueKey, apiKey });
+      results.push({ date: dateText, ...result });
+      await wait(120);
+    } catch (error) {
+      results.push({ date: dateText, matches: [], fixtureCount: 0, oddsCount: 0, error: error instanceof Error ? error.message : "API error" });
+    }
+  }
+  return results;
+}
+
 module.exports = async function handler(request, response) {
   if (request.method === "OPTIONS") return sendJson(response, 200, { ok: true });
 
@@ -282,6 +302,7 @@ module.exports = async function handler(request, response) {
   const params = request.query || {};
   const date = String(params.date || new Date().toISOString().slice(0, 10)).slice(0, 10);
   const requestedLeague = String(params.league || "ALL").toUpperCase();
+  const mode = String(params.mode || "").toLowerCase();
   const leagueKeys = requestedLeague === "ALL"
     ? Object.keys(LEAGUE_IDS)
     : Object.keys(LEAGUE_IDS).filter((key) => key === requestedLeague);
@@ -291,6 +312,33 @@ module.exports = async function handler(request, response) {
   }
 
   try {
+    if (mode === "history") {
+      const historyLeagueKeys = requestedLeague === "ALL" ? ["EPL"] : leagueKeys;
+      const days = Math.max(1, Math.min(Number(params.days || 7), 14));
+      const results = [];
+      for (const leagueKey of historyLeagueKeys.slice(0, 1)) {
+        const leagueResults = await loadHistoricalLeagueMatches({ date, leagueKey, apiKey, days });
+        results.push(...leagueResults.map((result) => ({ ...result, leagueKey })));
+      }
+      const matches = results.flatMap((result) => result.matches || []).filter((match) => (
+        match.homeTeam && match.awayTeam && match.homeOdds && match.drawOdds && match.awayOdds
+      ));
+      return sendJson(response, 200, {
+        matches,
+        meta: {
+          provider: "API-Football",
+          mode: "history",
+          date,
+          days,
+          leagues: historyLeagueKeys.slice(0, 1),
+          count: matches.length,
+          fixtureCount: results.reduce((sum, result) => sum + Number(result.fixtureCount || 0), 0),
+          oddsCount: results.reduce((sum, result) => sum + Number(result.oddsCount || 0), 0),
+          errors: results.filter((result) => result.error).map((result) => `${result.date}: ${result.error}`)
+        }
+      });
+    }
+
     if (requestedLeague === "ALL") {
       const globalFixtures = await loadGlobalFixtures({
         date,

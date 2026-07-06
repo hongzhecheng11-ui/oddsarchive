@@ -366,6 +366,13 @@ const TEAM_NAME_LABELS = {
   Wales: "웨일스"
 };
 
+const TEAM_TRANSLATION_ALIAS_LABELS = Object.entries(EXTERNAL_TRANSLATIONS.teams?.aliases || {}).reduce((labels, [displayName, aliases]) => {
+  (Array.isArray(aliases) ? aliases : []).forEach((alias) => {
+    labels[alias] = displayName;
+  });
+  return labels;
+}, {});
+
 function getNormalizedLabelKey(value) {
   return String(value || "")
     .trim()
@@ -373,9 +380,28 @@ function getNormalizedLabelKey(value) {
     .replace(/[\s_\-.'’]/g, "");
 }
 
+function getTeamTranslationLabel(teamName, language = "ko") {
+  const originalName = String(teamName || "").trim();
+  if (!originalName) return "";
+  if (language !== "ko") return originalName;
+  if (Object.values(EXTERNAL_TRANSLATIONS.teams?.labels || {}).includes(originalName)) return originalName;
+
+  const directLabel = EXTERNAL_TRANSLATIONS.teams?.labels?.[originalName] || TEAM_TRANSLATION_ALIAS_LABELS[originalName];
+  if (directLabel) return directLabel;
+
+  const normalizedName = getNormalizedLabelKey(originalName);
+  const externalLabelEntry = Object.entries(EXTERNAL_TRANSLATIONS.teams?.labels || {}).find(([englishName]) => getNormalizedLabelKey(englishName) === normalizedName);
+  if (externalLabelEntry) return externalLabelEntry[1];
+
+  const aliasEntry = Object.entries(TEAM_TRANSLATION_ALIAS_LABELS).find(([alias]) => getNormalizedLabelKey(alias) === normalizedName);
+  return aliasEntry ? aliasEntry[1] : "";
+}
+
 function normalizeTeamNameForStorage(teamName) {
   const originalName = String(teamName || "").trim();
   if (!originalName) return "";
+  const translatedLabel = getTeamTranslationLabel(originalName);
+  if (translatedLabel) return translatedLabel;
   if (Object.values(TEAM_NAME_LABELS).includes(originalName)) return originalName;
 
   const exactLabel = TEAM_NAME_LABELS[originalName];
@@ -390,7 +416,7 @@ function maybeWarnMissingTeamLabel(teamName) {
   const originalName = String(teamName || "").trim();
   if (!IS_DEVELOPMENT_MODE || !originalName) return;
   if (Object.values(TEAM_NAME_LABELS).includes(originalName)) return;
-  if (TEAM_NAME_LABELS[originalName]) return;
+  if (TEAM_NAME_LABELS[originalName] || getTeamTranslationLabel(originalName)) return;
 
   const normalizedName = getNormalizedLabelKey(originalName);
   const hasMatch = Object.keys(TEAM_NAME_LABELS).some((englishName) => getNormalizedLabelKey(englishName) === normalizedName);
@@ -400,6 +426,10 @@ function maybeWarnMissingTeamLabel(teamName) {
   if (typeof console !== "undefined" && typeof console.warn === "function") {
     console.warn(`[OddsArchive] Missing team translation: ${originalName}`);
   }
+}
+
+function getMissingTeamNames() {
+  return [...warnedMissingTeamLabels].sort((left, right) => left.localeCompare(right));
 }
 
 function setPendingValidRows(rows) {
@@ -1438,8 +1468,12 @@ function formatMatchResultText(match) {
 }
 
 function formatTeamName(teamName) {
+  return translateTeamName(teamName);
+}
+
+function translateTeamName(teamName, language = "ko") {
   const originalName = String(teamName || "").trim();
-  const displayName = normalizeTeamNameForStorage(originalName);
+  const displayName = language === "ko" ? normalizeTeamNameForStorage(originalName) : originalName;
   if (displayName === originalName) maybeWarnMissingTeamLabel(originalName);
   return displayName;
 }
@@ -1461,10 +1495,17 @@ function getDisplayLeagueLabel(leagueName) {
 function formatLeagueName(leagueName) {
   const originalName = String(leagueName || "").trim();
   if (!originalName) return "";
+  const matchedLeagueKey = getLeagueKeyFromText(originalName);
+  if (matchedLeagueKey) return LEAGUE_NAME_LABELS[matchedLeagueKey] || matchedLeagueKey;
   return originalName
     .split("/")
     .map((part) => getDisplayLeagueLabel(part.trim()))
     .join(" / ");
+}
+
+function translateLeagueName(leagueName, language = "ko") {
+  if (language !== "ko") return String(leagueName || "").trim();
+  return formatLeagueName(leagueName);
 }
 
 function formatTableValue(header, value) {
@@ -1562,6 +1603,47 @@ const LEAGUE_CATEGORY_GROUPS = EXTERNAL_TRANSLATIONS.leagues?.categories || [
   { label: "아시아", values: ["KLEAGUE1", "J1LEAGUE", "ACL"] },
   { label: "국가대항", values: ["WORLDCUP", "WCQ", "INTL_FRIENDLIES"] }
 ];
+
+const EXPECTED_LEAGUE_COUNTRIES = {
+  EPL: ["england"],
+  LALIGA: ["spain"],
+  SERIEA: ["italy"],
+  BUNDESLIGA: ["germany"],
+  LIGUE1: ["france"],
+  UCL: ["world", "europe"],
+  UEL: ["world", "europe"],
+  KLEAGUE1: ["south korea", "korea republic", "korea"],
+  J1LEAGUE: ["japan"],
+  ACL: ["world", "asia"],
+  WORLDCUP: ["world"],
+  WCQ: ["world"],
+  INTL_FRIENDLIES: ["world"]
+};
+
+function getLeagueKeyFromText(leagueName) {
+  const originalName = String(leagueName || "").trim();
+  if (!originalName) return "";
+  const parts = originalName.split("/").map((part) => part.trim()).filter(Boolean);
+  const candidates = parts.length > 0 ? parts : [originalName];
+
+  for (const [key, aliases] of Object.entries(LEAGUE_FILTERS)) {
+    const normalizedValues = [key, ...aliases].map((alias) => normalizeTeamSearchText(alias));
+    if (candidates.some((candidate) => normalizedValues.includes(normalizeTeamSearchText(candidate)))) return key;
+  }
+
+  return "";
+}
+
+function hasUnexpectedLeagueCountry(leagueName) {
+  const parts = String(leagueName || "").split("/").map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 2) return false;
+  const leagueKey = getLeagueKeyFromText(parts[0]);
+  if (!leagueKey) return false;
+  const expectedCountries = EXPECTED_LEAGUE_COUNTRIES[leagueKey];
+  if (!expectedCountries) return false;
+  const country = normalizeTeamSearchText(parts[1]).replace(/-/g, " ");
+  return country && !expectedCountries.some((expected) => country.includes(normalizeTeamSearchText(expected)));
+}
 
 function leagueMatchesFixture(matchLeague, selectedLeague) {
   const selected = String(selectedLeague || "ALL").trim();
@@ -2150,6 +2232,57 @@ function getSelectionRateForResult(resultKey, criteria = {}) {
   return parsed === undefined ? null : parsed;
 }
 
+function clampPercent(value, min = 0, max = 100) {
+  const numberValue = Number(value || 0);
+  if (!Number.isFinite(numberValue)) return min;
+  return Math.max(min, Math.min(max, numberValue));
+}
+
+function getMatchContextAdjustment(criteria = {}, favorite = null, breakdown = {}) {
+  const signals = [];
+  let adjustment = 0;
+  const leagueText = normalizeTeamSearchText([criteria.league, criteria.leagueName].filter(Boolean).join(" "));
+  const teamText = normalizeTeamSearchText([criteria.homeTeam, criteria.awayTeam, criteria.teamQuery].filter(Boolean).join(" "));
+  const drawOdds = parseSearchNumber(criteria.drawOdds);
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const favoriteOdds = favorite?.odds ?? null;
+
+  if (["WORLDCUP", "WCQ", "INTL_FRIENDLIES"].some((league) => leagueMatchesFixture(criteria.league, league))) {
+    adjustment += leagueMatchesFixture(criteria.league, "INTL_FRIENDLIES") ? 6 : 4;
+    signals.push("국가대항 보정");
+  } else if (["UCL", "UEL", "ACL"].some((league) => leagueMatchesFixture(criteria.league, league))) {
+    adjustment += 2;
+    signals.push("컵대회 보정");
+  } else if (leagueText.includes("friendly") || leagueText.includes("친선")) {
+    adjustment += 6;
+    signals.push("친선경기 보정");
+  }
+
+  if (favorite?.key === "A") {
+    adjustment += 3;
+    signals.push("원정 정배");
+  }
+
+  if (drawOdds !== null && drawOdds <= 3.25) {
+    adjustment += 4;
+    signals.push("무승부 낮음");
+  } else if (drawOdds !== null && drawOdds <= 3.4) {
+    adjustment += 2;
+  }
+
+  if (knownMatches > 0 && knownMatches < 5) {
+    adjustment += 5;
+  }
+
+  const hasStrongFavoriteHint = HOME_TODAY_STRONG_TEAM_HINTS.some((hint) => teamText.includes(normalizeTeamSearchText(hint)));
+  if (hasStrongFavoriteHint && favoriteOdds !== null && favoriteOdds < 1.75) {
+    adjustment -= 3;
+    signals.push("강팀 정배");
+  }
+
+  return { adjustment, signals };
+}
+
 function getJudgementOutcomes(breakdown = {}, criteria = {}) {
   return [
     { key: "H", label: "홈승", odds: parseSearchNumber(criteria.homeOdds), count: Number(breakdown.homeWins || 0) },
@@ -2172,6 +2305,9 @@ function calculateMatchJudgement(breakdown = {}, criteria = {}) {
       favoriteHitRate: 0,
       drawRate: 0,
       underdogRate: 0,
+      upsetProbability: null,
+      baseUpsetProbability: null,
+      matchAdjustment: 0,
       sampleSize: totalMatches
     };
   }
@@ -2233,6 +2369,13 @@ function calculateMatchJudgement(breakdown = {}, criteria = {}) {
 
   if (signals.length === 0 && judgement === "안정") signals.push("정배 우세");
 
+  const nonDrawUnderdogRate = Math.max(0, ...outcomes
+    .filter((outcome) => outcome.key !== favorite?.key && outcome.key !== "D")
+    .map((outcome) => getRatePercent(outcome.count, knownMatches)));
+  const baseUpsetProbability = clampPercent(drawRate + nonDrawUnderdogRate);
+  const contextAdjustment = getMatchContextAdjustment(criteria, favorite, breakdown);
+  signals.push(...contextAdjustment.signals);
+  const upsetProbability = clampPercent(baseUpsetProbability + contextAdjustment.adjustment, totalMatches < 5 ? 0 : 5, 80);
   const uniqueSignals = [...new Set(signals)];
   return {
     judgement,
@@ -2242,6 +2385,9 @@ function calculateMatchJudgement(breakdown = {}, criteria = {}) {
     favoriteHitRate,
     drawRate,
     underdogRate,
+    upsetProbability,
+    baseUpsetProbability,
+    matchAdjustment: contextAdjustment.adjustment,
     sampleSize: totalMatches
   };
 }
@@ -2282,6 +2428,14 @@ function getOddsRiskSignals(breakdown = {}, recentBreakdown = null) {
 }
 
 function getOddsSearchVerdictText(breakdown = {}, criteria = {}, recentBreakdown = null) {
+  const probabilityJudgement = calculateMatchJudgement(breakdown, criteria, recentBreakdown);
+  const probabilitySignalText = probabilityJudgement.signals.length > 0 ? probabilityJudgement.signals.join(" / ") : "신호 없음";
+  if (probabilityJudgement.upsetProbability === null) {
+    return `이변 가능성: 데이터 부족 · 신호: ${probabilitySignalText}`;
+  }
+  const adjustment = Number(probabilityJudgement.matchAdjustment || 0);
+  const adjustmentText = adjustment === 0 ? "보정 0%" : `보정 ${adjustment > 0 ? "+" : ""}${Math.round(adjustment)}%`;
+  return `이변 가능성 ${Math.round(probabilityJudgement.upsetProbability)}% · 기준 ${Math.round(probabilityJudgement.baseUpsetProbability || 0)}% · ${adjustmentText} · 판정: ${probabilityJudgement.judgement} · 위험도: ${probabilityJudgement.risk} · 신호: ${probabilitySignalText}`;
   const judgement = calculateMatchJudgement(breakdown, criteria, recentBreakdown);
   const signalText = judgement.signals.length > 0 ? judgement.signals.join(" / ") : "신호 없음";
   return `판정: ${judgement.judgement} · 위험도: ${judgement.risk} · 신호: ${signalText}`;
@@ -3321,6 +3475,67 @@ function showMoreTeamMatches() {
 function renderMatchJudgementSummary(element, judgement) {
   if (!element) return;
   element.replaceChildren();
+  const top = document.createElement("div");
+  top.className = "judgement-top";
+
+  const probabilityMain = document.createElement("strong");
+  probabilityMain.className = "judgement-main";
+  probabilityMain.textContent = judgement.upsetProbability === null
+    ? "이변 가능성: 데이터 부족"
+    : `이변 가능성 ${Math.round(judgement.upsetProbability)}%`;
+
+  const probabilityRisk = document.createElement("span");
+  probabilityRisk.className = "judgement-risk";
+  probabilityRisk.textContent = `판정: ${judgement.judgement}`;
+  top.append(probabilityMain, probabilityRisk);
+
+  if (judgement.upsetProbability !== null) {
+    const detail = document.createElement("small");
+    detail.className = "judgement-detail";
+    const adjustment = Number(judgement.matchAdjustment || 0);
+    const adjustmentText = adjustment === 0 ? "보정 0%" : `보정 ${adjustment > 0 ? "+" : ""}${Math.round(adjustment)}%`;
+    detail.textContent = `기준 ${Math.round(judgement.baseUpsetProbability || 0)}% · ${adjustmentText} · 정배 ${Math.round(judgement.favoriteHitRate || 0)}%`;
+    top.appendChild(detail);
+  }
+
+  const probabilitySignals = document.createElement("div");
+  probabilitySignals.className = "judgement-signals";
+  const probabilitySignalValues = judgement.signals.length > 0 ? judgement.signals : ["정배 우세"];
+  probabilitySignalValues.forEach((signal) => {
+    const badge = document.createElement("span");
+    badge.className = "judgement-signal";
+    badge.textContent = signal;
+    probabilitySignals.appendChild(badge);
+  });
+
+  element.append(top, probabilitySignals);
+  element.className = `odds-verdict judgement-${normalizeTeamSearchText(judgement.judgement).replace(/[^a-z0-9가-힣]/g, "")}`;
+  return;
+
+  const main = document.createElement("strong");
+  main.className = "judgement-main";
+  main.textContent = `판정: ${judgement.judgement}`;
+
+  const risk = document.createElement("span");
+  risk.className = "judgement-risk";
+  risk.textContent = `위험도: ${judgement.risk}`;
+  top.append(main, risk);
+
+  const signals = document.createElement("div");
+  signals.className = "judgement-signals";
+  const signalValues = judgement.signals.length > 0 ? judgement.signals : ["정배 우세"];
+  signalValues.forEach((signal) => {
+    const badge = document.createElement("span");
+    badge.className = "judgement-signal";
+    badge.textContent = signal;
+    signals.appendChild(badge);
+  });
+
+  element.append(top, signals);
+  element.className = `odds-verdict judgement-${normalizeTeamSearchText(judgement.judgement).replace(/[^a-z0-9가-힣]/g, "")}`;
+  return;
+  if (!element) return;
+  element.replaceChildren();
   element.className = `odds-verdict judgement-${normalizeTeamSearchText(judgement.judgement).replace(/[^a-z0-9가-힣]/g, "")}`;
 
   const rows = [
@@ -3408,8 +3623,20 @@ function hasCompleteOdds(match = {}) {
   return ["homeOdds", "drawOdds", "awayOdds"].every((field) => parseSearchNumber(match[field]) !== null);
 }
 
+function isMajorTodayMatch(match = {}) {
+  const leagueName = String(match.league || "").trim();
+  if (!leagueName || hasUnexpectedLeagueCountry(leagueName)) return false;
+  const leagueKey = getLeagueKeyFromText(leagueName);
+  return HOME_TODAY_LEAGUE_PRIORITY.includes(leagueKey);
+}
+
+function getMajorTodayMatches(matches = []) {
+  return (Array.isArray(matches) ? matches : []).filter(isMajorTodayMatch);
+}
+
 function getMatchLeaguePriority(match = {}) {
-  const index = HOME_TODAY_LEAGUE_PRIORITY.findIndex((leagueKey) => leagueMatchesFixture(match.league, leagueKey));
+  const leagueKey = getLeagueKeyFromText(match.league);
+  const index = HOME_TODAY_LEAGUE_PRIORITY.indexOf(leagueKey);
   return index === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : index;
 }
 
@@ -3478,7 +3705,7 @@ function getHomeTodayCardViewModel(match = {}, updatedAt = "") {
   return {
     id: match.id || getTodayMatchKey(match),
     title: `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`,
-    league: formatLeagueName(getLeagueLabel(match.league || "")),
+    league: translateLeagueName(getLeagueLabel(match.league || "")),
     startTime: formatMatchStartTime(match),
     status: getMatchStatusLabel(match),
     odds: hasOdds ? `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}` : "배당 준비 중",
@@ -3521,7 +3748,6 @@ function createHomeTodayMatchCard(match, updatedAt = "") {
   button.textContent = "배당 검색";
   button.addEventListener("click", () => {
     openOddsSearchForTodayMatch(match, getTodayMatchAnalysis(match, getSearchableMatches()));
-    document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   footer.append(updated, button);
 
@@ -3536,7 +3762,9 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 
   if (status) setHomeTodayStatus(status);
 
-  if (!Array.isArray(matches) || matches.length === 0) {
+  const majorMatches = getMajorTodayMatches(matches);
+
+  if (majorMatches.length === 0) {
     const empty = document.createElement("div");
     empty.className = "empty-state compact-empty";
     empty.textContent = status && status.includes("불러오는 중")
@@ -3548,7 +3776,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     return;
   }
 
-  const visibleMatches = sortHomeTodayMatches(matches).slice(0, HOME_TODAY_MATCH_LIMIT);
+  const visibleMatches = sortHomeTodayMatches(majorMatches).slice(0, HOME_TODAY_MATCH_LIMIT);
   list.replaceChildren(...visibleMatches.map((match) => createHomeTodayMatchCard(match, homeTodayLastUpdatedAt)));
 }
 
@@ -3572,7 +3800,7 @@ async function loadHomeTodayMatches() {
       mergeTodayMatches(homeTodayMatches);
       renderTodayCenter(homeTodayMatches);
     }
-    renderHomeTodayMatches(homeTodayMatches, { status: `마지막 업데이트 ${homeTodayLastUpdatedAt}` });
+    renderHomeTodayMatches(homeTodayMatches, { status: `마지막 업데이트: ${homeTodayLastUpdatedAt}` });
     return { ...result, matches: homeTodayMatches };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
@@ -3590,7 +3818,18 @@ function showAllHomeTodayMatches() {
   document.querySelector(".live-api-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function focusOddsSearchPanel() {
+  if (typeof window !== "undefined" && window.location.hash !== "#search") {
+    window.location.hash = "#search";
+  }
+  showActiveView("#search");
+  window.setTimeout(() => {
+    document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, 30);
+}
+
 function setTodaySearchFromMatch(match) {
+  focusOddsSearchPanel();
   setOddsSearchCriteria(getDirectOddsSearchCriteriaFromMatch(match));
   runOddsSearchFromCurrentCriteria();
 }
@@ -3610,9 +3849,9 @@ function getDirectOddsSearchCriteriaFromMatch(match = {}) {
 }
 
 function openManualOddsEntryForMatch(match) {
+  focusOddsSearchPanel();
   setOddsSearchCriteria(getDirectOddsSearchCriteriaFromMatch({ ...match, homeOdds: "", drawOdds: "", awayOdds: "" }));
   setOddsSearchStatus(`${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} 배당을 직접 입력하면 과거 유사 배당을 바로 확인할 수 있습니다.`);
-  document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
   window.setTimeout(() => document.getElementById("search-home-odds")?.focus(), 350);
 }
 
@@ -3850,6 +4089,8 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   const params = new URLSearchParams();
   params.set("date", criteria.date || getTodayKey());
   params.set("league", criteria.league || "ALL");
+  if (criteria.mode) params.set("mode", criteria.mode);
+  if (criteria.days) params.set("days", String(criteria.days));
   params.set("_", String(Date.now()));
 
   const response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
@@ -3873,6 +4114,17 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
 
   const matches = Array.isArray(payload.matches) ? payload.matches.map(normalizeLiveOddsMatch) : [];
   return { error: "", matches, meta: payload.meta || {} };
+}
+
+async function fetchApiHistoryOdds(criteria = {}) {
+  const searchCriteria = getOddsSearchCriteria();
+  const league = String(criteria.league || searchCriteria.league || "ALL").trim();
+  return fetchLiveOdds({
+    date: criteria.date || getTodayKey(),
+    league: league === "ALL" ? "EPL" : league,
+    mode: "history",
+    days: criteria.days || 7
+  });
 }
 
 async function loadLiveOddsFromApi() {
@@ -3911,6 +4163,44 @@ async function loadLiveOddsFromApi() {
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setLiveOddsStatus(`경기 업데이트 중 문제가 발생했습니다. ${message}`);
+    return { error: message, matches: [] };
+  } finally {
+    if (button) button.disabled = false;
+  }
+}
+
+async function loadApiHistoryForSearch() {
+  const button = document.getElementById("load-api-history");
+  const criteria = getOddsSearchCriteria();
+  const targetLeague = criteria.league && criteria.league !== "ALL" ? getLeagueLabel(criteria.league) : "EPL";
+  if (button) button.disabled = true;
+  setOddsSearchStatus(`최근 API 배당을 추가하는 중입니다. 범위: 최근 7일 · ${targetLeague}`);
+
+  try {
+    const result = await fetchApiHistoryOdds({ league: criteria.league, days: 7 });
+    if (result.error) {
+      setOddsSearchStatus(`${result.error} 최근 API 배당 추가에 실패했습니다.`);
+      return result;
+    }
+
+    const completeMatches = result.matches.filter(hasCompleteOdds);
+    const noOddsCount = Math.max(0, result.matches.length - completeMatches.length);
+    if (completeMatches.length === 0) {
+      setOddsSearchStatus(`최근 API 배당에서 추가할 완성 배당이 없습니다. 확인 ${result.matches.length}경기 / 배당 없음 ${noOddsCount}경기`);
+      return result;
+    }
+
+    const saveResult = saveMatches(completeMatches);
+    updateDashboard(saveResult.matches);
+    updateStoredMatchStatus(saveResult.matches);
+    updateSearchLeagueStatus(getSearchableMatches());
+    renderStoredMatches(getSearchableMatches());
+    setOddsSearchStatus(`최근 API 배당 추가 완료: 새로 저장 ${saveResult.savedCount}경기 / 중복 ${saveResult.duplicateCount || 0}경기 / 배당 없음 ${noOddsCount}경기`);
+    runOddsSearchFromCurrentCriteria();
+    return { ...result, savedCount: saveResult.savedCount, duplicateCount: saveResult.duplicateCount };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "알 수 없는 오류";
+    setOddsSearchStatus(`최근 API 배당 추가 중 문제가 발생했습니다. ${message}`);
     return { error: message, matches: [] };
   } finally {
     if (button) button.disabled = false;
@@ -5075,6 +5365,7 @@ function renderSavedSearches(searches = loadSavedSearches()) {
 function wireOddsSearch() {
   const form = document.getElementById("odds-search-form");
   const button = document.getElementById("run-odds-search");
+  const apiHistoryButton = document.getElementById("load-api-history");
   const tolerance = document.getElementById("search-tolerance");
   const customTolerance = document.getElementById("search-custom-tolerance");
 
@@ -5099,6 +5390,12 @@ function wireOddsSearch() {
   if (button) {
     button.addEventListener("click", () => {
       runOddsSearchFromCurrentCriteria();
+    });
+  }
+
+  if (apiHistoryButton) {
+    apiHistoryButton.addEventListener("click", () => {
+      loadApiHistoryForSearch();
     });
   }
 }
@@ -5279,7 +5576,7 @@ function wireLocalAccount() {
   }
 }
 
-const VIEW_IDS = ["search", "matches", "saved", "upload", "account"];
+const VIEW_IDS = ["search", "today", "matches", "saved", "upload", "account"];
 
 function getActiveViewId(hashValue) {
   const viewId = String(hashValue || "").replace("#", "");
@@ -5441,6 +5738,8 @@ if (typeof module !== "undefined") {
     formatRate,
     formatOdds,
     formatLeagueName,
+    translateLeagueName,
+    translateTeamName,
     formatMatchResultText,
     formatResultLabel,
     formatTeamName,
@@ -5458,6 +5757,8 @@ if (typeof module !== "undefined") {
     getInlineOddsRateText,
     getInlineOddsConfidence,
     getHomeTodayCardViewModel,
+    getMissingTeamNames,
+    getMajorTodayMatches,
     sortHomeTodayMatches,
     getTodayOddsSummaryText,
     getOddsSearchVerdictText,
@@ -5483,6 +5784,7 @@ if (typeof module !== "undefined") {
     getOddsDistance,
     getStorageModeLabel,
     isRealDate,
+    isMajorTodayMatch,
     isLocalStorageAvailable,
     importDefaultData,
     importTotoRoundPack,

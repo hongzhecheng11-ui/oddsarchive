@@ -166,6 +166,7 @@ button {
   color: var(--muted);
   font-weight: 700;
   text-decoration: none;
+  text-align: center;
 }
 
 .nav-item.active,
@@ -563,6 +564,33 @@ button {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+}
+
+.account-management-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ghost-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface-strong);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.ghost-link-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
 }
 
 .account-summary div,
@@ -1351,6 +1379,10 @@ tbody tr:last-child td {
   background: var(--surface);
 }
 
+.today-panel > summary {
+  display: none;
+}
+
 .home-today-heading,
 .home-today-card-top,
 .home-today-card-footer,
@@ -1650,6 +1682,17 @@ tbody tr:last-child td {
   line-height: 1.45;
 }
 
+.api-history-action {
+  width: fit-content;
+  min-height: 32px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.api-history-hint {
+  display: block;
+}
+
 .empty-data-actions {
   display: flex;
   align-items: center;
@@ -1720,9 +1763,9 @@ tbody tr:last-child td {
 
 .odds-verdict {
   display: grid;
-  gap: 5px;
+  gap: 8px;
   margin: 0;
-  padding: 9px 10px;
+  padding: 10px 11px;
   border: 1px solid #bbf7d0;
   border-radius: 8px;
   background: #f0fdf4;
@@ -1732,11 +1775,51 @@ tbody tr:last-child td {
   line-height: 1.35;
 }
 
-.odds-verdict span {
+.odds-verdict span:not(.judgement-risk):not(.judgement-signal) {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+}
+
+.judgement-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.judgement-main {
+  color: inherit;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.judgement-detail {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.judgement-risk,
+.judgement-signal {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.72);
+  color: inherit;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.judgement-signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .odds-verdict b {
@@ -1747,6 +1830,10 @@ tbody tr:last-child td {
 .odds-verdict strong {
   color: inherit;
   text-align: right;
+}
+
+.odds-verdict .judgement-main {
+  text-align: left;
 }
 
 .odds-verdict.judgement-주의,
@@ -2033,12 +2120,58 @@ select {
 }
 
 .search-panel .simple-search-stack {
+  display: contents;
   gap: 6px;
 }
 
 .search-panel .simple-search-card {
+  order: 1;
   gap: 6px;
   padding: 9px 10px;
+  border: 2px solid rgba(22, 115, 93, 0.24);
+  background: #fbfffd;
+  box-shadow: 0 8px 22px rgba(23, 33, 47, 0.06);
+}
+
+.search-panel #top-data-status {
+  display: none;
+}
+
+.search-panel #odds-result-anchor {
+  order: 2;
+}
+
+.search-panel #odds-search-error {
+  order: 3;
+}
+
+.search-panel .search-status-card {
+  order: 4;
+}
+
+.search-panel .compact-analysis {
+  order: 5;
+}
+
+.search-panel .compact-results {
+  order: 6;
+}
+
+.search-panel .search-history-panel {
+  order: 7;
+}
+
+.search-panel .home-today-panel {
+  order: 8;
+}
+
+.search-panel .live-api-panel {
+  order: 9;
+}
+
+.today-panel .panel-body {
+  display: grid;
+  gap: 10px;
 }
 
 .search-panel .simple-card-heading {
@@ -2524,13 +2657,23 @@ select {
     position: sticky;
     top: 0;
     z-index: 1;
-    flex-direction: row;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+    padding: 8px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
   }
 
   .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 6px;
+    font-size: 13px;
+    line-height: 1.15;
     white-space: nowrap;
   }
 
@@ -2587,7 +2730,7 @@ select {
   }
 
   .compact-analysis .ratio-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .flow-panel > summary {
@@ -3018,15 +3161,17 @@ select {
   }
 
   .side-nav {
-    gap: 8px;
-    padding: 8px 10px 6px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    padding: 7px 8px 6px;
   }
 
   .nav-item {
-    min-width: max-content;
-    padding: 8px 12px;
+    min-width: 0;
+    min-height: 34px;
+    padding: 7px 5px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1;
   }
 

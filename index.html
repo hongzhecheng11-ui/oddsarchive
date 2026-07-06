@@ -37,11 +37,10 @@
 
     <main class="app-shell">
       <nav class="side-nav" aria-label="주요 화면">
-        <a class="nav-item active" href="#search">배당 검색</a>
-        <a class="nav-item" href="#matches">저장 경기</a>
-        <a class="nav-item" href="#saved">즐겨찾기</a>
-        <a class="nav-item" href="#upload">데이터 추가</a>
-        <a class="nav-item" href="#account">내 계정</a>
+        <a class="nav-item active" href="#search">배당검색</a>
+        <a class="nav-item" href="#today">오늘경기</a>
+        <a class="nav-item" href="#saved">즐찾</a>
+        <a class="nav-item" href="#account">내정보</a>
       </nav>
 
       <section class="content-area">
@@ -49,77 +48,12 @@
           <details class="panel flow-panel search-panel" id="search" open>
             <summary>
               <span>
-                <small>오늘 경기</small>
-                <strong>오늘 경기 배당 비교</strong>
+                <small>배당 검색</small>
+                <strong>빠른 동일배당 검색</strong>
               </span>
             </summary>
             <div class="panel-body">
               <section class="simple-search-stack" aria-label="간단 검색">
-                <section class="home-today-panel" aria-label="오늘의 주요 경기">
-                  <div class="home-today-heading">
-                    <div>
-                      <strong>🔥 오늘의 주요 경기</strong>
-                      <span id="home-today-updated">오늘 경기 불러오는 중</span>
-                    </div>
-                    <button type="button" id="refresh-home-today">새로고침</button>
-                  </div>
-                  <div class="home-today-list" id="home-today-list">
-                    <div class="empty-state compact-empty">오늘 경기 불러오는 중</div>
-                  </div>
-                  <div class="home-today-footer">
-                    <button type="button" id="show-all-home-today">전체 오늘 경기 보기</button>
-                  </div>
-                </section>
-                <section class="live-api-panel" aria-label="경기 자동 업데이트">
-                  <div class="live-api-heading">
-                    <div>
-                      <strong>경기 자동 업데이트</strong>
-                      <span>경기 일정은 자동으로 불러오고, 배당이 있는 경기만 과거 유사 배당을 볼 수 있습니다.</span>
-                    </div>
-                    <div class="live-api-actions">
-                      <button type="button" id="load-live-odds">경기 업데이트</button>
-                    </div>
-                  </div>
-                  <div class="live-api-controls">
-                    <label>
-                      날짜
-                      <input id="live-odds-date" type="date">
-                    </label>
-                    <label>
-                      리그
-                      <select id="live-odds-league">
-                        <option value="ALL">전체 경기</option>
-                        <option value="EPL">EPL</option>
-                        <option value="LALIGA">라리가</option>
-                        <option value="SERIEA">세리에A</option>
-                        <option value="BUNDESLIGA">분데스리가</option>
-                        <option value="LIGUE1">리그앙</option>
-                        <option value="WORLDCUP">월드컵</option>
-                      </select>
-                    </label>
-                  </div>
-                  <div class="date-quick-actions" aria-label="날짜 빠른 선택">
-                    <button type="button" data-live-date-offset="0">오늘</button>
-                    <button type="button" data-live-date-offset="1">내일</button>
-                    <button type="button" data-live-date-weekend="next">다가오는 주말</button>
-                    <button type="button" data-live-date-weekend="previous">지난 주말</button>
-                  </div>
-                  <details class="today-csv-tools" id="today-csv-tools">
-                    <summary>CSV 직접 추가</summary>
-                    <div>
-                      <label class="today-csv-picker">
-                        오늘 경기 CSV 선택
-                        <input id="today-csv-input" type="file" accept=".csv,text/csv" multiple>
-                      </label>
-                      <button type="button" id="download-today-csv-sample">CSV 샘플</button>
-                    </div>
-                  </details>
-                  <p class="match-count" id="live-odds-status" aria-live="polite">날짜를 고르고 경기 업데이트를 누르세요.</p>
-                  <div class="today-center-list" id="today-center-list">
-                    <div class="empty-state compact-empty">API 또는 CSV로 오늘 경기를 불러오면 여기에 표시됩니다.</div>
-                  </div>
-                  <div class="today-analysis-result" id="today-analysis-result" hidden></div>
-                </section>
                 <article class="simple-search-card" id="simple-odds-card">
                   <section class="top-data-status" id="top-data-status" aria-label="현재 데이터 상태">
                     <span>검색 가능 <strong id="top-status-match-count">0</strong></span>
@@ -214,6 +148,8 @@
                 <strong id="odds-search-status">배당값을 입력하거나 저장 경기에서 이 배당으로 검색을 눌러주세요.</strong>
                 <small id="searchable-match-status">검색 가능 경기: 기본 데이터팩 + 내 저장 경기 합계 0개</small>
                 <small>검색 결과 개수 <b id="odds-search-count">0</b></small>
+                <button class="ghost-action api-history-action" type="button" id="load-api-history">최근 API 배당 추가</button>
+                <small class="api-history-hint">최근 7일 · 선택 리그 기준으로 검색 데이터에 합칩니다.</small>
                 <div class="empty-data-actions" id="empty-data-actions" hidden>
                   <span>먼저 데이터를 준비해주세요.</span>
                   <button type="button" id="empty-import-data">기본 데이터 가져오기</button>
@@ -265,6 +201,83 @@
                 </div>
                 <button class="show-more-button" type="button" id="show-more-odds-results" hidden>더보기</button>
               </details>
+            </div>
+          </details>
+
+          <details class="panel flow-panel today-panel" id="today" open>
+            <summary>
+              <span>
+                <small>오늘 경기</small>
+                <strong>오늘의 주요 경기</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <section class="home-today-panel" aria-label="오늘의 주요 경기">
+                <div class="home-today-heading">
+                  <div>
+                    <strong>🔥 오늘의 주요 경기</strong>
+                    <span id="home-today-updated">마지막 업데이트: 대기 중</span>
+                  </div>
+                  <button type="button" id="refresh-home-today">새로고침</button>
+                </div>
+                <div class="home-today-list" id="home-today-list">
+                  <div class="empty-state compact-empty">오늘 경기 불러오는 중</div>
+                </div>
+                <div class="home-today-footer">
+                  <button type="button" id="show-all-home-today">전체 오늘 경기 보기</button>
+                </div>
+              </section>
+
+              <section class="live-api-panel" aria-label="경기 자동 업데이트">
+                <div class="live-api-heading">
+                  <div>
+                    <strong>경기 자동 업데이트</strong>
+                    <span>경기 일정은 자동으로 불러오고, 배당이 있는 경기만 과거 유사 배당을 볼 수 있습니다.</span>
+                  </div>
+                  <div class="live-api-actions">
+                    <button type="button" id="load-live-odds">경기 업데이트</button>
+                  </div>
+                </div>
+                <div class="live-api-controls">
+                  <label>
+                    날짜
+                    <input id="live-odds-date" type="date">
+                  </label>
+                  <label>
+                    리그
+                    <select id="live-odds-league">
+                      <option value="ALL">전체 경기</option>
+                      <option value="EPL">EPL</option>
+                      <option value="LALIGA">라리가</option>
+                      <option value="SERIEA">세리에A</option>
+                      <option value="BUNDESLIGA">분데스리가</option>
+                      <option value="LIGUE1">리그앙</option>
+                      <option value="WORLDCUP">월드컵</option>
+                    </select>
+                  </label>
+                </div>
+                <div class="date-quick-actions" aria-label="날짜 빠른 선택">
+                  <button type="button" data-live-date-offset="0">오늘</button>
+                  <button type="button" data-live-date-offset="1">내일</button>
+                  <button type="button" data-live-date-weekend="next">다가오는 주말</button>
+                  <button type="button" data-live-date-weekend="previous">지난 주말</button>
+                </div>
+                <details class="today-csv-tools" id="today-csv-tools">
+                  <summary>CSV 직접 추가</summary>
+                  <div>
+                    <label class="today-csv-picker">
+                      오늘 경기 CSV 선택
+                      <input id="today-csv-input" type="file" accept=".csv,text/csv" multiple>
+                    </label>
+                    <button type="button" id="download-today-csv-sample">CSV 샘플</button>
+                  </div>
+                </details>
+                <p class="match-count" id="live-odds-status" aria-live="polite">날짜를 고르고 경기 업데이트를 누르세요.</p>
+                <div class="today-center-list" id="today-center-list">
+                  <div class="empty-state compact-empty">API 또는 CSV로 오늘 경기를 불러오면 여기에 표시됩니다.</div>
+                </div>
+                <div class="today-analysis-result" id="today-analysis-result" hidden></div>
+              </section>
             </div>
           </details>
 
@@ -546,6 +559,10 @@
                   <div><span>분석 가능 경기</span><strong id="account-data-analyzable-count">0</strong></div>
                   <div><span>즐겨찾기</span><strong id="account-data-saved-search-count">0</strong></div>
                   <div><span>마지막 업데이트</span><strong id="account-data-last-update">확인 전</strong></div>
+                </div>
+                <div class="account-management-links" aria-label="고급 데이터 관리">
+                  <a class="ghost-link-button" href="#matches">경기DB 보기</a>
+                  <a class="ghost-link-button" href="#upload">CSV/데이터 관리</a>
                 </div>
               </section>
               <section class="share-card" aria-label="공유하기">
