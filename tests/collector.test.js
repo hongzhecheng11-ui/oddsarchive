@@ -94,6 +94,13 @@ test("builds a date window around today for automatic collection", () => {
   }
 });
 
+test("uses calendar year for Asian and international leagues", () => {
+  assert.strictEqual(collector.getSeason("2026-03-01", "KLEAGUE1"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "J1LEAGUE"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "ACL"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "UCL"), "2025");
+});
+
 test("keeps unfinished fixtures as unknown results", () => {
   const match = collector.normalizeFixture({
     fixture: { id: 1, date: "2026-07-11T10:00:00+00:00" },

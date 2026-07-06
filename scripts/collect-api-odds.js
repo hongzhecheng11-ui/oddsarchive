@@ -23,7 +23,14 @@ const LEAGUE_IDS = {
   INTL_FRIENDLIES: 10
 };
 
-const CALENDAR_YEAR_LEAGUES = new Set(["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]);
+const CALENDAR_YEAR_LEAGUES = new Set([
+  "WORLDCUP",
+  "WCQ",
+  "INTL_FRIENDLIES",
+  "KLEAGUE1",
+  "J1LEAGUE",
+  "ACL"
+]);
 
 function parseLocalEnv(text = "") {
   return String(text || "").split(/\r?\n/).reduce((values, line) => {
