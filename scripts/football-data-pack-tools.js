@@ -34,8 +34,18 @@ const TARGET_LEAGUES = {
   KLEAGUE1: { label: "K리그1", category: "아시아", historySource: "API/별도 CSV 필요" },
   J1LEAGUE: { label: "J리그1", category: "아시아", historySource: "football-data.co.uk" },
   ACL: { label: "AFC 챔피언스리그", category: "아시아", historySource: "API/별도 CSV 필요" },
-  WORLDCUP: { label: "월드컵", category: "국가대항", historySource: "API/별도 CSV 필요" },
-  WCQ: { label: "월드컵 예선", category: "국가대항", historySource: "API/별도 CSV 필요" },
+  WORLDCUP: {
+    label: "월드컵",
+    category: "국가대항",
+    historySource: "football-data.co.uk World Cup XLSX",
+    targetSeasons: ["2014", "2018", "2022", "2026"]
+  },
+  WCQ: {
+    label: "월드컵 예선",
+    category: "국가대항",
+    historySource: "football-data.co.uk World Cup XLSX",
+    targetSeasons: ["2026"]
+  },
   INTL_FRIENDLIES: { label: "국가대표 친선경기", category: "국가대항", historySource: "API/별도 CSV 필요" }
 };
 
@@ -161,7 +171,7 @@ function summarizePack(pack = {}) {
 function getTargetCoverage(pack = {}, targetSeasons = RECENT_SEASONS) {
   const summary = summarizePack(pack);
   return Object.entries(TARGET_LEAGUES).map(([key, meta]) => {
-    const leagueTargetSeasons = FOOTBALL_DATA_LEAGUES[key]?.targetSeasons || targetSeasons;
+    const leagueTargetSeasons = meta.targetSeasons || FOOTBALL_DATA_LEAGUES[key]?.targetSeasons || targetSeasons;
     const seasonCounts = summary[key] || {};
     const coveredSeasons = leagueTargetSeasons.filter((season) => Number(seasonCounts[season]) > 0);
     const missingSeasons = leagueTargetSeasons.filter((season) => !coveredSeasons.includes(season));
