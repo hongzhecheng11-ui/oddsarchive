@@ -140,6 +140,54 @@ test("renders home today section cards without breaking the page", () => {
   }
 });
 
+test("judges favorite hit rate tiers", () => {
+  const criteria = { homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" };
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 }, criteria).judgement, "안정");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 53, draws: 22, awayWins: 25 }, criteria).risk, "보통");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 45, draws: 25, awayWins: 30 }, criteria).judgement, "이변 주의");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 38, draws: 25, awayWins: 37 }, criteria).risk, "매우 높음");
+});
+
+test("adds draw and underdog judgement badges", () => {
+  const drawSignal = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 55, draws: 32, awayWins: 13 },
+    { homeOdds: "1.75", drawOdds: "3.20", awayOdds: "4.40" }
+  );
+  const underdogSignal = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 60, draws: 15, awayWins: 25 },
+    { homeOdds: "1.70", drawOdds: "3.40", awayOdds: "5.00" }
+  );
+
+  assert(drawSignal.signals.includes("무승부 주의"));
+  assert(underdogSignal.signals.includes("역배 신호"));
+});
+
+test("raises judgement for favorite over-selection", () => {
+  const upset = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 },
+    { homeOdds: "1.85", drawOdds: "3.40", awayOdds: "4.20", homeSelectionRate: "75" }
+  );
+  const highRisk = app.calculateMatchJudgement(
+    { totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 },
+    { homeOdds: "1.90", drawOdds: "3.40", awayOdds: "4.20", homeSelectionRate: "82" }
+  );
+
+  assert.strictEqual(upset.judgement, "이변 주의");
+  assert(upset.signals.includes("정배 과몰림"));
+  assert.strictEqual(highRisk.judgement, "고위험");
+  assert.strictEqual(highRisk.risk, "매우 높음");
+});
+
+test("marks small and empty samples", () => {
+  const criteria = { homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" };
+  const small = app.calculateMatchJudgement({ totalMatches: 3, knownMatches: 3, homeWins: 2, draws: 0, awayWins: 1 }, criteria);
+  const empty = app.calculateMatchJudgement({ totalMatches: 0, knownMatches: 0, homeWins: 0, draws: 0, awayWins: 0 }, criteria);
+
+  assert(small.signals.includes("표본 부족"));
+  assert.strictEqual(empty.judgement, "데이터 부족");
+  assert(empty.signals.includes("데이터 부족"));
+});
+
 test("builds direct odds search criteria from a live match without odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
     league: "WORLDCUP",
@@ -209,7 +257,7 @@ test("formats today analysis odds summary in one line", () => {
   assert.strictEqual(summary, "홈승 31/68.9% · 무 10/22.2% · 원정승 4/8.9% · 표본 45");
 });
 
-test("writes stronger analysis memo with sample confidence", () => {
+test("writes compact analysis memo", () => {
   const memo = app.getResultBreakdownMemo({
     totalMatches: 45,
     knownMatches: 45,
@@ -221,12 +269,10 @@ test("writes stronger analysis memo with sample confidence", () => {
     awayRate: "8.9%"
   });
 
-  assert(memo.includes("45경기 표본"));
-  assert(memo.includes("홈승 흐름"));
-  assert(memo.includes("신뢰도 높음"));
+  assert.strictEqual(memo, "표본 45/45");
 });
 
-test("summarizes odds verdict with pattern winner and confidence", () => {
+test("summarizes odds verdict with compact judgement", () => {
   const verdict = app.getOddsSearchVerdictText({
     totalMatches: 45,
     knownMatches: 45,
@@ -242,12 +288,12 @@ test("summarizes odds verdict with pattern winner and confidence", () => {
     awayOdds: "4.50"
   });
 
-  assert(verdict.includes("홈 우세형"));
-  assert(verdict.includes("홈승 우세 68.9%"));
-  assert(verdict.includes("신뢰도 높음"));
+  assert(verdict.includes("판정: 안정"));
+  assert(verdict.includes("위험도: 낮음"));
+  assert(verdict.includes("역배 신호"));
 });
 
-test("uses recent three seasons in odds verdict", () => {
+test("keeps compact odds verdict independent from long recent-season text", () => {
   const matches = [
     { date: "2021-05-10", result: "A" },
     { date: "2023-08-10", result: "H" },
@@ -271,19 +317,20 @@ test("uses recent three seasons in odds verdict", () => {
   }, recentBreakdown);
 
   assert.strictEqual(recentBreakdown.totalMatches, 3);
-  assert(verdict.includes("최근3시즌 홈승"));
+  assert(verdict.includes("판정: 주의"));
+  assert(!verdict.includes("최근3시즌"));
 });
 
-test("adds risk signals for draw rate and recent disagreement", () => {
+test("adds compact risk signals for draw and underdog patterns", () => {
   const verdict = app.getOddsSearchVerdictText({
     totalMatches: 12,
     knownMatches: 12,
     homeWins: 6,
     homeRate: "50.0%",
-    draws: 3,
-    drawRate: "25.0%",
-    awayWins: 3,
-    awayRate: "25.0%"
+    draws: 4,
+    drawRate: "33.3%",
+    awayWins: 2,
+    awayRate: "16.7%"
   }, {
     homeOdds: "2.10",
     drawOdds: "3.00",
@@ -299,8 +346,9 @@ test("adds risk signals for draw rate and recent disagreement", () => {
     awayRate: "50.0%"
   });
 
-  assert(verdict.includes("주의: 무승부 높음"));
-  assert(verdict.includes("최근 흐름 다름"));
+  assert(verdict.includes("위험도: 높음"));
+  assert(verdict.includes("무승부 주의"));
+  assert(verdict.includes("역배 신호"));
 });
 
 test("falls back to all leagues and wider tolerance for live match analysis", () => {

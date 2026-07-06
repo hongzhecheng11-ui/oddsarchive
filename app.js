@@ -2112,6 +2112,140 @@ function parseRateValue(value) {
   return Number.isFinite(numberValue) ? numberValue : 0;
 }
 
+const MATCH_JUDGEMENT_LEVELS = ["안정", "주의", "이변 주의", "고위험"];
+const MATCH_JUDGEMENT_RISK = {
+  안정: "낮음",
+  주의: "보통",
+  "이변 주의": "높음",
+  고위험: "매우 높음",
+  "데이터 부족": "매우 높음"
+};
+
+function raiseMatchJudgement(current, minimum) {
+  if (current === "데이터 부족") return current;
+  const currentIndex = MATCH_JUDGEMENT_LEVELS.indexOf(current);
+  const minimumIndex = MATCH_JUDGEMENT_LEVELS.indexOf(minimum);
+  if (minimumIndex === -1) return current;
+  if (currentIndex === -1) return minimum;
+  return MATCH_JUDGEMENT_LEVELS[Math.max(currentIndex, minimumIndex)];
+}
+
+function getRatePercent(count, total) {
+  const safeCount = Number(count || 0);
+  const safeTotal = Number(total || 0);
+  if (safeTotal <= 0) return 0;
+  return (safeCount / safeTotal) * 100;
+}
+
+function getSelectionRateForResult(resultKey, criteria = {}) {
+  const rateFields = {
+    H: ["homeSelectionRate", "homePickRate", "homeVoteRate", "homeChoiceRate"],
+    D: ["drawSelectionRate", "drawPickRate", "drawVoteRate", "drawChoiceRate"],
+    A: ["awaySelectionRate", "awayPickRate", "awayVoteRate", "awayChoiceRate"]
+  };
+
+  const directValue = criteria.selectionRates?.[resultKey] ?? criteria.pickRates?.[resultKey] ?? criteria.voteRates?.[resultKey];
+  const values = [directValue, ...(rateFields[resultKey] || []).map((field) => criteria[field])];
+  const parsed = values.map(parseSearchNumber).find((value) => value !== null);
+  return parsed === undefined ? null : parsed;
+}
+
+function getJudgementOutcomes(breakdown = {}, criteria = {}) {
+  return [
+    { key: "H", label: "홈승", odds: parseSearchNumber(criteria.homeOdds), count: Number(breakdown.homeWins || 0) },
+    { key: "D", label: "무승부", odds: parseSearchNumber(criteria.drawOdds), count: Number(breakdown.draws || 0) },
+    { key: "A", label: "원정승", odds: parseSearchNumber(criteria.awayOdds), count: Number(breakdown.awayWins || 0) }
+  ];
+}
+
+function calculateMatchJudgement(breakdown = {}, criteria = {}) {
+  const totalMatches = Number(breakdown.totalMatches || 0);
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const signals = [];
+
+  if (totalMatches <= 0) {
+    return {
+      judgement: "데이터 부족",
+      risk: MATCH_JUDGEMENT_RISK["데이터 부족"],
+      signals: ["데이터 부족"],
+      favorite: null,
+      favoriteHitRate: 0,
+      drawRate: 0,
+      underdogRate: 0,
+      sampleSize: totalMatches
+    };
+  }
+
+  if (totalMatches < 5) signals.push("표본 부족");
+
+  const outcomes = getJudgementOutcomes(breakdown, criteria);
+  const outcomesWithOdds = outcomes.filter((outcome) => outcome.odds !== null);
+  const favorite = outcomesWithOdds.length > 0
+    ? outcomesWithOdds.reduce((best, outcome) => (outcome.odds < best.odds ? outcome : best), outcomesWithOdds[0])
+    : outcomes.reduce((best, outcome) => (outcome.count > best.count ? outcome : best), outcomes[0]);
+
+  const favoriteHitRate = getRatePercent(favorite?.count || 0, knownMatches);
+  const drawRate = getRatePercent(Number(breakdown.draws || 0), knownMatches);
+  const underdogRate = Math.max(...outcomes.filter((outcome) => outcome.key !== favorite?.key).map((outcome) => getRatePercent(outcome.count, knownMatches)));
+
+  let judgement = "고위험";
+  if (totalMatches < 5) {
+    judgement = "주의";
+  } else if (favoriteHitRate >= 60) {
+    judgement = "안정";
+  } else if (favoriteHitRate >= 50) {
+    judgement = "주의";
+  } else if (favoriteHitRate >= 40) {
+    judgement = "이변 주의";
+  }
+
+  if (drawRate >= 28) signals.push("무승부 주의");
+  if (drawRate >= 35) judgement = raiseMatchJudgement(judgement, "주의");
+
+  if (underdogRate >= 22) signals.push("역배 신호");
+  if (underdogRate >= 30) judgement = raiseMatchJudgement(judgement, "이변 주의");
+
+  const favoriteSelectionRate = favorite ? getSelectionRateForResult(favorite.key, criteria) : null;
+  const favoriteOdds = favorite?.odds;
+  if (favoriteSelectionRate !== null && favoriteOdds !== null) {
+    if (favoriteOdds >= 1.8 && favoriteOdds <= 1.95 && favoriteSelectionRate >= 60) {
+      signals.push("정배 과몰림");
+      judgement = raiseMatchJudgement(judgement, "주의");
+      if (favoriteSelectionRate >= 70) judgement = raiseMatchJudgement(judgement, "이변 주의");
+      if (favoriteSelectionRate >= 80) judgement = raiseMatchJudgement(judgement, "고위험");
+    } else if (favoriteOdds >= 1.7 && favoriteOdds <= 1.79 && favoriteSelectionRate >= 75) {
+      signals.push("정배 과몰림");
+      judgement = raiseMatchJudgement(judgement, "주의");
+    } else if (favoriteOdds >= 1.5 && favoriteOdds <= 1.69 && favoriteSelectionRate >= 85) {
+      signals.push("정배 과몰림");
+      judgement = raiseMatchJudgement(judgement, "주의");
+    }
+  }
+
+  if (outcomesWithOdds.length === 3) {
+    const oddsValues = outcomesWithOdds.map((outcome) => outcome.odds);
+    const oddsSpread = Math.max(...oddsValues) - Math.min(...oddsValues);
+    if (oddsSpread <= 0.6 || favoriteOdds >= 2) {
+      signals.push("균형 배당");
+      if (favoriteOdds >= 2) judgement = raiseMatchJudgement(judgement, "주의");
+    }
+  }
+
+  if (signals.length === 0 && judgement === "안정") signals.push("정배 우세");
+
+  const uniqueSignals = [...new Set(signals)];
+  return {
+    judgement,
+    risk: MATCH_JUDGEMENT_RISK[judgement] || "보통",
+    signals: uniqueSignals,
+    favorite,
+    favoriteHitRate,
+    drawRate,
+    underdogRate,
+    sampleSize: totalMatches
+  };
+}
+
 function getOddsPatternLabel(criteria = {}) {
   const homeOdds = parseSearchNumber(criteria.homeOdds);
   const drawOdds = parseSearchNumber(criteria.drawOdds);
@@ -2148,6 +2282,10 @@ function getOddsRiskSignals(breakdown = {}, recentBreakdown = null) {
 }
 
 function getOddsSearchVerdictText(breakdown = {}, criteria = {}, recentBreakdown = null) {
+  const judgement = calculateMatchJudgement(breakdown, criteria, recentBreakdown);
+  const signalText = judgement.signals.length > 0 ? judgement.signals.join(" / ") : "신호 없음";
+  return `판정: ${judgement.judgement} · 위험도: ${judgement.risk} · 신호: ${signalText}`;
+
   const knownMatches = Number(breakdown.knownMatches || 0);
   const totalMatches = Number(breakdown.totalMatches || 0);
   const patternLabel = getOddsPatternLabel(criteria);
@@ -2170,6 +2308,10 @@ function getOddsSearchVerdictText(breakdown = {}, criteria = {}, recentBreakdown
 function getResultBreakdownMemo(breakdown) {
   const knownMatches = Number(breakdown.knownMatches || 0);
   const totalMatches = Number(breakdown.totalMatches || 0);
+
+  if (totalMatches <= 0) return "데이터 부족";
+  if (totalMatches < 5) return "표본 부족";
+  return `표본 ${knownMatches}/${totalMatches}`;
 
   if (knownMatches <= 0) {
     return totalMatches > 0
@@ -3176,9 +3318,32 @@ function showMoreTeamMatches() {
   renderTeamMatchResults(currentTeamMatchResults, "조건에 맞는 팀별 경기 기록이 없습니다.");
 }
 
+function renderMatchJudgementSummary(element, judgement) {
+  if (!element) return;
+  element.replaceChildren();
+  element.className = `odds-verdict judgement-${normalizeTeamSearchText(judgement.judgement).replace(/[^a-z0-9가-힣]/g, "")}`;
+
+  const rows = [
+    ["판정", judgement.judgement],
+    ["위험도", judgement.risk],
+    ["신호", judgement.signals.length > 0 ? judgement.signals.join(" / ") : "신호 없음"]
+  ];
+
+  rows.forEach(([label, value]) => {
+    const row = document.createElement("span");
+    const labelElement = document.createElement("b");
+    const valueElement = document.createElement("strong");
+    labelElement.textContent = label;
+    valueElement.textContent = value;
+    row.append(labelElement, valueElement);
+    element.appendChild(row);
+  });
+}
+
 function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
   const breakdown = calculateResultBreakdown(matches);
   const recentBreakdown = calculateResultBreakdown(getRecentSeasonMatches(matches));
+  const judgement = calculateMatchJudgement(breakdown, criteria);
   const values = {
     "breakdown-total": String(breakdown.totalMatches),
     "breakdown-known": String(breakdown.knownMatches),
@@ -3197,7 +3362,7 @@ function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
   if (memo) memo.textContent = getResultBreakdownMemo(breakdown);
 
   const verdict = document.getElementById("odds-verdict");
-  if (verdict) verdict.textContent = getOddsSearchVerdictText(breakdown, criteria, recentBreakdown);
+  renderMatchJudgementSummary(verdict, judgement);
 }
 
 function createTodaySummaryItem(label, value) {
@@ -5268,6 +5433,7 @@ if (typeof module !== "undefined") {
     analyzeTodayMatch,
     analyzeLiveMatchOdds,
     calculateResultBreakdown,
+    calculateMatchJudgement,
     deleteSavedSearch,
     deleteSearchHistoryEntry,
     downloadSampleCsv,

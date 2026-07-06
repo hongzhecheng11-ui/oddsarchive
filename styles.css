@@ -1719,6 +1719,8 @@ tbody tr:last-child td {
 }
 
 .odds-verdict {
+  display: grid;
+  gap: 5px;
   margin: 0;
   padding: 9px 10px;
   border: 1px solid #bbf7d0;
@@ -1728,6 +1730,37 @@ tbody tr:last-child td {
   font-size: 13px;
   font-weight: 900;
   line-height: 1.35;
+}
+
+.odds-verdict span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.odds-verdict b {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.odds-verdict strong {
+  color: inherit;
+  text-align: right;
+}
+
+.odds-verdict.judgement-주의,
+.odds-verdict.judgement-이변주의 {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.odds-verdict.judgement-고위험,
+.odds-verdict.judgement-데이터부족 {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
 }
 
 .result-card-list {
