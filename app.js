@@ -21,6 +21,26 @@ const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
 const STORED_MATCH_RENDER_LIMIT = 100;
 const LIVE_ODDS_ENDPOINT = "/api/live-odds";
+const EXTERNAL_TRANSLATIONS = (() => {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_TRANSLATIONS) return window.ODDS_ARCHIVE_TRANSLATIONS;
+  if (typeof require !== "undefined") {
+    try {
+      return {
+        leagues: require("./src/lib/translations/leagues.js"),
+        teams: require("./src/lib/translations/teams.js")
+      };
+    } catch (_error) {
+      return {};
+    }
+  }
+  return {};
+})();
+const IS_DEVELOPMENT_MODE = (() => {
+  if (typeof process !== "undefined" && process.env?.NODE_ENV === "development") return true;
+  if (typeof location !== "undefined") return ["localhost", "127.0.0.1"].includes(location.hostname);
+  return false;
+})();
+const warnedMissingTeamLabels = new Set();
 let currentValidRows = [];
 let memoryStoredMatches = [];
 let memorySavedSearches = [];
@@ -89,6 +109,7 @@ const FIVE_MAJOR_LEAGUES = ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1"];
 const DEFAULT_DATA_PACK_2019_SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526"];
 const DEFAULT_DATA_PACK_SEASONS = ["2021", "2122", "2223", "2324", "2425", "2526"];
 const LEAGUE_NAME_LABELS = {
+  ...(EXTERNAL_TRANSLATIONS.leagues?.labels || {}),
   "World Cup": "월드컵",
   FIFA: "FIFA",
   World: "세계",
@@ -96,6 +117,7 @@ const LEAGUE_NAME_LABELS = {
   Chile: "칠레"
 };
 const TEAM_NAME_LABELS = {
+  ...(EXTERNAL_TRANSLATIONS.teams?.labels || {}),
   Arsenal: "아스널",
   Chelsea: "첼시",
   Liverpool: "리버풀",
@@ -306,6 +328,22 @@ function normalizeTeamNameForStorage(teamName) {
   const normalizedName = getNormalizedLabelKey(originalName);
   const matchedEntry = Object.entries(TEAM_NAME_LABELS).find(([englishName]) => getNormalizedLabelKey(englishName) === normalizedName);
   return matchedEntry ? matchedEntry[1] : originalName;
+}
+
+function maybeWarnMissingTeamLabel(teamName) {
+  const originalName = String(teamName || "").trim();
+  if (!IS_DEVELOPMENT_MODE || !originalName) return;
+  if (Object.values(TEAM_NAME_LABELS).includes(originalName)) return;
+  if (TEAM_NAME_LABELS[originalName]) return;
+
+  const normalizedName = getNormalizedLabelKey(originalName);
+  const hasMatch = Object.keys(TEAM_NAME_LABELS).some((englishName) => getNormalizedLabelKey(englishName) === normalizedName);
+  if (hasMatch || warnedMissingTeamLabels.has(originalName)) return;
+
+  warnedMissingTeamLabels.add(originalName);
+  if (typeof console !== "undefined" && typeof console.warn === "function") {
+    console.warn(`[OddsArchive] Missing team translation: ${originalName}`);
+  }
 }
 
 function setPendingValidRows(rows) {
@@ -1341,7 +1379,23 @@ function formatMatchResultText(match) {
 
 function formatTeamName(teamName) {
   const originalName = String(teamName || "").trim();
-  return normalizeTeamNameForStorage(originalName);
+  const displayName = normalizeTeamNameForStorage(originalName);
+  if (displayName === originalName) maybeWarnMissingTeamLabel(originalName);
+  return displayName;
+}
+
+function getDisplayLeagueLabel(leagueName) {
+  const originalName = String(leagueName || "").trim();
+  if (!originalName) return "";
+  if (LEAGUE_NAME_LABELS[originalName]) return LEAGUE_NAME_LABELS[originalName];
+
+  const normalizedName = normalizeTeamSearchText(originalName);
+  const matchedEntry = Object.entries(LEAGUE_FILTERS).find(([key, aliases]) => (
+    normalizeTeamSearchText(key) === normalizedName ||
+    aliases.some((alias) => normalizeTeamSearchText(alias) === normalizedName)
+  ));
+
+  return matchedEntry ? (LEAGUE_NAME_LABELS[matchedEntry[0]] || matchedEntry[0]) : originalName;
 }
 
 function formatLeagueName(leagueName) {
@@ -1349,10 +1403,7 @@ function formatLeagueName(leagueName) {
   if (!originalName) return "";
   return originalName
     .split("/")
-    .map((part) => {
-      const label = part.trim();
-      return LEAGUE_NAME_LABELS[label] || label;
-    })
+    .map((part) => getDisplayLeagueLabel(part.trim()))
     .join(" / ");
 }
 
@@ -1366,12 +1417,7 @@ function normalizeLeagueNameForStorage(leagueName) {
   const originalName = String(leagueName || "").trim();
   if (!originalName) return "";
 
-  const matchedLeague = Object.entries(LEAGUE_FILTERS).find(([leagueKey, aliases]) => {
-    if (normalizeTeamSearchText(leagueKey) === normalizeTeamSearchText(originalName)) return true;
-    return aliases.some((alias) => normalizeTeamSearchText(alias) === normalizeTeamSearchText(originalName));
-  });
-
-  return matchedLeague ? matchedLeague[0] : originalName;
+  return originalName;
 }
 
 function filterMatches(matches, filters = {}) {
@@ -1420,12 +1466,19 @@ function matchResultFitsFilter(match, team, result) {
 }
 
 const LEAGUE_FILTERS = {
-  EPL: ["EPL", "E0"],
-  LALIGA: ["LALIGA", "라리가", "SP1"],
-  SERIEA: ["SERIEA", "세리에A", "I1"],
-  BUNDESLIGA: ["BUNDESLIGA", "분데스리가", "D1"],
-  LIGUE1: ["LIGUE1", "리그앙", "F1"],
-  WORLDCUP: ["WORLDCUP", "월드컵", "WORLD CUP", "FIFA WORLD CUP"]
+  EPL: ["EPL", "E0", "Premier League", "English Premier League"],
+  LALIGA: ["LALIGA", "라리가", "SP1", "La Liga", "Primera Division"],
+  SERIEA: ["SERIEA", "세리에A", "I1", "Serie A"],
+  BUNDESLIGA: ["BUNDESLIGA", "분데스리가", "D1", "Bundesliga"],
+  LIGUE1: ["LIGUE1", "리그앙", "F1", "Ligue 1"],
+  WORLDCUP: ["WORLDCUP", "월드컵", "WORLD CUP", "FIFA WORLD CUP"],
+  UCL: ["UCL", "UEFA Champions League", "Champions League", "챔피언스리그"],
+  UEL: ["UEL", "UEFA Europa League", "Europa League", "유로파리그"],
+  KLEAGUE1: ["KLEAGUE1", "K League 1", "K리그1", "K LEAGUE 1"],
+  J1LEAGUE: ["J1LEAGUE", "J1 League", "J리그1", "J. League Division 1", "J-League"],
+  ACL: ["ACL", "AFC Champions League", "AFC Champions League Elite", "AFC 챔피언스리그"],
+  WCQ: ["WCQ", "FIFA World Cup Qualification", "World Cup Qualification", "월드컵 예선"],
+  INTL_FRIENDLIES: ["INTL_FRIENDLIES", "International Friendlies", "Friendlies", "국가대표 친선경기"]
 };
 const FIXTURE_LEAGUE_OPTIONS = [
   { value: "ALL", label: "전체" },
@@ -1434,7 +1487,20 @@ const FIXTURE_LEAGUE_OPTIONS = [
   { value: "SERIEA", label: "세리에A" },
   { value: "BUNDESLIGA", label: "분데스리가" },
   { value: "LIGUE1", label: "리그앙" },
-  { value: "WORLDCUP", label: "월드컵" }
+  { value: "WORLDCUP", label: "월드컵" },
+  { value: "UCL", label: "챔피언스리그" },
+  { value: "UEL", label: "유로파리그" },
+  { value: "KLEAGUE1", label: "K리그1" },
+  { value: "J1LEAGUE", label: "J리그1" },
+  { value: "ACL", label: "AFC 챔피언스리그" },
+  { value: "WCQ", label: "월드컵 예선" },
+  { value: "INTL_FRIENDLIES", label: "국가대표 친선경기" }
+];
+const LEAGUE_CATEGORY_GROUPS = EXTERNAL_TRANSLATIONS.leagues?.categories || [
+  { label: "인기", values: ["EPL", "UCL", "KLEAGUE1", "J1LEAGUE"] },
+  { label: "유럽", values: ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"] },
+  { label: "아시아", values: ["KLEAGUE1", "J1LEAGUE", "ACL"] },
+  { label: "국가대항", values: ["WORLDCUP", "WCQ", "INTL_FRIENDLIES"] }
 ];
 
 function leagueMatchesFixture(matchLeague, selectedLeague) {
@@ -1461,18 +1527,55 @@ function getFixtureLeagueOptions(matches = []) {
   ];
 }
 
+function createLeagueOptionElements(options, { allLabel = "전체", categorized = true } = {}) {
+  const optionByValue = new Map(options.map((option) => [option.value, option]));
+  const elements = [];
+  const allOption = document.createElement("option");
+  allOption.value = "ALL";
+  allOption.textContent = allLabel;
+  elements.push(allOption);
+
+  if (categorized) {
+    LEAGUE_CATEGORY_GROUPS.forEach((group) => {
+      const groupValues = group.values || group.leagues || [];
+      const optgroup = document.createElement("optgroup");
+      optgroup.label = group.label;
+      groupValues.forEach((value) => {
+        const option = optionByValue.get(value);
+        if (!option || option.value === "ALL") return;
+        const element = document.createElement("option");
+        element.value = option.value;
+        element.textContent = option.label;
+        optgroup.appendChild(element);
+      });
+      if (optgroup.children.length > 0) elements.push(optgroup);
+    });
+  }
+
+  const categorizedValues = new Set(LEAGUE_CATEGORY_GROUPS.flatMap((group) => group.values || group.leagues || []));
+  const extraOptions = options.filter((option) => option.value !== "ALL" && (!categorized || !categorizedValues.has(option.value)));
+  if (extraOptions.length > 0) {
+    const optgroup = document.createElement("optgroup");
+    optgroup.label = "기타";
+    extraOptions.forEach((option) => {
+      const element = document.createElement("option");
+      element.value = option.value;
+      element.textContent = formatLeagueName(option.label);
+      optgroup.appendChild(element);
+    });
+    elements.push(optgroup);
+  }
+
+  return elements;
+}
+
 function updateFixtureLeagueOptions(matches = getSearchableMatches()) {
   const select = document.getElementById("fixture-league");
   if (!select) return;
 
   const currentValue = select.value || "ALL";
   const options = getFixtureLeagueOptions(matches);
-  const optionElements = options.map((option) => {
-    const element = document.createElement("option");
-    element.value = option.value;
-    element.textContent = option.label;
-    return element;
-  });
+  const optionElements = createLeagueOptionElements(options, { allLabel: "전체 경기" });
 
   select.replaceChildren(...optionElements);
   select.value = options.some((option) => option.value === currentValue) ? currentValue : "ALL";
@@ -1484,12 +1587,19 @@ function updateOddsLeagueOptions(matches = getSearchableMatches()) {
 
   const currentValue = select.value || "ALL";
   const options = getFixtureLeagueOptions(matches);
-  const optionElements = options.map((option) => {
-    const element = document.createElement("option");
-    element.value = option.value;
-    element.textContent = option.label;
-    return element;
-  });
+  const optionElements = createLeagueOptionElements(options, { allLabel: "전체 리그" });
+
+  select.replaceChildren(...optionElements);
+  select.value = options.some((option) => option.value === currentValue) ? currentValue : "ALL";
+}
+
+function updateLiveOddsLeagueOptions(matches = getSearchableMatches()) {
+  const select = document.getElementById("live-odds-league");
+  if (!select) return;
+
+  const currentValue = select.value || "ALL";
+  const options = getFixtureLeagueOptions(matches);
+  const optionElements = createLeagueOptionElements(options, { allLabel: "전체 경기" });
 
   select.replaceChildren(...optionElements);
   select.value = options.some((option) => option.value === currentValue) ? currentValue : "ALL";
@@ -2106,8 +2216,7 @@ function getCurrentTimestamp() {
 }
 
 function getLeagueLabel(league) {
-  if (league === "WORLDCUP") return "월드컵";
-  return DEFAULT_DATA_PACK_LEAGUES[league]?.label || league;
+  return DEFAULT_DATA_PACK_LEAGUES[league]?.label || formatLeagueName(league);
 }
 
 function getAutoUpdateSummary(storage) {
@@ -3271,6 +3380,7 @@ function setLiveOddsStatus(message) {
 function initializeLiveOddsControls() {
   const dateInput = document.getElementById("live-odds-date");
   if (dateInput && !dateInput.value) dateInput.value = getTodayKey();
+  updateLiveOddsLeagueOptions();
   renderTodayCenter();
 }
 
@@ -4898,6 +5008,7 @@ if (typeof module !== "undefined") {
     filterMatches,
     formatRate,
     formatOdds,
+    formatLeagueName,
     formatMatchResultText,
     formatResultLabel,
     formatTeamName,
@@ -4920,6 +5031,7 @@ if (typeof module !== "undefined") {
     getOddsRiskSignals,
     getRecentSeasonMatches,
     getFixtureLeagueOptions,
+    leagueMatchesFixture,
     getMatchLeagueOptions,
     getMatchTeamOptions,
     getAutoUpdateState,

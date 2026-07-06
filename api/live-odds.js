@@ -6,8 +6,16 @@ const LEAGUE_IDS = {
   SERIEA: 135,
   BUNDESLIGA: 78,
   LIGUE1: 61,
-  WORLDCUP: 1
+  WORLDCUP: 1,
+  UCL: 2,
+  UEL: 3,
+  KLEAGUE1: 292,
+  J1LEAGUE: 98,
+  ACL: 17,
+  WCQ: [29, 30, 31, 32, 33, 34],
+  INTL_FRIENDLIES: 10
 };
+const CALENDAR_YEAR_LEAGUES = new Set(["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]);
 
 function sendJson(response, statusCode, body) {
   response.statusCode = statusCode;
@@ -20,7 +28,7 @@ function getSeason(dateText, leagueKey = "") {
   const date = new Date(`${dateText}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return String(new Date().getUTCFullYear());
   const year = date.getUTCFullYear();
-  if (leagueKey === "WORLDCUP") return String(year);
+  if (CALENDAR_YEAR_LEAGUES.has(leagueKey)) return String(year);
   const month = date.getUTCMonth() + 1;
   return String(month < 7 ? year - 1 : year);
 }
@@ -108,8 +116,12 @@ function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function loadLeagueOdds({ date, leagueKey, apiKey }) {
-  const leagueId = LEAGUE_IDS[leagueKey];
+function getLeagueIds(leagueKey) {
+  const value = LEAGUE_IDS[leagueKey];
+  return Array.isArray(value) ? value : [value];
+}
+
+async function loadLeagueOdds({ date, leagueKey, leagueId, apiKey }) {
   const season = getSeason(date, leagueKey);
   const path = `/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1`;
   const payload = await fetchApiFootball(path, apiKey);
@@ -125,8 +137,7 @@ async function loadFixtureOdds({ fixtureId, leagueKey, date, apiKey }) {
   return rows.map((item) => normalizeOddsItem(item, leagueKey, date));
 }
 
-async function loadLeagueFixtures({ date, leagueKey, apiKey }) {
-  const leagueId = LEAGUE_IDS[leagueKey];
+async function loadLeagueFixtures({ date, leagueKey, leagueId, apiKey }) {
   const season = getSeason(date, leagueKey);
   const path = `/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`;
   const payload = await fetchApiFootball(path, apiKey);
@@ -185,10 +196,17 @@ function mergeFixturesWithOdds(fixtures, odds) {
 }
 
 async function loadLeagueMatches({ date, leagueKey, apiKey }) {
-  const [fixtures, odds] = await Promise.all([
-    loadLeagueFixtures({ date, leagueKey, apiKey }),
-    loadLeagueOdds({ date, leagueKey, apiKey })
-  ]);
+  const leagueIds = getLeagueIds(leagueKey).filter(Boolean);
+  const results = await Promise.all(leagueIds.map(async (leagueId) => {
+    const [fixtures, odds] = await Promise.all([
+      loadLeagueFixtures({ date, leagueKey, leagueId, apiKey }),
+      loadLeagueOdds({ date, leagueKey, leagueId, apiKey })
+    ]);
+    return { fixtures, odds };
+  }));
+  const fixtures = results.flatMap((result) => result.fixtures);
+  const odds = results.flatMap((result) => result.odds);
+
   return {
     matches: mergeFixturesWithOdds(fixtures, odds),
     fixtureCount: fixtures.length,

@@ -34,6 +34,32 @@ test("builds direct odds search criteria from a live match with odds", () => {
   });
 });
 
+test("formats expanded league and team names for Korean users", () => {
+  assert.strictEqual(app.formatLeagueName("UEFA Champions League"), "챔피언스리그");
+  assert.strictEqual(app.formatLeagueName("KLEAGUE1"), "K리그1");
+  assert.strictEqual(app.formatLeagueName("E0"), "EPL");
+  assert.strictEqual(app.formatTeamName("FC Seoul"), "FC서울");
+  assert.strictEqual(app.formatTeamName("Unknown FC"), "Unknown FC");
+});
+
+test("matches expanded league aliases for fixture filters", () => {
+  assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
+  assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
+  assert.strictEqual(app.leagueMatchesFixture("International Friendlies", "INTL_FRIENDLIES"), true);
+  assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "KLEAGUE1"), false);
+});
+
+test("includes Korean priority leagues in fixture league options", () => {
+  const values = app.getFixtureLeagueOptions().map((option) => option.value);
+  assert(values.includes("UCL"));
+  assert(values.includes("UEL"));
+  assert(values.includes("KLEAGUE1"));
+  assert(values.includes("J1LEAGUE"));
+  assert(values.includes("ACL"));
+  assert(values.includes("WCQ"));
+  assert(values.includes("INTL_FRIENDLIES"));
+});
+
 test("builds direct odds search criteria from a live match without odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
     league: "WORLDCUP",

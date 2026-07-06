@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v31-example-odds";
+const CACHE_NAME = "oddsarchive-v32-league-expansion";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -6,6 +6,8 @@ const CORE_ASSETS = [
   "/app.js",
   "/assets/app-icon.svg",
   "/data/football-data-pack.js",
+  "/src/lib/translations/leagues.js",
+  "/src/lib/translations/teams.js",
   "/manifest.webmanifest"
 ];
 
