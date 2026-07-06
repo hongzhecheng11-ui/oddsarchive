@@ -80,6 +80,81 @@ test("filters today's major matches to supported leagues only", () => {
   assert.strictEqual(app.isMajorTodayMatch({ league: "EPL / Mongolia" }), false);
 });
 
+test("builds API history chunks and preserves API source on saved matches", () => {
+  const chunks = app.getApiHistoryChunks({ endDate: "2026-07-06", totalDays: 30, chunkDays: 7 });
+  assert.strictEqual(chunks.length, 5);
+  assert.deepStrictEqual(chunks[0], { endDate: "2026-07-06", days: 7 });
+  assert.strictEqual(app.getApiHistoryCacheKey({ league: "EPL", endDate: chunks[0].endDate, days: chunks[0].days }), "EPL:2026-07-06:7");
+
+  const storage = new Map();
+  const fakeStorage = {
+    getItem: (key) => storage.get(key) || null,
+    setItem: (key, value) => storage.set(key, value),
+    removeItem: (key) => storage.delete(key)
+  };
+  const result = app.saveMatches([
+    { date: "2026-07-01", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", result: "H", score: "2-0", source: "API 과거 배당" }
+  ], fakeStorage);
+
+  assert.strictEqual(result.matches[0].source, "API 과거 배당");
+});
+
+test("includes bundled API odds pack rows in base searchable matches", () => {
+  const previousPack = globalThis.ODDS_ARCHIVE_API_ODDS_PACK;
+  globalThis.ODDS_ARCHIVE_API_ODDS_PACK = {
+    version: "test-api-pack",
+    updatedAt: "2026-07-06T00:00:00.000Z",
+    matches: [
+      {
+        date: "2026-07-01",
+        league: "FIFA World Cup",
+        homeTeam: "Mexico",
+        awayTeam: "Ecuador",
+        homeOdds: "2.20",
+        drawOdds: "2.78",
+        awayOdds: "3.90",
+        result: "A",
+        score: "0-1"
+      }
+    ]
+  };
+
+  try {
+    const matches = app.getBaseMatches();
+    const apiMatch = matches.find((match) => (
+      match.date === "2026-07-01"
+      && match.league === "FIFA World Cup"
+      && match.homeTeam === app.translateTeamName("Mexico")
+      && match.awayTeam === app.translateTeamName("Ecuador")
+    ));
+
+    assert(apiMatch);
+    assert.strictEqual(apiMatch.source, "API 과거 배당");
+    assert.strictEqual(apiMatch.homeOdds, 2.2);
+  } finally {
+    if (previousPack) {
+      globalThis.ODDS_ARCHIVE_API_ODDS_PACK = previousPack;
+    } else {
+      delete globalThis.ODDS_ARCHIVE_API_ODDS_PACK;
+    }
+  }
+});
+
+test("summarizes odds result data sources for search trust", () => {
+  const summary = app.getOddsResultSourceSummary([
+    { source: "API 과거 배당" },
+    { source: "API 과거 배당" },
+    { source: "CSV" },
+    {}
+  ]);
+
+  assert.deepStrictEqual(summary, {
+    total: 4,
+    labels: ["API 과거 2", "CSV 1", "기본 데이터 1"],
+    text: "검색 기준 데이터: API 과거 2 · CSV 1 · 기본 데이터 1"
+  });
+});
+
 test("includes Korean priority leagues in fixture league options", () => {
   const values = app.getFixtureLeagueOptions().map((option) => option.value);
   assert(values.includes("UCL"));

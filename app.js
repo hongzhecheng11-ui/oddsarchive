@@ -16,6 +16,7 @@ const SEARCH_HISTORY_KEY = "oddsArchiveSearchHistory";
 const AUTO_UPDATE_KEY = "oddsArchiveAutoUpdate";
 const LOCAL_ACCOUNT_KEY = "oddsArchiveLocalAccount";
 const TODAY_MATCHES_KEY = "oddsArchiveTodayMatches";
+const API_HISTORY_CACHE_KEY = "oddsArchiveApiHistoryCache";
 const MATCH_TABLE_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
@@ -102,6 +103,7 @@ let memorySearchHistory = [];
 let memoryAutoUpdateState = null;
 let memoryLocalAccount = null;
 let memoryTodayMatches = [];
+let memoryApiHistoryCache = {};
 let currentOddsSearchResults = [];
 let visibleOddsSearchCount = RESULT_PAGE_SIZE;
 let currentTeamMatchResults = [];
@@ -789,14 +791,18 @@ function validateCsvRow(row) {
 }
 
 function getDuplicateKey(row) {
+  const formatKeyOdds = (value) => {
+    const parsed = parseSearchNumber(value);
+    return parsed === null ? "" : parsed.toFixed(2);
+  };
   return [
     row.date,
     row.league,
     row.homeTeam,
     row.awayTeam,
-    row.homeOdds.toFixed(2),
-    row.drawOdds.toFixed(2),
-    row.awayOdds.toFixed(2)
+    formatKeyOdds(row.homeOdds),
+    formatKeyOdds(row.drawOdds),
+    formatKeyOdds(row.awayOdds)
   ].join("|");
 }
 
@@ -901,7 +907,8 @@ function saveMatches(rows, storage) {
       drawOdds: row.drawOdds,
       awayOdds: row.awayOdds,
       result: row.result,
-      score: row.score
+      score: row.score,
+      source: row.source || ""
     };
     const duplicateKey = getDuplicateKey(normalizedRow);
 
@@ -922,6 +929,47 @@ function saveMatches(rows, storage) {
     duplicateCount,
     matches: storedRows
   };
+}
+
+function getApiHistoryCache(storage) {
+  const targetStorage = getStorageTarget(storage);
+  updateStorageModeStatus(!targetStorage);
+
+  if (!targetStorage) return { ...memoryApiHistoryCache };
+
+  try {
+    const storedValue = targetStorage.getItem(API_HISTORY_CACHE_KEY);
+    if (!storedValue) return {};
+    const parsed = JSON.parse(storedValue);
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch (_error) {
+    updateStorageModeStatus(true);
+    return { ...memoryApiHistoryCache };
+  }
+}
+
+function setApiHistoryCache(cache, storage) {
+  const safeCache = cache && typeof cache === "object" && !Array.isArray(cache) ? cache : {};
+  const targetStorage = getStorageTarget(storage);
+  updateStorageModeStatus(!targetStorage);
+
+  if (!targetStorage) {
+    memoryApiHistoryCache = { ...safeCache };
+    return { ...memoryApiHistoryCache };
+  }
+
+  try {
+    targetStorage.setItem(API_HISTORY_CACHE_KEY, JSON.stringify(safeCache));
+    return safeCache;
+  } catch (_error) {
+    memoryApiHistoryCache = { ...safeCache };
+    updateStorageModeStatus(true);
+    return { ...memoryApiHistoryCache };
+  }
+}
+
+function getApiHistoryCacheKey({ league, endDate, days }) {
+  return [String(league || "EPL").toUpperCase(), String(endDate || "").slice(0, 10), String(days || 7)].join(":");
 }
 
 function clearStoredMatches(storage) {
@@ -1465,6 +1513,38 @@ function formatResultLabel(result) {
 function formatMatchResultText(match) {
   const score = String(match?.score || "").trim();
   return `경기결과: ${formatResultLabel(match?.result)}${score ? ` ${score}` : ""}`;
+}
+
+function formatDataSourceLabel(match = {}) {
+  const source = String(match.source || "").trim();
+  if (!source) return "기본 데이터";
+  if (source.includes("API")) return source.includes("과거") ? "API 과거" : "API";
+  if (source.includes("CSV")) return "CSV";
+  return source;
+}
+
+function getOddsResultSourceSummary(matches = []) {
+  const counts = new Map();
+  for (const match of Array.isArray(matches) ? matches : []) {
+    const label = formatDataSourceLabel(match);
+    counts.set(label, (counts.get(label) || 0) + 1);
+  }
+
+  const priority = ["API 과거", "API", "CSV", "기본 데이터"];
+  const labels = Array.from(counts.entries())
+    .sort(([labelA], [labelB]) => {
+      const indexA = priority.includes(labelA) ? priority.indexOf(labelA) : priority.length;
+      const indexB = priority.includes(labelB) ? priority.indexOf(labelB) : priority.length;
+      if (indexA !== indexB) return indexA - indexB;
+      return labelA.localeCompare(labelB);
+    })
+    .map(([label, count]) => `${label} ${count}`);
+
+  return {
+    total: Array.isArray(matches) ? matches.length : 0,
+    labels,
+    text: labels.length > 0 ? `검색 기준 데이터: ${labels.join(" · ")}` : "검색 기준 데이터: 결과 없음"
+  };
 }
 
 function formatTeamName(teamName) {
@@ -2560,6 +2640,27 @@ function getDateOffsetKey(offsetDays = 0, baseDate = new Date()) {
   return getTodayKey(date);
 }
 
+function shiftDateKey(dateText, dayOffset) {
+  const date = new Date(`${String(dateText || getTodayKey()).slice(0, 10)}T00:00:00+09:00`);
+  if (Number.isNaN(date.getTime())) return getTodayKey();
+  date.setDate(date.getDate() + Number(dayOffset || 0));
+  return getTodayKey(date);
+}
+
+function getApiHistoryChunks({ endDate = getTodayKey(), totalDays = 30, chunkDays = 7 } = {}) {
+  const safeTotalDays = Math.max(1, Math.min(Number(totalDays || 30), 60));
+  const safeChunkDays = Math.max(1, Math.min(Number(chunkDays || 7), 14));
+  const chunks = [];
+  for (let offset = 0; offset < safeTotalDays; offset += safeChunkDays) {
+    const days = Math.min(safeChunkDays, safeTotalDays - offset);
+    chunks.push({
+      endDate: shiftDateKey(endDate, -offset),
+      days
+    });
+  }
+  return chunks;
+}
+
 function getNextWeekendKey(baseDate = new Date()) {
   const date = new Date(baseDate);
   const day = date.getDay();
@@ -2657,6 +2758,12 @@ function getBundledFootballDataPack() {
   return {};
 }
 
+function getBundledApiOddsPack() {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_API_ODDS_PACK) return window.ODDS_ARCHIVE_API_ODDS_PACK;
+  if (typeof globalThis !== "undefined" && globalThis.ODDS_ARCHIVE_API_ODDS_PACK) return globalThis.ODDS_ARCHIVE_API_ODDS_PACK;
+  return { matches: [] };
+}
+
 function getBundledTotoRoundPack() {
   if (typeof window !== "undefined" && window.TOTO_ROUND_PACK) return window.TOTO_ROUND_PACK;
   if (typeof globalThis !== "undefined" && globalThis.TOTO_ROUND_PACK) return globalThis.TOTO_ROUND_PACK;
@@ -2722,6 +2829,32 @@ function getDefaultPackRows() {
   return cachedDefaultPackRows;
 }
 
+function normalizeApiOddsPackMatch(match = {}) {
+  const source = match.source || "API 과거 배당";
+  const normalized = {
+    date: String(match.date || match.fixtureDate || "").slice(0, 10),
+    league: normalizeLeagueNameForStorage(match.league || match.leagueKey || ""),
+    homeTeam: normalizeTeamNameForStorage(match.homeTeam || match.home_team || match.home || ""),
+    awayTeam: normalizeTeamNameForStorage(match.awayTeam || match.away_team || match.away || ""),
+    homeOdds: String(match.homeOdds ?? match.home_odd ?? match.homeOdd ?? "").trim(),
+    drawOdds: String(match.drawOdds ?? match.draw_odd ?? match.drawOdd ?? "").trim(),
+    awayOdds: String(match.awayOdds ?? match.away_odd ?? match.awayOdd ?? "").trim(),
+    result: String(match.result || "UNKNOWN").trim().toUpperCase(),
+    score: String(match.score || "").trim(),
+    source
+  };
+
+  const validation = validateCsvRow(normalized);
+  return validation.messages.length === 0 ? { ...validation.row, source } : null;
+}
+
+function getApiOddsPackRows(pack = getBundledApiOddsPack()) {
+  const matches = Array.isArray(pack?.matches) ? pack.matches : [];
+  return matches
+    .map(normalizeApiOddsPackMatch)
+    .filter(Boolean);
+}
+
 function getUniqueMatches(matches) {
   const seenKeys = new Set();
   const uniqueMatches = [];
@@ -2737,7 +2870,7 @@ function getUniqueMatches(matches) {
 }
 
 function getBaseMatches() {
-  return getDefaultPackRows();
+  return getUniqueMatches([...getDefaultPackRows(), ...getApiOddsPackRows()]);
 }
 
 function buildDefaultDataFailureMessage({ url = "", status = "", reason = "", responsePreview = "" } = {}) {
@@ -3242,11 +3375,15 @@ function createSearchResultCard(match) {
   const meta = document.createElement("span");
   meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
 
+  const sourceBadge = document.createElement("small");
+  sourceBadge.className = "source-badge";
+  sourceBadge.textContent = formatDataSourceLabel(match);
+
   const resultPill = document.createElement("strong");
   resultPill.className = "result-pill";
   resultPill.textContent = formatResultLabel(match.result);
 
-  header.append(meta, resultPill);
+  header.append(meta, sourceBadge, resultPill);
 
   const title = document.createElement("strong");
   title.className = "result-match-title";
@@ -3575,6 +3712,9 @@ function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
 
   const memo = document.getElementById("breakdown-memo");
   if (memo) memo.textContent = getResultBreakdownMemo(breakdown);
+
+  const sourceSummary = document.getElementById("odds-source-summary");
+  if (sourceSummary) sourceSummary.textContent = getOddsResultSourceSummary(matches).text;
 
   const verdict = document.getElementById("odds-verdict");
   renderMatchJudgementSummary(verdict, judgement);
@@ -4173,21 +4313,44 @@ async function loadApiHistoryForSearch() {
   const button = document.getElementById("load-api-history");
   const criteria = getOddsSearchCriteria();
   const targetLeague = criteria.league && criteria.league !== "ALL" ? getLeagueLabel(criteria.league) : "EPL";
+  const targetLeagueKey = criteria.league && criteria.league !== "ALL" ? criteria.league : "EPL";
+  const chunks = getApiHistoryChunks({ endDate: getTodayKey(), totalDays: 30, chunkDays: 7 });
+  const cache = getApiHistoryCache();
+  const pendingChunks = chunks.filter((chunk) => !cache[getApiHistoryCacheKey({ league: targetLeagueKey, endDate: chunk.endDate, days: chunk.days })]);
   if (button) button.disabled = true;
-  setOddsSearchStatus(`최근 API 배당을 추가하는 중입니다. 범위: 최근 7일 · ${targetLeague}`);
+  if (pendingChunks.length === 0) {
+    setOddsSearchStatus(`최근 30일 ${targetLeague} API 배당은 이미 확인했습니다. 다른 리그를 선택하거나 나중에 다시 시도하세요.`);
+    return { error: "", matches: [], skipped: true };
+  }
+  setOddsSearchStatus(`최근 30일 API 배당을 추가하는 중입니다. 범위: ${targetLeague} · ${pendingChunks.length}개 구간`);
 
   try {
-    const result = await fetchApiHistoryOdds({ league: criteria.league, days: 7 });
-    if (result.error) {
-      setOddsSearchStatus(`${result.error} 최근 API 배당 추가에 실패했습니다.`);
-      return result;
+    const allMatches = [];
+    const errors = [];
+    let checkedMatches = 0;
+    for (let index = 0; index < pendingChunks.length; index += 1) {
+      const chunk = pendingChunks[index];
+      setOddsSearchStatus(`최근 30일 API 배당 추가 중: ${targetLeague} ${index + 1}/${pendingChunks.length}구간`);
+      const result = await fetchApiHistoryOdds({ league: targetLeagueKey, date: chunk.endDate, days: chunk.days });
+      const cacheKey = getApiHistoryCacheKey({ league: targetLeagueKey, endDate: chunk.endDate, days: chunk.days });
+      cache[cacheKey] = {
+        checkedAt: getCurrentTimestamp(),
+        matchCount: result.matches?.length || 0,
+        error: result.error || ""
+      };
+      if (result.error) errors.push(result.error);
+      const matches = Array.isArray(result.matches) ? result.matches : [];
+      checkedMatches += matches.length;
+      allMatches.push(...matches.map((match) => ({ ...match, source: "API 과거 배당" })));
     }
+    setApiHistoryCache(cache);
 
-    const completeMatches = result.matches.filter(hasCompleteOdds);
-    const noOddsCount = Math.max(0, result.matches.length - completeMatches.length);
+    const completeMatches = allMatches.filter(hasCompleteOdds);
+    const noOddsCount = Math.max(0, checkedMatches - completeMatches.length);
     if (completeMatches.length === 0) {
-      setOddsSearchStatus(`최근 API 배당에서 추가할 완성 배당이 없습니다. 확인 ${result.matches.length}경기 / 배당 없음 ${noOddsCount}경기`);
-      return result;
+      const errorText = errors.length ? ` / 일부 오류 ${errors.length}건` : "";
+      setOddsSearchStatus(`최근 30일 API 배당에서 추가할 완성 배당이 없습니다. 확인 ${checkedMatches}경기 / 배당 없음 ${noOddsCount}경기${errorText}`);
+      return { error: errors[0] || "", matches: allMatches };
     }
 
     const saveResult = saveMatches(completeMatches);
@@ -4195,12 +4358,13 @@ async function loadApiHistoryForSearch() {
     updateStoredMatchStatus(saveResult.matches);
     updateSearchLeagueStatus(getSearchableMatches());
     renderStoredMatches(getSearchableMatches());
-    setOddsSearchStatus(`최근 API 배당 추가 완료: 새로 저장 ${saveResult.savedCount}경기 / 중복 ${saveResult.duplicateCount || 0}경기 / 배당 없음 ${noOddsCount}경기`);
+    const errorText = errors.length ? ` / 일부 오류 ${errors.length}건` : "";
+    setOddsSearchStatus(`최근 30일 API 배당 추가 완료: 새로 저장 ${saveResult.savedCount}경기 / 중복 ${saveResult.duplicateCount || 0}경기 / 배당 없음 ${noOddsCount}경기${errorText}`);
     runOddsSearchFromCurrentCriteria();
-    return { ...result, savedCount: saveResult.savedCount, duplicateCount: saveResult.duplicateCount };
+    return { error: errors[0] || "", matches: allMatches, savedCount: saveResult.savedCount, duplicateCount: saveResult.duplicateCount };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
-    setOddsSearchStatus(`최근 API 배당 추가 중 문제가 발생했습니다. ${message}`);
+    setOddsSearchStatus(`최근 30일 API 배당 추가 중 문제가 발생했습니다. ${message}`);
     return { error: message, matches: [] };
   } finally {
     if (button) button.disabled = false;
@@ -5738,6 +5902,8 @@ if (typeof module !== "undefined") {
     formatRate,
     formatOdds,
     formatLeagueName,
+    formatDataSourceLabel,
+    getOddsResultSourceSummary,
     translateLeagueName,
     translateTeamName,
     formatMatchResultText,
@@ -5746,7 +5912,9 @@ if (typeof module !== "undefined") {
     formatTableValue,
     fetchLiveOdds,
     getDefaultDataSource,
+    getBundledApiOddsPack,
     getBundledTotoRoundPack,
+    getApiOddsPackRows,
     getCurrentTotoRoundFixtures,
     getDashboardCounts,
     getDuplicateKey,
@@ -5756,6 +5924,7 @@ if (typeof module !== "undefined") {
     getDirectOddsSearchCriteriaFromMatch,
     getInlineOddsRateText,
     getInlineOddsConfidence,
+    getApiHistoryChunks,
     getHomeTodayCardViewModel,
     getMissingTeamNames,
     getMajorTodayMatches,
@@ -5840,6 +6009,7 @@ if (typeof module !== "undefined") {
     setOddsSearchCriteria,
     setOddsSearchStatus,
     getSearchStatusDetails,
+    getApiHistoryCacheKey,
     setPendingValidRows,
     searchWithMatchOdds,
     setSaveButtonState,
