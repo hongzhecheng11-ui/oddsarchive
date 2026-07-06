@@ -4,6 +4,7 @@ const {
   PACK_PATH,
   RECENT_SEASONS,
   buildFootballDataUrl,
+  convertExtraLeagueCsvToSeasonPack,
   isValidFootballDataCsv,
   loadFootballDataPack,
   serializeFootballDataPack
@@ -37,6 +38,19 @@ async function downloadFootballDataCsv({ season, leagueKey, fetcher = fetch }) {
   return csvText;
 }
 
+async function downloadExtraLeagueSeasonPack({ leagueKey, fetcher = fetch }) {
+  const league = FOOTBALL_DATA_LEAGUES[leagueKey];
+  if (!league?.directUrl) throw new Error(`직접 CSV 리그가 아닙니다: ${leagueKey}`);
+
+  const response = await fetcher(league.directUrl);
+  if (!response.ok) throw new Error(`${leagueKey} 다운로드 실패: ${response.status}`);
+
+  const csvText = await response.text();
+  const seasonPack = convertExtraLeagueCsvToSeasonPack(csvText, leagueKey);
+  if (Object.keys(seasonPack).length === 0) throw new Error(`${leagueKey} 변환 가능한 경기 데이터가 없습니다.`);
+  return seasonPack;
+}
+
 async function updateFootballDataPack({
   leagues = Object.keys(FOOTBALL_DATA_LEAGUES),
   seasons = RECENT_SEASONS,
@@ -48,12 +62,34 @@ async function updateFootballDataPack({
   const skipped = [];
 
   for (const leagueKey of leagues) {
-    if (!FOOTBALL_DATA_LEAGUES[leagueKey]) {
+    const league = FOOTBALL_DATA_LEAGUES[leagueKey];
+    if (!league) {
       skipped.push({ leagueKey, reason: "지원하지 않는 football-data 리그" });
       continue;
     }
 
     pack[leagueKey] = pack[leagueKey] || {};
+    if (league.directUrl) {
+      const seasonPack = await downloadExtraLeagueSeasonPack({ leagueKey, fetcher });
+      const targetSeasons = seasons.length > 0 ? seasons : (league.targetSeasons || Object.keys(seasonPack));
+
+      for (const season of targetSeasons) {
+        if (!seasonPack[season]) {
+          skipped.push({ leagueKey, season, reason: "원본 CSV에 시즌 없음" });
+          continue;
+        }
+
+        if (!force && pack[leagueKey][season]) {
+          skipped.push({ leagueKey, season, reason: "이미 보유" });
+          continue;
+        }
+
+        pack[leagueKey][season] = seasonPack[season];
+        changes.push({ leagueKey, season });
+      }
+      continue;
+    }
+
     for (const season of seasons) {
       if (!force && pack[leagueKey][season]) {
         skipped.push({ leagueKey, season, reason: "이미 보유" });
@@ -97,6 +133,7 @@ if (require.main === module) {
 
 module.exports = {
   downloadFootballDataCsv,
+  downloadExtraLeagueSeasonPack,
   getArg,
   hasFlag,
   parseList,

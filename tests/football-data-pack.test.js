@@ -57,3 +57,17 @@ test("parses update target lists without network access", () => {
   assert.deepStrictEqual(updater.parseList("EPL,LALIGA", []), ["EPL", "LALIGA"]);
   assert.deepStrictEqual(updater.parseList("", ["EPL"]), ["EPL"]);
 });
+
+test("converts worldwide football-data CSV into standard season packs", () => {
+  const csv = [
+    "Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,MaxCH,MaxCD,MaxCA,AvgCH,AvgCD,AvgCA,BFECH,BFECD,BFECA,B365CH,B365CD,B36CA",
+    "Japan, J1 League,2025,15/02/2025,05:00,Gamba Osaka,Vissel Kobe,2,3,A,1.90,3.40,4.00,1.94,4,5.5,1.71,3.62,4.55,,,,1.80,3.50,4.20",
+    "Japan, J1 League,2025,16/02/2025,05:00,Sagan Tosu,Cerezo Osaka,0,0,D,3.31,3.48,2.29,3.31,3.48,2.29,3.01,3.23,2.24,,,,,,"
+  ].join("\n");
+
+  const pack = tools.convertExtraLeagueCsvToSeasonPack(csv, "J1LEAGUE");
+
+  assert(pack["2025"].includes("Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A"));
+  assert(pack["2025"].includes("J1LEAGUE,15/02/2025,Gamba Osaka,Vissel Kobe,2,3,A,1.80,3.50,4.20"));
+  assert(pack["2025"].includes("J1LEAGUE,16/02/2025,Sagan Tosu,Cerezo Osaka,0,0,D,3.01,3.23,2.24"));
+});

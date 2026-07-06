@@ -12,7 +12,15 @@ const FOOTBALL_DATA_LEAGUES = {
   LALIGA: { label: "라리가", code: "SP1", source: "football-data.co.uk" },
   SERIEA: { label: "세리에A", code: "I1", source: "football-data.co.uk" },
   BUNDESLIGA: { label: "분데스리가", code: "D1", source: "football-data.co.uk" },
-  LIGUE1: { label: "리그앙", code: "F1", source: "football-data.co.uk" }
+  LIGUE1: { label: "리그앙", code: "F1", source: "football-data.co.uk" },
+  J1LEAGUE: {
+    label: "J리그1",
+    code: "JPN",
+    source: "football-data.co.uk",
+    directUrl: "https://www.football-data.co.uk/new/JPN.csv",
+    targetSeasons: ["2021", "2022", "2023", "2024", "2025"],
+    transform: "extraLeagueCsv"
+  }
 };
 
 const TARGET_LEAGUES = {
@@ -24,7 +32,7 @@ const TARGET_LEAGUES = {
   UCL: { label: "챔피언스리그", category: "유럽", historySource: "API/별도 CSV 필요" },
   UEL: { label: "유로파리그", category: "유럽", historySource: "API/별도 CSV 필요" },
   KLEAGUE1: { label: "K리그1", category: "아시아", historySource: "API/별도 CSV 필요" },
-  J1LEAGUE: { label: "J리그1", category: "아시아", historySource: "API/별도 CSV 필요" },
+  J1LEAGUE: { label: "J리그1", category: "아시아", historySource: "football-data.co.uk" },
   ACL: { label: "AFC 챔피언스리그", category: "아시아", historySource: "API/별도 CSV 필요" },
   WORLDCUP: { label: "월드컵", category: "국가대항", historySource: "API/별도 CSV 필요" },
   WCQ: { label: "월드컵 예선", category: "국가대항", historySource: "API/별도 CSV 필요" },
@@ -47,6 +55,99 @@ function countCsvMatches(csvText = "") {
     .length;
 }
 
+function parseCsvLine(line = "") {
+  const values = [];
+  let current = "";
+  let quoted = false;
+
+  for (let index = 0; index < String(line).length; index += 1) {
+    const char = line[index];
+    const next = line[index + 1];
+
+    if (char === '"' && quoted && next === '"') {
+      current += '"';
+      index += 1;
+    } else if (char === '"') {
+      quoted = !quoted;
+    } else if (char === "," && !quoted) {
+      values.push(current);
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+
+  values.push(current);
+  return values.map((value) => value.trim().replace(/^\uFEFF/, ""));
+}
+
+function toCsvValue(value = "") {
+  const text = String(value ?? "");
+  return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function normalizeExtraLeagueDate(value = "") {
+  const text = String(value || "").trim();
+  const match = text.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!match) return text;
+  return `${match[1].padStart(2, "0")}/${match[2].padStart(2, "0")}/${match[3]}`;
+}
+
+function pickFirstValue(values, indexes, names) {
+  for (const name of names) {
+    const index = indexes[name.toLowerCase()];
+    const value = index === undefined ? "" : String(values[index] || "").trim();
+    if (value) return value;
+  }
+  return "";
+}
+
+function convertExtraLeagueCsvToSeasonPack(csvText = "", leagueKey = "") {
+  const lines = String(csvText || "")
+    .replace(/^\uFEFF/, "")
+    .split(/\r?\n/)
+    .filter((line) => line.trim());
+  const [headerLine, ...dataLines] = lines;
+  const header = parseCsvLine(headerLine || "");
+  const indexes = header.reduce((result, value, index) => {
+    result[String(value || "").trim().toLowerCase()] = index;
+    return result;
+  }, {});
+
+  const seasonRows = {};
+  for (const line of dataLines) {
+    const values = parseCsvLine(line);
+    const season = pickFirstValue(values, indexes, ["Season"]);
+    const homeTeam = pickFirstValue(values, indexes, ["Home", "HomeTeam"]);
+    const awayTeam = pickFirstValue(values, indexes, ["Away", "AwayTeam"]);
+    const date = normalizeExtraLeagueDate(pickFirstValue(values, indexes, ["Date"]));
+    const homeOdds = pickFirstValue(values, indexes, ["B365CH", "AvgCH", "MaxCH", "PSCH"]);
+    const drawOdds = pickFirstValue(values, indexes, ["B365CD", "AvgCD", "MaxCD", "PSCD"]);
+    const awayOdds = pickFirstValue(values, indexes, ["B36CA", "B365CA", "AvgCA", "MaxCA", "PSCA"]);
+    const row = [
+      leagueKey,
+      date,
+      homeTeam,
+      awayTeam,
+      pickFirstValue(values, indexes, ["HG", "FTHG"]),
+      pickFirstValue(values, indexes, ["AG", "FTAG"]),
+      pickFirstValue(values, indexes, ["Res", "FTR"]) || "UNKNOWN",
+      homeOdds,
+      drawOdds,
+      awayOdds
+    ];
+
+    if (!season || !date || !homeTeam || !awayTeam || !homeOdds || !drawOdds || !awayOdds) continue;
+    seasonRows[season] = seasonRows[season] || [];
+    seasonRows[season].push(row.map(toCsvValue).join(","));
+  }
+
+  return Object.fromEntries(Object.entries(seasonRows).map(([season, rows]) => [
+    season,
+    ["Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A", ...rows].join("\n")
+  ]));
+}
+
 function summarizePack(pack = {}) {
   return Object.fromEntries(Object.entries(pack).map(([league, seasons]) => [
     league,
@@ -60,9 +161,10 @@ function summarizePack(pack = {}) {
 function getTargetCoverage(pack = {}, targetSeasons = RECENT_SEASONS) {
   const summary = summarizePack(pack);
   return Object.entries(TARGET_LEAGUES).map(([key, meta]) => {
+    const leagueTargetSeasons = FOOTBALL_DATA_LEAGUES[key]?.targetSeasons || targetSeasons;
     const seasonCounts = summary[key] || {};
-    const coveredSeasons = targetSeasons.filter((season) => Number(seasonCounts[season]) > 0);
-    const missingSeasons = targetSeasons.filter((season) => !coveredSeasons.includes(season));
+    const coveredSeasons = leagueTargetSeasons.filter((season) => Number(seasonCounts[season]) > 0);
+    const missingSeasons = leagueTargetSeasons.filter((season) => !coveredSeasons.includes(season));
     const totalMatches = Object.values(seasonCounts).reduce((sum, count) => sum + (Number(count) || 0), 0);
 
     return {
@@ -98,6 +200,7 @@ module.exports = {
   RECENT_SEASONS,
   TARGET_LEAGUES,
   buildFootballDataUrl,
+  convertExtraLeagueCsvToSeasonPack,
   countCsvMatches,
   getTargetCoverage,
   isValidFootballDataCsv,
