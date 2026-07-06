@@ -1342,6 +1342,100 @@ tbody tr:last-child td {
   font-size: 12px;
 }
 
+.home-today-panel {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.home-today-heading,
+.home-today-card-top,
+.home-today-card-footer,
+.home-today-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.home-today-heading div {
+  display: grid;
+  gap: 2px;
+}
+
+.home-today-heading strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.home-today-heading span,
+.home-today-card-top,
+.home-today-card-footer small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.home-today-heading button,
+.home-today-footer button,
+.home-today-card-footer button {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 11px;
+  border-radius: 7px;
+}
+
+.home-today-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.home-today-card {
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  border: 1px solid #dce6ef;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.home-today-card.has-odds {
+  border-color: rgba(22, 115, 93, 0.3);
+  background: #f0fdfa;
+}
+
+.home-today-card strong {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.home-today-odds {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.home-today-odds.ready {
+  color: #0f766e;
+}
+
+.home-today-footer {
+  justify-content: center;
+}
+
+.home-today-footer button {
+  width: 100%;
+  background: #eef7f4;
+  color: var(--accent-strong);
+}
+
 .today-center-summary,
 .today-card-stats,
 .today-summary-grid {
@@ -2356,6 +2450,33 @@ select {
 }
 
 @media (max-width: 860px) {
+  .home-today-list {
+    grid-template-columns: 1fr;
+  }
+
+  .home-today-panel {
+    padding: 8px;
+  }
+
+  .home-today-card {
+    gap: 4px;
+    padding: 7px;
+  }
+
+  .home-today-heading strong {
+    font-size: 14px;
+  }
+
+  .home-today-card strong {
+    font-size: 11px;
+  }
+
+  .home-today-odds,
+  .home-today-card-top,
+  .home-today-card-footer small {
+    font-size: 10px;
+  }
+
   .app-header {
     align-items: flex-start;
     flex-direction: column;

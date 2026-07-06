@@ -21,6 +21,60 @@ const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
 const STORED_MATCH_RENDER_LIMIT = 100;
 const LIVE_ODDS_ENDPOINT = "/api/live-odds";
+const HOME_TODAY_MATCH_LIMIT = 8;
+const HOME_TODAY_LEAGUE_PRIORITY = [
+  "EPL",
+  "LALIGA",
+  "SERIEA",
+  "BUNDESLIGA",
+  "LIGUE1",
+  "UCL",
+  "UEL",
+  "KLEAGUE1",
+  "J1LEAGUE",
+  "ACL",
+  "WORLDCUP",
+  "WCQ",
+  "INTL_FRIENDLIES"
+];
+const HOME_TODAY_STRONG_TEAM_HINTS = [
+  "arsenal",
+  "chelsea",
+  "liverpool",
+  "tottenham",
+  "manchester",
+  "city",
+  "united",
+  "real madrid",
+  "barcelona",
+  "atletico",
+  "bayern",
+  "dortmund",
+  "psg",
+  "paris",
+  "inter",
+  "milan",
+  "juventus",
+  "napoli",
+  "leverkusen",
+  "seoul",
+  "ulsan",
+  "jeonbuk",
+  "pohang",
+  "yokohama",
+  "kawasaki",
+  "urawa",
+  "kashima",
+  "japan",
+  "korea",
+  "england",
+  "france",
+  "spain",
+  "brazil",
+  "argentina",
+  "germany",
+  "mexico"
+];
 const EXTERNAL_TRANSLATIONS = (() => {
   if (typeof window !== "undefined" && window.ODDS_ARCHIVE_TRANSLATIONS) return window.ODDS_ARCHIVE_TRANSLATIONS;
   if (typeof require !== "undefined") {
@@ -52,6 +106,8 @@ let currentOddsSearchResults = [];
 let visibleOddsSearchCount = RESULT_PAGE_SIZE;
 let currentTeamMatchResults = [];
 let visibleTeamMatchCount = RESULT_PAGE_SIZE;
+let homeTodayMatches = [];
+let homeTodayLastUpdatedAt = "";
 let cachedDefaultPackRows = null;
 
 const CSV_HEADER_ALIASES = {
@@ -941,6 +997,8 @@ function saveTodayMatch(match, storage) {
     league: match.league || "EPL",
     homeTeam: String(match.homeTeam || "").trim(),
     awayTeam: String(match.awayTeam || "").trim(),
+    startTime: String(match.startTime || match.kickoff || match.time || "").trim(),
+    status: String(match.status || match.fixtureStatus || match.statusShort || "").trim(),
     homeOdds: String(match.homeOdds || "").trim(),
     drawOdds: String(match.drawOdds || "").trim(),
     awayOdds: String(match.awayOdds || "").trim(),
@@ -978,6 +1036,8 @@ function mergeTodayMatches(matches, storage) {
       league: match.league || "EPL",
       homeTeam: String(match.homeTeam || "").trim(),
       awayTeam: String(match.awayTeam || "").trim(),
+      startTime: String(match.startTime || match.kickoff || match.time || "").trim(),
+      status: String(match.status || match.fixtureStatus || match.statusShort || "").trim(),
       homeOdds: String(match.homeOdds || "").trim(),
       drawOdds: String(match.drawOdds || "").trim(),
       awayOdds: String(match.awayOdds || "").trim(),
@@ -2186,7 +2246,16 @@ function setAutoUpdateStatus(message) {
 
 function getTodayKey(date = new Date()) {
   if (typeof date === "string") return date.slice(0, 10);
-  return date.toISOString().slice(0, 10);
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  }).formatToParts(date).reduce((values, part) => {
+    if (part.type !== "literal") values[part.type] = part.value;
+    return values;
+  }, {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
 }
 
 function getDateOffsetKey(offsetDays = 0, baseDate = new Date()) {
@@ -3174,6 +3243,188 @@ function hasCompleteOdds(match = {}) {
   return ["homeOdds", "drawOdds", "awayOdds"].every((field) => parseSearchNumber(match[field]) !== null);
 }
 
+function getMatchLeaguePriority(match = {}) {
+  const index = HOME_TODAY_LEAGUE_PRIORITY.findIndex((leagueKey) => leagueMatchesFixture(match.league, leagueKey));
+  return index === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : index;
+}
+
+function getMatchStartTimestamp(match = {}) {
+  const dateText = String(match.date || getTodayKey()).slice(0, 10);
+  const timeText = String(match.startTime || match.kickoff || match.time || "").trim();
+  const isoText = timeText
+    ? `${dateText}T${timeText.length === 5 ? `${timeText}:00` : timeText}+09:00`
+    : `${dateText}T23:59:59+09:00`;
+  const timestamp = Date.parse(isoText);
+  return Number.isFinite(timestamp) ? timestamp : Number.MAX_SAFE_INTEGER;
+}
+
+function hasStrongTeamHint(match = {}) {
+  const text = normalizeTeamSearchText([
+    match.homeTeam,
+    match.awayTeam,
+    formatTeamName(match.homeTeam),
+    formatTeamName(match.awayTeam)
+  ].filter(Boolean).join(" "));
+  return HOME_TODAY_STRONG_TEAM_HINTS.some((hint) => text.includes(normalizeTeamSearchText(hint)));
+}
+
+function sortHomeTodayMatches(matches = []) {
+  return [...matches].sort((left, right) => {
+    const oddsDifference = Number(hasCompleteOdds(right)) - Number(hasCompleteOdds(left));
+    if (oddsDifference !== 0) return oddsDifference;
+
+    const leagueDifference = getMatchLeaguePriority(left) - getMatchLeaguePriority(right);
+    if (leagueDifference !== 0) return leagueDifference;
+
+    const timeDifference = getMatchStartTimestamp(left) - getMatchStartTimestamp(right);
+    if (timeDifference !== 0) return timeDifference;
+
+    return Number(hasStrongTeamHint(right)) - Number(hasStrongTeamHint(left));
+  });
+}
+
+function formatMatchStartTime(match = {}) {
+  const timeText = String(match.startTime || match.kickoff || match.time || "").trim();
+  if (timeText) return timeText.slice(0, 5);
+  return "시간 미정";
+}
+
+function getMatchStatusLabel(match = {}) {
+  const status = String(match.status || match.fixtureStatus || match.statusShort || "").trim();
+  if (!status) return "경기 전";
+  const labels = {
+    NS: "경기 전",
+    TBD: "시간 미정",
+    "1H": "전반 진행",
+    HT: "하프타임",
+    "2H": "후반 진행",
+    ET: "연장",
+    FT: "종료",
+    AET: "연장 종료",
+    PEN: "승부차기 종료",
+    PST: "연기",
+    CANC: "취소"
+  };
+  return labels[status] || status;
+}
+
+function getHomeTodayCardViewModel(match = {}, updatedAt = "") {
+  const hasOdds = hasCompleteOdds(match);
+  return {
+    id: match.id || getTodayMatchKey(match),
+    title: `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`,
+    league: formatLeagueName(getLeagueLabel(match.league || "")),
+    startTime: formatMatchStartTime(match),
+    status: getMatchStatusLabel(match),
+    odds: hasOdds ? `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}` : "배당 준비 중",
+    hasOdds,
+    updatedAt: updatedAt || match.updatedAt || match.createdAt || ""
+  };
+}
+
+function setHomeTodayStatus(message) {
+  const element = document.getElementById("home-today-updated");
+  if (element) element.textContent = message;
+}
+
+function createHomeTodayMatchCard(match, updatedAt = "") {
+  const view = getHomeTodayCardViewModel(match, updatedAt);
+  const card = document.createElement("article");
+  card.className = `home-today-card${view.hasOdds ? " has-odds" : ""}`;
+
+  const top = document.createElement("div");
+  top.className = "home-today-card-top";
+  const league = document.createElement("span");
+  const time = document.createElement("span");
+  league.textContent = view.league;
+  time.textContent = `${view.startTime} · ${view.status}`;
+  top.append(league, time);
+
+  const title = document.createElement("strong");
+  title.textContent = view.title;
+
+  const odds = document.createElement("p");
+  odds.className = view.hasOdds ? "home-today-odds ready" : "home-today-odds";
+  odds.textContent = view.hasOdds ? `홈승 / 무 / 원정승 ${view.odds}` : view.odds;
+
+  const footer = document.createElement("div");
+  footer.className = "home-today-card-footer";
+  const updated = document.createElement("small");
+  updated.textContent = view.updatedAt ? `업데이트 ${view.updatedAt}` : "업데이트 대기";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.textContent = "배당 검색";
+  button.addEventListener("click", () => {
+    openOddsSearchForTodayMatch(match, getTodayMatchAnalysis(match, getSearchableMatches()));
+    document.getElementById("simple-odds-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  footer.append(updated, button);
+
+  card.append(top, title, odds, footer);
+  return card;
+}
+
+function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}) {
+  if (typeof document === "undefined") return;
+  const list = document.getElementById("home-today-list");
+  if (!list) return;
+
+  if (status) setHomeTodayStatus(status);
+
+  if (!Array.isArray(matches) || matches.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state compact-empty";
+    empty.textContent = status && status.includes("불러오는 중")
+      ? "오늘 경기 불러오는 중"
+      : status && status.includes("실패")
+        ? "오늘 경기 정보를 불러오지 못했습니다. 새로고침을 눌러 다시 시도해보세요."
+        : "오늘 표시할 주요 경기가 없습니다";
+    list.replaceChildren(empty);
+    return;
+  }
+
+  const visibleMatches = sortHomeTodayMatches(matches).slice(0, HOME_TODAY_MATCH_LIMIT);
+  list.replaceChildren(...visibleMatches.map((match) => createHomeTodayMatchCard(match, homeTodayLastUpdatedAt)));
+}
+
+async function loadHomeTodayMatches() {
+  const refreshButton = document.getElementById("refresh-home-today");
+  if (refreshButton) refreshButton.disabled = true;
+  setHomeTodayStatus("오늘 경기 불러오는 중");
+
+  try {
+    const today = getTodayKey();
+    const result = await fetchLiveOdds({ date: today, league: "ALL" });
+    if (result.error) {
+      setHomeTodayStatus("오늘 경기 업데이트 실패");
+      renderHomeTodayMatches([], { status: "오늘 경기 업데이트 실패" });
+      return result;
+    }
+
+    homeTodayLastUpdatedAt = getCurrentTimestamp();
+    homeTodayMatches = sortHomeTodayMatches(result.matches || []);
+    if (homeTodayMatches.length > 0) {
+      mergeTodayMatches(homeTodayMatches);
+      renderTodayCenter(homeTodayMatches);
+    }
+    renderHomeTodayMatches(homeTodayMatches, { status: `마지막 업데이트 ${homeTodayLastUpdatedAt}` });
+    return { ...result, matches: homeTodayMatches };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "알 수 없는 오류";
+    setHomeTodayStatus(`오늘 경기 업데이트 실패: ${message}`);
+    renderHomeTodayMatches([], { status: "오늘 경기 업데이트 실패" });
+    return { error: message, matches: [] };
+  } finally {
+    if (refreshButton) refreshButton.disabled = false;
+  }
+}
+
+function showAllHomeTodayMatches() {
+  const matches = homeTodayMatches.length > 0 ? homeTodayMatches : getStorageTodayMatches();
+  renderTodayCenter(sortHomeTodayMatches(matches));
+  document.querySelector(".live-api-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function setTodaySearchFromMatch(match) {
   setOddsSearchCriteria(getDirectOddsSearchCriteriaFromMatch(match));
   runOddsSearchFromCurrentCriteria();
@@ -3408,6 +3659,8 @@ function normalizeTodayCsvMatch(match = {}) {
     league: normalizeLeagueNameForStorage(match.league || match.leagueKey || "EPL"),
     homeTeam: normalizeTeamNameForStorage(match.homeTeam || match.home_team || ""),
     awayTeam: normalizeTeamNameForStorage(match.awayTeam || match.away_team || ""),
+    startTime: String(match.startTime || match.kickoff || match.time || "").trim(),
+    status: String(match.status || match.fixtureStatus || match.statusShort || "").trim(),
     homeOdds: String(homeOdds || "").trim(),
     drawOdds: String(drawOdds || "").trim(),
     awayOdds: String(awayOdds || "").trim(),
@@ -3631,6 +3884,18 @@ function wireTodayCsvImport() {
   document.getElementById("live-odds-league")?.addEventListener("change", () => {
     setLiveOddsStatus("리그를 바꿨습니다. CSV를 다시 선택하면 해당 리그만 반영됩니다.");
   });
+}
+
+function wireHomeTodayMatches() {
+  const refreshButton = document.getElementById("refresh-home-today");
+  const showAllButton = document.getElementById("show-all-home-today");
+  const list = document.getElementById("home-today-list");
+  if (!refreshButton && !showAllButton && !list) return;
+
+  if (refreshButton) refreshButton.addEventListener("click", loadHomeTodayMatches);
+  if (showAllButton) showAllButton.addEventListener("click", showAllHomeTodayMatches);
+  renderHomeTodayMatches([], { status: "오늘 경기 불러오는 중" });
+  loadHomeTodayMatches();
 }
 
 function setOddsSearchError(message) {
@@ -4963,6 +5228,7 @@ if (typeof document !== "undefined") {
   wireLocalAccount();
   wireShareLinkCopy();
   wireTodayCsvImport();
+  wireHomeTodayMatches();
   updateStorageModeStatus();
   updateDashboard();
   updateStoredMatchStatus();
@@ -5025,6 +5291,8 @@ if (typeof module !== "undefined") {
     getDirectOddsSearchCriteriaFromMatch,
     getInlineOddsRateText,
     getInlineOddsConfidence,
+    getHomeTodayCardViewModel,
+    sortHomeTodayMatches,
     getTodayOddsSummaryText,
     getOddsSearchVerdictText,
     getOddsPatternLabel,
@@ -5076,6 +5344,7 @@ if (typeof module !== "undefined") {
     renderResultBreakdown,
     renderTodayMatchAnalysis,
     renderTodayCenter,
+    renderHomeTodayMatches,
     renderSavedSearches,
     renderTeamMatchBreakdown,
     renderTeamMatchResults,

@@ -55,6 +55,21 @@
             </summary>
             <div class="panel-body">
               <section class="simple-search-stack" aria-label="간단 검색">
+                <section class="home-today-panel" aria-label="오늘의 주요 경기">
+                  <div class="home-today-heading">
+                    <div>
+                      <strong>🔥 오늘의 주요 경기</strong>
+                      <span id="home-today-updated">오늘 경기 불러오는 중</span>
+                    </div>
+                    <button type="button" id="refresh-home-today">새로고침</button>
+                  </div>
+                  <div class="home-today-list" id="home-today-list">
+                    <div class="empty-state compact-empty">오늘 경기 불러오는 중</div>
+                  </div>
+                  <div class="home-today-footer">
+                    <button type="button" id="show-all-home-today">전체 오늘 경기 보기</button>
+                  </div>
+                </section>
                 <section class="live-api-panel" aria-label="경기 자동 업데이트">
                   <div class="live-api-heading">
                     <div>

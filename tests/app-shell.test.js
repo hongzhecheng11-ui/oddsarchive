@@ -60,6 +60,86 @@ test("includes Korean priority leagues in fixture league options", () => {
   assert(values.includes("INTL_FRIENDLIES"));
 });
 
+test("builds Korean home today card view models", () => {
+  const view = app.getHomeTodayCardViewModel({
+    league: "UEFA Champions League",
+    homeTeam: "FC Seoul",
+    awayTeam: "Unknown FC",
+    startTime: "19:30",
+    status: "NS",
+    homeOdds: "1.80",
+    drawOdds: "3.40",
+    awayOdds: "4.20"
+  }, "2026. 7. 6.");
+
+  assert.strictEqual(view.title, "FC서울 vs Unknown FC");
+  assert.strictEqual(view.league, "챔피언스리그");
+  assert.strictEqual(view.startTime, "19:30");
+  assert.strictEqual(view.status, "경기 전");
+  assert.strictEqual(view.odds, "1.80 / 3.40 / 4.20");
+  assert.strictEqual(view.hasOdds, true);
+});
+
+test("sorts home today matches by odds, league priority, and time", () => {
+  const sorted = app.sortHomeTodayMatches([
+    { league: "KLEAGUE1", homeTeam: "FC Seoul", awayTeam: "Daegu FC", startTime: "19:00" },
+    { league: "UCL", homeTeam: "Real Madrid", awayTeam: "Arsenal", startTime: "22:00", homeOdds: "2.00", drawOdds: "3.20", awayOdds: "3.80" },
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", startTime: "21:00", homeOdds: "1.90", drawOdds: "3.30", awayOdds: "4.00" }
+  ]);
+
+  assert.strictEqual(sorted[0].league, "EPL");
+  assert.strictEqual(sorted[1].league, "UCL");
+  assert.strictEqual(sorted[2].league, "KLEAGUE1");
+});
+
+test("renders home today section cards without breaking the page", () => {
+  class FakeElement {
+    constructor(tagName = "div") {
+      this.tagName = tagName;
+      this.children = [];
+      this.dataset = {};
+      this.className = "";
+      this.textContent = "";
+      this.type = "";
+    }
+
+    append(...children) {
+      this.children.push(...children);
+    }
+
+    appendChild(child) {
+      this.children.push(child);
+      return child;
+    }
+
+    replaceChildren(...children) {
+      this.children = children;
+    }
+
+    addEventListener() {}
+  }
+
+  const elements = {
+    "home-today-list": new FakeElement("div"),
+    "home-today-updated": new FakeElement("span")
+  };
+  const previousDocument = global.document;
+  global.document = {
+    getElementById: (id) => elements[id] || null,
+    createElement: (tagName) => new FakeElement(tagName)
+  };
+
+  try {
+    app.renderHomeTodayMatches([
+      { league: "KLEAGUE1", homeTeam: "FC Seoul", awayTeam: "Daegu FC", startTime: "19:00", status: "NS" }
+    ], { status: "테스트 업데이트" });
+    assert.strictEqual(elements["home-today-list"].children.length, 1);
+    assert.strictEqual(elements["home-today-updated"].textContent, "테스트 업데이트");
+  } finally {
+    global.document = previousDocument;
+  }
+});
+
 test("builds direct odds search criteria from a live match without odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
     league: "WORLDCUP",
