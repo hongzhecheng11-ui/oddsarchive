@@ -186,6 +186,22 @@ test("builds Korean home today card view models", () => {
   assert.strictEqual(view.hasOdds, true);
 });
 
+test("keeps live API team names translated on today cards", () => {
+  const view = app.getHomeTodayCardViewModel({
+    league: "FIFA World Cup",
+    homeTeam: "England",
+    awayTeam: "Congo DR",
+    startTime: "20:00",
+    status: "NS",
+    homeOdds: "1.70",
+    drawOdds: "3.50",
+    awayOdds: "5.00"
+  });
+
+  assert.strictEqual(view.title, "잉글랜드 vs 콩고민주공화국");
+  assert.strictEqual(view.league, "월드컵");
+});
+
 test("sorts home today matches by odds, league priority, and time", () => {
   const sorted = app.sortHomeTodayMatches([
     { league: "KLEAGUE1", homeTeam: "FC Seoul", awayTeam: "Daegu FC", startTime: "19:00" },

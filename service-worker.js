@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v44-api-odds-pack";
+const CACHE_NAME = "oddsarchive-v45-korean-team-labels";
 const CORE_ASSETS = [
   "/",
   "/index.html",
