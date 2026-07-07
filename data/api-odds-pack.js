@@ -5,8 +5,68 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-07T04:42:03.774Z",
+  "updatedAt": "2026-07-07T04:52:29.635Z",
   "matches": [
+    {
+      "date": "2025-02-14",
+      "league": "J1LEAGUE",
+      "homeTeam": "Gamba Osaka",
+      "awayTeam": "Cerezo Osaka",
+      "homeOdds": "2.02",
+      "drawOdds": "3.46",
+      "awayOdds": "3.74",
+      "result": "A",
+      "score": "2-5",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-15",
+      "league": "J1LEAGUE",
+      "homeTeam": "Avispa Fukuoka",
+      "awayTeam": "Kashiwa Reysol",
+      "homeOdds": "3.12",
+      "drawOdds": "2.90",
+      "awayOdds": "2.61",
+      "result": "A",
+      "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-15",
+      "league": "J1LEAGUE",
+      "homeTeam": "Kawasaki Frontale",
+      "awayTeam": "Nagoya Grampus",
+      "homeOdds": "1.90",
+      "drawOdds": "3.77",
+      "awayOdds": "3.84",
+      "result": "H",
+      "score": "4-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-15",
+      "league": "J1LEAGUE",
+      "homeTeam": "Yokohama F. Marinos",
+      "awayTeam": "Albirex Niigata",
+      "homeOdds": "2.17",
+      "drawOdds": "3.64",
+      "awayOdds": "3.18",
+      "result": "D",
+      "score": "1-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-15",
+      "league": "J1LEAGUE",
+      "homeTeam": "Yokohama FC",
+      "awayTeam": "FC Tokyo",
+      "homeOdds": "2.55",
+      "drawOdds": "3.58",
+      "awayOdds": "2.65",
+      "result": "A",
+      "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
     {
       "date": "2025-02-15",
       "league": "KLEAGUE1",
@@ -33,6 +93,18 @@
     },
     {
       "date": "2025-02-16",
+      "league": "J1LEAGUE",
+      "homeTeam": "Tokyo Verdy",
+      "awayTeam": "Shimizu S-pulse",
+      "homeOdds": "2.21",
+      "drawOdds": "3.39",
+      "awayOdds": "3.30",
+      "result": "A",
+      "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-16",
       "league": "KLEAGUE1",
       "homeTeam": "Daegu FC",
       "awayTeam": "Gangwon FC",
@@ -53,6 +125,90 @@
       "awayOdds": "5.52",
       "result": "A",
       "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Cerezo Osaka",
+      "awayTeam": "Shonan Bellmare",
+      "homeOdds": "2.05",
+      "drawOdds": "3.65",
+      "awayOdds": "3.46",
+      "result": "A",
+      "score": "1-2",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "FC Tokyo",
+      "awayTeam": "Machida Zelvia",
+      "homeOdds": "3.09",
+      "drawOdds": "3.47",
+      "awayOdds": "2.28",
+      "result": "A",
+      "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Gamba Osaka",
+      "awayTeam": "Avispa Fukuoka",
+      "homeOdds": "1.98",
+      "drawOdds": "3.20",
+      "awayOdds": "4.27",
+      "result": "H",
+      "score": "2-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Kashiwa Reysol",
+      "awayTeam": "Kawasaki Frontale",
+      "homeOdds": "2.74",
+      "drawOdds": "3.47",
+      "awayOdds": "2.52",
+      "result": "D",
+      "score": "1-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Nagoya Grampus",
+      "awayTeam": "Vissel Kobe",
+      "homeOdds": "3.58",
+      "drawOdds": "3.30",
+      "awayOdds": "2.14",
+      "result": "D",
+      "score": "2-2",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Shimizu S-pulse",
+      "awayTeam": "Albirex Niigata",
+      "homeOdds": "2.35",
+      "drawOdds": "3.18",
+      "awayOdds": "3.23",
+      "result": "H",
+      "score": "2-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-22",
+      "league": "J1LEAGUE",
+      "homeTeam": "Yokohama FC",
+      "awayTeam": "Fagiano Okayama",
+      "homeOdds": "2.24",
+      "drawOdds": "3.22",
+      "awayOdds": "3.41",
+      "result": "H",
+      "score": "1-0",
       "source": "The Odds API pinnacle"
     },
     {
@@ -89,6 +245,78 @@
       "awayOdds": "3.05",
       "result": "H",
       "score": "2-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "Avispa Fukuoka",
+      "awayTeam": "Kawasaki Frontale",
+      "homeOdds": "3.65",
+      "drawOdds": "3.34",
+      "awayOdds": "2.09",
+      "result": "A",
+      "score": "1-2",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "Fagiano Okayama",
+      "awayTeam": "Gamba Osaka",
+      "homeOdds": "3.11",
+      "drawOdds": "3.30",
+      "awayOdds": "2.35",
+      "result": "H",
+      "score": "2-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "FC Tokyo",
+      "awayTeam": "Nagoya Grampus",
+      "homeOdds": "2.74",
+      "drawOdds": "2.95",
+      "awayOdds": "2.90",
+      "result": "H",
+      "score": "3-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "Kashiwa Reysol",
+      "awayTeam": "Cerezo Osaka",
+      "homeOdds": "2.28",
+      "drawOdds": "3.15",
+      "awayOdds": "3.39",
+      "result": "H",
+      "score": "2-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "Machida Zelvia",
+      "awayTeam": "Tokyo Verdy",
+      "homeOdds": "2.11",
+      "drawOdds": "3.10",
+      "awayOdds": "3.94",
+      "result": "A",
+      "score": "0-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-02-26",
+      "league": "J1LEAGUE",
+      "homeTeam": "Yokohama F. Marinos",
+      "awayTeam": "Yokohama FC",
+      "homeOdds": "1.96",
+      "drawOdds": "3.73",
+      "awayOdds": "3.67",
+      "result": "D",
+      "score": "0-0",
       "source": "The Odds API pinnacle"
     },
     {
