@@ -94,6 +94,22 @@ test("builds a date window around today for automatic collection", () => {
   }
 });
 
+test("builds a short result update window for stored unfinished matches", () => {
+  const originalArgv = process.argv;
+  process.argv = ["node", "collect-api-odds.js", "--date=2026-07-06", "--result-days=3"];
+
+  try {
+    assert.deepStrictEqual(collector.getResultUpdateDates(), [
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06"
+    ]);
+  } finally {
+    process.argv = originalArgv;
+  }
+});
+
 test("updates the same fixture when future odds change instead of duplicating it", () => {
   const existing = [
     {

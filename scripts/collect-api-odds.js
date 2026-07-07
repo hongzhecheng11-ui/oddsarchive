@@ -273,10 +273,7 @@ function getDuplicateKey(match) {
   ].join("|");
 }
 
-function getFixtureIdentityKey(match = {}) {
-  const fixtureId = String(match.fixtureId || "").trim();
-  if (fixtureId) return ["fixture", match.league, fixtureId].join("|");
-
+function getTeamIdentityKey(match = {}) {
   return [
     "teams",
     match.date,
@@ -284,6 +281,12 @@ function getFixtureIdentityKey(match = {}) {
     String(match.homeTeam || "").toLowerCase(),
     String(match.awayTeam || "").toLowerCase()
   ].join("|");
+}
+
+function getFixtureIdentityKey(match = {}) {
+  const fixtureId = String(match.fixtureId || "").trim();
+  if (fixtureId) return ["fixture", match.league, fixtureId].join("|");
+  return getTeamIdentityKey(match);
 }
 
 function hasKnownResult(match = {}) {
@@ -319,6 +322,84 @@ function shouldReplaceMatch(existing = {}, incoming = {}) {
   if (!hasCompleteOdds(existing) && hasCompleteOdds(incoming)) return true;
   if (!hasKnownResult(existing) && hasCompleteOdds(incoming)) return true;
   return false;
+}
+
+function getResultUpdateDates() {
+  const resultDays = Math.max(0, Math.min(Number(getArg("result-days", "0")) || 0, 14));
+  if (!resultDays) return [];
+
+  const baseText = getArg("date") || new Date().toISOString().slice(0, 10);
+  const base = new Date(`${baseText.slice(0, 10)}T00:00:00Z`);
+  const safeBase = Number.isNaN(base.getTime()) ? new Date() : base;
+
+  return Array.from({ length: resultDays + 1 }, (_, index) => {
+    const date = new Date(safeBase);
+    date.setUTCDate(safeBase.getUTCDate() - (resultDays - index));
+    return date.toISOString().slice(0, 10);
+  });
+}
+
+async function collectFixtureResultUpdates({ apiKey, existingMatches = [], leagueKeys = [], dates = [] }) {
+  const targetDates = new Set(dates);
+  if (!targetDates.size) return [];
+
+  const targets = existingMatches
+    .map(normalizePackMatch)
+    .filter((match) => (
+      targetDates.has(match.date)
+      && match.league
+      && match.homeTeam
+      && match.awayTeam
+      && !hasKnownResult(match)
+    ));
+
+  if (!targets.length) return [];
+
+  const targetsByLeagueDate = new Map();
+  for (const target of targets) {
+    const key = `${target.league}|${target.date}`;
+    if (!targetsByLeagueDate.has(key)) targetsByLeagueDate.set(key, []);
+    targetsByLeagueDate.get(key).push(target);
+  }
+
+  const updates = [];
+  const allowedLeagues = new Set(leagueKeys);
+
+  for (const [groupKey, groupTargets] of targetsByLeagueDate.entries()) {
+    const [leagueKey, date] = groupKey.split("|");
+    if (allowedLeagues.size && !allowedLeagues.has(leagueKey)) continue;
+
+    const lookup = new Map();
+    for (const target of groupTargets) {
+      lookup.set(getTeamIdentityKey(target), target);
+      if (target.fixtureId) lookup.set(getFixtureIdentityKey(target), target);
+    }
+
+    for (const leagueId of getLeagueIds(leagueKey)) {
+      try {
+        const season = getSeason(date, leagueKey);
+        const fixturesRaw = await fetchApiFootball(`/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`, apiKey);
+        const fixtures = fixturesRaw.map((item) => normalizeFixture(item, leagueKey, date));
+
+        for (const fixture of fixtures) {
+          if (!hasKnownResult(fixture)) continue;
+          const target = lookup.get(getFixtureIdentityKey(fixture)) || lookup.get(getTeamIdentityKey(fixture));
+          if (!target) continue;
+          updates.push({
+            ...target,
+            fixtureId: target.fixtureId || fixture.fixtureId || "",
+            result: fixture.result,
+            score: fixture.score
+          });
+        }
+      } catch (error) {
+        console.warn(`${date} ${leagueKey}(${leagueId}) result update failed: ${error.message}`);
+      }
+      await wait(250);
+    }
+  }
+
+  return updates;
 }
 
 function mergeCollectedMatches(existingMatches = [], collectedMatches = []) {
@@ -411,6 +492,7 @@ async function main() {
     .map((value) => value.trim().toUpperCase())
     .filter(Boolean);
   const dates = getDateRange();
+  const resultDates = getResultUpdateDates();
   const existingPack = loadExistingPack();
   const collected = [];
 
@@ -434,6 +516,14 @@ async function main() {
       }
     }
   }
+
+  const resultUpdates = await collectFixtureResultUpdates({
+    apiKey,
+    existingMatches: existingPack.matches,
+    leagueKeys,
+    dates: resultDates
+  });
+  collected.push(...resultUpdates);
 
   if (collected.length === 0) {
     console.log("수집된 배당이 없어 데이터팩을 변경하지 않았습니다.");
@@ -470,5 +560,7 @@ module.exports = {
   parseLocalEnv,
   normalizeFixture,
   normalizeOdds,
+  getResultUpdateDates,
+  collectFixtureResultUpdates,
   collectLeagueDate
 };
