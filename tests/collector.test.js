@@ -94,6 +94,40 @@ test("builds a date window around today for automatic collection", () => {
   }
 });
 
+test("updates the same fixture when future odds change instead of duplicating it", () => {
+  const existing = [
+    {
+      date: "2026-07-10",
+      league: "KLEAGUE1",
+      fixtureId: "777",
+      homeTeam: "FC Seoul",
+      awayTeam: "Gangwon FC",
+      homeOdds: "1.88",
+      drawOdds: "3.25",
+      awayOdds: "4.10",
+      result: "UNKNOWN",
+      score: "",
+      source: "API 怨쇨굅 諛곕떦"
+    }
+  ];
+  const collected = [
+    {
+      ...existing[0],
+      homeOdds: "1.82",
+      drawOdds: "3.30",
+      awayOdds: "4.30"
+    }
+  ];
+
+  const result = collector.mergeCollectedMatches(existing, collected);
+
+  assert.strictEqual(result.matches.length, 1);
+  assert.strictEqual(result.addedCount, 0);
+  assert.strictEqual(result.updatedCount, 1);
+  assert.strictEqual(result.duplicateCount, 0);
+  assert.strictEqual(result.matches[0].homeOdds, "1.82");
+});
+
 test("uses calendar year for Asian and international leagues", () => {
   assert.strictEqual(collector.getSeason("2026-03-01", "KLEAGUE1"), "2026");
   assert.strictEqual(collector.getSeason("2026-03-01", "J1LEAGUE"), "2026");

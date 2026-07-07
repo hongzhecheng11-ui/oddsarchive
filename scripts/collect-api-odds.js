@@ -220,10 +220,11 @@ function wait(ms) {
 
 async function collectLeagueDate({ apiKey, leagueKey, leagueId, date }) {
   const season = getSeason(date, leagueKey);
-  const [fixturesRaw, oddsRaw] = await Promise.all([
-    fetchApiFootball(`/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`, apiKey),
-    fetchApiFootball(`/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1`, apiKey)
-  ]);
+  const oddsRaw = await fetchApiFootball(`/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1`, apiKey);
+
+  if (!oddsRaw.length) return [];
+
+  const fixturesRaw = await fetchApiFootball(`/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`, apiKey);
   const fixtures = fixturesRaw.map((item) => normalizeFixture(item, leagueKey, date));
   const odds = oddsRaw.map((item) => normalizeOdds(item, leagueKey, date));
   const fixturesById = new Map(fixtures.filter((match) => match.fixtureId).map((match) => [String(match.fixtureId), match]));
@@ -233,6 +234,7 @@ async function collectLeagueDate({ apiKey, leagueKey, leagueId, date }) {
     return {
       date: odd.date || fixture.date || date,
       league: odd.league || fixture.league || leagueKey,
+      fixtureId: odd.fixtureId || fixture.fixtureId || "",
       homeTeam: odd.homeTeam || fixture.homeTeam || "",
       awayTeam: odd.awayTeam || fixture.awayTeam || "",
       homeOdds: odd.homeOdds,
@@ -271,6 +273,19 @@ function getDuplicateKey(match) {
   ].join("|");
 }
 
+function getFixtureIdentityKey(match = {}) {
+  const fixtureId = String(match.fixtureId || "").trim();
+  if (fixtureId) return ["fixture", match.league, fixtureId].join("|");
+
+  return [
+    "teams",
+    match.date,
+    match.league,
+    String(match.homeTeam || "").toLowerCase(),
+    String(match.awayTeam || "").toLowerCase()
+  ].join("|");
+}
+
 function hasKnownResult(match = {}) {
   return ["H", "D", "A"].includes(String(match.result || "").toUpperCase());
 }
@@ -286,6 +301,7 @@ function normalizePackMatch(match = {}) {
   return {
     date: String(match.date || "").slice(0, 10),
     league: String(match.league || "").trim(),
+    fixtureId: String(match.fixtureId || "").trim(),
     homeTeam: String(match.homeTeam || "").trim(),
     awayTeam: String(match.awayTeam || "").trim(),
     homeOdds: String(match.homeOdds || "").trim(),
@@ -301,6 +317,7 @@ function shouldReplaceMatch(existing = {}, incoming = {}) {
   if (!hasKnownResult(existing) && hasKnownResult(incoming)) return true;
   if (!existing.score && incoming.score) return true;
   if (!hasCompleteOdds(existing) && hasCompleteOdds(incoming)) return true;
+  if (!hasKnownResult(existing) && hasCompleteOdds(incoming)) return true;
   return false;
 }
 
@@ -312,14 +329,16 @@ function mergeCollectedMatches(existingMatches = [], collectedMatches = []) {
 
   for (const match of existingMatches) {
     const normalized = normalizePackMatch(match);
-    const key = getDuplicateKey(normalized);
-    if (!key.includes("NaN")) byKey.set(key, normalized);
+    const key = getFixtureIdentityKey(normalized);
+    if (normalized.date && normalized.league && normalized.homeTeam && normalized.awayTeam) {
+      byKey.set(key, normalized);
+    }
   }
 
   for (const match of collectedMatches) {
     const normalized = normalizePackMatch(match);
-    const key = getDuplicateKey(normalized);
-    if (key.includes("NaN")) continue;
+    const key = getFixtureIdentityKey(normalized);
+    if (!normalized.date || !normalized.league || !normalized.homeTeam || !normalized.awayTeam) continue;
 
     const existing = byKey.get(key);
     if (!existing) {
@@ -329,8 +348,13 @@ function mergeCollectedMatches(existingMatches = [], collectedMatches = []) {
     }
 
     if (shouldReplaceMatch(existing, normalized)) {
-      byKey.set(key, { ...existing, ...normalized });
-      updatedCount += 1;
+      const merged = { ...existing, ...normalized };
+      byKey.set(key, merged);
+      if (getDuplicateKey(existing) === getDuplicateKey(merged) && existing.result === merged.result && existing.score === merged.score) {
+        duplicateCount += 1;
+      } else {
+        updatedCount += 1;
+      }
     } else {
       duplicateCount += 1;
     }
