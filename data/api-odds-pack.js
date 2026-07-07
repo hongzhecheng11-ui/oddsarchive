@@ -5,7 +5,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-07T02:19:33.002Z",
+  "updatedAt": "2026-07-07T04:23:25.287Z",
   "matches": [
     {
       "date": "2025-02-15",
@@ -824,6 +824,30 @@
       "source": "The Odds API pinnacle"
     },
     {
+      "date": "2025-07-08",
+      "league": "UCL",
+      "homeTeam": "Drita",
+      "awayTeam": "FC Differdange 03",
+      "homeOdds": "1.82",
+      "drawOdds": "3.44",
+      "awayOdds": "4.92",
+      "result": "H",
+      "score": "1-0",
+      "source": "The Odds API onexbet"
+    },
+    {
+      "date": "2025-07-08",
+      "league": "UCL",
+      "homeTeam": "FC Noah",
+      "awayTeam": "Buducnost Podgorica",
+      "homeOdds": "1.33",
+      "drawOdds": "5.52",
+      "awayOdds": "9.30",
+      "result": "H",
+      "score": "1-0",
+      "source": "The Odds API onexbet"
+    },
+    {
       "date": "2025-07-12",
       "league": "KLEAGUE1",
       "homeTeam": "Ulsan Hyundai FC",
@@ -834,6 +858,42 @@
       "result": "D",
       "score": "2-2",
       "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-07-15",
+      "league": "UCL",
+      "homeTeam": "Buducnost Podgorica",
+      "awayTeam": "FC Noah",
+      "homeOdds": "3.67",
+      "drawOdds": "3.67",
+      "awayOdds": "2.02",
+      "result": "D",
+      "score": "2-2",
+      "source": "The Odds API onexbet"
+    },
+    {
+      "date": "2025-07-15",
+      "league": "UCL",
+      "homeTeam": "FC Differdange 03",
+      "awayTeam": "Drita",
+      "homeOdds": "2.54",
+      "drawOdds": "3.22",
+      "awayOdds": "2.96",
+      "result": "A",
+      "score": "2-3",
+      "source": "The Odds API onexbet"
+    },
+    {
+      "date": "2025-07-15",
+      "league": "UCL",
+      "homeTeam": "Inter Club d'Escaldes",
+      "awayTeam": "FCSB",
+      "homeOdds": "7.80",
+      "drawOdds": "5.27",
+      "awayOdds": "1.38",
+      "result": "H",
+      "score": "2-1",
+      "source": "The Odds API onexbet"
     },
     {
       "date": "2025-07-19",
@@ -1136,6 +1196,90 @@
       "source": "The Odds API pinnacle"
     },
     {
+      "date": "2025-09-16",
+      "league": "UCL",
+      "homeTeam": "Juventus",
+      "awayTeam": "Borussia Dortmund",
+      "homeOdds": "2.02",
+      "drawOdds": "3.60",
+      "awayOdds": "3.82",
+      "result": "D",
+      "score": "4-4",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-16",
+      "league": "UCL",
+      "homeTeam": "Real Madrid",
+      "awayTeam": "Marseille",
+      "homeOdds": "1.38",
+      "drawOdds": "5.59",
+      "awayOdds": "7.45",
+      "result": "H",
+      "score": "2-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-17",
+      "league": "UCL",
+      "homeTeam": "Liverpool",
+      "awayTeam": "Atletico Madrid",
+      "homeOdds": "1.51",
+      "drawOdds": "4.55",
+      "awayOdds": "6.49",
+      "result": "H",
+      "score": "3-2",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-17",
+      "league": "UCL",
+      "homeTeam": "Olympiakos Piraeus",
+      "awayTeam": "Pafos",
+      "homeOdds": "1.41",
+      "drawOdds": "4.91",
+      "awayOdds": "8.00",
+      "result": "D",
+      "score": "0-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-18",
+      "league": "UCL",
+      "homeTeam": "Eintracht Frankfurt",
+      "awayTeam": "Galatasaray",
+      "homeOdds": "2.09",
+      "drawOdds": "4.00",
+      "awayOdds": "3.26",
+      "result": "H",
+      "score": "5-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-18",
+      "league": "UCL",
+      "homeTeam": "FC Copenhagen",
+      "awayTeam": "Bayer Leverkusen",
+      "homeOdds": "3.35",
+      "drawOdds": "3.45",
+      "awayOdds": "2.25",
+      "result": "D",
+      "score": "2-2",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-18",
+      "league": "UCL",
+      "homeTeam": "Manchester City",
+      "awayTeam": "Napoli",
+      "homeOdds": "1.69",
+      "drawOdds": "4.02",
+      "awayOdds": "5.08",
+      "result": "H",
+      "score": "2-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
       "date": "2025-09-20",
       "league": "KLEAGUE1",
       "homeTeam": "Daejeon Citizen",
@@ -1217,6 +1361,54 @@
       "awayOdds": "2.71",
       "result": "D",
       "score": "0-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-30",
+      "league": "UCL",
+      "homeTeam": "Atletico Madrid",
+      "awayTeam": "Eintracht Frankfurt",
+      "homeOdds": "1.54",
+      "drawOdds": "4.66",
+      "awayOdds": "5.77",
+      "result": "H",
+      "score": "5-1",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-30",
+      "league": "UCL",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Benfica",
+      "homeOdds": "1.65",
+      "drawOdds": "4.11",
+      "awayOdds": "5.36",
+      "result": "H",
+      "score": "1-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-30",
+      "league": "UCL",
+      "homeTeam": "Galatasaray",
+      "awayTeam": "Liverpool",
+      "homeOdds": "4.57",
+      "drawOdds": "4.72",
+      "awayOdds": "1.65",
+      "result": "H",
+      "score": "1-0",
+      "source": "The Odds API pinnacle"
+    },
+    {
+      "date": "2025-09-30",
+      "league": "UCL",
+      "homeTeam": "Marseille",
+      "awayTeam": "Ajax",
+      "homeOdds": "1.44",
+      "drawOdds": "4.96",
+      "awayOdds": "7.02",
+      "result": "H",
+      "score": "4-0",
       "source": "The Odds API pinnacle"
     },
     {

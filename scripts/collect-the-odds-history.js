@@ -286,6 +286,7 @@ function writePack(pack) {
 async function collectTheOddsHistory({
   leagueKey = "KLEAGUE1",
   season = "2025",
+  sportKeyOverride = "",
   from = "",
   to = "",
   limit = 0,
@@ -296,7 +297,7 @@ async function collectTheOddsHistory({
   const env = getEnv();
   const theOddsKey = env.THE_ODDS_API_KEY || "";
   const apiFootballKey = env.API_FOOTBALL_KEY || env.API_SPORTS_KEY || "";
-  const sportKey = THE_ODDS_SPORT_KEYS[leagueKey];
+  const sportKey = sportKeyOverride || THE_ODDS_SPORT_KEYS[leagueKey];
   if (!theOddsKey) throw new Error("THE_ODDS_API_KEY is required.");
   if (!apiFootballKey) throw new Error("API_FOOTBALL_KEY is required.");
   if (!sportKey) throw new Error(`Unsupported The Odds API sport: ${leagueKey}`);
@@ -358,12 +359,13 @@ async function collectTheOddsHistory({
 async function main() {
   const leagueKey = String(getArg("league", "KLEAGUE1")).toUpperCase();
   const season = String(getArg("season", "2025"));
+  const sportKeyOverride = getArg("sport-key");
   const from = getArg("from");
   const to = getArg("to");
   const limit = Math.max(0, Number(getArg("limit", "0")) || 0);
   const hoursList = parseHoursList(getArg("hours", getArg("hours-before", "")));
   const dryRun = hasFlag("dry-run");
-  const result = await collectTheOddsHistory({ leagueKey, season, from, to, limit, hoursList, dryRun });
+  const result = await collectTheOddsHistory({ leagueKey, season, sportKeyOverride, from, to, limit, hoursList, dryRun });
 
   console.log(`the-odds history: fixtures=${result.fixtureCount} collected=${result.collected.length} missing=${result.missCount}`);
   console.log(`merge: added=${result.addedCount} updated=${result.updatedCount} duplicate=${result.duplicateCount}`);
