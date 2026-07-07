@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v45-korean-team-labels";
+const CACHE_NAME = "oddsarchive-v46-ucl-qualifier-team-labels";
 const CORE_ASSETS = [
   "/",
   "/index.html",

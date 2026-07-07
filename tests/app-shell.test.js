@@ -53,6 +53,17 @@ test("translates common API team names and aliases for Korean users", () => {
   assert.strictEqual(app.translateTeamName("Ulaanbaatar"), "Ulaanbaatar");
 });
 
+test("translates visible Champions League qualifier teams", () => {
+  assert.strictEqual(app.translateTeamName("Ararat-Armenia"), "아라라트-아르메니아");
+  assert.strictEqual(app.translateTeamName("Riga"), "리가");
+  assert.strictEqual(app.translateTeamName("Vikingur Reykjavik"), "비킹구르 레이캬비크");
+  assert.strictEqual(app.translateTeamName("Gyori ETO FC"), "죄르 ETO");
+  assert.strictEqual(app.translateTeamName("Vardar Skopje"), "바르다르 스코페");
+  assert.strictEqual(app.translateTeamName("KuPS"), "쿠오피온 팔로세우라");
+  assert.strictEqual(app.translateTeamName("Borac Banja Luka"), "보라츠 바냐루카");
+  assert.strictEqual(app.translateTeamName("Levski Sofia"), "레프스키 소피아");
+});
+
 test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
   assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
