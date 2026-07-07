@@ -3415,6 +3415,74 @@ function createSearchResultCard(match) {
   return card;
 }
 
+function getResultChipClass(result) {
+  if (result === "H") return "result-chip-home";
+  if (result === "D") return "result-chip-draw";
+  if (result === "A") return "result-chip-away";
+  return "result-chip-unknown";
+}
+
+function getRecentKnownResults(matches = [], limit = 10) {
+  return [...matches]
+    .filter((match) => ["H", "D", "A"].includes(match.result))
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
+    .slice(0, limit);
+}
+
+function renderResultBreakdownExtras(matches = [], breakdown = {}) {
+  const analysis = document.getElementById("analysis");
+  const memo = document.getElementById("breakdown-memo");
+  if (!analysis) return;
+
+  analysis.querySelectorAll(".compact-breakdown-strip, .recent-result-row").forEach((node) => node.remove());
+
+  const strip = document.createElement("div");
+  strip.className = "compact-breakdown-strip";
+  [
+    ["홈승", breakdown.homeWins, breakdown.homeRate],
+    ["무", breakdown.draws, breakdown.drawRate],
+    ["원정", breakdown.awayWins, breakdown.awayRate]
+  ].forEach(([label, count, rate]) => {
+    const item = document.createElement("div");
+    const labelElement = document.createElement("span");
+    const valueElement = document.createElement("strong");
+    labelElement.textContent = label;
+    valueElement.textContent = `${count || 0} / ${rate || "0%"}`;
+    item.append(labelElement, valueElement);
+    strip.appendChild(item);
+  });
+
+  const recent = document.createElement("div");
+  recent.className = "recent-result-row";
+  const recentLabel = document.createElement("span");
+  recentLabel.textContent = "최근 10경기";
+  const recentChips = document.createElement("div");
+  recentChips.className = "recent-result-chips";
+
+  const recentMatches = getRecentKnownResults(matches);
+  if (recentMatches.length === 0) {
+    const empty = document.createElement("small");
+    empty.textContent = "결과 표본 없음";
+    recentChips.appendChild(empty);
+  } else {
+    recentMatches.forEach((match) => {
+      const chip = document.createElement("b");
+      chip.className = `result-chip ${getResultChipClass(match.result)}`;
+      chip.textContent = formatResultLabel(match.result).slice(0, 1);
+      chip.title = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · ${formatMatchResultText(match)}`;
+      recentChips.appendChild(chip);
+    });
+  }
+  recent.append(recentLabel, recentChips);
+
+  if (memo) {
+    analysis.insertBefore(strip, memo);
+    analysis.insertBefore(recent, memo);
+  } else {
+    analysis.append(strip, recent);
+  }
+}
+
 function renderSearchResultCards(matches, message = "") {
   const list = document.getElementById("search-result-cards");
   if (!list) return;
@@ -3709,6 +3777,7 @@ function renderResultBreakdown(matches, criteria = getOddsSearchCriteria()) {
 
   const memo = document.getElementById("breakdown-memo");
   if (memo) memo.textContent = getResultBreakdownMemo(breakdown);
+  renderResultBreakdownExtras(matches, breakdown);
 
   const sourceSummary = document.getElementById("odds-source-summary");
   if (sourceSummary) {

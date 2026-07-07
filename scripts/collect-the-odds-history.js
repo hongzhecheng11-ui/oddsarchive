@@ -283,6 +283,44 @@ function writePack(pack) {
   fs.writeFileSync(PACK_PATH, content, "utf8");
 }
 
+function saveCollectedMatches(collected = []) {
+  if (!Array.isArray(collected) || collected.length === 0) {
+    return { addedCount: 0, updatedCount: 0, duplicateCount: 0, matches: loadExistingPack().matches };
+  }
+
+  const existingPack = loadExistingPack();
+  const mergeResult = mergeCollectedMatches(existingPack.matches, collected);
+  writePack({
+    version: existingPack.version || "api-odds-pack-v1",
+    updatedAt: new Date().toISOString(),
+    matches: mergeResult.matches
+  });
+  return mergeResult;
+}
+
+function getStoredFixtureKey(match = {}) {
+  return [
+    match.date,
+    match.league,
+    normalizeName(match.homeTeam),
+    normalizeName(match.awayTeam)
+  ].join("|");
+}
+
+function hasCompleteStoredOdds(match = {}) {
+  return ["homeOdds", "drawOdds", "awayOdds"].every((field) => {
+    const value = Number(match[field]);
+    return Number.isFinite(value) && value > 1;
+  });
+}
+
+function getExistingFixtureKeys(leagueKey = "") {
+  return new Set(loadExistingPack().matches
+    .filter((match) => !leagueKey || match.league === leagueKey)
+    .filter(hasCompleteStoredOdds)
+    .map(getStoredFixtureKey));
+}
+
 async function collectTheOddsHistory({
   leagueKey = "KLEAGUE1",
   season = "2025",
@@ -290,6 +328,7 @@ async function collectTheOddsHistory({
   from = "",
   to = "",
   limit = 0,
+  minRemaining = 100,
   hoursList = [24, 48, 12, 6],
   dryRun = false,
   logger = console
@@ -308,9 +347,15 @@ async function collectTheOddsHistory({
     && (!to || fixture.date <= to)
     && ["H", "D", "A"].includes(fixture.result)
   ));
-  const fixtures = limit > 0 ? filteredFixtures.slice(0, limit) : filteredFixtures;
+  const existingFixtureKeys = getExistingFixtureKeys(leagueKey);
+  const pendingFixtures = filteredFixtures.filter((fixture) => !existingFixtureKeys.has(getStoredFixtureKey(fixture)));
+  const fixtures = limit > 0 ? pendingFixtures.slice(0, limit) : pendingFixtures;
   const collected = [];
   let missCount = 0;
+  const skippedExistingCount = filteredFixtures.length - pendingFixtures.length;
+  let addedCount = 0;
+  let updatedCount = 0;
+  let duplicateCount = 0;
 
   for (const fixture of fixtures) {
     const { event, odds, attempts, remaining, used } = await findHistoricalOddsForFixture({
@@ -320,12 +365,25 @@ async function collectTheOddsHistory({
       hoursList
     });
     if (event && odds) {
-      collected.push(buildMatchFromHistoricalEvent(fixture, event, odds));
+      const match = buildMatchFromHistoricalEvent(fixture, event, odds);
+      collected.push(match);
+      if (!dryRun) {
+        const mergeResult = saveCollectedMatches([match]);
+        addedCount += mergeResult.addedCount || 0;
+        updatedCount += mergeResult.updatedCount || 0;
+        duplicateCount += mergeResult.duplicateCount || 0;
+      }
       const attempt = attempts.find((item) => item.found);
       logger.log(`${fixture.date} ${fixture.homeTeam} vs ${fixture.awayTeam} 저장 후보(${attempt?.hoursBefore || "?"}h) / remaining=${remaining || "-"} used=${used || "-"}`);
     } else {
       missCount += 1;
       logger.log(`${fixture.date} ${fixture.homeTeam} vs ${fixture.awayTeam} 배당 없음 / remaining=${remaining || "-"} used=${used || "-"}`);
+    }
+
+    const remainingNumber = Number(remaining);
+    if (Number.isFinite(remainingNumber) && remainingNumber <= minRemaining) {
+      logger.log(`remaining=${remainingNumber}: 안전 기준 ${minRemaining} 이하라서 수집을 중단합니다.`);
+      break;
     }
   }
 
@@ -336,22 +394,18 @@ async function collectTheOddsHistory({
       updatedCount: 0,
       duplicateCount: 0,
       fixtureCount: fixtures.length,
+      skippedExistingCount,
       missCount
     };
   }
 
-  const existingPack = loadExistingPack();
-  const mergeResult = mergeCollectedMatches(existingPack.matches, collected);
-  writePack({
-    version: existingPack.version || "api-odds-pack-v1",
-    updatedAt: new Date().toISOString(),
-    matches: mergeResult.matches
-  });
-
   return {
-    ...mergeResult,
+    addedCount,
+    updatedCount,
+    duplicateCount,
     collected,
     fixtureCount: fixtures.length,
+    skippedExistingCount,
     missCount
   };
 }
@@ -363,11 +417,13 @@ async function main() {
   const from = getArg("from");
   const to = getArg("to");
   const limit = Math.max(0, Number(getArg("limit", "0")) || 0);
+  const minRemaining = Math.max(0, Number(getArg("min-remaining", "100")) || 0);
   const hoursList = parseHoursList(getArg("hours", getArg("hours-before", "")));
   const dryRun = hasFlag("dry-run");
-  const result = await collectTheOddsHistory({ leagueKey, season, sportKeyOverride, from, to, limit, hoursList, dryRun });
+  const result = await collectTheOddsHistory({ leagueKey, season, sportKeyOverride, from, to, limit, minRemaining, hoursList, dryRun });
 
   console.log(`the-odds history: fixtures=${result.fixtureCount} collected=${result.collected.length} missing=${result.missCount}`);
+  if (result.skippedExistingCount) console.log(`skipped existing: ${result.skippedExistingCount}`);
   console.log(`merge: added=${result.addedCount} updated=${result.updatedCount} duplicate=${result.duplicateCount}`);
   if (dryRun) console.log("dry-run: 데이터팩을 변경하지 않았습니다.");
 }
