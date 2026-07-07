@@ -64,6 +64,31 @@ test("translates visible Champions League qualifier teams", () => {
   assert.strictEqual(app.translateTeamName("Levski Sofia"), "레프스키 소피아");
 });
 
+test("translates expanded supported league team samples", () => {
+  const samples = {
+    "Ipswich Town": "입스위치 타운",
+    Getafe: "헤타페",
+    "Borussia Monchengladbach": "묀헨글라트바흐",
+    Cagliari: "칼리아리",
+    Auxerre: "오세르",
+    "Kyoto Sanga": "교토 상가",
+    "Tokyo Verdy": "도쿄 베르디",
+    Ludogorets: "루도고레츠",
+    "Maccabi Tel Aviv": "마카비 텔아비브",
+    "Bodo/Glimt": "보되/글림트",
+    "Dynamo Kyiv": "디나모 키이우",
+    "Club Brugge": "클럽 브뤼헤",
+    "Sporting CP": "스포르팅 CP",
+    "Olympiakos": "올림피아코스",
+    Armenia: "아르메니아",
+    "North Macedonia": "북마케도니아"
+  };
+
+  for (const [rawName, koreanName] of Object.entries(samples)) {
+    assert.strictEqual(app.translateTeamName(rawName), koreanName);
+  }
+});
+
 test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
   assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
