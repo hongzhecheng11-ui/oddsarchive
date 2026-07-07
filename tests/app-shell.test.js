@@ -34,6 +34,28 @@ test("builds direct odds search criteria from a live match with odds", () => {
   });
 });
 
+test("keeps odds search status focused on user results", () => {
+  const text = app.getSearchStatusDetails({
+    storedCount: 9999,
+    pendingCount: 0,
+    criteria: {
+      homeOdds: "1.35",
+      drawOdds: "4.15",
+      awayOdds: "6.00",
+      tolerance: "0.05",
+      league: "ALL",
+      teamQuery: ""
+    },
+    resultCount: 8
+  });
+
+  assert(text.includes("배당 1.35 / 4.15 / 6.00"));
+  assert(text.includes("결과 8건"));
+  assert(!text.includes("저장"));
+  assert(!text.includes("기본 데이터"));
+  assert(!text.includes("9999"));
+});
+
 test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("UEFA Champions League"), "챔피언스리그");
   assert.strictEqual(app.formatLeagueName("KLEAGUE1"), "K리그1");

@@ -55,31 +55,31 @@
             <div class="panel-body">
               <section class="simple-search-stack" aria-label="간단 검색">
                 <article class="simple-search-card" id="simple-odds-card">
-                  <section class="top-data-status" id="top-data-status" aria-label="현재 데이터 상태">
-                    <span>검색 가능 <strong id="top-status-match-count">0</strong></span>
-                    <span>최근 확인 <strong id="top-status-last-update">확인 전</strong></span>
-                    <span>저장 방식 <strong id="top-status-storage-mode">브라우저 저장</strong></span>
-                  </section>
                   <div class="simple-card-heading">
                     <strong>직접 배당 입력</strong>
                     <span>경기 카드가 없을 때 홈승/무/원정승 배당을 직접 넣어 검색합니다.</span>
                   </div>
-                  <label>
-                    <span>리그/대회 선택</span>
-                    <select id="search-league">
-                      <option value="ALL">전체</option>
-                      <option value="EPL">EPL</option>
-                      <option value="LALIGA">라리가</option>
-                      <option value="SERIEA">세리에A</option>
-                      <option value="BUNDESLIGA">분데스리가</option>
-                      <option value="LIGUE1">리그앙</option>
-                      <option value="WORLDCUP">월드컵</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>팀명 포함</span>
-                    <input id="search-team-query" type="search" placeholder="예: 아스널, 첼시, 토트넘">
-                  </label>
+                  <details class="advanced-search-filters">
+                    <summary>상세 필터</summary>
+                    <div class="advanced-search-filter-grid">
+                      <label>
+                        <span>리그</span>
+                        <select id="search-league">
+                          <option value="ALL">전체</option>
+                          <option value="EPL">EPL</option>
+                          <option value="LALIGA">라리가</option>
+                          <option value="SERIEA">세리에A</option>
+                          <option value="BUNDESLIGA">분데스리가</option>
+                          <option value="LIGUE1">리그앙</option>
+                          <option value="WORLDCUP">월드컵</option>
+                        </select>
+                      </label>
+                      <label>
+                        <span>팀명</span>
+                        <input id="search-team-query" type="search" placeholder="예: 아스널, 첼시, 토트넘">
+                      </label>
+                    </div>
+                  </details>
                   <div class="tolerance-chip-row" aria-label="허용 오차 빠른 선택">
                     <button class="tolerance-chip active" id="tolerance-chip-0" type="button" data-tolerance-value="0.00" aria-pressed="true">동배당</button>
                     <button class="tolerance-chip" id="tolerance-chip-001" type="button" data-tolerance-value="0.01" aria-pressed="false">±0.01</button>
@@ -145,13 +145,10 @@
 
               <div class="search-status-card" aria-live="polite">
                 <span>검색 상태</span>
-                <strong id="odds-search-status">배당값을 입력하거나 저장 경기에서 이 배당으로 검색을 눌러주세요.</strong>
-                <small id="searchable-match-status">검색 가능 경기: 기본 데이터팩 + 내 저장 경기 합계 0개</small>
+                <strong id="odds-search-status">배당값을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.</strong>
                 <small>검색 결과 개수 <b id="odds-search-count">0</b></small>
-                <button class="ghost-action api-history-action" type="button" id="load-api-history">최근 30일 API 배당 추가</button>
-                <small class="api-history-hint">7일씩 나눠 수집하고, 이미 가져온 구간은 건너뜁니다.</small>
                 <div class="empty-data-actions" id="empty-data-actions" hidden>
-                  <span>먼저 데이터를 준비해주세요.</span>
+                  <span>검색 결과가 없으면 데이터 추가에서 CSV를 넣을 수 있습니다.</span>
                   <button type="button" id="empty-import-data">기본 데이터 가져오기</button>
                   <button class="ghost-action" type="button" id="empty-open-upload">데이터 추가로 이동</button>
                 </div>
@@ -163,7 +160,7 @@
                   <span>검색 결과 기준</span>
                 </div>
                 <p class="odds-verdict" id="odds-verdict">배당을 검색하면 패턴과 신뢰도를 요약해드립니다.</p>
-                <p class="source-summary" id="odds-source-summary">검색 기준 데이터: 결과 없음</p>
+                <p class="source-summary" id="odds-source-summary" hidden></p>
                 <div class="ratio-list ratio-grid">
                   <div><span>전체</span><strong id="breakdown-total">0</strong></div>
                   <div><span>확인</span><strong id="breakdown-known">0</strong></div>

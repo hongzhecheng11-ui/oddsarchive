@@ -922,6 +922,44 @@ tbody tr:last-child td {
   color: #99a6b4;
 }
 
+.advanced-search-filters {
+  margin: -2px 0 2px;
+  border: 1px solid #dce6ef;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.advanced-search-filters > summary {
+  min-height: 34px;
+  padding: 8px 10px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.advanced-search-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 10px 10px;
+}
+
+.advanced-search-filter-grid label {
+  display: grid;
+  gap: 4px;
+}
+
+.advanced-search-filter-grid span {
+  font-size: 11px;
+}
+
+.advanced-search-filter-grid input,
+.advanced-search-filter-grid select {
+  min-height: 34px;
+  font-size: 12px;
+}
+
 .today-analysis-panel {
   display: grid;
   gap: 14px;
@@ -1937,15 +1975,12 @@ tbody tr:last-child td {
 }
 
 .result-card-summary::after {
-  content: "상세";
-  justify-self: end;
-  color: var(--accent-strong);
-  font-size: 11px;
-  font-weight: 900;
+  content: "";
+  display: none;
 }
 
 .search-result-card[open] .result-card-summary::after {
-  content: "접기";
+  content: "";
 }
 
 .result-card-details {
@@ -2000,7 +2035,7 @@ tbody tr:last-child td {
 }
 
 .result-match-title {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.25;
 }
 
@@ -2040,11 +2075,11 @@ tbody tr:last-child td {
 .result-score-hero {
   margin: 0;
   width: fit-content;
-  padding: 3px 7px;
-  border-radius: 999px;
-  background: #eef7f4;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--accent-strong);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 900;
 }
 

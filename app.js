@@ -3174,7 +3174,7 @@ function updateStoredMatchStatus(matches = loadStoredMatches()) {
   }
 
   if (searchStatus) {
-    searchStatus.textContent = `검색 가능 경기: 기본 데이터팩 + 내 저장 경기 합계 ${searchableMatches.length}개`;
+    searchStatus.textContent = "";
   }
 
   updateTodayAnalysisDataStatus(searchableMatches);
@@ -3184,7 +3184,7 @@ function updateStoredMatchStatus(matches = loadStoredMatches()) {
 
 function updateTodayAnalysisDataStatus(matches = getSearchableMatches()) {
   const element = document.getElementById("today-analysis-data-status");
-  if (element) element.textContent = `검색 가능 경기 ${matches.length}개`;
+  if (element) element.textContent = "";
 }
 
 function updateSearchLeagueStatus(matches = getSearchableMatches()) {
@@ -3374,7 +3374,7 @@ function createSearchResultCard(match) {
   header.className = "result-card-header";
 
   const meta = document.createElement("span");
-  meta.textContent = `${match.date} · ${formatLeagueName(match.league)}`;
+  meta.textContent = formatLeagueName(match.league);
 
   const resultPill = document.createElement("strong");
   resultPill.className = "result-pill";
@@ -3384,11 +3384,13 @@ function createSearchResultCard(match) {
 
   const title = document.createElement("strong");
   title.className = "result-match-title";
-  title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+  title.textContent = match.score
+    ? `${formatTeamName(match.homeTeam)} ${match.score.replace("-", " : ")} ${formatTeamName(match.awayTeam)}`
+    : `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
 
   const scoreLine = document.createElement("p");
   scoreLine.className = "result-score-hero";
-  scoreLine.textContent = match.score ? `스코어 ${match.score}` : "스코어 미확인";
+  scoreLine.textContent = `배당 ${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}`;
 
   summary.append(header, title, scoreLine);
 
@@ -3410,11 +3412,11 @@ function createSearchResultCard(match) {
 
   const result = document.createElement("small");
   result.className = "result-score-line";
-  result.textContent = formatMatchResultText(match);
+  result.textContent = `${match.date || ""} · 결과 ${formatResultLabel(match.result)}`;
 
   const details = document.createElement("div");
   details.className = "result-card-details";
-  details.append(odds, result);
+  details.append(result);
 
   card.append(summary, details);
   return card;
@@ -4775,8 +4777,10 @@ function setOddsSearchStatus(message) {
 function getSearchStatusDetails({ storedCount, pendingCount, criteria, resultCount }) {
   const tolerance = criteria.tolerance === "CUSTOM" ? criteria.customTolerance : criteria.tolerance;
   const teamQuery = String(criteria.teamQuery || "").trim();
-  const teamText = teamQuery ? ` / 팀명 ${teamQuery}` : "";
-  return `내 저장 경기 ${storedCount}개 / 기본 데이터팩 포함 / 임시 정상 행 ${pendingCount}개 / 입력 배당 ${criteria.homeOdds || "-"}, ${criteria.drawOdds || "-"}, ${criteria.awayOdds || "-"}${teamText} / 허용 오차 ${tolerance || "-"} / 검색 결과 ${resultCount}개`;
+  const leagueText = criteria.league && criteria.league !== "ALL" ? `${formatLeagueName(criteria.league)} · ` : "";
+  const teamText = teamQuery ? ` · 팀명 ${teamQuery}` : "";
+  const pendingText = pendingCount > 0 ? ` · 미리보기 ${pendingCount}건 포함` : "";
+  return `${leagueText}배당 ${criteria.homeOdds || "-"} / ${criteria.drawOdds || "-"} / ${criteria.awayOdds || "-"} · 오차 ${tolerance || "-"} · 결과 ${resultCount}건${teamText}${pendingText}`;
 }
 
 function renderValidationRows(validation) {
@@ -5163,10 +5167,10 @@ function wireSaveValidRows() {
       setAutoUpdateState({ ...getAutoUpdateState(), lastUpdatedAt: getCurrentTimestamp() });
       updateDataStatus();
       renderStoredMatches(storedMatches);
-      renderOddsSearchResults([], storedMatches.length === 0 ? "저장된 경기 데이터가 없습니다." : "조건에 맞는 유사 배당 경기가 없습니다.", { show: false });
+      renderOddsSearchResults([], "조건에 맞는 유사 배당 경기가 없습니다.", { show: false });
       renderResultBreakdown([]);
       setClearMatchesStatus(`${storedMatches.length}개의 경기 데이터가 저장되어 있습니다.`);
-      setOddsSearchStatus(`검색 가능 경기: 기본 데이터팩 + 내 저장 경기 합계 ${getSearchableMatches().length}개`);
+      setOddsSearchStatus("배당을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.");
       setSaveStatus(`정상 행 ${result.savedCount}개가 저장되었습니다. 중복 제외 ${result.duplicateCount || 0}개. 현재 저장된 전체 경기 수: ${storedMatches.length}개`);
       currentValidRows = [];
       setSaveButtonState(currentValidRows);
@@ -5199,10 +5203,10 @@ function wireClearStoredMatches() {
     setAutoUpdateState({ ...getAutoUpdateState(), lastUpdatedAt: getCurrentTimestamp() });
     updateDataStatus();
     renderStoredMatches(result.matches);
-    renderOddsSearchResults([], "저장된 경기 데이터가 없습니다.", { show: false });
+    renderOddsSearchResults([], "조건에 맞는 결과가 없습니다.", { show: false });
     renderResultBreakdown([]);
     setOddsSearchError("");
-    setOddsSearchStatus("저장된 경기 데이터가 없습니다.");
+    setOddsSearchStatus("배당을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.");
     currentValidRows = [];
     setSaveButtonState(currentValidRows);
     setClearMatchesStatus(`${result.deletedCount}개의 경기 데이터를 삭제했습니다.`);
@@ -5388,11 +5392,11 @@ function runOddsSearchFromCurrentCriteria() {
     const criteria = getOddsSearchCriteria();
 
     if (matches.length === 0) {
-      setOddsSearchError("저장된 경기 데이터가 없습니다.");
-      setOddsSearchStatus("저장된 경기 데이터가 없습니다. 먼저 데이터를 준비해주세요.");
+      setOddsSearchError("검색할 수 있는 결과가 없습니다.");
+      setOddsSearchStatus("조건에 맞는 결과가 없습니다. 다른 배당이나 오차 범위로 다시 검색해보세요.");
       updateEmptyDataActions([]);
       resetOddsResultLimit();
-      renderOddsSearchResults([], "저장된 경기 데이터가 없습니다.");
+      renderOddsSearchResults([], "검색된 과거 결과가 없습니다.");
       renderResultBreakdown([], criteria);
       return;
     }
@@ -5419,8 +5423,8 @@ function runOddsSearchFromCurrentCriteria() {
     renderOddsPatternSuggestions();
     setOddsSearchStatus(
       result.matches.length === 0
-        ? `조건에 맞는 유사 배당 경기가 없습니다. / ${statusDetails}`
-        : `검색 결과가 표시됩니다. / ${statusDetails}`
+        ? `조건에 맞는 유사 배당 경기가 없습니다. ${statusDetails}`
+        : `검색 결과가 표시됩니다. ${statusDetails}`
     );
     resetOddsResultLimit();
     renderOddsSearchResults(result.matches, "조건에 맞는 유사 배당 경기가 없습니다.");
@@ -5558,7 +5562,8 @@ function searchWithMatchOdds(match) {
     tolerance: "0.05",
     sortOrder: "CLOSEST",
     customTolerance: "",
-    league: ""
+    league: "ALL",
+    teamQuery: ""
   });
 
   if (typeof window !== "undefined") {
@@ -6180,6 +6185,7 @@ if (typeof module !== "undefined") {
     sortHomeTodayMatchesForUsers,
     getTodayOddsSummaryText,
     getOddsSearchVerdictText,
+    getSearchStatusDetails,
     getOddsPatternLabel,
     getOddsRiskSignals,
     getRecentSeasonMatches,
