@@ -5,7 +5,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-07T05:00:39.817Z",
+  "updatedAt": "2026-07-07T06:56:10.704Z",
   "matches": [
     {
       "date": "2025-02-14",
@@ -3603,8 +3603,8 @@
       "homeOdds": "2.52",
       "drawOdds": "3.35",
       "awayOdds": "2.68",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-4",
       "source": "API 과거 배당"
     },
     {
@@ -3615,6 +3615,18 @@
       "homeOdds": "2.78",
       "drawOdds": "3.10",
       "awayOdds": "2.44",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
+      "homeTeam": "Ararat-Armenia",
+      "awayTeam": "Riga",
+      "homeOdds": "2.80",
+      "drawOdds": "3.10",
+      "awayOdds": "2.42",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3646,6 +3658,18 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
+      "homeTeam": "Borac Banja Luka",
+      "awayTeam": "Levski Sofia",
+      "homeOdds": "3.25",
+      "drawOdds": "3.00",
+      "awayOdds": "2.22",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
       "homeTeam": "Floriana",
       "awayTeam": "Shamrock Rovers",
       "homeOdds": "3.40",
@@ -3658,11 +3682,35 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
+      "homeTeam": "Floriana",
+      "awayTeam": "Shamrock Rovers",
+      "homeOdds": "3.25",
+      "drawOdds": "3.35",
+      "awayOdds": "2.08",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
       "homeTeam": "KI Klaksvik",
       "awayTeam": "Atert Bissen",
       "homeOdds": "1.50",
       "drawOdds": "3.90",
       "awayOdds": "6.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
+      "homeTeam": "KI Klaksvik",
+      "awayTeam": "Atert Bissen",
+      "homeOdds": "1.48",
+      "drawOdds": "4.00",
+      "awayOdds": "6.20",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3694,10 +3742,34 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
+      "homeTeam": "Sabah FA",
+      "awayTeam": "The New Saints",
+      "homeOdds": "1.29",
+      "drawOdds": "4.90",
+      "awayOdds": "9.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
       "homeTeam": "Tre Fiori",
       "awayTeam": "Larne",
       "homeOdds": "6.60",
       "drawOdds": "4.50",
+      "awayOdds": "1.40",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
+      "homeTeam": "Tre Fiori",
+      "awayTeam": "Larne",
+      "homeOdds": "6.75",
+      "drawOdds": "4.45",
       "awayOdds": "1.40",
       "result": "UNKNOWN",
       "score": "",
@@ -3722,6 +3794,18 @@
       "awayTeam": "Gyori ETO FC",
       "homeOdds": "2.62",
       "drawOdds": "3.25",
+      "awayOdds": "2.50",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "UCL",
+      "homeTeam": "Vikingur Reykjavik",
+      "awayTeam": "Gyori ETO FC",
+      "homeOdds": "2.60",
+      "drawOdds": "3.30",
       "awayOdds": "2.50",
       "result": "UNKNOWN",
       "score": "",
@@ -3754,11 +3838,35 @@
     {
       "date": "2026-07-08",
       "league": "WORLDCUP",
+      "homeTeam": "Argentina",
+      "awayTeam": "Egypt",
+      "homeOdds": "1.36",
+      "drawOdds": "4.30",
+      "awayOdds": "9.70",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "WORLDCUP",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeOdds": "3.25",
       "drawOdds": "3.05",
       "awayOdds": "2.30",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-08",
+      "league": "WORLDCUP",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Colombia",
+      "homeOdds": "3.40",
+      "drawOdds": "3.05",
+      "awayOdds": "2.22",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3771,6 +3879,18 @@
       "homeOdds": "2.84",
       "drawOdds": "3.35",
       "awayOdds": "2.28",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-09",
+      "league": "UCL",
+      "homeTeam": "Flora Tallinn",
+      "awayTeam": "Saburtalo",
+      "homeOdds": "2.82",
+      "drawOdds": "3.40",
+      "awayOdds": "2.26",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3795,6 +3915,18 @@
       "homeOdds": "1.29",
       "drawOdds": "4.45",
       "awayOdds": "11.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-09",
+      "league": "UCL",
+      "homeTeam": "Kairat Almaty",
+      "awayTeam": "Sutjeska",
+      "homeOdds": "1.29",
+      "drawOdds": "4.50",
+      "awayOdds": "10.75",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3862,11 +3994,71 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
+      "homeTeam": "CSKA Sofia",
+      "awayTeam": "Derry City",
+      "homeOdds": "1.29",
+      "drawOdds": "4.85",
+      "awayOdds": "9.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "UEL",
       "homeTeam": "Dynamo Kyiv",
       "awayTeam": "Universitatea Cluj",
       "homeOdds": "1.91",
       "drawOdds": "3.00",
       "awayOdds": "3.80",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "UEL",
+      "homeTeam": "Dynamo Kyiv",
+      "awayTeam": "Universitatea Cluj",
+      "homeOdds": "1.61",
+      "drawOdds": "3.85",
+      "awayOdds": "4.75",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "UEL",
+      "homeTeam": "HNK Hajduk Split",
+      "awayTeam": "Žilina",
+      "homeOdds": "1.44",
+      "drawOdds": "4.10",
+      "awayOdds": "6.50",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "UEL",
+      "homeTeam": "Qarabag",
+      "awayTeam": "Vestri",
+      "homeOdds": "1.09",
+      "drawOdds": "6.75",
+      "awayOdds": "48.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "UEL",
+      "homeTeam": "Sheriff Tiraspol",
+      "awayTeam": "Aluminij",
+      "homeOdds": "1.32",
+      "drawOdds": "4.30",
+      "awayOdds": "9.80",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3885,12 +4077,36 @@
     },
     {
       "date": "2026-07-10",
+      "league": "UEL",
+      "homeTeam": "Vojvodina",
+      "awayTeam": "Ferencvarosi TC",
+      "homeOdds": "2.84",
+      "drawOdds": "3.30",
+      "awayOdds": "2.30",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
       "league": "WORLDCUP",
       "homeTeam": "France",
       "awayTeam": "Morocco",
       "homeOdds": "1.54",
       "drawOdds": "3.80",
       "awayOdds": "6.25",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "WORLDCUP",
+      "homeTeam": "France",
+      "awayTeam": "Morocco",
+      "homeOdds": "1.56",
+      "drawOdds": "3.75",
+      "awayOdds": "6.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3932,6 +4148,18 @@
       "source": "API 과거 배당"
     },
     {
+      "date": "2026-07-11",
+      "league": "KLEAGUE1",
+      "homeTeam": "Ulsan Hyundai FC",
+      "awayTeam": "Jeonbuk Motors",
+      "homeOdds": "2.60",
+      "drawOdds": "3.30",
+      "awayOdds": "2.60",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
       "homeTeam": "FC Seoul",
@@ -3958,11 +4186,35 @@
     {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
+      "homeTeam": "Incheon United",
+      "awayTeam": "FC Anyang",
+      "homeOdds": "2.00",
+      "drawOdds": "3.25",
+      "awayOdds": "3.80",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "KLEAGUE1",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.70",
       "drawOdds": "3.30",
       "awayOdds": "2.50",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "KLEAGUE1",
+      "homeTeam": "Jeju United FC",
+      "awayTeam": "Daejeon Citizen",
+      "homeOdds": "2.75",
+      "drawOdds": "3.30",
+      "awayOdds": "2.45",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -3975,6 +4227,18 @@
       "homeOdds": "3.75",
       "drawOdds": "3.60",
       "awayOdds": "1.90",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "WORLDCUP",
+      "homeTeam": "Norway",
+      "awayTeam": "England",
+      "homeOdds": "3.95",
+      "drawOdds": "3.65",
+      "awayOdds": "1.84",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
