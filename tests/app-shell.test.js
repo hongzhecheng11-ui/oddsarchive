@@ -14,7 +14,7 @@ function test(name, fn) {
 
 test("builds direct odds search criteria from a live match with odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
-    league: "WORLDCUP",
+    league: "ALL",
     homeTeam: "Mexico",
     awayTeam: "Ecuador",
     homeOdds: "2.10",
@@ -29,8 +29,8 @@ test("builds direct odds search criteria from a live match with odds", () => {
     tolerance: "0.05",
     sortOrder: "CLOSEST",
     customTolerance: "",
-    league: "WORLDCUP",
-    teamQuery: "멕시코 에콰도르"
+    league: "ALL",
+    teamQuery: ""
   });
 });
 
@@ -198,6 +198,34 @@ test("sorts home today matches by odds, league priority, and time", () => {
   assert.strictEqual(sorted[2].league, "KLEAGUE1");
 });
 
+test("summarizes today match insight for users", () => {
+  const insight = app.getTodayUserInsight(
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" },
+    { breakdown: { totalMatches: 50, knownMatches: 50, homeWins: 31, draws: 10, awayWins: 9, homeRate: "62.0%", drawRate: "20.0%", awayRate: "18.0%" } }
+  );
+
+  assert(insight.text.includes("홈 62.0%"));
+  assert(insight.text.includes("이변"));
+  assert(insight.text.includes("표본 50"));
+  assert(insight.score > 500);
+});
+
+test("sorts user useful today matches before low sample matches", () => {
+  const searchableMatches = [
+    { date: "2026-01-01", league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: 1.8, drawOdds: 3.4, awayOdds: 4.2, result: "H" },
+    { date: "2026-01-02", league: "EPL", homeTeam: "C", awayTeam: "D", homeOdds: 1.8, drawOdds: 3.4, awayOdds: 4.2, result: "D" },
+    { date: "2026-01-03", league: "EPL", homeTeam: "E", awayTeam: "F", homeOdds: 1.8, drawOdds: 3.4, awayOdds: 4.2, result: "H" },
+    { date: "2026-01-04", league: "EPL", homeTeam: "G", awayTeam: "H", homeOdds: 1.8, drawOdds: 3.4, awayOdds: 4.2, result: "A" },
+    { date: "2026-01-05", league: "EPL", homeTeam: "I", awayTeam: "J", homeOdds: 1.8, drawOdds: 3.4, awayOdds: 4.2, result: "H" }
+  ];
+  const sorted = app.sortHomeTodayMatchesForUsers([
+    { league: "KLEAGUE1", homeTeam: "FC Seoul", awayTeam: "Daegu FC", startTime: "19:00" },
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", startTime: "22:00", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" }
+  ], searchableMatches);
+
+  assert.strictEqual(sorted[0].league, "EPL");
+});
+
 test("renders home today section cards without breaking the page", () => {
   class FakeElement {
     constructor(tagName = "div") {
@@ -313,7 +341,7 @@ test("marks small and empty samples", () => {
 
 test("builds direct odds search criteria from a live match without odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
-    league: "WORLDCUP",
+    league: "ALL",
     homeTeam: "England",
     awayTeam: "Congo DR"
   });
@@ -325,8 +353,8 @@ test("builds direct odds search criteria from a live match without odds", () => 
     tolerance: "0.05",
     sortOrder: "CLOSEST",
     customTolerance: "",
-    league: "WORLDCUP",
-    teamQuery: "잉글랜드 콩고민주공화국"
+    league: "ALL",
+    teamQuery: ""
   });
 });
 

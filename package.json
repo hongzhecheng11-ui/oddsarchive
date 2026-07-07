@@ -7,6 +7,6 @@
     "collect:the-odds:kleague1:2025": "node scripts/collect-the-odds-history.js --league=KLEAGUE1 --season=2025",
     "audit:football-data": "node scripts/audit-football-data-pack.js",
     "update:football-data": "node scripts/update-football-data-pack.js",
-    "test": "node tests/app-shell.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js"
+    "test": "node tests/app-shell.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js"
   }
 }

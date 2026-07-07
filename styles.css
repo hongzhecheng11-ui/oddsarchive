@@ -1458,6 +1458,33 @@ tbody tr:last-child td {
   color: #0f766e;
 }
 
+.home-today-insight {
+  margin: 0;
+  padding: 5px 6px;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.home-today-insight.high {
+  color: #047857;
+  background: #ecfdf5;
+}
+
+.home-today-insight.medium {
+  color: #b45309;
+  background: #fffbeb;
+}
+
+.home-today-insight.low,
+.home-today-insight.pending {
+  color: #dc2626;
+  background: #fff7ed;
+}
+
 .home-today-footer {
   justify-content: center;
 }
@@ -2010,6 +2037,17 @@ tbody tr:last-child td {
   line-height: 1.25;
 }
 
+.result-score-hero {
+  margin: 0;
+  width: fit-content;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #eef7f4;
+  color: var(--accent-strong);
+  font-size: 10px;
+  font-weight: 900;
+}
+
 .result-card-summary::after,
 .search-result-card[open] .result-card-summary::after {
   content: "";
@@ -2097,6 +2135,101 @@ tbody tr:last-child td {
   color: var(--muted);
   font-size: 11px;
   font-weight: 800;
+}
+
+.league-breakdown-section,
+.recent-flow-list {
+  display: grid;
+  gap: 6px;
+}
+
+.league-breakdown-section > strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.league-breakdown-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.league-breakdown-card {
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  border: 1px solid #dce6ef;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.league-breakdown-card div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.league-breakdown-card strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.league-breakdown-card span,
+.league-breakdown-card small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.league-breakdown-card div:first-child span {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.league-breakdown-card div:first-child span.sample-low {
+  background: #fff7ed;
+  color: #dc2626;
+}
+
+.league-breakdown-rates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.league-breakdown-rates span {
+  padding: 4px 5px;
+  border-radius: 6px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.recent-flow-list {
+  max-height: 230px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.recent-flow-item {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.recent-flow-item span {
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
 .result-chip {

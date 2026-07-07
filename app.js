@@ -3385,7 +3385,12 @@ function createSearchResultCard(match) {
   const title = document.createElement("strong");
   title.className = "result-match-title";
   title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
-  summary.append(header, title);
+
+  const scoreLine = document.createElement("p");
+  scoreLine.className = "result-score-hero";
+  scoreLine.textContent = match.score ? `스코어 ${match.score}` : "스코어 미확인";
+
+  summary.append(header, title, scoreLine);
 
   const odds = document.createElement("div");
   odds.className = "result-odds-strip";
@@ -3429,12 +3434,82 @@ function getRecentKnownResults(matches = [], limit = 10) {
     .slice(0, limit);
 }
 
+function getLeagueBreakdownStats(matches = []) {
+  const groups = new Map();
+  for (const match of Array.isArray(matches) ? matches : []) {
+    const league = String(match.league || "UNKNOWN").trim() || "UNKNOWN";
+    if (!groups.has(league)) groups.set(league, []);
+    groups.get(league).push(match);
+  }
+
+  return Array.from(groups.entries())
+    .map(([league, leagueMatches]) => {
+      const breakdown = calculateResultBreakdown(leagueMatches);
+      return {
+        league,
+        label: formatLeagueName(league),
+        sampleLabel: breakdown.knownMatches < 5 ? "표본 적음" : "분석 가능",
+        breakdown
+      };
+    })
+    .sort((left, right) => (
+      Number(right.breakdown.knownMatches || 0) - Number(left.breakdown.knownMatches || 0)
+      || String(left.label).localeCompare(String(right.label))
+    ));
+}
+
+function createLeagueBreakdownCard(stat) {
+  const card = document.createElement("article");
+  card.className = "league-breakdown-card";
+
+  const header = document.createElement("div");
+  const title = document.createElement("strong");
+  const badge = document.createElement("span");
+  title.textContent = stat.label;
+  badge.textContent = stat.sampleLabel;
+  if (stat.breakdown.knownMatches < 5) badge.className = "sample-low";
+  header.append(title, badge);
+
+  const count = document.createElement("small");
+  count.textContent = `표본 ${stat.breakdown.knownMatches}/${stat.breakdown.totalMatches}`;
+
+  const rates = document.createElement("div");
+  rates.className = "league-breakdown-rates";
+  [
+    ["홈", stat.breakdown.homeRate],
+    ["무", stat.breakdown.drawRate],
+    ["원정", stat.breakdown.awayRate]
+  ].forEach(([label, value]) => {
+    const item = document.createElement("span");
+    item.textContent = `${label} ${value || "0%"}`;
+    rates.appendChild(item);
+  });
+
+  card.append(header, count, rates);
+  return card;
+}
+
+function createRecentResultFlowItem(match) {
+  const item = document.createElement("article");
+  item.className = "recent-flow-item";
+
+  const chip = document.createElement("b");
+  chip.className = `result-chip ${getResultChipClass(match.result)}`;
+  chip.textContent = formatResultLabel(match.result).slice(0, 1);
+
+  const detail = document.createElement("span");
+  detail.textContent = `${match.date} · ${formatLeagueName(match.league)} · ${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · ${formatMatchResultText(match)}`;
+
+  item.append(chip, detail);
+  return item;
+}
+
 function renderResultBreakdownExtras(matches = [], breakdown = {}) {
   const analysis = document.getElementById("analysis");
   const memo = document.getElementById("breakdown-memo");
   if (!analysis) return;
 
-  analysis.querySelectorAll(".compact-breakdown-strip, .recent-result-row").forEach((node) => node.remove());
+  analysis.querySelectorAll(".compact-breakdown-strip, .recent-result-row, .league-breakdown-section, .recent-flow-list").forEach((node) => node.remove());
 
   const strip = document.createElement("div");
   strip.className = "compact-breakdown-strip";
@@ -3475,11 +3550,39 @@ function renderResultBreakdownExtras(matches = [], breakdown = {}) {
   }
   recent.append(recentLabel, recentChips);
 
+  const leagueSection = document.createElement("section");
+  leagueSection.className = "league-breakdown-section";
+  const leagueTitle = document.createElement("strong");
+  leagueTitle.textContent = "리그별 통계";
+  const leagueList = document.createElement("div");
+  leagueList.className = "league-breakdown-list";
+  const leagueStats = getLeagueBreakdownStats(matches);
+  if (leagueStats.length === 0) {
+    const empty = document.createElement("small");
+    empty.textContent = "리그별 표본 없음";
+    leagueList.appendChild(empty);
+  } else {
+    leagueList.append(...leagueStats.map(createLeagueBreakdownCard));
+  }
+  leagueSection.append(leagueTitle, leagueList);
+
+  const recentDetails = document.createElement("div");
+  recentDetails.className = "recent-flow-list";
+  if (recentMatches.length === 0) {
+    const empty = document.createElement("small");
+    empty.textContent = "최근 결과 표본 없음";
+    recentDetails.appendChild(empty);
+  } else {
+    recentDetails.append(...recentMatches.map(createRecentResultFlowItem));
+  }
+
   if (memo) {
     analysis.insertBefore(strip, memo);
+    analysis.insertBefore(leagueSection, memo);
     analysis.insertBefore(recent, memo);
+    analysis.insertBefore(recentDetails, memo);
   } else {
-    analysis.append(strip, recent);
+    analysis.append(strip, leagueSection, recent, recentDetails);
   }
 }
 
@@ -3884,6 +3987,73 @@ function sortHomeTodayMatches(matches = []) {
   });
 }
 
+function getTodayUserInsight(match = {}, analysis = null) {
+  if (!hasCompleteOdds(match)) {
+    return {
+      text: "배당 준비 중",
+      tone: "pending",
+      sampleSize: 0,
+      upsetProbability: null,
+      score: 0
+    };
+  }
+
+  const breakdown = analysis?.breakdown || getTodayMatchAnalysis(match, getSearchableMatches()).breakdown || calculateResultBreakdown([]);
+  const judgement = calculateMatchJudgement(breakdown, {
+    homeOdds: match.homeOdds,
+    drawOdds: match.drawOdds,
+    awayOdds: match.awayOdds,
+    league: match.league,
+    homeTeam: match.homeTeam,
+    awayTeam: match.awayTeam,
+    tolerance: match.tolerance || "0.05"
+  });
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const totalMatches = Number(breakdown.totalMatches || 0);
+
+  if (knownMatches <= 0) {
+    return {
+      text: totalMatches > 0 ? `표본 부족 · 결과 0/${totalMatches}` : "표본 부족",
+      tone: "low",
+      sampleSize: knownMatches,
+      upsetProbability: null,
+      score: 100
+    };
+  }
+
+  const confidence = getInlineOddsConfidence(breakdown);
+  const upsetText = judgement.upsetProbability === null ? "이변 -" : `이변 ${Math.round(judgement.upsetProbability)}%`;
+  const text = `홈 ${breakdown.homeRate || "0%"} · 무 ${breakdown.drawRate || "0%"} · 원정 ${breakdown.awayRate || "0%"} · ${upsetText} · 표본 ${knownMatches}`;
+  const sampleScore = Math.min(knownMatches, 80) * 4;
+  const clarityScore = Math.max(
+    parseRateValue(breakdown.homeRate),
+    parseRateValue(breakdown.drawRate),
+    parseRateValue(breakdown.awayRate)
+  );
+  const confidenceScore = confidence.className === "confidence-high" ? 80 : confidence.className === "confidence-medium" ? 40 : 0;
+
+  return {
+    text,
+    tone: confidence.className.replace("confidence-", ""),
+    sampleSize: knownMatches,
+    upsetProbability: judgement.upsetProbability,
+    score: 500 + sampleScore + clarityScore + confidenceScore
+  };
+}
+
+function sortHomeTodayMatchesForUsers(matches = [], searchableMatches = getSearchableMatches()) {
+  return [...matches].sort((left, right) => {
+    const leftAnalysis = hasCompleteOdds(left) ? getTodayMatchAnalysis(left, searchableMatches) : null;
+    const rightAnalysis = hasCompleteOdds(right) ? getTodayMatchAnalysis(right, searchableMatches) : null;
+    const leftInsight = getTodayUserInsight(left, leftAnalysis);
+    const rightInsight = getTodayUserInsight(right, rightAnalysis);
+    const insightDifference = rightInsight.score - leftInsight.score;
+    if (insightDifference !== 0) return insightDifference;
+
+    return sortHomeTodayMatches([left, right])[0] === left ? -1 : 1;
+  });
+}
+
 function formatMatchStartTime(match = {}) {
   const timeText = String(match.startTime || match.kickoff || match.time || "").trim();
   if (timeText) return timeText.slice(0, 5);
@@ -3911,6 +4081,8 @@ function getMatchStatusLabel(match = {}) {
 
 function getHomeTodayCardViewModel(match = {}, updatedAt = "") {
   const hasOdds = hasCompleteOdds(match);
+  const analysis = hasOdds ? getTodayMatchAnalysis(match, getSearchableMatches()) : null;
+  const insight = getTodayUserInsight(match, analysis);
   return {
     id: match.id || getTodayMatchKey(match),
     title: `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`,
@@ -3918,6 +4090,7 @@ function getHomeTodayCardViewModel(match = {}, updatedAt = "") {
     startTime: formatMatchStartTime(match),
     status: getMatchStatusLabel(match),
     odds: hasOdds ? `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}` : "배당 준비 중",
+    insight,
     hasOdds,
     updatedAt: updatedAt || match.updatedAt || match.createdAt || ""
   };
@@ -3946,6 +4119,9 @@ function createHomeTodayMatchCard(match, updatedAt = "") {
 
   const odds = document.createElement("p");
   odds.className = view.hasOdds ? "home-today-odds ready" : "home-today-odds";
+  const insight = document.createElement("p");
+  insight.className = `home-today-insight ${view.insight?.tone || "pending"}`;
+  insight.textContent = view.insight?.text || "분석 준비 중";
   odds.textContent = view.hasOdds ? `홈승 / 무 / 원정승 ${view.odds}` : view.odds;
 
   const footer = document.createElement("div");
@@ -3960,7 +4136,7 @@ function createHomeTodayMatchCard(match, updatedAt = "") {
   });
   footer.append(updated, button);
 
-  card.append(top, title, odds, footer);
+  card.append(top, title, odds, insight, footer);
   return card;
 }
 
@@ -3985,7 +4161,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     return;
   }
 
-  const visibleMatches = sortHomeTodayMatches(majorMatches).slice(0, HOME_TODAY_MATCH_LIMIT);
+  const visibleMatches = sortHomeTodayMatchesForUsers(majorMatches, getSearchableMatches()).slice(0, HOME_TODAY_MATCH_LIMIT);
   list.replaceChildren(...visibleMatches.map((match) => createHomeTodayMatchCard(match, homeTodayLastUpdatedAt)));
 }
 
@@ -4052,8 +4228,8 @@ function getDirectOddsSearchCriteriaFromMatch(match = {}) {
     tolerance: match.tolerance || "0.05",
     sortOrder: "CLOSEST",
     customTolerance: "",
-    league: match.league || "ALL",
-    teamQuery: [formatTeamName(match.homeTeam), formatTeamName(match.awayTeam)].filter(Boolean).join(" ")
+    league: "ALL",
+    teamQuery: ""
   };
 }
 
@@ -5995,9 +6171,13 @@ if (typeof module !== "undefined") {
     getInlineOddsConfidence,
     getApiHistoryChunks,
     getHomeTodayCardViewModel,
+    getTodayUserInsight,
+    getLeagueBreakdownStats,
+    getRecentKnownResults,
     getMissingTeamNames,
     getMajorTodayMatches,
     sortHomeTodayMatches,
+    sortHomeTodayMatchesForUsers,
     getTodayOddsSummaryText,
     getOddsSearchVerdictText,
     getOddsPatternLabel,
