@@ -56,6 +56,44 @@ test("keeps odds search status focused on user results", () => {
   assert(!text.includes("9999"));
 });
 
+test("keeps match detail section anchors inside the detail view", () => {
+  assert.strictEqual(app.getActiveViewId("#detail"), "detail");
+  assert.strictEqual(app.getActiveViewId("#detail-summary"), "detail");
+  assert.strictEqual(app.getActiveViewId("#detail-same"), "detail");
+  assert.strictEqual(app.getActiveViewId("#detail-similar"), "detail");
+  assert.strictEqual(app.getActiveViewId("#detail-league"), "detail");
+  assert.strictEqual(app.getActiveViewId("#detail-recent"), "detail");
+});
+
+test("builds match detail analysis buckets for same and similar odds", () => {
+  const target = {
+    date: "2026-07-01",
+    league: "EPL",
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    homeOdds: "1.80",
+    drawOdds: "3.40",
+    awayOdds: "4.20",
+    result: "UNKNOWN"
+  };
+  const matches = [
+    { date: "2025-01-01", league: "EPL", homeTeam: "Liverpool", awayTeam: "Everton", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", result: "H", score: "2-0" },
+    { date: "2025-02-01", league: "LALIGA", homeTeam: "Real Madrid", awayTeam: "Getafe", homeOdds: "1.82", drawOdds: "3.39", awayOdds: "4.18", result: "D", score: "1-1" },
+    { date: "2025-03-01", league: "EPL", homeTeam: "Chelsea", awayTeam: "Arsenal", homeOdds: "1.84", drawOdds: "3.42", awayOdds: "4.19", result: "A", score: "0-1" },
+    { date: "2024-12-01", league: "EPL", homeTeam: "Tottenham", awayTeam: "Chelsea", homeOdds: "2.30", drawOdds: "3.10", awayOdds: "3.00", result: "A", score: "1-2" },
+    { date: "2026-07-01", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", result: "UNKNOWN" }
+  ];
+
+  const analysis = app.buildMatchDetailAnalysis(target, matches);
+
+  assert.strictEqual(analysis.sameOdds.matches.length, 1);
+  assert.strictEqual(analysis.similarOdds.matches.length, 3);
+  assert.strictEqual(analysis.sameLeagueSimilar.matches.length, 2);
+  assert.strictEqual(analysis.recentRecords.headToHead.length, 1);
+  assert.strictEqual(analysis.recentRecords.homeTeam.length, 1);
+  assert.strictEqual(analysis.recentRecords.awayTeam.length, 2);
+});
+
 test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("UEFA Champions League"), "챔피언스리그");
   assert.strictEqual(app.formatLeagueName("KLEAGUE1"), "K리그1");
@@ -111,6 +149,35 @@ test("translates expanded supported league team samples", () => {
   }
 });
 
+test("translates common historical league team aliases", () => {
+  const samples = {
+    Bolton: "볼턴",
+    Stoke: "스토크",
+    Wigan: "위건",
+    Swansea: "스완지",
+    Chievo: "키에보",
+    Malaga: "말라가",
+    Hannover: "하노버",
+    Sochaux: "소쇼",
+    "La Coruna": "데포르티보 라코루냐",
+    Nurnberg: "뉘른베르크",
+    Reading: "레딩",
+    Spal: "SPAL",
+    Bari: "바리",
+    Amiens: "아미앵",
+    "Fortuna Dusseldorf": "포르투나 뒤셀도르프",
+    Cardiff: "카디프",
+    Verdy: "도쿄 베르디",
+    "Bosnia & Herzegovina": "보스니아 헤르체고비나",
+    "Ivory Coast": "코트디부아르",
+    "North Korea": "북한"
+  };
+
+  for (const [rawName, koreanName] of Object.entries(samples)) {
+    assert.strictEqual(app.translateTeamName(rawName), koreanName);
+  }
+});
+
 test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
   assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
@@ -122,6 +189,8 @@ test("cleans compound league labels for display", () => {
   assert.strictEqual(app.translateLeagueName("World Cup / World"), "월드컵");
   assert.strictEqual(app.translateLeagueName("UEFA Champions League / World"), "챔피언스리그");
   assert.strictEqual(app.translateLeagueName("EPL / Mongolia"), "EPL");
+  assert.strictEqual(app.translateLeagueName("UEFA Champions League Qualification"), "챔피언스리그 예선");
+  assert.strictEqual(app.translateLeagueName("UEFA Europa League Qualifying"), "유로파리그 예선");
 });
 
 test("filters today's major matches to supported leagues only", () => {
@@ -279,9 +348,21 @@ test("summarizes today match insight for users", () => {
   );
 
   assert(insight.text.includes("홈 62.0%"));
-  assert(insight.text.includes("이변"));
+  assert(!insight.text.includes("이변"));
   assert(insight.text.includes("표본 50"));
   assert(insight.score > 500);
+});
+
+test("keeps low sample today insight free from upset wording", () => {
+  const insight = app.getTodayUserInsight(
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" },
+    { breakdown: { totalMatches: 8, knownMatches: 8, homeWins: 2, draws: 1, awayWins: 5, homeRate: "25.0%", drawRate: "12.5%", awayRate: "62.5%" } }
+  );
+
+  assert(insight.text.includes("유사배당 8경기"));
+  assert(!insight.text.includes("이변"));
+  assert(!insight.text.includes("위험"));
+  assert(!insight.text.includes("참고용"));
 });
 
 test("sorts user useful today matches before low sample matches", () => {
@@ -350,10 +431,84 @@ test("renders home today section cards without breaking the page", () => {
 
 test("judges favorite hit rate tiers", () => {
   const criteria = { homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" };
-  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 }, criteria).judgement, "안정");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 62, draws: 20, awayWins: 18 }, criteria).judgement, "일반");
   assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 53, draws: 22, awayWins: 25 }, criteria).risk, "보통");
-  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 45, draws: 25, awayWins: 30 }, criteria).judgement, "이변 주의");
-  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 38, draws: 25, awayWins: 37 }, criteria).risk, "매우 높음");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 45, draws: 25, awayWins: 30 }, criteria).judgement, "정배불안");
+  assert.strictEqual(app.calculateMatchJudgement({ totalMatches: 100, knownMatches: 100, homeWins: 38, draws: 25, awayWins: 37 }, criteria).risk, "보통");
+});
+
+test("classifies upset candidates by favorite odds band", () => {
+  const hugeUpset = app.calculateMatchJudgement(
+    { totalMatches: 40, knownMatches: 40, homeWins: 20, draws: 10, awayWins: 10 },
+    { homeOdds: "1.30", drawOdds: "5.20", awayOdds: "9.00" }
+  );
+  const upset = app.calculateMatchJudgement(
+    { totalMatches: 40, knownMatches: 40, homeWins: 20, draws: 10, awayWins: 10 },
+    { homeOdds: "1.55", drawOdds: "4.20", awayOdds: "6.00" }
+  );
+  const shakyFavorite = app.calculateMatchJudgement(
+    { totalMatches: 40, knownMatches: 40, homeWins: 20, draws: 10, awayWins: 10 },
+    { homeOdds: "1.75", drawOdds: "3.80", awayOdds: "4.80" }
+  );
+  const closeFavorite = app.calculateMatchJudgement(
+    { totalMatches: 40, knownMatches: 40, homeWins: 16, draws: 12, awayWins: 12 },
+    { homeOdds: "1.90", drawOdds: "3.30", awayOdds: "3.90" }
+  );
+
+  assert.strictEqual(hugeUpset.judgement, "대형 이변 후보");
+  assert.strictEqual(hugeUpset.favoriteOdds, 1.3);
+  assert.strictEqual(hugeUpset.favoriteBand, "초강정배");
+  assert.strictEqual(upset.judgement, "이변 후보");
+  assert.strictEqual(shakyFavorite.judgement, "정배불안");
+  assert.strictEqual(closeFavorite.judgement, "박빙주의");
+});
+
+test("does not mark low sample or close favorites as upset candidates", () => {
+  const lowSample = app.calculateMatchJudgement(
+    { totalMatches: 14, knownMatches: 14, homeWins: 5, draws: 4, awayWins: 5 },
+    { homeOdds: "1.35", drawOdds: "5.00", awayOdds: "8.00" }
+  );
+  const closeFavorite = app.calculateMatchJudgement(
+    { totalMatches: 80, knownMatches: 80, homeWins: 30, draws: 25, awayWins: 25 },
+    { homeOdds: "1.85", drawOdds: "3.40", awayOdds: "4.20", homeSelectionRate: "90" }
+  );
+
+  assert.notStrictEqual(lowSample.judgement, "대형 이변 후보");
+  assert(lowSample.signals.includes("표본 부족"));
+  assert.strictEqual(closeFavorite.judgement, "박빙주의");
+  assert(!["대형 이변 후보", "이변 후보"].includes(closeFavorite.judgement));
+});
+
+test("keeps today upset top to true low-odds upset candidates only", () => {
+  const todayMatches = [
+    { date: "2026-07-08", league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "1.30", drawOdds: "5.20", awayOdds: "9.00" },
+    { date: "2026-07-08", league: "EPL", homeTeam: "C", awayTeam: "D", homeOdds: "1.55", drawOdds: "4.20", awayOdds: "6.00" },
+    { date: "2026-07-08", league: "EPL", homeTeam: "E", awayTeam: "F", homeOdds: "1.85", drawOdds: "3.40", awayOdds: "4.20" }
+  ];
+  const history = [];
+  const addHistory = (prefix, odds, results) => {
+    results.forEach((result, index) => {
+      history.push({
+        date: `2025-01-${String(index + 1).padStart(2, "0")}`,
+        league: "EPL",
+        homeTeam: `${prefix} Home ${index}`,
+        awayTeam: `${prefix} Away ${index}`,
+        homeOdds: odds[0],
+        drawOdds: odds[1],
+        awayOdds: odds[2],
+        result
+      });
+    });
+  };
+  addHistory("Big", ["1.30", "5.20", "9.00"], [...Array(10).fill("H"), ...Array(5).fill("D"), ...Array(5).fill("A")]);
+  addHistory("Upset", ["1.55", "4.20", "6.00"], [...Array(10).fill("H"), ...Array(5).fill("D"), ...Array(5).fill("A")]);
+  addHistory("Close", ["1.85", "3.40", "4.20"], [...Array(8).fill("H"), ...Array(6).fill("D"), ...Array(6).fill("A")]);
+
+  const candidates = app.getTodayUpsetCandidates(todayMatches, history);
+
+  assert.strictEqual(candidates.length, 2);
+  assert.deepStrictEqual(candidates.map((item) => item.topLabel), ["대형 이변 후보", "무승부 주의"]);
+  assert(!candidates.some((item) => item.match.homeTeam === "E"));
 });
 
 test("calculates upset probability from historical odds and match context", () => {
@@ -397,10 +552,10 @@ test("raises judgement for favorite over-selection", () => {
     { homeOdds: "1.90", drawOdds: "3.40", awayOdds: "4.20", homeSelectionRate: "82" }
   );
 
-  assert.strictEqual(upset.judgement, "이변 주의");
+  assert.strictEqual(upset.judgement, "박빙주의");
   assert(upset.signals.includes("정배 과몰림"));
-  assert.strictEqual(highRisk.judgement, "고위험");
-  assert.strictEqual(highRisk.risk, "매우 높음");
+  assert.strictEqual(highRisk.judgement, "박빙주의");
+  assert.strictEqual(highRisk.risk, "보통");
 });
 
 test("marks small and empty samples", () => {
@@ -411,6 +566,14 @@ test("marks small and empty samples", () => {
   assert(small.signals.includes("표본 부족"));
   assert.strictEqual(empty.judgement, "데이터 부족");
   assert(empty.signals.includes("데이터 부족"));
+});
+
+test("keeps unknown pre-match result labels blank for detail cards", () => {
+  assert.strictEqual(app.formatResultLabel(undefined), "");
+  assert.strictEqual(app.formatResultLabel(null), "");
+  assert.strictEqual(app.formatMatchResultText({ status: "NS", result: undefined }), "");
+  assert(!app.formatMatchResultText({ status: "NS", result: undefined }).includes("undefined"));
+  assert.strictEqual(app.formatMatchResultText({ result: "H", score: "2-0" }), "경기결과: 홈승 2-0");
 });
 
 test("builds direct odds search criteria from a live match without odds", () => {
@@ -455,7 +618,8 @@ test("formats inline odds rate as sample shortage without known results", () => 
     awayRate: "0%"
   });
 
-  assert(summary.includes("표본 부족"));
+  assert(summary.includes("전적 없음"));
+  assert(!summary.includes("표본 부족"));
 });
 
 test("adds confidence label to inline odds rate", () => {
@@ -479,7 +643,7 @@ test("formats today analysis odds summary in one line", () => {
     awayRate: "8.9%"
   });
 
-  assert.strictEqual(summary, "홈승 31/68.9% · 무 10/22.2% · 원정승 4/8.9% · 표본 45");
+  assert.strictEqual(summary, "홈승 31/68.9% · 무 10/22.2% · 원정승 4/8.9% · 45경기");
 });
 
 test("writes compact analysis memo", () => {
@@ -494,7 +658,7 @@ test("writes compact analysis memo", () => {
     awayRate: "8.9%"
   });
 
-  assert.strictEqual(memo, "표본 45/45");
+  assert.strictEqual(memo, "45/45경기");
 });
 
 test("summarizes odds verdict with compact judgement", () => {
@@ -513,9 +677,9 @@ test("summarizes odds verdict with compact judgement", () => {
     awayOdds: "4.50"
   });
 
-  assert(verdict.includes("판정: 안정"));
-  assert(verdict.includes("위험도: 낮음"));
-  assert(verdict.includes("역배 신호"));
+  assert(verdict.includes("판정: 일반"));
+  assert(!verdict.includes("위험도"));
+  assert(!verdict.includes("역배 신호"));
 });
 
 test("keeps compact odds verdict independent from long recent-season text", () => {
@@ -542,7 +706,8 @@ test("keeps compact odds verdict independent from long recent-season text", () =
   }, recentBreakdown);
 
   assert.strictEqual(recentBreakdown.totalMatches, 3);
-  assert(verdict.includes("판정: 주의"));
+  assert(verdict.includes("판정: 일반"));
+  assert(!verdict.includes("표본 부족"));
   assert(!verdict.includes("최근3시즌"));
 });
 
@@ -571,9 +736,9 @@ test("adds compact risk signals for draw and underdog patterns", () => {
     awayRate: "50.0%"
   });
 
-  assert(verdict.includes("위험도: 높음"));
+  assert(!verdict.includes("위험도"));
   assert(verdict.includes("무승부 주의"));
-  assert(verdict.includes("역배 신호"));
+  assert(!verdict.includes("역배 신호"));
 });
 
 test("falls back to all leagues and wider tolerance for live match analysis", () => {

@@ -23,7 +23,7 @@ test("calculates league breakdown stats for odds search results", () => {
   assert.strictEqual(stats[0].league, "EPL");
   assert.strictEqual(stats[0].breakdown.knownMatches, 3);
   assert.strictEqual(stats[0].breakdown.homeRate, "33.3%");
-  assert.strictEqual(stats[0].sampleLabel, "표본 적음");
+  assert(!Object.prototype.hasOwnProperty.call(stats[0], "sampleLabel"));
 });
 
 test("keeps recent known result flow in latest-first order", () => {
