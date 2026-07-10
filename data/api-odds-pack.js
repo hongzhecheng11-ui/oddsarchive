@@ -5,11 +5,12 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-07T06:56:10.704Z",
+  "updatedAt": "2026-07-10T06:54:03.285Z",
   "matches": [
     {
       "date": "2025-02-14",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "2.02",
@@ -22,6 +23,7 @@
     {
       "date": "2025-02-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "Kashiwa Reysol",
       "homeOdds": "3.12",
@@ -34,6 +36,7 @@
     {
       "date": "2025-02-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kawasaki Frontale",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "1.90",
@@ -46,6 +49,7 @@
     {
       "date": "2025-02-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Albirex Niigata",
       "homeOdds": "2.17",
@@ -58,6 +62,7 @@
     {
       "date": "2025-02-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "FC Tokyo",
       "homeOdds": "2.55",
@@ -70,6 +75,7 @@
     {
       "date": "2025-02-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "3.54",
@@ -82,6 +88,7 @@
     {
       "date": "2025-02-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.05",
@@ -94,6 +101,7 @@
     {
       "date": "2025-02-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.21",
@@ -106,6 +114,7 @@
     {
       "date": "2025-02-16",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.89",
@@ -118,6 +127,7 @@
     {
       "date": "2025-02-16",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "1.61",
@@ -130,6 +140,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.05",
@@ -142,6 +153,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.09",
@@ -154,6 +166,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "1.98",
@@ -166,6 +179,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "2.74",
@@ -178,6 +192,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Vissel Kobe",
       "homeOdds": "3.58",
@@ -190,6 +205,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Albirex Niigata",
       "homeOdds": "2.35",
@@ -202,6 +218,7 @@
     {
       "date": "2025-02-22",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "2.24",
@@ -214,6 +231,7 @@
     {
       "date": "2025-02-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "FC Anyang",
       "homeOdds": "1.79",
@@ -226,6 +244,7 @@
     {
       "date": "2025-02-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "2.76",
@@ -238,6 +257,7 @@
     {
       "date": "2025-02-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.44",
@@ -250,6 +270,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "3.65",
@@ -262,6 +283,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "3.11",
@@ -274,6 +296,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.74",
@@ -286,6 +309,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "2.28",
@@ -298,6 +322,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Machida Zelvia",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "2.11",
@@ -310,6 +335,7 @@
     {
       "date": "2025-02-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Yokohama FC",
       "homeOdds": "1.96",
@@ -322,6 +348,7 @@
     {
       "date": "2025-03-01",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "1.73",
@@ -334,6 +361,7 @@
     {
       "date": "2025-03-01",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.23",
@@ -346,6 +374,7 @@
     {
       "date": "2025-03-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.15",
@@ -358,6 +387,7 @@
     {
       "date": "2025-03-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.42",
@@ -370,6 +400,7 @@
     {
       "date": "2025-03-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "2.28",
@@ -382,6 +413,7 @@
     {
       "date": "2025-03-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "3.05",
@@ -394,6 +426,7 @@
     {
       "date": "2025-03-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.08",
@@ -406,6 +439,7 @@
     {
       "date": "2025-03-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "2.31",
@@ -418,6 +452,7 @@
     {
       "date": "2025-03-02",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.09",
@@ -430,6 +465,7 @@
     {
       "date": "2025-03-08",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "2.54",
@@ -442,6 +478,7 @@
     {
       "date": "2025-03-08",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.48",
@@ -454,6 +491,7 @@
     {
       "date": "2025-03-08",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.77",
@@ -466,6 +504,7 @@
     {
       "date": "2025-03-08",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.52",
@@ -478,6 +517,7 @@
     {
       "date": "2025-03-08",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.53",
@@ -490,6 +530,7 @@
     {
       "date": "2025-03-08",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.70",
@@ -502,6 +543,7 @@
     {
       "date": "2025-03-09",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.84",
@@ -514,6 +556,7 @@
     {
       "date": "2025-03-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "FC Tokyo",
       "homeOdds": "2.39",
@@ -526,6 +569,7 @@
     {
       "date": "2025-03-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Machida Zelvia",
       "awayTeam": "Albirex Niigata",
       "homeOdds": "1.99",
@@ -538,6 +582,7 @@
     {
       "date": "2025-03-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.52",
@@ -550,6 +595,7 @@
     {
       "date": "2025-03-15",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "2.45",
@@ -562,6 +608,7 @@
     {
       "date": "2025-03-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.02",
@@ -574,6 +621,7 @@
     {
       "date": "2025-03-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "2.93",
@@ -586,6 +634,7 @@
     {
       "date": "2025-03-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "3.61",
@@ -598,6 +647,7 @@
     {
       "date": "2025-03-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "3.53",
@@ -610,6 +660,7 @@
     {
       "date": "2025-03-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shonan Bellmare",
       "awayTeam": "Vissel Kobe",
       "homeOdds": "2.52",
@@ -622,6 +673,7 @@
     {
       "date": "2025-03-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "2.11",
@@ -634,6 +686,7 @@
     {
       "date": "2025-03-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.37",
@@ -646,6 +699,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "2.48",
@@ -658,6 +712,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.52",
@@ -670,6 +725,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "Yokohama F. Marinos",
       "homeOdds": "2.66",
@@ -682,6 +738,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "3.78",
@@ -694,6 +751,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "2.39",
@@ -706,6 +764,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Yokohama FC",
       "homeOdds": "2.35",
@@ -718,6 +777,7 @@
     {
       "date": "2025-03-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.45",
@@ -730,6 +790,7 @@
     {
       "date": "2025-03-29",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.38",
@@ -742,6 +803,7 @@
     {
       "date": "2025-03-29",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.88",
@@ -754,6 +816,7 @@
     {
       "date": "2025-03-29",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.19",
@@ -766,6 +829,7 @@
     {
       "date": "2025-04-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "1.98",
@@ -778,6 +842,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "2.54",
@@ -790,6 +855,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "2.19",
@@ -802,6 +868,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.18",
@@ -814,6 +881,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kawasaki Frontale",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "1.99",
@@ -826,6 +894,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Yokohama F. Marinos",
       "homeOdds": "2.48",
@@ -838,6 +907,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "FC Tokyo",
       "homeOdds": "2.25",
@@ -850,6 +920,7 @@
     {
       "date": "2025-04-02",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Vissel Kobe",
       "homeOdds": "3.69",
@@ -862,6 +933,7 @@
     {
       "date": "2025-04-05",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "2.20",
@@ -874,6 +946,7 @@
     {
       "date": "2025-04-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "2.25",
@@ -886,6 +959,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "FC Tokyo",
       "homeOdds": "2.30",
@@ -898,6 +972,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "2.30",
@@ -910,6 +985,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Machida Zelvia",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "2.72",
@@ -922,6 +998,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shonan Bellmare",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.40",
@@ -934,6 +1011,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Albirex Niigata",
       "homeOdds": "1.87",
@@ -946,6 +1024,7 @@
     {
       "date": "2025-04-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.97",
@@ -958,6 +1037,7 @@
     {
       "date": "2025-04-06",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.85",
@@ -970,6 +1050,7 @@
     {
       "date": "2025-04-06",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.00",
@@ -982,6 +1063,7 @@
     {
       "date": "2025-04-09",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kawasaki Frontale",
       "awayTeam": "Yokohama F. Marinos",
       "homeOdds": "1.67",
@@ -994,6 +1076,7 @@
     {
       "date": "2025-04-09",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.15",
@@ -1006,6 +1089,7 @@
     {
       "date": "2025-04-11",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Kashiwa Reysol",
       "homeOdds": "3.06",
@@ -1018,6 +1102,7 @@
     {
       "date": "2025-04-12",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "Yokohama F. Marinos",
       "homeOdds": "2.42",
@@ -1030,6 +1115,7 @@
     {
       "date": "2025-04-12",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.37",
@@ -1042,6 +1128,7 @@
     {
       "date": "2025-04-12",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "3.20",
@@ -1054,6 +1141,7 @@
     {
       "date": "2025-04-12",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Vissel Kobe",
       "homeOdds": "3.63",
@@ -1066,6 +1154,7 @@
     {
       "date": "2025-04-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "1.93",
@@ -1078,6 +1167,7 @@
     {
       "date": "2025-04-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.08",
@@ -1090,6 +1180,7 @@
     {
       "date": "2025-04-13",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "Yokohama FC",
       "homeOdds": "2.57",
@@ -1102,6 +1193,7 @@
     {
       "date": "2025-04-13",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.52",
@@ -1114,6 +1206,7 @@
     {
       "date": "2025-04-13",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.61",
@@ -1126,6 +1219,7 @@
     {
       "date": "2025-04-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Kawasaki Frontale",
       "homeOdds": "2.34",
@@ -1138,6 +1232,7 @@
     {
       "date": "2025-04-16",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.53",
@@ -1150,6 +1245,7 @@
     {
       "date": "2025-04-19",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.07",
@@ -1162,6 +1258,7 @@
     {
       "date": "2025-04-19",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "1.72",
@@ -1174,6 +1271,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "FC Tokyo",
       "homeOdds": "1.96",
@@ -1186,6 +1284,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kawasaki Frontale",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "1.85",
@@ -1198,6 +1297,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "2.81",
@@ -1210,6 +1310,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shonan Bellmare",
       "awayTeam": "Kashiwa Reysol",
       "homeOdds": "2.70",
@@ -1222,6 +1323,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "2.41",
@@ -1234,6 +1336,7 @@
     {
       "date": "2025-04-20",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "2.93",
@@ -1246,6 +1349,7 @@
     {
       "date": "2025-04-20",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.95",
@@ -1258,6 +1362,7 @@
     {
       "date": "2025-04-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "4.42",
@@ -1270,6 +1375,7 @@
     {
       "date": "2025-04-25",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Avispa Fukuoka",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "2.19",
@@ -1282,6 +1388,7 @@
     {
       "date": "2025-04-25",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Gamba Osaka",
       "homeOdds": "3.17",
@@ -1294,6 +1401,7 @@
     {
       "date": "2025-04-25",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Machida Zelvia",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "1.96",
@@ -1306,6 +1414,7 @@
     {
       "date": "2025-04-25",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "2.72",
@@ -1318,6 +1427,7 @@
     {
       "date": "2025-04-26",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Albirex Niigata",
       "homeOdds": "2.18",
@@ -1330,6 +1440,7 @@
     {
       "date": "2025-04-26",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.61",
@@ -1342,6 +1453,7 @@
     {
       "date": "2025-04-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.30",
@@ -1354,6 +1466,7 @@
     {
       "date": "2025-04-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "FC Seoul",
       "homeOdds": "3.49",
@@ -1366,6 +1479,7 @@
     {
       "date": "2025-04-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "2.69",
@@ -1378,6 +1492,7 @@
     {
       "date": "2025-04-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Fagiano Okayama",
       "awayTeam": "Tokyo Verdy",
       "homeOdds": "2.67",
@@ -1390,6 +1505,7 @@
     {
       "date": "2025-04-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.93",
@@ -1402,6 +1518,7 @@
     {
       "date": "2025-04-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Kashiwa Reysol",
       "homeOdds": "2.94",
@@ -1414,6 +1531,7 @@
     {
       "date": "2025-04-29",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shonan Bellmare",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "2.90",
@@ -1426,6 +1544,7 @@
     {
       "date": "2025-05-02",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "1.98",
@@ -1438,6 +1557,7 @@
     {
       "date": "2025-05-03",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Albirex Niigata",
       "awayTeam": "FC Tokyo",
       "homeOdds": "2.14",
@@ -1450,6 +1570,7 @@
     {
       "date": "2025-05-03",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Gamba Osaka",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.20",
@@ -1462,6 +1583,7 @@
     {
       "date": "2025-05-03",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Nagoya Grampus",
       "homeOdds": "2.45",
@@ -1474,6 +1596,7 @@
     {
       "date": "2025-05-03",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "1.72",
@@ -1486,6 +1609,7 @@
     {
       "date": "2025-05-03",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.46",
@@ -1498,6 +1622,7 @@
     {
       "date": "2025-05-03",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "FC Anyang",
       "homeOdds": "1.84",
@@ -1510,6 +1635,7 @@
     {
       "date": "2025-05-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "1.72",
@@ -1522,6 +1648,7 @@
     {
       "date": "2025-05-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Shimizu S-pulse",
       "homeOdds": "2.13",
@@ -1534,6 +1661,7 @@
     {
       "date": "2025-05-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Nagoya Grampus",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "2.43",
@@ -1546,6 +1674,7 @@
     {
       "date": "2025-05-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Yokohama FC",
       "homeOdds": "2.56",
@@ -1558,6 +1687,7 @@
     {
       "date": "2025-05-06",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Vissel Kobe",
       "awayTeam": "Cerezo Osaka",
       "homeOdds": "1.86",
@@ -1570,6 +1700,7 @@
     {
       "date": "2025-05-06",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "FC Seoul",
       "homeOdds": "4.17",
@@ -1582,6 +1713,7 @@
     {
       "date": "2025-05-06",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.22",
@@ -1594,6 +1726,7 @@
     {
       "date": "2025-05-10",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "FC Tokyo",
       "awayTeam": "Vissel Kobe",
       "homeOdds": "4.04",
@@ -1606,6 +1739,7 @@
     {
       "date": "2025-05-10",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kashiwa Reysol",
       "awayTeam": "Fagiano Okayama",
       "homeOdds": "1.96",
@@ -1618,6 +1752,7 @@
     {
       "date": "2025-05-10",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama FC",
       "awayTeam": "Avispa Fukuoka",
       "homeOdds": "2.62",
@@ -1630,6 +1765,7 @@
     {
       "date": "2025-05-10",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "FC Seoul",
       "homeOdds": "3.01",
@@ -1642,6 +1778,7 @@
     {
       "date": "2025-05-10",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.20",
@@ -1654,6 +1791,7 @@
     {
       "date": "2025-05-11",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Cerezo Osaka",
       "awayTeam": "Yokohama F. Marinos",
       "homeOdds": "2.28",
@@ -1666,6 +1804,7 @@
     {
       "date": "2025-05-11",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Shimizu S-pulse",
       "awayTeam": "Machida Zelvia",
       "homeOdds": "3.40",
@@ -1678,6 +1817,7 @@
     {
       "date": "2025-05-11",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Tokyo Verdy",
       "awayTeam": "Shonan Bellmare",
       "homeOdds": "2.52",
@@ -1690,6 +1830,7 @@
     {
       "date": "2025-05-11",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.97",
@@ -1702,6 +1843,7 @@
     {
       "date": "2025-05-14",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Kawasaki Frontale",
       "awayTeam": "Yokohama FC",
       "homeOdds": "1.90",
@@ -1714,6 +1856,7 @@
     {
       "date": "2025-05-14",
       "league": "J1LEAGUE",
+      "fixtureId": "",
       "homeTeam": "Yokohama F. Marinos",
       "awayTeam": "Kashiwa Reysol",
       "homeOdds": "2.77",
@@ -1726,6 +1869,7 @@
     {
       "date": "2025-05-17",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "4.05",
@@ -1738,6 +1882,7 @@
     {
       "date": "2025-05-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "4.83",
@@ -1750,6 +1895,7 @@
     {
       "date": "2025-05-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.51",
@@ -1762,6 +1908,7 @@
     {
       "date": "2025-05-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.75",
@@ -1774,6 +1921,7 @@
     {
       "date": "2025-05-24",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.93",
@@ -1786,6 +1934,7 @@
     {
       "date": "2025-05-25",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.07",
@@ -1798,6 +1947,7 @@
     {
       "date": "2025-05-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.32",
@@ -1810,6 +1960,7 @@
     {
       "date": "2025-05-28",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.46",
@@ -1822,6 +1973,7 @@
     {
       "date": "2025-05-28",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.35",
@@ -1834,6 +1986,7 @@
     {
       "date": "2025-05-31",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.69",
@@ -1846,6 +1999,7 @@
     {
       "date": "2025-05-31",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.70",
@@ -1858,6 +2012,7 @@
     {
       "date": "2025-06-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "3.51",
@@ -1870,6 +2025,7 @@
     {
       "date": "2025-06-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.15",
@@ -1882,6 +2038,7 @@
     {
       "date": "2025-06-13",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "3.38",
@@ -1894,6 +2051,7 @@
     {
       "date": "2025-06-14",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.91",
@@ -1906,6 +2064,7 @@
     {
       "date": "2025-06-17",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "3.82",
@@ -1918,6 +2077,7 @@
     {
       "date": "2025-06-17",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gangwon FC",
       "homeOdds": "1.71",
@@ -1930,6 +2090,7 @@
     {
       "date": "2025-06-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.77",
@@ -1942,6 +2103,7 @@
     {
       "date": "2025-06-21",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.00",
@@ -1954,6 +2116,7 @@
     {
       "date": "2025-06-21",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.98",
@@ -1966,6 +2129,7 @@
     {
       "date": "2025-06-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.10",
@@ -1978,6 +2142,7 @@
     {
       "date": "2025-06-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.35",
@@ -1990,6 +2155,7 @@
     {
       "date": "2025-06-28",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Gwangju FC",
       "homeOdds": "3.09",
@@ -2002,6 +2168,7 @@
     {
       "date": "2025-06-29",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.08",
@@ -2014,6 +2181,7 @@
     {
       "date": "2025-07-08",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Drita",
       "awayTeam": "FC Differdange 03",
       "homeOdds": "1.82",
@@ -2026,6 +2194,7 @@
     {
       "date": "2025-07-08",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "FC Noah",
       "awayTeam": "Buducnost Podgorica",
       "homeOdds": "1.33",
@@ -2038,6 +2207,7 @@
     {
       "date": "2025-07-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.62",
@@ -2050,6 +2220,7 @@
     {
       "date": "2025-07-15",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Buducnost Podgorica",
       "awayTeam": "FC Noah",
       "homeOdds": "3.67",
@@ -2062,6 +2233,7 @@
     {
       "date": "2025-07-15",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "FC Differdange 03",
       "awayTeam": "Drita",
       "homeOdds": "2.54",
@@ -2074,6 +2246,7 @@
     {
       "date": "2025-07-15",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Inter Club d'Escaldes",
       "awayTeam": "FCSB",
       "homeOdds": "7.80",
@@ -2086,6 +2259,7 @@
     {
       "date": "2025-07-19",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.47",
@@ -2098,6 +2272,7 @@
     {
       "date": "2025-07-19",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.31",
@@ -2110,6 +2285,7 @@
     {
       "date": "2025-07-20",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "2.19",
@@ -2122,6 +2298,7 @@
     {
       "date": "2025-07-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.04",
@@ -2134,6 +2311,7 @@
     {
       "date": "2025-07-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "4.10",
@@ -2146,6 +2324,7 @@
     {
       "date": "2025-07-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "1.83",
@@ -2158,6 +2337,7 @@
     {
       "date": "2025-07-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "3.73",
@@ -2170,6 +2350,7 @@
     {
       "date": "2025-07-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "FC Seoul",
       "homeOdds": "3.48",
@@ -2182,6 +2363,7 @@
     {
       "date": "2025-07-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.44",
@@ -2194,6 +2376,7 @@
     {
       "date": "2025-08-08",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.41",
@@ -2206,6 +2389,7 @@
     {
       "date": "2025-08-09",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.75",
@@ -2218,6 +2402,7 @@
     {
       "date": "2025-08-10",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.33",
@@ -2230,6 +2415,7 @@
     {
       "date": "2025-08-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.93",
@@ -2242,6 +2428,7 @@
     {
       "date": "2025-08-15",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.61",
@@ -2254,6 +2441,7 @@
     {
       "date": "2025-08-17",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.27",
@@ -2266,6 +2454,7 @@
     {
       "date": "2025-08-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "3.06",
@@ -2278,6 +2467,7 @@
     {
       "date": "2025-08-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.28",
@@ -2290,6 +2480,7 @@
     {
       "date": "2025-08-24",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.59",
@@ -2302,6 +2493,7 @@
     {
       "date": "2025-08-24",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "2.22",
@@ -2314,6 +2506,7 @@
     {
       "date": "2025-08-30",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.61",
@@ -2326,6 +2519,7 @@
     {
       "date": "2025-08-31",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "FC Anyang",
       "homeOdds": "1.66",
@@ -2338,6 +2532,7 @@
     {
       "date": "2025-08-31",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.70",
@@ -2350,6 +2545,7 @@
     {
       "date": "2025-09-13",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "FC Seoul",
       "homeOdds": "2.77",
@@ -2362,6 +2558,7 @@
     {
       "date": "2025-09-13",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "2.72",
@@ -2374,6 +2571,7 @@
     {
       "date": "2025-09-14",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.27",
@@ -2386,6 +2584,7 @@
     {
       "date": "2025-09-16",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Juventus",
       "awayTeam": "Borussia Dortmund",
       "homeOdds": "2.02",
@@ -2398,6 +2597,7 @@
     {
       "date": "2025-09-16",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Real Madrid",
       "awayTeam": "Marseille",
       "homeOdds": "1.38",
@@ -2410,6 +2610,7 @@
     {
       "date": "2025-09-17",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Liverpool",
       "awayTeam": "Atletico Madrid",
       "homeOdds": "1.51",
@@ -2422,6 +2623,7 @@
     {
       "date": "2025-09-17",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Olympiakos Piraeus",
       "awayTeam": "Pafos",
       "homeOdds": "1.41",
@@ -2434,6 +2636,7 @@
     {
       "date": "2025-09-18",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Eintracht Frankfurt",
       "awayTeam": "Galatasaray",
       "homeOdds": "2.09",
@@ -2446,6 +2649,7 @@
     {
       "date": "2025-09-18",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "FC Copenhagen",
       "awayTeam": "Bayer Leverkusen",
       "homeOdds": "3.35",
@@ -2458,6 +2662,7 @@
     {
       "date": "2025-09-18",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Manchester City",
       "awayTeam": "Napoli",
       "homeOdds": "1.69",
@@ -2470,6 +2675,7 @@
     {
       "date": "2025-09-20",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.66",
@@ -2482,6 +2688,7 @@
     {
       "date": "2025-09-21",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gwangju FC",
       "homeOdds": "1.95",
@@ -2494,6 +2701,7 @@
     {
       "date": "2025-09-21",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.90",
@@ -2506,6 +2714,7 @@
     {
       "date": "2025-09-21",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "1.69",
@@ -2518,6 +2727,7 @@
     {
       "date": "2025-09-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "4.08",
@@ -2530,6 +2740,7 @@
     {
       "date": "2025-09-27",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.15",
@@ -2542,6 +2753,7 @@
     {
       "date": "2025-09-28",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.70",
@@ -2554,6 +2766,7 @@
     {
       "date": "2025-09-30",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Atletico Madrid",
       "awayTeam": "Eintracht Frankfurt",
       "homeOdds": "1.54",
@@ -2566,6 +2779,7 @@
     {
       "date": "2025-09-30",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Chelsea",
       "awayTeam": "Benfica",
       "homeOdds": "1.65",
@@ -2578,6 +2792,7 @@
     {
       "date": "2025-09-30",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Galatasaray",
       "awayTeam": "Liverpool",
       "homeOdds": "4.57",
@@ -2590,6 +2805,7 @@
     {
       "date": "2025-09-30",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Marseille",
       "awayTeam": "Ajax",
       "homeOdds": "1.44",
@@ -2602,6 +2818,7 @@
     {
       "date": "2025-10-01",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Arsenal",
       "awayTeam": "Olympiakos Piraeus",
       "homeOdds": "1.18",
@@ -2614,6 +2831,7 @@
     {
       "date": "2025-10-01",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Barcelona",
       "awayTeam": "Paris Saint Germain",
       "homeOdds": "1.81",
@@ -2626,6 +2844,7 @@
     {
       "date": "2025-10-01",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Bayer Leverkusen",
       "awayTeam": "PSV Eindhoven",
       "homeOdds": "1.96",
@@ -2638,6 +2857,7 @@
     {
       "date": "2025-10-01",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Villarreal",
       "awayTeam": "Juventus",
       "homeOdds": "2.25",
@@ -2650,6 +2870,7 @@
     {
       "date": "2025-10-04",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.90",
@@ -2662,6 +2883,7 @@
     {
       "date": "2025-10-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.00",
@@ -2674,6 +2896,7 @@
     {
       "date": "2025-10-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.21",
@@ -2686,6 +2909,7 @@
     {
       "date": "2025-10-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Gangwon FC",
       "homeOdds": "3.11",
@@ -2698,6 +2922,7 @@
     {
       "date": "2025-10-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.85",
@@ -2710,6 +2935,7 @@
     {
       "date": "2025-10-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.13",
@@ -2722,6 +2948,7 @@
     {
       "date": "2025-10-18",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.00",
@@ -2734,6 +2961,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Arsenal",
       "awayTeam": "Atletico Madrid",
       "homeOdds": "1.58",
@@ -2746,6 +2974,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Barcelona",
       "awayTeam": "Olympiakos Piraeus",
       "homeOdds": "1.20",
@@ -2758,6 +2987,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Bayer Leverkusen",
       "awayTeam": "Paris Saint Germain",
       "homeOdds": "4.92",
@@ -2770,6 +3000,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "FC Copenhagen",
       "awayTeam": "Borussia Dortmund",
       "homeOdds": "4.36",
@@ -2782,6 +3013,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "PSV Eindhoven",
       "awayTeam": "Napoli",
       "homeOdds": "3.10",
@@ -2794,6 +3026,7 @@
     {
       "date": "2025-10-21",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Villarreal",
       "awayTeam": "Manchester City",
       "homeOdds": "4.53",
@@ -2806,6 +3039,7 @@
     {
       "date": "2025-10-22",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Chelsea",
       "awayTeam": "Ajax",
       "homeOdds": "1.23",
@@ -2818,6 +3052,7 @@
     {
       "date": "2025-10-22",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Eintracht Frankfurt",
       "awayTeam": "Liverpool",
       "homeOdds": "4.94",
@@ -2830,6 +3065,7 @@
     {
       "date": "2025-10-22",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Real Madrid",
       "awayTeam": "Juventus",
       "homeOdds": "1.45",
@@ -2842,6 +3078,7 @@
     {
       "date": "2025-10-25",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.06",
@@ -2854,6 +3091,7 @@
     {
       "date": "2025-10-26",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.40",
@@ -2866,6 +3104,7 @@
     {
       "date": "2025-10-26",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.08",
@@ -2878,6 +3117,7 @@
     {
       "date": "2025-10-26",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "1.76",
@@ -2890,6 +3130,7 @@
     {
       "date": "2025-11-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "FC Seoul",
       "homeOdds": "2.63",
@@ -2902,6 +3143,7 @@
     {
       "date": "2025-11-01",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "3.15",
@@ -2914,6 +3156,7 @@
     {
       "date": "2025-11-02",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.00",
@@ -2926,6 +3169,7 @@
     {
       "date": "2025-11-04",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Liverpool",
       "awayTeam": "Real Madrid",
       "homeOdds": "2.51",
@@ -2938,6 +3182,7 @@
     {
       "date": "2025-11-04",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Napoli",
       "awayTeam": "Eintracht Frankfurt",
       "homeOdds": "1.61",
@@ -2950,6 +3195,7 @@
     {
       "date": "2025-11-04",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Olympiakos Piraeus",
       "awayTeam": "PSV Eindhoven",
       "homeOdds": "2.60",
@@ -2962,6 +3208,7 @@
     {
       "date": "2025-11-04",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Slavia Praha",
       "awayTeam": "Arsenal",
       "homeOdds": "11.73",
@@ -2974,6 +3221,7 @@
     {
       "date": "2025-11-05",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Ajax",
       "awayTeam": "Galatasaray",
       "homeOdds": "3.26",
@@ -2986,6 +3234,7 @@
     {
       "date": "2025-11-05",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Benfica",
       "awayTeam": "Bayer Leverkusen",
       "homeOdds": "1.92",
@@ -2998,6 +3247,7 @@
     {
       "date": "2025-11-05",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Manchester City",
       "awayTeam": "Borussia Dortmund",
       "homeOdds": "1.41",
@@ -3010,6 +3260,7 @@
     {
       "date": "2025-11-05",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Pafos",
       "awayTeam": "Villarreal",
       "homeOdds": "6.91",
@@ -3022,6 +3273,7 @@
     {
       "date": "2025-11-08",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "Gwangju FC",
       "homeOdds": "2.63",
@@ -3034,6 +3286,7 @@
     {
       "date": "2025-11-08",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.53",
@@ -3046,6 +3299,7 @@
     {
       "date": "2025-11-09",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Pohang Steelers",
       "awayTeam": "FC Seoul",
       "homeOdds": "2.56",
@@ -3058,6 +3312,7 @@
     {
       "date": "2025-11-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.13",
@@ -3070,6 +3325,7 @@
     {
       "date": "2025-11-22",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "2.66",
@@ -3082,6 +3338,7 @@
     {
       "date": "2025-11-23",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daegu FC",
       "homeOdds": "2.34",
@@ -3094,6 +3351,7 @@
     {
       "date": "2025-11-25",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Ajax",
       "awayTeam": "Benfica",
       "homeOdds": "4.10",
@@ -3106,6 +3364,7 @@
     {
       "date": "2025-11-25",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Borussia Dortmund",
       "awayTeam": "Villarreal",
       "homeOdds": "1.87",
@@ -3118,6 +3377,7 @@
     {
       "date": "2025-11-25",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Chelsea",
       "awayTeam": "Barcelona",
       "homeOdds": "2.33",
@@ -3130,6 +3390,7 @@
     {
       "date": "2025-11-25",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Manchester City",
       "awayTeam": "Bayer Leverkusen",
       "homeOdds": "1.22",
@@ -3142,6 +3403,7 @@
     {
       "date": "2025-11-26",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Liverpool",
       "awayTeam": "PSV Eindhoven",
       "homeOdds": "1.29",
@@ -3154,6 +3416,7 @@
     {
       "date": "2025-11-26",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Olympiakos Piraeus",
       "awayTeam": "Real Madrid",
       "homeOdds": "6.32",
@@ -3166,6 +3429,7 @@
     {
       "date": "2025-11-30",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daegu FC",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.40",
@@ -3178,6 +3442,7 @@
     {
       "date": "2025-11-30",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gangwon FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.47",
@@ -3190,6 +3455,7 @@
     {
       "date": "2025-11-30",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "1.81",
@@ -3202,6 +3468,7 @@
     {
       "date": "2025-12-09",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Barcelona",
       "awayTeam": "Eintracht Frankfurt",
       "homeOdds": "1.16",
@@ -3214,6 +3481,7 @@
     {
       "date": "2025-12-09",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "PSV Eindhoven",
       "awayTeam": "Atletico Madrid",
       "homeOdds": "2.99",
@@ -3226,6 +3494,7 @@
     {
       "date": "2025-12-10",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Benfica",
       "awayTeam": "Napoli",
       "homeOdds": "2.41",
@@ -3238,6 +3507,7 @@
     {
       "date": "2025-12-10",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Juventus",
       "awayTeam": "Pafos",
       "homeOdds": "1.18",
@@ -3250,6 +3520,7 @@
     {
       "date": "2025-12-10",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Real Madrid",
       "awayTeam": "Manchester City",
       "homeOdds": "2.89",
@@ -3262,6 +3533,7 @@
     {
       "date": "2025-12-10",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Villarreal",
       "awayTeam": "FC Copenhagen",
       "homeOdds": "1.42",
@@ -3274,6 +3546,7 @@
     {
       "date": "2026-06-30",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Brazil",
       "awayTeam": "Japan",
       "homeOdds": "1.73",
@@ -3286,6 +3559,7 @@
     {
       "date": "2026-06-30",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Germany",
       "awayTeam": "Paraguay",
       "homeOdds": "1.36",
@@ -3298,6 +3572,7 @@
     {
       "date": "2026-06-30",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Netherlands",
       "awayTeam": "Morocco",
       "homeOdds": "2.30",
@@ -3310,6 +3585,7 @@
     {
       "date": "2026-07-01",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "France",
       "awayTeam": "Sweden",
       "homeOdds": "1.25",
@@ -3322,6 +3598,7 @@
     {
       "date": "2026-07-01",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Norway",
       "homeOdds": "3.40",
@@ -3334,6 +3611,7 @@
     {
       "date": "2026-07-01",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Mexico",
       "awayTeam": "Ecuador",
       "homeOdds": "2.20",
@@ -3346,6 +3624,7 @@
     {
       "date": "2026-07-02",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Belgium",
       "awayTeam": "Senegal",
       "homeOdds": "2.14",
@@ -3358,6 +3637,7 @@
     {
       "date": "2026-07-02",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "England",
       "awayTeam": "Congo DR",
       "homeOdds": "1.30",
@@ -3370,6 +3650,7 @@
     {
       "date": "2026-07-02",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "USA",
       "awayTeam": "Bosnia & Herzegovina",
       "homeOdds": "1.35",
@@ -3382,6 +3663,7 @@
     {
       "date": "2026-07-03",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Portugal",
       "awayTeam": "Croatia",
       "homeOdds": "1.68",
@@ -3394,6 +3676,7 @@
     {
       "date": "2026-07-03",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Spain",
       "awayTeam": "Austria",
       "homeOdds": "1.28",
@@ -3406,6 +3689,7 @@
     {
       "date": "2026-07-03",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Switzerland",
       "awayTeam": "Algeria",
       "homeOdds": "1.99",
@@ -3418,6 +3702,7 @@
     {
       "date": "2026-07-04",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Daejeon Citizen",
       "awayTeam": "Bucheon FC 1995",
       "homeOdds": "1.75",
@@ -3430,6 +3715,7 @@
     {
       "date": "2026-07-04",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Anyang",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "2.85",
@@ -3442,6 +3728,7 @@
     {
       "date": "2026-07-04",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeonbuk Motors",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.25",
@@ -3454,6 +3741,7 @@
     {
       "date": "2026-07-04",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Argentina",
       "awayTeam": "Cape Verde Islands",
       "homeOdds": "1.13",
@@ -3466,6 +3754,7 @@
     {
       "date": "2026-07-04",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Australia",
       "awayTeam": "Egypt",
       "homeOdds": "3.35",
@@ -3478,6 +3767,7 @@
     {
       "date": "2026-07-04",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Colombia",
       "awayTeam": "Ghana",
       "homeOdds": "1.41",
@@ -3490,6 +3780,7 @@
     {
       "date": "2026-07-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Incheon United",
       "homeOdds": "1.90",
@@ -3502,6 +3793,7 @@
     {
       "date": "2026-07-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gimcheon Sangmu FC",
       "awayTeam": "Jeju United FC",
       "homeOdds": "2.50",
@@ -3514,6 +3806,7 @@
     {
       "date": "2026-07-05",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Ulsan Hyundai FC",
       "homeOdds": "6.80",
@@ -3526,6 +3819,7 @@
     {
       "date": "2026-07-05",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Canada",
       "awayTeam": "Morocco",
       "homeOdds": "5.25",
@@ -3538,6 +3832,7 @@
     {
       "date": "2026-07-05",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Paraguay",
       "awayTeam": "France",
       "homeOdds": "15.00",
@@ -3550,6 +3845,7 @@
     {
       "date": "2026-07-06",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Brazil",
       "awayTeam": "Norway",
       "homeOdds": "1.76",
@@ -3562,6 +3858,7 @@
     {
       "date": "2026-07-06",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Mexico",
       "awayTeam": "England",
       "homeOdds": "2.75",
@@ -3574,18 +3871,7 @@
     {
       "date": "2026-07-07",
       "league": "WORLDCUP",
-      "homeTeam": "Portugal",
-      "awayTeam": "Spain",
-      "homeOdds": "3.90",
-      "drawOdds": "3.50",
-      "awayOdds": "1.90",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-07",
-      "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Portugal",
       "awayTeam": "Spain",
       "homeOdds": "4.10",
@@ -3598,6 +3884,7 @@
     {
       "date": "2026-07-07",
       "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "USA",
       "awayTeam": "Belgium",
       "homeOdds": "2.52",
@@ -3610,18 +3897,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Ararat-Armenia",
-      "awayTeam": "Riga",
-      "homeOdds": "2.78",
-      "drawOdds": "3.10",
-      "awayOdds": "2.44",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Ararat-Armenia",
       "awayTeam": "Riga",
       "homeOdds": "2.80",
@@ -3634,30 +3910,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Borac Banja Luka",
-      "awayTeam": "Levski Sofia",
-      "homeOdds": "2.64",
-      "drawOdds": "3.00",
-      "awayOdds": "2.64",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
-      "homeTeam": "Borac Banja Luka",
-      "awayTeam": "Levski Sofia",
-      "homeOdds": "3.45",
-      "drawOdds": "3.10",
-      "awayOdds": "2.10",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Borac Banja Luka",
       "awayTeam": "Levski Sofia",
       "homeOdds": "3.25",
@@ -3670,18 +3923,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Floriana",
-      "awayTeam": "Shamrock Rovers",
-      "homeOdds": "3.40",
-      "drawOdds": "3.35",
-      "awayOdds": "2.02",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Floriana",
       "awayTeam": "Shamrock Rovers",
       "homeOdds": "3.25",
@@ -3694,18 +3936,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "KI Klaksvik",
-      "awayTeam": "Atert Bissen",
-      "homeOdds": "1.50",
-      "drawOdds": "3.90",
-      "awayOdds": "6.00",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "KI Klaksvik",
       "awayTeam": "Atert Bissen",
       "homeOdds": "1.48",
@@ -3718,6 +3949,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Lincoln Red Imps FC",
       "awayTeam": "Inter Club d'Escaldes",
       "homeOdds": "2.18",
@@ -3730,18 +3962,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Sabah FA",
-      "awayTeam": "The New Saints",
-      "homeOdds": "1.26",
-      "drawOdds": "4.65",
-      "awayOdds": "12.00",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Sabah FA",
       "awayTeam": "The New Saints",
       "homeOdds": "1.29",
@@ -3754,18 +3975,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Tre Fiori",
-      "awayTeam": "Larne",
-      "homeOdds": "6.60",
-      "drawOdds": "4.50",
-      "awayOdds": "1.40",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Tre Fiori",
       "awayTeam": "Larne",
       "homeOdds": "6.75",
@@ -3778,6 +3988,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Vardar Skopje",
       "awayTeam": "KuPS",
       "homeOdds": "2.28",
@@ -3790,18 +4001,7 @@
     {
       "date": "2026-07-08",
       "league": "UCL",
-      "homeTeam": "Vikingur Reykjavik",
-      "awayTeam": "Gyori ETO FC",
-      "homeOdds": "2.62",
-      "drawOdds": "3.25",
-      "awayOdds": "2.50",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Vikingur Reykjavik",
       "awayTeam": "Gyori ETO FC",
       "homeOdds": "2.60",
@@ -3814,30 +4014,7 @@
     {
       "date": "2026-07-08",
       "league": "WORLDCUP",
-      "homeTeam": "Argentina",
-      "awayTeam": "Egypt",
-      "homeOdds": "1.38",
-      "drawOdds": "4.40",
-      "awayOdds": "8.50",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "WORLDCUP",
-      "homeTeam": "Argentina",
-      "awayTeam": "Egypt",
-      "homeOdds": "1.38",
-      "drawOdds": "4.35",
-      "awayOdds": "8.70",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Argentina",
       "awayTeam": "Egypt",
       "homeOdds": "1.36",
@@ -3850,18 +4027,7 @@
     {
       "date": "2026-07-08",
       "league": "WORLDCUP",
-      "homeTeam": "Switzerland",
-      "awayTeam": "Colombia",
-      "homeOdds": "3.25",
-      "drawOdds": "3.05",
-      "awayOdds": "2.30",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-08",
-      "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeOdds": "3.40",
@@ -3874,18 +4040,7 @@
     {
       "date": "2026-07-09",
       "league": "UCL",
-      "homeTeam": "Flora Tallinn",
-      "awayTeam": "Saburtalo",
-      "homeOdds": "2.84",
-      "drawOdds": "3.35",
-      "awayOdds": "2.28",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-09",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Flora Tallinn",
       "awayTeam": "Saburtalo",
       "homeOdds": "2.82",
@@ -3898,30 +4053,7 @@
     {
       "date": "2026-07-09",
       "league": "UCL",
-      "homeTeam": "Kairat Almaty",
-      "awayTeam": "Sutjeska",
-      "homeOdds": "1.33",
-      "drawOdds": "4.33",
-      "awayOdds": "9.10",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-09",
-      "league": "UCL",
-      "homeTeam": "Kairat Almaty",
-      "awayTeam": "Sutjeska",
-      "homeOdds": "1.29",
-      "drawOdds": "4.45",
-      "awayOdds": "11.00",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-09",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Kairat Almaty",
       "awayTeam": "Sutjeska",
       "homeOdds": "1.29",
@@ -3934,18 +4066,7 @@
     {
       "date": "2026-07-09",
       "league": "UCL",
-      "homeTeam": "ML Vitebsk",
-      "awayTeam": "Universitatea Craiova",
-      "homeOdds": "3.05",
-      "drawOdds": "3.05",
-      "awayOdds": "2.32",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-09",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "ML Vitebsk",
       "awayTeam": "Universitatea Craiova",
       "homeOdds": "3.50",
@@ -3958,18 +4079,7 @@
     {
       "date": "2026-07-09",
       "league": "UCL",
-      "homeTeam": "Petrocub",
-      "awayTeam": "Egnatia Rrogozhinë",
-      "homeOdds": "2.56",
-      "drawOdds": "3.10",
-      "awayOdds": "2.66",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-09",
-      "league": "UCL",
+      "fixtureId": "",
       "homeTeam": "Petrocub",
       "awayTeam": "Egnatia Rrogozhinë",
       "homeOdds": "2.52",
@@ -3982,18 +4092,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
-      "homeTeam": "CSKA Sofia",
-      "awayTeam": "Derry City",
-      "homeOdds": "1.30",
-      "drawOdds": "4.60",
-      "awayOdds": "9.00",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-10",
-      "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "CSKA Sofia",
       "awayTeam": "Derry City",
       "homeOdds": "1.29",
@@ -4006,18 +4105,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
-      "homeTeam": "Dynamo Kyiv",
-      "awayTeam": "Universitatea Cluj",
-      "homeOdds": "1.91",
-      "drawOdds": "3.00",
-      "awayOdds": "3.80",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-10",
-      "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "Dynamo Kyiv",
       "awayTeam": "Universitatea Cluj",
       "homeOdds": "1.61",
@@ -4030,6 +4118,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "HNK Hajduk Split",
       "awayTeam": "Žilina",
       "homeOdds": "1.44",
@@ -4042,6 +4131,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "Qarabag",
       "awayTeam": "Vestri",
       "homeOdds": "1.09",
@@ -4054,6 +4144,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "Sheriff Tiraspol",
       "awayTeam": "Aluminij",
       "homeOdds": "1.32",
@@ -4066,18 +4157,7 @@
     {
       "date": "2026-07-10",
       "league": "UEL",
-      "homeTeam": "Vojvodina",
-      "awayTeam": "Ferencvarosi TC",
-      "homeOdds": "3.60",
-      "drawOdds": "3.35",
-      "awayOdds": "1.95",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-10",
-      "league": "UEL",
+      "fixtureId": "",
       "homeTeam": "Vojvodina",
       "awayTeam": "Ferencvarosi TC",
       "homeOdds": "2.84",
@@ -4090,18 +4170,7 @@
     {
       "date": "2026-07-10",
       "league": "WORLDCUP",
-      "homeTeam": "France",
-      "awayTeam": "Morocco",
-      "homeOdds": "1.54",
-      "drawOdds": "3.80",
-      "awayOdds": "6.25",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-10",
-      "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "France",
       "awayTeam": "Morocco",
       "homeOdds": "1.56",
@@ -4114,6 +4183,7 @@
     {
       "date": "2026-07-11",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gimcheon Sangmu FC",
       "awayTeam": "Bucheon FC 1995",
       "homeOdds": "2.00",
@@ -4126,6 +4196,20 @@
     {
       "date": "2026-07-11",
       "league": "KLEAGUE1",
+      "fixtureId": "1506992",
+      "homeTeam": "Gimcheon Sangmu FC",
+      "awayTeam": "Bucheon FC 1995",
+      "homeOdds": "2.00",
+      "drawOdds": "3.25",
+      "awayOdds": "3.75",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Gwangju FC",
       "awayTeam": "Pohang Steelers",
       "homeOdds": "6.80",
@@ -4138,11 +4222,12 @@
     {
       "date": "2026-07-11",
       "league": "KLEAGUE1",
-      "homeTeam": "Ulsan Hyundai FC",
-      "awayTeam": "Jeonbuk Motors",
-      "homeOdds": "2.60",
-      "drawOdds": "3.35",
-      "awayOdds": "2.60",
+      "fixtureId": "1506993",
+      "homeTeam": "Gwangju FC",
+      "awayTeam": "Pohang Steelers",
+      "homeOdds": "5.80",
+      "drawOdds": "3.60",
+      "awayOdds": "1.62",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -4150,6 +4235,7 @@
     {
       "date": "2026-07-11",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Jeonbuk Motors",
       "homeOdds": "2.60",
@@ -4160,8 +4246,35 @@
       "source": "API 과거 배당"
     },
     {
+      "date": "2026-07-11",
+      "league": "KLEAGUE1",
+      "fixtureId": "1506994",
+      "homeTeam": "Ulsan Hyundai FC",
+      "awayTeam": "Jeonbuk Motors",
+      "homeOdds": "2.60",
+      "drawOdds": "3.30",
+      "awayOdds": "2.60",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "WORLDCUP",
+      "fixtureId": "1581821",
+      "homeTeam": "Spain",
+      "awayTeam": "Belgium",
+      "homeOdds": "1.59",
+      "drawOdds": "4.00",
+      "awayOdds": "5.20",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gangwon FC",
       "homeOdds": "2.45",
@@ -4174,11 +4287,12 @@
     {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
-      "homeTeam": "Incheon United",
-      "awayTeam": "FC Anyang",
-      "homeOdds": "2.10",
-      "drawOdds": "3.25",
-      "awayOdds": "3.55",
+      "fixtureId": "1506997",
+      "homeTeam": "FC Seoul",
+      "awayTeam": "Gangwon FC",
+      "homeOdds": "2.40",
+      "drawOdds": "3.20",
+      "awayOdds": "2.95",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -4186,6 +4300,7 @@
     {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Incheon United",
       "awayTeam": "FC Anyang",
       "homeOdds": "2.00",
@@ -4198,11 +4313,12 @@
     {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
-      "homeTeam": "Jeju United FC",
-      "awayTeam": "Daejeon Citizen",
-      "homeOdds": "2.70",
-      "drawOdds": "3.30",
-      "awayOdds": "2.50",
+      "fixtureId": "1506995",
+      "homeTeam": "Incheon United",
+      "awayTeam": "FC Anyang",
+      "homeOdds": "2.00",
+      "drawOdds": "3.20",
+      "awayOdds": "3.90",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -4210,6 +4326,7 @@
     {
       "date": "2026-07-12",
       "league": "KLEAGUE1",
+      "fixtureId": "",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daejeon Citizen",
       "homeOdds": "2.75",
@@ -4221,12 +4338,13 @@
     },
     {
       "date": "2026-07-12",
-      "league": "WORLDCUP",
-      "homeTeam": "Norway",
-      "awayTeam": "England",
-      "homeOdds": "3.75",
-      "drawOdds": "3.60",
-      "awayOdds": "1.90",
+      "league": "KLEAGUE1",
+      "fixtureId": "1506996",
+      "homeTeam": "Jeju United FC",
+      "awayTeam": "Daejeon Citizen",
+      "homeOdds": "2.70",
+      "drawOdds": "3.30",
+      "awayOdds": "2.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당"
@@ -4234,10 +4352,37 @@
     {
       "date": "2026-07-12",
       "league": "WORLDCUP",
+      "fixtureId": "1582681",
+      "homeTeam": "Argentina",
+      "awayTeam": "Switzerland",
+      "homeOdds": "1.68",
+      "drawOdds": "3.50",
+      "awayOdds": "5.25",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "WORLDCUP",
+      "fixtureId": "",
       "homeTeam": "Norway",
       "awayTeam": "England",
       "homeOdds": "3.95",
       "drawOdds": "3.65",
+      "awayOdds": "1.84",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "WORLDCUP",
+      "fixtureId": "1581037",
+      "homeTeam": "Norway",
+      "awayTeam": "England",
+      "homeOdds": "4.00",
+      "drawOdds": "3.55",
       "awayOdds": "1.84",
       "result": "UNKNOWN",
       "score": "",
