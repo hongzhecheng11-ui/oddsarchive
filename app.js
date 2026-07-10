@@ -111,6 +111,8 @@ let visibleTeamMatchCount = RESULT_PAGE_SIZE;
 let homeTodayMatches = [];
 let homeTodayLastUpdatedAt = "";
 let cachedDefaultPackRows = null;
+let cachedBaseMatches = null;
+let cachedSearchableMatches = null;
 
 const CSV_HEADER_ALIASES = {
   date: ["date", "matchdate", "gamedate", "날짜", "경기날짜", "일자"],
@@ -434,8 +436,13 @@ function getMissingTeamNames() {
   return [...warnedMissingTeamLabels].sort((left, right) => left.localeCompare(right));
 }
 
+function invalidateSearchableMatchesCache() {
+  cachedSearchableMatches = null;
+}
+
 function setPendingValidRows(rows) {
   currentValidRows = Array.isArray(rows) ? rows : [];
+  invalidateSearchableMatchesCache();
   setSaveButtonState(currentValidRows);
 }
 
@@ -871,6 +878,7 @@ function setStorageMatches(matches, storage) {
   const safeMatches = Array.isArray(matches) ? matches : [];
   const targetStorage = getStorageTarget(storage);
   updateStorageModeStatus(!targetStorage);
+  invalidateSearchableMatchesCache();
 
   if (!targetStorage) {
     memoryStoredMatches = [...safeMatches];
@@ -994,7 +1002,11 @@ function clearStoredMatches(storage) {
 }
 
 function getSearchableMatches(storage) {
-  return getUniqueMatches([...getBaseMatches(), ...getStorageMatches(storage), ...currentValidRows]);
+  if (!storage && cachedSearchableMatches) return cachedSearchableMatches;
+
+  const matches = getUniqueMatches([...getBaseMatches(), ...getStorageMatches(storage), ...currentValidRows]);
+  if (!storage) cachedSearchableMatches = matches;
+  return matches;
 }
 
 function getStorageSavedSearches(storage) {
@@ -2331,6 +2343,191 @@ function clampPercent(value, min = 0, max = 100) {
   return Math.max(min, Math.min(max, numberValue));
 }
 
+function parseScoreParts(score) {
+  const match = String(score || "").match(/(\d+)\D+(\d+)/);
+  if (!match) return null;
+  return {
+    home: Number(match[1]),
+    away: Number(match[2])
+  };
+}
+
+function getTeamSide(match = {}, teamName = "") {
+  if (teamNameMatches(match.homeTeam, teamName)) return "home";
+  if (teamNameMatches(match.awayTeam, teamName)) return "away";
+  return "";
+}
+
+function getTeamResultFromMatch(match = {}, teamName = "") {
+  const side = getTeamSide(match, teamName);
+  if (!side || match.result === "UNKNOWN") return "";
+  if (match.result === "D") return "D";
+  if (side === "home") return match.result === "H" ? "W" : "L";
+  return match.result === "A" ? "W" : "L";
+}
+
+function getTeamScoreFromMatch(match = {}, teamName = "") {
+  const side = getTeamSide(match, teamName);
+  const score = parseScoreParts(match.score);
+  if (!side || !score) return null;
+  return {
+    forGoals: side === "home" ? score.home : score.away,
+    againstGoals: side === "home" ? score.away : score.home
+  };
+}
+
+function hasStrongOpponentNameHint(teamName = "") {
+  const text = normalizeTeamSearchText(teamName);
+  const plainText = String(teamName || "").trim().toLowerCase();
+  const nationalPowerhouses = ["france", "england", "spain", "germany", "brazil", "argentina", "portugal", "netherlands", "italy", "belgium", "croatia", "uruguay"];
+  if (nationalPowerhouses.some((hint) => plainText.includes(hint))) return true;
+  const contextHints = [
+    ...HOME_TODAY_STRONG_TEAM_HINTS,
+    ...nationalPowerhouses
+  ];
+  return contextHints.some((hint) => {
+    const normalizedHint = normalizeTeamSearchText(hint);
+    return text.includes(normalizedHint) || normalizedHint.includes(text);
+  });
+}
+
+function getTeamRecentProfile(teamName = "", matches = [], limit = 5) {
+  const recentMatches = (Array.isArray(matches) ? matches : [])
+    .filter(isKnownResultMatch)
+    .filter((match) => teamAppearsInMatch(match, teamName))
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
+    .slice(0, limit);
+  const totals = recentMatches.reduce((profile, match) => {
+    const result = getTeamResultFromMatch(match, teamName);
+    const score = getTeamScoreFromMatch(match, teamName);
+    if (result === "W") profile.wins += 1;
+    if (result === "D") profile.draws += 1;
+    if (result === "L") profile.losses += 1;
+    if (score) {
+      profile.goalsFor += score.forGoals;
+      profile.goalsAgainst += score.againstGoals;
+      if (score.forGoals > 0) profile.scoredMatches += 1;
+      if (score.againstGoals <= 1) profile.lowConcedeMatches += 1;
+    }
+    return profile;
+  }, {
+    matches: recentMatches.length,
+    wins: 0,
+    draws: 0,
+    losses: 0,
+    goalsFor: 0,
+    goalsAgainst: 0,
+    scoredMatches: 0,
+    lowConcedeMatches: 0
+  });
+
+  return {
+    ...totals,
+    avgGoalsFor: totals.matches > 0 ? totals.goalsFor / totals.matches : 0,
+    avgGoalsAgainst: totals.matches > 0 ? totals.goalsAgainst / totals.matches : 0,
+    drawRate: getRatePercent(totals.draws, totals.matches),
+    scoredRate: getRatePercent(totals.scoredMatches, totals.matches),
+    lowConcedeRate: getRatePercent(totals.lowConcedeMatches, totals.matches)
+  };
+}
+
+function getVsStrongTeamProfile(teamName = "", matches = [], limit = 10) {
+  const strongMatches = (Array.isArray(matches) ? matches : [])
+    .filter(isKnownResultMatch)
+    .filter((match) => teamAppearsInMatch(match, teamName))
+    .filter((match) => {
+      const side = getTeamSide(match, teamName);
+      const opponent = side === "home" ? match.awayTeam : side === "away" ? match.homeTeam : "";
+      return hasStrongOpponentNameHint(opponent);
+    })
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")))
+    .slice(0, limit);
+  const profile = getTeamRecentProfile(teamName, strongMatches, limit);
+  return {
+    ...profile,
+    matches: strongMatches.length
+  };
+}
+
+function getMatchImportanceSignal(match = {}) {
+  const text = normalizeTeamSearchText([
+    match.league,
+    match.leagueName,
+    match.roundName,
+    match.stage,
+    match.round
+  ].filter(Boolean).join(" "));
+  const isWorldOrCup = ["WORLDCUP", "WCQ", "UCL", "UEL", "ACL"].some((league) => leagueMatchesFixture(match.league, league));
+  const isKnockout = ["round of", "16", "quarter", "semi", "final", "playoff", "knockout", "8강", "4강", "결승", "토너먼트", "플레이오프"].some((word) => text.includes(normalizeTeamSearchText(word)));
+  if (isWorldOrCup && isKnockout) return { adjustment: 8, signal: "토너먼트 변수" };
+  if (isWorldOrCup) return { adjustment: 4, signal: "중요 경기 변수" };
+  return { adjustment: 0, signal: "" };
+}
+
+function getMatchContextProfile(match = {}, sourceMatches = []) {
+  const favoriteOdds = Math.min(
+    ...[match.homeOdds, match.drawOdds, match.awayOdds]
+      .map(parseSearchNumber)
+      .filter((value) => value !== null)
+  );
+  const favoriteKey = parseSearchNumber(match.homeOdds) === favoriteOdds ? "H"
+    : parseSearchNumber(match.awayOdds) === favoriteOdds ? "A"
+      : "D";
+  const underdogTeam = favoriteKey === "H" ? match.awayTeam : favoriteKey === "A" ? match.homeTeam : "";
+  const favoriteTeam = favoriteKey === "H" ? match.homeTeam : favoriteKey === "A" ? match.awayTeam : "";
+  const underdogProfile = underdogTeam ? getTeamRecentProfile(underdogTeam, sourceMatches) : null;
+  const favoriteProfile = favoriteTeam ? getTeamRecentProfile(favoriteTeam, sourceMatches) : null;
+  const underdogVsStrong = underdogTeam ? getVsStrongTeamProfile(underdogTeam, sourceMatches) : null;
+  const signals = [];
+  let adjustment = 0;
+  const importance = getMatchImportanceSignal(match);
+
+  if (importance.signal) {
+    adjustment += importance.adjustment;
+    signals.push(importance.signal);
+  }
+
+  if (underdogProfile?.matches >= 3) {
+    if (underdogProfile.scoredRate >= 60) {
+      adjustment += 4;
+      signals.push("약팀 득점 흐름");
+    }
+    if (underdogProfile.lowConcedeRate >= 60 || underdogProfile.drawRate >= 35) {
+      adjustment += 5;
+      signals.push("수비 버팀");
+    }
+  }
+
+  if (underdogVsStrong?.matches >= 2) {
+    if (underdogVsStrong.drawRate >= 30 || underdogVsStrong.lowConcedeRate >= 50 || underdogVsStrong.scoredRate >= 50) {
+      adjustment += 6;
+      signals.push("강팀 상대 버팀");
+    }
+  }
+
+  if (favoriteProfile?.matches >= 3) {
+    if (favoriteProfile.avgGoalsAgainst >= 1.4) {
+      adjustment += 4;
+      signals.push("정배 수비 불안");
+    }
+    if (favoriteProfile.losses >= 2 || favoriteProfile.drawRate >= 35) {
+      adjustment += 4;
+      signals.push("정배 최근 흔들림");
+    }
+  }
+
+  return {
+    adjustment,
+    signals: [...new Set(signals)],
+    favoriteKey,
+    favoriteTeam,
+    underdogTeam,
+    favoriteProfile,
+    underdogProfile,
+    underdogVsStrong
+  };
+}
+
 function getMatchContextAdjustment(criteria = {}, favorite = null, breakdown = {}) {
   const signals = [];
   let adjustment = 0;
@@ -2371,6 +2568,13 @@ function getMatchContextAdjustment(criteria = {}, favorite = null, breakdown = {
   if (hasStrongFavoriteHint && favoriteOdds !== null && favoriteOdds < 1.75) {
     adjustment -= 3;
     signals.push("강팀 정배");
+  }
+
+  if (Number.isFinite(Number(criteria.contextAdjustment))) {
+    adjustment += Number(criteria.contextAdjustment);
+  }
+  if (Array.isArray(criteria.contextSignals)) {
+    signals.push(...criteria.contextSignals);
   }
 
   return { adjustment, signals };
@@ -2908,7 +3112,9 @@ function getUniqueMatches(matches) {
 }
 
 function getBaseMatches() {
-  return getUniqueMatches([...getDefaultPackRows(), ...getApiOddsPackRows()]);
+  if (cachedBaseMatches) return cachedBaseMatches;
+  cachedBaseMatches = getUniqueMatches([...getDefaultPackRows(), ...getApiOddsPackRows()]);
+  return cachedBaseMatches;
 }
 
 function buildDefaultDataFailureMessage({ url = "", status = "", reason = "", responsePreview = "" } = {}) {
@@ -3642,6 +3848,7 @@ function buildMatchDetailAnalysis(target = {}, sourceMatches = getSearchableMatc
   const homeTeamMatches = [];
   const awayTeamMatches = [];
   const hasTargetOdds = hasCompleteOdds(target);
+  const contextProfile = getMatchContextProfile(target, matches);
 
   for (const match of matches) {
     if (!isKnownResultMatch(match) || isCurrentMatchRecord(match, target)) continue;
@@ -3681,12 +3888,15 @@ function buildMatchDetailAnalysis(target = {}, sourceMatches = getSearchableMatc
   const detailCriteria = {
     ...criteria,
     exactBreakdown: sameOddsBreakdown,
-    sameLeagueBreakdown: sameLeagueSimilarBreakdown
+    sameLeagueBreakdown: sameLeagueSimilarBreakdown,
+    contextAdjustment: contextProfile.adjustment,
+    contextSignals: contextProfile.signals
   };
 
   return {
     match: target,
     criteria: detailCriteria,
+    contextProfile,
     sameOdds: buildDetailStats("동일배당 전적", sameOddsMatches, { ...detailCriteria, tolerance: "0.00" }),
     similarOdds: buildDetailStats("유사배당 전적", similarOddsMatches, detailCriteria),
     sameLeagueSimilar: buildDetailStats(`${formatLeagueName(target.league)} 유사배당`, sameLeagueSimilarMatches, detailCriteria),
@@ -4597,6 +4807,7 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
     .filter(hasCompleteOdds)
     .map((match) => {
       const analysis = getTodayMatchAnalysis(match, searchableMatches);
+      const contextProfile = getMatchContextProfile(match, searchableMatches);
       const judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), {
         homeOdds: match.homeOdds,
         drawOdds: match.drawOdds,
@@ -4604,7 +4815,9 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
         league: match.league,
         homeTeam: match.homeTeam,
         awayTeam: match.awayTeam,
-        tolerance: match.tolerance || "0.05"
+        tolerance: match.tolerance || "0.05",
+        contextAdjustment: contextProfile.adjustment,
+        contextSignals: contextProfile.signals
       });
       const outcomes = getJudgementOutcomes(analysis?.breakdown || {}, match);
       const favorite = judgement.favorite;
@@ -4622,11 +4835,14 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
       const underdogOdds = Number(topUnderdog?.odds || 0);
       const meaningfulDraw = drawRate >= 24;
       const meaningfulUnderdog = topUnderdog && topUnderdog.rate >= 18 && underdogOdds >= 3.5;
+      const meaningfulContext = Number(contextProfile.adjustment || 0) >= 8;
       const favoriteIsLowEnough = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
       const favoriteIsWeak = Number(judgement.favoriteHitRate || 0) < 55;
       let topLabel = "";
-      if (favoriteOdds <= 1.35 && favoriteIsWeak && (meaningfulDraw || meaningfulUnderdog)) {
+      if (favoriteOdds <= 1.35 && favoriteIsWeak && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)) {
         topLabel = "대형 이변 후보";
+      } else if (favoriteIsWeak && meaningfulContext && favoriteOdds <= 1.65) {
+        topLabel = "이변 후보";
       } else if (meaningfulDraw && (!meaningfulUnderdog || drawRate >= topUnderdog.rate)) {
         topLabel = "무승부 주의";
       } else if (meaningfulUnderdog && topUnderdog.key === "H") {
@@ -4637,15 +4853,17 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
       const score = (favoriteOdds <= 1.35 ? 100 : 0)
         + (meaningfulDraw ? drawRate : 0)
         + (meaningfulUnderdog ? topUnderdog.rate : 0)
+        + Number(contextProfile.adjustment || 0)
         + Math.min(knownMatches, 80) / 4
         + Math.max(0, 55 - Number(judgement.favoriteHitRate || 0));
       return {
         match,
         analysis,
         judgement,
+        contextProfile,
         topLabel,
         topScore: score,
-        isTopCandidate: favoriteIsLowEnough && knownMatches >= 15 && favoriteIsWeak && Boolean(topLabel)
+        isTopCandidate: favoriteIsLowEnough && knownMatches >= 15 && favoriteIsWeak && Boolean(topLabel) && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)
       };
     })
     .filter((item) => item.isTopCandidate)
@@ -5594,8 +5812,7 @@ function mergeCsvParseResults(results) {
 
 function applyCsvRowsToUploadState({ rows, fileErrors = [], notice = "", fileCount = 1 }) {
   if (rows.length === 0) {
-    currentValidRows = [];
-    setSaveButtonState(currentValidRows);
+    setPendingValidRows([]);
     setValidationSummary({ validRows: 0, errorRows: fileErrors.length, duplicateRows: 0 });
     renderPreviewMessage("미리보기할 데이터가 없습니다.");
     renderValidationRows({
@@ -5608,7 +5825,7 @@ function applyCsvRowsToUploadState({ rows, fileErrors = [], notice = "", fileCou
   }
 
   const validation = validateCsvRows(rows);
-  currentValidRows = validation.validRows;
+  setPendingValidRows(validation.validRows);
   renderPreviewRows(rows);
   setValidationSummary({
     validRows: validation.summary.validRows,
@@ -5652,14 +5869,13 @@ function handleCsvFile(file) {
       renderPreviewMessage("미리보기할 데이터가 없습니다.");
       setValidationSummary({ validRows: 0, errorRows: 0, duplicateRows: 0 });
       renderValidationRows({ errorRows: [], duplicateRows: [] });
-      currentValidRows = [];
-      setSaveButtonState(currentValidRows);
+      setPendingValidRows([]);
       setSaveStatus("검증 완료 후 정상 행이 있으면 저장할 수 있습니다.");
       return;
     }
 
     const validation = validateCsvRows(result.rows);
-    currentValidRows = validation.validRows;
+    setPendingValidRows(validation.validRows);
     setCsvNotice(result.notice || "");
     renderPreviewRows(result.rows);
     setValidationSummary(validation.summary);
@@ -5678,8 +5894,7 @@ function handleCsvFile(file) {
     renderPreviewMessage("미리보기할 데이터가 없습니다.");
     setValidationSummary({ validRows: 0, errorRows: 0, duplicateRows: 0 });
     renderValidationRows({ errorRows: [], duplicateRows: [] });
-    currentValidRows = [];
-    setSaveButtonState(currentValidRows);
+    setPendingValidRows([]);
     setSaveStatus("검증 완료 후 정상 행이 있으면 저장할 수 있습니다.");
   });
   reader.readAsText(file, "utf-8");
@@ -5760,8 +5975,7 @@ function wireDefaultDataImport() {
       return;
     }
 
-    currentValidRows = [];
-    setSaveButtonState(currentValidRows);
+    setPendingValidRows([]);
     updateDashboard(result.matches);
     updateStoredMatchStatus(result.matches);
     updateDataStatus();
@@ -5796,8 +6010,7 @@ function wireFiveLeagueUpdate() {
     const result = await autoUpdateLeagues();
 
     if (!result.error) {
-      currentValidRows = [];
-      setSaveButtonState(currentValidRows);
+      setPendingValidRows([]);
       updateDashboard(result.matches);
       updateStoredMatchStatus(result.matches);
       renderStoredMatches(getSearchableMatches());
@@ -5819,8 +6032,7 @@ async function runStartupAutoUpdate() {
   renderAutoUpdateManager();
 
   if (!result.error && !result.skipped) {
-    currentValidRows = [];
-    setSaveButtonState(currentValidRows);
+    setPendingValidRows([]);
     updateDashboard(result.matches);
     updateStoredMatchStatus(result.matches);
     updateDataStatus();
@@ -5863,8 +6075,7 @@ function wireSaveValidRows() {
       setClearMatchesStatus(`${storedMatches.length}개의 경기 데이터가 저장되어 있습니다.`);
       setOddsSearchStatus("배당을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.");
       setSaveStatus(`정상 행 ${result.savedCount}개가 저장되었습니다. 중복 제외 ${result.duplicateCount || 0}개. 현재 저장된 전체 경기 수: ${storedMatches.length}개`);
-      currentValidRows = [];
-      setSaveButtonState(currentValidRows);
+      setPendingValidRows([]);
     } catch (error) {
       const message = error instanceof Error ? error.message : "알 수 없는 오류";
       setSaveStatus(`저장에 실패했습니다. ${message}`);
@@ -5898,8 +6109,7 @@ function wireClearStoredMatches() {
     renderResultBreakdown([]);
     setOddsSearchError("");
     setOddsSearchStatus("배당을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.");
-    currentValidRows = [];
-    setSaveButtonState(currentValidRows);
+    setPendingValidRows([]);
     setClearMatchesStatus(`${result.deletedCount}개의 경기 데이터를 삭제했습니다.`);
   });
 }
@@ -6884,6 +7094,7 @@ if (typeof module !== "undefined") {
     getInlineOddsConfidence,
     getApiHistoryChunks,
     getHomeTodayCardViewModel,
+    getMatchContextProfile,
     getTodayUserInsight,
     getTodayUpsetCandidates,
     getLeagueBreakdownStats,

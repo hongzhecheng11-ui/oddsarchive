@@ -528,6 +528,53 @@ test("calculates upset probability from historical odds and match context", () =
   assert(adjusted.signals.includes("원정 정배"));
 });
 
+test("adds team form and strong-opponent context to upset candidates", () => {
+  const todayMatch = {
+    date: "2026-07-09",
+    league: "WORLDCUP",
+    roundName: "Quarter-finals",
+    homeTeam: "France",
+    awayTeam: "Morocco",
+    homeOdds: "1.45",
+    drawOdds: "3.40",
+    awayOdds: "7.00",
+    result: "UNKNOWN"
+  };
+  const history = [];
+  const addSimilar = (result, index) => {
+    history.push({
+      date: `2025-01-${String(index + 1).padStart(2, "0")}`,
+      league: "WORLDCUP",
+      homeTeam: `Strong ${index}`,
+      awayTeam: `Dog ${index}`,
+      homeOdds: "1.45",
+      drawOdds: "3.40",
+      awayOdds: "7.00",
+      result,
+      score: result === "H" ? "2-0" : result === "D" ? "1-1" : "0-1"
+    });
+  };
+  [...Array(10).fill("H"), ...Array(5).fill("D"), ...Array(5).fill("A")].forEach(addSimilar);
+  [
+    ["2026-06-01", "Morocco", "Spain", "1-1", "D"],
+    ["2026-06-05", "Morocco", "England", "1-0", "H"],
+    ["2026-06-09", "Morocco", "Germany", "2-1", "H"],
+    ["2026-06-13", "Morocco", "Brazil", "2-0", "H"],
+    ["2026-06-17", "Argentina", "Morocco", "0-0", "D"]
+  ].forEach(([date, homeTeam, awayTeam, score, result]) => {
+    history.push({ date, league: "WORLDCUP", homeTeam, awayTeam, homeOdds: "3.20", drawOdds: "3.20", awayOdds: "2.20", result, score });
+  });
+
+  const profile = app.getMatchContextProfile(todayMatch, history);
+  const candidates = app.getTodayUpsetCandidates([todayMatch], history);
+
+  assert(profile.signals.includes("토너먼트 변수"));
+  assert(profile.signals.includes("약팀 득점 흐름"));
+  assert(profile.signals.includes("강팀 상대 버팀"));
+  assert.strictEqual(candidates.length, 1);
+  assert.strictEqual(candidates[0].topLabel, "이변 후보");
+});
+
 test("adds draw and underdog judgement badges", () => {
   const drawSignal = app.calculateMatchJudgement(
     { totalMatches: 100, knownMatches: 100, homeWins: 55, draws: 32, awayWins: 13 },
