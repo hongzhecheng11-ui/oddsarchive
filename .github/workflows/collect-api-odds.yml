@@ -27,7 +27,12 @@ jobs:
       - name: Collect odds
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-        run: npm run collect:api-odds:auto
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=0 --leagues=KLEAGUE1
+          else
+            npm run collect:api-odds:auto
+          fi
 
       - name: Commit updated odds pack
         if: always()
