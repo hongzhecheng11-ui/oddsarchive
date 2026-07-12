@@ -102,6 +102,8 @@ function normalizeOddsItem(item, leagueKey, dateText) {
     homeOdds: getOutcomeOdd(values, ["Home", homeTeam]),
     drawOdds: getOutcomeOdd(values, ["Draw"]),
     awayOdds: getOutcomeOdd(values, ["Away", awayTeam]),
+    // TODO: Some API odds rows omit their actual update time; keep the fetch-time fallback in the UI.
+    updatedAt: item.update || item.updatedAt || "",
     source: "API-Football"
   };
 }
@@ -246,6 +248,7 @@ function mergeFixturesWithOdds(fixtures, odds) {
       homeOdds: odd.homeOdds || "",
       drawOdds: odd.drawOdds || "",
       awayOdds: odd.awayOdds || "",
+      updatedAt: odd.updatedAt || fixture.updatedAt || "",
       source: "API-Football"
     } : fixture;
   });

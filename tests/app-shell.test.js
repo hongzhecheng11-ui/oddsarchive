@@ -360,9 +360,37 @@ test("keeps low sample today insight free from upset wording", () => {
   );
 
   assert(insight.text.includes("유사배당 8경기"));
+  assert(insight.text.includes("신뢰도 낮음"));
   assert(!insight.text.includes("이변"));
   assert(!insight.text.includes("위험"));
   assert(!insight.text.includes("참고용"));
+});
+
+test("keeps finished score and stale odds confidence on today cards", () => {
+  const finished = app.getHomeTodayCardViewModel({
+    league: "KLEAGUE1",
+    homeTeam: "FC Seoul",
+    awayTeam: "Gangwon FC",
+    status: "FT",
+    homeOdds: "2.10",
+    drawOdds: "3.20",
+    awayOdds: "3.40",
+    result: "D",
+    score: "0-0"
+  });
+  const stale = app.getHomeTodayCardViewModel({
+    league: "KLEAGUE1",
+    homeTeam: "FC Seoul",
+    awayTeam: "Gangwon FC",
+    status: "NS",
+    homeOdds: "2.10",
+    drawOdds: "3.20",
+    awayOdds: "3.40",
+    updatedAt: "2020-01-01T00:00:00.000Z"
+  });
+
+  assert.strictEqual(finished.resultText, "경기결과: 무승부 0-0");
+  assert.strictEqual(stale.insight.text, "신뢰도 낮음 · 오래된 배당");
 });
 
 test("sorts user useful today matches before low sample matches", () => {
@@ -528,7 +556,7 @@ test("calculates upset probability from historical odds and match context", () =
   assert(adjusted.signals.includes("원정 정배"));
 });
 
-test("adds team form and strong-opponent context to upset candidates", () => {
+test("uses team form without forcing a low-confidence upset label", () => {
   const todayMatch = {
     date: "2026-07-09",
     league: "WORLDCUP",
@@ -571,8 +599,66 @@ test("adds team form and strong-opponent context to upset candidates", () => {
   assert(profile.signals.includes("토너먼트 변수"));
   assert(profile.signals.includes("약팀 득점 흐름"));
   assert(profile.signals.includes("강팀 상대 버팀"));
+  assert.strictEqual(profile.confidence, "낮음");
   assert.strictEqual(candidates.length, 1);
-  assert.strictEqual(candidates[0].topLabel, "이변 후보");
+  assert.strictEqual(candidates[0].topLabel, "무승부 주의");
+});
+
+test("uses league rank and home-away form in match context", () => {
+  const history = [];
+  for (let index = 1; index <= 5; index += 1) {
+    history.push({
+      date: `2026-01-0${index}`,
+      league: "EPL",
+      homeTeam: "Alpha",
+      awayTeam: `Club ${index}`,
+      result: "A",
+      score: "0-2"
+    });
+    history.push({
+      date: `2026-02-0${index}`,
+      league: "EPL",
+      homeTeam: `Club ${index}`,
+      awayTeam: "Beta",
+      result: "A",
+      score: "0-2"
+    });
+  }
+
+  const profile = app.getMatchContextProfile({
+    date: "2026-07-01",
+    league: "EPL",
+    homeTeam: "Alpha",
+    awayTeam: "Beta",
+    homeOdds: "1.50",
+    drawOdds: "4.00",
+    awayOdds: "6.00"
+  }, history);
+
+  assert.strictEqual(profile.confidence, "높음");
+  assert(profile.homeVenueProfile.matches >= 3);
+  assert(profile.awayVenueProfile.matches >= 3);
+  assert(profile.underdogStanding.rank < profile.favoriteStanding.rank);
+  assert(profile.signals.includes("리그 순위 역전"));
+  assert(profile.signals.includes("홈원정 흐름 역전"));
+});
+
+test("blocks strong upset judgement when context confidence is low", () => {
+  const judgement = app.calculateMatchJudgement({
+    totalMatches: 30,
+    knownMatches: 30,
+    homeWins: 12,
+    draws: 9,
+    awayWins: 9
+  }, {
+    homeOdds: "1.50",
+    drawOdds: "4.00",
+    awayOdds: "6.00",
+    contextConfidence: "낮음"
+  });
+
+  assert.strictEqual(judgement.confidence, "낮음");
+  assert(!["이변 후보", "대형 이변 후보"].includes(judgement.judgement));
 });
 
 test("adds draw and underdog judgement badges", () => {

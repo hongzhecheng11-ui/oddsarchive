@@ -1589,6 +1589,7 @@ tbody tr:last-child td {
   color: var(--ink);
   font-size: 12px;
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .home-today-odds {
@@ -1601,6 +1602,15 @@ tbody tr:last-child td {
 
 .home-today-odds.ready {
   color: #0f766e;
+}
+
+.home-today-result {
+  margin: 0;
+  color: #334155;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .home-today-insight {
@@ -3363,6 +3373,16 @@ select {
   .home-today-card {
     gap: 4px;
     padding: 7px;
+  }
+
+  .home-today-card-top,
+  .home-today-card-footer {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .home-today-card-footer button {
+    flex: 0 0 auto;
   }
 
   .home-today-heading strong {
