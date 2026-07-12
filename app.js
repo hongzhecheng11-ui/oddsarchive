@@ -110,9 +110,13 @@ let currentTeamMatchResults = [];
 let visibleTeamMatchCount = RESULT_PAGE_SIZE;
 let homeTodayMatches = [];
 let homeTodayLastUpdatedAt = "";
+let homeTodayLoadStarted = false;
 let cachedDefaultPackRows = null;
 let cachedBaseMatches = null;
 let cachedSearchableMatches = null;
+let footballDataPackLoadPromise = null;
+const matchContextProfileCache = new Map();
+const todayMatchAnalysisCache = new Map();
 
 const CSV_HEADER_ALIASES = {
   date: ["date", "matchdate", "gamedate", "날짜", "경기날짜", "일자"],
@@ -438,6 +442,8 @@ function getMissingTeamNames() {
 
 function invalidateSearchableMatchesCache() {
   cachedSearchableMatches = null;
+  matchContextProfileCache.clear();
+  todayMatchAnalysisCache.clear();
 }
 
 function setPendingValidRows(rows) {
@@ -2465,6 +2471,9 @@ function getMatchImportanceSignal(match = {}) {
 }
 
 function getMatchContextProfile(match = {}, sourceMatches = []) {
+  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${Array.isArray(sourceMatches) ? sourceMatches.length : 0}`;
+  if (matchContextProfileCache.has(cacheKey)) return matchContextProfileCache.get(cacheKey);
+
   const favoriteOdds = Math.min(
     ...[match.homeOdds, match.drawOdds, match.awayOdds]
       .map(parseSearchNumber)
@@ -2516,7 +2525,7 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     }
   }
 
-  return {
+  const profile = {
     adjustment,
     signals: [...new Set(signals)],
     favoriteKey,
@@ -2526,6 +2535,8 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     underdogProfile,
     underdogVsStrong
   };
+  matchContextProfileCache.set(cacheKey, profile);
+  return profile;
 }
 
 function getMatchContextAdjustment(criteria = {}, favorite = null, breakdown = {}) {
@@ -2998,6 +3009,31 @@ function getBundledFootballDataPack() {
   if (typeof window !== "undefined" && window.FOOTBALL_DATA_PACK) return window.FOOTBALL_DATA_PACK;
   if (typeof globalThis !== "undefined" && globalThis.FOOTBALL_DATA_PACK) return globalThis.FOOTBALL_DATA_PACK;
   return {};
+}
+
+function ensureFootballDataPackLoaded() {
+  if (Object.keys(getBundledFootballDataPack()).length > 0) return Promise.resolve();
+  if (footballDataPackLoadPromise) return footballDataPackLoadPromise;
+  if (typeof document === "undefined") return Promise.resolve();
+
+  footballDataPackLoadPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = "data/football-data-pack.js";
+    script.async = true;
+    script.onload = () => {
+      cachedDefaultPackRows = null;
+      cachedBaseMatches = null;
+      invalidateSearchableMatchesCache();
+      resolve();
+    };
+    script.onerror = () => {
+      footballDataPackLoadPromise = null;
+      reject(new Error("과거 배당 데이터를 불러오지 못했습니다."));
+    };
+    document.head.appendChild(script);
+  });
+
+  return footballDataPackLoadPromise;
 }
 
 function getBundledApiOddsPack() {
@@ -4216,11 +4252,18 @@ function renderMatchDetail(match = {}, sourceMatches = getSearchableMatches()) {
   shell.replaceChildren(hero, tabs, summary, same, similar, sameLeague, recent, related);
 }
 
-function openMatchDetail(match = {}) {
+async function openMatchDetail(match = {}) {
   if (typeof window !== "undefined") {
     window.location.hash = "#detail";
   }
   showActiveView("#detail");
+  const shell = document.getElementById("match-detail-shell");
+  if (shell) shell.textContent = "상세 분석 데이터를 불러오는 중입니다.";
+  try {
+    await ensureFootballDataPackLoaded();
+  } catch (_error) {
+    // The selected match can still use locally available data.
+  }
   renderMatchDetail(match);
   window.setTimeout(() => {
     document.getElementById("match-detail-shell")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -4680,7 +4723,10 @@ function getTodayMatchAnalysis(match, matches = getSearchableMatches()) {
     return { error: "배당 대기중", matches: [], breakdown: calculateResultBreakdown([]), label: `${match.homeTeam} vs ${match.awayTeam}` };
   }
 
-  return analyzeLiveMatchOdds(matches, {
+  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${match.tolerance || "0.05"}|${Array.isArray(matches) ? matches.length : 0}`;
+  if (todayMatchAnalysisCache.has(cacheKey)) return todayMatchAnalysisCache.get(cacheKey);
+
+  const analysis = analyzeLiveMatchOdds(matches, {
     homeTeam: match.homeTeam,
     awayTeam: match.awayTeam,
     league: match.league,
@@ -4689,6 +4735,8 @@ function getTodayMatchAnalysis(match, matches = getSearchableMatches()) {
     awayOdds: match.awayOdds,
     tolerance: match.tolerance
   });
+  todayMatchAnalysisCache.set(cacheKey, analysis);
+  return analysis;
 }
 
 function hasCompleteOdds(match = {}) {
@@ -4807,18 +4855,16 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
     .filter(hasCompleteOdds)
     .map((match) => {
       const analysis = getTodayMatchAnalysis(match, searchableMatches);
-      const contextProfile = getMatchContextProfile(match, searchableMatches);
-      const judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), {
+      const baseCriteria = {
         homeOdds: match.homeOdds,
         drawOdds: match.drawOdds,
         awayOdds: match.awayOdds,
         league: match.league,
         homeTeam: match.homeTeam,
         awayTeam: match.awayTeam,
-        tolerance: match.tolerance || "0.05",
-        contextAdjustment: contextProfile.adjustment,
-        contextSignals: contextProfile.signals
-      });
+        tolerance: match.tolerance || "0.05"
+      };
+      let judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), baseCriteria);
       const outcomes = getJudgementOutcomes(analysis?.breakdown || {}, match);
       const favorite = judgement.favorite;
       const favoriteOdds = Number(judgement.favoriteOdds || favorite?.odds || 0);
@@ -4835,9 +4881,27 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
       const underdogOdds = Number(topUnderdog?.odds || 0);
       const meaningfulDraw = drawRate >= 24;
       const meaningfulUnderdog = topUnderdog && topUnderdog.rate >= 18 && underdogOdds >= 3.5;
-      const meaningfulContext = Number(contextProfile.adjustment || 0) >= 8;
       const favoriteIsLowEnough = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
       const favoriteIsWeak = Number(judgement.favoriteHitRate || 0) < 55;
+      if (!favoriteIsLowEnough || knownMatches < 15 || !favoriteIsWeak) {
+        return {
+          match,
+          analysis,
+          judgement,
+          contextProfile: null,
+          topLabel: "",
+          topScore: 0,
+          isTopCandidate: false
+        };
+      }
+
+      const contextProfile = getMatchContextProfile(match, searchableMatches);
+      judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), {
+        ...baseCriteria,
+        contextAdjustment: contextProfile.adjustment,
+        contextSignals: contextProfile.signals
+      });
+      const meaningfulContext = Number(contextProfile.adjustment || 0) >= 8;
       let topLabel = "";
       if (favoriteOdds <= 1.35 && favoriteIsWeak && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)) {
         topLabel = "대형 이변 후보";
@@ -4914,10 +4978,17 @@ function getMatchStatusLabel(match = {}) {
   return labels[status] || status;
 }
 
-function getHomeTodayCardViewModel(match = {}, updatedAt = "") {
+function getHomeTodayCardViewModel(match = {}, updatedAt = "", analysis = null) {
   const hasOdds = hasCompleteOdds(match);
-  const analysis = hasOdds ? getTodayMatchAnalysis(match, getSearchableMatches()) : null;
-  const insight = getTodayUserInsight(match, analysis);
+  const insight = hasOdds && analysis
+    ? getTodayUserInsight(match, analysis)
+    : {
+      text: hasOdds ? "배당 확인 가능" : "배당 준비 중",
+      tone: hasOdds ? "balanced" : "pending",
+      sampleSize: 0,
+      upsetProbability: null,
+      score: hasOdds ? 1 : 0
+    };
   return {
     id: match.id || getTodayMatchKey(match),
     title: `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`,
@@ -4979,7 +5050,12 @@ function renderHomeUpsetCandidates(matches = []) {
   const list = document.getElementById("home-upset-list");
   if (!list) return;
 
-  const candidates = getTodayUpsetCandidates(matches, getSearchableMatches());
+  if (!cachedSearchableMatches) {
+    list.replaceChildren();
+    return;
+  }
+
+  const candidates = getTodayUpsetCandidates(matches, cachedSearchableMatches);
   if (candidates.length === 0) {
     const empty = document.createElement("div");
     empty.className = "home-upset-empty";
@@ -4991,8 +5067,8 @@ function renderHomeUpsetCandidates(matches = []) {
   list.replaceChildren(...candidates.map(createHomeUpsetCandidateCard));
 }
 
-function createHomeTodayMatchCard(match, updatedAt = "") {
-  const view = getHomeTodayCardViewModel(match, updatedAt);
+function createHomeTodayMatchCard(match, updatedAt = "", analysis = null) {
+  const view = getHomeTodayCardViewModel(match, updatedAt, analysis);
   const card = document.createElement("article");
   card.className = `home-today-card${view.hasOdds ? " has-odds" : ""}`;
   card.tabIndex = 0;
@@ -5065,7 +5141,9 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     return;
   }
 
-  const visibleMatches = sortHomeTodayMatchesForUsers(majorMatches, getSearchableMatches()).slice(0, HOME_TODAY_MATCH_LIMIT);
+  const visibleMatches = cachedSearchableMatches
+    ? sortHomeTodayMatchesForUsers(majorMatches, cachedSearchableMatches).slice(0, HOME_TODAY_MATCH_LIMIT)
+    : sortHomeTodayMatches(majorMatches).slice(0, HOME_TODAY_MATCH_LIMIT);
   list.replaceChildren(...visibleMatches.map((match) => createHomeTodayMatchCard(match, homeTodayLastUpdatedAt)));
 }
 
@@ -5261,7 +5339,8 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
   }
 
   const searchableMatches = getSearchableMatches();
-  const analyses = todayMatches.map((match) => getTodayMatchAnalysis(match, searchableMatches));
+  const visibleTodayMatches = todayMatches.slice(0, HOME_TODAY_MATCH_LIMIT);
+  const analyses = visibleTodayMatches.map((match) => getTodayMatchAnalysis(match, searchableMatches));
   const readyCount = todayMatches.filter(hasCompleteOdds).length;
   const knownCount = analyses.reduce((sum, analysis) => sum + (analysis.breakdown?.knownMatches || 0), 0);
   const values = {
@@ -5278,7 +5357,7 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
   updateTodayAnalysisDataStatus(searchableMatches);
   if (!list) return;
 
-  list.replaceChildren(...todayMatches.map((match, index) => createTodayCenterCard(match, analyses[index])));
+  list.replaceChildren(...visibleTodayMatches.map((match, index) => createTodayCenterCard(match, analyses[index])));
 }
 
 function renderTodayMatchAnalysis(analysis) {
@@ -5670,6 +5749,12 @@ function wireHomeTodayMatches() {
   if (refreshButton) refreshButton.addEventListener("click", loadHomeTodayMatches);
   if (showAllButton) showAllButton.addEventListener("click", showAllHomeTodayMatches);
   renderHomeTodayMatches([], { status: "오늘 경기 불러오는 중" });
+  if ((window.location.hash || "#search") === "#today") ensureHomeTodayMatchesLoaded();
+}
+
+function ensureHomeTodayMatchesLoaded() {
+  if (homeTodayLoadStarted) return;
+  homeTodayLoadStarted = true;
   loadHomeTodayMatches();
 }
 
@@ -6282,12 +6367,14 @@ function wireExampleOddsButtons() {
   });
 }
 
-function runOddsSearchFromCurrentCriteria() {
+async function runOddsSearchFromCurrentCriteria() {
   moveSearchResultsTo("odds-result-anchor");
   setSearchResultsTitle("검색 결과");
   setOddsSearchStatus("검색 중입니다.");
 
   try {
+    setOddsSearchStatus("과거 배당 데이터를 준비하는 중입니다.");
+    await ensureFootballDataPackLoaded();
     const matches = getSearchableMatches();
     const storedMatches = loadStoredMatches();
     const criteria = getOddsSearchCriteria();
@@ -6954,6 +7041,9 @@ function showActiveView(hashValue) {
   if (activeViewId === "matches") {
     renderStoredMatches();
   }
+  if (activeViewId === "today") {
+    ensureHomeTodayMatchesLoaded();
+  }
 }
 
 function wireViewNavigation() {
@@ -7001,6 +7091,15 @@ function registerServiceWorker() {
   });
 }
 
+function runWhenBrowserIsIdle(callback) {
+  if (typeof window === "undefined" || typeof callback !== "function") return;
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(callback, { timeout: 2500 });
+    return;
+  }
+  window.setTimeout(callback, 120);
+}
+
 if (typeof document !== "undefined") {
   wireViewNavigation();
   wireSampleCsvDownload();
@@ -7024,9 +7123,13 @@ if (typeof document !== "undefined") {
   wireTodayCsvImport();
   wireHomeTodayMatches();
   updateStorageModeStatus();
-  updateDashboard();
-  updateStoredMatchStatus();
-  updateDataStatus();
+  if (["#matches", "#upload", "#account"].includes(window.location.hash || "")) {
+    runWhenBrowserIsIdle(() => {
+      updateDashboard();
+      updateStoredMatchStatus();
+      updateDataStatus();
+    });
+  }
   renderTeamMatchResults([], "팀명을 입력하면 과거 경기 기록과 배당이 표시됩니다.", { show: false });
   renderTeamMatchBreakdown([]);
   renderOddsSearchResults([], loadStoredMatches().length === 0 ? "저장된 경기 데이터가 없습니다." : "조건에 맞는 유사 배당 경기가 없습니다.", { show: false });

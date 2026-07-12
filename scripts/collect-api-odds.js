@@ -6,6 +6,8 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const PACK_PATH = path.join(ROOT_DIR, "data", "api-odds-pack.js");
 const LOCAL_ENV_PATH = path.join(ROOT_DIR, ".env.local");
 const WINDOWS_LOCAL_ENV_PATH = path.join(ROOT_DIR, ".env.local.txt");
+const API_RETRY_ATTEMPTS = 3;
+const API_RETRY_BASE_DELAY_MS = 700;
 
 const LEAGUE_IDS = {
   EPL: 39,
@@ -199,19 +201,42 @@ function normalizeOdds(item = {}, leagueKey, dateText) {
   };
 }
 
-async function fetchApiFootball(pathname, apiKey) {
-  const response = await fetch(`https://${API_HOST}${pathname}`, {
-    headers: {
-      "x-apisports-key": apiKey,
-      "x-rapidapi-host": API_HOST
+function isRetryableApiStatus(status) {
+  return status === 429 || status >= 500;
+}
+
+async function fetchApiFootball(pathname, apiKey, { fetcher = fetch, attempts = API_RETRY_ATTEMPTS } = {}) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetcher(`https://${API_HOST}${pathname}`, {
+        headers: {
+          "x-apisports-key": apiKey,
+          "x-rapidapi-host": API_HOST
+        }
+      });
+      const payload = await response.json().catch(() => ({}));
+      const errors = payload.errors && typeof payload.errors === "object" ? Object.values(payload.errors).filter(Boolean) : [];
+
+      if (response.ok && errors.length === 0) {
+        return Array.isArray(payload.response) ? payload.response : [];
+      }
+
+      const error = new Error(payload.message || errors.join(" / ") || `API-Football response ${response.status}`);
+      error.status = response.status;
+      if (!isRetryableApiStatus(response.status) || attempt === attempts) throw error;
+      lastError = error;
+    } catch (error) {
+      lastError = error;
+      const status = Number(error?.status || 0);
+      if ((status && !isRetryableApiStatus(status)) || attempt === attempts) throw error;
     }
-  });
-  const payload = await response.json().catch(() => ({}));
-  const errors = payload.errors && typeof payload.errors === "object" ? Object.values(payload.errors).filter(Boolean) : [];
-  if (!response.ok || errors.length > 0) {
-    throw new Error(payload.message || errors.join(" / ") || `API-Football response ${response.status}`);
+
+    await wait(API_RETRY_BASE_DELAY_MS * (2 ** (attempt - 1)));
   }
-  return Array.isArray(payload.response) ? payload.response : [];
+
+  throw lastError || new Error("API-Football request failed");
 }
 
 function wait(ms) {
@@ -251,12 +276,13 @@ async function collectLeagueDate({ apiKey, leagueKey, leagueId, date }) {
 }
 
 function loadExistingPack() {
-  if (!fs.existsSync(PACK_PATH)) return { version: "api-odds-pack-v1", updatedAt: "", matches: [] };
+  if (!fs.existsSync(PACK_PATH)) return { version: "api-odds-pack-v1", updatedAt: "", collection: {}, matches: [] };
   delete require.cache[require.resolve(PACK_PATH)];
   const pack = require(PACK_PATH);
   return {
     version: pack.version || "api-odds-pack-v1",
     updatedAt: pack.updatedAt || "",
+    collection: pack.collection && typeof pack.collection === "object" ? pack.collection : {},
     matches: Array.isArray(pack.matches) ? pack.matches : []
   };
 }
@@ -339,7 +365,7 @@ function getResultUpdateDates() {
   });
 }
 
-async function collectFixtureResultUpdates({ apiKey, existingMatches = [], leagueKeys = [], dates = [] }) {
+async function collectFixtureResultUpdates({ apiKey, existingMatches = [], leagueKeys = [], dates = [], diagnostics = null }) {
   const targetDates = new Set(dates);
   if (!targetDates.size) return [];
 
@@ -379,6 +405,7 @@ async function collectFixtureResultUpdates({ apiKey, existingMatches = [], leagu
       try {
         const season = getSeason(date, leagueKey);
         const fixturesRaw = await fetchApiFootball(`/fixtures?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}`, apiKey);
+        if (diagnostics) diagnostics.successes += 1;
         const fixtures = fixturesRaw.map((item) => normalizeFixture(item, leagueKey, date));
 
         for (const fixture of fixtures) {
@@ -393,6 +420,7 @@ async function collectFixtureResultUpdates({ apiKey, existingMatches = [], leagu
           });
         }
       } catch (error) {
+        if (diagnostics) diagnostics.failures.push(`${date} ${leagueKey}(${leagueId}) result: ${error.message}`);
         console.warn(`${date} ${leagueKey}(${leagueId}) result update failed: ${error.message}`);
       }
       await wait(250);
@@ -495,6 +523,8 @@ async function main() {
   const resultDates = getResultUpdateDates();
   const existingPack = loadExistingPack();
   const collected = [];
+  const diagnostics = { successes: 0, failures: [] };
+  const attemptedAt = new Date().toISOString();
 
   for (const leagueKey of leagueKeys) {
     const leagueIds = getLeagueIds(leagueKey);
@@ -507,9 +537,11 @@ async function main() {
       for (const leagueId of leagueIds) {
         try {
           const rows = await collectLeagueDate({ apiKey, leagueKey, leagueId, date });
+          diagnostics.successes += 1;
           collected.push(...rows);
           console.log(`${date} ${leagueKey}(${leagueId}) ${rows.length}건`);
         } catch (error) {
+          diagnostics.failures.push(`${date} ${leagueKey}(${leagueId}): ${error.message}`);
           console.warn(`${date} ${leagueKey}(${leagueId}) 실패: ${error.message}`);
         }
         await wait(250);
@@ -521,26 +553,42 @@ async function main() {
     apiKey,
     existingMatches: existingPack.matches,
     leagueKeys,
-    dates: resultDates
+    dates: resultDates,
+    diagnostics
   });
   collected.push(...resultUpdates);
 
   if (collected.length === 0) {
     console.log("수집된 배당이 없어 데이터팩을 변경하지 않았습니다.");
-    return;
+    // Keep writing collection metadata even when no new odds were published.
   }
 
   const mergeResult = mergeCollectedMatches(existingPack.matches, collected);
   const quality = getPackQualitySummary(mergeResult.matches);
+  const completedAt = new Date().toISOString();
+  const hadSuccessfulRequest = diagnostics.successes > 0;
 
   const nextPack = {
     version: "api-odds-pack-v1",
-    updatedAt: new Date().toISOString(),
+    updatedAt: collected.length > 0 ? completedAt : existingPack.updatedAt,
+    collection: {
+      lastAttemptAt: attemptedAt,
+      lastSuccessAt: hadSuccessfulRequest ? completedAt : (existingPack.collection.lastSuccessAt || ""),
+      requestSuccesses: diagnostics.successes,
+      requestFailures: diagnostics.failures.length,
+      addedCount: mergeResult.addedCount,
+      updatedCount: mergeResult.updatedCount,
+      duplicateCount: mergeResult.duplicateCount,
+      errors: diagnostics.failures.slice(0, 50)
+    },
     matches: mergeResult.matches
   };
   writePack(nextPack);
   console.log(`merge: collected=${collected.length} added=${mergeResult.addedCount} updated=${mergeResult.updatedCount} duplicate=${mergeResult.duplicateCount}`);
   console.log(`quality: total=${quality.total} completeOdds=${quality.completeOdds} knownResults=${quality.knownResults} unknownResults=${quality.unknownResults}`);
+  if (!hadSuccessfulRequest && diagnostics.failures.length > 0) {
+    throw new Error(`모든 API 수집 요청이 실패했습니다. 실패 ${diagnostics.failures.length}건`);
+  }
   console.log(`저장 완료: ${path.relative(ROOT_DIR, PACK_PATH)} / 신규 ${collected.length}건 / 전체 ${nextPack.matches.length}건`);
 }
 
@@ -562,5 +610,7 @@ module.exports = {
   normalizeOdds,
   getResultUpdateDates,
   collectFixtureResultUpdates,
-  collectLeagueDate
+  collectLeagueDate,
+  fetchApiFootball,
+  isRetryableApiStatus
 };

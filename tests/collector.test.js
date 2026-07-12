@@ -161,3 +161,11 @@ test("keeps unfinished fixtures as unknown results", () => {
   assert.strictEqual(match.result, "UNKNOWN");
   assert.strictEqual(match.score, "");
 });
+
+test("retries only temporary API response failures", () => {
+  assert.strictEqual(collector.isRetryableApiStatus(429), true);
+  assert.strictEqual(collector.isRetryableApiStatus(500), true);
+  assert.strictEqual(collector.isRetryableApiStatus(503), true);
+  assert.strictEqual(collector.isRetryableApiStatus(400), false);
+  assert.strictEqual(collector.isRetryableApiStatus(401), false);
+});

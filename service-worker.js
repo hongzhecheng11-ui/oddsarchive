@@ -1,11 +1,10 @@
-const CACHE_NAME = "oddsarchive-v64-match-context";
+const CACHE_NAME = "oddsarchive-v66-lazy-data";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css",
   "/app.js",
   "/assets/app-icon.svg",
-  "/data/football-data-pack.js",
   "/data/api-odds-pack.js",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
