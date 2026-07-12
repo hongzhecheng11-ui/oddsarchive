@@ -5,7 +5,17 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-10T06:54:03.285Z",
+  "updatedAt": "2026-07-12T22:59:27.579Z",
+  "collection": {
+    "lastAttemptAt": "2026-07-12T22:59:26.770Z",
+    "lastSuccessAt": "2026-07-12T22:59:27.579Z",
+    "requestSuccesses": 1,
+    "requestFailures": 0,
+    "addedCount": 0,
+    "updatedCount": 3,
+    "duplicateCount": 0,
+    "errors": []
+  },
   "matches": [
     {
       "date": "2025-02-14",
@@ -4290,11 +4300,11 @@
       "fixtureId": "1506997",
       "homeTeam": "FC Seoul",
       "awayTeam": "Gangwon FC",
-      "homeOdds": "2.40",
-      "drawOdds": "3.20",
-      "awayOdds": "2.95",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "2.30",
+      "drawOdds": "3.00",
+      "awayOdds": "3.30",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당"
     },
     {
@@ -4316,11 +4326,11 @@
       "fixtureId": "1506995",
       "homeTeam": "Incheon United",
       "awayTeam": "FC Anyang",
-      "homeOdds": "2.00",
+      "homeOdds": "2.10",
       "drawOdds": "3.20",
-      "awayOdds": "3.90",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "3.60",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당"
     },
     {
@@ -4342,11 +4352,11 @@
       "fixtureId": "1506996",
       "homeTeam": "Jeju United FC",
       "awayTeam": "Daejeon Citizen",
-      "homeOdds": "2.70",
-      "drawOdds": "3.30",
-      "awayOdds": "2.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "2.85",
+      "drawOdds": "3.25",
+      "awayOdds": "2.45",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당"
     },
     {
