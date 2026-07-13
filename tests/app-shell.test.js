@@ -108,6 +108,11 @@ test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("KLEAGUE2"), "K리그2");
   assert.strictEqual(app.formatLeagueName("J2 League"), "J리그2");
   assert.strictEqual(app.formatLeagueName("EFL Championship"), "잉글랜드 챔피언십");
+  assert.strictEqual(app.formatLeagueName("Eredivisie"), "에레디비시");
+  assert.strictEqual(app.formatLeagueName("Liga Portugal"), "포르투갈 프리메이라리가");
+  assert.strictEqual(app.formatLeagueName("Scottish Premiership"), "스코틀랜드 프리미어십");
+  assert.strictEqual(app.formatLeagueName("Jupiler Pro League"), "벨기에 프로리그");
+  assert.strictEqual(app.formatLeagueName("Süper Lig"), "튀르키예 쉬페르리그");
   assert.strictEqual(app.formatLeagueName("E0"), "EPL");
   assert.strictEqual(app.formatTeamName("FC Seoul"), "FC서울");
   assert.strictEqual(app.formatTeamName("Unknown FC"), "Unknown FC");
@@ -152,7 +157,17 @@ test("translates expanded supported league team samples", () => {
     "Sporting CP": "스포르팅 CP",
     "Olympiakos": "올림피아코스",
     Armenia: "아르메니아",
-    "North Macedonia": "북마케도니아"
+    "North Macedonia": "북마케도니아",
+    Ajax: "아약스",
+    Arouca: "아로카",
+    Aberdeen: "애버딘",
+    Antwerp: "로열 앤트워프",
+    Alanyaspor: "알라니아스포르",
+    "Fortuna Sittard": "포르튀나 시타르트",
+    "FC Porto": "포르투",
+    "Heart Of Midlothian": "하츠",
+    "Union St. Gilloise": "위니옹 생질루아즈",
+    Fenerbahçe: "페네르바흐체"
   };
 
   for (const [rawName, koreanName] of Object.entries(samples)) {
@@ -195,6 +210,11 @@ test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("K League 2", "KLEAGUE2"), true);
   assert.strictEqual(app.leagueMatchesFixture("J2 League", "J2LEAGUE"), true);
   assert.strictEqual(app.leagueMatchesFixture("Championship", "CHAMPIONSHIP"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Eredivisie", "EREDIVISIE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Liga Portugal", "PRIMEIRA_LIGA"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Scottish Premiership", "SCOTTISH_PREMIERSHIP"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Jupiler Pro League", "BELGIAN_PRO_LEAGUE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Süper Lig", "SUPER_LIG"), true);
   assert.strictEqual(app.leagueMatchesFixture("International Friendlies", "INTL_FRIENDLIES"), true);
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "KLEAGUE1"), false);
 });
@@ -214,17 +234,27 @@ test("filters today's major matches to supported leagues only", () => {
     { league: "Championship", homeTeam: "Watford", awayTeam: "Millwall", homeOdds: "2.10", drawOdds: "3.20", awayOdds: "3.60" },
     { league: "K League 2", homeTeam: "Seoul E-Land FC", awayTeam: "Gyeongnam FC", homeOdds: "2.20", drawOdds: "3.10", awayOdds: "3.30" },
     { league: "J2 League", homeTeam: "JEF United Chiba", awayTeam: "Mito Hollyhock", homeOdds: "1.95", drawOdds: "3.30", awayOdds: "3.90" },
+    { league: "Eredivisie", homeTeam: "Ajax", awayTeam: "Utrecht", homeOdds: "1.70", drawOdds: "3.80", awayOdds: "4.50" },
+    { league: "Liga Portugal", homeTeam: "Arouca", awayTeam: "Sp Braga", homeOdds: "3.40", drawOdds: "3.30", awayOdds: "2.10" },
+    { league: "Scottish Premiership", homeTeam: "Aberdeen", awayTeam: "Hearts", homeOdds: "2.40", drawOdds: "3.20", awayOdds: "2.90" },
+    { league: "Jupiler Pro League", homeTeam: "Antwerp", awayTeam: "Mechelen", homeOdds: "1.90", drawOdds: "3.40", awayOdds: "3.80" },
+    { league: "Süper Lig", homeTeam: "Alanyaspor", awayTeam: "Kayserispor", homeOdds: "2.00", drawOdds: "3.30", awayOdds: "3.60" },
     { league: "EPL", homeTeam: "No Odds", awayTeam: "Pending", homeOdds: "", drawOdds: "3.40", awayOdds: "4.50" },
     { league: "Premier League / Mongolia", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
     { league: "Club Friendlies", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" }
   ]);
 
-  assert.strictEqual(matches.length, 5);
+  assert.strictEqual(matches.length, 10);
   assert(matches.some((match) => match.league === "EPL"));
   assert(matches.some((match) => match.league === "World Cup / World"));
   assert(matches.some((match) => match.league === "Championship"));
   assert(matches.some((match) => match.league === "K League 2"));
   assert(matches.some((match) => match.league === "J2 League"));
+  assert(matches.some((match) => match.league === "Eredivisie"));
+  assert(matches.some((match) => match.league === "Liga Portugal"));
+  assert(matches.some((match) => match.league === "Scottish Premiership"));
+  assert(matches.some((match) => match.league === "Jupiler Pro League"));
+  assert(matches.some((match) => match.league === "Süper Lig"));
   assert(!matches.some((match) => match.homeTeam === "No Odds"));
   assert.strictEqual(app.isMajorTodayMatch({ league: "EPL / Mongolia" }), false);
 });
@@ -330,6 +360,11 @@ test("includes Korean priority leagues in fixture league options", () => {
   assert(values.includes("J1LEAGUE"));
   assert(values.includes("J2LEAGUE"));
   assert(values.includes("CHAMPIONSHIP"));
+  assert(values.includes("EREDIVISIE"));
+  assert(values.includes("PRIMEIRA_LIGA"));
+  assert(values.includes("SCOTTISH_PREMIERSHIP"));
+  assert(values.includes("BELGIAN_PRO_LEAGUE"));
+  assert(values.includes("SUPER_LIG"));
   assert(values.includes("ACL"));
   assert(values.includes("WCQ"));
   assert(values.includes("INTL_FRIENDLIES"));

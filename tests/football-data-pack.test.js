@@ -19,6 +19,11 @@ test("builds football-data URLs from season and league codes", () => {
     "https://www.football-data.co.uk/mmz4281/2526/E0.csv"
   );
   assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.CHAMPIONSHIP.code, "E1");
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.EREDIVISIE.code, "N1");
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.PRIMEIRA_LIGA.code, "P1");
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.SCOTTISH_PREMIERSHIP.code, "SC0");
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.BELGIAN_PRO_LEAGUE.code, "B1");
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.SUPER_LIG.code, "T1");
 });
 
 test("detects recent target coverage and missing expanded leagues", () => {
@@ -38,6 +43,11 @@ test("detects recent target coverage and missing expanded leagues", () => {
   const championship = coverage.find((item) => item.key === "CHAMPIONSHIP");
   const kleague2 = coverage.find((item) => item.key === "KLEAGUE2");
   const jleague2 = coverage.find((item) => item.key === "J2LEAGUE");
+  const eredivisie = coverage.find((item) => item.key === "EREDIVISIE");
+  const primeiraLiga = coverage.find((item) => item.key === "PRIMEIRA_LIGA");
+  const scottishPremiership = coverage.find((item) => item.key === "SCOTTISH_PREMIERSHIP");
+  const belgianProLeague = coverage.find((item) => item.key === "BELGIAN_PRO_LEAGUE");
+  const superLig = coverage.find((item) => item.key === "SUPER_LIG");
 
   assert.strictEqual(epl.isCoveredForRecentTarget, true);
   assert.strictEqual(epl.totalMatches, 5);
@@ -46,6 +56,11 @@ test("detects recent target coverage and missing expanded leagues", () => {
   assert(championship);
   assert(kleague2);
   assert(jleague2);
+  assert(eredivisie);
+  assert(primeiraLiga);
+  assert(scottishPremiership);
+  assert(belgianProLeague);
+  assert(superLig);
 });
 
 test("validates football-data CSV shape before writing to the pack", () => {

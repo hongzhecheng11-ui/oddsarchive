@@ -21,6 +21,11 @@
       UCL: "챔피언스리그",
       UEL: "유로파리그",
       CHAMPIONSHIP: "잉글랜드 챔피언십",
+      EREDIVISIE: "에레디비시",
+      PRIMEIRA_LIGA: "포르투갈 프리메이라리가",
+      SCOTTISH_PREMIERSHIP: "스코틀랜드 프리미어십",
+      BELGIAN_PRO_LEAGUE: "벨기에 프로리그",
+      SUPER_LIG: "튀르키예 쉬페르리그",
       KLEAGUE1: "K리그1",
       KLEAGUE2: "K리그2",
       J1LEAGUE: "J리그1",
@@ -44,6 +49,15 @@
       Championship: "잉글랜드 챔피언십",
       "EFL Championship": "잉글랜드 챔피언십",
       "English Championship": "잉글랜드 챔피언십",
+      Eredivisie: "에레디비시",
+      "Primeira Liga": "포르투갈 프리메이라리가",
+      "Liga Portugal": "포르투갈 프리메이라리가",
+      "Scottish Premiership": "스코틀랜드 프리미어십",
+      "Belgian Pro League": "벨기에 프로리그",
+      "Jupiler Pro League": "벨기에 프로리그",
+      "First Division A": "벨기에 프로리그",
+      "Super Lig": "튀르키예 쉬페르리그",
+      "Süper Lig": "튀르키예 쉬페르리그",
       "K League 1": "K리그1",
       "K League 2": "K리그2",
       "J1 League": "J리그1",
@@ -65,7 +79,7 @@
       },
       {
         label: "유럽",
-        leagues: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"]
+        leagues: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "PRIMEIRA_LIGA", "SCOTTISH_PREMIERSHIP", "BELGIAN_PRO_LEAGUE", "SUPER_LIG", "UCL", "UEL"]
       },
       {
         label: "아시아",

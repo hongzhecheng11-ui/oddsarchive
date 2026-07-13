@@ -151,6 +151,11 @@ test("uses calendar year for Asian and international leagues", () => {
   assert.strictEqual(collector.getSeason("2026-03-01", "J2LEAGUE"), "2026");
   assert.strictEqual(collector.getSeason("2026-03-01", "ACL"), "2026");
   assert.strictEqual(collector.getSeason("2026-03-01", "CHAMPIONSHIP"), "2025");
+  assert.strictEqual(collector.getSeason("2026-03-01", "EREDIVISIE"), "2025");
+  assert.strictEqual(collector.getSeason("2026-03-01", "PRIMEIRA_LIGA"), "2025");
+  assert.strictEqual(collector.getSeason("2026-03-01", "SCOTTISH_PREMIERSHIP"), "2025");
+  assert.strictEqual(collector.getSeason("2026-03-01", "BELGIAN_PRO_LEAGUE"), "2025");
+  assert.strictEqual(collector.getSeason("2026-03-01", "SUPER_LIG"), "2025");
   assert.strictEqual(collector.getSeason("2026-03-01", "UCL"), "2025");
 });
 
