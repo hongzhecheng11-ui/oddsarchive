@@ -4,6 +4,7 @@ const {
   PACK_PATH,
   RECENT_SEASONS,
   buildFootballDataUrl,
+  compactFootballDataPack,
   convertExtraLeagueCsvToSeasonPack,
   isValidFootballDataCsv,
   loadFootballDataPack,
@@ -103,7 +104,7 @@ async function updateFootballDataPack({
   }
 
   if (changes.length > 0) {
-    fs.writeFileSync(PACK_PATH, serializeFootballDataPack(pack), "utf8");
+    fs.writeFileSync(PACK_PATH, serializeFootballDataPack(compactFootballDataPack(pack)), "utf8");
   }
 
   return { changes, skipped };

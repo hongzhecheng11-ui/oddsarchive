@@ -3513,7 +3513,7 @@ select {
 
 @media (max-width: 520px) {
   .search-panel > .panel-body {
-    margin: 0 -16px -16px;
+    margin: 0 -5px -5px;
     border-radius: 0;
   }
 

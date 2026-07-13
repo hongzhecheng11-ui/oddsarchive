@@ -73,6 +73,32 @@ test("serializes the default data pack as a browser global", () => {
   const content = tools.serializeFootballDataPack({ EPL: { "2526": "Div,Date\n" } });
   assert(content.startsWith("window.FOOTBALL_DATA_PACK = "));
   assert(content.includes('"EPL"'));
+  assert(content.includes("window.FOOTBALL_DATA_SEARCH_PACK = "));
+});
+
+test("compacts football-data CSV without changing searchable match fields", () => {
+  const csv = [
+    "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A,Referee,HS,AS",
+    "N1,01/01/2026,Ajax,Utrecht,2,1,H,1.80,3.60,4.20,Ref Name,12,8"
+  ].join("\n");
+  const compact = tools.compactFootballDataCsv(csv, "EREDIVISIE");
+  assert.strictEqual(compact.split("\n")[0], "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A");
+  assert.strictEqual(compact.split("\n")[1], "N1,01/01/2026,Ajax,Utrecht,2,1,H,1.80,3.60,4.20");
+  assert(!compact.includes("Ref Name"));
+});
+
+test("builds a deduplicated compact search pack", () => {
+  const csv = [
+    "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A",
+    "N1,01/01/2026,Ajax,Utrecht,2,1,H,1.80,3.60,4.20",
+    "N1,01/01/2026,Ajax,Utrecht,2,1,H,1.80,3.60,4.20",
+    "N1,02/01/2026,Ajax,Utrecht,0,0,D,,,"
+  ].join("\n");
+  const searchPack = tools.buildFootballDataSearchPack({ EREDIVISIE: { "2526": csv } });
+  assert.strictEqual(searchPack.matches.length, 1);
+  assert.strictEqual(searchPack.dates[searchPack.matches[0][0]], "2026-01-01");
+  assert.strictEqual(searchPack.leagues[searchPack.matches[0][1]], "N1");
+  assert.deepStrictEqual(searchPack.matches[0].slice(4, 8), [180, 360, 420, 0]);
 });
 
 test("parses update target lists without network access", () => {

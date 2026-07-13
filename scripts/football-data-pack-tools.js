@@ -4,6 +4,7 @@ const vm = require("vm");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
 const PACK_PATH = path.join(ROOT_DIR, "data", "football-data-pack.js");
+const TEAM_TRANSLATIONS = require(path.join(ROOT_DIR, "src", "lib", "translations", "teams.js"));
 
 const RECENT_SEASONS = ["2122", "2223", "2324", "2425", "2526"];
 
@@ -214,8 +215,126 @@ function isValidFootballDataCsv(csvText = "") {
   return firstLine.includes("Div") && firstLine.includes("Date") && countCsvMatches(text) > 20;
 }
 
+function compactFootballDataCsv(csvText = "", leagueKey = "") {
+  const lines = String(csvText || "").replace(/^\uFEFF/, "").split(/\r?\n/).filter((line) => line.trim());
+  const [headerLine, ...dataLines] = lines;
+  const header = parseCsvLine(headerLine || "");
+  const indexes = header.reduce((result, value, index) => {
+    result[String(value || "").trim().toLowerCase()] = index;
+    return result;
+  }, {});
+  const rows = dataLines.map((line) => {
+    const values = parseCsvLine(line);
+    return [
+      pickFirstValue(values, indexes, ["Div"]) || leagueKey,
+      pickFirstValue(values, indexes, ["Date"]),
+      pickFirstValue(values, indexes, ["HomeTeam", "Home"]),
+      pickFirstValue(values, indexes, ["AwayTeam", "Away"]),
+      pickFirstValue(values, indexes, ["FTHG", "HG"]),
+      pickFirstValue(values, indexes, ["FTAG", "AG"]),
+      pickFirstValue(values, indexes, ["FTR", "Res"]) || "UNKNOWN",
+      pickFirstValue(values, indexes, ["B365H", "AvgH", "MaxH", "PSH"]),
+      pickFirstValue(values, indexes, ["B365D", "AvgD", "MaxD", "PSD"]),
+      pickFirstValue(values, indexes, ["B365A", "AvgA", "MaxA", "PSA"])
+    ].map(toCsvValue).join(",");
+  });
+  return ["Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A", ...rows].join("\n");
+}
+
+function compactFootballDataPack(pack = {}) {
+  return Object.fromEntries(Object.entries(pack).map(([leagueKey, seasons]) => [
+    leagueKey,
+    Object.fromEntries(Object.entries(seasons || {}).map(([season, csvText]) => [
+      season,
+      compactFootballDataCsv(csvText, leagueKey)
+    ]))
+  ]));
+}
+
+function buildTeamLabelMap() {
+  const labels = new Map(Object.entries(TEAM_TRANSLATIONS.labels || {}));
+  for (const [displayName, aliases] of Object.entries(TEAM_TRANSLATIONS.aliases || {})) {
+    for (const alias of aliases || []) labels.set(alias, displayName);
+  }
+  return labels;
+}
+
+function normalizeSearchPackDate(value = "") {
+  const text = String(value || "").trim();
+  const match = text.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/);
+  if (!match) return text;
+  const year = match[3].length === 2 ? `20${match[3]}` : match[3];
+  return `${year}-${match[2].padStart(2, "0")}-${match[1].padStart(2, "0")}`;
+}
+
+function buildFootballDataSearchPack(pack = {}) {
+  const teamLabels = buildTeamLabelMap();
+  const dictionaries = { dates: [], leagues: [], teams: [], scores: [] };
+  const indexes = Object.fromEntries(Object.keys(dictionaries).map((key) => [key, new Map()]));
+  const getIndex = (type, value) => {
+    const text = String(value || "");
+    if (indexes[type].has(text)) return indexes[type].get(text);
+    const index = dictionaries[type].length;
+    dictionaries[type].push(text);
+    indexes[type].set(text, index);
+    return index;
+  };
+  const matches = [];
+  const seen = new Set();
+  const resultCodes = { H: 0, D: 1, A: 2, UNKNOWN: 3 };
+
+  for (const seasons of Object.values(pack || {})) {
+    for (const csvText of Object.values(seasons || {})) {
+      const lines = String(csvText || "").replace(/^\uFEFF/, "").split(/\r?\n/).filter((line) => line.trim());
+      const [headerLine, ...dataLines] = lines;
+      const header = parseCsvLine(headerLine || "");
+      const columns = header.reduce((result, value, index) => {
+        result[String(value || "").trim().toLowerCase()] = index;
+        return result;
+      }, {});
+      const read = (values, name) => values[columns[name.toLowerCase()]] || "";
+
+      for (const line of dataLines) {
+        const values = line.includes('"') ? parseCsvLine(line) : line.split(",");
+        const date = normalizeSearchPackDate(read(values, "Date"));
+        const league = read(values, "Div").trim();
+        const homeTeamRaw = read(values, "HomeTeam").trim();
+        const awayTeamRaw = read(values, "AwayTeam").trim();
+        const homeTeam = teamLabels.get(homeTeamRaw) || homeTeamRaw;
+        const awayTeam = teamLabels.get(awayTeamRaw) || awayTeamRaw;
+        const odds = ["B365H", "B365D", "B365A"].map((name) => Number(read(values, name)));
+        const result = String(read(values, "FTR") || "UNKNOWN").trim().toUpperCase();
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !league || !homeTeam || !awayTeam) continue;
+        if (odds.some((value) => !Number.isFinite(value) || value < 1) || resultCodes[result] === undefined) continue;
+        const roundedOdds = odds.map((value) => Math.round(value * 100));
+        const duplicateKey = [date, league, homeTeam, awayTeam, ...roundedOdds].join("|");
+        if (seen.has(duplicateKey)) continue;
+        seen.add(duplicateKey);
+        const homeGoals = read(values, "FTHG");
+        const awayGoals = read(values, "FTAG");
+        const score = homeGoals !== "" && awayGoals !== "" ? `${homeGoals}-${awayGoals}` : "";
+        matches.push([
+          getIndex("dates", date),
+          getIndex("leagues", league),
+          getIndex("teams", homeTeam),
+          getIndex("teams", awayTeam),
+          ...roundedOdds,
+          resultCodes[result],
+          getIndex("scores", score)
+        ]);
+      }
+    }
+  }
+
+  return { version: 1, ...dictionaries, matches };
+}
+
 function serializeFootballDataPack(pack = {}) {
-  return `window.FOOTBALL_DATA_PACK = ${JSON.stringify(pack)};\n`;
+  return [
+    `window.FOOTBALL_DATA_PACK = ${JSON.stringify(pack)};`,
+    `window.FOOTBALL_DATA_SEARCH_PACK = ${JSON.stringify(buildFootballDataSearchPack(pack))};`,
+    ""
+  ].join("\n");
 }
 
 module.exports = {
@@ -223,6 +342,9 @@ module.exports = {
   PACK_PATH,
   RECENT_SEASONS,
   TARGET_LEAGUES,
+  compactFootballDataCsv,
+  compactFootballDataPack,
+  buildFootballDataSearchPack,
   buildFootballDataUrl,
   convertExtraLeagueCsvToSeasonPack,
   countCsvMatches,

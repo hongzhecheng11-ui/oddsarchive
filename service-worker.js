@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v71-europe-expansion";
+const CACHE_NAME = "oddsarchive-v72-fast-history-index";
 const CORE_ASSETS = [
   "/",
   "/index.html",

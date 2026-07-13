@@ -695,9 +695,10 @@ function normalizeFootballDataDate(value) {
 function parseFootballDataRows(dataLines, headerValues) {
   const indexes = getHeaderIndexes(headerValues);
   const readValue = (values, header) => values[indexes[normalizeCsvHeaderName(header)]] || "";
+  const isCompactPack = headerValues.join(",") === "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR,B365H,B365D,B365A";
 
   return dataLines.map((line, lineIndex) => {
-    const values = parseCsvLine(line);
+    const values = isCompactPack ? line.split(",") : parseCsvLine(line);
     const homeGoals = readValue(values, "FTHG");
     const awayGoals = readValue(values, "FTAG");
     const score = homeGoals !== "" && awayGoals !== "" ? `${homeGoals}-${awayGoals}` : "";
@@ -3386,6 +3387,12 @@ function getBundledFootballDataPack() {
   return {};
 }
 
+function getBundledFootballDataSearchPack() {
+  if (typeof window !== "undefined" && window.FOOTBALL_DATA_SEARCH_PACK) return window.FOOTBALL_DATA_SEARCH_PACK;
+  if (typeof globalThis !== "undefined" && globalThis.FOOTBALL_DATA_SEARCH_PACK) return globalThis.FOOTBALL_DATA_SEARCH_PACK;
+  return null;
+}
+
 function setCloudAccountUi(state = {}) {
   cloudAccountState = state.status || cloudAccountState;
   cloudAccountIsAdmin = Boolean(state.isAdmin);
@@ -3550,6 +3557,23 @@ function getEmbeddedCsvFromSource(source) {
 
 function getDefaultPackRows() {
   if (cachedDefaultPackRows) return cachedDefaultPackRows;
+
+  const searchPack = getBundledFootballDataSearchPack();
+  if (searchPack?.version === 1 && Array.isArray(searchPack.matches)) {
+    const resultLabels = ["H", "D", "A", "UNKNOWN"];
+    cachedDefaultPackRows = searchPack.matches.map((match) => ({
+      date: searchPack.dates[match[0]],
+      league: searchPack.leagues[match[1]],
+      homeTeam: searchPack.teams[match[2]],
+      awayTeam: searchPack.teams[match[3]],
+      homeOdds: match[4] / 100,
+      drawOdds: match[5] / 100,
+      awayOdds: match[6] / 100,
+      result: resultLabels[match[7]] || "UNKNOWN",
+      score: searchPack.scores[match[8]] || ""
+    }));
+    return cachedDefaultPackRows;
+  }
 
   const pack = getBundledFootballDataPack();
   const parsedResults = [];
