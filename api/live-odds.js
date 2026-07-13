@@ -33,6 +33,38 @@ function sendJson(response, statusCode, body) {
   response.end(JSON.stringify(body));
 }
 
+function getBearerToken(request = {}) {
+  const authorization = String(request.headers?.authorization || "").trim();
+  return authorization.toLowerCase().startsWith("bearer ") ? authorization.slice(7).trim() : "";
+}
+
+async function verifyAdminRequest(request, fetchImpl = fetch) {
+  const token = getBearerToken(request);
+  const supabaseUrl = String(process.env.SUPABASE_URL || "").trim().replace(/\/$/, "");
+  const publishableKey = String(process.env.SUPABASE_PUBLISHABLE_KEY || "").trim();
+  if (!token) return { allowed: false, status: 401, error: "Login required" };
+  if (!supabaseUrl || !publishableKey) return { allowed: false, status: 503, error: "Admin authorization unavailable" };
+
+  const headers = { apikey: publishableKey, Authorization: `Bearer ${token}`, Accept: "application/json" };
+  try {
+    const userResponse = await fetchImpl(`${supabaseUrl}/auth/v1/user`, { headers });
+    const user = await userResponse.json().catch(() => ({}));
+    if (!userResponse.ok || !user?.id) return { allowed: false, status: 401, error: "Invalid session" };
+
+    const adminResponse = await fetchImpl(
+      `${supabaseUrl}/rest/v1/app_admins?select=user_id&user_id=eq.${encodeURIComponent(user.id)}`,
+      { headers }
+    );
+    const rows = await adminResponse.json().catch(() => []);
+    if (!adminResponse.ok || !Array.isArray(rows) || rows.length === 0) {
+      return { allowed: false, status: 403, error: "Admin access required" };
+    }
+    return { allowed: true, status: 200, userId: user.id };
+  } catch (_error) {
+    return { allowed: false, status: 503, error: "Admin authorization unavailable" };
+  }
+}
+
 function getSeason(dateText, leagueKey = "") {
   const date = new Date(`${dateText}T00:00:00Z`);
   if (Number.isNaN(date.getTime())) return String(new Date().getUTCFullYear());
@@ -316,6 +348,10 @@ module.exports = async function handler(request, response) {
 
   try {
     if (mode === "history") {
+      const adminAccess = await verifyAdminRequest(request);
+      if (!adminAccess.allowed) {
+        return sendJson(response, adminAccess.status, { error: adminAccess.error, matches: [] });
+      }
       const historyLeagueKeys = requestedLeague === "ALL" ? ["EPL"] : leagueKeys;
       const days = Math.max(1, Math.min(Number(params.days || 7), 14));
       const results = [];
@@ -409,3 +445,6 @@ module.exports = async function handler(request, response) {
     });
   }
 };
+
+module.exports.getBearerToken = getBearerToken;
+module.exports.verifyAdminRequest = verifyAdminRequest;

@@ -203,16 +203,35 @@ test("cleans compound league labels for display", () => {
 
 test("filters today's major matches to supported leagues only", () => {
   const matches = app.getMajorTodayMatches([
-    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea" },
-    { league: "World Cup / World", homeTeam: "Mexico", awayTeam: "Ecuador" },
-    { league: "Premier League / Mongolia", homeTeam: "A", awayTeam: "B" },
-    { league: "Club Friendlies", homeTeam: "A", awayTeam: "B" }
+    { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
+    { league: "World Cup / World", homeTeam: "Mexico", awayTeam: "Ecuador", homeOdds: "2.10", drawOdds: "3.20", awayOdds: "3.60" },
+    { league: "EPL", homeTeam: "No Odds", awayTeam: "Pending", homeOdds: "", drawOdds: "3.40", awayOdds: "4.50" },
+    { league: "Premier League / Mongolia", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
+    { league: "Club Friendlies", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" }
   ]);
 
   assert.strictEqual(matches.length, 2);
   assert(matches.some((match) => match.league === "EPL"));
   assert(matches.some((match) => match.league === "World Cup / World"));
+  assert(!matches.some((match) => match.homeTeam === "No Odds"));
   assert.strictEqual(app.isMajorTodayMatch({ league: "EPL / Mongolia" }), false);
+});
+
+test("deduplicates today cards and keeps the richest fixture row", () => {
+  const matches = app.deduplicateTodayMatches([
+    { date: "2026-07-13", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", status: "NS" },
+    { date: "2026-07-13", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", status: "FT", score: "2-1", result: "H", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" }
+  ]);
+
+  assert.strictEqual(matches.length, 1);
+  assert.strictEqual(matches[0].status, "FT");
+  assert.strictEqual(matches[0].score, "2-1");
+});
+
+test("normalizes postponed cancelled and finished match statuses", () => {
+  assert.strictEqual(app.getMatchStatusLabel({ status: "PST" }), "연기");
+  assert.strictEqual(app.getMatchStatusLabel({ status: "Cancelled" }), "취소");
+  assert.strictEqual(app.getMatchStatusLabel({ status: "Match Finished" }), "종료");
 });
 
 test("builds API history chunks and preserves API source on saved matches", () => {

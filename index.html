@@ -149,7 +149,7 @@
                 <span>검색 상태</span>
                 <strong id="odds-search-status">배당값을 입력하면 전체 리그 기준으로 유사 결과를 검색합니다.</strong>
                 <small>검색 결과 개수 <b id="odds-search-count">0</b></small>
-                <div class="empty-data-actions" id="empty-data-actions" hidden>
+                <div class="empty-data-actions" id="empty-data-actions" data-admin-only hidden>
                   <span>검색 결과가 없으면 데이터 추가에서 CSV를 넣을 수 있습니다.</span>
                   <button type="button" id="empty-import-data">기본 데이터 가져오기</button>
                   <button class="ghost-action" type="button" id="empty-open-upload">데이터 추가로 이동</button>
@@ -243,11 +243,11 @@
                     <strong>경기 자동 업데이트</strong>
                     <span>경기 일정은 자동으로 불러오고, 배당이 있는 경기만 과거 유사 배당을 볼 수 있습니다.</span>
                   </div>
-                  <div class="live-api-actions">
+                  <div class="live-api-actions" data-admin-only hidden>
                     <button type="button" id="load-live-odds">경기 업데이트</button>
                   </div>
                 </div>
-                <div class="live-api-controls">
+                <div class="live-api-controls" data-admin-only hidden>
                   <label>
                     날짜
                     <input id="live-odds-date" type="date">
@@ -265,13 +265,13 @@
                     </select>
                   </label>
                 </div>
-                <div class="date-quick-actions" aria-label="날짜 빠른 선택">
+                <div class="date-quick-actions" aria-label="날짜 빠른 선택" data-admin-only hidden>
                   <button type="button" data-live-date-offset="0">오늘</button>
                   <button type="button" data-live-date-offset="1">내일</button>
                   <button type="button" data-live-date-weekend="next">다가오는 주말</button>
                   <button type="button" data-live-date-weekend="previous">지난 주말</button>
                 </div>
-                <details class="today-csv-tools" id="today-csv-tools">
+                <details class="today-csv-tools" id="today-csv-tools" data-admin-only hidden>
                   <summary>CSV 직접 추가</summary>
                   <div>
                     <label class="today-csv-picker">
@@ -594,7 +594,7 @@
                   <div><span>즐겨찾기</span><strong id="account-data-saved-search-count">0</strong></div>
                   <div><span>마지막 업데이트</span><strong id="account-data-last-update">확인 전</strong></div>
                 </div>
-                <div class="account-management-links" id="admin-management-links" aria-label="고급 데이터 관리" hidden>
+                <div class="account-management-links" id="admin-management-links" data-admin-only aria-label="고급 데이터 관리" hidden>
                   <a class="ghost-link-button" href="#matches">경기DB 보기</a>
                   <a class="ghost-link-button" href="#upload">CSV/데이터 관리</a>
                 </div>

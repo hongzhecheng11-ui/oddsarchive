@@ -57,11 +57,13 @@
     let client = null;
     let config = null;
     let userId = "";
+    let isAdmin = false;
+    let accessToken = "";
     let initializePromise = null;
     let authSubscription = null;
 
     function emit(status, extra = {}) {
-      onStateChange({ status, userId, ...extra });
+      onStateChange({ status, userId, isAdmin, ...extra });
     }
 
     function cacheKey(id) { return syncTools.getAccountCacheKey(id); }
@@ -90,16 +92,32 @@
       }
     }
 
+    async function checkAdminAccess(id) {
+      if (!id) return false;
+      try {
+        const { data, error } = await client.from("app_admins").select("user_id");
+        if (error) throw error;
+        return (Array.isArray(data) ? data : []).some((row) => String(row?.user_id || "") === id);
+      } catch (_error) {
+        return false;
+      }
+    }
+
     async function synchronizeSession(session) {
       const nextUserId = String(session?.user?.id || "");
       if (!nextUserId) {
         userId = "";
+        isAdmin = false;
+        accessToken = "";
         favorites?.clearAccountRecords?.();
         emit("signed_out");
         return { records: [], offline: false };
       }
       userId = nextUserId;
+      isAdmin = false;
+      accessToken = String(session?.access_token || "");
       emit("syncing");
+      const adminAccessPromise = checkAdminAccess(userId);
       const localRecords = favorites?.getLocalRecords?.() || [];
       const cachedRecords = readCache(userId);
       const queuedRecords = readQueue(userId);
@@ -126,8 +144,9 @@
       } else {
         writeQueue(userId, [...readQueue(userId), ...merged]);
       }
+      isAdmin = await adminAccessPromise;
       emit(offline ? "offline" : "signed_in", { favoriteCount: merged.filter((record) => record.active).length });
-      return { records: merged, offline };
+      return { records: merged, offline, isAdmin };
     }
 
     async function syncAccountRecords(records = []) {
@@ -183,6 +202,8 @@
       const { error } = await client.auth.signOut();
       if (error) throw error;
       userId = "";
+      isAdmin = false;
+      accessToken = "";
       favorites?.clearAccountRecords?.();
       emit("signed_out");
     }
@@ -192,7 +213,17 @@
       authSubscription = null;
     }
 
-    return { destroy, initialize, signInWithGoogle, signOut, syncAccountRecords, synchronizeSession, getUserId: () => userId };
+    return {
+      destroy,
+      initialize,
+      signInWithGoogle,
+      signOut,
+      syncAccountRecords,
+      synchronizeSession,
+      getUserId: () => userId,
+      getIsAdmin: () => isAdmin,
+      getAccessToken: () => accessToken
+    };
   }
 
   const exportsObject = { createAccountService, loadScriptOnce };

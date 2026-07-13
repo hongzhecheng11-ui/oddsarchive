@@ -134,6 +134,7 @@ let activeAccountFavoriteRecords = [];
 let cloudAccountService = null;
 let cloudAccountLoadPromise = null;
 let cloudAccountState = "local";
+let cloudAccountIsAdmin = false;
 let memoryAutoUpdateState = null;
 let memoryLocalAccount = null;
 let memoryTodayMatches = [];
@@ -1456,6 +1457,36 @@ function getSearchHistoryKey(criteria) {
     String(criteria.tolerance || "0.00").trim(),
     String(criteria.customTolerance || "").trim()
   ].join("|");
+}
+
+function getTodayMatchDisplayScore(match = {}) {
+  const result = String(match.result || "").trim().toUpperCase();
+  return Number(hasCompleteOdds(match)) * 100
+    + Number(Boolean(String(match.score || "").trim())) * 20
+    + Number(["H", "D", "A"].includes(result)) * 20
+    + Number(Boolean(String(match.status || match.fixtureStatus || match.statusShort || "").trim())) * 5;
+}
+
+function deduplicateTodayMatches(matches = []) {
+  const byMatch = new Map();
+  for (const match of Array.isArray(matches) ? matches : []) {
+    const key = getTodayMatchKey(match);
+    if (!key || key === "|||") continue;
+    const current = byMatch.get(key);
+    if (!current) {
+      byMatch.set(key, match);
+      continue;
+    }
+
+    const currentScore = getTodayMatchDisplayScore(current);
+    const nextScore = getTodayMatchDisplayScore(match);
+    const currentUpdatedAt = Date.parse(current.updatedAt || current.createdAt || "") || 0;
+    const nextUpdatedAt = Date.parse(match.updatedAt || match.createdAt || "") || 0;
+    if (nextScore > currentScore || (nextScore === currentScore && nextUpdatedAt > currentUpdatedAt)) {
+      byMatch.set(key, match);
+    }
+  }
+  return [...byMatch.values()];
 }
 
 function getFavoriteRecordId(entry = {}) {
@@ -3325,6 +3356,7 @@ function getBundledFootballDataPack() {
 
 function setCloudAccountUi(state = {}) {
   cloudAccountState = state.status || cloudAccountState;
+  cloudAccountIsAdmin = Boolean(state.isAdmin);
   const status = document.getElementById("cloud-account-status");
   const signInButton = document.getElementById("google-sign-in");
   const signOutButton = document.getElementById("google-sign-out");
@@ -3340,6 +3372,10 @@ function setCloudAccountUi(state = {}) {
   if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
   if (signInButton) signInButton.hidden = signedIn;
   if (signOutButton) signOutButton.hidden = !signedIn;
+  updateAdminControls();
+  if (!isAdminMode() && typeof window !== "undefined" && ADMIN_VIEW_IDS.includes(getActiveViewId(window.location.hash))) {
+    showActiveView(window.location.hash);
+  }
   renderLocalAccount();
 }
 
@@ -3363,7 +3399,7 @@ function loadBrowserScript(source, marker) {
 function ensureCloudAccountReady() {
   if (cloudAccountLoadPromise) return cloudAccountLoadPromise;
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=1", "account-auth");
+    await loadBrowserScript("/src/lib/auth.js?v=2", "account-auth");
     if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
     cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
       favorites: {
@@ -3792,7 +3828,9 @@ function wireSampleCsvDownload() {
   ].filter(Boolean);
 
   for (const button of buttons) {
-    button.addEventListener("click", downloadSampleCsv);
+    button.addEventListener("click", () => {
+      if (requireAdminMode()) downloadSampleCsv();
+    });
   }
 }
 
@@ -3882,7 +3920,7 @@ function updateDashboard(matches = getSearchableMatches()) {
 function updateEmptyDataActions(matches = getSearchableMatches()) {
   const actions = document.getElementById("empty-data-actions");
   if (!actions) return;
-  actions.hidden = Array.isArray(matches) && matches.length > 0;
+  actions.hidden = !isAdminMode() || (Array.isArray(matches) && matches.length > 0);
 }
 
 function updateDataStatus(storage) {
@@ -3939,6 +3977,12 @@ function renderStoredMatches(matches = getSearchableMatches()) {
   const cardList = document.getElementById("stored-match-cards");
   const count = document.getElementById("visible-match-count");
   if (!body && !cardList) return;
+  if (typeof window !== "undefined" && !isAdminMode()) {
+    body?.replaceChildren();
+    cardList?.replaceChildren();
+    if (count) count.textContent = "0";
+    return;
+  }
 
   setClearMatchesButtonState(loadStoredMatches());
   updateMatchFilterOptions(matches);
@@ -5150,7 +5194,8 @@ function isMajorTodayMatch(match = {}) {
 }
 
 function getMajorTodayMatches(matches = []) {
-  return (Array.isArray(matches) ? matches : []).filter(isMajorTodayMatch);
+  return deduplicateTodayMatches(matches)
+    .filter((match) => isMajorTodayMatch(match) && hasCompleteOdds(match));
 }
 
 function getMatchLeaguePriority(match = {}) {
@@ -5362,20 +5407,34 @@ function formatMatchStartTime(match = {}) {
 function getMatchStatusLabel(match = {}) {
   const status = String(match.status || match.fixtureStatus || match.statusShort || "").trim();
   if (!status) return "경기 전";
+  const normalizedStatus = status.toUpperCase().replaceAll("_", " ");
   const labels = {
     NS: "경기 전",
+    "NOT STARTED": "경기 전",
     TBD: "시간 미정",
     "1H": "전반 진행",
     HT: "하프타임",
     "2H": "후반 진행",
+    LIVE: "진행 중",
     ET: "연장",
+    BT: "휴식",
+    P: "승부차기",
+    INT: "중단",
+    SUSP: "중단",
     FT: "종료",
+    "MATCH FINISHED": "종료",
     AET: "연장 종료",
     PEN: "승부차기 종료",
     PST: "연기",
-    CANC: "취소"
+    POSTPONED: "연기",
+    CANC: "취소",
+    CANCELLED: "취소",
+    ABD: "중단",
+    ABANDONED: "중단",
+    AWD: "몰수 종료",
+    WO: "부전승"
   };
-  return labels[status] || status;
+  return labels[normalizedStatus] || status;
 }
 
 function getOddsUpdateAgeHours(value, now = Date.now()) {
@@ -5787,7 +5846,8 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("today-center-list");
 
-  if (!Array.isArray(todayMatches) || todayMatches.length === 0) {
+  const displayMatches = deduplicateTodayMatches(todayMatches);
+  if (displayMatches.length === 0) {
     const values = {
       "today-center-count": "0",
       "today-center-ready-count": "0",
@@ -5809,12 +5869,12 @@ function renderTodayCenter(todayMatches = getStorageTodayMatches()) {
   }
 
   const searchableMatches = getSearchableMatches();
-  const visibleTodayMatches = todayMatches.slice(0, HOME_TODAY_MATCH_LIMIT);
+  const visibleTodayMatches = displayMatches.slice(0, HOME_TODAY_MATCH_LIMIT);
   const analyses = visibleTodayMatches.map((match) => getTodayMatchAnalysis(match, searchableMatches));
-  const readyCount = todayMatches.filter(hasCompleteOdds).length;
+  const readyCount = displayMatches.filter(hasCompleteOdds).length;
   const knownCount = analyses.reduce((sum, analysis) => sum + (analysis.breakdown?.knownMatches || 0), 0);
   const values = {
-    "today-center-count": String(todayMatches.length),
+    "today-center-count": String(displayMatches.length),
     "today-center-ready-count": String(readyCount),
     "today-center-known-count": String(knownCount)
   };
@@ -5941,11 +6001,17 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   if (criteria.days) params.set("days", String(criteria.days));
   params.set("_", String(Date.now()));
 
+  const headers = { Accept: "application/json" };
+  if (criteria.mode === "history") {
+    const accessToken = cloudAccountService?.getAccessToken?.() || "";
+    if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
+  }
+
   let response;
   try {
     response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
       cache: "no-store",
-      headers: { Accept: "application/json" }
+      headers
     });
   } catch (error) {
     appTelemetry?.recordApiFailure({ api: "live_odds", status: 0, reason: "network" });
@@ -5988,6 +6054,7 @@ async function fetchApiHistoryOdds(criteria = {}) {
 
 async function loadLiveOddsFromApi() {
   const button = document.getElementById("load-live-odds");
+  if (!requireAdminMode()) return { error: "관리자 권한이 필요합니다.", matches: [] };
   const criteria = getLiveOddsCriteria();
 
   if (button) button.disabled = true;
@@ -6029,6 +6096,7 @@ async function loadLiveOddsFromApi() {
 }
 
 async function loadApiHistoryForSearch() {
+  if (!requireAdminMode()) return { error: "관리자 권한이 필요합니다.", matches: [] };
   const button = document.getElementById("load-api-history");
   const criteria = getOddsSearchCriteria();
   const targetLeague = criteria.league && criteria.league !== "ALL" ? getLeagueLabel(criteria.league) : "EPL";
@@ -6146,6 +6214,7 @@ async function parseTodayCsvFiles(files, criteria = getLiveOddsCriteria()) {
 }
 
 async function loadTodayCsvFiles(files) {
+  if (!requireAdminMode()) return { error: "관리자 권한이 필요합니다.", matches: [] };
   const input = document.getElementById("today-csv-input");
   const button = document.getElementById("download-today-csv-sample");
   const criteria = getLiveOddsCriteria();
@@ -6198,15 +6267,19 @@ function wireTodayCsvImport() {
     });
   }
   if (sampleButton) {
-    sampleButton.addEventListener("click", downloadTodayCsvSample);
+    sampleButton.addEventListener("click", () => {
+      if (requireAdminMode()) downloadTodayCsvSample();
+    });
   }
   document.querySelectorAll("[data-live-date-offset]").forEach((button) => {
     button.addEventListener("click", () => {
+      if (!requireAdminMode()) return;
       setLiveOddsDate(getDateOffsetKey(button.dataset.liveDateOffset || 0));
     });
   });
   document.querySelectorAll("[data-live-date-weekend]").forEach((button) => {
     button.addEventListener("click", () => {
+      if (!requireAdminMode()) return;
       const weekendMode = button.dataset.liveDateWeekend || "next";
       setLiveOddsDate(weekendMode === "previous" ? getPreviousWeekendKey() : getNextWeekendKey());
     });
@@ -6492,7 +6565,8 @@ function wireCsvPreview() {
   if (!input) return;
 
   input.addEventListener("change", (event) => {
-    handleCsvFiles(event.target.files);
+    if (requireAdminMode()) handleCsvFiles(event.target.files);
+    else event.target.value = "";
   });
 }
 
@@ -6502,6 +6576,7 @@ function wireDefaultDataImport() {
 
   if (downloadLink) {
     downloadLink.addEventListener("click", async () => {
+      if (!requireAdminMode()) return;
       const league = document.getElementById("default-data-league")?.value || "EPL";
       const season = document.getElementById("default-data-season")?.value || "2025-2026";
       const source = getDefaultDataSource(league, season);
@@ -6525,6 +6600,7 @@ function wireDefaultDataImport() {
   if (!button) return;
 
   button.addEventListener("click", async () => {
+    if (!requireAdminMode()) return;
     const league = document.getElementById("default-data-league")?.value || "EPL";
     const season = document.getElementById("default-data-season")?.value || "2025-2026";
     const source = getDefaultDataSource(league, season);
@@ -6573,6 +6649,7 @@ function wireFiveLeagueUpdate() {
   if (!button) return;
 
   button.addEventListener("click", async () => {
+    if (!requireAdminMode()) return;
     setFiveLeagueUpdateStatus("5대 리그 데이터팩을 확인하는 중입니다.");
     button.disabled = true;
 
@@ -6618,6 +6695,7 @@ function wireSaveValidRows() {
   if (!button) return;
 
   button.addEventListener("click", () => {
+    if (!requireAdminMode()) return;
     setSaveStatus("저장 중입니다.");
 
     try {
@@ -6657,6 +6735,7 @@ function wireClearStoredMatches() {
   if (!button) return;
 
   button.addEventListener("click", () => {
+    if (!requireAdminMode()) return;
     const matches = loadStoredMatches();
     if (matches.length === 0) {
       setClearMatchesStatus("삭제할 경기 데이터가 없습니다.");
@@ -7409,6 +7488,7 @@ function wireShowMoreResults() {
 }
 
 function openUploadView() {
+  if (!requireAdminMode()) return;
   if (typeof window !== "undefined") {
     window.location.hash = "#upload";
   }
@@ -7482,21 +7562,22 @@ function wireLocalAccount() {
 const VIEW_IDS = ["search", "today", "detail", "matches", "saved", "upload", "account"];
 const DETAIL_SECTION_IDS = ["detail-summary", "detail-same", "detail-similar", "detail-league", "detail-recent"];
 const ADMIN_VIEW_IDS = ["matches", "upload"];
-const ADMIN_MODE_KEY = "oddsarchive_admin_mode";
 
 function isAdminMode() {
-  if (typeof window === "undefined") return false;
-  try {
-    return window.sessionStorage?.getItem(ADMIN_MODE_KEY) === "1";
-  } catch (error) {
-    return false;
-  }
+  return Boolean(activeFavoriteAccountId && cloudAccountIsAdmin);
 }
 
 function updateAdminControls() {
   if (typeof document === "undefined") return;
-  const links = document.getElementById("admin-management-links");
-  if (links) links.hidden = !isAdminMode();
+  const adminMode = isAdminMode();
+  document.querySelectorAll("[data-admin-only]").forEach((element) => {
+    element.hidden = !adminMode;
+  });
+  updateEmptyDataActions();
+}
+
+function requireAdminMode() {
+  return isAdminMode();
 }
 
 function getActiveViewId(hashValue) {
@@ -7735,12 +7816,14 @@ if (typeof module !== "undefined") {
     getDuplicateKey,
     getBaseMatches,
     getCurrentTimestamp,
+    deduplicateTodayMatches,
     getResultBreakdownMemo,
     getDirectOddsSearchCriteriaFromMatch,
     getInlineOddsRateText,
     getInlineOddsConfidence,
     getApiHistoryChunks,
     getHomeTodayCardViewModel,
+    getMatchStatusLabel,
     getMatchContextProfile,
     getTodayUserInsight,
     getTodayUpsetCandidates,

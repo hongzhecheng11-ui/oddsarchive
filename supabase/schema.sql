@@ -50,3 +50,24 @@ create policy "users_delete_own_favorites"
 
 revoke all on public.user_favorites from anon;
 grant select, insert, update, delete on public.user_favorites to authenticated;
+
+-- Admin membership contains only the Supabase user UUID. Add or remove rows
+-- from the Supabase SQL editor; authenticated browser clients can only read
+-- their own membership and can never grant themselves access.
+create table if not exists public.app_admins (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  created_at timestamptz not null default now()
+);
+
+alter table public.app_admins enable row level security;
+alter table public.app_admins force row level security;
+
+drop policy if exists "admins_read_own_membership" on public.app_admins;
+create policy "admins_read_own_membership"
+  on public.app_admins for select
+  to authenticated
+  using (auth.uid() = user_id);
+
+revoke all on public.app_admins from anon;
+revoke all on public.app_admins from authenticated;
+grant select on public.app_admins to authenticated;

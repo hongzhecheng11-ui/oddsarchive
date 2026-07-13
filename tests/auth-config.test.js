@@ -38,6 +38,9 @@ process.env.SUPABASE_PUBLISHABLE_KEY = "sb_publishable_test";
   assert.match(sql, /enable row level security/i);
   assert.match(sql, /force row level security/i);
   assert.match(sql, /auth\.uid\(\) = user_id/i);
+  assert.match(sql, /create table if not exists public\.app_admins/i);
+  assert.match(sql, /grant select on public\.app_admins to authenticated/i);
+  assert.doesNotMatch(sql, /grant\s+(insert|update|delete)[^;]*app_admins/i);
   assert.doesNotMatch(sql, /email|profile_photo|display_name/i);
   assert.doesNotMatch(sql, /service_role/i);
 

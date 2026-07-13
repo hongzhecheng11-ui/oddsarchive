@@ -30,17 +30,18 @@ let selectedRows = [{
   favorite_updated_at: "2026-07-13T02:00:00.000Z"
 }];
 let failWrites = false;
+let adminRows = [{ user_id: "user-a" }];
 const upserts = [];
 const fakeClient = {
   auth: {
-    async getSession() { return { data: { session: { user: { id: "user-a" } } } }; },
+    async getSession() { return { data: { session: { user: { id: "user-a" }, access_token: "token-a" } } }; },
     onAuthStateChange() { return { data: { subscription: { unsubscribe() {} } } }; },
     async signInWithOAuth() { return { error: null }; },
     async signOut() { return { error: null }; }
   },
-  from() {
+  from(table) {
     return {
-      async select() { return { data: selectedRows, error: null }; },
+      async select() { return { data: table === "app_admins" ? adminRows : selectedRows, error: null }; },
       async upsert(rows) {
         if (failWrites) return { error: new Error("offline") };
         upserts.push(rows);
@@ -69,12 +70,16 @@ const service = createAccountService({
 (async () => {
   await service.initialize();
   assert.equal(accountState.userId, "user-a");
+  assert.equal(service.getIsAdmin(), true);
+  assert.equal(service.getAccessToken(), "token-a");
   assert.deepEqual(accountState.records.map((record) => record.favoriteId).sort(), ["match:a-only", "odds:local"]);
   assert(upserts.length > 0);
 
   selectedRows = [];
+  adminRows = [];
   await service.synchronizeSession({ user: { id: "user-b" } });
   assert.equal(accountState.userId, "user-b");
+  assert.equal(service.getIsAdmin(), false);
   assert.deepEqual(accountState.records.map((record) => record.favoriteId), ["odds:local"]);
   assert.notEqual(
     global.ODDS_ARCHIVE_FAVORITE_SYNC.getAccountCacheKey("user-a"),
