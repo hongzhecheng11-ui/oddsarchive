@@ -22,6 +22,7 @@ const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
 const STORED_MATCH_RENDER_LIMIT = 100;
 const LIVE_ODDS_ENDPOINT = "/api/live-odds";
+const TELEMETRY_ENDPOINT = "/api/client-log";
 const HOME_TODAY_MATCH_LIMIT = 8;
 const HOME_TODAY_LEAGUE_PRIORITY = [
   "EPL",
@@ -95,6 +96,23 @@ const IS_DEVELOPMENT_MODE = (() => {
   if (typeof location !== "undefined") return ["localhost", "127.0.0.1"].includes(location.hostname);
   return false;
 })();
+const TELEMETRY_LIBRARY = (() => {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_TELEMETRY) return window.ODDS_ARCHIVE_TELEMETRY;
+  if (typeof require !== "undefined") {
+    try {
+      return require("./src/lib/telemetry.js");
+    } catch (_error) {
+      return {};
+    }
+  }
+  return {};
+})();
+const appTelemetry = typeof TELEMETRY_LIBRARY.createTelemetry === "function"
+  ? TELEMETRY_LIBRARY.createTelemetry({
+    endpoint: TELEMETRY_ENDPOINT,
+    enabled: typeof location !== "undefined" && location.protocol === "https:" && !IS_DEVELOPMENT_MODE
+  })
+  : null;
 const warnedMissingTeamLabels = new Set();
 let currentValidRows = [];
 let memoryStoredMatches = [];
@@ -5654,10 +5672,16 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   if (criteria.days) params.set("days", String(criteria.days));
   params.set("_", String(Date.now()));
 
-  const response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
-    cache: "no-store",
-    headers: { Accept: "application/json" }
-  });
+  let response;
+  try {
+    response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
+      cache: "no-store",
+      headers: { Accept: "application/json" }
+    });
+  } catch (error) {
+    appTelemetry?.recordApiFailure({ api: "live_odds", status: 0, reason: "network" });
+    throw error;
+  }
 
   let payload = {};
   try {
@@ -5667,6 +5691,11 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   }
 
   if (!response.ok || payload.error) {
+    appTelemetry?.recordApiFailure({
+      api: "live_odds",
+      status: response.status,
+      reason: response.ok ? "provider" : "http"
+    });
     return {
       error: payload.error || `API 응답을 불러오지 못했습니다. 상태 코드 ${response.status}`,
       matches: []
@@ -7192,6 +7221,7 @@ function showActiveView(hashValue) {
   if (typeof document === "undefined") return;
 
   const activeViewId = getActiveViewId(hashValue);
+  appTelemetry?.recordView(activeViewId);
   const dashboard = document.getElementById("dashboard");
   const notice = document.getElementById("notice");
 
@@ -7277,6 +7307,28 @@ function registerServiceWorker() {
   });
 }
 
+function wireAnonymousTelemetry() {
+  if (typeof window === "undefined" || !appTelemetry) return;
+  window.addEventListener("error", (event) => {
+    appTelemetry.recordBrowserError({
+      kind: "runtime_error",
+      name: event.error?.name || "Error",
+      source: event.filename || "",
+      line: event.lineno,
+      column: event.colno
+    });
+  });
+  window.addEventListener("unhandledrejection", (event) => {
+    appTelemetry.recordBrowserError({
+      kind: "unhandled_rejection",
+      name: event.reason?.name || "UnhandledRejection"
+    });
+  });
+  window.addEventListener("pagehide", () => {
+    appTelemetry.flush({ useBeacon: true });
+  });
+}
+
 function runWhenBrowserIsIdle(callback) {
   if (typeof window === "undefined" || typeof callback !== "function") return;
   if ("requestIdleCallback" in window) {
@@ -7287,6 +7339,7 @@ function runWhenBrowserIsIdle(callback) {
 }
 
 if (typeof document !== "undefined") {
+  wireAnonymousTelemetry();
   wireViewNavigation();
   wireSampleCsvDownload();
   wireCsvPreview();

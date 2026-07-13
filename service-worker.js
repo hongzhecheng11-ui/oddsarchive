@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v66-lazy-data";
+const CACHE_NAME = "oddsarchive-v67-anonymous-telemetry";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -6,6 +6,7 @@ const CORE_ASSETS = [
   "/app.js",
   "/assets/app-icon.svg",
   "/data/api-odds-pack.js",
+  "/src/lib/telemetry.js",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/manifest.webmanifest"
