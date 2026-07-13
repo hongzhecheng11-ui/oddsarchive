@@ -7481,6 +7481,23 @@ function wireLocalAccount() {
 
 const VIEW_IDS = ["search", "today", "detail", "matches", "saved", "upload", "account"];
 const DETAIL_SECTION_IDS = ["detail-summary", "detail-same", "detail-similar", "detail-league", "detail-recent"];
+const ADMIN_VIEW_IDS = ["matches", "upload"];
+const ADMIN_MODE_KEY = "oddsarchive_admin_mode";
+
+function isAdminMode() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.sessionStorage?.getItem(ADMIN_MODE_KEY) === "1";
+  } catch (error) {
+    return false;
+  }
+}
+
+function updateAdminControls() {
+  if (typeof document === "undefined") return;
+  const links = document.getElementById("admin-management-links");
+  if (links) links.hidden = !isAdminMode();
+}
 
 function getActiveViewId(hashValue) {
   const viewId = String(hashValue || "").replace("#", "");
@@ -7488,10 +7505,23 @@ function getActiveViewId(hashValue) {
   return VIEW_IDS.includes(viewId) ? viewId : "search";
 }
 
+function getAllowedViewId(hashValue, adminMode = false) {
+  const viewId = getActiveViewId(hashValue);
+  return ADMIN_VIEW_IDS.includes(viewId) && !adminMode ? "search" : viewId;
+}
+
 function showActiveView(hashValue) {
   if (typeof document === "undefined") return;
 
-  const activeViewId = getActiveViewId(hashValue);
+  const adminMode = isAdminMode();
+  const requestedViewId = getActiveViewId(hashValue);
+  const activeViewId = getAllowedViewId(hashValue, adminMode);
+  if (activeViewId !== requestedViewId) {
+    if (typeof window !== "undefined" && window.location.hash !== "#search") {
+      window.history?.replaceState(null, "", `${window.location.pathname}${window.location.search}#search`);
+    }
+  }
+  updateAdminControls();
   appTelemetry?.recordView(activeViewId);
   const dashboard = document.getElementById("dashboard");
   const notice = document.getElementById("notice");
@@ -7850,6 +7880,8 @@ if (typeof module !== "undefined") {
     wireSaveValidRows,
     wireViewNavigation,
     getActiveViewId,
+    getAllowedViewId,
+    isAdminMode,
     showActiveView,
     showMoreOddsResults,
     showMoreTeamMatches,

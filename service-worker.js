@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v68-account-sync";
+const CACHE_NAME = "oddsarchive-v69-admin-gate";
 const CORE_ASSETS = [
   "/",
   "/index.html",

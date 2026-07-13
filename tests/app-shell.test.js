@@ -374,6 +374,14 @@ test("keeps low sample today insight free from upset wording", () => {
   assert(!insight.text.includes("참고용"));
 });
 
+test("keeps operational data views available only in admin mode", () => {
+  assert.strictEqual(app.getAllowedViewId("#matches", false), "search");
+  assert.strictEqual(app.getAllowedViewId("#upload", false), "search");
+  assert.strictEqual(app.getAllowedViewId("#matches", true), "matches");
+  assert.strictEqual(app.getAllowedViewId("#upload", true), "upload");
+  assert.strictEqual(app.getAllowedViewId("#account", false), "account");
+});
+
 test("keeps finished score and stale odds confidence on today cards", () => {
   const finished = app.getHomeTodayCardViewModel({
     league: "KLEAGUE1",
