@@ -1465,10 +1465,7 @@ function getFavoriteName(entry, fallback = "") {
 }
 
 function requestFavoriteName(entry) {
-  const fallback = getFavoriteName(entry);
-  if (typeof window === "undefined" || typeof window.prompt !== "function") return fallback;
-  const value = window.prompt("즐겨찾기 이름", fallback);
-  return String(value || "").trim() || fallback;
+  return getFavoriteName(entry);
 }
 
 function recordOddsSearchHistory(criteria, storage) {
