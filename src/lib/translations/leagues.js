@@ -20,8 +20,11 @@
       WORLDCUP: "월드컵",
       UCL: "챔피언스리그",
       UEL: "유로파리그",
+      CHAMPIONSHIP: "잉글랜드 챔피언십",
       KLEAGUE1: "K리그1",
+      KLEAGUE2: "K리그2",
       J1LEAGUE: "J리그1",
+      J2LEAGUE: "J리그2",
       ACL: "AFC 챔피언스리그",
       WCQ: "월드컵 예선",
       INTL_FRIENDLIES: "국가대표 친선경기",
@@ -38,8 +41,13 @@
       "Champions League": "챔피언스리그",
       "UEFA Europa League": "유로파리그",
       "Europa League": "유로파리그",
+      Championship: "잉글랜드 챔피언십",
+      "EFL Championship": "잉글랜드 챔피언십",
+      "English Championship": "잉글랜드 챔피언십",
       "K League 1": "K리그1",
+      "K League 2": "K리그2",
       "J1 League": "J리그1",
+      "J2 League": "J리그2",
       "AFC Champions League": "AFC 챔피언스리그",
       "AFC Champions League Elite": "AFC 챔피언스리그",
       "FIFA World Cup Qualification": "월드컵 예선",
@@ -53,15 +61,15 @@
     categories: [
       {
         label: "인기",
-        leagues: ["EPL", "UCL", "KLEAGUE1", "J1LEAGUE"]
+        leagues: ["EPL", "UCL", "CHAMPIONSHIP", "KLEAGUE1", "J1LEAGUE"]
       },
       {
         label: "유럽",
-        leagues: ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"]
+        leagues: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"]
       },
       {
         label: "아시아",
-        leagues: ["KLEAGUE1", "J1LEAGUE", "ACL"]
+        leagues: ["KLEAGUE1", "KLEAGUE2", "J1LEAGUE", "J2LEAGUE", "ACL"]
       },
       {
         label: "국가대항",

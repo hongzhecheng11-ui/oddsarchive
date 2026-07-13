@@ -105,6 +105,9 @@ test("builds match detail analysis buckets for same and similar odds", () => {
 test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("UEFA Champions League"), "챔피언스리그");
   assert.strictEqual(app.formatLeagueName("KLEAGUE1"), "K리그1");
+  assert.strictEqual(app.formatLeagueName("KLEAGUE2"), "K리그2");
+  assert.strictEqual(app.formatLeagueName("J2 League"), "J리그2");
+  assert.strictEqual(app.formatLeagueName("EFL Championship"), "잉글랜드 챔피언십");
   assert.strictEqual(app.formatLeagueName("E0"), "EPL");
   assert.strictEqual(app.formatTeamName("FC Seoul"), "FC서울");
   assert.strictEqual(app.formatTeamName("Unknown FC"), "Unknown FC");
@@ -189,6 +192,9 @@ test("translates common historical league team aliases", () => {
 test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "UCL"), true);
   assert.strictEqual(app.leagueMatchesFixture("K League 1", "KLEAGUE1"), true);
+  assert.strictEqual(app.leagueMatchesFixture("K League 2", "KLEAGUE2"), true);
+  assert.strictEqual(app.leagueMatchesFixture("J2 League", "J2LEAGUE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Championship", "CHAMPIONSHIP"), true);
   assert.strictEqual(app.leagueMatchesFixture("International Friendlies", "INTL_FRIENDLIES"), true);
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "KLEAGUE1"), false);
 });
@@ -205,14 +211,20 @@ test("filters today's major matches to supported leagues only", () => {
   const matches = app.getMajorTodayMatches([
     { league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
     { league: "World Cup / World", homeTeam: "Mexico", awayTeam: "Ecuador", homeOdds: "2.10", drawOdds: "3.20", awayOdds: "3.60" },
+    { league: "Championship", homeTeam: "Watford", awayTeam: "Millwall", homeOdds: "2.10", drawOdds: "3.20", awayOdds: "3.60" },
+    { league: "K League 2", homeTeam: "Seoul E-Land FC", awayTeam: "Gyeongnam FC", homeOdds: "2.20", drawOdds: "3.10", awayOdds: "3.30" },
+    { league: "J2 League", homeTeam: "JEF United Chiba", awayTeam: "Mito Hollyhock", homeOdds: "1.95", drawOdds: "3.30", awayOdds: "3.90" },
     { league: "EPL", homeTeam: "No Odds", awayTeam: "Pending", homeOdds: "", drawOdds: "3.40", awayOdds: "4.50" },
     { league: "Premier League / Mongolia", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
     { league: "Club Friendlies", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" }
   ]);
 
-  assert.strictEqual(matches.length, 2);
+  assert.strictEqual(matches.length, 5);
   assert(matches.some((match) => match.league === "EPL"));
   assert(matches.some((match) => match.league === "World Cup / World"));
+  assert(matches.some((match) => match.league === "Championship"));
+  assert(matches.some((match) => match.league === "K League 2"));
+  assert(matches.some((match) => match.league === "J2 League"));
   assert(!matches.some((match) => match.homeTeam === "No Odds"));
   assert.strictEqual(app.isMajorTodayMatch({ league: "EPL / Mongolia" }), false);
 });
@@ -314,10 +326,19 @@ test("includes Korean priority leagues in fixture league options", () => {
   assert(values.includes("UCL"));
   assert(values.includes("UEL"));
   assert(values.includes("KLEAGUE1"));
+  assert(values.includes("KLEAGUE2"));
   assert(values.includes("J1LEAGUE"));
+  assert(values.includes("J2LEAGUE"));
+  assert(values.includes("CHAMPIONSHIP"));
   assert(values.includes("ACL"));
   assert(values.includes("WCQ"));
   assert(values.includes("INTL_FRIENDLIES"));
+});
+
+test("translates first expanded league team samples", () => {
+  assert.strictEqual(app.translateTeamName("Seoul E-Land FC"), "서울 이랜드");
+  assert.strictEqual(app.translateTeamName("JEF United Chiba"), "제프 유나이티드 지바");
+  assert.strictEqual(app.translateTeamName("West Brom"), "웨스트 브로미치");
 });
 
 test("builds Korean home today card view models", () => {

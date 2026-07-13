@@ -18,6 +18,7 @@ test("builds football-data URLs from season and league codes", () => {
     tools.buildFootballDataUrl("2526", "E0"),
     "https://www.football-data.co.uk/mmz4281/2526/E0.csv"
   );
+  assert.strictEqual(tools.FOOTBALL_DATA_LEAGUES.CHAMPIONSHIP.code, "E1");
 });
 
 test("detects recent target coverage and missing expanded leagues", () => {
@@ -34,11 +35,17 @@ test("detects recent target coverage and missing expanded leagues", () => {
   const coverage = tools.getTargetCoverage(pack, tools.RECENT_SEASONS);
   const epl = coverage.find((item) => item.key === "EPL");
   const ucl = coverage.find((item) => item.key === "UCL");
+  const championship = coverage.find((item) => item.key === "CHAMPIONSHIP");
+  const kleague2 = coverage.find((item) => item.key === "KLEAGUE2");
+  const jleague2 = coverage.find((item) => item.key === "J2LEAGUE");
 
   assert.strictEqual(epl.isCoveredForRecentTarget, true);
   assert.strictEqual(epl.totalMatches, 5);
   assert.strictEqual(ucl.isCoveredForRecentTarget, false);
   assert.deepStrictEqual(ucl.missingSeasons, tools.RECENT_SEASONS);
+  assert(championship);
+  assert(kleague2);
+  assert(jleague2);
 });
 
 test("validates football-data CSV shape before writing to the pack", () => {

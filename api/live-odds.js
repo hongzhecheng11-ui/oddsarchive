@@ -10,12 +10,24 @@ const LEAGUE_IDS = {
   UCL: 2,
   UEL: 3,
   KLEAGUE1: 292,
+  KLEAGUE2: 293,
   J1LEAGUE: 98,
+  J2LEAGUE: 99,
+  CHAMPIONSHIP: 40,
   ACL: 17,
   WCQ: [29, 30, 31, 32, 33, 34],
   INTL_FRIENDLIES: 10
 };
-const CALENDAR_YEAR_LEAGUES = new Set(["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]);
+const CALENDAR_YEAR_LEAGUES = new Set([
+  "WORLDCUP",
+  "WCQ",
+  "INTL_FRIENDLIES",
+  "KLEAGUE1",
+  "KLEAGUE2",
+  "J1LEAGUE",
+  "J2LEAGUE",
+  "ACL"
+]);
 
 function getLeagueKeyByApiLeague(league = {}) {
   const leagueId = Number(league.id || 0);

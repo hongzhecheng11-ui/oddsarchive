@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-13T06:28:52.330Z",
+  "updatedAt": "2026-07-13T07:28:33.930Z",
   "collection": {
-    "lastAttemptAt": "2026-07-13T06:28:18.326Z",
-    "lastSuccessAt": "2026-07-13T06:28:52.330Z",
-    "requestSuccesses": 78,
+    "lastAttemptAt": "2026-07-13T07:28:00.378Z",
+    "lastSuccessAt": "2026-07-13T07:28:33.930Z",
+    "requestSuccesses": 60,
     "requestFailures": 0,
-    "addedCount": 21,
-    "updatedCount": 4,
-    "duplicateCount": 3,
+    "addedCount": 8,
+    "updatedCount": 0,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -4101,6 +4101,32 @@
     },
     {
       "date": "2026-07-10",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510371",
+      "homeTeam": "Cheonan City",
+      "awayTeam": "Gimhae City",
+      "homeOdds": "1.80",
+      "drawOdds": "3.45",
+      "awayOdds": "4.00",
+      "result": "A",
+      "score": "0-1",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510372",
+      "homeTeam": "Suwon City FC",
+      "awayTeam": "Jeonnam Dragons",
+      "homeOdds": "1.83",
+      "drawOdds": "3.65",
+      "awayOdds": "3.75",
+      "result": "H",
+      "score": "5-0",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-10",
       "league": "UEL",
       "fixtureId": "",
       "homeTeam": "CSKA Sofia",
@@ -4245,19 +4271,6 @@
     {
       "date": "2026-07-11",
       "league": "KLEAGUE1",
-      "fixtureId": "",
-      "homeTeam": "Ulsan Hyundai FC",
-      "awayTeam": "Jeonbuk Motors",
-      "homeOdds": "2.60",
-      "drawOdds": "3.30",
-      "awayOdds": "2.60",
-      "result": "UNKNOWN",
-      "score": "",
-      "source": "API 과거 배당"
-    },
-    {
-      "date": "2026-07-11",
-      "league": "KLEAGUE1",
       "fixtureId": "1506994",
       "homeTeam": "Ulsan Hyundai FC",
       "awayTeam": "Jeonbuk Motors",
@@ -4266,6 +4279,58 @@
       "awayOdds": "2.60",
       "result": "A",
       "score": "1-3",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510373",
+      "homeTeam": "Ansan Greeners",
+      "awayTeam": "Suwon Bluewings",
+      "homeOdds": "8.75",
+      "drawOdds": "4.75",
+      "awayOdds": "1.30",
+      "result": "H",
+      "score": "2-1",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510374",
+      "homeTeam": "Daegu FC",
+      "awayTeam": "Seongnam FC",
+      "homeOdds": "1.73",
+      "drawOdds": "3.50",
+      "awayOdds": "4.60",
+      "result": "H",
+      "score": "3-2",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510375",
+      "homeTeam": "Hwaseong",
+      "awayTeam": "Paju Citizen",
+      "homeOdds": "1.77",
+      "drawOdds": "3.40",
+      "awayOdds": "4.20",
+      "result": "A",
+      "score": "1-2",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-11",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510376",
+      "homeTeam": "Yongin City",
+      "awayTeam": "Cheongju",
+      "homeOdds": "2.25",
+      "drawOdds": "3.20",
+      "awayOdds": "3.00",
+      "result": "D",
+      "score": "1-1",
       "source": "API 과거 배당"
     },
     {
@@ -4357,6 +4422,32 @@
       "awayOdds": "2.45",
       "result": "D",
       "score": "0-0",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510377",
+      "homeTeam": "Asan Mugunghwa",
+      "awayTeam": "Gyeongnam FC",
+      "homeOdds": "2.15",
+      "drawOdds": "3.25",
+      "awayOdds": "3.20",
+      "result": "D",
+      "score": "1-1",
+      "source": "API 과거 배당"
+    },
+    {
+      "date": "2026-07-12",
+      "league": "KLEAGUE2",
+      "fixtureId": "1510378",
+      "homeTeam": "Busan I Park",
+      "awayTeam": "Gimpo Citizen",
+      "homeOdds": "2.45",
+      "drawOdds": "3.10",
+      "awayOdds": "2.75",
+      "result": "H",
+      "score": "2-0",
       "source": "API 과거 배당"
     },
     {

@@ -146,8 +146,11 @@ test("updates the same fixture when future odds change instead of duplicating it
 
 test("uses calendar year for Asian and international leagues", () => {
   assert.strictEqual(collector.getSeason("2026-03-01", "KLEAGUE1"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "KLEAGUE2"), "2026");
   assert.strictEqual(collector.getSeason("2026-03-01", "J1LEAGUE"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "J2LEAGUE"), "2026");
   assert.strictEqual(collector.getSeason("2026-03-01", "ACL"), "2026");
+  assert.strictEqual(collector.getSeason("2026-03-01", "CHAMPIONSHIP"), "2025");
   assert.strictEqual(collector.getSeason("2026-03-01", "UCL"), "2025");
 });
 

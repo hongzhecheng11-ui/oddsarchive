@@ -14,6 +14,7 @@ const API_FOOTBALL_BASE = "https://v3.football.api-sports.io";
 
 const THE_ODDS_SPORT_KEYS = {
   EPL: "soccer_epl",
+  CHAMPIONSHIP: "soccer_efl_champ",
   LALIGA: "soccer_spain_la_liga",
   SERIEA: "soccer_italy_serie_a",
   BUNDESLIGA: "soccer_germany_bundesliga",
@@ -34,7 +35,10 @@ const API_FOOTBALL_LEAGUE_IDS = {
   UCL: 2,
   UEL: 3,
   KLEAGUE1: 292,
+  KLEAGUE2: 293,
   J1LEAGUE: 98,
+  J2LEAGUE: 99,
+  CHAMPIONSHIP: 40,
   WORLDCUP: 1
 };
 

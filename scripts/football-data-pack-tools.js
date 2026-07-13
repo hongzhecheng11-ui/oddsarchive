@@ -9,6 +9,7 @@ const RECENT_SEASONS = ["2122", "2223", "2324", "2425", "2526"];
 
 const FOOTBALL_DATA_LEAGUES = {
   EPL: { label: "EPL", code: "E0", source: "football-data.co.uk" },
+  CHAMPIONSHIP: { label: "잉글랜드 챔피언십", code: "E1", source: "football-data.co.uk" },
   LALIGA: { label: "라리가", code: "SP1", source: "football-data.co.uk" },
   SERIEA: { label: "세리에A", code: "I1", source: "football-data.co.uk" },
   BUNDESLIGA: { label: "분데스리가", code: "D1", source: "football-data.co.uk" },
@@ -25,6 +26,7 @@ const FOOTBALL_DATA_LEAGUES = {
 
 const TARGET_LEAGUES = {
   EPL: { label: "EPL", category: "유럽", historySource: "football-data.co.uk" },
+  CHAMPIONSHIP: { label: "잉글랜드 챔피언십", category: "유럽", historySource: "football-data.co.uk/API" },
   LALIGA: { label: "라리가", category: "유럽", historySource: "football-data.co.uk" },
   SERIEA: { label: "세리에A", category: "유럽", historySource: "football-data.co.uk" },
   BUNDESLIGA: { label: "분데스리가", category: "유럽", historySource: "football-data.co.uk" },
@@ -32,7 +34,9 @@ const TARGET_LEAGUES = {
   UCL: { label: "챔피언스리그", category: "유럽", historySource: "API/별도 CSV 필요" },
   UEL: { label: "유로파리그", category: "유럽", historySource: "API/별도 CSV 필요" },
   KLEAGUE1: { label: "K리그1", category: "아시아", historySource: "API/별도 CSV 필요" },
+  KLEAGUE2: { label: "K리그2", category: "아시아", historySource: "API/별도 CSV 필요" },
   J1LEAGUE: { label: "J리그1", category: "아시아", historySource: "football-data.co.uk" },
+  J2LEAGUE: { label: "J리그2", category: "아시아", historySource: "API/별도 CSV 필요" },
   ACL: { label: "AFC 챔피언스리그", category: "아시아", historySource: "API/별도 CSV 필요" },
   WORLDCUP: {
     label: "월드컵",

@@ -32,8 +32,11 @@ const HOME_TODAY_LEAGUE_PRIORITY = [
   "LIGUE1",
   "UCL",
   "UEL",
+  "CHAMPIONSHIP",
   "KLEAGUE1",
+  "KLEAGUE2",
   "J1LEAGUE",
+  "J2LEAGUE",
   "ACL",
   "WORLDCUP",
   "WCQ",
@@ -1913,8 +1916,11 @@ const LEAGUE_FILTERS = {
   WORLDCUP: ["WORLDCUP", "월드컵", "WORLD CUP", "FIFA WORLD CUP"],
   UCL: ["UCL", "UEFA Champions League", "Champions League", "챔피언스리그"],
   UEL: ["UEL", "UEFA Europa League", "Europa League", "유로파리그"],
+  CHAMPIONSHIP: ["CHAMPIONSHIP", "Championship", "EFL Championship", "English Championship", "잉글랜드 챔피언십"],
   KLEAGUE1: ["KLEAGUE1", "K League 1", "K리그1", "K LEAGUE 1"],
+  KLEAGUE2: ["KLEAGUE2", "K League 2", "K리그2", "K LEAGUE 2"],
   J1LEAGUE: ["J1LEAGUE", "J1 League", "J리그1", "J. League Division 1", "J-League"],
+  J2LEAGUE: ["J2LEAGUE", "J2 League", "J리그2", "J. League Division 2", "J-League 2"],
   ACL: ["ACL", "AFC Champions League", "AFC Champions League Elite", "AFC 챔피언스리그"],
   WCQ: ["WCQ", "FIFA World Cup Qualification", "World Cup Qualification", "월드컵 예선"],
   INTL_FRIENDLIES: ["INTL_FRIENDLIES", "International Friendlies", "Friendlies", "국가대표 친선경기"]
@@ -1929,16 +1935,19 @@ const FIXTURE_LEAGUE_OPTIONS = [
   { value: "WORLDCUP", label: "월드컵" },
   { value: "UCL", label: "챔피언스리그" },
   { value: "UEL", label: "유로파리그" },
+  { value: "CHAMPIONSHIP", label: "잉글랜드 챔피언십" },
   { value: "KLEAGUE1", label: "K리그1" },
+  { value: "KLEAGUE2", label: "K리그2" },
   { value: "J1LEAGUE", label: "J리그1" },
+  { value: "J2LEAGUE", label: "J리그2" },
   { value: "ACL", label: "AFC 챔피언스리그" },
   { value: "WCQ", label: "월드컵 예선" },
   { value: "INTL_FRIENDLIES", label: "국가대표 친선경기" }
 ];
 const LEAGUE_CATEGORY_GROUPS = EXTERNAL_TRANSLATIONS.leagues?.categories || [
-  { label: "인기", values: ["EPL", "UCL", "KLEAGUE1", "J1LEAGUE"] },
-  { label: "유럽", values: ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"] },
-  { label: "아시아", values: ["KLEAGUE1", "J1LEAGUE", "ACL"] },
+  { label: "인기", values: ["EPL", "UCL", "CHAMPIONSHIP", "KLEAGUE1", "J1LEAGUE"] },
+  { label: "유럽", values: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "UCL", "UEL"] },
+  { label: "아시아", values: ["KLEAGUE1", "KLEAGUE2", "J1LEAGUE", "J2LEAGUE", "ACL"] },
   { label: "국가대항", values: ["WORLDCUP", "WCQ", "INTL_FRIENDLIES"] }
 ];
 
@@ -1950,8 +1959,11 @@ const EXPECTED_LEAGUE_COUNTRIES = {
   LIGUE1: ["france"],
   UCL: ["world", "europe"],
   UEL: ["world", "europe"],
+  CHAMPIONSHIP: ["england"],
   KLEAGUE1: ["south korea", "korea republic", "korea"],
+  KLEAGUE2: ["south korea", "korea republic", "korea"],
   J1LEAGUE: ["japan"],
+  J2LEAGUE: ["japan"],
   ACL: ["world", "asia"],
   WORLDCUP: ["world"],
   WCQ: ["world"],
