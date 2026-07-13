@@ -113,11 +113,27 @@ const appTelemetry = typeof TELEMETRY_LIBRARY.createTelemetry === "function"
     enabled: typeof location !== "undefined" && location.protocol === "https:" && !IS_DEVELOPMENT_MODE
   })
   : null;
+const FAVORITE_SYNC_LIBRARY = (() => {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_FAVORITE_SYNC) return window.ODDS_ARCHIVE_FAVORITE_SYNC;
+  if (typeof require !== "undefined") {
+    try {
+      return require("./src/lib/favorite-sync.js");
+    } catch (_error) {
+      return {};
+    }
+  }
+  return {};
+})();
 const warnedMissingTeamLabels = new Set();
 let currentValidRows = [];
 let memoryStoredMatches = [];
 let memorySavedSearches = [];
 let memorySearchHistory = [];
+let activeFavoriteAccountId = "";
+let activeAccountFavoriteRecords = [];
+let cloudAccountService = null;
+let cloudAccountLoadPromise = null;
+let cloudAccountState = "local";
 let memoryAutoUpdateState = null;
 let memoryLocalAccount = null;
 let memoryTodayMatches = [];
@@ -1231,7 +1247,71 @@ function loadSavedSearches(storage) {
 }
 
 function loadSearchHistory(storage) {
-  return getStorageSearchHistory(storage);
+  const localHistory = getStorageSearchHistory(storage);
+  if (storage || !activeFavoriteAccountId || typeof FAVORITE_SYNC_LIBRARY.toSearchHistoryEntry !== "function") return localHistory;
+  const effective = new Map(localHistory.map((entry) => [entry.favoriteId || getFavoriteRecordId(entry), entry]));
+  for (const record of activeAccountFavoriteRecords) {
+    const accountEntry = FAVORITE_SYNC_LIBRARY.toSearchHistoryEntry(record);
+    if (!accountEntry) continue;
+    if (record.active) {
+      effective.set(record.favoriteId, accountEntry);
+    } else if (effective.has(record.favoriteId)) {
+      effective.set(record.favoriteId, { ...effective.get(record.favoriteId), favorite: false, favoriteUpdatedAt: record.updatedAt });
+    }
+  }
+  return normalizeSearchHistoryEntries([...effective.values()]);
+}
+
+function historyEntryToSyncRecord(entry = {}) {
+  return FAVORITE_SYNC_LIBRARY.normalizeFavoriteRecord?.({
+    favoriteId: entry.favoriteId || getFavoriteRecordId(entry),
+    sourceMatchId: entry.sourceMatchId || "",
+    active: Boolean(entry.favorite),
+    name: getFavoriteName(entry),
+    criteria: {
+      homeOdds: entry.homeOdds,
+      drawOdds: entry.drawOdds,
+      awayOdds: entry.awayOdds,
+      tolerance: entry.tolerance,
+      customTolerance: entry.customTolerance || "",
+      league: entry.league || "ALL"
+    },
+    match: entry.sourceMatch || null,
+    updatedAt: entry.favoriteUpdatedAt || entry.searchedAt || entry.createdAt || new Date().toISOString()
+  }) || null;
+}
+
+function refreshFavoriteViews() {
+  if (typeof document === "undefined") return;
+  renderSearchHistory();
+  renderSavedSearches();
+  renderLocalAccount();
+}
+
+function setActiveAccountFavoriteRecords(userId, records = []) {
+  activeFavoriteAccountId = String(userId || "");
+  activeAccountFavoriteRecords = (Array.isArray(records) ? records : [])
+    .map((record) => FAVORITE_SYNC_LIBRARY.normalizeFavoriteRecord?.(record))
+    .filter(Boolean);
+  refreshFavoriteViews();
+}
+
+function clearActiveAccountFavoriteRecords() {
+  activeFavoriteAccountId = "";
+  activeAccountFavoriteRecords = [];
+  refreshFavoriteViews();
+}
+
+function persistAccountFavoriteEntry(entry) {
+  const record = historyEntryToSyncRecord(entry);
+  if (!record || !activeFavoriteAccountId) return loadSearchHistory();
+  activeAccountFavoriteRecords = FAVORITE_SYNC_LIBRARY.mergeFavoriteRecords({
+    cache: activeAccountFavoriteRecords,
+    server: [record]
+  });
+  refreshFavoriteViews();
+  cloudAccountService?.syncAccountRecords(activeAccountFavoriteRecords).catch(() => {});
+  return loadSearchHistory();
 }
 
 function getAutoUpdateState(storage) {
@@ -1501,12 +1581,13 @@ function recordOddsSearchHistory(criteria, storage) {
 
   return {
     entry,
-    history: storedHistory
+    history: storage || !activeFavoriteAccountId ? storedHistory : loadSearchHistory()
   };
 }
 
 function toggleSearchHistoryFavorite(entryId, storage, favoriteName = "") {
-  const nextHistory = getStorageSearchHistory(storage)
+  const accountMode = !storage && Boolean(activeFavoriteAccountId);
+  const nextHistory = (accountMode ? loadSearchHistory() : getStorageSearchHistory(storage))
     .map((entry) => {
       if (entry.id !== entryId) return entry;
       const nextFavorite = !entry.favorite;
@@ -1522,13 +1603,17 @@ function toggleSearchHistoryFavorite(entryId, storage, favoriteName = "") {
       if (a.favorite !== b.favorite) return a.favorite ? -1 : 1;
       return String(b.searchedAt || "").localeCompare(String(a.searchedAt || ""));
     });
-
+  if (accountMode) {
+    const changedEntry = nextHistory.find((entry) => entry.id === entryId);
+    return changedEntry ? persistAccountFavoriteEntry(changedEntry) : loadSearchHistory();
+  }
   return setStorageSearchHistory(nextHistory, storage);
 }
 
 function updateSearchHistoryFavoriteName(entryId, favoriteName, storage) {
   const nextName = String(favoriteName || "").trim();
-  const nextHistory = getStorageSearchHistory(storage).map((entry) => {
+  const accountMode = !storage && Boolean(activeFavoriteAccountId);
+  const nextHistory = (accountMode ? loadSearchHistory() : getStorageSearchHistory(storage)).map((entry) => {
     if (entry.id !== entryId) return entry;
     return {
       ...entry,
@@ -1537,11 +1622,18 @@ function updateSearchHistoryFavoriteName(entryId, favoriteName, storage) {
       syncVersion: 1
     };
   });
-
+  if (accountMode) {
+    const changedEntry = nextHistory.find((entry) => entry.id === entryId);
+    return changedEntry ? persistAccountFavoriteEntry(changedEntry) : loadSearchHistory();
+  }
   return setStorageSearchHistory(nextHistory, storage);
 }
 
 function deleteSearchHistoryEntry(entryId, storage) {
+  if (!storage && activeFavoriteAccountId) {
+    const target = loadSearchHistory().find((entry) => entry.id === entryId);
+    if (target?.favorite) return persistAccountFavoriteEntry({ ...target, favorite: false, favoriteUpdatedAt: new Date().toISOString() });
+  }
   const nextHistory = getStorageSearchHistory(storage).filter((entry) => entry.id !== entryId);
   return setStorageSearchHistory(nextHistory, storage);
 }
@@ -3203,7 +3295,9 @@ function renderLocalAccount(storage) {
   const favoriteSearches = loadSearchHistory(storage).filter((entry) => entry.favorite);
   const autoUpdateState = getAutoUpdateState(storage);
   const lastUpdateLabel = autoUpdateState.lastUpdatedAt || autoUpdateState.lastChecked || "확인 전";
-  const accountModeLabel = storageMode === "브라우저 저장" ? "로컬 계정" : storageMode === "탭 저장" ? "탭 계정" : "임시 로컬 계정";
+  const accountModeLabel = activeFavoriteAccountId
+    ? (cloudAccountState === "offline" ? "Google 계정 · 동기화 대기" : "Google 계정 · 동기화")
+    : storageMode === "브라우저 저장" ? "로컬 계정" : storageMode === "탭 저장" ? "탭 계정" : "임시 로컬 계정";
   const values = {
     "account-display-name": label,
     "account-summary-name": label,
@@ -3227,6 +3321,92 @@ function getBundledFootballDataPack() {
   if (typeof window !== "undefined" && window.FOOTBALL_DATA_PACK) return window.FOOTBALL_DATA_PACK;
   if (typeof globalThis !== "undefined" && globalThis.FOOTBALL_DATA_PACK) return globalThis.FOOTBALL_DATA_PACK;
   return {};
+}
+
+function setCloudAccountUi(state = {}) {
+  cloudAccountState = state.status || cloudAccountState;
+  const status = document.getElementById("cloud-account-status");
+  const signInButton = document.getElementById("google-sign-in");
+  const signOutButton = document.getElementById("google-sign-out");
+  const signedIn = Boolean(state.userId || activeFavoriteAccountId);
+  const messages = {
+    loading: "Google 로그인 기능을 준비하는 중입니다.",
+    syncing: "즐겨찾기를 안전하게 병합하는 중입니다.",
+    signed_in: "Google 계정과 즐겨찾기가 동기화되었습니다.",
+    signed_out: "로그인하지 않았습니다. 로컬 즐겨찾기를 계속 사용합니다.",
+    offline: "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.",
+    unavailable: "Google 로그인이 아직 설정되지 않았습니다. 로컬 즐겨찾기는 정상적으로 사용할 수 있습니다."
+  };
+  if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
+  if (signInButton) signInButton.hidden = signedIn;
+  if (signOutButton) signOutButton.hidden = !signedIn;
+  renderLocalAccount();
+}
+
+function loadBrowserScript(source, marker) {
+  if (typeof document === "undefined") return Promise.reject(new Error("브라우저에서만 사용할 수 있습니다."));
+  const existing = document.querySelector(`script[data-module="${marker}"]`);
+  if (existing?.dataset.loaded === "true") return Promise.resolve();
+  return new Promise((resolve, reject) => {
+    const script = existing || document.createElement("script");
+    script.dataset.module = marker;
+    script.addEventListener("load", () => { script.dataset.loaded = "true"; resolve(); }, { once: true });
+    script.addEventListener("error", () => reject(new Error("로그인 모듈을 불러오지 못했습니다.")), { once: true });
+    if (!existing) {
+      script.src = source;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  });
+}
+
+function ensureCloudAccountReady() {
+  if (cloudAccountLoadPromise) return cloudAccountLoadPromise;
+  cloudAccountLoadPromise = (async () => {
+    await loadBrowserScript("/src/lib/auth.js?v=1", "account-auth");
+    if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
+    cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
+      favorites: {
+        getLocalRecords: () => getFavoriteSyncRecords(),
+        setAccountRecords: setActiveAccountFavoriteRecords,
+        clearAccountRecords: clearActiveAccountFavoriteRecords
+      },
+      onStateChange: setCloudAccountUi
+    });
+    await cloudAccountService.initialize();
+    return cloudAccountService;
+  })().catch((error) => {
+    cloudAccountLoadPromise = null;
+    setCloudAccountUi({ status: "unavailable", message: error.message || "Google 로그인을 준비하지 못했습니다." });
+    throw error;
+  });
+  return cloudAccountLoadPromise;
+}
+
+function wireCloudAccount() {
+  const signInButton = document.getElementById("google-sign-in");
+  const signOutButton = document.getElementById("google-sign-out");
+  signInButton?.addEventListener("click", async () => {
+    signInButton.disabled = true;
+    try {
+      const service = await ensureCloudAccountReady();
+      await service.signInWithGoogle();
+    } catch (error) {
+      setCloudAccountUi({ status: "unavailable", message: error.message });
+    } finally {
+      signInButton.disabled = false;
+    }
+  });
+  signOutButton?.addEventListener("click", async () => {
+    signOutButton.disabled = true;
+    try {
+      await cloudAccountService?.signOut();
+    } catch (error) {
+      setCloudAccountUi({ status: "offline", message: error.message });
+    } finally {
+      signOutButton.disabled = false;
+    }
+  });
 }
 
 function ensureFootballDataPackLoaded() {
@@ -7351,6 +7531,9 @@ function showActiveView(hashValue) {
   if (activeViewId === "today") {
     ensureHomeTodayMatchesLoaded();
   }
+  if (activeViewId === "account") {
+    ensureCloudAccountReady().catch(() => {});
+  }
 }
 
 function wireViewNavigation() {
@@ -7449,6 +7632,7 @@ if (typeof document !== "undefined") {
   wireEmptyDataActions();
   wireSaveSearchForm();
   wireLocalAccount();
+  wireCloudAccount();
   wireShareLinkCopy();
   wireTodayCsvImport();
   wireHomeTodayMatches();

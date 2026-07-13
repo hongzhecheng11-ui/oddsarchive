@@ -8,6 +8,6 @@
     "audit:teams": "node scripts/audit-team-translations.js",
     "audit:football-data": "node scripts/audit-football-data-pack.js",
     "update:football-data": "node scripts/update-football-data-pack.js",
-    "test": "node tests/app-shell.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js"
+    "test": "node tests/app-shell.test.js && node tests/favorites.test.js && node tests/favorite-sync.test.js && node tests/auth.test.js && node tests/auth-config.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js && node tests/telemetry.test.js && node tests/client-log.test.js"
   }
 }

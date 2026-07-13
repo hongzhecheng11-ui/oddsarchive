@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" href="assets/app-icon.svg">
     <link rel="stylesheet" href="styles.css">
     <script src="src/lib/telemetry.js?v=67"></script>
+    <script src="src/lib/favorite-sync.js?v=1"></script>
     <script src="src/lib/translations/leagues.js"></script>
     <script src="src/lib/translations/teams.js"></script>
   </head>
@@ -555,6 +556,17 @@
               </span>
             </summary>
             <div class="panel-body">
+              <section class="account-card cloud-account-card" aria-label="Google 계정 연결">
+                <div class="simple-card-heading">
+                  <strong>Google 계정 연결</strong>
+                  <span>로그인하면 즐겨찾기만 계정별로 동기화됩니다. 비로그인 상태에서는 기존 로컬 저장을 계속 사용합니다.</span>
+                </div>
+                <div class="account-actions">
+                  <button type="button" id="google-sign-in">Google로 로그인</button>
+                  <button class="ghost-action" type="button" id="google-sign-out" hidden>로그아웃</button>
+                </div>
+                <p class="match-count" id="cloud-account-status" aria-live="polite">Google 로그인은 이 화면에서만 불러옵니다.</p>
+              </section>
               <section class="account-card">
                 <div class="simple-card-heading">
                   <strong>이 기기 전용 계정</strong>
