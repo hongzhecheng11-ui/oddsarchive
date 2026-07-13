@@ -126,6 +126,7 @@ let currentOddsSearchResults = [];
 let visibleOddsSearchCount = RESULT_PAGE_SIZE;
 let currentTeamMatchResults = [];
 let visibleTeamMatchCount = RESULT_PAGE_SIZE;
+let activeOddsSearchSource = null;
 let homeTodayMatches = [];
 let homeTodayLastUpdatedAt = "";
 let homeTodayLoadStarted = false;
@@ -1055,16 +1056,16 @@ function getStorageSearchHistory(storage) {
   const targetStorage = getStorageTarget(storage);
   updateStorageModeStatus(!targetStorage);
 
-  if (!targetStorage) return [...memorySearchHistory];
+  if (!targetStorage) return normalizeSearchHistoryEntries(memorySearchHistory);
 
   try {
     const storedValue = targetStorage.getItem(SEARCH_HISTORY_KEY);
     if (!storedValue) return [];
     const parsed = JSON.parse(storedValue);
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? normalizeSearchHistoryEntries(parsed) : [];
   } catch (_error) {
     updateStorageModeStatus(true);
-    return [...memorySearchHistory];
+    return normalizeSearchHistoryEntries(memorySearchHistory);
   }
 }
 
@@ -1206,7 +1207,7 @@ function setStorageSavedSearches(searches, storage) {
 }
 
 function setStorageSearchHistory(history, storage) {
-  const safeHistory = Array.isArray(history) ? history.slice(0, 30) : [];
+  const safeHistory = normalizeSearchHistoryEntries(history).slice(0, 30);
   const targetStorage = getStorageTarget(storage);
   updateStorageModeStatus(!targetStorage);
 
@@ -1365,6 +1366,8 @@ function saveSearchCondition(condition, storage) {
 }
 
 function getSearchHistoryKey(criteria) {
+  const sourceMatchId = String(criteria.sourceMatchId || "").trim();
+  if (sourceMatchId) return `match|${sourceMatchId}`;
   return [
     String(criteria.league || "ALL").trim() || "ALL",
     String(criteria.homeOdds || "").trim(),
@@ -1373,6 +1376,83 @@ function getSearchHistoryKey(criteria) {
     String(criteria.tolerance || "0.00").trim(),
     String(criteria.customTolerance || "").trim()
   ].join("|");
+}
+
+function getFavoriteRecordId(entry = {}) {
+  const sourceMatchId = String(entry.sourceMatchId || "").trim();
+  return sourceMatchId ? `match:${sourceMatchId}` : `odds:${entry.key || getSearchHistoryKey(entry)}`;
+}
+
+function normalizeFavoriteMatchSnapshot(snapshot = {}) {
+  if (!snapshot || typeof snapshot !== "object") return null;
+  const homeTeam = String(snapshot.homeTeam || "").trim();
+  const awayTeam = String(snapshot.awayTeam || "").trim();
+  if (!homeTeam || !awayTeam) return null;
+  return {
+    date: String(snapshot.date || "").slice(0, 10),
+    league: String(snapshot.league || "").trim(),
+    homeTeam,
+    awayTeam,
+    startTime: String(snapshot.startTime || "").trim()
+  };
+}
+
+function normalizeSearchHistoryEntry(entry = {}) {
+  const key = String(entry.key || getSearchHistoryKey(entry)).trim();
+  const sourceMatchId = String(entry.sourceMatchId || "").trim();
+  return {
+    ...entry,
+    id: String(entry.id || `history-${getFavoriteRecordId({ ...entry, key, sourceMatchId })}`).trim(),
+    key,
+    sourceMatchId,
+    sourceMatch: normalizeFavoriteMatchSnapshot(entry.sourceMatch),
+    favorite: Boolean(entry.favorite),
+    favoriteName: String(entry.favoriteName || "").trim(),
+    favoriteId: String(entry.favoriteId || getFavoriteRecordId({ ...entry, key, sourceMatchId })).trim(),
+    favoriteUpdatedAt: String(entry.favoriteUpdatedAt || entry.searchedAt || entry.createdAt || "").trim(),
+    syncVersion: 1
+  };
+}
+
+function normalizeSearchHistoryEntries(history = []) {
+  const uniqueEntries = new Map();
+  for (const entry of Array.isArray(history) ? history : []) {
+    if (!entry || typeof entry !== "object") continue;
+    const normalized = normalizeSearchHistoryEntry(entry);
+    if (!normalized.key || (!normalized.homeOdds && !normalized.drawOdds && !normalized.awayOdds)) continue;
+    const uniqueKey = normalized.favoriteId || normalized.key;
+    const current = uniqueEntries.get(uniqueKey);
+    if (!current || String(normalized.searchedAt || normalized.createdAt || "") >= String(current.searchedAt || current.createdAt || "")) {
+      uniqueEntries.set(uniqueKey, normalized);
+    }
+  }
+  return [...uniqueEntries.values()].sort((a, b) => {
+    if (a.favorite !== b.favorite) return a.favorite ? -1 : 1;
+    return String(b.searchedAt || b.createdAt || "").localeCompare(String(a.searchedAt || a.createdAt || ""));
+  });
+}
+
+function getFavoriteSyncRecords(storage) {
+  return getStorageSearchHistory(storage)
+    .filter((entry) => entry.favorite || entry.favoriteUpdatedAt)
+    .map((entry) => ({
+      schemaVersion: 1,
+      favoriteId: entry.favoriteId,
+      itemType: entry.sourceMatchId ? "match" : "odds_search",
+      sourceMatchId: entry.sourceMatchId || "",
+      active: Boolean(entry.favorite),
+      name: getFavoriteName(entry),
+      criteria: {
+        homeOdds: entry.homeOdds,
+        drawOdds: entry.drawOdds,
+        awayOdds: entry.awayOdds,
+        tolerance: entry.tolerance,
+        customTolerance: entry.customTolerance || "",
+        league: entry.league || "ALL"
+      },
+      match: entry.sourceMatch || null,
+      updatedAt: entry.favoriteUpdatedAt || entry.searchedAt || entry.createdAt || ""
+    }));
 }
 
 function getSearchHistoryDisplayTitle(entry) {
@@ -1405,8 +1485,13 @@ function recordOddsSearchHistory(criteria, storage) {
     tolerance: criteria.tolerance || "0.00",
     customTolerance: String(criteria.customTolerance || "").trim(),
     league: String(criteria.league || "ALL").trim() || "ALL",
+    sourceMatchId: String(criteria.sourceMatchId || existing?.sourceMatchId || "").trim(),
+    sourceMatch: normalizeFavoriteMatchSnapshot(criteria.sourceMatch || existing?.sourceMatch),
     favorite: Boolean(existing?.favorite),
     favoriteName: String(existing?.favoriteName || "").trim(),
+    favoriteId: existing?.favoriteId || getFavoriteRecordId({ key, sourceMatchId: criteria.sourceMatchId }),
+    favoriteUpdatedAt: existing?.favoriteUpdatedAt || "",
+    syncVersion: 1,
     createdAt: existing?.createdAt || searchedAt,
     searchedAt
   };
@@ -1431,7 +1516,9 @@ function toggleSearchHistoryFavorite(entryId, storage, favoriteName = "") {
       return {
         ...entry,
         favorite: nextFavorite,
-        favoriteName: nextFavorite ? getFavoriteName({ ...entry, favoriteName }, favoriteName) : entry.favoriteName
+        favoriteName: nextFavorite ? getFavoriteName({ ...entry, favoriteName }, favoriteName) : entry.favoriteName,
+        favoriteUpdatedAt: new Date().toISOString(),
+        syncVersion: 1
       };
     })
     .sort((a, b) => {
@@ -1448,7 +1535,9 @@ function updateSearchHistoryFavoriteName(entryId, favoriteName, storage) {
     if (entry.id !== entryId) return entry;
     return {
       ...entry,
-      favoriteName: nextName || getFavoriteName(entry)
+      favoriteName: nextName || getFavoriteName(entry),
+      favoriteUpdatedAt: new Date().toISOString(),
+      syncVersion: 1
     };
   });
 
@@ -5400,6 +5489,7 @@ function setTodaySearchFromMatch(match) {
 
 function getDirectOddsSearchCriteriaFromMatch(match = {}) {
   const hasOdds = hasCompleteOdds(match);
+  const sourceMatchId = String(match.id || match.fixtureId || getMatchIdentity(match)).trim();
   return {
     homeOdds: hasOdds ? String(match.homeOdds || "").trim() : "",
     drawOdds: hasOdds ? String(match.drawOdds || "").trim() : "",
@@ -5408,7 +5498,9 @@ function getDirectOddsSearchCriteriaFromMatch(match = {}) {
     sortOrder: "CLOSEST",
     customTolerance: "",
     league: "ALL",
-    teamQuery: ""
+    teamQuery: "",
+    sourceMatchId,
+    sourceMatch: normalizeFavoriteMatchSnapshot(match)
   };
 }
 
@@ -6434,7 +6526,9 @@ function getOddsSearchCriteria() {
     sortOrder: document.getElementById("search-sort-order")?.value || "DATE_DESC",
     customTolerance: document.getElementById("search-custom-tolerance")?.value || "",
     league: document.getElementById("search-league")?.value || "ALL",
-    teamQuery: document.getElementById("search-team-query")?.value || ""
+    teamQuery: document.getElementById("search-team-query")?.value || "",
+    sourceMatchId: activeOddsSearchSource?.sourceMatchId || "",
+    sourceMatch: activeOddsSearchSource?.sourceMatch || null
   };
 }
 
@@ -6502,6 +6596,12 @@ function setTeamMatchSearchStatus(message) {
 }
 
 function setOddsSearchCriteria(condition) {
+  activeOddsSearchSource = condition?.sourceMatchId
+    ? {
+      sourceMatchId: String(condition.sourceMatchId).trim(),
+      sourceMatch: normalizeFavoriteMatchSnapshot(condition.sourceMatch)
+    }
+    : null;
   const fields = {
     "search-home-odds": condition.homeOdds,
     "search-draw-odds": condition.drawOdds,
@@ -6759,14 +6859,8 @@ function runFixtureSearch() {
 
 function searchWithMatchOdds(match) {
   setOddsSearchCriteria({
-    homeOdds: formatOdds(match.homeOdds),
-    drawOdds: formatOdds(match.drawOdds),
-    awayOdds: formatOdds(match.awayOdds),
-    tolerance: "0.05",
-    sortOrder: "CLOSEST",
-    customTolerance: "",
-    league: "ALL",
-    teamQuery: ""
+    ...getDirectOddsSearchCriteriaFromMatch(match),
+    tolerance: "0.05"
   });
 
   if (typeof window !== "undefined") {
@@ -7454,6 +7548,7 @@ if (typeof module !== "undefined") {
     getOddsRiskSignals,
     getRecentSeasonMatches,
     getFixtureLeagueOptions,
+    getFavoriteSyncRecords,
     leagueMatchesFixture,
     getMatchLeagueOptions,
     getMatchTeamOptions,
@@ -7481,6 +7576,7 @@ if (typeof module !== "undefined") {
     loadSavedSearches,
     loadStoredMatches,
     normalizeOdds,
+    normalizeSearchHistoryEntries,
     normalizeTeamSearchText,
     parseCsvLine,
     parseCsvPreview,

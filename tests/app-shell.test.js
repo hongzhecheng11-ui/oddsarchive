@@ -30,7 +30,15 @@ test("builds direct odds search criteria from a live match with odds", () => {
     sortOrder: "CLOSEST",
     customTolerance: "",
     league: "ALL",
-    teamQuery: ""
+    teamQuery: "",
+    sourceMatchId: "|all|mexico|ecuador",
+    sourceMatch: {
+      date: "",
+      league: "ALL",
+      homeTeam: "Mexico",
+      awayTeam: "Ecuador",
+      startTime: ""
+    }
   });
 });
 
@@ -724,7 +732,15 @@ test("builds direct odds search criteria from a live match without odds", () => 
     sortOrder: "CLOSEST",
     customTolerance: "",
     league: "ALL",
-    teamQuery: ""
+    teamQuery: "",
+    sourceMatchId: "|all|england|congo dr",
+    sourceMatch: {
+      date: "",
+      league: "ALL",
+      homeTeam: "England",
+      awayTeam: "Congo DR",
+      startTime: ""
+    }
   });
 });
 
