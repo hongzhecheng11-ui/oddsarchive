@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.oddsarchive.football",
+      "sha256_cert_fingerprints": [
+        "B5:99:77:C1:2C:B7:09:2E:E5:33:7F:56:33:C6:C4:EF:AC:56:C1:44:28:A6:BD:4F:36:BE:FF:48:6A:4C:E8:9A"
+      ]
+    }
+  }
+]
