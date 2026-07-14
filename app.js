@@ -2801,6 +2801,136 @@ function getTeamVenueProfile(teamName = "", matches = [], venue = "", limit = 8)
   return getTeamRecentProfile(teamName, venueMatches, limit);
 }
 
+function getStoredTeamContextPack() {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_TEAM_CONTEXT_PACK) {
+    return window.ODDS_ARCHIVE_TEAM_CONTEXT_PACK;
+  }
+  if (typeof globalThis !== "undefined" && globalThis.ODDS_ARCHIVE_TEAM_CONTEXT_PACK) {
+    return globalThis.ODDS_ARCHIVE_TEAM_CONTEXT_PACK;
+  }
+  return { date: "", updatedAt: "", leagues: [] };
+}
+
+function getStoredMatchStatisticsPack() {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_MATCH_STATISTICS_PACK) {
+    return window.ODDS_ARCHIVE_MATCH_STATISTICS_PACK;
+  }
+  if (typeof globalThis !== "undefined" && globalThis.ODDS_ARCHIVE_MATCH_STATISTICS_PACK) {
+    return globalThis.ODDS_ARCHIVE_MATCH_STATISTICS_PACK;
+  }
+  return { updatedAt: "", matches: [] };
+}
+
+function averageKnownStatistic(values = []) {
+  const known = values
+    .filter((value) => value !== null && value !== undefined && value !== "")
+    .map(Number)
+    .filter(Number.isFinite);
+  return known.length ? known.reduce((sum, value) => sum + value, 0) / known.length : null;
+}
+
+function getTeamPerformanceProfile(teamName = "", targetDate = "", limit = 5) {
+  const matches = (Array.isArray(getStoredMatchStatisticsPack().matches)
+    ? getStoredMatchStatisticsPack().matches
+    : [])
+    .filter((match) => (
+      (!targetDate || String(match.date || "") < String(targetDate).slice(0, 10))
+      && (teamNameMatches(match.homeTeam, teamName) || teamNameMatches(match.awayTeam, teamName))
+    ))
+    .sort((left, right) => String(right.date || "").localeCompare(String(left.date || "")))
+    .slice(0, Math.max(1, Number(limit) || 5))
+    .map((match) => teamNameMatches(match.homeTeam, teamName) ? match.home : match.away)
+    .filter(Boolean);
+  return {
+    matches: matches.length,
+    avgShots: averageKnownStatistic(matches.map((team) => team.shots)),
+    avgShotsOnGoal: averageKnownStatistic(matches.map((team) => team.shotsOnGoal)),
+    avgPossession: averageKnownStatistic(matches.map((team) => team.possession)),
+    avgCorners: averageKnownStatistic(matches.map((team) => team.corners)),
+    avgExpectedGoals: averageKnownStatistic(matches.map((team) => team.expectedGoals))
+  };
+}
+
+function createOfficialRecordProfile(record = {}) {
+  const matches = Number(record.played || 0);
+  const wins = Number(record.wins || 0);
+  const draws = Number(record.draws || 0);
+  const losses = Number(record.losses || 0);
+  const goalsFor = Number(record.goalsFor || 0);
+  const goalsAgainst = Number(record.goalsAgainst || 0);
+  return {
+    matches,
+    wins,
+    draws,
+    losses,
+    pointsPerMatch: matches > 0 ? ((wins * 3) + draws) / matches : 0,
+    avgGoalsFor: matches > 0 ? goalsFor / matches : 0,
+    avgGoalsAgainst: matches > 0 ? goalsAgainst / matches : 0
+  };
+}
+
+function getOfficialTeamContext(match = {}, teamName = "") {
+  const pack = getStoredTeamContextPack();
+  const matchDate = String(match.date || "").slice(0, 10);
+  if (!matchDate || matchDate !== String(pack.date || "").slice(0, 10)) return null;
+  const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
+    leagueMatchesFixture(match.league, league.key)
+  ));
+  for (const league of leagues) {
+    const standing = (league.standings || []).find((row) => teamNameMatches(row.team, teamName)) || null;
+    const team = (league.teams || []).find((row) => teamNameMatches(row.team, teamName)) || null;
+    if (!standing && !team) continue;
+    return {
+      standing,
+      seasonProfile: createOfficialRecordProfile(team?.all || standing?.all),
+      homeProfile: createOfficialRecordProfile(standing?.home || team?.home),
+      awayProfile: createOfficialRecordProfile(standing?.away || team?.away),
+      updatedAt: String(pack.updatedAt || "")
+    };
+  }
+  return null;
+}
+
+function getOfficialFixtureContext(match = {}) {
+  const pack = getStoredTeamContextPack();
+  const matchDate = String(match.date || "").slice(0, 10);
+  if (!matchDate || matchDate !== String(pack.date || "").slice(0, 10)) return null;
+  const fixtureId = String(match.fixtureId || match.id || "").trim();
+  const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
+    leagueMatchesFixture(match.league, league.key)
+  ));
+  for (const league of leagues) {
+    const fixtures = Array.isArray(league.fixtures) ? league.fixtures : [];
+    const fixture = fixtures.find((item) => fixtureId && String(item.fixtureId || "") === fixtureId)
+      || fixtures.find((item) => (
+        teamNameMatches(item.homeTeam, match.homeTeam)
+        && teamNameMatches(item.awayTeam, match.awayTeam)
+      ));
+    if (fixture) return { ...fixture, updatedAt: String(pack.updatedAt || "") };
+  }
+  return null;
+}
+
+function getFixtureTeamAvailability(fixture = null, teamName = "") {
+  if (!fixture) return null;
+  const isHome = teamNameMatches(fixture.homeTeam, teamName);
+  const isAway = teamNameMatches(fixture.awayTeam, teamName);
+  if (!isHome && !isAway) return null;
+  const teamId = Number(isHome ? fixture.homeTeamId : fixture.awayTeamId);
+  const injuries = (Array.isArray(fixture.injuries) ? fixture.injuries : []).filter((item) => (
+    Number(item.teamId || 0) === teamId
+  ));
+  const lineup = (Array.isArray(fixture.lineups) ? fixture.lineups : []).find((item) => (
+    Number(item.teamId || 0) === teamId || teamNameMatches(item.team, teamName)
+  )) || null;
+  return {
+    injuries,
+    injuriesChecked: Boolean(fixture.injuriesChecked),
+    lineup,
+    lineupsChecked: Boolean(fixture.lineupsChecked)
+  };
+}
+
 function getLeagueTable(match = {}, matches = []) {
   const league = String(match.league || "").trim();
   const targetDate = String(match.date || "").slice(0, 10);
@@ -2879,7 +3009,9 @@ function getMatchImportanceSignal(match = {}) {
 }
 
 function getMatchContextProfile(match = {}, sourceMatches = []) {
-  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${Array.isArray(sourceMatches) ? sourceMatches.length : 0}`;
+  const contextPack = getStoredTeamContextPack();
+  const statisticsPack = getStoredMatchStatisticsPack();
+  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${Array.isArray(sourceMatches) ? sourceMatches.length : 0}|${contextPack.updatedAt || ""}|${statisticsPack.updatedAt || ""}`;
   if (matchContextProfileCache.has(cacheKey)) return matchContextProfileCache.get(cacheKey);
 
   const favoriteOdds = Math.min(
@@ -2909,17 +3041,29 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
   const underdogProfile = underdogTeam ? getTeamRecentProfile(underdogTeam, underdogMatches) : null;
   const favoriteProfile = favoriteTeam ? getTeamRecentProfile(favoriteTeam, favoriteMatches) : null;
   const underdogVsStrong = underdogTeam ? getVsStrongTeamProfile(underdogTeam, underdogMatches) : null;
-  const homeVenueProfile = getTeamVenueProfile(match.homeTeam, homeTeamMatches, "home");
-  const awayVenueProfile = getTeamVenueProfile(match.awayTeam, awayTeamMatches, "away");
+  const localHomeVenueProfile = getTeamVenueProfile(match.homeTeam, homeTeamMatches, "home");
+  const localAwayVenueProfile = getTeamVenueProfile(match.awayTeam, awayTeamMatches, "away");
+  const leagueTable = getLeagueTable(match, leagueMatches);
+  const localFavoriteStanding = favoriteTeam ? getTeamLeagueStanding(favoriteTeam, leagueTable) : null;
+  const localUnderdogStanding = underdogTeam ? getTeamLeagueStanding(underdogTeam, leagueTable) : null;
+  const officialHomeContext = getOfficialTeamContext(match, match.homeTeam);
+  const officialAwayContext = getOfficialTeamContext(match, match.awayTeam);
+  const homeVenueProfile = officialHomeContext?.homeProfile?.matches >= 3 ? officialHomeContext.homeProfile : localHomeVenueProfile;
+  const awayVenueProfile = officialAwayContext?.awayProfile?.matches >= 3 ? officialAwayContext.awayProfile : localAwayVenueProfile;
   const favoriteVenueProfile = favoriteKey === "H" ? homeVenueProfile : favoriteKey === "A" ? awayVenueProfile : null;
   const underdogVenueProfile = favoriteKey === "H" ? awayVenueProfile : favoriteKey === "A" ? homeVenueProfile : null;
-  const leagueTable = getLeagueTable(match, leagueMatches);
-  const favoriteStanding = favoriteTeam ? getTeamLeagueStanding(favoriteTeam, leagueTable) : null;
-  const underdogStanding = underdogTeam ? getTeamLeagueStanding(underdogTeam, leagueTable) : null;
+  const favoriteOfficialContext = favoriteKey === "H" ? officialHomeContext : favoriteKey === "A" ? officialAwayContext : null;
+  const underdogOfficialContext = favoriteKey === "H" ? officialAwayContext : favoriteKey === "A" ? officialHomeContext : null;
+  const favoriteStanding = favoriteOfficialContext?.standing || localFavoriteStanding;
+  const underdogStanding = underdogOfficialContext?.standing || localUnderdogStanding;
   const homeScheduleProfile = getTeamScheduleProfile(match.homeTeam, homeTeamMatches, targetDate);
   const awayScheduleProfile = getTeamScheduleProfile(match.awayTeam, awayTeamMatches, targetDate);
   const favoriteScheduleProfile = favoriteKey === "H" ? homeScheduleProfile : favoriteKey === "A" ? awayScheduleProfile : null;
   const underdogScheduleProfile = favoriteKey === "H" ? awayScheduleProfile : favoriteKey === "A" ? homeScheduleProfile : null;
+  const homePerformanceProfile = getTeamPerformanceProfile(match.homeTeam, targetDate, 5);
+  const awayPerformanceProfile = getTeamPerformanceProfile(match.awayTeam, targetDate, 5);
+  const favoritePerformanceProfile = favoriteKey === "H" ? homePerformanceProfile : favoriteKey === "A" ? awayPerformanceProfile : null;
+  const underdogPerformanceProfile = favoriteKey === "H" ? awayPerformanceProfile : favoriteKey === "A" ? homePerformanceProfile : null;
   const signals = [];
   let adjustment = 0;
   const importance = getMatchImportanceSignal(match);
@@ -2995,6 +3139,29 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     }
   }
 
+  if (favoritePerformanceProfile?.matches >= 3 && underdogPerformanceProfile?.matches >= 3) {
+    if (
+      underdogPerformanceProfile.avgShotsOnGoal !== null
+      && favoritePerformanceProfile.avgShotsOnGoal !== null
+      && underdogPerformanceProfile.avgShotsOnGoal >= favoritePerformanceProfile.avgShotsOnGoal + 1.2
+    ) {
+      adjustment += 3;
+      signals.push("최근 경기력 역전");
+    }
+    if (
+      underdogPerformanceProfile.avgExpectedGoals !== null
+      && favoritePerformanceProfile.avgExpectedGoals !== null
+      && underdogPerformanceProfile.avgExpectedGoals >= favoritePerformanceProfile.avgExpectedGoals + 0.3
+    ) {
+      adjustment += 3;
+      signals.push("기대득점 우세");
+    }
+    if (favoritePerformanceProfile.avgShotsOnGoal !== null && favoritePerformanceProfile.avgShotsOnGoal < 3) {
+      adjustment += 2;
+      signals.push("정배 공격력 저하");
+    }
+  }
+
   const hasFullRecentSample = favoriteProfile?.matches >= 5 && underdogProfile?.matches >= 5;
   const hasVenueSample = favoriteVenueProfile?.matches >= 3 && underdogVenueProfile?.matches >= 3;
   const hasStandingSample = favoriteStanding?.played >= 5 && underdogStanding?.played >= 5;
@@ -3016,8 +3183,15 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     underdogVsStrong,
     homeVenueProfile,
     awayVenueProfile,
+    homeSeasonProfile: officialHomeContext?.seasonProfile || null,
+    awaySeasonProfile: officialAwayContext?.seasonProfile || null,
+    officialContextUpdatedAt: officialHomeContext?.updatedAt || officialAwayContext?.updatedAt || "",
     homeScheduleProfile,
     awayScheduleProfile,
+    homePerformanceProfile,
+    awayPerformanceProfile,
+    favoritePerformanceProfile,
+    underdogPerformanceProfile,
     favoriteScheduleProfile,
     underdogScheduleProfile,
     favoriteStanding,
@@ -4503,7 +4677,7 @@ function getMatchOddsMovement(target = {}, matches = []) {
     const capturedAt = String(entry?.capturedAt || "").trim();
     const odds = [entry?.homeOdds, entry?.drawOdds, entry?.awayOdds].map(parseSearchNumber);
     if (!capturedAt || odds.some((value) => value === null || value < 1)) return;
-    const key = odds.map((value) => value.toFixed(2)).join("|");
+    const key = `${capturedAt}|${odds.map((value) => value.toFixed(2)).join("|")}`;
     if (!unique.has(key)) {
       unique.set(key, {
         capturedAt,
@@ -4529,6 +4703,36 @@ function getMatchOddsMovement(target = {}, matches = []) {
     movements,
     hasMovement: history.length >= 2,
     isAlertCandidate: movements.some((item) => Math.abs(item.difference) >= 0.1)
+  };
+}
+
+function buildOddsMovementChartData(history = []) {
+  const snapshots = (Array.isArray(history) ? history : []).map((entry) => ({
+    capturedAt: String(entry?.capturedAt || "").trim(),
+    homeOdds: parseSearchNumber(entry?.homeOdds),
+    drawOdds: parseSearchNumber(entry?.drawOdds),
+    awayOdds: parseSearchNumber(entry?.awayOdds)
+  })).filter((entry) => entry.capturedAt && [entry.homeOdds, entry.drawOdds, entry.awayOdds].every((value) => value !== null && value >= 1));
+
+  if (snapshots.length < 2) return null;
+
+  const series = [
+    { key: "H", label: "홈승", color: "#2563eb", values: snapshots.map((entry) => entry.homeOdds) },
+    { key: "D", label: "무승부", color: "#64748b", values: snapshots.map((entry) => entry.drawOdds) },
+    { key: "A", label: "원정승", color: "#dc2626", values: snapshots.map((entry) => entry.awayOdds) }
+  ];
+  const allValues = series.flatMap((item) => item.values);
+  const rawMin = Math.min(...allValues);
+  const rawMax = Math.max(...allValues);
+  const padding = Math.max(0.08, (rawMax - rawMin) * 0.08);
+
+  return {
+    snapshots,
+    series,
+    minValue: Math.max(1, rawMin - padding),
+    maxValue: rawMax + padding,
+    firstCapturedAt: snapshots[0].capturedAt,
+    latestCapturedAt: snapshots[snapshots.length - 1].capturedAt
   };
 }
 
@@ -4940,7 +5144,7 @@ function formatDetailGoalAverage(profile = {}) {
   return `득 ${Number(profile.avgGoalsFor || 0).toFixed(1)} · 실 ${Number(profile.avgGoalsAgainst || 0).toFixed(1)}`;
 }
 
-function createDetailTeamOverview(label, teamName, profile = {}, venueProfile = {}, standing = null) {
+function createDetailTeamOverview(label, teamName, profile = {}, venueProfile = {}, standing = null, seasonProfile = null, performance = null, availability = null) {
   const card = document.createElement("article");
   card.className = "match-detail-team-card";
 
@@ -4949,12 +5153,38 @@ function createDetailTeamOverview(label, teamName, profile = {}, venueProfile = 
   const name = document.createElement("strong");
   name.textContent = formatTeamName(teamName);
   const metrics = document.createElement("dl");
-  [
+  const metricRows = [
     ["순위", standing?.rank ? `${standing.rank}위` : "-"],
     ["최근 5경기", formatDetailRecord(profile)],
     [label === "홈팀" ? "홈 성적" : "원정 성적", formatDetailRecord(venueProfile)],
-    ["평균 득실", formatDetailGoalAverage(profile)]
-  ].forEach(([term, value]) => {
+    ["평균 득실", formatDetailGoalAverage(seasonProfile?.matches ? seasonProfile : profile)]
+  ];
+  if (availability) {
+    metricRows.push([
+      "부상·결장",
+      availability.injuriesChecked ? `${availability.injuries.length}명` : "확인 전"
+    ]);
+    metricRows.push([
+      "선발",
+      availability.lineup
+        ? `${availability.lineup.formation || "포메이션 미정"} · 공개`
+        : availability.lineupsChecked ? "미공개" : "확인 전"
+    ]);
+  }
+  if (performance?.matches > 0) {
+    metricRows.push([
+      "최근 유효슈팅",
+      performance.avgShotsOnGoal === null ? "-" : `${performance.avgShotsOnGoal.toFixed(1)}개`
+    ]);
+    metricRows.push([
+      "최근 점유율",
+      performance.avgPossession === null ? "-" : `${performance.avgPossession.toFixed(1)}%`
+    ]);
+    if (performance.avgExpectedGoals !== null) {
+      metricRows.push(["최근 기대득점", performance.avgExpectedGoals.toFixed(2)]);
+    }
+  }
+  metricRows.forEach(([term, value]) => {
     const item = document.createElement("div");
     const dt = document.createElement("dt");
     const dd = document.createElement("dd");
@@ -4965,6 +5195,130 @@ function createDetailTeamOverview(label, teamName, profile = {}, venueProfile = 
   });
   card.append(eyebrow, name, metrics);
   return card;
+}
+
+function createDetailAvailabilitySection(fixture = null) {
+  if (!fixture) return null;
+  const section = document.createElement("section");
+  section.className = "match-detail-section match-detail-availability";
+  const title = document.createElement("strong");
+  title.textContent = "선발·결장 정보";
+  const grid = document.createElement("div");
+
+  [
+    { teamId: fixture.homeTeamId, team: fixture.homeTeam },
+    { teamId: fixture.awayTeamId, team: fixture.awayTeam }
+  ].forEach(({ teamId, team }) => {
+    const availability = getFixtureTeamAvailability(fixture, team);
+    const card = document.createElement("article");
+    const name = document.createElement("strong");
+    name.textContent = formatTeamName(team);
+    const injury = document.createElement("p");
+    const injuryNames = (availability?.injuries || []).slice(0, 6).map((item) => (
+      item.reason ? `${item.player} (${item.reason})` : item.player
+    ));
+    injury.textContent = availability?.injuriesChecked
+      ? `부상·결장 ${injuryNames.length ? injuryNames.join(", ") : "등록 정보 없음"}`
+      : "부상·결장 확인 전";
+    const lineup = document.createElement("p");
+    const lineupData = availability?.lineup;
+    lineup.textContent = lineupData
+      ? `선발${lineupData.formation ? ` ${lineupData.formation}` : ""} · ${(lineupData.starters || []).join(", ")}`
+      : availability?.lineupsChecked ? "선발 명단 미공개" : "선발 명단 확인 전";
+    card.dataset.teamId = String(teamId || "");
+    card.append(name, injury, lineup);
+    grid.appendChild(card);
+  });
+
+  section.append(title, grid);
+  return section;
+}
+
+function formatOddsMovementTimestamp(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "시간 미확인";
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(date).replace(/\. /g, ".").replace(/\.$/, "");
+}
+
+function createOddsMovementChart(movement = {}) {
+  const chartData = buildOddsMovementChartData(movement.history || []);
+  if (!chartData) return null;
+
+  const figure = document.createElement("figure");
+  figure.className = "match-detail-odds-chart";
+  figure.setAttribute("aria-label", "홈승 무승부 원정승 배당 변화 그래프");
+
+  const legend = document.createElement("div");
+  legend.className = "match-detail-odds-chart-legend";
+  chartData.series.forEach((item) => {
+    const entry = document.createElement("span");
+    entry.style.setProperty("--series-color", item.color);
+    entry.textContent = `${item.label} ${item.values[item.values.length - 1].toFixed(2)}`;
+    legend.appendChild(entry);
+  });
+
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNamespace, "svg");
+  svg.setAttribute("viewBox", "0 0 360 150");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "시간에 따른 배당 흐름");
+
+  const left = 38;
+  const right = 346;
+  const top = 14;
+  const bottom = 122;
+  const valueRange = Math.max(0.01, chartData.maxValue - chartData.minValue);
+  const xForIndex = (index) => left + ((right - left) * index / Math.max(1, chartData.snapshots.length - 1));
+  const yForValue = (value) => top + ((chartData.maxValue - value) / valueRange) * (bottom - top);
+
+  [chartData.maxValue, (chartData.maxValue + chartData.minValue) / 2, chartData.minValue].forEach((value) => {
+    const y = yForValue(value);
+    const line = document.createElementNS(svgNamespace, "line");
+    line.setAttribute("x1", String(left));
+    line.setAttribute("x2", String(right));
+    line.setAttribute("y1", y.toFixed(1));
+    line.setAttribute("y2", y.toFixed(1));
+    line.setAttribute("class", "odds-chart-grid-line");
+    const label = document.createElementNS(svgNamespace, "text");
+    label.setAttribute("x", "2");
+    label.setAttribute("y", String(y + 3));
+    label.setAttribute("class", "odds-chart-axis-label");
+    label.textContent = value.toFixed(2);
+    svg.append(line, label);
+  });
+
+  chartData.series.forEach((item) => {
+    const points = item.values.map((value, index) => `${xForIndex(index).toFixed(1)},${yForValue(value).toFixed(1)}`).join(" ");
+    const polyline = document.createElementNS(svgNamespace, "polyline");
+    polyline.setAttribute("points", points);
+    polyline.setAttribute("fill", "none");
+    polyline.setAttribute("stroke", item.color);
+    polyline.setAttribute("class", "odds-chart-series");
+    svg.appendChild(polyline);
+    item.values.forEach((value, index) => {
+      const point = document.createElementNS(svgNamespace, "circle");
+      point.setAttribute("cx", xForIndex(index).toFixed(1));
+      point.setAttribute("cy", yForValue(value).toFixed(1));
+      point.setAttribute("r", index === item.values.length - 1 ? "4" : "2.5");
+      point.setAttribute("fill", item.color);
+      const title = document.createElementNS(svgNamespace, "title");
+      title.textContent = `${item.label} ${value.toFixed(2)} · ${formatOddsMovementTimestamp(chartData.snapshots[index].capturedAt)}`;
+      point.appendChild(title);
+      svg.appendChild(point);
+    });
+  });
+
+  const times = document.createElement("figcaption");
+  times.innerHTML = `<span>최초 ${formatOddsMovementTimestamp(chartData.firstCapturedAt)}</span><strong>아래로 갈수록 배당 하락</strong><span>최신 ${formatOddsMovementTimestamp(chartData.latestCapturedAt)}</span>`;
+  figure.append(legend, svg, times);
+  return figure;
 }
 
 function createDetailOddsMovementSection(movement = {}) {
@@ -5003,7 +5357,10 @@ function createDetailOddsMovementSection(movement = {}) {
     card.append(label, odds, change);
     grid.appendChild(card);
   });
-  section.append(heading, grid);
+  const chart = createOddsMovementChart(movement);
+  section.appendChild(heading);
+  if (chart) section.appendChild(chart);
+  section.appendChild(grid);
   return section;
 }
 
@@ -5018,18 +5375,24 @@ function createDetailOverviewPanel(match = {}, analysis = {}) {
   const awayProfile = getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5);
   const homeStanding = context.favoriteKey === "H" ? context.favoriteStanding : context.favoriteKey === "A" ? context.underdogStanding : null;
   const awayStanding = context.favoriteKey === "A" ? context.favoriteStanding : context.favoriteKey === "H" ? context.underdogStanding : null;
+  const fixtureContext = getOfficialFixtureContext(match);
+  const homeAvailability = getFixtureTeamAvailability(fixtureContext, match.homeTeam);
+  const awayAvailability = getFixtureTeamAvailability(fixtureContext, match.awayTeam);
 
   const teams = document.createElement("section");
   teams.className = "match-detail-team-grid";
   teams.append(
-    createDetailTeamOverview("홈팀", match.homeTeam, homeProfile, context.homeVenueProfile, homeStanding),
-    createDetailTeamOverview("원정팀", match.awayTeam, awayProfile, context.awayVenueProfile, awayStanding)
+    createDetailTeamOverview("홈팀", match.homeTeam, homeProfile, context.homeVenueProfile, homeStanding, context.homeSeasonProfile, context.homePerformanceProfile, homeAvailability),
+    createDetailTeamOverview("원정팀", match.awayTeam, awayProfile, context.awayVenueProfile, awayStanding, context.awaySeasonProfile, context.awayPerformanceProfile, awayAvailability)
   );
 
   const recent = createRecentRecordSection(analysis.recentRecords || {});
   recent.classList.add("match-detail-recent-section");
   const oddsMovement = createDetailOddsMovementSection(analysis.oddsMovement || {});
-  panel.append(teams, oddsMovement, recent);
+  const availability = createDetailAvailabilitySection(fixtureContext);
+  panel.append(teams);
+  if (availability) panel.append(availability);
+  panel.append(oddsMovement, recent);
   return panel;
 }
 
@@ -9050,6 +9413,12 @@ if (typeof module !== "undefined") {
     filterFixturesByText,
     getMatchStatusLabel,
     getMatchContextProfile,
+    getOfficialFixtureContext,
+    getOfficialTeamContext,
+    getFixtureTeamAvailability,
+    getStoredMatchStatisticsPack,
+    getTeamPerformanceProfile,
+    createOfficialRecordProfile,
     getTeamScheduleProfile,
     getTodayUserInsight,
     assessTodayUpsetCandidate,
@@ -9063,6 +9432,7 @@ if (typeof module !== "undefined") {
     formatDetailGoalAverage,
     getOddsHistoryMatches,
     getMatchOddsMovement,
+    buildOddsMovementChartData,
     getMissingTeamNames,
     getMajorTodayMatches,
     sortHomeTodayMatches,

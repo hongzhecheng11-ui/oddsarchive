@@ -215,7 +215,7 @@ function isRetryableApiStatus(status) {
   return status === 429 || status >= 500;
 }
 
-async function fetchApiFootball(pathname, apiKey, { fetcher = fetch, attempts = API_RETRY_ATTEMPTS } = {}) {
+async function fetchApiFootball(pathname, apiKey, { fetcher = fetch, attempts = API_RETRY_ATTEMPTS, responseType = "array" } = {}) {
   let lastError = null;
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
@@ -230,6 +230,11 @@ async function fetchApiFootball(pathname, apiKey, { fetcher = fetch, attempts = 
       const errors = payload.errors && typeof payload.errors === "object" ? Object.values(payload.errors).filter(Boolean) : [];
 
       if (response.ok && errors.length === 0) {
+        if (responseType === "object") {
+          return payload.response && typeof payload.response === "object" && !Array.isArray(payload.response)
+            ? payload.response
+            : {};
+        }
         return Array.isArray(payload.response) ? payload.response : [];
       }
 
@@ -650,6 +655,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  getLeagueIds,
   getDateRange,
   getSeason,
   getApiKey,

@@ -1,11 +1,13 @@
-const CACHE_NAME = "oddsarchive-v82-brand-clarity";
+const CACHE_NAME = "oddsarchive-v95-match-performance";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css",
   "/app.js",
-  "/assets/app-icon.svg",
+  "/assets/app-icon.svg?v=91",
   "/data/api-odds-pack.js",
+  "/data/team-context-pack.js",
+  "/data/match-statistics-pack.js",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
   "/src/lib/translations/leagues.js",

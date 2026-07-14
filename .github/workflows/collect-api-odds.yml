@@ -3,6 +3,9 @@ name: Collect API odds
 on:
   schedule:
     - cron: "10 3 */3 * *"
+    # 17:10 KST: Asian evening fixtures, 03:10 KST: European evening fixtures.
+    - cron: "10 8 * * *"
+    - cron: "10 18 * * *"
   workflow_dispatch:
 
 permissions:
@@ -30,22 +33,36 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=0 --leagues=KLEAGUE1
-          else
+          elif [ "${{ github.event.schedule }}" = "10 3 */3 * *" ]; then
             npm run collect:api-odds:auto
+          else
+            npm run collect:api-odds:closing
           fi
 
       - name: Update upset candidate audit
         run: npm run audit:upset-candidates
 
+      - name: Collect standings and team context
+        if: github.event_name == 'schedule' && (github.event.schedule == '10 8 * * *' || github.event.schedule == '10 18 * * *')
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: npm run collect:team-context
+
+      - name: Collect completed match statistics
+        if: github.event_name == 'schedule' && github.event.schedule == '10 8 * * *'
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: npm run collect:match-statistics
+
       - name: Commit updated odds pack
         if: always()
         run: |
-          if git diff --quiet -- data/api-odds-pack.js data/upset-candidate-audit.json; then
+          if git diff --quiet -- data/api-odds-pack.js data/team-context-pack.js data/match-statistics-pack.js data/upset-candidate-audit.json; then
             echo "No odds changes to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/api-odds-pack.js data/upset-candidate-audit.json
+          git add data/api-odds-pack.js data/team-context-pack.js data/match-statistics-pack.js data/upset-candidate-audit.json
           git commit -m "Update API odds pack"
           git push

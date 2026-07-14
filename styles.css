@@ -2973,6 +2973,43 @@ body.match-detail-open {
   text-align: right;
 }
 
+.match-detail-availability {
+  display: grid;
+  gap: 8px;
+}
+
+.match-detail-availability > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.match-detail-availability article {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+  padding: 9px 10px 2px;
+}
+
+.match-detail-availability article + article {
+  border-left: 1px solid var(--line);
+}
+
+.match-detail-availability article > strong {
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.match-detail-availability p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
 .match-detail-ai-card {
   gap: 12px;
   padding: 14px;
@@ -3094,6 +3131,82 @@ body.match-detail-open {
   margin: 0;
   color: var(--muted);
   font-size: 11px;
+}
+
+.match-detail-odds-chart {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid #dbe5ec;
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.match-detail-odds-chart-legend {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.match-detail-odds-chart-legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.match-detail-odds-chart-legend span::before {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--series-color);
+  content: "";
+}
+
+.match-detail-odds-chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+}
+
+.odds-chart-grid-line {
+  stroke: #dfe7ee;
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.odds-chart-axis-label {
+  fill: #64748b;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.odds-chart-series {
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.match-detail-odds-chart figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.match-detail-odds-chart figcaption strong {
+  color: var(--accent-strong);
+  font-size: 8px;
+  text-align: center;
 }
 
 .match-detail-odds-movement-grid {
@@ -4755,8 +4868,8 @@ select {
   }
 
   .app-icon {
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
     border-radius: 7px;
     box-shadow: none;
   }

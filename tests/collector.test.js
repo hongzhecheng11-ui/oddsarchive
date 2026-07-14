@@ -1,4 +1,6 @@
 const assert = require("assert");
+const fs = require("fs");
+const path = require("path");
 const collector = require("../scripts/collect-api-odds.js");
 
 function test(name, fn) {
@@ -169,6 +171,20 @@ test("does not add duplicate odds history snapshots when odds are unchanged", ()
   assert.strictEqual(result.matches.length, 1);
   assert.strictEqual(result.matches[0].oddsHistory.length, 1);
   assert.strictEqual(result.duplicateCount, 1);
+});
+
+test("keeps broad collection separate from lightweight closing-odds refreshes", () => {
+  const packageJson = require("../package.json");
+  const workflow = fs.readFileSync(path.join(__dirname, "..", ".github", "workflows", "collect-api-odds.yml"), "utf8");
+  const closingCommand = packageJson.scripts["collect:api-odds:closing"];
+
+  assert.match(closingCommand, /--future-days=0/);
+  assert.match(closingCommand, /--result-days=1/);
+  assert.match(workflow, /10 3 \*\/3 \* \*/);
+  assert.match(workflow, /10 8 \* \* \*/);
+  assert.match(workflow, /10 18 \* \* \*/);
+  assert.match(workflow, /npm run collect:api-odds:closing/);
+  assert.match(workflow, /concurrency:[\s\S]*cancel-in-progress: false/);
 });
 
 test("uses calendar year for Asian and international leagues", () => {

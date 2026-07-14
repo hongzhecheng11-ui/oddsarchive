@@ -269,6 +269,37 @@ test("summarizes stored odds movement without extra API calls", () => {
   assert.strictEqual(movement.isAlertCandidate, true);
 });
 
+test("builds readable odds movement chart data from stored snapshots", () => {
+  const chart = app.buildOddsMovementChartData([
+    { capturedAt: "2026-07-13T00:00:00.000Z", homeOdds: "1.95", drawOdds: "3.40", awayOdds: "4.10" },
+    { capturedAt: "2026-07-14T00:00:00.000Z", homeOdds: "1.82", drawOdds: "3.50", awayOdds: "4.30" }
+  ]);
+
+  assert(chart);
+  assert.strictEqual(chart.snapshots.length, 2);
+  assert.strictEqual(chart.series.length, 3);
+  assert.deepStrictEqual(chart.series[0].values, [1.95, 1.82]);
+  assert(chart.maxValue > 4.3);
+  assert(chart.minValue < 1.82);
+});
+
+test("keeps a later return to the same odds in movement history", () => {
+  const movement = app.getMatchOddsMovement({
+    fixtureId: "return-odds",
+    homeOdds: "1.95",
+    drawOdds: "3.40",
+    awayOdds: "4.10",
+    oddsUpdatedAt: "2026-07-14T00:00:00.000Z",
+    oddsHistory: [
+      { capturedAt: "2026-07-12T00:00:00.000Z", homeOdds: "1.95", drawOdds: "3.40", awayOdds: "4.10" },
+      { capturedAt: "2026-07-13T00:00:00.000Z", homeOdds: "1.82", drawOdds: "3.55", awayOdds: "4.30" }
+    ]
+  }, []);
+
+  assert.strictEqual(movement.history.length, 3);
+  assert.strictEqual(movement.history[2].homeOdds, 1.95);
+});
+
 test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("UEFA Champions League"), "챔피언스리그");
   assert.strictEqual(app.formatLeagueName("KLEAGUE1"), "K리그1");

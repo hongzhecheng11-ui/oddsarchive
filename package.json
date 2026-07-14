@@ -4,12 +4,15 @@
     "collect:api-odds:30d": "node scripts/collect-api-odds.js --days=30",
     "collect:api-odds:major": "node scripts/collect-api-odds.js --days=30 --leagues=EPL,CHAMPIONSHIP,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,EREDIVISIE,PRIMEIRA_LIGA,SCOTTISH_PREMIERSHIP,BELGIAN_PRO_LEAGUE,SUPER_LIG,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,KLEAGUE2,J1LEAGUE,J2LEAGUE,ACL,INTL_FRIENDLIES",
     "collect:api-odds:auto": "node scripts/collect-api-odds.js --past-days=0 --future-days=3 --result-days=3 --leagues=EPL,CHAMPIONSHIP,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,EREDIVISIE,PRIMEIRA_LIGA,SCOTTISH_PREMIERSHIP,BELGIAN_PRO_LEAGUE,SUPER_LIG,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,KLEAGUE2,J1LEAGUE,J2LEAGUE,ACL,INTL_FRIENDLIES",
+    "collect:api-odds:closing": "node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=1 --leagues=EPL,CHAMPIONSHIP,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,EREDIVISIE,PRIMEIRA_LIGA,SCOTTISH_PREMIERSHIP,BELGIAN_PRO_LEAGUE,SUPER_LIG,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,KLEAGUE2,J1LEAGUE,J2LEAGUE,ACL,INTL_FRIENDLIES",
+    "collect:team-context": "node scripts/collect-team-context.js",
+    "collect:match-statistics": "node scripts/collect-match-statistics.js",
     "collect:the-odds:kleague1:2025": "node scripts/collect-the-odds-history.js --league=KLEAGUE1 --season=2025",
     "audit:teams": "node scripts/audit-team-translations.js",
     "audit:football-data": "node scripts/audit-football-data-pack.js",
     "audit:ai": "node scripts/backtest-ai-analysis.js",
     "audit:upset-candidates": "node scripts/track-upset-candidates.js",
     "update:football-data": "node scripts/update-football-data-pack.js",
-    "test": "node tests/app-shell.test.js && node tests/favorites.test.js && node tests/favorite-sync.test.js && node tests/auth.test.js && node tests/auth-config.test.js && node tests/api-admin.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js && node tests/ai-backtest.test.js && node tests/upset-candidate-tracking.test.js && node tests/telemetry.test.js && node tests/client-log.test.js"
+    "test": "node tests/app-shell.test.js && node tests/favorites.test.js && node tests/favorite-sync.test.js && node tests/auth.test.js && node tests/auth-config.test.js && node tests/api-admin.test.js && node tests/collector.test.js && node tests/team-context.test.js && node tests/match-statistics.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js && node tests/ai-backtest.test.js && node tests/upset-candidate-tracking.test.js && node tests/telemetry.test.js && node tests/client-log.test.js"
   }
 }
