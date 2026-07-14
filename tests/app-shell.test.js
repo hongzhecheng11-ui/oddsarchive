@@ -12,6 +12,54 @@ function test(name, fn) {
   }
 }
 
+test("builds a seven-day Seoul date strip centered on today", () => {
+  const dates = app.getFixtureDateOptions("2026-07-13");
+
+  assert.strictEqual(dates.length, 7);
+  assert.strictEqual(dates[0].date, "2026-07-10");
+  assert.strictEqual(dates[3].date, "2026-07-13");
+  assert.strictEqual(dates[3].isToday, true);
+  assert.strictEqual(dates[6].date, "2026-07-16");
+  assert.strictEqual(dates.filter((item) => item.isToday).length, 1);
+});
+
+test("groups API fixtures by their actual Seoul date", () => {
+  const matches = [
+    { fixtureId: "1", date: "2026-07-14", league: "UCL", homeTeam: "A", awayTeam: "B" },
+    { fixtureId: "2", date: "2026-07-15", league: "UCL", homeTeam: "C", awayTeam: "D" },
+    { fixtureId: "2", date: "2026-07-15", league: "UCL", homeTeam: "C", awayTeam: "D" }
+  ];
+
+  assert.deepStrictEqual(app.getFixturesForDate(matches, "2026-07-14").map((match) => match.fixtureId), ["1"]);
+  assert.deepStrictEqual(app.getFixturesForDate(matches, "2026-07-15").map((match) => match.fixtureId), ["2"]);
+});
+
+test("filters date fixtures by user-facing league category", () => {
+  const matches = [
+    { league: "Premier League", homeTeam: "Arsenal", awayTeam: "Chelsea" },
+    { league: "UEFA Champions League", homeTeam: "Drita", awayTeam: "Kauno Zalgiris" },
+    { league: "K League 1", homeTeam: "Ulsan HD", awayTeam: "FC Seoul" },
+    { league: "International Friendlies", homeTeam: "Korea Republic", awayTeam: "Japan" }
+  ];
+
+  assert.strictEqual(app.filterFixturesByCategory(matches, "ALL").length, 4);
+  assert.strictEqual(app.filterFixturesByCategory(matches, "POPULAR").length, 3);
+  assert.strictEqual(app.filterFixturesByCategory(matches, "EUROPE").length, 2);
+  assert.strictEqual(app.filterFixturesByCategory(matches, "ASIA").length, 1);
+  assert.strictEqual(app.filterFixturesByCategory(matches, "INTERNATIONAL").length, 1);
+});
+
+test("searches visible fixtures by translated team and league name", () => {
+  const matches = [
+    { league: "Premier League", homeTeam: "Manchester United", awayTeam: "Chelsea" },
+    { league: "K League 1", homeTeam: "Ulsan HD", awayTeam: "FC Seoul" }
+  ];
+
+  assert.strictEqual(app.filterFixturesByText(matches, "맨체스터 유나이티드").length, 1);
+  assert.strictEqual(app.filterFixturesByText(matches, "K리그1").length, 1);
+  assert.strictEqual(app.filterFixturesByText(matches, "없는 팀").length, 0);
+});
+
 test("builds direct odds search criteria from a live match with odds", () => {
   const criteria = app.getDirectOddsSearchCriteriaFromMatch({
     league: "ALL",
@@ -100,6 +148,125 @@ test("builds match detail analysis buckets for same and similar odds", () => {
   assert.strictEqual(analysis.recentRecords.headToHead.length, 1);
   assert.strictEqual(analysis.recentRecords.homeTeam.length, 1);
   assert.strictEqual(analysis.recentRecords.awayTeam.length, 2);
+});
+
+test("formats compact fixture odds only when all 1X2 odds exist", () => {
+  assert.strictEqual(app.getCompactFixtureOdds({
+    homeOdds: "2.10",
+    drawOdds: "3.20",
+    awayOdds: "3.60"
+  }), "홈 2.10 · 무 3.20 · 원정 3.60");
+  assert.strictEqual(app.getCompactFixtureOdds({ homeOdds: "2.10" }), "");
+});
+
+test("sorts today's major fixtures first without changing other dates", () => {
+  const minor = { date: "2026-07-13", league: "OTHER", homeTeam: "A", awayTeam: "B", startTime: "10:00" };
+  const major = { date: "2026-07-13", league: "EPL", homeTeam: "C", awayTeam: "D", startTime: "20:00", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" };
+  const todaySorted = app.sortDateFixtureMatches([minor, major], "2026-07-13");
+  assert.strictEqual(todaySorted[0], major);
+
+  const futureMinor = { ...minor, date: "2026-07-14", startTime: "09:00" };
+  const futureMajor = { ...major, date: "2026-07-14", startTime: "20:00" };
+  const futureSorted = app.sortDateFixtureMatches([futureMajor, futureMinor], "2026-07-14");
+  assert.strictEqual(futureSorted[0], futureMajor);
+});
+
+test("reuses prepared match detail analysis across instant tab switches", () => {
+  const target = {
+    date: "2026-07-13",
+    league: "EPL",
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    homeOdds: "1.80",
+    drawOdds: "3.40",
+    awayOdds: "4.20"
+  };
+  const matches = [
+    { date: "2026-01-01", league: "EPL", homeTeam: "Liverpool", awayTeam: "Everton", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", result: "H", score: "2-0" }
+  ];
+
+  const first = app.getMatchDetailAnalysisCached(target, matches);
+  const second = app.getMatchDetailAnalysisCached(target, matches);
+
+  assert.strictEqual(first, second);
+  assert.strictEqual(app.formatDetailRecord({ matches: 5, wins: 3, draws: 1, losses: 1 }), "3승 1무 1패");
+  assert.strictEqual(app.formatDetailGoalAverage({ matches: 5, avgGoalsFor: 1.64, avgGoalsAgainst: 0.82 }), "득 1.6 · 실 0.8");
+});
+
+test("builds explainable AI detail scores from cached match analysis", () => {
+  const target = {
+    date: "2026-07-13",
+    league: "EPL",
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    homeOdds: "1.80",
+    drawOdds: "3.40",
+    awayOdds: "4.20"
+  };
+  const historical = [
+    { date: "2026-01-01", league: "EPL", homeTeam: "Arsenal", awayTeam: "Everton", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20", result: "H", score: "2-0" },
+    { date: "2026-01-02", league: "EPL", homeTeam: "Liverpool", awayTeam: "Chelsea", homeOdds: "1.82", drawOdds: "3.39", awayOdds: "4.18", result: "D", score: "1-1" },
+    { date: "2026-01-03", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", homeOdds: "1.79", drawOdds: "3.42", awayOdds: "4.19", result: "A", score: "0-1" }
+  ];
+  const analysis = app.buildMatchDetailAnalysis(target, historical);
+  const view = app.buildDetailAiViewModel(target, analysis);
+
+  assert.strictEqual(view.knownMatches, 3);
+  assert.strictEqual(view.scores.length, 4);
+  assert.strictEqual(view.teamScores.length, 2);
+  assert.strictEqual(view.teamScores[0].side, "홈팀");
+  assert.strictEqual(view.teamScores[0].scores.length, 3);
+  assert.strictEqual(view.teamScores[1].side, "원정팀");
+  assert.strictEqual(view.gameScores.length, 1);
+  assert(!view.gameScores.some((item) => item.label.includes("이변 가능성")));
+  assert(Number.isInteger(view.internalUpsetScore));
+  assert(view.evidence.some((item) => item.label.includes("유사배당 3경기")));
+  assert(view.evidence.some((item) => item.label.includes("아스널 최근")));
+  assert.strictEqual(view.conclusions.length, 3);
+  assert(Number.isInteger(view.overallScore));
+});
+
+test("calibrates AI upset scores without bunching every match at 80", () => {
+  const criteria = { homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.20" };
+  const lowSample = app.calculateAiUpsetScore({
+    favoriteOdds: 1.8,
+    baseUpsetProbability: 82,
+    matchAdjustment: 12,
+    confidence: "낮음"
+  }, criteria, 3);
+  const strongHistory = app.calculateAiUpsetScore({
+    favoriteOdds: 1.8,
+    baseUpsetProbability: 68,
+    matchAdjustment: 6,
+    confidence: "높음"
+  }, criteria, 60);
+
+  assert(lowSample < 80);
+  assert(strongHistory < 80);
+  assert.notStrictEqual(lowSample, strongHistory);
+});
+
+test("summarizes stored odds movement without extra API calls", () => {
+  const target = {
+    date: "2026-07-15",
+    league: "EPL",
+    fixtureId: "991",
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    homeOdds: "1.82",
+    drawOdds: "3.50",
+    awayOdds: "4.30",
+    oddsUpdatedAt: "2026-07-14T00:00:00.000Z",
+    oddsHistory: [
+      { capturedAt: "2026-07-13T00:00:00.000Z", homeOdds: "1.95", drawOdds: "3.40", awayOdds: "4.10" }
+    ]
+  };
+  const movement = app.getMatchOddsMovement(target, []);
+
+  assert.strictEqual(movement.history.length, 2);
+  assert.strictEqual(movement.movements[0].difference, -0.13);
+  assert.strictEqual(movement.movements[2].difference, 0.2);
+  assert.strictEqual(movement.isAlertCandidate, true);
 });
 
 test("formats expanded league and team names for Korean users", () => {
@@ -262,10 +429,12 @@ test("filters today's major matches to supported leagues only", () => {
 test("deduplicates today cards and keeps the richest fixture row", () => {
   const matches = app.deduplicateTodayMatches([
     { date: "2026-07-13", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", status: "NS" },
-    { date: "2026-07-13", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", status: "FT", score: "2-1", result: "H", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" }
+    { date: "2026-07-13", league: "EPL", homeTeam: "Arsenal", awayTeam: "Chelsea", status: "FT", score: "2-1", result: "H", homeOdds: "1.80", drawOdds: "3.50", awayOdds: "4.20" },
+    { date: "2026-07-15", league: "UCL", homeTeam: "Drita", awayTeam: "Kauno Žalgiris", status: "NS" },
+    { date: "2026-07-15", league: "UEFA Champions League", homeTeam: "Drita", awayTeam: "Kauno Zalgiris", status: "NS" }
   ]);
 
-  assert.strictEqual(matches.length, 1);
+  assert.strictEqual(matches.length, 2);
   assert.strictEqual(matches[0].status, "FT");
   assert.strictEqual(matches[0].score, "2-1");
 });
@@ -627,7 +796,74 @@ test("keeps today upset top to true low-odds upset candidates only", () => {
 
   assert.strictEqual(candidates.length, 2);
   assert.deepStrictEqual(candidates.map((item) => item.topLabel), ["대형 이변 후보", "무승부 주의"]);
+  assert(candidates.every((item) => item.evidence.length > 0));
   assert(!candidates.some((item) => item.match.homeTeam === "E"));
+});
+
+test("does not cap naturally qualified upset candidates", () => {
+  const todayMatches = Array.from({ length: 4 }, (_, index) => ({
+    date: "2026-07-08",
+    league: "EPL",
+    homeTeam: `Favorite ${index}`,
+    awayTeam: `Underdog ${index}`,
+    homeOdds: "1.30",
+    drawOdds: "5.20",
+    awayOdds: "9.00"
+  }));
+  const history = Array.from({ length: 20 }, (_, index) => ({
+    date: `2025-01-${String(index + 1).padStart(2, "0")}`,
+    league: "EPL",
+    homeTeam: `Past Home ${index}`,
+    awayTeam: `Past Away ${index}`,
+    homeOdds: "1.30",
+    drawOdds: "5.20",
+    awayOdds: "9.00",
+    result: index < 10 ? "H" : index < 15 ? "D" : "A"
+  }));
+
+  const candidates = app.getTodayUpsetCandidates(todayMatches, history);
+
+  assert.strictEqual(candidates.length, 4);
+});
+
+test("requires multiple signals for the 1.61 to 2.00 favorite band", () => {
+  const match = { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.50" };
+  const breakdown = { totalMatches: 40, knownMatches: 40, homeWins: 16, draws: 12, awayWins: 12 };
+  const withoutContext = app.assessTodayUpsetCandidate(match, breakdown, null);
+  const withScheduleContext = app.assessTodayUpsetCandidate(match, breakdown, {
+    adjustment: 10,
+    confidence: "보통",
+    signals: ["정배 일정 부담", "최근 흐름 역전"]
+  });
+
+  assert.strictEqual(withoutContext.isTopCandidate, false);
+  assert.strictEqual(withScheduleContext.isTopCandidate, true);
+  assert.strictEqual(withScheduleContext.topLabel, "정배 불안");
+});
+
+test("adds recent schedule pressure without using future matches", () => {
+  const history = [
+    { date: "2026-07-08", league: "EPL", homeTeam: "Alpha", awayTeam: "X", result: "A", score: "0-2" },
+    { date: "2026-07-11", league: "EPL", homeTeam: "Y", awayTeam: "Alpha", result: "H", score: "2-0" },
+    { date: "2026-07-13", league: "EPL", homeTeam: "Alpha", awayTeam: "Z", result: "D", score: "1-1" },
+    { date: "2026-06-01", league: "EPL", homeTeam: "Beta", awayTeam: "P", result: "H", score: "2-0" },
+    { date: "2026-06-05", league: "EPL", homeTeam: "Q", awayTeam: "Beta", result: "A", score: "0-1" },
+    { date: "2026-06-09", league: "EPL", homeTeam: "Beta", awayTeam: "R", result: "H", score: "2-1" },
+    { date: "2026-07-16", league: "EPL", homeTeam: "Alpha", awayTeam: "Future", result: "H", score: "5-0" }
+  ];
+  const profile = app.getMatchContextProfile({
+    date: "2026-07-15",
+    league: "EPL",
+    homeTeam: "Alpha",
+    awayTeam: "Beta",
+    homeOdds: "1.50",
+    drawOdds: "4.00",
+    awayOdds: "6.00"
+  }, history);
+
+  assert.strictEqual(profile.favoriteScheduleProfile.matches, 3);
+  assert(profile.favoriteScheduleProfile.matchesLast7 >= 2);
+  assert(profile.signals.includes("정배 일정 부담"));
 });
 
 test("calculates upset probability from historical odds and match context", () => {

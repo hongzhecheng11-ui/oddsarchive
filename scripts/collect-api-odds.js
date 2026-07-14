@@ -336,8 +336,32 @@ function hasCompleteOdds(match = {}) {
   });
 }
 
+function normalizeOddsHistory(history = []) {
+  const unique = new Map();
+  for (const entry of Array.isArray(history) ? history : []) {
+    const capturedAt = String(entry?.capturedAt || "").trim();
+    const homeOdds = String(entry?.homeOdds || "").trim();
+    const drawOdds = String(entry?.drawOdds || "").trim();
+    const awayOdds = String(entry?.awayOdds || "").trim();
+    if (!capturedAt || !hasCompleteOdds({ homeOdds, drawOdds, awayOdds })) continue;
+    unique.set(`${homeOdds}|${drawOdds}|${awayOdds}`, { capturedAt, homeOdds, drawOdds, awayOdds });
+  }
+  return Array.from(unique.values())
+    .sort((left, right) => left.capturedAt.localeCompare(right.capturedAt))
+    .slice(-24);
+}
+
+function mergeOddsHistory(existing = {}, incoming = {}) {
+  const history = [
+    ...(Array.isArray(existing.oddsHistory) ? existing.oddsHistory : []),
+    ...(Array.isArray(incoming.oddsHistory) ? incoming.oddsHistory : [])
+  ];
+  return normalizeOddsHistory(history);
+}
+
 function normalizePackMatch(match = {}) {
-  return {
+  const oddsUpdatedAt = String(match.oddsUpdatedAt || "").trim();
+  const normalized = {
     date: String(match.date || "").slice(0, 10),
     league: String(match.league || "").trim(),
     fixtureId: String(match.fixtureId || "").trim(),
@@ -350,6 +374,19 @@ function normalizePackMatch(match = {}) {
     score: String(match.score || "").trim(),
     source: match.source || "API 과거 배당"
   };
+  if (oddsUpdatedAt) normalized.oddsUpdatedAt = oddsUpdatedAt;
+  const history = normalizeOddsHistory(match.oddsHistory);
+  if (!hasKnownResult(normalized) && hasCompleteOdds(normalized) && oddsUpdatedAt) {
+    history.push({
+      capturedAt: oddsUpdatedAt,
+      homeOdds: normalized.homeOdds,
+      drawOdds: normalized.drawOdds,
+      awayOdds: normalized.awayOdds
+    });
+  }
+  const oddsHistory = normalizeOddsHistory(history);
+  if (oddsHistory.length > 0) normalized.oddsHistory = oddsHistory;
+  return normalized;
 }
 
 function shouldReplaceMatch(existing = {}, incoming = {}) {
@@ -467,7 +504,9 @@ function mergeCollectedMatches(existingMatches = [], collectedMatches = []) {
     }
 
     if (shouldReplaceMatch(existing, normalized)) {
+      const oddsHistory = mergeOddsHistory(existing, normalized);
       const merged = { ...existing, ...normalized };
+      if (oddsHistory.length > 0) merged.oddsHistory = oddsHistory;
       byKey.set(key, merged);
       if (getDuplicateKey(existing) === getDuplicateKey(merged) && existing.result === merged.result && existing.score === merged.score) {
         duplicateCount += 1;
@@ -548,7 +587,8 @@ async function main() {
         try {
           const rows = await collectLeagueDate({ apiKey, leagueKey, leagueId, date });
           diagnostics.successes += 1;
-          collected.push(...rows);
+          const oddsUpdatedAt = new Date().toISOString();
+          collected.push(...rows.map((row) => ({ ...row, oddsUpdatedAt })));
           console.log(`${date} ${leagueKey}(${leagueId}) ${rows.length}건`);
         } catch (error) {
           diagnostics.failures.push(`${date} ${leagueKey}(${leagueId}): ${error.message}`);

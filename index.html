@@ -208,18 +208,11 @@
             <summary>
               <span>
                 <small>오늘 경기</small>
-                <strong>오늘의 주요 경기</strong>
+                <strong>오늘 경기</strong>
               </span>
             </summary>
             <div class="panel-body">
-              <section class="home-today-panel" aria-label="오늘의 주요 경기">
-                <div class="home-today-heading">
-                  <div>
-                    <strong>🔥 오늘의 주요 경기</strong>
-                    <span id="home-today-updated">마지막 업데이트: 대기 중</span>
-                  </div>
-                  <button type="button" id="refresh-home-today">새로고침</button>
-                </div>
+              <section class="home-today-panel" aria-label="오늘 경기">
                 <section class="home-upset-panel" aria-label="오늘의 이변후보 TOP">
                   <div class="home-upset-heading">
                     <strong>오늘의 이변후보 TOP</strong>
@@ -229,15 +222,36 @@
                     <div class="home-upset-empty">오늘은 신뢰할 만한 이변 후보가 없습니다</div>
                   </div>
                 </section>
-                <div class="home-today-list" id="home-today-list">
-                  <div class="empty-state compact-empty">오늘 경기 불러오는 중</div>
-                </div>
-                <div class="home-today-footer">
-                  <button type="button" id="show-all-home-today">전체 오늘 경기 보기</button>
-                </div>
+                <section class="date-fixture-browser" aria-label="날짜별 경기">
+                  <div class="date-strip" id="fixture-date-strip" role="tablist" aria-label="경기 날짜 선택"></div>
+                  <div class="date-fixture-heading">
+                    <strong id="selected-fixture-date-title">오늘 경기</strong>
+                    <div class="date-fixture-heading-actions">
+                      <label class="date-fixture-category-label" for="fixture-category-filter">카테고리</label>
+                      <select id="fixture-category-filter" aria-label="오늘 경기 카테고리">
+                        <option value="ALL">전체</option>
+                        <option value="POPULAR">인기</option>
+                        <option value="EUROPE">유럽</option>
+                        <option value="ASIA">아시아</option>
+                        <option value="INTERNATIONAL">국가대항</option>
+                      </select>
+                      <button class="fixture-search-toggle" type="button" id="fixture-search-toggle" aria-label="경기 검색 열기" aria-controls="fixture-search-panel" aria-expanded="false">
+                        <span class="visually-hidden">경기 검색</span>
+                      </button>
+                      <span id="selected-fixture-date-status" aria-live="polite">경기 일정을 불러오는 중</span>
+                    </div>
+                  </div>
+                  <div class="fixture-search-panel" id="fixture-search-panel" hidden>
+                    <label class="visually-hidden" for="fixture-search-input">팀명 또는 리그명 검색</label>
+                    <input type="search" id="fixture-search-input" placeholder="팀명 또는 리그 검색" autocomplete="off" inputmode="search">
+                  </div>
+                  <div class="date-fixture-list" id="date-fixture-list">
+                    <div class="empty-state compact-empty">경기 일정을 불러오는 중입니다.</div>
+                  </div>
+                </section>
               </section>
 
-              <section class="live-api-panel" aria-label="경기 자동 업데이트">
+              <section class="live-api-panel" aria-label="경기 자동 업데이트" hidden>
                 <div class="live-api-heading">
                   <div>
                     <strong>경기 자동 업데이트</strong>
@@ -376,7 +390,7 @@
             </div>
           </details>
 
-          <details class="panel flow-panel match-detail-panel" id="detail" open hidden>
+          <details class="panel flow-panel match-detail-panel match-detail-screen" id="detail" open hidden>
             <summary>
               <span>
                 <small>경기 분석</small>

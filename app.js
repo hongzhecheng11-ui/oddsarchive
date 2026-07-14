@@ -24,6 +24,14 @@ const STORED_MATCH_RENDER_LIMIT = 100;
 const LIVE_ODDS_ENDPOINT = "/api/live-odds";
 const TELEMETRY_ENDPOINT = "/api/client-log";
 const HOME_TODAY_MATCH_LIMIT = 8;
+const DATE_FIXTURE_CACHE_TTL = 15 * 60 * 1000;
+const DATE_FIXTURE_OFFSETS = [-3, -2, -1, 0, 1, 2, 3];
+const DATE_FIXTURE_CATEGORY_LEAGUES = {
+  POPULAR: ["EPL", "UCL", "KLEAGUE1", "J1LEAGUE", "WORLDCUP"],
+  EUROPE: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "PRIMEIRA_LIGA", "SCOTTISH_PREMIERSHIP", "BELGIAN_PRO_LEAGUE", "SUPER_LIG", "UCL", "UEL"],
+  ASIA: ["KLEAGUE1", "KLEAGUE2", "J1LEAGUE", "J2LEAGUE", "ACL"],
+  INTERNATIONAL: ["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]
+};
 const HOME_TODAY_LEAGUE_PRIORITY = [
   "EPL",
   "LALIGA",
@@ -155,6 +163,13 @@ let activeOddsSearchSource = null;
 let homeTodayMatches = [];
 let homeTodayLastUpdatedAt = "";
 let homeTodayLoadStarted = false;
+let selectedFixtureDate = "";
+let selectedFixtureCategory = "ALL";
+let selectedFixtureQuery = "";
+let dateFixtureRequestId = 0;
+const dateFixtureCache = new Map();
+let matchDetailReturnState = null;
+const matchDetailAnalysisCache = new Map();
 let cachedDefaultPackRows = null;
 let cachedBaseMatches = null;
 let cachedSearchableMatches = null;
@@ -1156,11 +1171,12 @@ function saveTodayMatch(match, storage) {
 }
 
 function getTodayMatchKey(match) {
+  const league = getLeagueKeyFromText(match.league) || normalizeTeamSearchText(getLeagueLabel(match.league || ""));
   return [
     match.date || "",
-    match.league || "",
-    normalizeTeamSearchText(match.homeTeam || ""),
-    normalizeTeamSearchText(match.awayTeam || "")
+    league,
+    normalizeTeamSearchText(formatTeamName(match.homeTeam || "")),
+    normalizeTeamSearchText(formatTeamName(match.awayTeam || ""))
   ].join("|");
 }
 
@@ -1539,7 +1555,8 @@ function normalizeSearchHistoryEntries(history = []) {
   for (const entry of Array.isArray(history) ? history : []) {
     if (!entry || typeof entry !== "object") continue;
     const normalized = normalizeSearchHistoryEntry(entry);
-    if (!normalized.key || (!normalized.homeOdds && !normalized.drawOdds && !normalized.awayOdds)) continue;
+    const hasOddsCriteria = Boolean(normalized.homeOdds || normalized.drawOdds || normalized.awayOdds);
+    if (!normalized.key || (!hasOddsCriteria && !normalized.sourceMatchId)) continue;
     const uniqueKey = normalized.favoriteId || normalized.key;
     const current = uniqueEntries.get(uniqueKey);
     if (!current || String(normalized.searchedAt || normalized.createdAt || "") >= String(current.searchedAt || current.createdAt || "")) {
@@ -1576,8 +1593,30 @@ function getFavoriteSyncRecords(storage) {
 }
 
 function getSearchHistoryDisplayTitle(entry) {
+  if (entry?.sourceMatch?.homeTeam && entry?.sourceMatch?.awayTeam) {
+    return `${formatTeamName(entry.sourceMatch.homeTeam)} vs ${formatTeamName(entry.sourceMatch.awayTeam)}`;
+  }
   const leagueLabel = entry.league && entry.league !== "ALL" ? entry.league : "전체";
   return `${leagueLabel} ${entry.homeOdds} / ${entry.drawOdds} / ${entry.awayOdds}`;
+}
+
+function getMatchFavoriteEntry(match = {}, history = loadSearchHistory()) {
+  const criteria = getDirectOddsSearchCriteriaFromMatch(match);
+  const favoriteId = getFavoriteRecordId({ sourceMatchId: criteria.sourceMatchId, key: getSearchHistoryKey(criteria) });
+  return (Array.isArray(history) ? history : []).find((entry) => entry.favoriteId === favoriteId) || null;
+}
+
+function setMatchFavorite(match = {}, favorite = true) {
+  const criteria = getDirectOddsSearchCriteriaFromMatch(match);
+  let entry = getMatchFavoriteEntry(match);
+  if (!entry) entry = recordOddsSearchHistory(criteria).entry;
+  if (Boolean(entry.favorite) !== Boolean(favorite)) {
+    const favoriteName = favorite
+      ? `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`
+      : "";
+    toggleSearchHistoryFavorite(entry.id, undefined, favoriteName);
+  }
+  return Boolean(getMatchFavoriteEntry(match)?.favorite);
 }
 
 function getFavoriteName(entry, fallback = "") {
@@ -2700,6 +2739,59 @@ function getTeamRecentProfile(teamName = "", matches = [], limit = 5) {
   };
 }
 
+function getTeamScheduleProfile(teamName = "", matches = [], targetDate = "", limit = 8) {
+  const targetTimestamp = Date.parse(`${String(targetDate || "").slice(0, 10)}T00:00:00Z`);
+  const safeTargetTimestamp = Number.isFinite(targetTimestamp) ? targetTimestamp : Date.now();
+  const dayMs = 86400000;
+  const recentMatches = (Array.isArray(matches) ? matches : [])
+    .filter(isKnownResultMatch)
+    .filter((match) => teamAppearsInMatch(match, teamName))
+    .map((match) => ({
+      match,
+      timestamp: Date.parse(`${String(match.date || "").slice(0, 10)}T00:00:00Z`)
+    }))
+    .filter((entry) => Number.isFinite(entry.timestamp) && entry.timestamp < safeTargetTimestamp)
+    .sort((left, right) => right.timestamp - left.timestamp)
+    .slice(0, limit);
+  const getPoints = (match) => {
+    const result = getTeamResultFromMatch(match, teamName);
+    return result === "W" ? 3 : result === "D" ? 1 : 0;
+  };
+  const getGoalDifference = (match) => {
+    const score = getTeamScoreFromMatch(match, teamName);
+    return score ? score.forGoals - score.againstGoals : 0;
+  };
+  const summarize = (entries) => {
+    if (entries.length === 0) return { pointsPerMatch: 0, goalDifferencePerMatch: 0 };
+    return {
+      pointsPerMatch: entries.reduce((sum, entry) => sum + getPoints(entry.match), 0) / entries.length,
+      goalDifferencePerMatch: entries.reduce((sum, entry) => sum + getGoalDifference(entry.match), 0) / entries.length
+    };
+  };
+  const latest = recentMatches[0] || null;
+  const currentForm = summarize(recentMatches.slice(0, 3));
+  const previousForm = summarize(recentMatches.slice(3, 5));
+  let consecutiveAway = 0;
+  for (const entry of recentMatches) {
+    if (getTeamSide(entry.match, teamName) !== "away") break;
+    consecutiveAway += 1;
+  }
+
+  return {
+    matches: recentMatches.length,
+    restDays: latest ? Math.max(0, Math.floor((safeTargetTimestamp - latest.timestamp) / dayMs)) : null,
+    matchesLast7: recentMatches.filter((entry) => safeTargetTimestamp - entry.timestamp <= 7 * dayMs).length,
+    matchesLast14: recentMatches.filter((entry) => safeTargetTimestamp - entry.timestamp <= 14 * dayMs).length,
+    consecutiveAway,
+    formTrend: previousForm.pointsPerMatch > 0
+      ? currentForm.pointsPerMatch - previousForm.pointsPerMatch
+      : 0,
+    goalTrend: previousForm.goalDifferencePerMatch !== 0
+      ? currentForm.goalDifferencePerMatch - previousForm.goalDifferencePerMatch
+      : 0
+  };
+}
+
 function getTeamVenueProfile(teamName = "", matches = [], venue = "", limit = 8) {
   const venueMatches = (Array.isArray(matches) ? matches : []).filter((match) => {
     if (venue === "home") return teamNameMatches(match.homeTeam, teamName);
@@ -2803,8 +2895,11 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
   const homeTeamMatches = [];
   const awayTeamMatches = [];
   const leagueMatches = [];
+  const targetDate = String(match.date || "").slice(0, 10);
   for (const sourceMatch of Array.isArray(sourceMatches) ? sourceMatches : []) {
     if (!isKnownResultMatch(sourceMatch)) continue;
+    const sourceDate = String(sourceMatch.date || "").slice(0, 10);
+    if (targetDate && sourceDate && sourceDate >= targetDate) continue;
     if (teamAppearsInMatch(sourceMatch, match.homeTeam)) homeTeamMatches.push(sourceMatch);
     if (teamAppearsInMatch(sourceMatch, match.awayTeam)) awayTeamMatches.push(sourceMatch);
     if (leagueMatchesFixture(sourceMatch.league, match.league)) leagueMatches.push(sourceMatch);
@@ -2821,6 +2916,10 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
   const leagueTable = getLeagueTable(match, leagueMatches);
   const favoriteStanding = favoriteTeam ? getTeamLeagueStanding(favoriteTeam, leagueTable) : null;
   const underdogStanding = underdogTeam ? getTeamLeagueStanding(underdogTeam, leagueTable) : null;
+  const homeScheduleProfile = getTeamScheduleProfile(match.homeTeam, homeTeamMatches, targetDate);
+  const awayScheduleProfile = getTeamScheduleProfile(match.awayTeam, awayTeamMatches, targetDate);
+  const favoriteScheduleProfile = favoriteKey === "H" ? homeScheduleProfile : favoriteKey === "A" ? awayScheduleProfile : null;
+  const underdogScheduleProfile = favoriteKey === "H" ? awayScheduleProfile : favoriteKey === "A" ? homeScheduleProfile : null;
   const signals = [];
   let adjustment = 0;
   const importance = getMatchImportanceSignal(match);
@@ -2880,6 +2979,22 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     }
   }
 
+  if (favoriteScheduleProfile?.matches >= 3 && underdogScheduleProfile?.matches >= 3) {
+    const restAdvantage = Number(favoriteScheduleProfile.restDays || 0) - Number(underdogScheduleProfile.restDays || 0);
+    if (favoriteScheduleProfile.matchesLast7 >= 2 && restAdvantage <= -2) {
+      signals.push("정배 일정 부담");
+    }
+    if (favoriteKey === "A" && favoriteScheduleProfile.consecutiveAway >= 2) {
+      signals.push("정배 연속 원정");
+    }
+    if (underdogScheduleProfile.formTrend >= 0.5 && favoriteScheduleProfile.formTrend <= -0.3) {
+      signals.push("최근 흐름 역전");
+    }
+    if (underdogScheduleProfile.goalTrend >= 0.7 && favoriteScheduleProfile.goalTrend <= -0.5) {
+      signals.push("득실점 흐름 역전");
+    }
+  }
+
   const hasFullRecentSample = favoriteProfile?.matches >= 5 && underdogProfile?.matches >= 5;
   const hasVenueSample = favoriteVenueProfile?.matches >= 3 && underdogVenueProfile?.matches >= 3;
   const hasStandingSample = favoriteStanding?.played >= 5 && underdogStanding?.played >= 5;
@@ -2901,6 +3016,10 @@ function getMatchContextProfile(match = {}, sourceMatches = []) {
     underdogVsStrong,
     homeVenueProfile,
     awayVenueProfile,
+    homeScheduleProfile,
+    awayScheduleProfile,
+    favoriteScheduleProfile,
+    underdogScheduleProfile,
     favoriteStanding,
     underdogStanding
   };
@@ -3613,7 +3732,13 @@ function normalizeApiOddsPackMatch(match = {}) {
   };
 
   const validation = validateCsvRow(normalized);
-  return validation.messages.length === 0 ? { ...validation.row, source } : null;
+  return validation.messages.length === 0 ? {
+    ...validation.row,
+    source,
+    fixtureId: String(match.fixtureId || "").trim(),
+    oddsUpdatedAt: String(match.oddsUpdatedAt || "").trim(),
+    oddsHistory: Array.isArray(match.oddsHistory) ? match.oddsHistory : []
+  } : null;
 }
 
 function getApiOddsPackRows(pack = getBundledApiOddsPack()) {
@@ -4356,6 +4481,56 @@ function getRecentTeamMatches(target = {}, matches = [], teamName = "", limit = 
     .slice(0, limit);
 }
 
+function getMatchOddsMovement(target = {}, matches = []) {
+  const snapshots = [];
+  const relatedMatches = [target, ...(Array.isArray(matches) ? matches.filter((match) => isCurrentMatchRecord(match, target)) : [])];
+  relatedMatches.forEach((match) => {
+    (Array.isArray(match.oddsHistory) ? match.oddsHistory : []).forEach((entry) => snapshots.push(entry));
+    const capturedAt = String(match.oddsUpdatedAt || match.updatedAt || "").trim();
+    if (capturedAt && hasCompleteOdds(match)) {
+      snapshots.push({
+        capturedAt,
+        homeOdds: match.homeOdds,
+        drawOdds: match.drawOdds,
+        awayOdds: match.awayOdds
+      });
+    }
+  });
+
+  const unique = new Map();
+  snapshots.forEach((entry) => {
+    const capturedAt = String(entry?.capturedAt || "").trim();
+    const odds = [entry?.homeOdds, entry?.drawOdds, entry?.awayOdds].map(parseSearchNumber);
+    if (!capturedAt || odds.some((value) => value === null || value < 1)) return;
+    const key = odds.map((value) => value.toFixed(2)).join("|");
+    if (!unique.has(key)) {
+      unique.set(key, {
+        capturedAt,
+        homeOdds: odds[0],
+        drawOdds: odds[1],
+        awayOdds: odds[2]
+      });
+    }
+  });
+  const history = Array.from(unique.values()).sort((left, right) => left.capturedAt.localeCompare(right.capturedAt));
+  const first = history[0] || null;
+  const latest = history[history.length - 1] || null;
+  const movements = first && latest ? [
+    { key: "H", label: "홈승", from: first.homeOdds, to: latest.homeOdds },
+    { key: "D", label: "무승부", from: first.drawOdds, to: latest.drawOdds },
+    { key: "A", label: "원정승", from: first.awayOdds, to: latest.awayOdds }
+  ].map((item) => ({ ...item, difference: Number((item.to - item.from).toFixed(2)) })) : [];
+
+  return {
+    history,
+    first,
+    latest,
+    movements,
+    hasMovement: history.length >= 2,
+    isAlertCandidate: movements.some((item) => Math.abs(item.difference) >= 0.1)
+  };
+}
+
 function buildDetailStats(label, matches = [], criteria = {}) {
   const breakdown = calculateResultBreakdown(matches);
   const judgement = calculateMatchJudgement(breakdown, criteria);
@@ -4432,6 +4607,7 @@ function buildMatchDetailAnalysis(target = {}, sourceMatches = getSearchableMatc
     match: target,
     criteria: detailCriteria,
     contextProfile,
+    oddsMovement: getMatchOddsMovement(target, matches),
     sameOdds: buildDetailStats("동일배당 전적", sameOddsMatches, { ...detailCriteria, tolerance: "0.00" }),
     similarOdds: buildDetailStats("유사배당 전적", similarOddsMatches, detailCriteria),
     sameLeagueSimilar: buildDetailStats(`${formatLeagueName(target.league)} 유사배당`, sameLeagueSimilarMatches, detailCriteria),
@@ -4751,22 +4927,532 @@ function renderMatchDetail(match = {}, sourceMatches = getSearchableMatches()) {
   shell.replaceChildren(hero, tabs, summary, same, similar, sameLeague, recent, related);
 }
 
+function formatDetailRecord(profile = {}) {
+  const matches = Number(profile.matches || 0);
+  if (matches <= 0) return "기록 없음";
+  return `${Number(profile.wins || 0)}승 ${Number(profile.draws || 0)}무 ${Number(profile.losses || 0)}패`;
+}
+
+function formatDetailGoalAverage(profile = {}) {
+  const matches = Number(profile.matches || 0);
+  if (matches <= 0) return "기록 없음";
+  return `득 ${Number(profile.avgGoalsFor || 0).toFixed(1)} · 실 ${Number(profile.avgGoalsAgainst || 0).toFixed(1)}`;
+}
+
+function createDetailTeamOverview(label, teamName, profile = {}, venueProfile = {}, standing = null) {
+  const card = document.createElement("article");
+  card.className = "match-detail-team-card";
+
+  const eyebrow = document.createElement("span");
+  eyebrow.textContent = label;
+  const name = document.createElement("strong");
+  name.textContent = formatTeamName(teamName);
+  const metrics = document.createElement("dl");
+  [
+    ["순위", standing?.rank ? `${standing.rank}위` : "-"],
+    ["최근 5경기", formatDetailRecord(profile)],
+    [label === "홈팀" ? "홈 성적" : "원정 성적", formatDetailRecord(venueProfile)],
+    ["평균 득실", formatDetailGoalAverage(profile)]
+  ].forEach(([term, value]) => {
+    const item = document.createElement("div");
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    dt.textContent = term;
+    dd.textContent = value;
+    item.append(dt, dd);
+    metrics.appendChild(item);
+  });
+  card.append(eyebrow, name, metrics);
+  return card;
+}
+
+function createDetailOddsMovementSection(movement = {}) {
+  const section = document.createElement("section");
+  section.className = "match-detail-section match-detail-odds-movement";
+  const heading = document.createElement("div");
+  const title = document.createElement("strong");
+  title.textContent = "배당 변화";
+  heading.appendChild(title);
+
+  if (!movement.hasMovement) {
+    const pending = document.createElement("p");
+    pending.textContent = "배당 변화 기록이 쌓이는 중입니다.";
+    section.append(heading, pending);
+    return section;
+  }
+
+  if (movement.isAlertCandidate) {
+    const badge = document.createElement("span");
+    badge.textContent = "변화 감지";
+    heading.appendChild(badge);
+  }
+  const grid = document.createElement("div");
+  grid.className = "match-detail-odds-movement-grid";
+  movement.movements.forEach((item) => {
+    const card = document.createElement("div");
+    const label = document.createElement("span");
+    label.textContent = item.label;
+    const odds = document.createElement("strong");
+    odds.textContent = `${item.from.toFixed(2)} → ${item.to.toFixed(2)}`;
+    const change = document.createElement("small");
+    change.className = item.difference < 0 ? "down" : item.difference > 0 ? "up" : "same";
+    change.textContent = item.difference === 0
+      ? "변동 없음"
+      : `${item.difference < 0 ? "▼" : "▲"} ${Math.abs(item.difference).toFixed(2)}`;
+    card.append(label, odds, change);
+    grid.appendChild(card);
+  });
+  section.append(heading, grid);
+  return section;
+}
+
+function createDetailOverviewPanel(match = {}, analysis = {}) {
+  const panel = document.createElement("div");
+  panel.className = "match-detail-tab-panel active";
+  panel.dataset.detailTabPanel = "summary";
+  panel.setAttribute("role", "tabpanel");
+
+  const context = analysis.contextProfile || {};
+  const homeProfile = getTeamRecentProfile(match.homeTeam, analysis.recentRecords?.homeTeam || [], 5);
+  const awayProfile = getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5);
+  const homeStanding = context.favoriteKey === "H" ? context.favoriteStanding : context.favoriteKey === "A" ? context.underdogStanding : null;
+  const awayStanding = context.favoriteKey === "A" ? context.favoriteStanding : context.favoriteKey === "H" ? context.underdogStanding : null;
+
+  const teams = document.createElement("section");
+  teams.className = "match-detail-team-grid";
+  teams.append(
+    createDetailTeamOverview("홈팀", match.homeTeam, homeProfile, context.homeVenueProfile, homeStanding),
+    createDetailTeamOverview("원정팀", match.awayTeam, awayProfile, context.awayVenueProfile, awayStanding)
+  );
+
+  const recent = createRecentRecordSection(analysis.recentRecords || {});
+  recent.classList.add("match-detail-recent-section");
+  const oddsMovement = createDetailOddsMovementSection(analysis.oddsMovement || {});
+  panel.append(teams, oddsMovement, recent);
+  return panel;
+}
+
+function createDetailOddsPanel(match = {}, analysis = {}) {
+  const panel = document.createElement("div");
+  panel.className = "match-detail-tab-panel";
+  panel.dataset.detailTabPanel = "odds";
+  panel.setAttribute("role", "tabpanel");
+  panel.hidden = true;
+
+  const same = createDetailStatsSection(analysis.sameOdds, { note: "세 배당이 정확히 같은 과거 경기" });
+  const similar = createDetailStatsSection(analysis.similarOdds, { note: "홈승·무·원정승 각각 ±0.05 범위" });
+  const sameLeague = createDetailStatsSection(analysis.sameLeagueSimilar, { note: `${formatLeagueName(match.league)} 안에서 비교` });
+
+  const related = document.createElement("section");
+  related.className = "match-detail-section";
+  const relatedTitle = document.createElement("strong");
+  relatedTitle.textContent = "최근 사례";
+  const relatedList = document.createElement("div");
+  relatedList.className = "match-detail-history-list";
+  if ((analysis.relatedMatches || []).length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state compact-empty";
+    empty.textContent = "관련 과거 경기가 없습니다.";
+    relatedList.appendChild(empty);
+  } else {
+    relatedList.append(...analysis.relatedMatches.slice(0, 20).map(createDetailMatchCard));
+  }
+  related.append(relatedTitle, relatedList);
+  panel.append(same, similar, sameLeague, related);
+  return panel;
+}
+
+function clampAiScore(value) {
+  if (!Number.isFinite(Number(value))) return null;
+  return Math.max(0, Math.min(100, Math.round(Number(value))));
+}
+
+function averageAvailableScores(values = []) {
+  const scores = values.filter((value) => (
+    value !== null
+    && value !== undefined
+    && value !== ""
+    && Number.isFinite(Number(value))
+  ));
+  if (scores.length === 0) return null;
+  return clampAiScore(scores.reduce((sum, value) => sum + Number(value), 0) / scores.length);
+}
+
+function calculateAiUpsetScore(judgement = {}, criteria = {}, knownMatches = 0) {
+  if (judgement.baseUpsetProbability === null || Number(knownMatches) <= 0) return null;
+
+  const odds = [criteria.homeOdds, criteria.drawOdds, criteria.awayOdds]
+    .map(parseSearchNumber);
+  const favoriteOdds = Number(judgement.favoriteOdds);
+  const hasCompleteOdds = odds.every((value) => value !== null && value > 1)
+    && Number.isFinite(favoriteOdds)
+    && favoriteOdds > 1;
+  const impliedTotal = hasCompleteOdds
+    ? odds.reduce((sum, value) => sum + (1 / value), 0)
+    : 0;
+  const marketUpsetProbability = impliedTotal > 0
+    ? 100 - (((1 / favoriteOdds) / impliedTotal) * 100)
+    : 50;
+  const sampleWeight = Math.min(0.65, Number(knownMatches) / (Number(knownMatches) + 30));
+  const contextWeight = judgement.confidence === "높음"
+    ? 0.6
+    : judgement.confidence === "보통"
+      ? 0.35
+      : 0.15;
+  const blendedProbability = (marketUpsetProbability * (1 - sampleWeight))
+    + (Number(judgement.baseUpsetProbability) * sampleWeight)
+    + (Number(judgement.matchAdjustment || 0) * contextWeight);
+
+  return clampAiScore(blendedProbability);
+}
+
+function getDetailTeamAiScores(profile = {}) {
+  if (Number(profile.matches || 0) <= 0) {
+    return [
+      { key: "attack", label: "공격", value: null },
+      { key: "defense", label: "수비", value: null },
+      { key: "form", label: "흐름", value: null }
+    ];
+  }
+  return [
+    { key: "attack", label: "공격", value: clampAiScore((profile.avgGoalsFor / 2.5) * 100) },
+    { key: "defense", label: "수비", value: clampAiScore(((2.5 - Math.min(profile.avgGoalsAgainst, 2.5)) / 2.5) * 100) },
+    { key: "form", label: "흐름", value: clampAiScore((profile.pointsPerMatch / 3) * 100) }
+  ];
+}
+
+function buildDetailAiViewModel(match = {}, analysis = {}) {
+  const breakdown = analysis.similarOdds?.breakdown || calculateResultBreakdown([]);
+  const sameBreakdown = analysis.sameOdds?.breakdown || calculateResultBreakdown([]);
+  const leagueBreakdown = analysis.sameLeagueSimilar?.breakdown || calculateResultBreakdown([]);
+  const judgement = calculateMatchJudgement(breakdown, analysis.criteria || {});
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const canJudge = knownMatches >= 15;
+  const context = analysis.contextProfile || {};
+  const homeProfile = getTeamRecentProfile(match.homeTeam, analysis.recentRecords?.homeTeam || [], 5);
+  const awayProfile = getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5);
+  const homeScores = getDetailTeamAiScores(homeProfile);
+  const awayScores = getDetailTeamAiScores(awayProfile);
+  const attackScore = averageAvailableScores([homeScores[0].value, awayScores[0].value]);
+  const defenseScore = averageAvailableScores([homeScores[1].value, awayScores[1].value]);
+  const formScore = averageAvailableScores([homeScores[2].value, awayScores[2].value]);
+  const contextScore = { 높음: 100, 보통: 70, 낮음: 35 }[context.confidence] || 35;
+  const sampleScore = knownMatches <= 0 ? 0 : Math.min(100, (knownMatches / 50) * 100);
+  const oddsConfidenceScore = knownMatches > 0 ? clampAiScore((sampleScore * 0.7) + (contextScore * 0.3)) : null;
+  const upsetScore = calculateAiUpsetScore(judgement, analysis.criteria || {}, knownMatches);
+  const scores = [
+    { key: "attack", label: "양 팀 공격", value: attackScore },
+    { key: "defense", label: "양 팀 수비", value: defenseScore },
+    { key: "form", label: "양 팀 흐름", value: formScore },
+    { key: "odds", label: "배당 신뢰도", value: oddsConfidenceScore }
+  ];
+  const teamScores = [
+    { side: "홈팀", teamName: formatTeamName(match.homeTeam), scores: homeScores },
+    { side: "원정팀", teamName: formatTeamName(match.awayTeam), scores: awayScores }
+  ];
+  const gameScores = scores.slice(3);
+  const overallScore = averageAvailableScores(scores.map((item) => item.value));
+  const confidence = canJudge
+    ? (knownMatches >= 30 && context.confidence === "높음" ? "높음" : "보통")
+    : "데이터 부족";
+  const favoriteKey = judgement.favorite?.key || "";
+  const sameLeagueFavoriteRate = getFavoriteHitRateFromBreakdown(leagueBreakdown, favoriteKey);
+  const exactFavoriteRate = getFavoriteHitRateFromBreakdown(sameBreakdown, favoriteKey);
+  const outcomeRates = [
+    { key: "H", label: "홈승", rate: parseRateValue(breakdown.homeRate) },
+    { key: "D", label: "무승부", rate: parseRateValue(breakdown.drawRate) },
+    { key: "A", label: "원정승", rate: parseRateValue(breakdown.awayRate) }
+  ];
+  const evidence = [];
+  if (knownMatches > 0) {
+    evidence.push({
+      label: `유사배당 ${knownMatches}경기`,
+      value: `홈승 ${Math.round(outcomeRates[0].rate)}% · 무승부 ${Math.round(outcomeRates[1].rate)}% · 원정승 ${Math.round(outcomeRates[2].rate)}%`
+    });
+  }
+  if (Number(sameBreakdown.knownMatches || 0) > 0) {
+    evidence.push({
+      label: `동일배당 ${Number(sameBreakdown.knownMatches || 0)}경기`,
+      value: exactFavoriteRate === null ? "정배 적중률 계산 불가" : `정배 적중률 ${Math.round(exactFavoriteRate)}%`
+    });
+  }
+  if (judgement.favoriteHitRate !== null && knownMatches > 0) {
+    evidence.push({
+      label: "정배 적중 비교",
+      value: sameLeagueFavoriteRate === null
+        ? `유사배당 ${Math.round(judgement.favoriteHitRate)}%`
+        : `전체 ${Math.round(judgement.favoriteHitRate)}% · 같은 리그 ${Math.round(sameLeagueFavoriteRate)}%`
+    });
+  }
+  if (homeProfile.matches > 0) {
+    evidence.push({
+      label: `${formatTeamName(match.homeTeam)} 최근 ${homeProfile.matches}경기`,
+      value: `${formatDetailRecord(homeProfile)} · 득 ${homeProfile.avgGoalsFor.toFixed(1)} · 실 ${homeProfile.avgGoalsAgainst.toFixed(1)}`
+    });
+  }
+  if (awayProfile.matches > 0) {
+    evidence.push({
+      label: `${formatTeamName(match.awayTeam)} 최근 ${awayProfile.matches}경기`,
+      value: `${formatDetailRecord(awayProfile)} · 득 ${awayProfile.avgGoalsFor.toFixed(1)} · 실 ${awayProfile.avgGoalsAgainst.toFixed(1)}`
+    });
+  }
+
+  const highestOutcome = [...outcomeRates].sort((left, right) => right.rate - left.rate)[0];
+  const conclusions = [];
+  if (knownMatches > 0) {
+    conclusions.push(`유사배당에서는 ${highestOutcome.label}이 ${Math.round(highestOutcome.rate)}%로 가장 많이 발생했습니다.`);
+  } else {
+    conclusions.push("현재 배당과 비교할 수 있는 과거 유사배당 전적이 없습니다.");
+  }
+  if (homeProfile.matches > 0 && awayProfile.matches > 0) {
+    const strongerTeam = homeProfile.pointsPerMatch === awayProfile.pointsPerMatch
+      ? "두 팀의 최근 흐름이 비슷합니다"
+      : homeProfile.pointsPerMatch > awayProfile.pointsPerMatch
+        ? `${formatTeamName(match.homeTeam)}의 최근 흐름이 더 좋습니다`
+        : `${formatTeamName(match.awayTeam)}의 최근 흐름이 더 좋습니다`;
+    conclusions.push(`${strongerTeam}. 평균 득점은 홈 ${homeProfile.avgGoalsFor.toFixed(1)}골, 원정 ${awayProfile.avgGoalsFor.toFixed(1)}골입니다.`);
+  }
+  conclusions.push(canJudge
+    ? `배당과 최근 경기 데이터를 종합하면 최종 판정은 ${judgement.judgement}입니다.`
+    : `현재 표본은 ${knownMatches}경기로, 강한 판정보다는 데이터 추이를 함께 확인하는 것이 적절합니다.`);
+
+  return {
+    judgement,
+    knownMatches,
+    canJudge,
+    confidence,
+    overallScore,
+    internalUpsetScore: upsetScore,
+    scores,
+    teamScores,
+    gameScores,
+    evidence,
+    conclusions
+  };
+}
+
+function createDetailAiScoreRows(scores = []) {
+  const list = document.createElement("div");
+  list.className = "match-detail-ai-score-list";
+  scores.forEach((score) => {
+    const row = document.createElement("div");
+    const label = document.createElement("span");
+    label.textContent = score.label;
+    const track = document.createElement("i");
+    const fill = document.createElement("b");
+    fill.style.width = `${score.value ?? 0}%`;
+    track.appendChild(fill);
+    const value = document.createElement("strong");
+    value.textContent = score.value === null ? "-" : String(score.value);
+    row.append(label, track, value);
+    list.appendChild(row);
+  });
+  return list;
+}
+
+function createDetailAiPanel(match = {}, analysis = {}) {
+  const panel = document.createElement("div");
+  panel.className = "match-detail-tab-panel";
+  panel.dataset.detailTabPanel = "ai";
+  panel.setAttribute("role", "tabpanel");
+  panel.hidden = true;
+
+  const view = buildDetailAiViewModel(match, analysis);
+
+  const result = document.createElement("section");
+  result.className = "match-detail-section match-detail-ai-card";
+  const heading = document.createElement("div");
+  heading.className = "match-detail-ai-heading";
+  const title = document.createElement("span");
+  title.textContent = "AI 종합 분석";
+  const verdict = document.createElement("strong");
+  verdict.textContent = view.canJudge ? view.judgement.judgement : "분석 보류";
+  heading.append(title, verdict);
+
+  const badges = document.createElement("div");
+  badges.className = "match-detail-badges";
+  badges.append(createDetailBadge(`신뢰도 ${view.confidence}`, view.canJudge ? "good" : "warning"));
+  if (view.knownMatches > 0) badges.append(createDetailBadge(`유사배당 ${view.knownMatches}경기`));
+
+  const scoreCard = document.createElement("section");
+  scoreCard.className = "match-detail-ai-score-card";
+  const scoreHead = document.createElement("div");
+  const scoreLabel = document.createElement("span");
+  scoreLabel.textContent = "AI 종합 점수";
+  const scoreValue = document.createElement("strong");
+  scoreValue.textContent = view.overallScore === null ? "-" : `${view.overallScore} / 100`;
+  scoreHead.append(scoreLabel, scoreValue);
+  const scoreNote = document.createElement("small");
+  scoreNote.textContent = "두 팀의 최근 기록과 배당 데이터를 합친 경기 전체 점수";
+  const teamGrid = document.createElement("div");
+  teamGrid.className = "match-detail-ai-team-grid";
+  view.teamScores.forEach((team) => {
+    const teamCard = document.createElement("section");
+    const teamHeading = document.createElement("div");
+    const side = document.createElement("span");
+    side.textContent = team.side;
+    const name = document.createElement("strong");
+    name.textContent = team.teamName;
+    teamHeading.append(side, name);
+    teamCard.append(teamHeading, createDetailAiScoreRows(team.scores));
+    teamGrid.appendChild(teamCard);
+  });
+  const gameHeading = document.createElement("strong");
+  gameHeading.className = "match-detail-ai-game-heading";
+  gameHeading.textContent = "경기 공통 지표";
+  scoreCard.append(scoreHead, scoreNote, teamGrid, gameHeading, createDetailAiScoreRows(view.gameScores));
+
+  const grounds = document.createElement("div");
+  grounds.className = "match-detail-ai-grounds";
+  const groundsTitle = document.createElement("strong");
+  groundsTitle.textContent = "데이터 근거";
+  const signalList = document.createElement("ul");
+  (view.evidence.length > 0 ? view.evidence : [{ label: "데이터 없음", value: "비교 가능한 전적이 없습니다." }]).forEach((evidence) => {
+    const item = document.createElement("li");
+    const label = document.createElement("strong");
+    label.textContent = evidence.label;
+    const value = document.createElement("span");
+    value.textContent = evidence.value;
+    item.append(label, value);
+    signalList.appendChild(item);
+  });
+  grounds.append(groundsTitle, signalList);
+
+  const conclusion = document.createElement("section");
+  conclusion.className = "match-detail-ai-conclusion";
+  const conclusionTitle = document.createElement("strong");
+  conclusionTitle.textContent = "종합 결론";
+  conclusion.appendChild(conclusionTitle);
+  view.conclusions.forEach((text) => {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    conclusion.appendChild(paragraph);
+  });
+
+  result.append(heading, badges, scoreCard, grounds, conclusion);
+  panel.appendChild(result);
+  return panel;
+}
+
+function activateMatchDetailTab(shell, tabName) {
+  shell.querySelectorAll("[data-detail-tab]").forEach((button) => {
+    const active = button.dataset.detailTab === tabName;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+  shell.querySelectorAll("[data-detail-tab-panel]").forEach((panel) => {
+    const active = panel.dataset.detailTabPanel === tabName;
+    panel.hidden = !active;
+    panel.classList.toggle("active", active);
+  });
+}
+
+function getMatchDetailAnalysisCached(match = {}, sourceMatches = []) {
+  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${sourceMatches.length}`;
+  if (!matchDetailAnalysisCache.has(cacheKey)) {
+    matchDetailAnalysisCache.set(cacheKey, buildMatchDetailAnalysis(match, sourceMatches));
+  }
+  return matchDetailAnalysisCache.get(cacheKey);
+}
+
+function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatches(), activeTab = "summary") {
+  const shell = document.getElementById("match-detail-shell");
+  if (!shell) return;
+  const analysis = getMatchDetailAnalysisCached(match, sourceMatches);
+  const hasOdds = hasCompleteOdds(match);
+
+  const hero = document.createElement("header");
+  hero.className = "match-detail-hero match-detail-screen-header";
+  const top = document.createElement("div");
+  top.className = "match-detail-screen-top";
+  const back = document.createElement("button");
+  back.type = "button";
+  back.className = "match-detail-back-button";
+  back.setAttribute("aria-label", "경기 목록으로 돌아가기");
+  back.textContent = "‹";
+  back.addEventListener("click", closeMatchDetail);
+  const league = document.createElement("span");
+  league.textContent = formatLeagueName(match.league);
+  const status = document.createElement("span");
+  status.textContent = getMatchStatusLabel(match);
+  top.append(back, league, status);
+
+  const title = document.createElement("strong");
+  title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+  const meta = document.createElement("small");
+  meta.textContent = [match.date || "", match.startTime || "", getMatchStatusLabel(match)].filter(Boolean).join(" · ");
+  const odds = document.createElement("p");
+  odds.textContent = hasOdds
+    ? `홈 ${formatOdds(match.homeOdds)} · 무 ${formatOdds(match.drawOdds)} · 원정 ${formatOdds(match.awayOdds)}`
+    : "배당 준비 중";
+  hero.append(top, title, meta, odds);
+
+  const tabs = document.createElement("nav");
+  tabs.className = "match-detail-tabs match-detail-primary-tabs";
+  tabs.setAttribute("role", "tablist");
+  [["summary", "경기 요약"], ["odds", "동일 배당"], ["ai", "AI 분석"]].forEach(([value, label]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.detailTab = value;
+    button.setAttribute("role", "tab");
+    button.setAttribute("aria-selected", String(value === "summary"));
+    button.className = value === "summary" ? "active" : "";
+    button.textContent = label;
+    button.addEventListener("click", () => activateMatchDetailTab(shell, value));
+    tabs.appendChild(button);
+  });
+
+  shell.replaceChildren(
+    hero,
+    tabs,
+    createDetailOverviewPanel(match, analysis),
+    createDetailOddsPanel(match, analysis),
+    createDetailAiPanel(match, analysis)
+  );
+  activateMatchDetailTab(shell, activeTab);
+}
+
+function closeMatchDetail() {
+  if (typeof window === "undefined") return;
+  if (window.history.state?.matchDetail) {
+    window.history.back();
+    return;
+  }
+  const targetHash = matchDetailReturnState?.hash || "#today";
+  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${targetHash}`);
+  showActiveView(targetHash);
+}
+
 async function openMatchDetail(match = {}) {
   if (typeof window !== "undefined") {
-    window.location.hash = "#detail";
+    if (getActiveViewId(window.location.hash) !== "detail") {
+      matchDetailReturnState = {
+        hash: window.location.hash || "#today",
+        scrollY: window.scrollY,
+        fixtureDate: selectedFixtureDate
+      };
+      window.history.pushState({ matchDetail: true }, "", `${window.location.pathname}${window.location.search}#detail`);
+    }
   }
   showActiveView("#detail");
   const shell = document.getElementById("match-detail-shell");
-  if (shell) shell.textContent = "상세 분석 데이터를 불러오는 중입니다.";
-  try {
-    await ensureFootballDataPackLoaded();
-  } catch (_error) {
-    // The selected match can still use locally available data.
-  }
-  renderMatchDetail(match);
-  window.setTimeout(() => {
-    document.getElementById("match-detail-shell")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 30);
+  const initialMatches = getStorageTodayMatches();
+  renderMatchDetailScreen(match, initialMatches);
+  const screen = document.getElementById("detail");
+  if (screen) screen.scrollTop = 0;
+  window.setTimeout(async () => {
+    try {
+      await ensureFootballDataPackLoaded();
+    } catch (_error) {
+      // The selected match can still use locally available data.
+    }
+    if (getActiveViewId(window.location.hash) !== "detail") return;
+    const preparedMatches = getSearchableMatches();
+    if (preparedMatches.length !== initialMatches.length) {
+      const activeTab = shell?.querySelector("[data-detail-tab].active")?.dataset.detailTab || "summary";
+      renderMatchDetailScreen(match, preparedMatches, activeTab);
+    }
+  }, 150);
 }
 
 function getLeagueBreakdownStats(matches = []) {
@@ -5350,6 +6036,105 @@ function getTodayUserInsight(match = {}, analysis = null) {
   };
 }
 
+function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = null) {
+  const criteria = {
+    homeOdds: match.homeOdds,
+    drawOdds: match.drawOdds,
+    awayOdds: match.awayOdds,
+    league: match.league,
+    homeTeam: match.homeTeam,
+    awayTeam: match.awayTeam,
+    tolerance: match.tolerance || "0.05",
+    contextAdjustment: Number(contextProfile?.adjustment || 0),
+    contextSignals: contextProfile?.signals || [],
+    contextConfidence: contextProfile?.confidence || ""
+  };
+  const judgement = calculateMatchJudgement(breakdown, criteria);
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const favorite = judgement.favorite;
+  const favoriteOdds = Number(judgement.favoriteOdds || favorite?.odds || 0);
+  const outcomes = getJudgementOutcomes(breakdown, criteria);
+  const inverseTotal = outcomes.reduce((sum, outcome) => (
+    Number(outcome.odds) > 1 ? sum + (1 / Number(outcome.odds)) : sum
+  ), 0);
+  const marketRates = Object.fromEntries(outcomes.map((outcome) => [
+    outcome.key,
+    inverseTotal > 0 && Number(outcome.odds) > 1 ? ((1 / Number(outcome.odds)) / inverseTotal) * 100 : 0
+  ]));
+  const historyRates = Object.fromEntries(outcomes.map((outcome) => [
+    outcome.key,
+    getRatePercent(outcome.count, knownMatches)
+  ]));
+  const marketFavoriteRate = Number(marketRates[favorite?.key] || 0);
+  const favoriteFailureLift = (100 - Number(judgement.favoriteHitRate || 0)) - (100 - marketFavoriteRate);
+  const directions = outcomes
+    .filter((outcome) => outcome.key !== favorite?.key)
+    .map((outcome) => ({
+      ...outcome,
+      historyRate: Number(historyRates[outcome.key] || 0),
+      marketRate: Number(marketRates[outcome.key] || 0),
+      excess: Number(historyRates[outcome.key] || 0) - Number(marketRates[outcome.key] || 0)
+    }))
+    .sort((left, right) => right.excess - left.excess);
+  const strongestDirection = directions[0] || null;
+  const directionExcess = Number(strongestDirection?.excess || 0);
+  const contextAdjustment = Number(contextProfile?.adjustment || 0);
+  const scheduleSignals = (contextProfile?.signals || []).filter((signal) => (
+    ["정배 일정 부담", "정배 연속 원정", "최근 흐름 역전", "득실점 흐름 역전"].includes(signal)
+  ));
+  const evidence = [
+    favoriteFailureLift >= 4 ? "배당 기준 초과 위험" : "",
+    directionExcess >= 3 ? "무승부·역배 초과 발생" : "",
+    contextAdjustment >= 5 ? "팀·경기 흐름 위험" : "",
+    scheduleSignals.length > 0 ? "최근 일정·흐름 위험" : ""
+  ].filter(Boolean);
+  const isMajorBand = favoriteOdds >= 1.2 && favoriteOdds <= 1.6;
+  const isUnstableBand = favoriteOdds > 1.6 && favoriteOdds <= 2;
+  const majorCandidate = isMajorBand
+    && knownMatches >= 15
+    && favoriteFailureLift >= 4
+    && evidence.length >= 2;
+  const unstableCandidate = isUnstableBand
+    && knownMatches >= 15
+    && favoriteFailureLift >= 6
+    && evidence.length >= 3;
+  const isTopCandidate = majorCandidate || unstableCandidate;
+  let topLabel = "";
+  if (majorCandidate && favoriteOdds <= 1.35 && favoriteFailureLift >= 10) {
+    topLabel = "대형 이변 후보";
+  } else if (unstableCandidate) {
+    topLabel = "정배 불안";
+  } else if (majorCandidate && strongestDirection?.key === "D") {
+    topLabel = "무승부 주의";
+  } else if (majorCandidate && strongestDirection?.key === "H") {
+    topLabel = "홈 역배 주의";
+  } else if (majorCandidate && strongestDirection?.key === "A") {
+    topLabel = "원정 역배 주의";
+  } else if (majorCandidate) {
+    topLabel = "이변 후보";
+  }
+  const topScore = Math.max(0,
+    (favoriteFailureLift * 1.3)
+    + (Math.max(0, directionExcess) * 0.7)
+    + (contextAdjustment * 0.5)
+    + Math.min(5, knownMatches / 20)
+  );
+
+  return {
+    judgement,
+    topLabel,
+    topScore,
+    isTopCandidate,
+    candidateBand: isMajorBand ? "대형 이변 구간" : isUnstableBand ? "정배 불안 구간" : "제외 구간",
+    favoriteFailureLift,
+    marketFavoriteRate,
+    directionExcess,
+    strongestDirection,
+    evidence,
+    scheduleSignals
+  };
+}
+
 function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchableMatches()) {
   return (Array.isArray(matches) ? matches : [])
     .filter(hasCompleteOdds)
@@ -5384,15 +6169,7 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
       const favoriteIsLowEnough = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
       const favoriteIsWeak = Number(judgement.favoriteHitRate || 0) < 55;
       if (!favoriteIsLowEnough || knownMatches < 15 || !favoriteIsWeak) {
-        return {
-          match,
-          analysis,
-          judgement,
-          contextProfile: null,
-          topLabel: "",
-          topScore: 0,
-          isTopCandidate: false
-        };
+        return { match, analysis, judgement, contextProfile: null, topLabel: "", topScore: 0, isTopCandidate: false };
       }
 
       const contextProfile = getMatchContextProfile(match, searchableMatches);
@@ -5403,6 +6180,13 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
         contextConfidence: contextProfile.confidence
       });
       const meaningfulContext = contextProfile.confidence !== "낮음" && Number(contextProfile.adjustment || 0) >= 8;
+      const evidence = [];
+      if (meaningfulDraw) evidence.push(`무승부 ${Math.round(drawRate)}%`);
+      if (meaningfulUnderdog) {
+        const directionLabel = topUnderdog.key === "H" ? "홈 역배" : "원정 역배";
+        evidence.push(`${directionLabel} ${Math.round(topUnderdog.rate)}%`);
+      }
+      if (meaningfulContext && contextProfile.signals?.[0]) evidence.push(contextProfile.signals[0]);
       let topLabel = "";
       if (favoriteOdds <= 1.35 && favoriteIsWeak && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)) {
         topLabel = "대형 이변 후보";
@@ -5415,7 +6199,7 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
       } else if (meaningfulUnderdog && topUnderdog.key === "A") {
         topLabel = "원정 역배 주의";
       }
-      const score = (favoriteOdds <= 1.35 ? 100 : 0)
+      const topScore = (favoriteOdds <= 1.35 ? 100 : 0)
         + (meaningfulDraw ? drawRate : 0)
         + (meaningfulUnderdog ? topUnderdog.rate : 0)
         + Number(contextProfile.adjustment || 0)
@@ -5427,18 +6211,13 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
         judgement,
         contextProfile,
         topLabel,
-        topScore: score,
+        topScore,
+        evidence: evidence.slice(0, 2),
         isTopCandidate: favoriteIsLowEnough && knownMatches >= 15 && favoriteIsWeak && Boolean(topLabel) && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)
       };
     })
     .filter((item) => item.isTopCandidate)
-    .sort((left, right) => {
-      const labelScore = { "대형 이변 후보": 4, "무승부 주의": 3, "원정 역배 주의": 2, "홈 역배 주의": 2 };
-      const labelDifference = (labelScore[right.topLabel] || 0) - (labelScore[left.topLabel] || 0);
-      if (labelDifference !== 0) return labelDifference;
-      return Number(right.topScore || 0) - Number(left.topScore || 0);
-    })
-    .slice(0, 3);
+    .sort((left, right) => Number(right.topScore || 0) - Number(left.topScore || 0));
 }
 
 function sortHomeTodayMatchesForUsers(matches = [], searchableMatches = getSearchableMatches()) {
@@ -5577,6 +6356,12 @@ function createHomeUpsetCandidateCard(item = {}) {
   const sampleBadge = document.createElement("span");
   sampleBadge.textContent = `표본 ${Number(judgement.sampleSize || 0)}`;
   meta.appendChild(sampleBadge);
+  (item.evidence || []).slice(0, 2).forEach((text) => {
+    const evidenceBadge = document.createElement("span");
+    evidenceBadge.className = "home-upset-evidence";
+    evidenceBadge.textContent = text;
+    meta.appendChild(evidenceBadge);
+  });
 
   card.append(league, title, odds, meta);
   card.addEventListener("click", () => openMatchDetail(match));
@@ -5672,7 +6457,6 @@ function createHomeTodayMatchCard(match, updatedAt = "", analysis = null) {
 function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("home-today-list");
-  if (!list) return;
 
   if (status) setHomeTodayStatus(status);
 
@@ -5681,6 +6465,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 
   if (majorMatches.length === 0) {
     renderHomeUpsetCandidates([]);
+    if (!list) return;
     const empty = document.createElement("div");
     empty.className = "empty-state compact-empty";
     empty.textContent = status && status.includes("불러오는 중")
@@ -5692,10 +6477,12 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     return;
   }
 
-  const initialMatches = sortHomeTodayMatches(majorMatches).slice(0, HOME_TODAY_MATCH_LIMIT);
-  list.replaceChildren(...initialMatches.map((match) => (
-    createHomeTodayMatchCard(match, homeTodayLastUpdatedAt, null)
-  )));
+  if (list) {
+    const initialMatches = sortHomeTodayMatches(majorMatches).slice(0, HOME_TODAY_MATCH_LIMIT);
+    list.replaceChildren(...initialMatches.map((match) => (
+      createHomeTodayMatchCard(match, homeTodayLastUpdatedAt, null)
+    )));
+  }
 
   if (!cachedSearchableMatches || typeof window === "undefined") {
     renderHomeUpsetCandidates(majorMatches);
@@ -5715,14 +6502,324 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     const visibleMatches = sortHomeTodayMatchesForUsers(majorMatches, cachedSearchableMatches)
       .slice(0, HOME_TODAY_MATCH_LIMIT);
     const analyses = visibleMatches.map((match) => getTodayMatchAnalysis(match, cachedSearchableMatches));
-    list.replaceChildren(...visibleMatches.map((match, index) => (
-      createHomeTodayMatchCard(match, homeTodayLastUpdatedAt, analyses[index] || null)
-    )));
+    if (list) {
+      list.replaceChildren(...visibleMatches.map((match, index) => (
+        createHomeTodayMatchCard(match, homeTodayLastUpdatedAt, analyses[index] || null)
+      )));
+    }
     runWhenBrowserIsIdle(() => {
       if (renderVersion === homeTodayAnalysisRenderVersion) renderHomeUpsetCandidates(majorMatches);
     });
   };
   window.setTimeout(analyzeNextMatch, 0);
+}
+
+function getFixtureDateOptions(todayKey = getTodayKey()) {
+  const weekdayFormatter = new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    weekday: "short"
+  });
+  return DATE_FIXTURE_OFFSETS.map((offset) => {
+    const date = shiftDateKey(todayKey, offset);
+    const parsedDate = new Date(`${date}T12:00:00+09:00`);
+    return {
+      date,
+      weekday: weekdayFormatter.format(parsedDate).replace("요일", ""),
+      shortDate: date.slice(5),
+      isToday: offset === 0
+    };
+  });
+}
+
+function getStoredFixturesForDate(date, storage) {
+  return getFixturesForDate(getStorageTodayMatches(storage), date);
+}
+
+function getFixturesForDate(matches = [], date = "") {
+  return deduplicateTodayMatches((Array.isArray(matches) ? matches : []).filter((match) => (
+    String(match.date || "").slice(0, 10) === date
+  )));
+}
+
+function filterFixturesByCategory(matches = [], category = "ALL") {
+  const leagueKeys = DATE_FIXTURE_CATEGORY_LEAGUES[String(category || "ALL").toUpperCase()];
+  if (!leagueKeys) return [...(Array.isArray(matches) ? matches : [])];
+  return (Array.isArray(matches) ? matches : []).filter((match) => (
+    leagueKeys.some((leagueKey) => leagueMatchesFixture(match.league, leagueKey))
+  ));
+}
+
+function filterFixturesByText(matches = [], query = "") {
+  const normalizedQuery = normalizeTeamSearchText(query);
+  if (!normalizedQuery) return [...(Array.isArray(matches) ? matches : [])];
+  return (Array.isArray(matches) ? matches : []).filter((match) => {
+    const searchableText = [
+      match.league,
+      translateLeagueName(getLeagueLabel(match.league || "")),
+      match.homeTeam,
+      formatTeamName(match.homeTeam),
+      match.awayTeam,
+      formatTeamName(match.awayTeam)
+    ].map(normalizeTeamSearchText).join(" ");
+    return searchableText.includes(normalizedQuery);
+  });
+}
+
+function getVisibleFixturesForDate(matches = [], date = selectedFixtureDate || getTodayKey(), category = selectedFixtureCategory) {
+  return filterFixturesByText(
+    filterFixturesByCategory(getFixturesForDate(matches, date), category),
+    selectedFixtureQuery
+  );
+}
+
+function getCachedFixturesForDate(date, storage) {
+  const cached = dateFixtureCache.get(date);
+  if (cached) return cached.matches;
+  return getStoredFixturesForDate(date, storage);
+}
+
+function setDateFixtureStatus(message) {
+  const status = document.getElementById("selected-fixture-date-status");
+  if (status) status.textContent = message;
+}
+
+function formatFixtureDateTitle(date) {
+  if (date === getTodayKey()) return "오늘 경기";
+  const parsedDate = new Date(`${date}T12:00:00+09:00`);
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  }).format(parsedDate);
+}
+
+function renderFixtureDateTabs(selectedDate = selectedFixtureDate || getTodayKey()) {
+  if (typeof document === "undefined") return;
+  const strip = document.getElementById("fixture-date-strip");
+  if (!strip) return;
+  selectedFixtureDate = selectedDate;
+
+  const buttons = getFixtureDateOptions().map((item) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `date-tab${item.date === selectedDate ? " selected" : ""}${item.isToday ? " today" : ""}`;
+    button.dataset.fixtureDate = item.date;
+    button.setAttribute("role", "tab");
+    button.setAttribute("aria-selected", String(item.date === selectedDate));
+    button.setAttribute("aria-label", `${item.date}${item.isToday ? " 오늘" : ""}`);
+
+    const weekday = document.createElement("span");
+    weekday.textContent = item.weekday;
+    const date = document.createElement("strong");
+    date.textContent = item.shortDate;
+    button.append(weekday, date);
+
+    if (item.isToday) {
+      const badge = document.createElement("small");
+      badge.textContent = "●오늘";
+      button.appendChild(badge);
+    }
+    button.addEventListener("click", () => selectFixtureDate(item.date));
+    return button;
+  });
+
+  strip.replaceChildren(...buttons);
+  const selectedButton = strip.querySelector(".date-tab.selected");
+  if (selectedButton) {
+    strip.scrollLeft = Math.max(0, selectedButton.offsetLeft - (strip.clientWidth - selectedButton.offsetWidth) / 2);
+  }
+}
+
+function createDateFixtureCard(match = {}) {
+  const card = document.createElement("article");
+  card.className = "date-fixture-card";
+  card.tabIndex = 0;
+  card.setAttribute("role", "button");
+
+  const meta = document.createElement("div");
+  meta.className = "date-fixture-meta";
+  const leagueRow = document.createElement("div");
+  leagueRow.className = "date-fixture-league-row";
+  const league = document.createElement("span");
+  league.className = "date-fixture-league";
+  league.textContent = translateLeagueName(getLeagueLabel(match.league || ""));
+  leagueRow.appendChild(league);
+  const isTodayMajor = String(match.date || "").slice(0, 10) === getTodayKey()
+    && isMajorTodayMatch(match)
+    && hasCompleteOdds(match);
+  if (isTodayMajor) {
+    const majorBadge = document.createElement("b");
+    majorBadge.className = "date-fixture-major-badge";
+    majorBadge.textContent = "🔥 주요";
+    leagueRow.appendChild(majorBadge);
+    card.classList.add("major");
+  }
+  const state = document.createElement("span");
+  const statusLabel = getMatchStatusLabel(match);
+  const statusClass = {
+    "종료": "finished",
+    "취소": "cancelled",
+    "연기": "postponed",
+    "중단": "suspended"
+  }[statusLabel] || "scheduled";
+  state.className = `date-fixture-status ${statusClass}`;
+  state.textContent = `${formatMatchStartTime(match)} · ${statusLabel}`;
+  state.dataset.status = statusLabel;
+
+  const favoriteButton = document.createElement("button");
+  favoriteButton.type = "button";
+  favoriteButton.className = "date-fixture-favorite";
+  const updateFavoriteButton = (favorite) => {
+    favoriteButton.classList.toggle("active", favorite);
+    favoriteButton.textContent = favorite ? "★" : "☆";
+    favoriteButton.setAttribute("aria-pressed", String(favorite));
+    favoriteButton.setAttribute("aria-label", favorite ? "즐겨찾기 해제" : "즐겨찾기 추가");
+    favoriteButton.title = favorite ? "즐겨찾기 해제" : "즐겨찾기 추가";
+  };
+  updateFavoriteButton(Boolean(getMatchFavoriteEntry(match)?.favorite));
+  favoriteButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    updateFavoriteButton(setMatchFavorite(match, !Boolean(getMatchFavoriteEntry(match)?.favorite)));
+    renderSearchHistory();
+    renderSavedSearches();
+  });
+  meta.append(leagueRow, state, favoriteButton);
+
+  const content = document.createElement("div");
+  content.className = "date-fixture-content";
+
+  const teams = document.createElement("div");
+  teams.className = "date-fixture-teams";
+  const home = document.createElement("strong");
+  home.textContent = formatTeamName(match.homeTeam);
+  const versus = document.createElement("span");
+  versus.textContent = "vs";
+  const away = document.createElement("strong");
+  away.textContent = formatTeamName(match.awayTeam);
+  teams.append(home, versus, away);
+
+  const resultText = formatMatchResultText(match);
+  if (resultText) {
+    const result = document.createElement("small");
+    result.className = "date-fixture-result";
+    result.textContent = resultText;
+    teams.appendChild(result);
+  }
+
+  content.appendChild(teams);
+  if (hasCompleteOdds(match)) {
+    const odds = document.createElement("div");
+    odds.className = "date-fixture-odds";
+    odds.textContent = getCompactFixtureOdds(match);
+    content.appendChild(odds);
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "date-fixture-search";
+  button.textContent = "배당 검색";
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openOddsSearchForTodayMatch(match, getTodayMatchAnalysis(match, getSearchableMatches()));
+  });
+
+  card.append(meta, content, button);
+  card.addEventListener("click", (event) => {
+    if (!isInteractiveElement(event.target)) openMatchDetail(match);
+  });
+  card.addEventListener("keydown", (event) => {
+    if ((event.key === "Enter" || event.key === " ") && !isInteractiveElement(event.target)) {
+      event.preventDefault();
+      openMatchDetail(match);
+    }
+  });
+  return card;
+}
+
+function getCompactFixtureOdds(match = {}) {
+  if (!hasCompleteOdds(match)) return "";
+  return `홈 ${formatOdds(match.homeOdds)} · 무 ${formatOdds(match.drawOdds)} · 원정 ${formatOdds(match.awayOdds)}`;
+}
+
+function sortDateFixtureMatches(matches = [], date = getTodayKey()) {
+  return [...(Array.isArray(matches) ? matches : [])].sort((left, right) => {
+    if (date === getTodayKey()) {
+      const leftMajor = Number(isMajorTodayMatch(left) && hasCompleteOdds(left));
+      const rightMajor = Number(isMajorTodayMatch(right) && hasCompleteOdds(right));
+      if (leftMajor !== rightMajor) return rightMajor - leftMajor;
+    }
+    const sortedPair = sortHomeTodayMatches([left, right]);
+    return sortedPair[0] === left ? -1 : 1;
+  });
+}
+
+function renderDateFixtures(matches = [], date = selectedFixtureDate || getTodayKey(), { loading = false } = {}) {
+  if (typeof document === "undefined") return;
+  const list = document.getElementById("date-fixture-list");
+  const title = document.getElementById("selected-fixture-date-title");
+  if (title) title.textContent = formatFixtureDateTitle(date);
+  if (!list) return;
+
+  const dateMatches = sortDateFixtureMatches(getVisibleFixturesForDate(matches, date), date);
+  if (dateMatches.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state compact-empty";
+    empty.textContent = loading ? "경기 일정을 불러오는 중입니다." : "이 날짜와 카테고리에 표시할 경기가 없습니다.";
+    list.replaceChildren(empty);
+    return;
+  }
+
+  list.replaceChildren(...dateMatches.map(createDateFixtureCard));
+}
+
+async function selectFixtureDate(date, { force = false } = {}) {
+  const targetDate = String(date || getTodayKey()).slice(0, 10);
+  selectedFixtureDate = targetDate;
+  renderFixtureDateTabs(targetDate);
+  const cachedMatches = getCachedFixturesForDate(targetDate);
+  renderDateFixtures(cachedMatches, targetDate, { loading: cachedMatches.length === 0 });
+
+  const cached = dateFixtureCache.get(targetDate);
+  if (!force && cached && Date.now() - cached.fetchedAt < DATE_FIXTURE_CACHE_TTL) {
+    setDateFixtureStatus(`${getVisibleFixturesForDate(cached.matches, targetDate).length}경기`);
+    return { error: "", matches: cached.matches, cached: true };
+  }
+
+  const cachedVisibleCount = getVisibleFixturesForDate(cachedMatches, targetDate).length;
+  setDateFixtureStatus(cachedMatches.length > 0 ? `${cachedVisibleCount}경기 · 최신 일정 확인 중` : "경기 일정 확인 중");
+  const requestId = ++dateFixtureRequestId;
+  try {
+    const result = await fetchLiveOdds({ date: targetDate, league: "ALL" });
+    if (requestId !== dateFixtureRequestId) return result;
+    if (result.error) {
+      setDateFixtureStatus(cachedMatches.length > 0 ? `${cachedVisibleCount}경기 · 저장된 일정` : "일정을 불러오지 못했습니다");
+      renderDateFixtures(cachedMatches, targetDate);
+      return result;
+    }
+
+    const fetchedMatches = deduplicateTodayMatches(result.matches || []);
+    const fetchedTargetMatches = getFixturesForDate(fetchedMatches, targetDate);
+    const matches = fetchedTargetMatches.length > 0 ? fetchedTargetMatches : cachedMatches;
+    dateFixtureCache.set(targetDate, { matches, fetchedAt: Date.now() });
+    if (fetchedMatches.length > 0) mergeTodayMatches(fetchedMatches);
+    if (selectedFixtureDate === targetDate) {
+      renderDateFixtures(matches, targetDate);
+      setDateFixtureStatus(`${getVisibleFixturesForDate(matches, targetDate).length}경기`);
+    }
+    if (targetDate === getTodayKey()) {
+      homeTodayMatches = sortHomeTodayMatches(matches);
+      renderHomeTodayMatches(homeTodayMatches, { status: `마지막 업데이트: ${getCurrentTimestamp()}` });
+    }
+    return { ...result, matches };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "알 수 없는 오류";
+    if (requestId === dateFixtureRequestId) {
+      setDateFixtureStatus(cachedMatches.length > 0 ? `${cachedVisibleCount}경기 · 저장된 일정` : "일정을 불러오지 못했습니다");
+      renderDateFixtures(cachedMatches, targetDate);
+    }
+    return { error: message, matches: cachedMatches };
+  }
 }
 
 async function loadHomeTodayMatches() {
@@ -5735,23 +6832,33 @@ async function loadHomeTodayMatches() {
     const result = await fetchLiveOdds({ date: today, league: "ALL" });
     if (result.error) {
       setHomeTodayStatus("오늘 경기 업데이트 실패");
-      renderHomeTodayMatches([], { status: "오늘 경기 업데이트 실패" });
+      renderHomeTodayMatches(homeTodayMatches, { status: "저장된 일정 표시 중" });
       return result;
     }
 
     homeTodayLastUpdatedAt = getCurrentTimestamp();
-    homeTodayMatches = sortHomeTodayMatches(result.matches || []);
+    const fetchedMatches = deduplicateTodayMatches(result.matches || []);
+    const fetchedTodayMatches = getFixturesForDate(fetchedMatches, today);
+    const storedTodayMatches = getStoredFixturesForDate(today);
+    homeTodayMatches = sortHomeTodayMatches(fetchedTodayMatches.length > 0 ? fetchedTodayMatches : storedTodayMatches);
+    dateFixtureCache.set(today, { matches: homeTodayMatches, fetchedAt: Date.now() });
+    if (fetchedMatches.length > 0) {
+      mergeTodayMatches(fetchedMatches);
+    }
     if (homeTodayMatches.length > 0) {
-      mergeTodayMatches(homeTodayMatches);
       renderTodayCenter(homeTodayMatches);
+    }
+    if ((selectedFixtureDate || today) === today) {
+      renderDateFixtures(homeTodayMatches, today);
+      setDateFixtureStatus(`${getVisibleFixturesForDate(homeTodayMatches, today).length}경기`);
     }
     renderHomeTodayMatches(homeTodayMatches, { status: `마지막 업데이트: ${homeTodayLastUpdatedAt}` });
     return { ...result, matches: homeTodayMatches };
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setHomeTodayStatus(`오늘 경기 업데이트 실패: ${message}`);
-    renderHomeTodayMatches([], { status: "오늘 경기 업데이트 실패" });
-    return { error: message, matches: [] };
+    renderHomeTodayMatches(homeTodayMatches, { status: "저장된 일정 표시 중" });
+    return { error: message, matches: homeTodayMatches };
   } finally {
     if (refreshButton) refreshButton.disabled = false;
   }
@@ -6355,13 +7462,63 @@ function wireTodayCsvImport() {
 
 function wireHomeTodayMatches() {
   const refreshButton = document.getElementById("refresh-home-today");
-  const showAllButton = document.getElementById("show-all-home-today");
   const list = document.getElementById("home-today-list");
-  if (!refreshButton && !showAllButton && !list) return;
+  const dateStrip = document.getElementById("fixture-date-strip");
+  if (!refreshButton && !list && !dateStrip) return;
 
   if (refreshButton) refreshButton.addEventListener("click", loadHomeTodayMatches);
-  if (showAllButton) showAllButton.addEventListener("click", showAllHomeTodayMatches);
-  renderHomeTodayMatches([], { status: "오늘 경기 불러오는 중" });
+  const categoryFilter = document.getElementById("fixture-category-filter");
+  if (categoryFilter) {
+    categoryFilter.value = selectedFixtureCategory;
+    categoryFilter.addEventListener("change", () => {
+      selectedFixtureCategory = categoryFilter.value || "ALL";
+      const date = selectedFixtureDate || getTodayKey();
+      const matches = getCachedFixturesForDate(date);
+      const visibleMatches = getVisibleFixturesForDate(matches, date);
+      renderDateFixtures(matches, date);
+      setDateFixtureStatus(`${visibleMatches.length}경기`);
+    });
+  }
+  const searchToggle = document.getElementById("fixture-search-toggle");
+  const searchPanel = document.getElementById("fixture-search-panel");
+  const searchInput = document.getElementById("fixture-search-input");
+  const setSearchOpen = (open) => {
+    if (!searchToggle || !searchPanel) return;
+    searchPanel.hidden = !open;
+    searchToggle.setAttribute("aria-expanded", String(open));
+    searchToggle.setAttribute("aria-label", open ? "경기 검색 닫기" : "경기 검색 열기");
+    searchToggle.classList.toggle("active", open);
+    if (open) searchInput?.focus();
+  };
+  searchToggle?.addEventListener("click", () => setSearchOpen(searchPanel?.hidden !== false));
+  searchInput?.addEventListener("input", () => {
+    selectedFixtureQuery = searchInput.value.trim();
+    const date = selectedFixtureDate || getTodayKey();
+    const matches = getCachedFixturesForDate(date);
+    const visibleMatches = getVisibleFixturesForDate(matches, date);
+    renderDateFixtures(matches, date);
+    setDateFixtureStatus(`${visibleMatches.length}경기`);
+  });
+  searchInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      searchInput.blur();
+      setSearchOpen(false);
+    }
+  });
+  const majorHeading = document.querySelector(".home-major-heading strong");
+  const upsetHeading = document.querySelector(".home-upset-heading strong");
+  if (majorHeading) majorHeading.textContent = "오늘 주요 경기";
+  if (upsetHeading) upsetHeading.textContent = "오늘 이변 후보";
+
+  const today = getTodayKey();
+  selectedFixtureDate = today;
+  renderFixtureDateTabs(today);
+  const cachedTodayMatches = getCachedFixturesForDate(today);
+  homeTodayMatches = sortHomeTodayMatches(cachedTodayMatches);
+  renderHomeTodayMatches(homeTodayMatches, { status: cachedTodayMatches.length > 0 ? "저장된 오늘 경기" : "오늘 경기 불러오는 중" });
+  renderDateFixtures(cachedTodayMatches, today, { loading: cachedTodayMatches.length === 0 });
+  const cachedVisibleCount = getVisibleFixturesForDate(cachedTodayMatches, today).length;
+  setDateFixtureStatus(cachedTodayMatches.length > 0 ? `${cachedVisibleCount}경기 · 최신 일정 확인 중` : "경기 일정 확인 중");
   if ((window.location.hash || "#search") === "#today") ensureHomeTodayMatchesLoaded();
 }
 
@@ -7650,6 +8807,7 @@ function getAllowedViewId(hashValue, adminMode = false) {
 function showActiveView(hashValue) {
   if (typeof document === "undefined") return;
 
+  const detailWasOpen = document.body.classList.contains("match-detail-open");
   const adminMode = isAdminMode();
   const requestedViewId = getActiveViewId(hashValue);
   const activeViewId = getAllowedViewId(hashValue, adminMode);
@@ -7659,6 +8817,7 @@ function showActiveView(hashValue) {
     }
   }
   updateAdminControls();
+  document.body.classList.toggle("match-detail-open", activeViewId === "detail");
   appTelemetry?.recordView(activeViewId);
   const dashboard = document.getElementById("dashboard");
   const notice = document.getElementById("notice");
@@ -7700,6 +8859,11 @@ function showActiveView(hashValue) {
   }
   if (activeViewId === "account") {
     ensureCloudAccountReady().catch(() => {});
+  }
+  if (detailWasOpen && activeViewId !== "detail" && matchDetailReturnState) {
+    if (matchDetailReturnState.fixtureDate) selectedFixtureDate = matchDetailReturnState.fixtureDate;
+    const scrollY = Number(matchDetailReturnState.scrollY || 0);
+    window.requestAnimationFrame(() => window.scrollTo({ top: scrollY, behavior: "auto" }));
   }
 }
 
@@ -7847,6 +9011,7 @@ if (typeof module !== "undefined") {
     analyzeLiveMatchOdds,
     calculateResultBreakdown,
     calculateMatchJudgement,
+    calculateAiUpsetScore,
     deleteSavedSearch,
     deleteSearchHistoryEntry,
     downloadSampleCsv,
@@ -7879,14 +9044,24 @@ if (typeof module !== "undefined") {
     getInlineOddsConfidence,
     getApiHistoryChunks,
     getHomeTodayCardViewModel,
+    getFixturesForDate,
+    filterFixturesByCategory,
+    filterFixturesByText,
     getMatchStatusLabel,
     getMatchContextProfile,
+    getTeamScheduleProfile,
     getTodayUserInsight,
+    assessTodayUpsetCandidate,
     getTodayUpsetCandidates,
     getLeagueBreakdownStats,
     getRecentKnownResults,
     buildMatchDetailAnalysis,
+    buildDetailAiViewModel,
+    getMatchDetailAnalysisCached,
+    formatDetailRecord,
+    formatDetailGoalAverage,
     getOddsHistoryMatches,
+    getMatchOddsMovement,
     getMissingTeamNames,
     getMajorTodayMatches,
     sortHomeTodayMatches,
@@ -7914,6 +9089,13 @@ if (typeof module !== "undefined") {
     getTeamMatchCriteria,
     getTodayMatchCriteria,
     getTodayKey,
+    getFixtureDateOptions,
+    getCompactFixtureOdds,
+    getMatchFavoriteEntry,
+    sortDateFixtureMatches,
+    getStoredFixturesForDate,
+    renderDateFixtures,
+    selectFixtureDate,
     getOddsDistance,
     getStorageModeLabel,
     isRealDate,
@@ -7988,6 +9170,7 @@ if (typeof module !== "undefined") {
     searchMatchesByFixture,
     searchTeamMatches,
     toggleSearchHistoryFavorite,
+    setMatchFavorite,
     updateSearchHistoryFavoriteName,
     sortOddsSearchMatches,
     sortTeamMatchResults,

@@ -62,4 +62,18 @@ assert.equal(safeEntries.length, 1);
 assert.equal(safeEntries[0].sourceMatch, null);
 assert.equal(safeEntries[0].favoriteId.startsWith("odds:"), true);
 
+const noOddsMatch = {
+  id: "fixture-no-odds",
+  date: "2026-07-14",
+  league: "EPL",
+  homeTeam: "Arsenal",
+  awayTeam: "Chelsea"
+};
+const noOddsCriteria = getDirectOddsSearchCriteriaFromMatch(noOddsMatch);
+const noOddsEntry = recordOddsSearchHistory(noOddsCriteria, storage).entry;
+toggleSearchHistoryFavorite(noOddsEntry.id, storage, "아스널 vs 첼시");
+const noOddsFavorite = loadSearchHistory(storage).find((entry) => entry.sourceMatchId === "fixture-no-odds");
+assert.equal(noOddsFavorite.favorite, true);
+assert.equal(noOddsFavorite.favoriteId, "match:fixture-no-odds");
+
 console.log("PASS keeps local favorites stable and ready for account merge");

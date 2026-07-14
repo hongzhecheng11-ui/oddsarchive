@@ -65,6 +65,7 @@ test("keeps a new complete odds row and reports pack quality", () => {
   assert.strictEqual(result.addedCount, 1);
   assert.strictEqual(result.updatedCount, 0);
   assert.strictEqual(quality.total, 1);
+  assert.strictEqual(Object.hasOwn(result.matches[0], "oddsUpdatedAt"), false);
   assert.strictEqual(quality.completeOdds, 1);
   assert.strictEqual(quality.knownResults, 1);
   assert.deepStrictEqual(quality.leagues, { EPL: 1 });
@@ -123,6 +124,7 @@ test("updates the same fixture when future odds change instead of duplicating it
       awayOdds: "4.10",
       result: "UNKNOWN",
       score: "",
+      oddsUpdatedAt: "2026-07-07T00:00:00.000Z",
       source: "API 怨쇨굅 諛곕떦"
     }
   ];
@@ -131,7 +133,8 @@ test("updates the same fixture when future odds change instead of duplicating it
       ...existing[0],
       homeOdds: "1.82",
       drawOdds: "3.30",
-      awayOdds: "4.30"
+      awayOdds: "4.30",
+      oddsUpdatedAt: "2026-07-08T00:00:00.000Z"
     }
   ];
 
@@ -142,6 +145,30 @@ test("updates the same fixture when future odds change instead of duplicating it
   assert.strictEqual(result.updatedCount, 1);
   assert.strictEqual(result.duplicateCount, 0);
   assert.strictEqual(result.matches[0].homeOdds, "1.82");
+  assert.strictEqual(result.matches[0].oddsHistory.length, 2);
+  assert.strictEqual(result.matches[0].oddsHistory[0].homeOdds, "1.88");
+  assert.strictEqual(result.matches[0].oddsHistory[1].homeOdds, "1.82");
+});
+
+test("does not add duplicate odds history snapshots when odds are unchanged", () => {
+  const existing = [{
+    date: "2026-07-10",
+    league: "KLEAGUE1",
+    fixtureId: "778",
+    homeTeam: "FC Seoul",
+    awayTeam: "Gangwon FC",
+    homeOdds: "1.88",
+    drawOdds: "3.25",
+    awayOdds: "4.10",
+    result: "UNKNOWN",
+    oddsUpdatedAt: "2026-07-07T00:00:00.000Z"
+  }];
+  const collected = [{ ...existing[0], oddsUpdatedAt: "2026-07-08T00:00:00.000Z" }];
+  const result = collector.mergeCollectedMatches(existing, collected);
+
+  assert.strictEqual(result.matches.length, 1);
+  assert.strictEqual(result.matches[0].oddsHistory.length, 1);
+  assert.strictEqual(result.duplicateCount, 1);
 });
 
 test("uses calendar year for Asian and international leagues", () => {

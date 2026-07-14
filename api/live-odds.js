@@ -260,7 +260,7 @@ function isSupportedFixture(item = {}) {
 }
 
 async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
-  const path = `/fixtures?date=${encodeURIComponent(date)}`;
+  const path = `/fixtures?date=${encodeURIComponent(date)}&timezone=${encodeURIComponent("Asia/Seoul")}`;
   let payload = await fetchApiFootball(path, apiKey);
   let rows = Array.isArray(payload.response) ? payload.response : [];
   if (rows.length === 0) {

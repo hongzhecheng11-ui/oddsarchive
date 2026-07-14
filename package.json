@@ -7,7 +7,9 @@
     "collect:the-odds:kleague1:2025": "node scripts/collect-the-odds-history.js --league=KLEAGUE1 --season=2025",
     "audit:teams": "node scripts/audit-team-translations.js",
     "audit:football-data": "node scripts/audit-football-data-pack.js",
+    "audit:ai": "node scripts/backtest-ai-analysis.js",
+    "audit:upset-candidates": "node scripts/track-upset-candidates.js",
     "update:football-data": "node scripts/update-football-data-pack.js",
-    "test": "node tests/app-shell.test.js && node tests/favorites.test.js && node tests/favorite-sync.test.js && node tests/auth.test.js && node tests/auth-config.test.js && node tests/api-admin.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js && node tests/telemetry.test.js && node tests/client-log.test.js"
+    "test": "node tests/app-shell.test.js && node tests/favorites.test.js && node tests/favorite-sync.test.js && node tests/auth.test.js && node tests/auth-config.test.js && node tests/api-admin.test.js && node tests/collector.test.js && node tests/football-data-pack.test.js && node tests/the-odds-history.test.js && node tests/result-insights.test.js && node tests/ai-backtest.test.js && node tests/upset-candidate-tracking.test.js && node tests/telemetry.test.js && node tests/client-log.test.js"
   }
 }
