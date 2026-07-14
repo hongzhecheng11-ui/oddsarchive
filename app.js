@@ -3473,6 +3473,7 @@ function renderLocalAccount(storage) {
   const account = loadLocalAccount(storage);
   const label = account.nickname || "로그인 전";
   const storageMode = getStorageModeLabel(storage);
+  const hasBundledArchive = Boolean(getBundledFootballDataSearchPack());
   const searchableMatches = getSearchableMatches(storage);
   const counts = getDashboardCounts(searchableMatches);
   const favoriteSearches = loadSearchHistory(storage).filter((entry) => entry.favorite);
@@ -3485,8 +3486,8 @@ function renderLocalAccount(storage) {
     "account-display-name": label,
     "account-summary-name": label,
     "account-summary-mode": accountModeLabel,
-    "account-data-stored-count": String(searchableMatches.length),
-    "account-data-analyzable-count": String(counts.analyzableMatches),
+    "account-data-stored-count": hasBundledArchive ? String(searchableMatches.length) : "56,000+",
+    "account-data-analyzable-count": hasBundledArchive ? String(counts.analyzableMatches) : "56,000+",
     "account-data-saved-search-count": String(favoriteSearches.length),
     "account-data-last-update": lastUpdateLabel
   };
