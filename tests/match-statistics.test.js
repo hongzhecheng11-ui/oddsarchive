@@ -47,6 +47,53 @@ test("merges fixture statistics by id and removes old records", () => {
   assert.strictEqual(merged[0].home.shots, 12);
 });
 
+test("keeps historical lineup and injury context when performance statistics are absent", () => {
+  const match = collector.createMatchStatistics({
+    fixtureId: 1582681,
+    date: "2026-07-12",
+    league: "WORLDCUP",
+    homeTeamId: 26,
+    homeTeam: "Argentina",
+    awayTeamId: 15,
+    awayTeam: "Switzerland"
+  }, [], {
+    lineupsChecked: true,
+    injuriesChecked: true,
+    lineups: [{ teamId: 26, team: "Argentina", starters: ["Player One"] }],
+    injuries: [{ fixtureId: 1582681, teamId: 26, player: "Player Two" }]
+  });
+  assert.strictEqual(match.home.shots, null);
+  assert.strictEqual(match.lineups[0].starters[0], "Player One");
+  assert.strictEqual(match.injuries[0].player, "Player Two");
+});
+
+test("finds historical player context in the cumulative statistics pack", () => {
+  globalThis.ODDS_ARCHIVE_MATCH_STATISTICS_PACK = {
+    updatedAt: "2026-07-14T08:00:00.000Z",
+    matches: [{
+      fixtureId: 1582681,
+      date: "2026-07-12",
+      homeTeamId: 26,
+      homeTeam: "Argentina",
+      awayTeamId: 15,
+      awayTeam: "Switzerland",
+      lineupsChecked: true,
+      injuriesChecked: true,
+      lineups: [{ teamId: 26, team: "Argentina", starters: ["Player One"] }],
+      injuries: []
+    }]
+  };
+  const context = app.getOfficialFixtureContext({
+    id: "1582681",
+    date: "2026-07-12",
+    league: "WORLDCUP",
+    homeTeam: "Argentina",
+    awayTeam: "Switzerland"
+  });
+  assert.strictEqual(context.lineups[0].starters[0], "Player One");
+  delete globalThis.ODDS_ARCHIVE_MATCH_STATISTICS_PACK;
+});
+
 test("builds a recent team performance profile without treating missing values as zero", () => {
   globalThis.ODDS_ARCHIVE_MATCH_STATISTICS_PACK = {
     updatedAt: "2026-07-14T08:00:00.000Z",

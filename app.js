@@ -2840,7 +2840,8 @@ function getTeamPerformanceProfile(teamName = "", targetDate = "", limit = 5) {
     .sort((left, right) => String(right.date || "").localeCompare(String(left.date || "")))
     .slice(0, Math.max(1, Number(limit) || 5))
     .map((match) => teamNameMatches(match.homeTeam, teamName) ? match.home : match.away)
-    .filter(Boolean);
+    .filter((team) => team && [team.shots, team.shotsOnGoal, team.possession, team.expectedGoals]
+      .some((value) => value !== null && value !== undefined && value !== ""));
   return {
     matches: matches.length,
     avgShots: averageKnownStatistic(matches.map((team) => team.shots)),
@@ -2894,21 +2895,31 @@ function getOfficialTeamContext(match = {}, teamName = "") {
 function getOfficialFixtureContext(match = {}) {
   const pack = getStoredTeamContextPack();
   const matchDate = String(match.date || "").slice(0, 10);
-  if (!matchDate || matchDate !== String(pack.date || "").slice(0, 10)) return null;
   const fixtureId = String(match.fixtureId || match.id || "").trim();
-  const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
-    leagueMatchesFixture(match.league, league.key)
-  ));
-  for (const league of leagues) {
-    const fixtures = Array.isArray(league.fixtures) ? league.fixtures : [];
-    const fixture = fixtures.find((item) => fixtureId && String(item.fixtureId || "") === fixtureId)
-      || fixtures.find((item) => (
-        teamNameMatches(item.homeTeam, match.homeTeam)
-        && teamNameMatches(item.awayTeam, match.awayTeam)
-      ));
-    if (fixture) return { ...fixture, updatedAt: String(pack.updatedAt || "") };
+  if (matchDate && matchDate === String(pack.date || "").slice(0, 10)) {
+    const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
+      leagueMatchesFixture(match.league, league.key)
+    ));
+    for (const league of leagues) {
+      const fixtures = Array.isArray(league.fixtures) ? league.fixtures : [];
+      const fixture = fixtures.find((item) => fixtureId && String(item.fixtureId || "") === fixtureId)
+        || fixtures.find((item) => (
+          teamNameMatches(item.homeTeam, match.homeTeam)
+          && teamNameMatches(item.awayTeam, match.awayTeam)
+        ));
+      if (fixture) return { ...fixture, updatedAt: String(pack.updatedAt || "") };
+    }
   }
-  return null;
+  const statisticsPack = getStoredMatchStatisticsPack();
+  const historicalMatches = Array.isArray(statisticsPack.matches) ? statisticsPack.matches : [];
+  const historical = historicalMatches.find((item) => (
+    fixtureId && String(item.fixtureId || "") === fixtureId
+  )) || historicalMatches.find((item) => (
+    String(item.date || "").slice(0, 10) === matchDate
+    && teamNameMatches(item.homeTeam, match.homeTeam)
+    && teamNameMatches(item.awayTeam, match.awayTeam)
+  ));
+  return historical ? { ...historical, updatedAt: String(statisticsPack.updatedAt || "") } : null;
 }
 
 function getFixtureTeamAvailability(fixture = null, teamName = "") {

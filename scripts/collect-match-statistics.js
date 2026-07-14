@@ -6,7 +6,12 @@ const {
   getLeagueIds,
   getSeason
 } = require("./collect-api-odds.js");
-const { DEFAULT_LEAGUES, getSeoulDate } = require("./collect-team-context.js");
+const {
+  DEFAULT_LEAGUES,
+  getSeoulDate,
+  normalizeInjuries,
+  normalizeLineups
+} = require("./collect-team-context.js");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
 const PACK_PATH = path.join(ROOT_DIR, "data", "match-statistics-pack.js");
@@ -73,12 +78,27 @@ function normalizeFinishedFixtures(payload = [], leagueKey = "", date = "") {
   })).filter((item) => item.fixtureId && item.homeTeam && item.awayTeam);
 }
 
-function createMatchStatistics(fixture = {}, payload = []) {
+function createEmptyTeamStatistics(teamId = 0, team = "") {
+  return {
+    teamId: Number(teamId || 0),
+    team: String(team || "").trim(),
+    shots: null,
+    shotsOnGoal: null,
+    possession: null,
+    corners: null,
+    yellowCards: null,
+    redCards: null,
+    expectedGoals: null
+  };
+}
+
+function createMatchStatistics(fixture = {}, payload = [], extra = {}) {
   const teams = (Array.isArray(payload) ? payload : []).map(normalizeTeamStatistics);
-  const home = teams.find((team) => team.teamId === fixture.homeTeamId) || null;
-  const away = teams.find((team) => team.teamId === fixture.awayTeamId) || null;
-  if (!home || !away) return null;
-  return { ...fixture, home, away };
+  const home = teams.find((team) => team.teamId === fixture.homeTeamId)
+    || createEmptyTeamStatistics(fixture.homeTeamId, fixture.homeTeam);
+  const away = teams.find((team) => team.teamId === fixture.awayTeamId)
+    || createEmptyTeamStatistics(fixture.awayTeamId, fixture.awayTeam);
+  return { ...fixture, home, away, ...extra };
 }
 
 function mergeMatchStatistics(existing = [], incoming = [], { today = getSeoulDate(), maxDays = 180, maxMatches = 3000 } = {}) {
@@ -126,13 +146,39 @@ async function collectLeagueStatistics({ apiKey, leagueKey, leagueId, date, fetc
   const matches = [];
   const failures = [];
   for (const fixture of fixtures) {
+    let statistics = [];
+    let lineups = [];
+    let injuries = [];
+    let statisticsChecked = false;
+    let lineupsChecked = false;
+    let injuriesChecked = false;
     try {
-      const statistics = await fetcher(`/fixtures/statistics?fixture=${fixture.fixtureId}`, apiKey);
-      const match = createMatchStatistics(fixture, statistics);
-      if (match) matches.push(match);
+      statistics = await fetcher(`/fixtures/statistics?fixture=${fixture.fixtureId}`, apiKey);
+      statisticsChecked = true;
     } catch (error) {
-      failures.push(`${leagueKey} fixture ${fixture.fixtureId}: ${error.message}`);
+      failures.push(`${leagueKey} fixture ${fixture.fixtureId} statistics: ${error.message}`);
     }
+    await wait(120);
+    try {
+      lineups = normalizeLineups(await fetcher(`/fixtures/lineups?fixture=${fixture.fixtureId}`, apiKey));
+      lineupsChecked = true;
+    } catch (error) {
+      failures.push(`${leagueKey} fixture ${fixture.fixtureId} lineups: ${error.message}`);
+    }
+    await wait(120);
+    try {
+      injuries = normalizeInjuries(await fetcher(`/injuries?fixture=${fixture.fixtureId}`, apiKey));
+      injuriesChecked = true;
+    } catch (error) {
+      failures.push(`${leagueKey} fixture ${fixture.fixtureId} injuries: ${error.message}`);
+    }
+    matches.push(createMatchStatistics(fixture, statistics, {
+      statisticsChecked,
+      lineupsChecked,
+      injuriesChecked,
+      lineups,
+      injuries
+    }));
     await wait(120);
   }
   return { matches, failures, fixtureCount: fixtures.length };
@@ -188,6 +234,7 @@ if (require.main === module) {
 
 module.exports = {
   collectLeagueStatistics,
+  createEmptyTeamStatistics,
   createMatchStatistics,
   getPreviousSeoulDate,
   mergeMatchStatistics,
