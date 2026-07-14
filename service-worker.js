@@ -1,17 +1,25 @@
-const CACHE_NAME = "oddsarchive-v96-historical-lineups";
+const CACHE_NAME = "oddsarchive-v97-play-readiness";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css",
   "/app.js",
   "/assets/app-icon.svg?v=91",
+  "/assets/app-icon-192.png",
+  "/assets/app-icon-512.png",
+  "/assets/app-icon-maskable-512.png",
   "/data/api-odds-pack.js",
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
+  "/src/lib/auth.js?v=3",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
+  "/privacy.html",
+  "/terms.html",
+  "/account-deletion.html",
+  "/legal.css",
   "/manifest.webmanifest"
 ];
 

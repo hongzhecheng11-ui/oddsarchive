@@ -42,8 +42,9 @@
     const storage = options.storage || (typeof localStorage !== "undefined" ? localStorage : null);
     const favorites = options.favorites;
     const onStateChange = options.onStateChange || (() => {});
+    const request = options.request || ((...args) => fetch(...args));
     const fetchConfig = options.fetchConfig || (async () => {
-      const response = await fetch("/api/auth-config", { headers: { Accept: "application/json" }, credentials: "same-origin" });
+      const response = await request("/api/auth-config", { headers: { Accept: "application/json" }, credentials: "same-origin" });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(payload.error || "Login configuration unavailable");
       return payload;
@@ -208,6 +209,31 @@
       emit("signed_out");
     }
 
+    async function deleteAccount() {
+      if (!client || !userId || !accessToken) throw new Error("Google 로그인이 필요합니다.");
+      const response = await request("/api/delete-account", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${accessToken}`
+        },
+        credentials: "same-origin"
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "계정을 삭제하지 못했습니다.");
+      try {
+        await client.auth.signOut({ scope: "local" });
+      } catch (_error) {
+        // The remote user has already been deleted; local cleanup still must complete.
+      }
+      userId = "";
+      isAdmin = false;
+      accessToken = "";
+      favorites?.clearAccountRecords?.();
+      emit("signed_out", { accountDeleted: true });
+      return { deleted: true };
+    }
+
     function destroy() {
       authSubscription?.unsubscribe?.();
       authSubscription = null;
@@ -218,6 +244,7 @@
       initialize,
       signInWithGoogle,
       signOut,
+      deleteAccount,
       syncAccountRecords,
       synchronizeSession,
       getUserId: () => userId,

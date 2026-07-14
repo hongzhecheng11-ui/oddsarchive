@@ -3704,6 +3704,7 @@ function setCloudAccountUi(state = {}) {
   const status = document.getElementById("cloud-account-status");
   const signInButton = document.getElementById("google-sign-in");
   const signOutButton = document.getElementById("google-sign-out");
+  const deleteButton = document.getElementById("google-delete-account");
   const signedIn = Boolean(state.userId || activeFavoriteAccountId);
   const messages = {
     loading: "Google 로그인 기능을 준비하는 중입니다.",
@@ -3716,6 +3717,7 @@ function setCloudAccountUi(state = {}) {
   if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
   if (signInButton) signInButton.hidden = signedIn;
   if (signOutButton) signOutButton.hidden = !signedIn;
+  if (deleteButton) deleteButton.hidden = !signedIn;
   updateAdminControls();
   if (!isAdminMode() && typeof window !== "undefined" && ADMIN_VIEW_IDS.includes(getActiveViewId(window.location.hash))) {
     showActiveView(window.location.hash);
@@ -3743,7 +3745,7 @@ function loadBrowserScript(source, marker) {
 function ensureCloudAccountReady() {
   if (cloudAccountLoadPromise) return cloudAccountLoadPromise;
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=2", "account-auth");
+    await loadBrowserScript("/src/lib/auth.js?v=3", "account-auth");
     if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
     cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
       favorites: {
@@ -3766,6 +3768,7 @@ function ensureCloudAccountReady() {
 function wireCloudAccount() {
   const signInButton = document.getElementById("google-sign-in");
   const signOutButton = document.getElementById("google-sign-out");
+  const deleteButton = document.getElementById("google-delete-account");
   signInButton?.addEventListener("click", async () => {
     signInButton.disabled = true;
     try {
@@ -3785,6 +3788,20 @@ function wireCloudAccount() {
       setCloudAccountUi({ status: "offline", message: error.message });
     } finally {
       signOutButton.disabled = false;
+    }
+  });
+  deleteButton?.addEventListener("click", async () => {
+    const confirmed = window.confirm("Google 로그인 계정과 서버에 동기화된 즐겨찾기를 영구 삭제할까요? 이 작업은 되돌릴 수 없습니다. 이 기기의 로컬 즐겨찾기는 유지됩니다.");
+    if (!confirmed) return;
+    deleteButton.disabled = true;
+    try {
+      const service = await ensureCloudAccountReady();
+      await service.deleteAccount();
+      setCloudAccountUi({ status: "signed_out", message: "Google 계정과 서버 즐겨찾기를 삭제했습니다. 이 기기의 로컬 즐겨찾기는 유지됩니다." });
+    } catch (error) {
+      setCloudAccountUi({ status: "offline", message: error.message || "계정을 삭제하지 못했습니다." });
+    } finally {
+      deleteButton.disabled = false;
     }
   });
 }

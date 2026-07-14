@@ -15,7 +15,7 @@
     <meta name="twitter:description" content="홈승/무/원정승 배당으로 과거 경기 기록을 찾아보는 무료 베타 도구입니다.">
     <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="assets/app-icon.svg">
+    <link rel="apple-touch-icon" href="assets/app-icon-192.png">
     <link rel="stylesheet" href="styles.css">
     <script src="src/lib/telemetry.js?v=67"></script>
     <script src="src/lib/favorite-sync.js?v=1"></script>
@@ -578,6 +578,7 @@
                 <div class="account-actions">
                   <button type="button" id="google-sign-in">Google로 로그인</button>
                   <button class="ghost-action" type="button" id="google-sign-out" hidden>로그아웃</button>
+                  <button class="danger-action" type="button" id="google-delete-account" hidden>Google 계정 연결 및 서버 데이터 삭제</button>
                 </div>
                 <p class="match-count" id="cloud-account-status" aria-live="polite">Google 로그인은 이 화면에서만 불러옵니다.</p>
               </section>
@@ -665,6 +666,11 @@
         </section>
       </section>
     </main>
+    <footer class="legal-footer" aria-label="서비스 정책">
+      <a href="privacy.html">개인정보 처리방침</a>
+      <a href="terms.html">이용약관</a>
+      <a href="account-deletion.html">계정 삭제 안내</a>
+    </footer>
     <script src="data/api-odds-pack.js"></script>
     <script src="data/team-context-pack.js"></script>
     <script src="data/match-statistics-pack.js"></script>

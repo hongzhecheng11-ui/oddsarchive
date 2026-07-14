@@ -1,19 +1,36 @@
 {
+  "id": "/",
   "name": "오즈아카이브 - 축구 배당 분석",
   "short_name": "오즈아카이브",
-  "description": "오늘 경기 배당과 비슷했던 과거 경기 결과를 비교하는 정보 제공용 웹앱입니다.",
-  "start_url": "/index.html",
+  "description": "오늘 경기와 과거 유사 배당 기록을 비교하는 축구 통계·분석 앱입니다.",
+  "lang": "ko-KR",
+  "dir": "ltr",
+  "start_url": "/index.html?source=pwa#today",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#101827",
-  "theme_color": "#101827",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#f4f7f9",
+  "theme_color": "#0f3d2e",
   "orientation": "portrait-primary",
+  "categories": ["sports", "utilities"],
   "icons": [
     {
-      "src": "/assets/app-icon.svg?v=91",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
