@@ -5,12 +5,12 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-14T11:12:48.055Z",
+  "updatedAt": "2026-07-15T10:14:27.885Z",
   "collection": {
-    "date": "2026-07-12",
-    "requestGroups": 1,
-    "finishedFixtures": 2,
-    "saved": 2,
+    "date": "2026-07-14",
+    "requestGroups": 26,
+    "finishedFixtures": 0,
+    "saved": 0,
     "failures": 0,
     "errors": []
   },

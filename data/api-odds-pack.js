@@ -5,14 +5,14 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-14T19:39:50.205Z",
+  "updatedAt": "2026-07-15T10:14:01.084Z",
   "collection": {
-    "lastAttemptAt": "2026-07-14T19:39:39.774Z",
-    "lastSuccessAt": "2026-07-14T19:39:50.205Z",
+    "lastAttemptAt": "2026-07-15T10:13:49.852Z",
+    "lastSuccessAt": "2026-07-15T10:14:01.084Z",
     "requestSuccesses": 26,
     "requestFailures": 0,
-    "addedCount": 1,
-    "updatedCount": 10,
+    "addedCount": 0,
+    "updatedCount": 5,
     "duplicateCount": 0,
     "errors": []
   },
@@ -4649,12 +4649,21 @@
       "fixtureId": "1554375",
       "homeTeam": "Atert Bissen",
       "awayTeam": "KI Klaksvik",
-      "homeOdds": "2.75",
+      "homeOdds": "2.48",
       "drawOdds": "3.55",
-      "awayOdds": "2.26",
+      "awayOdds": "2.48",
       "result": "UNKNOWN",
       "score": "",
-      "source": "API 과거 배당"
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-07-15T10:13:54.881Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-07-15T10:13:54.881Z",
+          "homeOdds": "2.48",
+          "drawOdds": "3.55",
+          "awayOdds": "2.48"
+        }
+      ]
     },
     {
       "date": "2026-07-16",
@@ -4662,12 +4671,21 @@
       "fixtureId": "1554377",
       "homeTeam": "Egnatia Rrogozhinë",
       "awayTeam": "Petrocub",
-      "homeOdds": "1.73",
+      "homeOdds": "1.72",
       "drawOdds": "3.30",
-      "awayOdds": "4.75",
+      "awayOdds": "4.85",
       "result": "UNKNOWN",
       "score": "",
-      "source": "API 과거 배당"
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-07-15T10:13:54.881Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-07-15T10:13:54.881Z",
+          "homeOdds": "1.72",
+          "drawOdds": "3.30",
+          "awayOdds": "4.85"
+        }
+      ]
     },
     {
       "date": "2026-07-16",
@@ -4675,12 +4693,21 @@
       "fixtureId": "1554386",
       "homeTeam": "Sutjeska",
       "awayTeam": "Kairat Almaty",
-      "homeOdds": "4.45",
+      "homeOdds": "4.40",
       "drawOdds": "3.85",
-      "awayOdds": "1.65",
+      "awayOdds": "1.66",
       "result": "UNKNOWN",
       "score": "",
-      "source": "API 과거 배당"
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-07-15T10:13:54.881Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-07-15T10:13:54.881Z",
+          "homeOdds": "4.40",
+          "drawOdds": "3.85",
+          "awayOdds": "1.66"
+        }
+      ]
     },
     {
       "date": "2026-07-16",
@@ -4689,11 +4716,20 @@
       "homeTeam": "Universitatea Craiova",
       "awayTeam": "ML Vitebsk",
       "homeOdds": "1.24",
-      "drawOdds": "5.30",
+      "drawOdds": "5.20",
       "awayOdds": "10.50",
       "result": "UNKNOWN",
       "score": "",
-      "source": "API 과거 배당"
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-07-15T10:13:54.881Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-07-15T10:13:54.881Z",
+          "homeOdds": "1.24",
+          "drawOdds": "5.20",
+          "awayOdds": "10.50"
+        }
+      ]
     },
     {
       "date": "2026-07-16",
@@ -4701,12 +4737,21 @@
       "fixtureId": "1586077",
       "homeTeam": "England",
       "awayTeam": "Argentina",
-      "homeOdds": "2.52",
-      "drawOdds": "2.96",
-      "awayOdds": "2.98",
+      "homeOdds": "2.70",
+      "drawOdds": "2.82",
+      "awayOdds": "2.88",
       "result": "UNKNOWN",
       "score": "",
-      "source": "API 과거 배당"
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-07-15T10:13:55.866Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-07-15T10:13:55.866Z",
+          "homeOdds": "2.70",
+          "drawOdds": "2.82",
+          "awayOdds": "2.88"
+        }
+      ]
     },
     {
       "date": "2026-07-17",
