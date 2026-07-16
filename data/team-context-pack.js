@@ -5,363 +5,32 @@
 })(typeof window !== "undefined" ? window : globalThis, function createTeamContextPack() {
   return {
   "version": "team-context-v3",
-  "date": "2026-07-16",
-  "updatedAt": "2026-07-16T10:21:07.609Z",
+  "date": "2026-07-17",
+  "updatedAt": "2026-07-16T19:25:40.997Z",
   "collection": {
     "dates": [
-      "2026-07-16",
-      "2026-07-17",
-      "2026-07-18",
-      "2026-07-19"
+      "2026-07-17"
     ],
-    "requestGroups": 7,
-    "skippedGroups": 97,
+    "requestGroups": 1,
+    "skippedGroups": 25,
     "failures": 0,
     "errors": []
   },
   "leagues": [
     {
-      "key": "UCL",
-      "leagueId": 2,
+      "key": "UEL",
+      "leagueId": 3,
       "season": "2026",
       "standings": [],
       "teams": [
         {
-          "teamId": 632,
-          "team": "Universitatea Craiova",
-          "form": "WW",
+          "teamId": 670,
+          "team": "Derry City",
+          "form": "L",
           "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 7808,
-          "team": "ML Vitebsk",
-          "form": "LL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 5
-          },
-          "home": {
             "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 15847,
-          "team": "Atert Bissen",
-          "form": "LL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 701,
-          "team": "KI Klaksvik",
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 673,
-          "team": "Sutjeska",
-          "form": "LL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 664,
-          "team": "Kairat Almaty",
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 3327,
-          "team": "Egnatia Rrogozhinë",
-          "form": "DW",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 2271,
-          "team": "Petrocub",
-          "form": "DL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 6
-          }
-        }
-      ],
-      "fixtures": [
-        {
-          "fixtureId": 1554388,
-          "kickoff": "2026-07-16T02:30:00+09:00",
-          "status": "FT",
-          "homeTeamId": 632,
-          "homeTeam": "Universitatea Craiova",
-          "awayTeamId": 7808,
-          "awayTeam": "ML Vitebsk",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1554375,
-          "kickoff": "2026-07-16T03:15:00+09:00",
-          "status": "FT",
-          "homeTeamId": 15847,
-          "homeTeam": "Atert Bissen",
-          "awayTeamId": 701,
-          "awayTeam": "KI Klaksvik",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1554386,
-          "kickoff": "2026-07-16T04:00:00+09:00",
-          "status": "FT",
-          "homeTeamId": 673,
-          "homeTeam": "Sutjeska",
-          "awayTeamId": 664,
-          "awayTeam": "Kairat Almaty",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1554377,
-          "kickoff": "2026-07-16T04:00:00+09:00",
-          "status": "FT",
-          "homeTeamId": 3327,
-          "homeTeam": "Egnatia Rrogozhinë",
-          "awayTeamId": 2271,
-          "awayTeam": "Petrocub",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        }
-      ]
-    },
-    {
-      "key": "WORLDCUP",
-      "leagueId": 1,
-      "season": "2026",
-      "standings": [
-        {
-          "teamId": 16,
-          "team": "Mexico",
-          "rank": 1,
-          "points": 9,
-          "goalsDiff": 6,
-          "form": "LWWWW",
-          "all": {
-            "played": 3,
-            "wins": 3,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 0
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1531,
-          "team": "South Africa",
-          "rank": 2,
-          "points": 4,
-          "goalsDiff": -1,
-          "form": "LWDL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
             "losses": 1,
             "goalsFor": 2,
             "goalsAgainst": 3
@@ -375,1057 +44,88 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 17,
-          "team": "South Korea",
-          "rank": 3,
-          "points": 3,
-          "goalsDiff": -1,
-          "form": "LLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
+            "losses": 1,
             "goalsFor": 2,
             "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
           }
         },
         {
-          "teamId": 770,
-          "team": "Czechia",
-          "rank": 4,
-          "points": 1,
-          "goalsDiff": -4,
-          "form": "LDL",
+          "teamId": 853,
+          "team": "CSKA Sofia",
+          "form": "W",
           "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 15,
-          "team": "Switzerland",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 4,
-          "form": "LWWWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 5529,
-          "team": "Canada",
-          "rank": 2,
-          "points": 4,
-          "goalsDiff": 5,
-          "form": "LWLWD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 8,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1113,
-          "team": "Bosnia & Herzegovina",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": -1,
-          "form": "LWLD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1569,
-          "team": "Qatar",
-          "rank": 4,
-          "points": 1,
-          "goalsDiff": -8,
-          "form": "LLD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 6,
-          "team": "Brazil",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 6,
-          "form": "LWWWD",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 31,
-          "team": "Morocco",
-          "rank": 2,
-          "points": 7,
-          "goalsDiff": 3,
-          "form": "LWWWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1108,
-          "team": "Scotland",
-          "rank": 3,
-          "points": 3,
-          "goalsDiff": -3,
-          "form": "LLW",
-          "all": {
-            "played": 3,
+            "played": 1,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2386,
-          "team": "Haiti",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -6,
-          "form": "LLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 2,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2384,
-          "team": "USA",
-          "rank": 1,
-          "points": 6,
-          "goalsDiff": 4,
-          "form": "LWLWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 8,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 20,
-          "team": "Australia",
-          "rank": 2,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LDLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2380,
-          "team": "Paraguay",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": -2,
-          "form": "LWDWL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 777,
-          "team": "Türkiye",
-          "rank": 4,
-          "points": 3,
-          "goalsDiff": -2,
-          "form": "WLL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 25,
-          "team": "Germany",
-          "rank": 1,
-          "points": 6,
-          "goalsDiff": 6,
-          "form": "LLWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 10,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1501,
-          "team": "Ivory Coast",
-          "rank": 2,
-          "points": 6,
-          "goalsDiff": 2,
-          "form": "LWLW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2382,
-          "team": "Ecuador",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LWDL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 5530,
-          "team": "Curaçao",
-          "rank": 4,
-          "points": 1,
-          "goalsDiff": -8,
-          "form": "LDL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 9
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1118,
-          "team": "Netherlands",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 6,
-          "form": "LWWD",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 10,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 12,
-          "team": "Japan",
-          "rank": 2,
-          "points": 5,
-          "goalsDiff": 4,
-          "form": "LDWD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 5,
-          "team": "Sweden",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LDLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 28,
-          "team": "Tunisia",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -10,
-          "form": "LLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 2,
-            "goalsAgainst": 12
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1,
-          "team": "Belgium",
-          "rank": 1,
-          "points": 5,
-          "goalsDiff": 4,
-          "form": "LWWWD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 32,
-          "team": "Egypt",
-          "rank": 2,
-          "points": 5,
-          "goalsDiff": 2,
-          "form": "LWDWD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 22,
-          "team": "Iran",
-          "rank": 3,
-          "points": 3,
-          "goalsDiff": 0,
-          "form": "DDD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 3,
             "losses": 0,
             "goalsFor": 3,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 4673,
-          "team": "New Zealand",
-          "rank": 4,
-          "points": 1,
-          "goalsDiff": -6,
-          "form": "LLD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 4,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 9,
-          "team": "Spain",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 5,
-          "form": "WWWWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 0
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1533,
-          "team": "Cape Verde Islands",
-          "rank": 2,
-          "points": 3,
-          "goalsDiff": 0,
-          "form": "LDDD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 3,
-            "losses": 0,
-            "goalsFor": 2,
             "goalsAgainst": 2
           },
           "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 7,
-          "team": "Uruguay",
-          "rank": 3,
-          "points": 2,
-          "goalsDiff": -1,
-          "form": "LDD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 23,
-          "team": "Saudi Arabia",
-          "rank": 4,
-          "points": 2,
-          "goalsDiff": -4,
-          "form": "DLD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2,
-          "team": "France",
-          "rank": 1,
-          "points": 9,
-          "goalsDiff": 8,
-          "form": "LWWWW",
-          "all": {
-            "played": 3,
-            "wins": 3,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 10,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1090,
-          "team": "Norway",
-          "rank": 2,
-          "points": 6,
-          "goalsDiff": 1,
-          "form": "LWWLW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 8,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 13,
-          "team": "Senegal",
-          "rank": 3,
-          "points": 3,
-          "goalsDiff": 2,
-          "form": "LWLL",
-          "all": {
-            "played": 3,
+            "played": 1,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
-            "goalsFor": 8,
-            "goalsAgainst": 6
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 4358,
+          "team": "Aluminij",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
           },
           "home": {
             "played": 0,
             "wins": 0,
             "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 568,
+          "team": "Sheriff Tiraspol",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
             "losses": 0,
             "goalsFor": 0,
             "goalsAgainst": 0
@@ -1440,50 +140,15 @@
           }
         },
         {
-          "teamId": 1567,
-          "team": "Iraq",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -11,
-          "form": "LLL",
+          "teamId": 651,
+          "team": "Ferencvarosi TC",
+          "form": "W",
           "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 1,
-            "goalsAgainst": 12
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 26,
-          "team": "Argentina",
-          "rank": 1,
-          "points": 9,
-          "goalsDiff": 7,
-          "form": "WWWWW",
-          "all": {
-            "played": 3,
-            "wins": 3,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 8,
+            "goalsFor": 2,
             "goalsAgainst": 1
           },
           "home": {
@@ -1495,705 +160,88 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 775,
-          "team": "Austria",
-          "rank": 2,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LDLW",
-          "all": {
-            "played": 3,
+            "played": 1,
             "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1532,
-          "team": "Algeria",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": -2,
-          "form": "LDWL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1548,
-          "team": "Jordan",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -5,
-          "form": "LLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 3,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 8,
-          "team": "Colombia",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 3,
-          "form": "LWDWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
+            "goalsFor": 2,
             "goalsAgainst": 1
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
           }
         },
         {
-          "teamId": 27,
-          "team": "Portugal",
-          "rank": 2,
-          "points": 5,
-          "goalsDiff": 5,
-          "form": "LWDWD",
+          "teamId": 702,
+          "team": "Vojvodina",
+          "form": "L",
           "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1508,
-          "team": "Congo DR",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": 1,
-          "form": "LWLD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1568,
-          "team": "Uzbekistan",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -9,
-          "form": "LLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 2,
-            "goalsAgainst": 11
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 10,
-          "team": "England",
-          "rank": 1,
-          "points": 7,
-          "goalsDiff": 4,
-          "form": "LWWWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 3,
-          "team": "Croatia",
-          "rank": 2,
-          "points": 6,
-          "goalsDiff": 0,
-          "form": "LWWL",
-          "all": {
-            "played": 3,
-            "wins": 2,
             "draws": 0,
             "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1504,
-          "team": "Ghana",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LLDW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 11,
-          "team": "Panama",
-          "rank": 4,
-          "points": 0,
-          "goalsDiff": -4,
-          "form": "LLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 0,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1508,
-          "team": "Congo DR",
-          "rank": 1,
-          "points": 4,
-          "goalsDiff": 1,
-          "form": "LWLD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 5,
-          "team": "Sweden",
-          "rank": 2,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LDLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1504,
-          "team": "Ghana",
-          "rank": 3,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LLDW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2382,
-          "team": "Ecuador",
-          "rank": 4,
-          "points": 4,
-          "goalsDiff": 0,
-          "form": "LWDL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1113,
-          "team": "Bosnia & Herzegovina",
-          "rank": 5,
-          "points": 4,
-          "goalsDiff": -1,
-          "form": "LWLD",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1532,
-          "team": "Algeria",
-          "rank": 6,
-          "points": 4,
-          "goalsDiff": -2,
-          "form": "LDWL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 7
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 2380,
-          "team": "Paraguay",
-          "rank": 7,
-          "points": 4,
-          "goalsDiff": -2,
-          "form": "LWDWL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 13,
-          "team": "Senegal",
-          "rank": 8,
-          "points": 3,
-          "goalsDiff": 2,
-          "form": "LWLL",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 8,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 22,
-          "team": "Iran",
-          "rank": 9,
-          "points": 3,
-          "goalsDiff": 0,
-          "form": "DDD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 3,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 17,
-          "team": "South Korea",
-          "rank": 10,
-          "points": 3,
-          "goalsDiff": -1,
-          "form": "LLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 1108,
-          "team": "Scotland",
-          "rank": 11,
-          "points": 3,
-          "goalsDiff": -3,
-          "form": "LLW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
             "goalsFor": 1,
-            "goalsAgainst": 4
+            "goalsAgainst": 2
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 2599,
+          "team": "Universitatea Cluj",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
           },
           "home": {
             "played": 0,
             "wins": 0,
             "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 572,
+          "team": "Dynamo Kyiv",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
             "losses": 0,
             "goalsFor": 0,
             "goalsAgainst": 0
@@ -2208,19 +256,16 @@
           }
         },
         {
-          "teamId": 7,
-          "team": "Uruguay",
-          "rank": 12,
-          "points": 2,
-          "goalsDiff": -1,
-          "form": "LDD",
+          "teamId": 3554,
+          "team": "Žilina",
+          "form": "L",
           "all": {
-            "played": 3,
+            "played": 1,
             "wins": 0,
-            "draws": 2,
+            "draws": 0,
             "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 4
+            "goalsFor": 0,
+            "goalsAgainst": 2
           },
           "home": {
             "played": 0,
@@ -2228,6 +273,35 @@
             "draws": 0,
             "losses": 0,
             "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 2
+          }
+        },
+        {
+          "teamId": 608,
+          "team": "HNK Hajduk Split",
+          "form": "W",
+          "all": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 0
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 2,
             "goalsAgainst": 0
           },
           "away": {
@@ -2238,80 +312,338 @@
             "goalsFor": 0,
             "goalsAgainst": 0
           }
-        }
-      ],
-      "teams": [
+        },
         {
-          "teamId": 10,
-          "team": "England",
-          "form": "WDWWWWL",
+          "teamId": 4165,
+          "team": "Vestri",
+          "form": "L",
           "all": {
-            "played": 7,
-            "wins": 5,
-            "draws": 1,
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
             "losses": 1,
-            "goalsFor": 14,
-            "goalsAgainst": 8
+            "goalsFor": 0,
+            "goalsAgainst": 3
           },
           "home": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 5
-          },
-          "away": {
-            "played": 3,
-            "wins": 3,
+            "played": 0,
+            "wins": 0,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 7,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
             "goalsAgainst": 3
           }
         },
         {
-          "teamId": 26,
-          "team": "Argentina",
-          "form": "WWWWWWW",
+          "teamId": 556,
+          "team": "Qarabag",
+          "form": "W",
           "all": {
-            "played": 7,
-            "wins": 7,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 19,
-            "goalsAgainst": 7
+            "goalsFor": 3,
+            "goalsAgainst": 0
           },
           "home": {
-            "played": 5,
-            "wins": 5,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 14,
-            "goalsAgainst": 5
+            "goalsFor": 3,
+            "goalsAgainst": 0
           },
           "away": {
-            "played": 2,
-            "wins": 2,
+            "played": 0,
+            "wins": 0,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 2
+            "goalsFor": 0,
+            "goalsAgainst": 0
           }
         }
       ],
       "fixtures": [
         {
-          "fixtureId": 1586077,
-          "kickoff": "2026-07-16T04:00:00+09:00",
-          "status": "FT",
-          "homeTeamId": 10,
-          "homeTeam": "England",
-          "awayTeamId": 26,
-          "awayTeam": "Argentina",
+          "fixtureId": 1554448,
+          "kickoff": "2026-07-17T02:30:00+09:00",
+          "status": "2H",
+          "homeTeamId": 670,
+          "homeTeam": "Derry City",
+          "awayTeamId": 853,
+          "awayTeam": "CSKA Sofia",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 670,
+              "team": "Derry City",
+              "formation": "4-3-3",
+              "coach": "Tiernan Lynch",
+              "starters": [
+                "Brian Maher",
+                "Conor Barr",
+                "Christy Grogan",
+                "Patrick McClean",
+                "Brandon Fleming",
+                "Adam O'Reilly",
+                "James Olayinka",
+                "Ellis Chapman",
+                "Barry Cotter",
+                "Michael Duffy",
+                "Kévin Santos"
+              ]
+            },
+            {
+              "teamId": 853,
+              "team": "CSKA Sofia",
+              "formation": "3-5-2",
+              "coach": "Hristo Yanev",
+              "starters": [
+                "Dimitar Evtimov",
+                "Teodor Ivanov",
+                "Petko Panayotov",
+                "Facundo Rodríguez",
+                "Pastor",
+                "Isaac Solet",
+                "Bruno Jordão",
+                "Stefano Sensi",
+                "Ángelo Martino",
+                "Ioannis Pittas",
+                "Leandro Godoy"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1554447,
+          "kickoff": "2026-07-17T03:00:00+09:00",
+          "status": "2H",
+          "homeTeamId": 4358,
+          "homeTeam": "Aluminij",
+          "awayTeamId": 568,
+          "awayTeam": "Sheriff Tiraspol",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 4358,
+              "team": "Aluminij",
+              "formation": "3-5-2",
+              "coach": "Jure Arsic",
+              "starters": [
+                "Florijan Raduha",
+                "Dino Šimunić",
+                "Matija Boben",
+                "Rok Schaubach",
+                "Vid Koderman",
+                "Eric Taylor",
+                "Tomislav Jagić",
+                "Matic Vrbanec",
+                "Vito Težak",
+                "Bamba Susso",
+                "Murat Bajraj"
+              ]
+            },
+            {
+              "teamId": 568,
+              "team": "Sheriff Tiraspol",
+              "formation": "3-4-3",
+              "coach": "Victor Mihailov",
+              "starters": [
+                "Emil Tîmbur",
+                "Baye Assane Ciss",
+                "Fomba Bourama",
+                "Rai Lopes",
+                "Danila Forov",
+                "Dhoraso Moreo Klas",
+                "Samba Koné",
+                "Arli Pergjoni",
+                "Vladimir Fratea",
+                "Jayder Asprilla",
+                "Konan Jaures-Ulrich Loukou"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1554449,
+          "kickoff": "2026-07-17T03:15:00+09:00",
+          "status": "2H",
+          "homeTeamId": 651,
+          "homeTeam": "Ferencvarosi TC",
+          "awayTeamId": 702,
+          "awayTeam": "Vojvodina",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 651,
+              "team": "Ferencvarosi TC",
+              "formation": "4-3-3",
+              "coach": "Balazs Borbely",
+              "starters": [
+                "Dénes Dibusz",
+                "Attila Osváth",
+                "Mariano Gómez",
+                "Toon Raemaekers",
+                "Cadu",
+                "Gabi Kanichowsky",
+                "Naby Keïta",
+                "Marius Corbu",
+                "Kristoffer Zachariassen",
+                "Lenny Joseph",
+                "Yusuf Bamidele"
+              ]
+            },
+            {
+              "teamId": 702,
+              "team": "Vojvodina",
+              "formation": "4-3-3",
+              "coach": "Miroslav Tanjga",
+              "starters": [
+                "Dragan Rosić",
+                "Lazar Nikolić",
+                "Kornél Szűcs",
+                "Đorđe Crnomarković",
+                "Lucas Barros",
+                "Lazar Ranđelović",
+                "Ifet Đakovac",
+                "Njegoš Petrović",
+                "Petar Sukačev",
+                "Aleksa Vukanović",
+                "Dejan Zukić"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1554450,
+          "kickoff": "2026-07-17T02:30:00+09:00",
+          "status": "BT",
+          "homeTeamId": 2599,
+          "homeTeam": "Universitatea Cluj",
+          "awayTeamId": 572,
+          "awayTeam": "Dynamo Kyiv",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2599,
+              "team": "Universitatea Cluj",
+              "formation": "4-2-3-1",
+              "coach": "Cristiano Bergodi",
+              "starters": [
+                "Neofytos Michail",
+                "Jug Stanojev",
+                "Iulian Cristea",
+                "Dorin Codrea",
+                "Alexandru Chipciu",
+                "Pedro Pinho",
+                "Mouhamadou Drammeh",
+                "Marius Ștefănescu",
+                "Ovidiu Bic",
+                "Oucasse Mendy",
+                "Issouf Macalou"
+              ]
+            },
+            {
+              "teamId": 572,
+              "team": "Dynamo Kyiv",
+              "formation": "4-3-3",
+              "coach": "Igor Kostyuk",
+              "starters": [
+                "Ruslan Neshcheret",
+                "Tomasz Kędziora",
+                "Kristian Bilovar",
+                "Taras Mykhavko",
+                "Vladyslav Dubinchak",
+                "Oleksandr Pikhalyonok",
+                "Volodymyr Brazhko",
+                "Mykola Shaparenko",
+                "Nazar Voloshyn",
+                "Matvii Ponomarenko",
+                "Bogdan Redushko"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1554452,
+          "kickoff": "2026-07-17T03:30:00+09:00",
+          "status": "HT",
+          "homeTeamId": 3554,
+          "homeTeam": "Žilina",
+          "awayTeamId": 608,
+          "awayTeam": "HNK Hajduk Split",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 3554,
+              "team": "Žilina",
+              "formation": "3-4-3",
+              "coach": "Pavol Stano",
+              "starters": [
+                "Jakub Badžgoń",
+                "Tobias Pališčák",
+                "Ján Minárik",
+                "Aleksandre Narimanidze",
+                "Timotej Hranica",
+                "Xavier Adang",
+                "Miroslav Káčer",
+                "Krisztián Bari",
+                "František Kóša",
+                "Marko Roginić",
+                "Patrik Iľko"
+              ]
+            },
+            {
+              "teamId": 608,
+              "team": "HNK Hajduk Split",
+              "formation": "4-2-3-1",
+              "coach": "Gonzalo Garcia",
+              "starters": [
+                "Toni Silić",
+                "Mathieu Acapandié",
+                "Marino Skelin",
+                "Alec Van Hoorenbeeck",
+                "Šimun Hrgović",
+                "Rokas Pukštas",
+                "Adrion Pajaziti",
+                "Roko Brajković",
+                "Noa Skoko",
+                "Dario Melnjak",
+                "Michele Šego"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1554451,
+          "kickoff": "2026-07-17T05:00:00+09:00",
+          "status": "NS",
+          "homeTeamId": 4165,
+          "homeTeam": "Vestri",
+          "awayTeamId": 556,
+          "awayTeam": "Qarabag",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -4622,7 +2954,7 @@
     },
     {
       "date": "2026-07-17",
-      "updatedAt": "2026-07-16T10:20:58.411Z",
+      "updatedAt": "2026-07-16T19:25:40.991Z",
       "leagues": [
         {
           "key": "UEL",
@@ -4678,64 +3010,6 @@
                 "losses": 0,
                 "goalsFor": 3,
                 "goalsAgainst": 2
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 2599,
-              "team": "Universitatea Cluj",
-              "form": "D",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 572,
-              "team": "Dynamo Kyiv",
-              "form": "D",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
               },
               "away": {
                 "played": 0,
@@ -4852,6 +3126,64 @@
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 2
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 2599,
+              "team": "Universitatea Cluj",
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 572,
+              "team": "Dynamo Kyiv",
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
               },
               "away": {
                 "played": 0,
@@ -4983,67 +3315,262 @@
             {
               "fixtureId": 1554448,
               "kickoff": "2026-07-17T02:30:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 670,
               "homeTeam": "Derry City",
               "awayTeamId": 853,
               "awayTeam": "CSKA Sofia",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1554450,
-              "kickoff": "2026-07-17T02:30:00+09:00",
-              "status": "NS",
-              "homeTeamId": 2599,
-              "homeTeam": "Universitatea Cluj",
-              "awayTeamId": 572,
-              "awayTeam": "Dynamo Kyiv",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 670,
+                  "team": "Derry City",
+                  "formation": "4-3-3",
+                  "coach": "Tiernan Lynch",
+                  "starters": [
+                    "Brian Maher",
+                    "Conor Barr",
+                    "Christy Grogan",
+                    "Patrick McClean",
+                    "Brandon Fleming",
+                    "Adam O'Reilly",
+                    "James Olayinka",
+                    "Ellis Chapman",
+                    "Barry Cotter",
+                    "Michael Duffy",
+                    "Kévin Santos"
+                  ]
+                },
+                {
+                  "teamId": 853,
+                  "team": "CSKA Sofia",
+                  "formation": "3-5-2",
+                  "coach": "Hristo Yanev",
+                  "starters": [
+                    "Dimitar Evtimov",
+                    "Teodor Ivanov",
+                    "Petko Panayotov",
+                    "Facundo Rodríguez",
+                    "Pastor",
+                    "Isaac Solet",
+                    "Bruno Jordão",
+                    "Stefano Sensi",
+                    "Ángelo Martino",
+                    "Ioannis Pittas",
+                    "Leandro Godoy"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1554447,
               "kickoff": "2026-07-17T03:00:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 4358,
               "homeTeam": "Aluminij",
               "awayTeamId": 568,
               "awayTeam": "Sheriff Tiraspol",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 4358,
+                  "team": "Aluminij",
+                  "formation": "3-5-2",
+                  "coach": "Jure Arsic",
+                  "starters": [
+                    "Florijan Raduha",
+                    "Dino Šimunić",
+                    "Matija Boben",
+                    "Rok Schaubach",
+                    "Vid Koderman",
+                    "Eric Taylor",
+                    "Tomislav Jagić",
+                    "Matic Vrbanec",
+                    "Vito Težak",
+                    "Bamba Susso",
+                    "Murat Bajraj"
+                  ]
+                },
+                {
+                  "teamId": 568,
+                  "team": "Sheriff Tiraspol",
+                  "formation": "3-4-3",
+                  "coach": "Victor Mihailov",
+                  "starters": [
+                    "Emil Tîmbur",
+                    "Baye Assane Ciss",
+                    "Fomba Bourama",
+                    "Rai Lopes",
+                    "Danila Forov",
+                    "Dhoraso Moreo Klas",
+                    "Samba Koné",
+                    "Arli Pergjoni",
+                    "Vladimir Fratea",
+                    "Jayder Asprilla",
+                    "Konan Jaures-Ulrich Loukou"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1554449,
               "kickoff": "2026-07-17T03:15:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 651,
               "homeTeam": "Ferencvarosi TC",
               "awayTeamId": 702,
               "awayTeam": "Vojvodina",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 651,
+                  "team": "Ferencvarosi TC",
+                  "formation": "4-3-3",
+                  "coach": "Balazs Borbely",
+                  "starters": [
+                    "Dénes Dibusz",
+                    "Attila Osváth",
+                    "Mariano Gómez",
+                    "Toon Raemaekers",
+                    "Cadu",
+                    "Gabi Kanichowsky",
+                    "Naby Keïta",
+                    "Marius Corbu",
+                    "Kristoffer Zachariassen",
+                    "Lenny Joseph",
+                    "Yusuf Bamidele"
+                  ]
+                },
+                {
+                  "teamId": 702,
+                  "team": "Vojvodina",
+                  "formation": "4-3-3",
+                  "coach": "Miroslav Tanjga",
+                  "starters": [
+                    "Dragan Rosić",
+                    "Lazar Nikolić",
+                    "Kornél Szűcs",
+                    "Đorđe Crnomarković",
+                    "Lucas Barros",
+                    "Lazar Ranđelović",
+                    "Ifet Đakovac",
+                    "Njegoš Petrović",
+                    "Petar Sukačev",
+                    "Aleksa Vukanović",
+                    "Dejan Zukić"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1554450,
+              "kickoff": "2026-07-17T02:30:00+09:00",
+              "status": "BT",
+              "homeTeamId": 2599,
+              "homeTeam": "Universitatea Cluj",
+              "awayTeamId": 572,
+              "awayTeam": "Dynamo Kyiv",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2599,
+                  "team": "Universitatea Cluj",
+                  "formation": "4-2-3-1",
+                  "coach": "Cristiano Bergodi",
+                  "starters": [
+                    "Neofytos Michail",
+                    "Jug Stanojev",
+                    "Iulian Cristea",
+                    "Dorin Codrea",
+                    "Alexandru Chipciu",
+                    "Pedro Pinho",
+                    "Mouhamadou Drammeh",
+                    "Marius Ștefănescu",
+                    "Ovidiu Bic",
+                    "Oucasse Mendy",
+                    "Issouf Macalou"
+                  ]
+                },
+                {
+                  "teamId": 572,
+                  "team": "Dynamo Kyiv",
+                  "formation": "4-3-3",
+                  "coach": "Igor Kostyuk",
+                  "starters": [
+                    "Ruslan Neshcheret",
+                    "Tomasz Kędziora",
+                    "Kristian Bilovar",
+                    "Taras Mykhavko",
+                    "Vladyslav Dubinchak",
+                    "Oleksandr Pikhalyonok",
+                    "Volodymyr Brazhko",
+                    "Mykola Shaparenko",
+                    "Nazar Voloshyn",
+                    "Matvii Ponomarenko",
+                    "Bogdan Redushko"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1554452,
               "kickoff": "2026-07-17T03:30:00+09:00",
-              "status": "NS",
+              "status": "HT",
               "homeTeamId": 3554,
               "homeTeam": "Žilina",
               "awayTeamId": 608,
               "awayTeam": "HNK Hajduk Split",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 3554,
+                  "team": "Žilina",
+                  "formation": "3-4-3",
+                  "coach": "Pavol Stano",
+                  "starters": [
+                    "Jakub Badžgoń",
+                    "Tobias Pališčák",
+                    "Ján Minárik",
+                    "Aleksandre Narimanidze",
+                    "Timotej Hranica",
+                    "Xavier Adang",
+                    "Miroslav Káčer",
+                    "Krisztián Bari",
+                    "František Kóša",
+                    "Marko Roginić",
+                    "Patrik Iľko"
+                  ]
+                },
+                {
+                  "teamId": 608,
+                  "team": "HNK Hajduk Split",
+                  "formation": "4-2-3-1",
+                  "coach": "Gonzalo Garcia",
+                  "starters": [
+                    "Toni Silić",
+                    "Mathieu Acapandié",
+                    "Marino Skelin",
+                    "Alec Van Hoorenbeeck",
+                    "Šimun Hrgović",
+                    "Rokas Pukštas",
+                    "Adrion Pajaziti",
+                    "Roko Brajković",
+                    "Noa Skoko",
+                    "Dario Melnjak",
+                    "Michele Šego"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1554451,
@@ -5055,7 +3582,7 @@
               "awayTeam": "Qarabag",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
