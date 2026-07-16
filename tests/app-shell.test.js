@@ -22,6 +22,17 @@ test("shows Google login in the account header when a cloud account is active", 
   assert.strictEqual(app.getLocalAccountLabel(storage), "로그인 전");
 });
 
+test("detects a stored Supabase session for header restoration after refresh", () => {
+  const storage = {
+    length: 2,
+    key(index) {
+      return ["unrelated-key", "sb-project-auth-token"][index] || null;
+    }
+  };
+  assert.strictEqual(app.hasStoredCloudSession(storage), true);
+  assert.strictEqual(app.hasStoredCloudSession({ length: 1, key: () => "unrelated-key" }), false);
+});
+
 test("builds a seven-day Seoul date strip centered on today", () => {
   const dates = app.getFixtureDateOptions("2026-07-13");
 

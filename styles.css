@@ -2710,6 +2710,11 @@ tbody tr:last-child td {
   font-weight: 900;
 }
 
+.compact-results .result-score-hero {
+  font-size: 10px;
+  line-height: 1.1;
+}
+
 body.match-detail-open {
   overflow: hidden;
 }
@@ -3535,8 +3540,7 @@ body.match-detail-open {
 .today-center-card,
 .search-result-card,
 .stored-match-card,
-.match-detail-history-card,
-.recent-flow-item {
+.match-detail-history-card {
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(22, 115, 93, 0.16);
@@ -3551,8 +3555,7 @@ body.match-detail-open {
 .today-center-card:hover,
 .search-result-card:hover,
 .stored-match-card:hover,
-.match-detail-history-card:hover,
-.recent-flow-item:hover {
+.match-detail-history-card:hover {
   border-color: rgba(22, 115, 93, 0.42);
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
   background-color: #f8fffc;
@@ -3566,8 +3569,7 @@ body.match-detail-open {
 .today-center-card:active,
 .search-result-card:active,
 .stored-match-card:active,
-.match-detail-history-card:active,
-.recent-flow-item:active {
+.match-detail-history-card:active {
   transform: translateY(1px) scale(0.992);
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
   background-color: #ecfdf5;
@@ -3577,8 +3579,7 @@ body.match-detail-open {
 .today-center-card:focus-visible,
 .search-result-card:focus-visible,
 .stored-match-card:focus-visible,
-.match-detail-history-card:focus-visible,
-.recent-flow-item:focus-visible {
+.match-detail-history-card:focus-visible {
   outline: 2px solid rgba(22, 115, 93, 0.55);
   outline-offset: 2px;
 }
@@ -3663,7 +3664,18 @@ body.match-detail-open {
 .recent-result-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 4px;
+}
+
+.recent-result-chips .result-chip {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  min-height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  font-size: 9px;
 }
 
 .recent-result-chips small {
@@ -3672,8 +3684,7 @@ body.match-detail-open {
   font-weight: 800;
 }
 
-.league-breakdown-section,
-.recent-flow-list {
+.league-breakdown-section {
   display: grid;
   gap: 6px;
 }
@@ -3728,30 +3739,6 @@ body.match-detail-open {
   border-radius: 6px;
   background: #f8fafc;
   text-align: center;
-}
-
-.recent-flow-list {
-  max-height: 230px;
-  overflow: auto;
-  padding-right: 2px;
-}
-
-.recent-flow-item {
-  display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: #ffffff;
-}
-
-.recent-flow-item span {
-  color: var(--ink);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.25;
 }
 
 .result-chip {
@@ -5382,9 +5369,11 @@ select {
     gap: 3px;
   }
 
-  .search-panel .result-chip {
-    width: 18px;
-    height: 18px;
+  .search-panel .recent-result-chips .result-chip {
+    flex-basis: 20px;
+    width: 20px;
+    height: 20px;
+    min-height: 20px;
     font-size: 9px;
   }
 
@@ -5557,8 +5546,8 @@ select {
 .result-card-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 0;
   min-width: 0;
 }
 
@@ -5569,7 +5558,7 @@ select {
   white-space: nowrap;
 }
 
-.result-card-footer > span:last-child {
+.result-card-footer > span:last-child:not(:first-child) {
   flex: 0 0 auto;
   padding: 2px 7px;
   border-radius: 999px;
@@ -5584,7 +5573,7 @@ select {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
-    gap: 5px;
+    gap: 2px;
   }
 
   .search-panel .compact-results .result-card-header {
@@ -5594,22 +5583,19 @@ select {
   .search-panel .compact-results .result-match-title {
     min-width: 0;
     overflow: visible;
-    font-size: 12px;
-    line-height: 1.25;
+    font-size: 11px;
+    line-height: 1.15;
     text-overflow: clip;
     white-space: normal;
   }
 
-  .search-panel .compact-results .result-odds-strip {
-    gap: 4px;
-  }
-
-  .search-panel .compact-results .result-odds-strip span {
-    padding: 5px 6px;
+  .search-panel .compact-results .result-score-hero {
+    font-size: 10px;
+    line-height: 1.1;
   }
 
   .search-panel .compact-results .result-card-details {
-    gap: 4px;
+    gap: 1px;
   }
 
   .search-panel .compact-results .result-card-footer {

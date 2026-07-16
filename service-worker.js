@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v99-vertical-odds-movement";
+const CACHE_NAME = "oddsarchive-v105-deduplicated-recent-results";
 const CORE_ASSETS = [
   "/",
   "/index.html",

@@ -3675,13 +3675,26 @@ function setAccountStatus(message) {
   if (element) element.textContent = message;
 }
 
+function hasStoredCloudSession(storage) {
+  const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
+  if (!target) return false;
+  try {
+    for (let index = 0; index < target.length; index += 1) {
+      const key = String(target.key(index) || "");
+      if (/^sb-.+-auth-token(?:\.\d+)?$/.test(key)) return true;
+    }
+  } catch (_error) {
+    return false;
+  }
+  return false;
+}
+
 function renderLocalAccount(storage) {
   const account = loadLocalAccount(storage);
-  const label = getLocalAccountLabel(storage, activeFavoriteAccountId);
+  const label = cloudAccountState === "loading" && !activeFavoriteAccountId
+    ? "로그인 확인 중"
+    : getLocalAccountLabel(storage, activeFavoriteAccountId);
   const storageMode = getStorageModeLabel(storage);
-  const hasBundledArchive = Boolean(getBundledFootballDataSearchPack());
-  const searchableMatches = getSearchableMatches(storage);
-  const counts = getDashboardCounts(searchableMatches);
   const favoriteSearches = loadSearchHistory(storage).filter((entry) => entry.favorite);
   const autoUpdateState = getAutoUpdateState(storage);
   const lastUpdateLabel = autoUpdateState.lastUpdatedAt || autoUpdateState.lastChecked || "확인 전";
@@ -3692,8 +3705,6 @@ function renderLocalAccount(storage) {
     "account-display-name": label,
     "account-summary-name": label,
     "account-summary-mode": accountModeLabel,
-    "account-data-stored-count": hasBundledArchive ? String(searchableMatches.length) : "56,000+",
-    "account-data-analyzable-count": hasBundledArchive ? String(counts.analyzableMatches) : "56,000+",
     "account-data-saved-search-count": String(favoriteSearches.length),
     "account-data-last-update": lastUpdateLabel
   };
@@ -3786,6 +3797,14 @@ function ensureCloudAccountReady() {
     throw error;
   });
   return cloudAccountLoadPromise;
+}
+
+function restoreStoredCloudSession(storage) {
+  if (!hasStoredCloudSession(storage)) return false;
+  cloudAccountState = "loading";
+  renderLocalAccount(storage);
+  runWhenBrowserIsIdle(() => ensureCloudAccountReady().catch(() => {}));
+  return true;
 }
 
 function wireCloudAccount() {
@@ -4566,39 +4585,17 @@ function createSearchResultCard(match) {
   scoreLine.className = "result-score-hero";
   scoreLine.textContent = `배당 ${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}`;
 
-  scoreLine.hidden = true;
   summary.append(header, title, scoreLine);
-
-  const odds = document.createElement("div");
-  odds.className = "result-odds-strip";
-  [
-    ["홈승", match.homeOdds],
-    ["무", match.drawOdds],
-    ["원정승", match.awayOdds]
-  ].forEach(([label, value]) => {
-    const item = document.createElement("span");
-    const itemLabel = document.createElement("small");
-    const itemValue = document.createElement("strong");
-    itemLabel.textContent = label;
-    itemValue.textContent = formatOdds(value);
-    item.append(itemLabel, itemValue);
-    odds.appendChild(item);
-  });
-  summary.appendChild(odds);
 
   const result = document.createElement("small");
   result.className = "result-score-line result-card-footer";
-  result.textContent = `${match.date || ""} · 결과 ${formatResultLabel(match.result)}`;
+  result.textContent = match.date || "";
 
   const details = document.createElement("div");
   details.className = "result-card-details";
   const resultDate = document.createElement("span");
   resultDate.textContent = match.date || "";
-  const resultOutcome = document.createElement("span");
-  resultOutcome.className = getResultChipClass(match.result);
-  const resultLabel = formatResultLabel(match.result);
-  resultOutcome.textContent = resultLabel ? `경기결과 ${resultLabel}` : "";
-  result.replaceChildren(...[resultDate, resultOutcome].filter((item) => item.textContent));
+  result.replaceChildren(...[resultDate].filter((item) => item.textContent));
   details.append(result);
 
   card.append(summary, details);
@@ -5946,35 +5943,12 @@ function createLeagueBreakdownCard(stat) {
   return card;
 }
 
-function createRecentResultFlowItem(match) {
-  const item = document.createElement("article");
-  item.className = "recent-flow-item";
-  item.tabIndex = 0;
-  item.setAttribute?.("role", "button");
-
-  const chip = document.createElement("b");
-  chip.className = `result-chip ${getResultChipClass(match.result)}`;
-  chip.textContent = formatResultLabel(match.result).slice(0, 1);
-
-  const detail = document.createElement("span");
-  detail.textContent = `${match.date} · ${formatLeagueName(match.league)} · ${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · ${formatMatchResultText(match)}`;
-
-  item.append(chip, detail);
-  item.addEventListener("click", () => openMatchDetail(match));
-  item.addEventListener("keydown", (event) => {
-    if (event.key !== "Enter" && event.key !== " ") return;
-    event.preventDefault();
-    openMatchDetail(match);
-  });
-  return item;
-}
-
 function renderResultBreakdownExtras(matches = [], breakdown = {}) {
   const analysis = document.getElementById("analysis");
   const memo = document.getElementById("breakdown-memo");
   if (!analysis) return;
 
-  analysis.querySelectorAll(".compact-breakdown-strip, .recent-result-row, .league-breakdown-section, .recent-flow-list").forEach((node) => node.remove());
+  analysis.querySelectorAll(".compact-breakdown-strip, .recent-result-row, .league-breakdown-section").forEach((node) => node.remove());
 
   const strip = document.createElement("div");
   strip.className = "compact-breakdown-strip";
@@ -6034,23 +6008,12 @@ function renderResultBreakdownExtras(matches = [], breakdown = {}) {
   }
   leagueSection.append(leagueTitle, leagueList);
 
-  const recentDetails = document.createElement("div");
-  recentDetails.className = "recent-flow-list";
-  if (recentMatches.length === 0) {
-    const empty = document.createElement("small");
-    empty.textContent = "최근 결과 표본 없음";
-    recentDetails.appendChild(empty);
-  } else {
-    recentDetails.append(...recentMatches.map(createRecentResultFlowItem));
-  }
-
   if (memo) {
     analysis.insertBefore(strip, memo);
     analysis.insertBefore(leagueSection, memo);
     analysis.insertBefore(recent, memo);
-    analysis.insertBefore(recentDetails, memo);
   } else {
-    analysis.append(strip, leagueSection, recent, recentDetails);
+    analysis.append(strip, leagueSection, recent);
   }
 }
 
@@ -9383,6 +9346,7 @@ if (typeof document !== "undefined") {
   renderOddsPatternSuggestions();
   renderSavedSearches();
   renderLocalAccount();
+  restoreStoredCloudSession();
   renderAutoUpdateManager();
   setAutoUpdateStatus("자동 업데이트는 꺼져 있습니다. 필요할 때 데이터 추가에서 직접 확인하세요.");
   registerServiceWorker();
@@ -9487,6 +9451,7 @@ if (typeof module !== "undefined") {
     getAutoUpdateState,
     getAutoUpdateSummary,
     getLocalAccountLabel,
+    hasStoredCloudSession,
     getOddsPatternSuggestions,
     getSearchHistoryDisplayTitle,
     getSearchableMatches,
