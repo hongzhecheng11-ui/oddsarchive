@@ -12,6 +12,16 @@ function test(name, fn) {
   }
 }
 
+test("shows Google login in the account header when a cloud account is active", () => {
+  const storage = {
+    getItem() { return null; },
+    setItem() {}
+  };
+
+  assert.strictEqual(app.getLocalAccountLabel(storage, "google-user-uuid"), "Google 로그인");
+  assert.strictEqual(app.getLocalAccountLabel(storage), "로그인 전");
+});
+
 test("builds a seven-day Seoul date strip centered on today", () => {
   const dates = app.getFixtureDateOptions("2026-07-13");
 
@@ -657,7 +667,7 @@ test("keeps operational data views available only in admin mode", () => {
   assert.strictEqual(app.getAllowedViewId("#account", false), "account");
 });
 
-test("keeps finished score and stale odds confidence on today cards", () => {
+test("shows final collected odds for finished cards and stale warnings only before kickoff", () => {
   const finished = app.getHomeTodayCardViewModel({
     league: "KLEAGUE1",
     homeTeam: "FC Seoul",
@@ -681,6 +691,7 @@ test("keeps finished score and stale odds confidence on today cards", () => {
   });
 
   assert.strictEqual(finished.resultText, "경기결과: 무승부 0-0");
+  assert.strictEqual(finished.insight.text, "최종 수집 배당");
   assert.strictEqual(stale.insight.text, "신뢰도 낮음 · 오래된 배당");
 });
 
@@ -870,6 +881,24 @@ test("requires multiple signals for the 1.61 to 2.00 favorite band", () => {
   assert.strictEqual(withoutContext.isTopCandidate, false);
   assert.strictEqual(withScheduleContext.isTopCandidate, true);
   assert.strictEqual(withScheduleContext.topLabel, "정배 불안");
+});
+
+test("uses market expectation instead of a fixed 55 percent favorite cutoff", () => {
+  const strongFavorite = app.assessTodayUpsetCandidate(
+    { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "1.30", drawOdds: "5.20", awayOdds: "9.00" },
+    { totalMatches: 100, knownMatches: 100, homeWins: 60, draws: 20, awayWins: 20 },
+    null
+  );
+  const unstableFavorite = app.assessTodayUpsetCandidate(
+    { league: "EPL", homeTeam: "C", awayTeam: "D", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.50" },
+    { totalMatches: 100, knownMatches: 100, homeWins: 39, draws: 31, awayWins: 30 },
+    null
+  );
+
+  assert.strictEqual(strongFavorite.isTopCandidate, true);
+  assert(strongFavorite.favoriteFailureLift > 10);
+  assert.strictEqual(unstableFavorite.isTopCandidate, true);
+  assert.strictEqual(unstableFavorite.topLabel, "정배 불안");
 });
 
 test("adds recent schedule pressure without using future matches", () => {

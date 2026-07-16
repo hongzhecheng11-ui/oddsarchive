@@ -2655,6 +2655,12 @@ tbody tr:last-child td {
   font-size: 11px;
 }
 
+.result-pill.result-chip-home,
+.result-pill.result-chip-draw,
+.result-pill.result-chip-away {
+  color: #ffffff;
+}
+
 .result-match-title {
   font-size: 14px;
   line-height: 1.25;
@@ -3246,15 +3252,18 @@ body.match-detail-open {
 
 .match-detail-odds-movement-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 6px;
 }
 
 .match-detail-odds-movement-grid > div {
   display: grid;
-  gap: 3px;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
   min-width: 0;
-  padding: 7px;
+  min-height: 38px;
+  padding: 7px 10px;
   border-radius: 7px;
   background: #f1f5f9;
 }
@@ -3272,8 +3281,23 @@ body.match-detail-open {
   white-space: nowrap;
 }
 
-.match-detail-odds-movement-grid small.down { color: #047857; }
+.match-detail-odds-movement-values {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.match-detail-odds-movement-values small {
+  min-width: 43px;
+  font-size: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.match-detail-odds-movement-grid small.down { color: #2563eb; }
 .match-detail-odds-movement-grid small.up { color: #be123c; }
+.match-detail-odds-movement-grid small.same { color: #64748b; }
 
 .match-detail-ai-score-list {
   display: grid;
@@ -5527,5 +5551,68 @@ select {
   .match-detail-team-card dt,
   .match-detail-team-card dd {
     font-size: 9px;
+  }
+}
+
+.result-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.result-card-footer > span:first-child {
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-card-footer > span:last-child {
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .search-panel .compact-results .result-card-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .search-panel .compact-results .result-card-header {
+    display: flex;
+  }
+
+  .search-panel .compact-results .result-match-title {
+    min-width: 0;
+    overflow: visible;
+    font-size: 12px;
+    line-height: 1.25;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .search-panel .compact-results .result-odds-strip {
+    gap: 4px;
+  }
+
+  .search-panel .compact-results .result-odds-strip span {
+    padding: 5px 6px;
+  }
+
+  .search-panel .compact-results .result-card-details {
+    gap: 4px;
+  }
+
+  .search-panel .compact-results .result-card-footer {
+    display: flex;
   }
 }

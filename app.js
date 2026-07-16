@@ -1441,8 +1441,9 @@ function clearLocalAccount(storage) {
   return { nickname: "", createdAt: "" };
 }
 
-function getLocalAccountLabel(storage) {
+function getLocalAccountLabel(storage, googleAccountId = "") {
   const account = loadLocalAccount(storage);
+  if (googleAccountId) return "Google 로그인";
   return account.nickname || "로그인 전";
 }
 
@@ -2811,6 +2812,24 @@ function getStoredTeamContextPack() {
   return { date: "", updatedAt: "", leagues: [] };
 }
 
+function getTeamContextForDate(pack = {}, targetDate = "") {
+  const date = String(targetDate || "").slice(0, 10);
+  const dated = (Array.isArray(pack.dates) ? pack.dates : []).find((entry) => (
+    String(entry?.date || "").slice(0, 10) === date
+  ));
+  if (dated) return {
+    date,
+    updatedAt: String(dated.updatedAt || pack.updatedAt || ""),
+    leagues: Array.isArray(dated.leagues) ? dated.leagues : []
+  };
+  if (date && date === String(pack.date || "").slice(0, 10)) return {
+    date,
+    updatedAt: String(pack.updatedAt || ""),
+    leagues: Array.isArray(pack.leagues) ? pack.leagues : []
+  };
+  return null;
+}
+
 function getStoredMatchStatisticsPack() {
   if (typeof window !== "undefined" && window.ODDS_ARCHIVE_MATCH_STATISTICS_PACK) {
     return window.ODDS_ARCHIVE_MATCH_STATISTICS_PACK;
@@ -2873,8 +2892,9 @@ function createOfficialRecordProfile(record = {}) {
 function getOfficialTeamContext(match = {}, teamName = "") {
   const pack = getStoredTeamContextPack();
   const matchDate = String(match.date || "").slice(0, 10);
-  if (!matchDate || matchDate !== String(pack.date || "").slice(0, 10)) return null;
-  const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
+  const dateContext = getTeamContextForDate(pack, matchDate);
+  if (!dateContext) return null;
+  const leagues = dateContext.leagues.filter((league) => (
     leagueMatchesFixture(match.league, league.key)
   ));
   for (const league of leagues) {
@@ -2886,7 +2906,7 @@ function getOfficialTeamContext(match = {}, teamName = "") {
       seasonProfile: createOfficialRecordProfile(team?.all || standing?.all),
       homeProfile: createOfficialRecordProfile(standing?.home || team?.home),
       awayProfile: createOfficialRecordProfile(standing?.away || team?.away),
-      updatedAt: String(pack.updatedAt || "")
+      updatedAt: dateContext.updatedAt
     };
   }
   return null;
@@ -2896,8 +2916,9 @@ function getOfficialFixtureContext(match = {}) {
   const pack = getStoredTeamContextPack();
   const matchDate = String(match.date || "").slice(0, 10);
   const fixtureId = String(match.fixtureId || match.id || "").trim();
-  if (matchDate && matchDate === String(pack.date || "").slice(0, 10)) {
-    const leagues = (Array.isArray(pack.leagues) ? pack.leagues : []).filter((league) => (
+  const dateContext = getTeamContextForDate(pack, matchDate);
+  if (dateContext) {
+    const leagues = dateContext.leagues.filter((league) => (
       leagueMatchesFixture(match.league, league.key)
     ));
     for (const league of leagues) {
@@ -2907,7 +2928,7 @@ function getOfficialFixtureContext(match = {}) {
           teamNameMatches(item.homeTeam, match.homeTeam)
           && teamNameMatches(item.awayTeam, match.awayTeam)
         ));
-      if (fixture) return { ...fixture, updatedAt: String(pack.updatedAt || "") };
+      if (fixture) return { ...fixture, updatedAt: dateContext.updatedAt };
     }
   }
   const statisticsPack = getStoredMatchStatisticsPack();
@@ -3656,7 +3677,7 @@ function setAccountStatus(message) {
 
 function renderLocalAccount(storage) {
   const account = loadLocalAccount(storage);
-  const label = account.nickname || "로그인 전";
+  const label = getLocalAccountLabel(storage, activeFavoriteAccountId);
   const storageMode = getStorageModeLabel(storage);
   const hasBundledArchive = Boolean(getBundledFootballDataSearchPack());
   const searchableMatches = getSearchableMatches(storage);
@@ -3703,6 +3724,7 @@ function setCloudAccountUi(state = {}) {
   cloudAccountIsAdmin = Boolean(state.isAdmin);
   const status = document.getElementById("cloud-account-status");
   const signInButton = document.getElementById("google-sign-in");
+  const switchAccountButton = document.getElementById("google-switch-account");
   const signOutButton = document.getElementById("google-sign-out");
   const deleteButton = document.getElementById("google-delete-account");
   const signedIn = Boolean(state.userId || activeFavoriteAccountId);
@@ -3716,6 +3738,7 @@ function setCloudAccountUi(state = {}) {
   };
   if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
   if (signInButton) signInButton.hidden = signedIn;
+  if (switchAccountButton) switchAccountButton.hidden = !signedIn;
   if (signOutButton) signOutButton.hidden = !signedIn;
   if (deleteButton) deleteButton.hidden = !signedIn;
   updateAdminControls();
@@ -3745,7 +3768,7 @@ function loadBrowserScript(source, marker) {
 function ensureCloudAccountReady() {
   if (cloudAccountLoadPromise) return cloudAccountLoadPromise;
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=3", "account-auth");
+    await loadBrowserScript("/src/lib/auth.js?v=4", "account-auth");
     if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
     cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
       favorites: {
@@ -3767,6 +3790,7 @@ function ensureCloudAccountReady() {
 
 function wireCloudAccount() {
   const signInButton = document.getElementById("google-sign-in");
+  const switchAccountButton = document.getElementById("google-switch-account");
   const signOutButton = document.getElementById("google-sign-out");
   const deleteButton = document.getElementById("google-delete-account");
   signInButton?.addEventListener("click", async () => {
@@ -3778,6 +3802,17 @@ function wireCloudAccount() {
       setCloudAccountUi({ status: "unavailable", message: error.message });
     } finally {
       signInButton.disabled = false;
+    }
+  });
+  switchAccountButton?.addEventListener("click", async () => {
+    switchAccountButton.disabled = true;
+    try {
+      const service = await ensureCloudAccountReady();
+      await service.switchGoogleAccount();
+    } catch (error) {
+      setCloudAccountUi({ status: "offline", message: error.message || "Google 계정을 바꾸지 못했습니다." });
+    } finally {
+      switchAccountButton.disabled = false;
     }
   });
   signOutButton?.addEventListener("click", async () => {
@@ -4516,7 +4551,7 @@ function createSearchResultCard(match) {
   meta.textContent = formatLeagueName(match.league);
 
   const resultPill = document.createElement("strong");
-  resultPill.className = "result-pill";
+  resultPill.className = `result-pill ${getResultChipClass(match.result)}`;
   resultPill.textContent = formatResultLabel(match.result);
 
   header.append(meta, resultPill);
@@ -4531,6 +4566,7 @@ function createSearchResultCard(match) {
   scoreLine.className = "result-score-hero";
   scoreLine.textContent = `배당 ${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}`;
 
+  scoreLine.hidden = true;
   summary.append(header, title, scoreLine);
 
   const odds = document.createElement("div");
@@ -4548,13 +4584,21 @@ function createSearchResultCard(match) {
     item.append(itemLabel, itemValue);
     odds.appendChild(item);
   });
+  summary.appendChild(odds);
 
   const result = document.createElement("small");
-  result.className = "result-score-line";
+  result.className = "result-score-line result-card-footer";
   result.textContent = `${match.date || ""} · 결과 ${formatResultLabel(match.result)}`;
 
   const details = document.createElement("div");
   details.className = "result-card-details";
+  const resultDate = document.createElement("span");
+  resultDate.textContent = match.date || "";
+  const resultOutcome = document.createElement("span");
+  resultOutcome.className = getResultChipClass(match.result);
+  const resultLabel = formatResultLabel(match.result);
+  resultOutcome.textContent = resultLabel ? `경기결과 ${resultLabel}` : "";
+  result.replaceChildren(...[resultDate, resultOutcome].filter((item) => item.textContent));
   details.append(result);
 
   card.append(summary, details);
@@ -5382,7 +5426,10 @@ function createDetailOddsMovementSection(movement = {}) {
     change.textContent = item.difference === 0
       ? "변동 없음"
       : `${item.difference < 0 ? "▼" : "▲"} ${Math.abs(item.difference).toFixed(2)}`;
-    card.append(label, odds, change);
+    const values = document.createElement("div");
+    values.className = "match-detail-odds-movement-values";
+    values.append(change, odds);
+    card.append(label, values);
     grid.appendChild(card);
   });
   const chart = createOddsMovementChart(movement);
@@ -6470,6 +6517,11 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
     .sort((left, right) => right.excess - left.excess);
   const strongestDirection = directions[0] || null;
   const directionExcess = Number(strongestDirection?.excess || 0);
+  const drawDirection = directions.find((direction) => direction.key === "D") || null;
+  const winDirection = directions.find((direction) => direction.key !== "D") || null;
+  const labelDirection = drawDirection && (!winDirection || drawDirection.historyRate >= winDirection.historyRate)
+    ? drawDirection
+    : winDirection || strongestDirection;
   const contextAdjustment = Number(contextProfile?.adjustment || 0);
   const scheduleSignals = (contextProfile?.signals || []).filter((signal) => (
     ["정배 일정 부담", "정배 연속 원정", "최근 흐름 역전", "득실점 흐름 역전"].includes(signal)
@@ -6480,8 +6532,8 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
     contextAdjustment >= 5 ? "팀·경기 흐름 위험" : "",
     scheduleSignals.length > 0 ? "최근 일정·흐름 위험" : ""
   ].filter(Boolean);
-  const isMajorBand = favoriteOdds >= 1.2 && favoriteOdds <= 1.6;
-  const isUnstableBand = favoriteOdds > 1.6 && favoriteOdds <= 2;
+  const isMajorBand = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
+  const isUnstableBand = favoriteOdds > 1.65 && favoriteOdds <= 2;
   const majorCandidate = isMajorBand
     && knownMatches >= 15
     && favoriteFailureLift >= 4
@@ -6489,18 +6541,18 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
   const unstableCandidate = isUnstableBand
     && knownMatches >= 15
     && favoriteFailureLift >= 6
-    && evidence.length >= 3;
+    && (evidence.length >= 3 || (favoriteFailureLift >= 12 && directionExcess >= 6));
   const isTopCandidate = majorCandidate || unstableCandidate;
   let topLabel = "";
   if (majorCandidate && favoriteOdds <= 1.35 && favoriteFailureLift >= 10) {
     topLabel = "대형 이변 후보";
   } else if (unstableCandidate) {
     topLabel = "정배 불안";
-  } else if (majorCandidate && strongestDirection?.key === "D") {
+  } else if (majorCandidate && labelDirection?.key === "D") {
     topLabel = "무승부 주의";
-  } else if (majorCandidate && strongestDirection?.key === "H") {
+  } else if (majorCandidate && labelDirection?.key === "H") {
     topLabel = "홈 역배 주의";
-  } else if (majorCandidate && strongestDirection?.key === "A") {
+  } else if (majorCandidate && labelDirection?.key === "A") {
     topLabel = "원정 역배 주의";
   } else if (majorCandidate) {
     topLabel = "이변 후보";
@@ -6532,80 +6584,21 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
     .filter(hasCompleteOdds)
     .map((match) => {
       const analysis = getTodayMatchAnalysis(match, searchableMatches);
-      const baseCriteria = {
-        homeOdds: match.homeOdds,
-        drawOdds: match.drawOdds,
-        awayOdds: match.awayOdds,
-        league: match.league,
-        homeTeam: match.homeTeam,
-        awayTeam: match.awayTeam,
-        tolerance: match.tolerance || "0.05"
-      };
-      let judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), baseCriteria);
-      const outcomes = getJudgementOutcomes(analysis?.breakdown || {}, match);
-      const favorite = judgement.favorite;
-      const favoriteOdds = Number(judgement.favoriteOdds || favorite?.odds || 0);
-      const knownMatches = Number(analysis?.breakdown?.knownMatches || 0);
-      const drawRate = Number(judgement.drawRate || 0);
-      const underdogs = outcomes
-        .filter((outcome) => outcome.key !== favorite?.key && outcome.key !== "D")
-        .map((outcome) => ({
-          ...outcome,
-          rate: getRatePercent(outcome.count, knownMatches)
-        }))
-        .sort((left, right) => right.rate - left.rate);
-      const topUnderdog = underdogs[0] || null;
-      const underdogOdds = Number(topUnderdog?.odds || 0);
-      const meaningfulDraw = drawRate >= 24;
-      const meaningfulUnderdog = topUnderdog && topUnderdog.rate >= 18 && underdogOdds >= 3.5;
-      const favoriteIsLowEnough = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
-      const favoriteIsWeak = Number(judgement.favoriteHitRate || 0) < 55;
-      if (!favoriteIsLowEnough || knownMatches < 15 || !favoriteIsWeak) {
-        return { match, analysis, judgement, contextProfile: null, topLabel: "", topScore: 0, isTopCandidate: false };
-      }
-
       const contextProfile = getMatchContextProfile(match, searchableMatches);
-      judgement = calculateMatchJudgement(analysis?.breakdown || calculateResultBreakdown([]), {
-        ...baseCriteria,
-        contextAdjustment: contextProfile.adjustment,
-        contextSignals: contextProfile.signals,
-        contextConfidence: contextProfile.confidence
-      });
-      const meaningfulContext = contextProfile.confidence !== "낮음" && Number(contextProfile.adjustment || 0) >= 8;
-      const evidence = [];
-      if (meaningfulDraw) evidence.push(`무승부 ${Math.round(drawRate)}%`);
-      if (meaningfulUnderdog) {
-        const directionLabel = topUnderdog.key === "H" ? "홈 역배" : "원정 역배";
-        evidence.push(`${directionLabel} ${Math.round(topUnderdog.rate)}%`);
-      }
-      if (meaningfulContext && contextProfile.signals?.[0]) evidence.push(contextProfile.signals[0]);
-      let topLabel = "";
-      if (favoriteOdds <= 1.35 && favoriteIsWeak && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)) {
-        topLabel = "대형 이변 후보";
-      } else if (favoriteIsWeak && meaningfulContext && favoriteOdds <= 1.65) {
-        topLabel = "이변 후보";
-      } else if (meaningfulDraw && (!meaningfulUnderdog || drawRate >= topUnderdog.rate)) {
-        topLabel = "무승부 주의";
-      } else if (meaningfulUnderdog && topUnderdog.key === "H") {
-        topLabel = "홈 역배 주의";
-      } else if (meaningfulUnderdog && topUnderdog.key === "A") {
-        topLabel = "원정 역배 주의";
-      }
-      const topScore = (favoriteOdds <= 1.35 ? 100 : 0)
-        + (meaningfulDraw ? drawRate : 0)
-        + (meaningfulUnderdog ? topUnderdog.rate : 0)
-        + Number(contextProfile.adjustment || 0)
-        + Math.min(knownMatches, 80) / 4
-        + Math.max(0, 55 - Number(judgement.favoriteHitRate || 0));
+      const assessment = assessTodayUpsetCandidate(
+        match,
+        analysis?.breakdown || calculateResultBreakdown([]),
+        contextProfile
+      );
       return {
         match,
         analysis,
-        judgement,
+        judgement: assessment.judgement,
         contextProfile,
-        topLabel,
-        topScore,
-        evidence: evidence.slice(0, 2),
-        isTopCandidate: favoriteIsLowEnough && knownMatches >= 15 && favoriteIsWeak && Boolean(topLabel) && (meaningfulDraw || meaningfulUnderdog || meaningfulContext)
+        topLabel: assessment.topLabel,
+        topScore: assessment.topScore,
+        evidence: assessment.evidence.slice(0, 2),
+        isTopCandidate: assessment.isTopCandidate
       };
     })
     .filter((item) => item.isTopCandidate)
@@ -6671,6 +6664,14 @@ function getOddsUpdateAgeHours(value, now = Date.now()) {
   return Math.max(0, (now - timestamp) / 3600000);
 }
 
+function isFinishedMatch(match = {}) {
+  const status = String(match.status || match.fixtureStatus || match.statusShort || "")
+    .trim()
+    .toUpperCase()
+    .replaceAll("_", " ");
+  return new Set(["FT", "MATCH FINISHED", "AET", "PEN", "AWD", "WO"]).has(status);
+}
+
 function formatTodayUpdateTime(value) {
   if (!value) return "";
   const date = new Date(value);
@@ -6685,6 +6686,7 @@ function formatTodayUpdateTime(value) {
 
 function getHomeTodayCardViewModel(match = {}, updatedAt = "", analysis = null) {
   const hasOdds = hasCompleteOdds(match);
+  const finished = isFinishedMatch(match);
   let insight = hasOdds && analysis
     ? getTodayUserInsight(match, analysis)
     : {
@@ -6695,7 +6697,13 @@ function getHomeTodayCardViewModel(match = {}, updatedAt = "", analysis = null) 
       score: hasOdds ? 1 : 0
     };
   const oddsAgeHours = getOddsUpdateAgeHours(match.updatedAt);
-  if (hasOdds && oddsAgeHours !== null && oddsAgeHours >= 6) {
+  if (hasOdds && finished) {
+    insight = {
+      ...insight,
+      text: "최종 수집 배당",
+      tone: "balanced"
+    };
+  } else if (hasOdds && oddsAgeHours !== null && oddsAgeHours >= 6) {
     insight = {
       ...insight,
       text: "신뢰도 낮음 · 오래된 배당",
@@ -9486,6 +9494,7 @@ if (typeof module !== "undefined") {
     getStorageMatches,
     getStorageTodayMatches,
     getTeamMatchCriteria,
+    getTeamContextForDate,
     getTodayMatchCriteria,
     getTodayKey,
     getFixtureDateOptions,

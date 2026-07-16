@@ -2,8 +2,7 @@ name: Collect API odds
 
 on:
   schedule:
-    - cron: "10 3 */3 * *"
-    # 17:10 KST: Asian evening fixtures, 03:10 KST: European evening fixtures.
+    # 17:10 KST: upcoming three days; 03:10 KST: current-day closing odds and near-kickoff intel.
     - cron: "10 8 * * *"
     - cron: "10 18 * * *"
   workflow_dispatch:
@@ -33,7 +32,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=0 --leagues=KLEAGUE1
-          elif [ "${{ github.event.schedule }}" = "10 3 */3 * *" ]; then
+          elif [ "${{ github.event.schedule }}" = "10 8 * * *" ]; then
             npm run collect:api-odds:auto
           else
             npm run collect:api-odds:closing
@@ -46,7 +45,12 @@ jobs:
         if: github.event_name == 'schedule' && (github.event.schedule == '10 8 * * *' || github.event.schedule == '10 18 * * *')
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-        run: npm run collect:team-context
+        run: |
+          if [ "${{ github.event.schedule }}" = "10 8 * * *" ]; then
+            npm run collect:team-context:upcoming
+          else
+            npm run collect:team-context
+          fi
 
       - name: Collect completed match statistics
         if: github.event_name == 'schedule' && github.event.schedule == '10 8 * * *'

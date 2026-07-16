@@ -47,6 +47,47 @@ test("merges fixture statistics by id and removes old records", () => {
   assert.strictEqual(merged[0].home.shots, 12);
 });
 
+test("rechecks three completed dates but skips already complete fixture details", async () => {
+  assert.deepStrictEqual(collector.getPreviousSeoulDates(new Date("2026-07-16T12:00:00+09:00"), 3), [
+    "2026-07-15", "2026-07-14", "2026-07-13"
+  ]);
+  const targets = [{ fixtureId: "501", homeTeam: "Arsenal", awayTeam: "Chelsea" }];
+  let detailRequests = 0;
+  const result = await collector.collectLeagueStatistics({
+    apiKey: "test-key",
+    leagueKey: "EPL",
+    leagueId: 39,
+    date: "2026-07-15",
+    targets,
+    existingByFixture: new Map([["501", {
+      fixtureId: 501,
+      statisticsChecked: true,
+      lineupsChecked: true,
+      injuriesChecked: true
+    }]]),
+    fetcher: async (pathname) => {
+      if (!pathname.startsWith("/fixtures?")) detailRequests += 1;
+      return [{
+        fixture: { id: 501, date: "2026-07-15T19:00:00+09:00", status: { short: "FT" } },
+        teams: { home: { id: 1, name: "Arsenal" }, away: { id: 2, name: "Chelsea" } }
+      }];
+    }
+  });
+  assert.strictEqual(result.fixtureCount, 1);
+  assert.strictEqual(result.skippedComplete, 1);
+  assert.strictEqual(detailRequests, 0);
+});
+
+test("limits completed statistics collection to fixtures stored in the odds pack", () => {
+  const targets = collector.getOddsTargetsByLeagueDate({ matches: [
+    { date: "2026-07-15", league: "EPL", fixtureId: "501", homeTeam: "Arsenal", awayTeam: "Chelsea" },
+    { date: "2026-07-15", league: "UEL", fixtureId: "502", homeTeam: "Derry City", awayTeam: "CSKA Sofia" }
+  ] }, ["2026-07-15"], ["EPL"]);
+  assert.strictEqual(targets.get("2026-07-15|EPL").length, 1);
+  assert.strictEqual(targets.has("2026-07-15|UEL"), false);
+  assert.strictEqual(collector.fixtureMatchesTarget({ fixtureId: 501 }, targets.get("2026-07-15|EPL")), true);
+});
+
 test("keeps historical lineup and injury context when performance statistics are absent", () => {
   const match = collector.createMatchStatistics({
     fixtureId: 1582681,

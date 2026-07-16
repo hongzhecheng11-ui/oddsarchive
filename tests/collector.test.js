@@ -173,17 +173,18 @@ test("does not add duplicate odds history snapshots when odds are unchanged", ()
   assert.strictEqual(result.duplicateCount, 1);
 });
 
-test("keeps broad collection separate from lightweight closing-odds refreshes", () => {
+test("runs daily upcoming collection separately from lightweight closing-odds refreshes", () => {
   const packageJson = require("../package.json");
   const workflow = fs.readFileSync(path.join(__dirname, "..", ".github", "workflows", "collect-api-odds.yml"), "utf8");
   const closingCommand = packageJson.scripts["collect:api-odds:closing"];
 
   assert.match(closingCommand, /--future-days=0/);
   assert.match(closingCommand, /--result-days=1/);
-  assert.match(workflow, /10 3 \*\/3 \* \*/);
   assert.match(workflow, /10 8 \* \* \*/);
   assert.match(workflow, /10 18 \* \* \*/);
+  assert.match(workflow, /npm run collect:api-odds:auto/);
   assert.match(workflow, /npm run collect:api-odds:closing/);
+  assert.match(workflow, /npm run collect:team-context:upcoming/);
   assert.match(workflow, /concurrency:[\s\S]*cancel-in-progress: false/);
 });
 

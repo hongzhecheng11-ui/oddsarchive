@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v97-play-readiness";
+const CACHE_NAME = "oddsarchive-v99-vertical-odds-movement";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -13,7 +13,7 @@ const CORE_ASSETS = [
   "/data/match-statistics-pack.js",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
-  "/src/lib/auth.js?v=3",
+  "/src/lib/auth.js?v=4",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",

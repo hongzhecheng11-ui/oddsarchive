@@ -15,6 +15,7 @@ const {
 
 const ROOT_DIR = path.resolve(__dirname, "..");
 const PACK_PATH = path.join(ROOT_DIR, "data", "match-statistics-pack.js");
+const ODDS_PACK_PATH = path.join(ROOT_DIR, "data", "api-odds-pack.js");
 const FINISHED_STATUSES = new Set(["FT", "AET", "PEN"]);
 
 function wait(ms) {
@@ -32,6 +33,59 @@ function getPreviousSeoulDate(now = new Date()) {
   const date = new Date(`${today}T00:00:00Z`);
   date.setUTCDate(date.getUTCDate() - 1);
   return date.toISOString().slice(0, 10);
+}
+
+function getPreviousSeoulDates(now = new Date(), pastDays = 1) {
+  const today = getSeoulDate(now);
+  const base = new Date(`${today}T00:00:00Z`);
+  const count = Math.max(1, Math.min(Number(pastDays) || 1, 7));
+  return Array.from({ length: count }, (_, index) => {
+    const date = new Date(base);
+    date.setUTCDate(date.getUTCDate() - index - 1);
+    return date.toISOString().slice(0, 10);
+  });
+}
+
+function loadPack(packPath, fallback) {
+  try {
+    delete require.cache[require.resolve(packPath)];
+    return require(packPath);
+  } catch (_) {
+    return fallback;
+  }
+}
+
+function normalizeTeamKey(value = "") {
+  return String(value || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function getOddsTargetsByLeagueDate(oddsPack = {}, dates = [], allowedLeagues = []) {
+  const dateSet = new Set(dates);
+  const leagueSet = new Set(allowedLeagues);
+  const targets = new Map();
+  for (const match of Array.isArray(oddsPack.matches) ? oddsPack.matches : []) {
+    const date = String(match.date || "").slice(0, 10);
+    const league = String(match.league || "").trim().toUpperCase();
+    if (!dateSet.has(date) || !league || (leagueSet.size && !leagueSet.has(league))) continue;
+    const key = `${date}|${league}`;
+    if (!targets.has(key)) targets.set(key, []);
+    targets.get(key).push(match);
+  }
+  return targets;
+}
+
+function fixtureMatchesTarget(fixture = {}, targets = []) {
+  return targets.some((target) => (
+    (fixture.fixtureId && target.fixtureId && String(fixture.fixtureId) === String(target.fixtureId))
+    || (
+      normalizeTeamKey(fixture.homeTeam) === normalizeTeamKey(target.homeTeam)
+      && normalizeTeamKey(fixture.awayTeam) === normalizeTeamKey(target.awayTeam)
+    )
+  ));
+}
+
+function hasCompleteMatchStatistics(match = {}) {
+  return Boolean(match.statisticsChecked && match.lineupsChecked && match.injuriesChecked);
 }
 
 function parseStatisticValue(value) {
@@ -136,13 +190,16 @@ function serializePack(pack) {
 `;
 }
 
-async function collectLeagueStatistics({ apiKey, leagueKey, leagueId, date, fetcher = fetchApiFootball }) {
+async function collectLeagueStatistics({ apiKey, leagueKey, leagueId, date, fetcher = fetchApiFootball, targets, existingByFixture = new Map() }) {
   const season = getSeason(date, leagueKey);
-  const fixtures = normalizeFinishedFixtures(
+  let fixtures = normalizeFinishedFixtures(
     await fetcher(`/fixtures?league=${leagueId}&season=${season}&date=${date}&timezone=Asia%2FSeoul`, apiKey),
     leagueKey,
     date
   );
+  if (Array.isArray(targets)) fixtures = fixtures.filter((fixture) => fixtureMatchesTarget(fixture, targets));
+  const targetFixtureCount = fixtures.length;
+  fixtures = fixtures.filter((fixture) => !hasCompleteMatchStatistics(existingByFixture.get(String(fixture.fixtureId))));
   const matches = [];
   const failures = [];
   for (const fixture of fixtures) {
@@ -181,13 +238,16 @@ async function collectLeagueStatistics({ apiKey, leagueKey, leagueId, date, fetc
     }));
     await wait(120);
   }
-  return { matches, failures, fixtureCount: fixtures.length };
+  return { matches, failures, fixtureCount: targetFixtureCount, skippedComplete: targetFixtureCount - fixtures.length };
 }
 
 async function main() {
   const apiKey = getApiKey();
   if (!apiKey) throw new Error("API_FOOTBALL_KEY is required");
-  const date = String(getArg("date", getPreviousSeoulDate())).slice(0, 10);
+  const requestedDate = String(getArg("date", "")).slice(0, 10);
+  const dates = requestedDate
+    ? [requestedDate]
+    : getPreviousSeoulDates(new Date(), getArg("past-days", "1"));
   const leagueKeys = String(getArg("leagues", DEFAULT_LEAGUES.join(",")))
     .split(",")
     .map((value) => value.trim().toUpperCase())
@@ -196,33 +256,46 @@ async function main() {
   const errors = [];
   let requestGroups = 0;
   let finishedFixtures = 0;
+  let skippedComplete = 0;
+  let skippedGroups = 0;
+  const existingPack = loadExistingPack();
+  const existingByFixture = new Map((existingPack.matches || []).map((match) => [String(match.fixtureId || ""), match]));
+  const oddsPack = loadPack(ODDS_PACK_PATH, { matches: [] });
+  const targetsByLeagueDate = getOddsTargetsByLeagueDate(oddsPack, dates, leagueKeys);
 
-  for (const leagueKey of leagueKeys) {
-    for (const leagueId of getLeagueIds(leagueKey)) {
-      try {
-        const result = await collectLeagueStatistics({ apiKey, leagueKey, leagueId, date });
-        requestGroups += 1;
-        finishedFixtures += result.fixtureCount;
-        collected.push(...result.matches);
-        errors.push(...result.failures);
-      } catch (error) {
-        errors.push(`${leagueKey}(${leagueId}): ${error.message}`);
+  for (const date of dates) {
+    for (const leagueKey of leagueKeys) {
+      const targets = targetsByLeagueDate.get(`${date}|${leagueKey}`) || [];
+      if (targets.length === 0) {
+        skippedGroups += getLeagueIds(leagueKey).length;
+        continue;
       }
-      await wait(180);
+      for (const leagueId of getLeagueIds(leagueKey)) {
+        try {
+          const result = await collectLeagueStatistics({ apiKey, leagueKey, leagueId, date, targets, existingByFixture });
+          requestGroups += 1;
+          finishedFixtures += result.fixtureCount;
+          skippedComplete += result.skippedComplete;
+          collected.push(...result.matches);
+          errors.push(...result.failures);
+        } catch (error) {
+          errors.push(`${date} ${leagueKey}(${leagueId}): ${error.message}`);
+        }
+        await wait(180);
+      }
     }
   }
 
   if (requestGroups === 0 && errors.length > 0) throw new Error(`All match statistics requests failed (${errors.length})`);
-  const existingPack = loadExistingPack();
   const matches = mergeMatchStatistics(existingPack.matches, collected);
   const pack = {
     version: "match-statistics-v1",
     updatedAt: new Date().toISOString(),
-    collection: { date, requestGroups, finishedFixtures, saved: collected.length, failures: errors.length, errors: errors.slice(0, 30) },
+    collection: { dates, requestGroups, skippedGroups, finishedFixtures, skippedComplete, saved: collected.length, failures: errors.length, errors: errors.slice(0, 30) },
     matches
   };
   fs.writeFileSync(PACK_PATH, serializePack(pack), "utf8");
-  console.log(`match statistics saved: date=${date} finished=${finishedFixtures} saved=${collected.length} total=${matches.length} failures=${errors.length}`);
+  console.log(`match statistics saved: dates=${dates.length} finished=${finishedFixtures} saved=${collected.length} cached=${skippedComplete} skipped=${skippedGroups} total=${matches.length} failures=${errors.length}`);
 }
 
 if (require.main === module) {
@@ -236,7 +309,11 @@ module.exports = {
   collectLeagueStatistics,
   createEmptyTeamStatistics,
   createMatchStatistics,
+  fixtureMatchesTarget,
+  getOddsTargetsByLeagueDate,
   getPreviousSeoulDate,
+  getPreviousSeoulDates,
+  hasCompleteMatchStatistics,
   mergeMatchStatistics,
   normalizeFinishedFixtures,
   normalizeTeamStatistics,

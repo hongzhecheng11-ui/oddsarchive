@@ -107,6 +107,34 @@ test("uses official context only for the pack date and falls back when stale", (
   delete globalThis.ODDS_ARCHIVE_TEAM_CONTEXT_PACK;
 });
 
+test("keeps future team context dates and selects the matching fixture date", () => {
+  const merged = collector.mergeDateContexts({
+    date: "2026-07-16",
+    updatedAt: "2026-07-16T08:00:00.000Z",
+    leagues: [{ key: "EPL", teams: [] }]
+  }, [{
+    date: "2026-07-17",
+    updatedAt: "2026-07-16T09:00:00.000Z",
+    leagues: [{ key: "UEL", teams: [{ team: "Derry City" }] }]
+  }], "2026-07-16");
+
+  assert.deepStrictEqual(collector.getCollectionDates("2026-07-16", 3), [
+    "2026-07-16", "2026-07-17", "2026-07-18", "2026-07-19"
+  ]);
+  assert.strictEqual(merged.length, 2);
+  assert.strictEqual(app.getTeamContextForDate({ dates: merged }, "2026-07-17").leagues[0].key, "UEL");
+});
+
+test("targets only leagues with stored odds on each requested date", () => {
+  const targets = collector.getOddsTargetsByDate({ matches: [
+    { date: "2026-07-16", league: "EPL" },
+    { date: "2026-07-17", league: "UEL" },
+    { date: "2026-07-17", league: "UNSUPPORTED" }
+  ] }, ["2026-07-16", "2026-07-17"], ["EPL", "UEL"]);
+  assert.deepStrictEqual([...targets.get("2026-07-16")], ["EPL"]);
+  assert.deepStrictEqual([...targets.get("2026-07-17")], ["UEL"]);
+});
+
 test("matches fixture availability by fixture id and separates each team", () => {
   globalThis.ODDS_ARCHIVE_TEAM_CONTEXT_PACK = {
     date: "2026-07-14",

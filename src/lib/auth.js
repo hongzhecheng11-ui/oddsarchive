@@ -189,13 +189,30 @@
       return initializePromise;
     }
 
-    async function signInWithGoogle() {
+    async function signInWithGoogle(options = {}) {
       await initialize();
       const { error } = await client.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: config.redirectTo }
+        options: {
+          redirectTo: config.redirectTo,
+          ...(options.selectAccount ? { queryParams: { prompt: "select_account" } } : {})
+        }
       });
       if (error) throw error;
+    }
+
+    async function switchGoogleAccount() {
+      await initialize();
+      if (userId) {
+        const { error } = await client.auth.signOut({ scope: "local" });
+        if (error) throw error;
+        userId = "";
+        isAdmin = false;
+        accessToken = "";
+        favorites?.clearAccountRecords?.();
+        emit("signed_out");
+      }
+      return signInWithGoogle({ selectAccount: true });
     }
 
     async function signOut() {
@@ -243,6 +260,7 @@
       destroy,
       initialize,
       signInWithGoogle,
+      switchGoogleAccount,
       signOut,
       deleteAccount,
       syncAccountRecords,
