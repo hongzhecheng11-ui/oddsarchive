@@ -5,22 +5,406 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-16T10:21:16.151Z",
+  "updatedAt": "2026-07-17T10:09:53.232Z",
   "collection": {
     "dates": [
+      "2026-07-16",
       "2026-07-15",
-      "2026-07-14",
-      "2026-07-13"
+      "2026-07-14"
     ],
-    "requestGroups": 2,
-    "skippedGroups": 76,
-    "finishedFixtures": 11,
-    "skippedComplete": 0,
-    "saved": 11,
+    "requestGroups": 4,
+    "skippedGroups": 74,
+    "finishedFixtures": 16,
+    "skippedComplete": 11,
+    "saved": 5,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1554388,
+      "date": "2026-07-16",
+      "league": "UCL",
+      "homeTeamId": 632,
+      "homeTeam": "Universitatea Craiova",
+      "awayTeamId": 7808,
+      "awayTeam": "ML Vitebsk",
+      "home": {
+        "teamId": 632,
+        "team": "Universitatea Craiova",
+        "shots": 4,
+        "shotsOnGoal": 1,
+        "possession": 49,
+        "corners": 2,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7808,
+        "team": "ML Vitebsk",
+        "shots": 1,
+        "shotsOnGoal": 1,
+        "possession": 51,
+        "corners": 1,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 632,
+          "team": "Universitatea Craiova",
+          "formation": "3-4-3",
+          "coach": "Filipe Coelho",
+          "starters": [
+            "L. Popescu",
+            "O. Romanchuk",
+            "A. Rus",
+            "J. Badelj",
+            "C. Mora",
+            "A. Cicaldau",
+            "T. Baluta",
+            "Teles",
+            "M. Etim",
+            "A. Al Hamlawi",
+            "S. Baiaram"
+          ]
+        },
+        {
+          "teamId": 7808,
+          "team": "ML Vitebsk",
+          "formation": "4-1-4-1",
+          "coach": "Mikhail Martinovich",
+          "starters": [
+            "P. Pavlyuchenko",
+            "S. Balanovich",
+            "Z. Volkov",
+            "K. Gomanov",
+            "Y. Skibskiy",
+            "V. Bocherov",
+            "D. Cleonise",
+            "V. Gromyko",
+            "A. Mesarovic",
+            "R. Bosic",
+            "A. Kontsevoy"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1554375,
+      "date": "2026-07-16",
+      "league": "UCL",
+      "homeTeamId": 15847,
+      "homeTeam": "Atert Bissen",
+      "awayTeamId": 701,
+      "awayTeam": "KI Klaksvik",
+      "home": {
+        "teamId": 15847,
+        "team": "Atert Bissen",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 701,
+        "team": "KI Klaksvik",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 15847,
+          "team": "Atert Bissen",
+          "formation": "4-2-3-1",
+          "coach": "Pedro Fernandez",
+          "starters": [
+            "Y. Gourari Tebaa",
+            "T. Rodrigues",
+            "B. Silva",
+            "Y. Mannone",
+            "E. Veiga",
+            "M. Terki",
+            "T. Zeghdane",
+            "T. Crame",
+            "D. Pimentel",
+            "K. Abi Ramzi",
+            "R. Ferber"
+          ]
+        },
+        {
+          "teamId": 701,
+          "team": "KI Klaksvik",
+          "formation": "4-2-3-1",
+          "coach": "Magnus Powell",
+          "starters": [
+            "M. Jensen",
+            "J. Danielsen",
+            "O. Faero",
+            "G. Tellechea",
+            "G. Sorensen",
+            "H. Hansson",
+            "D. Pavlovic",
+            "A. Frederiksberg",
+            "O. Ali",
+            "Jean Carlos",
+            "P. Klettskard"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1554386,
+      "date": "2026-07-16",
+      "league": "UCL",
+      "homeTeamId": 673,
+      "homeTeam": "Sutjeska",
+      "awayTeamId": 664,
+      "awayTeam": "Kairat Almaty",
+      "home": {
+        "teamId": 673,
+        "team": "Sutjeska",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 664,
+        "team": "Kairat Almaty",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 673,
+          "team": "Sutjeska",
+          "formation": "4-3-3",
+          "coach": "Milorad Pekovic",
+          "starters": [
+            "V. Giljen",
+            "A. Golubovic",
+            "A. Babic",
+            "B. Kopitovic",
+            "A. Raznatovic",
+            "J. Cadjenovic",
+            "D. Hocko",
+            "M. Simun",
+            "V. Cavor",
+            "M. Mrvaljevic",
+            "P. Anicic"
+          ]
+        },
+        {
+          "teamId": 664,
+          "team": "Kairat Almaty",
+          "formation": "4-2-3-1",
+          "coach": "Rafael Urazbakhtin",
+          "starters": [
+            "T. Anarbekov",
+            "L. Mata",
+            "Lucas Africo",
+            "A. Shirobokov",
+            "A. Mrynskiy",
+            "J. Oksanen",
+            "A. Sadybekov",
+            "I. Bekbolat",
+            "Jorginho",
+            "O. Jukkola",
+            "M. Gual"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1554377,
+      "date": "2026-07-16",
+      "league": "UCL",
+      "homeTeamId": 3327,
+      "homeTeam": "Egnatia Rrogozhinë",
+      "awayTeamId": 2271,
+      "awayTeam": "Petrocub",
+      "home": {
+        "teamId": 3327,
+        "team": "Egnatia Rrogozhinë",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2271,
+        "team": "Petrocub",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3327,
+          "team": "Egnatia Rrogozhinë",
+          "formation": "5-3-2",
+          "coach": "Nevil Dede",
+          "starters": [
+            "M. Dajsinani",
+            "G. Jaime",
+            "E. Sota",
+            "E. Bitri",
+            "A. Xhemajli",
+            "A. Yago",
+            "A. Kryeziu",
+            "Fernando Medeiros",
+            "K. Loukili",
+            "A. Albanese",
+            "S. Bakayoko"
+          ]
+        },
+        {
+          "teamId": 2271,
+          "team": "Petrocub",
+          "formation": "5-3-2",
+          "coach": "Shota Makharadze",
+          "starters": [
+            "C. Avram",
+            "I. Jardan",
+            "C. Cucos",
+            "J. Guera Djou",
+            "V. Pascari",
+            "S. Platica",
+            "D. Puscas",
+            "M. Platica",
+            "M. Iosipoi",
+            "P. Popescu",
+            "N. Rotaru"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1586077,
+      "date": "2026-07-16",
+      "league": "WORLDCUP",
+      "homeTeamId": 10,
+      "homeTeam": "England",
+      "awayTeamId": 26,
+      "awayTeam": "Argentina",
+      "home": {
+        "teamId": 10,
+        "team": "England",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 36,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 0.53
+      },
+      "away": {
+        "teamId": 26,
+        "team": "Argentina",
+        "shots": 15,
+        "shotsOnGoal": 5,
+        "possession": 64,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 1.84
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10,
+          "team": "England",
+          "formation": "4-2-3-1",
+          "coach": "Thomas Tuchel",
+          "starters": [
+            "J. Pickford",
+            "R. James",
+            "J. Stones",
+            "M. Guehi",
+            "D. Spence",
+            "D. Rice",
+            "E. Anderson",
+            "M. Rogers",
+            "J. Bellingham",
+            "A. Gordon",
+            "H. Kane"
+          ]
+        },
+        {
+          "teamId": 26,
+          "team": "Argentina",
+          "formation": "4-1-4-1",
+          "coach": "Lionel Scaloni",
+          "starters": [
+            "E. Martinez",
+            "N. Molina",
+            "C. Romero",
+            "L. Martinez",
+            "N. Tagliafico",
+            "L. Paredes",
+            "G. Simeone",
+            "E. Fernandez",
+            "A. Mac Allister",
+            "J. Alvarez",
+            "L. Messi"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1586077,
+          "teamId": 10,
+          "playerId": 158698,
+          "player": "J. Quansah",
+          "type": "Missing Fixture",
+          "reason": "Suspension Through Sports Court"
+        }
+      ]
+    },
     {
       "fixtureId": 1554381,
       "date": "2026-07-15",
