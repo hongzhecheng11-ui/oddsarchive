@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-07-18",
-  "updatedAt": "2026-07-17T19:23:27.478Z",
+  "updatedAt": "2026-07-18T09:44:20.647Z",
   "collection": {
     "dates": [
-      "2026-07-18"
+      "2026-07-18",
+      "2026-07-19",
+      "2026-07-20",
+      "2026-07-21"
     ],
-    "requestGroups": 2,
-    "skippedGroups": 24,
+    "requestGroups": 7,
+    "skippedGroups": 97,
     "failures": 0,
     "errors": []
   },
@@ -652,7 +655,7 @@
           "awayTeam": "Gimcheon Sangmu FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -665,7 +668,7 @@
           "awayTeam": "Ulsan Hyundai FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -678,7 +681,7 @@
           "awayTeam": "Pohang Steelers",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -691,7 +694,7 @@
           "awayTeam": "Jeonbuk Motors",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1491,7 +1494,7 @@
           "awayTeam": "Seoul E-Land FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1504,7 +1507,7 @@
           "awayTeam": "Busan I Park",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1517,7 +1520,7 @@
           "awayTeam": "Asan Mugunghwa",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1530,7 +1533,88 @@
           "awayTeam": "Daegu FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
+          "lineups": []
+        }
+      ]
+    },
+    {
+      "key": "INTL_FRIENDLIES",
+      "leagueId": 10,
+      "season": "2026",
+      "standings": [],
+      "teams": [
+        {
+          "teamId": 1542,
+          "team": "Vietnam",
+          "form": "WWWW",
+          "all": {
+            "played": 4,
+            "wins": 4,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 13,
+            "goalsAgainst": 2
+          },
+          "home": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 1556,
+          "team": "Myanmar",
+          "form": "WL",
+          "all": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 5
+          }
+        }
+      ],
+      "fixtures": [
+        {
+          "fixtureId": 1586132,
+          "kickoff": "2026-07-18T21:00:00+09:00",
+          "status": "NS",
+          "homeTeamId": 1542,
+          "homeTeam": "Vietnam",
+          "awayTeamId": 1556,
+          "awayTeam": "Myanmar",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1981,7 +2065,7 @@
     },
     {
       "date": "2026-07-18",
-      "updatedAt": "2026-07-17T19:23:27.472Z",
+      "updatedAt": "2026-07-18T09:44:13.336Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -2618,7 +2702,7 @@
               "awayTeam": "Gimcheon Sangmu FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -2631,7 +2715,7 @@
               "awayTeam": "Ulsan Hyundai FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -2644,7 +2728,7 @@
               "awayTeam": "Pohang Steelers",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -2657,7 +2741,7 @@
               "awayTeam": "Jeonbuk Motors",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -3457,7 +3541,7 @@
               "awayTeam": "Seoul E-Land FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -3470,7 +3554,7 @@
               "awayTeam": "Busan I Park",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -3483,7 +3567,7 @@
               "awayTeam": "Asan Mugunghwa",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -3496,7 +3580,88 @@
               "awayTeam": "Daegu FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
+              "lineups": []
+            }
+          ]
+        },
+        {
+          "key": "INTL_FRIENDLIES",
+          "leagueId": 10,
+          "season": "2026",
+          "standings": [],
+          "teams": [
+            {
+              "teamId": 1542,
+              "team": "Vietnam",
+              "form": "WWWW",
+              "all": {
+                "played": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 1556,
+              "team": "Myanmar",
+              "form": "WL",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 5
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1586132,
+              "kickoff": "2026-07-18T21:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1542,
+              "homeTeam": "Vietnam",
+              "awayTeamId": 1556,
+              "awayTeam": "Myanmar",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -3505,7 +3670,7 @@
     },
     {
       "date": "2026-07-19",
-      "updatedAt": "2026-07-17T10:09:47.406Z",
+      "updatedAt": "2026-07-18T09:44:19.480Z",
       "leagues": [
         {
           "key": "WORLDCUP",
@@ -6889,7 +7054,7 @@
     },
     {
       "date": "2026-07-20",
-      "updatedAt": "2026-07-17T10:09:48.307Z",
+      "updatedAt": "2026-07-18T09:44:20.640Z",
       "leagues": [
         {
           "key": "WORLDCUP",
@@ -8894,6 +9059,11 @@
           ]
         }
       ]
+    },
+    {
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-18T09:44:20.640Z",
+      "leagues": []
     }
   ]
 };
