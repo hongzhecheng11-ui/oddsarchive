@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-18T09:43:58.329Z",
+  "updatedAt": "2026-07-18T19:18:27.993Z",
   "summary": {
-    "trackedDays": 6,
-    "trackedCandidates": 0,
+    "trackedDays": 7,
+    "trackedCandidates": 1,
     "resolvedCandidates": 0,
     "favoriteFailures": 0,
     "directionHits": 0
@@ -40,17 +40,53 @@
     {
       "date": "2026-07-19",
       "firstEvaluatedAt": "2026-07-16T10:20:46.194Z",
-      "lastEvaluatedAt": "2026-07-18T09:43:58.329Z",
+      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-07-20",
       "firstEvaluatedAt": "2026-07-17T10:09:29.809Z",
-      "lastEvaluatedAt": "2026-07-18T09:43:58.329Z",
+      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
+    },
+    {
+      "date": "2026-07-22",
+      "firstEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "eligibleMatchCount": 10,
+      "candidateIds": [
+        "fixture:1589416"
+      ]
     }
   ],
-  "candidates": []
+  "candidates": [
+    {
+      "candidateId": "fixture:1589416",
+      "fixtureId": "1589416",
+      "date": "2026-07-22",
+      "league": "UCL",
+      "homeTeam": "Saburtalo",
+      "awayTeam": "Slovan Bratislava",
+      "homeOdds": "3.50",
+      "drawOdds": "3.30",
+      "awayOdds": "1.91",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 28,
+      "firstEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "lastSeenAt": "2026-07-18T19:18:27.993Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    }
+  ]
 }
