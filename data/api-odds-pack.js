@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-19T10:00:36.660Z",
+  "updatedAt": "2026-07-19T19:20:25.104Z",
   "collection": {
-    "lastAttemptAt": "2026-07-19T09:59:42.557Z",
-    "lastSuccessAt": "2026-07-19T10:00:36.660Z",
-    "requestSuccesses": 108,
+    "lastAttemptAt": "2026-07-19T19:20:11.682Z",
+    "lastSuccessAt": "2026-07-19T19:20:25.104Z",
+    "requestSuccesses": 29,
     "requestFailures": 0,
-    "addedCount": 6,
-    "updatedCount": 16,
-    "duplicateCount": 1,
+    "addedCount": 0,
+    "updatedCount": 7,
+    "duplicateCount": 6,
     "errors": []
   },
   "matches": [
@@ -5146,10 +5146,10 @@
       "homeOdds": "5.20",
       "drawOdds": "3.50",
       "awayOdds": "1.68",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-3",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:24.212Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.289Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-18T09:43:46.534Z",
@@ -5171,13 +5171,13 @@
       "fixtureId": "1507002",
       "homeTeam": "FC Anyang",
       "awayTeam": "Gwangju FC",
-      "homeOdds": "1.62",
-      "drawOdds": "3.70",
-      "awayOdds": "5.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.55",
+      "drawOdds": "3.75",
+      "awayOdds": "6.25",
+      "result": "D",
+      "score": "1-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:24.212Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.289Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-19T10:00:24.212Z",
@@ -5196,10 +5196,10 @@
       "homeOdds": "2.65",
       "drawOdds": "3.25",
       "awayOdds": "2.45",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:26.606Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.903Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-17T10:09:22.717Z",
@@ -5230,10 +5230,10 @@
       "homeOdds": "1.83",
       "drawOdds": "3.45",
       "awayOdds": "3.90",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "5-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:26.606Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.903Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-18T09:43:48.628Z",
@@ -5258,10 +5258,10 @@
       "homeOdds": "1.40",
       "drawOdds": "4.40",
       "awayOdds": "6.75",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:26.606Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.903Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-18T09:43:48.628Z",
@@ -5286,10 +5286,10 @@
       "homeOdds": "2.88",
       "drawOdds": "3.20",
       "awayOdds": "2.33",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-3",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:26.606Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:21.903Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-17T10:09:22.717Z",
@@ -5353,11 +5353,11 @@
       "awayTeam": "Argentina",
       "homeOdds": "2.25",
       "drawOdds": "2.96",
-      "awayOdds": "3.45",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "3.50",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-19T10:00:07.673Z",
+      "oddsUpdatedAt": "2026-07-19T19:20:18.096Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-17T10:09:10.478Z",
