@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-18T19:18:27.993Z",
+  "updatedAt": "2026-07-19T10:00:36.914Z",
   "summary": {
-    "trackedDays": 7,
-    "trackedCandidates": 1,
+    "trackedDays": 8,
+    "trackedCandidates": 2,
     "resolvedCandidates": 0,
     "favoriteFailures": 0,
     "directionHits": 0
@@ -40,28 +40,61 @@
     {
       "date": "2026-07-19",
       "firstEvaluatedAt": "2026-07-16T10:20:46.194Z",
-      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "lastEvaluatedAt": "2026-07-19T10:00:36.914Z",
       "eligibleMatchCount": 7,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1510384"
+      ]
     },
     {
       "date": "2026-07-20",
       "firstEvaluatedAt": "2026-07-17T10:09:29.809Z",
-      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "lastEvaluatedAt": "2026-07-19T10:00:36.914Z",
       "eligibleMatchCount": 1,
+      "candidateIds": []
+    },
+    {
+      "date": "2026-07-21",
+      "firstEvaluatedAt": "2026-07-19T10:00:36.914Z",
+      "lastEvaluatedAt": "2026-07-19T10:00:36.914Z",
+      "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-07-22",
       "firstEvaluatedAt": "2026-07-18T19:18:27.993Z",
-      "lastEvaluatedAt": "2026-07-18T19:18:27.993Z",
+      "lastEvaluatedAt": "2026-07-19T10:00:36.914Z",
       "eligibleMatchCount": 10,
-      "candidateIds": [
-        "fixture:1589416"
-      ]
+      "candidateIds": []
     }
   ],
   "candidates": [
+    {
+      "candidateId": "fixture:1510384",
+      "fixtureId": "1510384",
+      "date": "2026-07-19",
+      "league": "KLEAGUE2",
+      "homeTeam": "Gyeongnam FC",
+      "awayTeam": "Ansan Greeners",
+      "homeOdds": "1.83",
+      "drawOdds": "3.45",
+      "awayOdds": "3.90",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 26,
+      "firstEvaluatedAt": "2026-07-19T10:00:36.914Z",
+      "lastSeenAt": "2026-07-19T10:00:36.914Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
     {
       "candidateId": "fixture:1589416",
       "fixtureId": "1589416",
