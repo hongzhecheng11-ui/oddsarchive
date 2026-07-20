@@ -5,22 +5,468 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-19T10:01:12.785Z",
+  "updatedAt": "2026-07-20T11:11:59.811Z",
   "collection": {
     "dates": [
+      "2026-07-19",
       "2026-07-18",
-      "2026-07-17",
-      "2026-07-16"
+      "2026-07-17"
     ],
-    "requestGroups": 6,
-    "skippedGroups": 72,
-    "finishedFixtures": 20,
-    "skippedComplete": 11,
-    "saved": 9,
+    "requestGroups": 7,
+    "skippedGroups": 71,
+    "finishedFixtures": 22,
+    "skippedComplete": 15,
+    "saved": 7,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1591865,
+      "date": "2026-07-19",
+      "league": "WORLDCUP",
+      "homeTeamId": 2,
+      "homeTeam": "France",
+      "awayTeamId": 10,
+      "awayTeam": "England",
+      "home": {
+        "teamId": 2,
+        "team": "France",
+        "shots": 19,
+        "shotsOnGoal": 9,
+        "possession": 46,
+        "corners": 3,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": 2.87
+      },
+      "away": {
+        "teamId": 10,
+        "team": "England",
+        "shots": 19,
+        "shotsOnGoal": 11,
+        "possession": 54,
+        "corners": 4,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": 2.58
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2,
+          "team": "France",
+          "formation": "4-2-3-1",
+          "coach": "Didier Deschamps",
+          "starters": [
+            "M. Maignan",
+            "M. Gusto",
+            "I. Konate",
+            "M. Lacroix",
+            "T. Hernandez",
+            "W. Zaire-Emery",
+            "A. Rabiot",
+            "M. Olise",
+            "R. Cherki",
+            "D. Doue",
+            "K. Mbappe"
+          ]
+        },
+        {
+          "teamId": 10,
+          "team": "England",
+          "formation": "4-1-4-1",
+          "coach": "Thomas Tuchel",
+          "starters": [
+            "D. Henderson",
+            "J. Quansah",
+            "E. Konsa",
+            "M. Guehi",
+            "D. Spence",
+            "D. Rice",
+            "B. Saka",
+            "M. Rogers",
+            "E. Eze",
+            "M. Rashford",
+            "I. Toney"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1591865,
+          "teamId": 2,
+          "playerId": 22090,
+          "player": "W. Saliba",
+          "type": "Missing Fixture",
+          "reason": "Back Bruise"
+        },
+        {
+          "fixtureId": 1591865,
+          "teamId": 10,
+          "playerId": 284322,
+          "player": "K. Mainoo",
+          "type": "Missing Fixture",
+          "reason": "Wound"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1507003,
+      "date": "2026-07-19",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2745,
+      "homeTeam": "Bucheon FC 1995",
+      "awayTeamId": 2766,
+      "awayTeam": "FC Seoul",
+      "home": {
+        "teamId": 2745,
+        "team": "Bucheon FC 1995",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2766,
+        "team": "FC Seoul",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2745,
+          "team": "Bucheon FC 1995",
+          "formation": "",
+          "coach": "Ou-Ghu Kwon",
+          "starters": [
+            "Hyeong-keun Kim",
+            "Sung-wook Hong",
+            "Dong-kyu Baek",
+            "Patrick William",
+            "Tae-hyeon Ahn",
+            "Sung Ye-geon",
+            "Sang-jun Kim",
+            "Galego",
+            "Min-jun Kim",
+            "Jeong-in Park",
+            "Ji-ho Han"
+          ]
+        },
+        {
+          "teamId": 2766,
+          "team": "FC Seoul",
+          "formation": "",
+          "coach": "Gi-Dong Kim",
+          "starters": [
+            "Gu Sung-yun",
+            "Soo-il Park",
+            "Juan Antonio Ros",
+            "Yazan Al-Arab",
+            "Kim Jin-su",
+            "Seung-Won Jeong",
+            "Lee Seung-mo",
+            "Hrvoje Babec",
+            "Min-kyu Song",
+            "Patryk Klimala",
+            "Cho Young-wook"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507002,
+      "date": "2026-07-19",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2748,
+      "homeTeam": "FC Anyang",
+      "awayTeamId": 2759,
+      "awayTeam": "Gwangju FC",
+      "home": {
+        "teamId": 2748,
+        "team": "FC Anyang",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2759,
+        "team": "Gwangju FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2748,
+          "team": "FC Anyang",
+          "formation": "",
+          "coach": "Byeong-hoon Ryu",
+          "starters": [
+            "Jung-hoon Kim",
+            "Tae-heui Lee",
+            "Chang-yong Lee",
+            "Kyung-won Kwon",
+            "Dong-jin Kim",
+            "Jung-hyun Kim",
+            "Gyu-hyeon  Choe",
+            "Moon Seong-Woo",
+            "Geon-Joo Choi",
+            "Matheus Oliveira",
+            "Un Kim"
+          ]
+        },
+        {
+          "teamId": 2759,
+          "team": "Gwangju FC",
+          "formation": "",
+          "coach": "Jeong-kyu Lee",
+          "starters": [
+            "Kyeong-min Kim",
+            "Sung-yun Kwon",
+            "Teun van Grunsven",
+            "João Pedro",
+            "Won-jae Park",
+            "Se-jong Ju",
+            "Yu Je-ho",
+            "Adriel D'Avila Ba Loua",
+            "Min-seo Moon",
+            "Ji-hoon Jeong",
+            "John Iredale"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510384,
+      "date": "2026-07-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2751,
+      "homeTeam": "Gyeongnam FC",
+      "awayTeamId": 2758,
+      "awayTeam": "Ansan Greeners",
+      "home": {
+        "teamId": 2751,
+        "team": "Gyeongnam FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2758,
+        "team": "Ansan Greeners",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2751,
+          "team": "Gyeongnam FC",
+          "formation": "",
+          "coach": "Sung-jae Bae",
+          "starters": []
+        },
+        {
+          "teamId": 2758,
+          "team": "Ansan Greeners",
+          "formation": "",
+          "coach": "Moon-Sik Choi",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510385,
+      "date": "2026-07-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2765,
+      "homeTeam": "Suwon Bluewings",
+      "awayTeamId": 7098,
+      "awayTeam": "Paju Citizen",
+      "home": {
+        "teamId": 2765,
+        "team": "Suwon Bluewings",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7098,
+        "team": "Paju Citizen",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2765,
+          "team": "Suwon Bluewings",
+          "formation": "",
+          "coach": "Jung-Hyo Lee",
+          "starters": []
+        },
+        {
+          "teamId": 7098,
+          "team": "Paju Citizen",
+          "formation": "",
+          "coach": "Gerard Nus",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510383,
+      "date": "2026-07-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 7061,
+      "homeTeam": "Cheongju",
+      "awayTeamId": 7060,
+      "awayTeam": "Cheonan City",
+      "home": {
+        "teamId": 7061,
+        "team": "Cheongju",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7060,
+        "team": "Cheonan City",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 7061,
+          "team": "Cheongju",
+          "formation": "",
+          "coach": "Rui Quinta",
+          "starters": []
+        },
+        {
+          "teamId": 7060,
+          "team": "Cheonan City",
+          "formation": "",
+          "coach": "Jin-sub Park",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510386,
+      "date": "2026-07-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 9171,
+      "homeTeam": "Yongin City",
+      "awayTeamId": 7087,
+      "awayTeam": "Hwaseong",
+      "home": {
+        "teamId": 9171,
+        "team": "Yongin City",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7087,
+        "team": "Hwaseong",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 9171,
+          "team": "Yongin City",
+          "formation": "",
+          "coach": "Yun-Kyum Choi",
+          "starters": []
+        },
+        {
+          "teamId": 7087,
+          "team": "Hwaseong",
+          "formation": "",
+          "coach": "Du-Ri Cha",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1506999,
       "date": "2026-07-18",
