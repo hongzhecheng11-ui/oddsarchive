@@ -5,22 +5,97 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-20T11:11:59.811Z",
+  "updatedAt": "2026-07-21T10:33:46.990Z",
   "collection": {
     "dates": [
+      "2026-07-20",
       "2026-07-19",
-      "2026-07-18",
-      "2026-07-17"
+      "2026-07-18"
     ],
     "requestGroups": 7,
     "skippedGroups": 71,
-    "finishedFixtures": 22,
-    "skippedComplete": 15,
-    "saved": 7,
+    "finishedFixtures": 17,
+    "skippedComplete": 16,
+    "saved": 1,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1591866,
+      "date": "2026-07-20",
+      "league": "WORLDCUP",
+      "homeTeamId": 9,
+      "homeTeam": "Spain",
+      "awayTeamId": 26,
+      "awayTeam": "Argentina",
+      "home": {
+        "teamId": 9,
+        "team": "Spain",
+        "shots": 20,
+        "shotsOnGoal": 12,
+        "possession": 65,
+        "corners": 9,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": 1.94
+      },
+      "away": {
+        "teamId": 26,
+        "team": "Argentina",
+        "shots": 2,
+        "shotsOnGoal": 0,
+        "possession": 35,
+        "corners": 4,
+        "yellowCards": 6,
+        "redCards": 1,
+        "expectedGoals": 0.22
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 9,
+          "team": "Spain",
+          "formation": "4-2-3-1",
+          "coach": "Luis de la Fuente",
+          "starters": [
+            "U. Simon",
+            "P. Porro",
+            "P. Cubarsi",
+            "A. Laporte",
+            "M. Cucurella",
+            "Rodri",
+            "F. Ruiz",
+            "Lamine Yamal",
+            "D. Olmo",
+            "A. Baena",
+            "M. Oyarzabal"
+          ]
+        },
+        {
+          "teamId": 26,
+          "team": "Argentina",
+          "formation": "4-4-2",
+          "coach": "Lionel Scaloni",
+          "starters": [
+            "E. Martinez",
+            "G. Montiel",
+            "C. Romero",
+            "L. Martinez",
+            "N. Tagliafico",
+            "R. de Paul",
+            "E. Fernandez",
+            "A. Mac Allister",
+            "N. Gonzalez",
+            "L. Messi",
+            "J. Alvarez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1591865,
       "date": "2026-07-19",

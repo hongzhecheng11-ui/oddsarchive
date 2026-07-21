@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-20T19:53:45.473Z",
+  "updatedAt": "2026-07-21T10:33:13.992Z",
   "summary": {
     "trackedDays": 10,
-    "trackedCandidates": 2,
+    "trackedCandidates": 3,
     "resolvedCandidates": 1,
     "favoriteFailures": 0,
     "directionHits": 0
@@ -63,23 +63,25 @@
     {
       "date": "2026-07-22",
       "firstEvaluatedAt": "2026-07-18T19:18:27.993Z",
-      "lastEvaluatedAt": "2026-07-20T19:53:45.473Z",
+      "lastEvaluatedAt": "2026-07-21T10:33:13.992Z",
       "eligibleMatchCount": 13,
       "candidateIds": []
     },
     {
       "date": "2026-07-23",
       "firstEvaluatedAt": "2026-07-19T19:20:25.303Z",
-      "lastEvaluatedAt": "2026-07-20T19:53:45.473Z",
+      "lastEvaluatedAt": "2026-07-21T10:33:13.992Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-07-24",
       "firstEvaluatedAt": "2026-07-20T19:53:45.473Z",
-      "lastEvaluatedAt": "2026-07-20T19:53:45.473Z",
-      "eligibleMatchCount": 9,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-07-21T10:33:13.992Z",
+      "eligibleMatchCount": 11,
+      "candidateIds": [
+        "fixture:1510388"
+      ]
     }
   ],
   "candidates": [
@@ -129,6 +131,32 @@
       "sampleSize": 28,
       "firstEvaluatedAt": "2026-07-18T19:18:27.993Z",
       "lastSeenAt": "2026-07-18T19:18:27.993Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1510388",
+      "fixtureId": "1510388",
+      "date": "2026-07-24",
+      "league": "KLEAGUE2",
+      "homeTeam": "Seoul E-Land FC",
+      "awayTeam": "Cheonan City",
+      "homeOdds": "1.53",
+      "drawOdds": "4.10",
+      "awayOdds": "5.20",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 74,
+      "firstEvaluatedAt": "2026-07-21T10:33:13.992Z",
+      "lastSeenAt": "2026-07-21T10:33:13.992Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
