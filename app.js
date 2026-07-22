@@ -3697,7 +3697,7 @@ function markGuestSearchTrialUsed(storage) {
   }
 }
 
-function requestGoogleLogin(message = "무료 검색 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다.") {
+function requestGoogleLogin(message = "무료 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다.") {
   if (activeFavoriteAccountId) return false;
   guestAccessGateRequested = true;
   setCloudAccountUi({ status: "signed_out", message });
@@ -3708,6 +3708,18 @@ function canRunOddsSearch(storage) {
   if (activeFavoriteAccountId || !hasUsedGuestSearchTrial(storage)) return true;
   requestGoogleLogin();
   return false;
+}
+
+function canOpenMatchDetail(storage, showLogin = true) {
+  if (activeFavoriteAccountId) return true;
+  if (hasUsedGuestSearchTrial(storage)) {
+    if (showLogin) {
+      requestGoogleLogin("무료 체험을 사용했습니다. Google 로그인 후 경기 상세 분석을 계속 볼 수 있습니다.");
+    }
+    return false;
+  }
+  markGuestSearchTrialUsed(storage);
+  return true;
 }
 
 function hasStoredCloudSession(storage) {
@@ -3781,8 +3793,8 @@ function setCloudAccountUi(state = {}) {
     syncing: "즐겨찾기를 안전하게 병합하는 중입니다.",
     signed_in: "Google 계정과 즐겨찾기가 동기화되었습니다.",
     signed_out: hasUsedGuestSearchTrial()
-      ? "무료 검색 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다."
-      : "배당검색을 한 번 무료로 체험할 수 있습니다.",
+      ? "무료 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다."
+      : "배당 검색 또는 경기 상세를 한 번 무료로 체험할 수 있습니다.",
     offline: "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.",
     unavailable: "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."
   };
@@ -5907,6 +5919,7 @@ function closeMatchDetail() {
 }
 
 async function openMatchDetail(match = {}) {
+  if (!canOpenMatchDetail()) return;
   if (typeof window !== "undefined") {
     if (getActiveViewId(window.location.hash) !== "detail") {
       matchDetailReturnState = {
@@ -9582,6 +9595,7 @@ if (typeof module !== "undefined") {
     hasUsedGuestSearchTrial,
     markGuestSearchTrialUsed,
     canRunOddsSearch,
+    canOpenMatchDetail,
     getOddsPatternSuggestions,
     getSearchHistoryDisplayTitle,
     getSearchableMatches,

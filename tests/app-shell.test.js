@@ -47,6 +47,17 @@ test("recognizes whether the one-time guest search trial was used", () => {
   assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => null }), false);
 });
 
+test("uses the same one-time guest trial for match detail access", () => {
+  const values = new Map();
+  const storage = {
+    getItem: (key) => values.get(key) || null,
+    setItem: (key, value) => values.set(key, value)
+  };
+  assert.strictEqual(app.canOpenMatchDetail(storage, false), true);
+  assert.strictEqual(app.hasUsedGuestSearchTrial(storage), true);
+  assert.strictEqual(app.canOpenMatchDetail(storage, false), false);
+});
+
 test("builds a seven-day Seoul date strip centered on today", () => {
   const dates = app.getFixtureDateOptions("2026-07-13");
 
