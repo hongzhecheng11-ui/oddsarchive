@@ -33,6 +33,20 @@ test("detects a stored Supabase session for header restoration after refresh", (
   assert.strictEqual(app.hasStoredCloudSession({ length: 1, key: () => "unrelated-key" }), false);
 });
 
+test("requires authentication before opening user features", () => {
+  assert.strictEqual(app.getAuthenticatedViewId("#search", false, false, false), "search");
+  assert.strictEqual(app.getAuthenticatedViewId("#today", false, false, false), "today");
+  assert.strictEqual(app.getAuthenticatedViewId("#search", false, false, true), "account");
+  assert.strictEqual(app.getAuthenticatedViewId("#search", true, false), "search");
+  assert.strictEqual(app.getAuthenticatedViewId("#matches", true, false), "search");
+  assert.strictEqual(app.getAuthenticatedViewId("#matches", true, true), "matches");
+});
+
+test("recognizes whether the one-time guest search trial was used", () => {
+  assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => "true" }), true);
+  assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => null }), false);
+});
+
 test("builds a seven-day Seoul date strip centered on today", () => {
   const dates = app.getFixtureDateOptions("2026-07-13");
 

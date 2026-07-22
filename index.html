@@ -22,7 +22,7 @@
     <script src="src/lib/translations/leagues.js"></script>
     <script src="src/lib/translations/teams.js"></script>
   </head>
-  <body>
+  <body class="auth-required auth-pending">
     <header class="app-header">
       <div class="brand-lockup">
         <img class="app-icon" src="assets/app-icon.svg?v=91" alt="" aria-hidden="true">
@@ -33,7 +33,7 @@
       </div>
       <a class="account-pill" href="#account">
         <span>내 계정</span>
-        <strong id="account-display-name">로그인 전</strong>
+        <strong id="account-display-name">로그인 필요</strong>
       </a>
     </header>
 
@@ -573,7 +573,7 @@
               <section class="account-card cloud-account-card" aria-label="Google 계정 연결">
                 <div class="simple-card-heading">
                   <strong>Google 계정 연결</strong>
-                  <span>로그인하면 즐겨찾기만 계정별로 동기화됩니다. 비로그인 상태에서는 기존 로컬 저장을 계속 사용합니다.</span>
+                  <span>배당검색을 한 번 무료로 체험한 뒤 Google 로그인으로 계속 사용할 수 있습니다. 즐겨찾기는 계정별로 안전하게 동기화됩니다.</span>
                 </div>
                 <div class="account-actions">
                   <button type="button" id="google-sign-in">Google로 로그인</button>
@@ -616,16 +616,24 @@
               <section class="share-card" aria-label="공유하기">
                 <div class="simple-card-heading">
                   <strong>공유하기</strong>
-                  <span>무료 베타 테스트 링크를 복사해서 지인이나 커뮤니티에 공유할 수 있습니다.</span>
+                  <span>설치 없이 바로 사용할 수 있는 공개 웹앱입니다.</span>
                 </div>
                 <div class="share-url-row">
-                  <code id="share-url">https://oddsarchive-beta.netlify.app</code>
-                  <button type="button" id="copy-share-url">주소 복사</button>
+                  <code id="share-url">https://oddsarchive-football.vercel.app/</code>
+                  <button type="button" id="copy-share-url">공유하기</button>
                 </div>
                 <p class="share-copy">
-                  축구 배당 과거 기록 검색용 무료 베타입니다. 홈승/무/원정승 배당을 입력하면 비슷한 과거 경기 결과를 찾아볼 수 있습니다.
+                  축구 배당을 입력하면 비슷한 과거 경기의 결과와 통계를 한눈에 확인할 수 있습니다.
                 </p>
-                <p class="match-count" id="share-copy-status" aria-live="polite">테스트 사용자에게 공유한 뒤 불편한 점을 받아보세요.</p>
+                <p class="match-count" id="share-copy-status" aria-live="polite">커뮤니티에 공유해 실제 사용자를 모아보세요.</p>
+              </section>
+              <section class="install-card" aria-label="앱으로 설치하기">
+                <div class="simple-card-heading">
+                  <strong>휴대폰에 설치</strong>
+                  <span>브라우저 주소창 없이 일반 앱처럼 빠르게 실행할 수 있습니다.</span>
+                </div>
+                <button type="button" id="install-pwa">앱으로 설치</button>
+                <p class="match-count" id="install-pwa-status" aria-live="polite">Chrome 메뉴의 '홈 화면에 추가'로도 설치할 수 있습니다.</p>
               </section>
             </div>
           </details>

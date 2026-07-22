@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v105-deduplicated-recent-results";
+const CACHE_NAME = "oddsarchive-v108-guest-search-trial";
 const CORE_ASSETS = [
   "/",
   "/index.html",

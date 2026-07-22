@@ -17,6 +17,7 @@ const AUTO_UPDATE_KEY = "oddsArchiveAutoUpdate";
 const LOCAL_ACCOUNT_KEY = "oddsArchiveLocalAccount";
 const TODAY_MATCHES_KEY = "oddsArchiveTodayMatches";
 const API_HISTORY_CACHE_KEY = "oddsArchiveApiHistoryCache";
+const GUEST_SEARCH_TRIAL_KEY = "oddsArchiveGuestSearchTrialUsed";
 const MATCH_TABLE_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
@@ -151,6 +152,8 @@ let cloudAccountService = null;
 let cloudAccountLoadPromise = null;
 let cloudAccountState = "local";
 let cloudAccountIsAdmin = false;
+let guestAccessGateRequested = false;
+let memoryGuestSearchTrialUsed = false;
 let memoryAutoUpdateState = null;
 let memoryLocalAccount = null;
 let memoryTodayMatches = [];
@@ -3675,6 +3678,38 @@ function setAccountStatus(message) {
   if (element) element.textContent = message;
 }
 
+function hasUsedGuestSearchTrial(storage) {
+  const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
+  try {
+    return target?.getItem(GUEST_SEARCH_TRIAL_KEY) === "true" || memoryGuestSearchTrialUsed;
+  } catch (_error) {
+    return memoryGuestSearchTrialUsed;
+  }
+}
+
+function markGuestSearchTrialUsed(storage) {
+  memoryGuestSearchTrialUsed = true;
+  const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
+  try {
+    target?.setItem(GUEST_SEARCH_TRIAL_KEY, "true");
+  } catch (_error) {
+    // Memory state still prevents repeated guest searches in this session.
+  }
+}
+
+function requestGoogleLogin(message = "무료 검색 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다.") {
+  if (activeFavoriteAccountId) return false;
+  guestAccessGateRequested = true;
+  setCloudAccountUi({ status: "signed_out", message });
+  return true;
+}
+
+function canRunOddsSearch(storage) {
+  if (activeFavoriteAccountId || !hasUsedGuestSearchTrial(storage)) return true;
+  requestGoogleLogin();
+  return false;
+}
+
 function hasStoredCloudSession(storage) {
   const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
   if (!target) return false;
@@ -3739,24 +3774,32 @@ function setCloudAccountUi(state = {}) {
   const signOutButton = document.getElementById("google-sign-out");
   const deleteButton = document.getElementById("google-delete-account");
   const signedIn = Boolean(state.userId || activeFavoriteAccountId);
+  if (signedIn) guestAccessGateRequested = false;
+  const accessLocked = !signedIn && guestAccessGateRequested;
   const messages = {
     loading: "Google 로그인 기능을 준비하는 중입니다.",
     syncing: "즐겨찾기를 안전하게 병합하는 중입니다.",
     signed_in: "Google 계정과 즐겨찾기가 동기화되었습니다.",
-    signed_out: "로그인하지 않았습니다. 로컬 즐겨찾기를 계속 사용합니다.",
+    signed_out: hasUsedGuestSearchTrial()
+      ? "무료 검색 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다."
+      : "배당검색을 한 번 무료로 체험할 수 있습니다.",
     offline: "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.",
-    unavailable: "Google 로그인이 아직 설정되지 않았습니다. 로컬 즐겨찾기는 정상적으로 사용할 수 있습니다."
+    unavailable: "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."
   };
   if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
   if (signInButton) signInButton.hidden = signedIn;
   if (switchAccountButton) switchAccountButton.hidden = !signedIn;
   if (signOutButton) signOutButton.hidden = !signedIn;
   if (deleteButton) deleteButton.hidden = !signedIn;
+  document.body?.classList.toggle("auth-locked", accessLocked);
+  document.body?.classList.toggle("auth-pending", !signedIn && ["loading", "syncing"].includes(cloudAccountState));
+  document.body?.classList.toggle("is-authenticated", signedIn);
   updateAdminControls();
   if (!isAdminMode() && typeof window !== "undefined" && ADMIN_VIEW_IDS.includes(getActiveViewId(window.location.hash))) {
     showActiveView(window.location.hash);
   }
   renderLocalAccount();
+  showActiveView(typeof window !== "undefined" ? window.location.hash : "#account");
 }
 
 function loadBrowserScript(source, marker) {
@@ -3803,7 +3846,11 @@ function restoreStoredCloudSession(storage) {
   if (!hasStoredCloudSession(storage)) return false;
   cloudAccountState = "loading";
   renderLocalAccount(storage);
-  runWhenBrowserIsIdle(() => ensureCloudAccountReady().catch(() => {}));
+  if (guestAccessGateRequested) {
+    ensureCloudAccountReady().catch(() => {});
+  } else {
+    runWhenBrowserIsIdle(() => ensureCloudAccountReady().catch(() => {}));
+  }
   return true;
 }
 
@@ -8515,6 +8562,8 @@ function wireExampleOddsButtons() {
 }
 
 async function runOddsSearchFromCurrentCriteria() {
+  if (!canRunOddsSearch()) return;
+  const isGuestTrialSearch = !activeFavoriteAccountId && !hasUsedGuestSearchTrial();
   moveSearchResultsTo("odds-result-anchor");
   setSearchResultsTitle("검색 결과");
   setOddsSearchStatus("검색 중입니다.");
@@ -8564,6 +8613,11 @@ async function runOddsSearchFromCurrentCriteria() {
     resetOddsResultLimit();
     renderOddsSearchResults(result.matches, "조건에 맞는 유사 배당 경기가 없습니다.");
     renderResultBreakdown(result.matches, criteria);
+    if (isGuestTrialSearch && result.matches.length > 0) {
+      markGuestSearchTrialUsed();
+      const currentStatus = document.getElementById("odds-search-status")?.textContent || "검색 결과가 표시됩니다.";
+      setOddsSearchStatus(`${currentStatus} 다음 검색부터 Google 로그인이 필요합니다.`);
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setOddsSearchError("검색 중 문제가 발생했습니다.");
@@ -9167,14 +9221,20 @@ function getAllowedViewId(hashValue, adminMode = false) {
   return ADMIN_VIEW_IDS.includes(viewId) && !adminMode ? "search" : viewId;
 }
 
+function getAuthenticatedViewId(hashValue, authenticated = false, adminMode = false, accessLocked = false) {
+  if (!authenticated && accessLocked) return "account";
+  return getAllowedViewId(hashValue, adminMode);
+}
+
 function showActiveView(hashValue) {
   if (typeof document === "undefined") return;
 
   const detailWasOpen = document.body.classList.contains("match-detail-open");
   const adminMode = isAdminMode();
   const requestedViewId = getActiveViewId(hashValue);
-  const activeViewId = getAllowedViewId(hashValue, adminMode);
-  if (activeViewId !== requestedViewId) {
+  const authenticated = Boolean(activeFavoriteAccountId);
+  const activeViewId = getAuthenticatedViewId(hashValue, authenticated, adminMode, guestAccessGateRequested);
+  if (authenticated && activeViewId !== requestedViewId) {
     if (typeof window !== "undefined" && window.location.hash !== "#search") {
       window.history?.replaceState(null, "", `${window.location.pathname}${window.location.search}#search`);
     }
@@ -9251,6 +9311,15 @@ function wireShareLinkCopy() {
     const clipboard = typeof navigator === "undefined" ? null : navigator.clipboard;
 
     try {
+      if (navigator?.share) {
+        await navigator.share({
+          title: "오즈아카이브",
+          text: "축구 배당과 과거 유사 경기 통계를 확인해보세요.",
+          url: shareUrl
+        });
+        if (statusElement) statusElement.textContent = "공유 화면을 열었습니다.";
+        return;
+      }
       if (clipboard?.writeText) {
         await clipboard.writeText(shareUrl);
         if (statusElement) statusElement.textContent = "공유 주소를 복사했습니다.";
@@ -9262,6 +9331,57 @@ function wireShareLinkCopy() {
 
     if (statusElement) statusElement.textContent = `공유 주소: ${shareUrl}`;
   });
+}
+
+let deferredInstallPrompt = null;
+
+function wirePwaInstall() {
+  const button = document.getElementById("install-pwa");
+  const statusElement = document.getElementById("install-pwa-status");
+  if (!button || typeof window === "undefined") return;
+
+  const isInstalled = () =>
+    window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true;
+
+  const updateInstalledState = () => {
+    if (!isInstalled()) return false;
+    button.textContent = "설치됨";
+    button.disabled = true;
+    if (statusElement) statusElement.textContent = "오즈아카이브가 이 기기에 설치되어 있습니다.";
+    return true;
+  };
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    button.disabled = false;
+    if (statusElement) statusElement.textContent = "버튼을 누르면 홈 화면에 설치됩니다.";
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    updateInstalledState();
+  });
+
+  button.addEventListener("click", async () => {
+    if (updateInstalledState()) return;
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice.catch(() => null);
+      deferredInstallPrompt = null;
+      if (statusElement) {
+        statusElement.textContent = choice?.outcome === "accepted"
+          ? "설치를 시작했습니다."
+          : "Chrome 메뉴의 '홈 화면에 추가'로 언제든 설치할 수 있습니다.";
+      }
+      return;
+    }
+    if (statusElement) {
+      statusElement.textContent = "Chrome 오른쪽 위 메뉴에서 '홈 화면에 추가' 또는 '앱 설치'를 선택하세요.";
+    }
+  });
+
+  updateInstalledState();
 }
 
 function registerServiceWorker() {
@@ -9307,6 +9427,7 @@ function runWhenBrowserIsIdle(callback) {
 }
 
 if (typeof document !== "undefined") {
+  guestAccessGateRequested = hasUsedGuestSearchTrial();
   wireAnonymousTelemetry();
   wireViewNavigation();
   wireSampleCsvDownload();
@@ -9328,6 +9449,7 @@ if (typeof document !== "undefined") {
   wireLocalAccount();
   wireCloudAccount();
   wireShareLinkCopy();
+  wirePwaInstall();
   wireTodayCsvImport();
   wireHomeTodayMatches();
   updateStorageModeStatus();
@@ -9346,7 +9468,11 @@ if (typeof document !== "undefined") {
   renderOddsPatternSuggestions();
   renderSavedSearches();
   renderLocalAccount();
-  restoreStoredCloudSession();
+  if (!restoreStoredCloudSession()) {
+    cloudAccountState = "loading";
+    setCloudAccountUi({ status: "loading" });
+    ensureCloudAccountReady().catch(() => {});
+  }
   renderAutoUpdateManager();
   setAutoUpdateStatus("자동 업데이트는 꺼져 있습니다. 필요할 때 데이터 추가에서 직접 확인하세요.");
   registerServiceWorker();
@@ -9363,6 +9489,7 @@ if (typeof module !== "undefined") {
     RESULT_VALUES,
     RESULT_PAGE_SIZE,
     LOCAL_ACCOUNT_KEY,
+    GUEST_SEARCH_TRIAL_KEY,
     SAMPLE_CSV,
     SAMPLE_CSV_FILENAME,
     SAVED_SEARCHES_KEY,
@@ -9452,6 +9579,9 @@ if (typeof module !== "undefined") {
     getAutoUpdateSummary,
     getLocalAccountLabel,
     hasStoredCloudSession,
+    hasUsedGuestSearchTrial,
+    markGuestSearchTrialUsed,
+    canRunOddsSearch,
     getOddsPatternSuggestions,
     getSearchHistoryDisplayTitle,
     getSearchableMatches,
@@ -9576,6 +9706,7 @@ if (typeof module !== "undefined") {
     wireViewNavigation,
     getActiveViewId,
     getAllowedViewId,
+    getAuthenticatedViewId,
     isAdminMode,
     showActiveView,
     showMoreOddsResults,
