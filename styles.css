@@ -559,6 +559,84 @@ body.auth-required.auth-locked .cloud-account-card {
   background: var(--surface);
 }
 
+.beta-test-card {
+  display: grid;
+  gap: 12px;
+  max-width: 640px;
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid #abd9cd;
+  border-radius: 8px;
+  background: #f1fbf7;
+}
+
+.beta-test-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.beta-test-steps li {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.beta-test-steps span {
+  display: inline-grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+}
+
+.beta-test-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.beta-test-actions a {
+  display: inline-grid;
+  min-height: 40px;
+  place-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.beta-test-actions a:first-child {
+  background: #fff;
+  color: var(--accent-strong);
+}
+
+.beta-test-card > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 420px) {
+  .beta-test-steps,
+  .beta-test-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 .share-url-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
