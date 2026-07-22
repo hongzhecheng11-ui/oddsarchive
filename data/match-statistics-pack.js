@@ -5,22 +5,247 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-21T10:33:46.990Z",
+  "updatedAt": "2026-07-22T10:34:11.355Z",
   "collection": {
     "dates": [
+      "2026-07-21",
       "2026-07-20",
-      "2026-07-19",
-      "2026-07-18"
+      "2026-07-19"
     ],
-    "requestGroups": 7,
-    "skippedGroups": 71,
-    "finishedFixtures": 17,
-    "skippedComplete": 16,
-    "saved": 1,
+    "requestGroups": 5,
+    "skippedGroups": 73,
+    "finishedFixtures": 11,
+    "skippedComplete": 8,
+    "saved": 3,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1507004,
+      "date": "2026-07-21",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2761,
+      "homeTeam": "Jeju United FC",
+      "awayTeamId": 2746,
+      "awayTeam": "Gangwon FC",
+      "home": {
+        "teamId": 2761,
+        "team": "Jeju United FC",
+        "shots": 4,
+        "shotsOnGoal": 3,
+        "possession": 57,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2746,
+        "team": "Gangwon FC",
+        "shots": 8,
+        "shotsOnGoal": 5,
+        "possession": 43,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2761,
+          "team": "Jeju United FC",
+          "formation": "",
+          "coach": "Sergio Costa",
+          "starters": [
+            "Dong-jun Kim",
+            "In-su Yu",
+            "Kwon Ki-Min",
+            "Julien Celestine",
+            "Jo In-Jung",
+            "Italo",
+            "Chang-min Lee",
+            "Ryun-sung Kim",
+            "Kim Jun-Ha",
+            "Emerson Ramon",
+            "Kim Shin-jin"
+          ]
+        },
+        {
+          "teamId": 2746,
+          "team": "Gangwon FC",
+          "formation": "",
+          "coach": "Kyung-Ho Chung",
+          "starters": [
+            "Park Cheong-hyo",
+            "Kang Joon-hyuk",
+            "Marko Tuci",
+            "Gi-Hyuk Lee",
+            "Do-Hyun Kim",
+            "Park Sang-Hyeok",
+            "You-Hyeon Lee",
+            "Min-woo Seo",
+            "Dae-won Kim",
+            "Young-jun Goh",
+            "Byeong-chan Choi"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507005,
+      "date": "2026-07-21",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2762,
+      "homeTeam": "Jeonbuk Motors",
+      "awayTeamId": 2750,
+      "awayTeam": "Daejeon Citizen",
+      "home": {
+        "teamId": 2762,
+        "team": "Jeonbuk Motors",
+        "shots": 6,
+        "shotsOnGoal": 0,
+        "possession": 51,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2750,
+        "team": "Daejeon Citizen",
+        "shots": 7,
+        "shotsOnGoal": 0,
+        "possession": 49,
+        "corners": 5,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2762,
+          "team": "Jeonbuk Motors",
+          "formation": "",
+          "coach": "Jung-Yong Chung",
+          "starters": [
+            "Song Bum-keun",
+            "Tae-hwan Kim",
+            "Wi-je Cho",
+            "Yeong-bin Kim",
+            "Kim Ha-Jun",
+            "Oberdan Alionço",
+            "Jin-gyu Kim",
+            "Dong-jun Lee",
+            "Kang Sang-Yun",
+            "Seung-Woo Lee",
+            "Gytis Paulauskas"
+          ]
+        },
+        {
+          "teamId": 2750,
+          "team": "Daejeon Citizen",
+          "formation": "",
+          "coach": "Sun-Hong Hwang",
+          "starters": [
+            "Lee Chang-geun",
+            "Kim Moon-hwan",
+            "Chang-rae Ha",
+            "Jo Seong-Kwon",
+            "Myeong-jae Lee",
+            "Won-Sang Um",
+            "Kim Bong-Soo",
+            "Yun-seong Kang",
+            "Gustav Ludwigson",
+            "Diogo Oliveira",
+            "Jin-su Seo"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507006,
+      "date": "2026-07-21",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2767,
+      "homeTeam": "Ulsan Hyundai FC",
+      "awayTeamId": 2763,
+      "awayTeam": "Incheon United",
+      "home": {
+        "teamId": 2767,
+        "team": "Ulsan Hyundai FC",
+        "shots": 8,
+        "shotsOnGoal": 2,
+        "possession": 36,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2763,
+        "team": "Incheon United",
+        "shots": 14,
+        "shotsOnGoal": 4,
+        "possession": 64,
+        "corners": 2,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2767,
+          "team": "Ulsan Hyundai FC",
+          "formation": "",
+          "coach": "Hyun-seok Kim",
+          "starters": [
+            "Hyeon-woo Jo",
+            "Myeong-kwan Seo",
+            "Jung Seung-hyeon",
+            "Jae-ik Lee",
+            "Choi Seok-Hyun",
+            "Lee Jin-hyun",
+            "Miłosz Trojak",
+            "Darijan Bojanić",
+            "Jang Si-young",
+            "Dong-gyeong Lee",
+            "Erick Farias"
+          ]
+        },
+        {
+          "teamId": 2763,
+          "team": "Incheon United",
+          "formation": "",
+          "coach": "Jong-Hwan Yoon",
+          "starters": [
+            "Dong-heon Kim",
+            "Kim Myung-Sun",
+            "Gun-hee Kim",
+            "Juan Ibiza",
+            "Ju-yong Lee",
+            "Seong-min Kim",
+            "Jae-min Seo",
+            "Myung Joo Lee",
+            "Gerso Fernandes",
+            "Chung-yong Lee",
+            "Morgan Ferrier"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1591866,
       "date": "2026-07-20",
