@@ -366,6 +366,7 @@ test("translates common API team names and aliases for Korean users", () => {
   assert.strictEqual(app.translateTeamName("Mexico"), "멕시코");
   assert.strictEqual(app.translateTeamName("England"), "잉글랜드");
   assert.strictEqual(app.translateTeamName("Manchester United"), "맨체스터 유나이티드");
+  assert.strictEqual(app.translateTeamName("Manchester United", "en"), "Manchester United");
   assert.strictEqual(app.translateTeamName("Man Utd"), "맨체스터 유나이티드");
   assert.strictEqual(app.translateTeamName("Real Madrid"), "레알 마드리드");
   assert.strictEqual(app.translateTeamName("Vissel Kobe"), "비셀 고베");
@@ -465,6 +466,7 @@ test("matches expanded league aliases for fixture filters", () => {
 
 test("cleans compound league labels for display", () => {
   assert.strictEqual(app.translateLeagueName("World Cup / World"), "월드컵");
+  assert.strictEqual(app.translateLeagueName("Premier League", "en"), "Premier League");
   assert.strictEqual(app.translateLeagueName("UEFA Champions League / World"), "챔피언스리그");
   assert.strictEqual(app.translateLeagueName("EPL / Mongolia"), "EPL");
   assert.strictEqual(app.translateLeagueName("UEFA Champions League Qualification"), "챔피언스리그 예선");

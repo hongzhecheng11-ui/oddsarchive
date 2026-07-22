@@ -1852,7 +1852,14 @@ function formatTeamName(teamName) {
   return translateTeamName(teamName);
 }
 
-function translateTeamName(teamName, language = "ko") {
+function getUiLanguage() {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_I18N) {
+    return window.ODDS_ARCHIVE_I18N.getLanguage();
+  }
+  return "ko";
+}
+
+function translateTeamName(teamName, language = getUiLanguage()) {
   const originalName = String(teamName || "").trim();
   const displayName = language === "ko" ? normalizeTeamNameForStorage(originalName) : originalName;
   if (displayName === originalName) maybeWarnMissingTeamLabel(originalName);
@@ -1893,7 +1900,7 @@ function formatLeagueName(leagueName) {
     .join(" / ");
 }
 
-function translateLeagueName(leagueName, language = "ko") {
+function translateLeagueName(leagueName, language = getUiLanguage()) {
   if (language !== "ko") return String(leagueName || "").trim();
   return formatLeagueName(leagueName);
 }

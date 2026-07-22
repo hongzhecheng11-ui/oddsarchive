@@ -101,6 +101,24 @@ body {
   font-size: 14px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.language-picker select {
+  min-height: 34px;
+  padding: 6px 26px 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 .eyebrow,
 .panel-heading p {
   margin: 0 0 6px;
@@ -628,6 +646,39 @@ body.auth-required.auth-locked .cloud-account-card {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
+}
+
+.tester-guide-en {
+  overflow: hidden;
+  border: 1px solid #c9ddd7;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.tester-guide-en summary {
+  padding: 11px 12px;
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.tester-guide-en > div {
+  display: grid;
+  gap: 8px;
+  padding: 0 12px 12px;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.tester-guide-en p,
+.tester-guide-en ol {
+  margin: 0;
+}
+
+.tester-guide-en ol {
+  padding-left: 20px;
 }
 
 @media (max-width: 420px) {
@@ -5085,6 +5136,18 @@ select {
     padding: 4px 5px;
     border-radius: 6px;
     text-align: right;
+  }
+
+  .header-actions {
+    flex: 0 0 auto;
+    gap: 4px;
+  }
+
+  .language-picker select {
+    width: 58px;
+    min-height: 28px;
+    padding: 3px 2px;
+    font-size: 9px;
   }
 
   .account-pill span {
