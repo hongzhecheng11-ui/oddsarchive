@@ -1,11 +1,11 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-23T10:34:20.665Z",
+  "updatedAt": "2026-07-23T19:39:38.483Z",
   "summary": {
     "trackedDays": 12,
     "trackedCandidates": 5,
-    "resolvedCandidates": 3,
-    "favoriteFailures": 1,
+    "resolvedCandidates": 4,
+    "favoriteFailures": 2,
     "directionHits": 0
   },
   "days": [
@@ -79,24 +79,23 @@
     {
       "date": "2026-07-24",
       "firstEvaluatedAt": "2026-07-20T19:53:45.473Z",
-      "lastEvaluatedAt": "2026-07-23T10:34:20.665Z",
-      "eligibleMatchCount": 11,
+      "lastEvaluatedAt": "2026-07-23T19:39:38.483Z",
+      "eligibleMatchCount": 2,
       "candidateIds": [
-        "fixture:1556545",
         "fixture:1510388"
       ]
     },
     {
       "date": "2026-07-25",
       "firstEvaluatedAt": "2026-07-22T10:33:42.845Z",
-      "lastEvaluatedAt": "2026-07-23T10:34:20.665Z",
+      "lastEvaluatedAt": "2026-07-23T19:39:38.483Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-07-26",
       "firstEvaluatedAt": "2026-07-23T10:34:20.665Z",
-      "lastEvaluatedAt": "2026-07-23T10:34:20.665Z",
+      "lastEvaluatedAt": "2026-07-23T19:39:38.483Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     }
@@ -199,7 +198,7 @@
       ],
       "sampleSize": 74,
       "firstEvaluatedAt": "2026-07-21T10:33:13.992Z",
-      "lastSeenAt": "2026-07-23T10:34:20.665Z",
+      "lastSeenAt": "2026-07-23T19:39:38.483Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -226,11 +225,11 @@
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-07-23T10:34:20.665Z",
       "lastSeenAt": "2026-07-23T10:34:20.665Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "2-1",
+      "resolvedAt": "2026-07-23T19:39:38.483Z",
+      "favoriteFailed": true,
+      "directionHit": false
     }
   ]
 }
