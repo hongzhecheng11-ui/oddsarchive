@@ -5,22 +5,247 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-23T10:34:55.734Z",
+  "updatedAt": "2026-07-24T10:28:25.963Z",
   "collection": {
     "dates": [
+      "2026-07-23",
       "2026-07-22",
-      "2026-07-21",
-      "2026-07-20"
+      "2026-07-21"
     ],
     "requestGroups": 4,
     "skippedGroups": 74,
-    "finishedFixtures": 17,
-    "skippedComplete": 4,
-    "saved": 13,
+    "finishedFixtures": 19,
+    "skippedComplete": 16,
+    "saved": 3,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1591936,
+      "date": "2026-07-23",
+      "league": "UCL",
+      "homeTeamId": 3402,
+      "homeTeam": "Omonia Nicosia",
+      "awayTeamId": 664,
+      "awayTeam": "Kairat Almaty",
+      "home": {
+        "teamId": 3402,
+        "team": "Omonia Nicosia",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 664,
+        "team": "Kairat Almaty",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3402,
+          "team": "Omonia Nicosia",
+          "formation": "4-3-3",
+          "coach": "Henning Berg",
+          "starters": [
+            "Fabiano Freitas",
+            "L. Nego",
+            "S. Coulibaly",
+            "N. Panagiotou",
+            "J. Balkovec",
+            "M. Maric",
+            "M. Tankovic",
+            "P. Andreou",
+            "Ewandro",
+            "A. Kakoullis",
+            "J. Montnor"
+          ]
+        },
+        {
+          "teamId": 664,
+          "team": "Kairat Almaty",
+          "formation": "4-2-3-1",
+          "coach": "Rafael Urazbakhtin",
+          "starters": [
+            "T. Anarbekov",
+            "E. Tapalov",
+            "A. Martynovich",
+            "Lucas Africo",
+            "L. Mata",
+            "A. Sadybekov",
+            "J. Oksanen",
+            "A. Mrynskiy",
+            "Jorginho",
+            "O. Jukkola",
+            "M. Gual"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1591935,
+      "date": "2026-07-23",
+      "league": "UCL",
+      "homeTeamId": 646,
+      "homeTeam": "Levski Sofia",
+      "awayTeamId": 632,
+      "awayTeam": "Universitatea Craiova",
+      "home": {
+        "teamId": 646,
+        "team": "Levski Sofia",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 632,
+        "team": "Universitatea Craiova",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 646,
+          "team": "Levski Sofia",
+          "formation": "4-4-2",
+          "coach": "Julio Velazquez",
+          "starters": [
+            "S. Vutsov",
+            "A. Neves",
+            "K. Dimitrov",
+            "N. Serafimov",
+            "Maicon",
+            "A. Bouras",
+            "Serginho",
+            "M. Moubarik",
+            "Reinaldo",
+            "A. Oko-Flex",
+            "Everton Bala"
+          ]
+        },
+        {
+          "teamId": 632,
+          "team": "Universitatea Craiova",
+          "formation": "3-4-3",
+          "coach": "Filipe Coelho",
+          "starters": [
+            "L. Popescu",
+            "O. Romanchuk",
+            "A. Rus",
+            "V. Screciu",
+            "C. Mora",
+            "A. Mekvabishvili",
+            "A. Cicaldau",
+            "N. Bancu",
+            "M. Etim",
+            "S. Elisor",
+            "S. Baiaram"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1591933,
+      "date": "2026-07-23",
+      "league": "UCL",
+      "homeTeamId": 3327,
+      "homeTeam": "Egnatia Rrogozhinë",
+      "awayTeamId": 4360,
+      "awayTeam": "Celje",
+      "home": {
+        "teamId": 3327,
+        "team": "Egnatia Rrogozhinë",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 4360,
+        "team": "Celje",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3327,
+          "team": "Egnatia Rrogozhinë",
+          "formation": "3-5-2",
+          "coach": "Nevil Dede",
+          "starters": [
+            "M. Dajsinani",
+            "E. Sota",
+            "E. Bitri",
+            "A. Xhemajli",
+            "G. Jaime",
+            "K. Loukili",
+            "A. Kryeziu",
+            "Fernando Medeiros",
+            "A. Yago",
+            "S. Bakayoko",
+            "A. Albanese"
+          ]
+        },
+        {
+          "teamId": 4360,
+          "team": "Celje",
+          "formation": "4-4-2",
+          "coach": "Vitor Campelos",
+          "starters": [
+            "Z. Leban",
+            "A. Dionkou",
+            "D. Vuklisevic",
+            "D. Hrka",
+            "L. Koutris",
+            "Y. Dukuly",
+            "P. Daniel",
+            "M. Kvesic",
+            "M. Avdyli",
+            "S. Seslar",
+            "A. Kucys"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1589418,
       "date": "2026-07-22",
