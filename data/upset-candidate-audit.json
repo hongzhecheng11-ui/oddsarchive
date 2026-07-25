@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-25T09:59:22.873Z",
+  "updatedAt": "2026-07-25T19:22:17.798Z",
   "summary": {
-    "trackedDays": 12,
-    "trackedCandidates": 5,
+    "trackedDays": 13,
+    "trackedCandidates": 6,
     "resolvedCandidates": 5,
     "favoriteFailures": 2,
     "directionHits": 0
@@ -93,9 +93,18 @@
     {
       "date": "2026-07-26",
       "firstEvaluatedAt": "2026-07-23T10:34:20.665Z",
-      "lastEvaluatedAt": "2026-07-25T09:59:22.873Z",
+      "lastEvaluatedAt": "2026-07-25T19:22:17.798Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
+    },
+    {
+      "date": "2026-07-29",
+      "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
+      "lastEvaluatedAt": "2026-07-25T19:22:17.798Z",
+      "eligibleMatchCount": 6,
+      "candidateIds": [
+        "fixture:1556505"
+      ]
     }
   ],
   "candidates": [
@@ -228,6 +237,32 @@
       "resolvedAt": "2026-07-23T19:39:38.483Z",
       "favoriteFailed": true,
       "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1556505",
+      "fixtureId": "1556505",
+      "date": "2026-07-29",
+      "league": "UCL",
+      "homeTeam": "Dinamo Zagreb",
+      "awayTeam": "FC Thun",
+      "homeOdds": "1.32",
+      "drawOdds": "4.80",
+      "awayOdds": "9.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 52,
+      "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
+      "lastSeenAt": "2026-07-25T19:22:17.798Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     }
   ]
 }

@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-25T09:59:22.686Z",
+  "updatedAt": "2026-07-25T19:22:17.562Z",
   "collection": {
-    "lastAttemptAt": "2026-07-25T09:58:35.362Z",
-    "lastSuccessAt": "2026-07-25T09:59:22.686Z",
-    "requestSuccesses": 106,
+    "lastAttemptAt": "2026-07-25T19:22:07.204Z",
+    "lastSuccessAt": "2026-07-25T19:22:17.562Z",
+    "requestSuccesses": 28,
     "requestFailures": 0,
-    "addedCount": 6,
-    "updatedCount": 10,
-    "duplicateCount": 2,
+    "addedCount": 0,
+    "updatedCount": 6,
+    "duplicateCount": 6,
     "errors": []
   },
   "matches": [
@@ -6417,13 +6417,13 @@
       "fixtureId": "1507010",
       "homeTeam": "Gimcheon Sangmu FC",
       "awayTeam": "Daejeon Citizen",
-      "homeOdds": "2.95",
+      "homeOdds": "2.88",
       "drawOdds": "3.35",
-      "awayOdds": "2.30",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "2.35",
+      "result": "H",
+      "score": "3-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:11.063Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:14.699Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-22T10:33:34.136Z",
@@ -6460,10 +6460,10 @@
       "homeOdds": "3.10",
       "drawOdds": "3.10",
       "awayOdds": "2.35",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:11.063Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:14.699Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-22T10:33:34.136Z",
@@ -6488,10 +6488,10 @@
       "homeOdds": "2.95",
       "drawOdds": "3.20",
       "awayOdds": "2.30",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-4",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:13.161Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:15.164Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-24T10:27:56.826Z",
@@ -6516,10 +6516,10 @@
       "homeOdds": "1.95",
       "drawOdds": "3.70",
       "awayOdds": "3.25",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:13.161Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:15.164Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-22T10:33:35.802Z",
@@ -6550,10 +6550,10 @@
       "homeOdds": "2.25",
       "drawOdds": "3.30",
       "awayOdds": "2.95",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "3-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:13.161Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:15.164Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-24T10:27:56.826Z",
@@ -6578,10 +6578,10 @@
       "homeOdds": "2.45",
       "drawOdds": "3.30",
       "awayOdds": "2.62",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "D",
+      "score": "1-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-25T09:59:13.161Z",
+      "oddsUpdatedAt": "2026-07-25T19:22:15.164Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-24T10:27:56.826Z",
