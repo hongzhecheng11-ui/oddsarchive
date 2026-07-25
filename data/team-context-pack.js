@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-07-25",
-  "updatedAt": "2026-07-24T19:42:31.220Z",
+  "updatedAt": "2026-07-25T09:59:37.319Z",
   "collection": {
     "dates": [
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26",
+      "2026-07-27",
+      "2026-07-28"
     ],
-    "requestGroups": 2,
-    "skippedGroups": 24,
+    "requestGroups": 4,
+    "skippedGroups": 100,
     "failures": 0,
     "errors": []
   },
@@ -536,7 +539,7 @@
           "awayTeam": "Jeonbuk Motors",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -549,7 +552,7 @@
           "awayTeam": "Daejeon Citizen",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1349,7 +1352,7 @@
           "awayTeam": "Suwon City FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1362,7 +1365,7 @@
           "awayTeam": "Suwon Bluewings",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1375,7 +1378,7 @@
           "awayTeam": "Gyeongnam FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -1388,7 +1391,7 @@
           "awayTeam": "Asan Mugunghwa",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -2749,7 +2752,7 @@
     },
     {
       "date": "2026-07-25",
-      "updatedAt": "2026-07-24T19:42:31.214Z",
+      "updatedAt": "2026-07-25T09:59:32.546Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -3270,7 +3273,7 @@
               "awayTeam": "Jeonbuk Motors",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -3283,7 +3286,7 @@
               "awayTeam": "Daejeon Citizen",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -4083,7 +4086,7 @@
               "awayTeam": "Suwon City FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -4096,7 +4099,7 @@
               "awayTeam": "Suwon Bluewings",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -4109,7 +4112,7 @@
               "awayTeam": "Gyeongnam FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -4122,7 +4125,7 @@
               "awayTeam": "Asan Mugunghwa",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -4131,7 +4134,7 @@
     },
     {
       "date": "2026-07-26",
-      "updatedAt": "2026-07-24T10:28:22.409Z",
+      "updatedAt": "2026-07-25T09:59:37.316Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -4850,9 +4853,41 @@
               }
             },
             {
+              "teamId": 2749,
+              "team": "Seoul E-Land FC",
+              "rank": 2,
+              "points": 33,
+              "goalsDiff": 10,
+              "form": "WDWLW",
+              "all": {
+                "played": 18,
+                "wins": 10,
+                "draws": 3,
+                "losses": 5,
+                "goalsFor": 34,
+                "goalsAgainst": 24
+              },
+              "home": {
+                "played": 9,
+                "wins": 5,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 19,
+                "goalsAgainst": 14
+              },
+              "away": {
+                "played": 9,
+                "wins": 5,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 15,
+                "goalsAgainst": 10
+              }
+            },
+            {
               "teamId": 2765,
               "team": "Suwon Bluewings",
-              "rank": 2,
+              "rank": 3,
               "points": 33,
               "goalsDiff": 8,
               "form": "DLWWL",
@@ -4884,7 +4919,7 @@
             {
               "teamId": 2747,
               "team": "Daegu FC",
-              "rank": 3,
+              "rank": 4,
               "points": 32,
               "goalsDiff": 13,
               "form": "DWWWD",
@@ -4916,7 +4951,7 @@
             {
               "teamId": 2756,
               "team": "Suwon City FC",
-              "rank": 4,
+              "rank": 5,
               "points": 30,
               "goalsDiff": 13,
               "form": "DWWDD",
@@ -4943,38 +4978,6 @@
                 "losses": 3,
                 "goalsFor": 18,
                 "goalsAgainst": 15
-              }
-            },
-            {
-              "teamId": 2749,
-              "team": "Seoul E-Land FC",
-              "rank": 5,
-              "points": 30,
-              "goalsDiff": 9,
-              "form": "DWLWW",
-              "all": {
-                "played": 17,
-                "wins": 9,
-                "draws": 3,
-                "losses": 5,
-                "goalsFor": 30,
-                "goalsAgainst": 21
-              },
-              "home": {
-                "played": 8,
-                "wins": 4,
-                "draws": 1,
-                "losses": 3,
-                "goalsFor": 15,
-                "goalsAgainst": 11
-              },
-              "away": {
-                "played": 9,
-                "wins": 5,
-                "draws": 2,
-                "losses": 2,
-                "goalsFor": 15,
-                "goalsAgainst": 10
               }
             },
             {
@@ -5142,15 +5145,15 @@
               "team": "Cheonan City",
               "rank": 11,
               "points": 19,
-              "goalsDiff": -1,
-              "form": "LLLDW",
+              "goalsDiff": -2,
+              "form": "LLLLD",
               "all": {
-                "played": 17,
+                "played": 18,
                 "wins": 4,
                 "draws": 7,
-                "losses": 6,
-                "goalsFor": 19,
-                "goalsAgainst": 20
+                "losses": 7,
+                "goalsFor": 22,
+                "goalsAgainst": 24
               },
               "home": {
                 "played": 9,
@@ -5161,18 +5164,50 @@
                 "goalsAgainst": 7
               },
               "away": {
-                "played": 8,
+                "played": 9,
                 "wins": 2,
                 "draws": 2,
+                "losses": 5,
+                "goalsFor": 15,
+                "goalsAgainst": 17
+              }
+            },
+            {
+              "teamId": 7061,
+              "team": "Cheongju",
+              "rank": 12,
+              "points": 18,
+              "goalsDiff": -7,
+              "form": "DWDLW",
+              "all": {
+                "played": 18,
+                "wins": 2,
+                "draws": 12,
                 "losses": 4,
+                "goalsFor": 21,
+                "goalsAgainst": 28
+              },
+              "home": {
+                "played": 9,
+                "wins": 1,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 9,
+                "goalsAgainst": 17
+              },
+              "away": {
+                "played": 9,
+                "wins": 1,
+                "draws": 8,
+                "losses": 0,
                 "goalsFor": 12,
-                "goalsAgainst": 13
+                "goalsAgainst": 11
               }
             },
             {
               "teamId": 7098,
               "team": "Paju Citizen",
-              "rank": 12,
+              "rank": 13,
               "points": 18,
               "goalsDiff": -5,
               "form": "DWLLL",
@@ -5204,7 +5239,7 @@
             {
               "teamId": 9171,
               "team": "Yongin City",
-              "rank": 13,
+              "rank": 14,
               "points": 17,
               "goalsDiff": -6,
               "form": "LDWDD",
@@ -5230,38 +5265,6 @@
                 "draws": 3,
                 "losses": 2,
                 "goalsFor": 8,
-                "goalsAgainst": 10
-              }
-            },
-            {
-              "teamId": 7061,
-              "team": "Cheongju",
-              "rank": 14,
-              "points": 17,
-              "goalsDiff": -7,
-              "form": "WDLWL",
-              "all": {
-                "played": 17,
-                "wins": 2,
-                "draws": 11,
-                "losses": 4,
-                "goalsFor": 20,
-                "goalsAgainst": 27
-              },
-              "home": {
-                "played": 9,
-                "wins": 1,
-                "draws": 4,
-                "losses": 4,
-                "goalsFor": 9,
-                "goalsAgainst": 17
-              },
-              "away": {
-                "played": 8,
-                "wins": 1,
-                "draws": 7,
-                "losses": 0,
-                "goalsFor": 11,
                 "goalsAgainst": 10
               }
             },
@@ -5333,24 +5336,24 @@
               "teamId": 7076,
               "team": "Gimhae City",
               "rank": 17,
-              "points": 9,
+              "points": 10,
               "goalsDiff": -20,
-              "form": "WLDLW",
+              "form": "DWLDL",
               "all": {
-                "played": 16,
+                "played": 17,
                 "wins": 2,
-                "draws": 3,
+                "draws": 4,
                 "losses": 11,
-                "goalsFor": 13,
-                "goalsAgainst": 33
+                "goalsFor": 14,
+                "goalsAgainst": 34
               },
               "home": {
-                "played": 7,
+                "played": 8,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 7,
-                "goalsFor": 5,
-                "goalsAgainst": 19
+                "goalsFor": 6,
+                "goalsAgainst": 20
               },
               "away": {
                 "played": 9,
@@ -5513,7 +5516,12 @@
     },
     {
       "date": "2026-07-27",
-      "updatedAt": "2026-07-24T10:28:22.410Z",
+      "updatedAt": "2026-07-25T09:59:37.316Z",
+      "leagues": []
+    },
+    {
+      "date": "2026-07-28",
+      "updatedAt": "2026-07-25T09:59:37.316Z",
       "leagues": []
     }
   ]
