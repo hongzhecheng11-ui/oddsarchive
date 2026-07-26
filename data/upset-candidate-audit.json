@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-26T10:10:37.850Z",
+  "updatedAt": "2026-07-26T19:24:27.641Z",
   "summary": {
-    "trackedDays": 13,
-    "trackedCandidates": 6,
+    "trackedDays": 14,
+    "trackedCandidates": 7,
     "resolvedCandidates": 5,
     "favoriteFailures": 2,
     "directionHits": 0
@@ -100,9 +100,18 @@
     {
       "date": "2026-07-29",
       "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
-      "lastEvaluatedAt": "2026-07-26T10:10:37.850Z",
+      "lastEvaluatedAt": "2026-07-26T19:24:27.641Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
+    },
+    {
+      "date": "2026-07-30",
+      "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
+      "lastEvaluatedAt": "2026-07-26T19:24:27.641Z",
+      "eligibleMatchCount": 8,
+      "candidateIds": [
+        "fixture:1556506"
+      ]
     }
   ],
   "candidates": [
@@ -256,6 +265,32 @@
       "sampleSize": 52,
       "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
       "lastSeenAt": "2026-07-25T19:22:17.798Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1556506",
+      "fixtureId": "1556506",
+      "date": "2026-07-30",
+      "league": "UCL",
+      "homeTeam": "Gornik Zabrze",
+      "awayTeam": "Fenerbahçe",
+      "homeOdds": "7.25",
+      "drawOdds": "4.20",
+      "awayOdds": "1.44",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
+      "lastSeenAt": "2026-07-26T19:24:27.641Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
