@@ -1,6 +1,6 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-26T19:24:27.641Z",
+  "updatedAt": "2026-07-27T11:36:33.336Z",
   "summary": {
     "trackedDays": 14,
     "trackedCandidates": 7,
@@ -100,14 +100,14 @@
     {
       "date": "2026-07-29",
       "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
-      "lastEvaluatedAt": "2026-07-26T19:24:27.641Z",
+      "lastEvaluatedAt": "2026-07-27T11:36:33.336Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-07-30",
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
-      "lastEvaluatedAt": "2026-07-26T19:24:27.641Z",
+      "lastEvaluatedAt": "2026-07-27T11:36:33.336Z",
       "eligibleMatchCount": 8,
       "candidateIds": [
         "fixture:1556506"
@@ -290,7 +290,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
-      "lastSeenAt": "2026-07-26T19:24:27.641Z",
+      "lastSeenAt": "2026-07-27T11:36:33.336Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
