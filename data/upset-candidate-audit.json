@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-27T19:48:15.444Z",
+  "updatedAt": "2026-07-28T10:44:38.497Z",
   "summary": {
     "trackedDays": 15,
-    "trackedCandidates": 7,
+    "trackedCandidates": 9,
     "resolvedCandidates": 5,
     "favoriteFailures": 2,
     "directionHits": 0
@@ -100,25 +100,27 @@
     {
       "date": "2026-07-29",
       "firstEvaluatedAt": "2026-07-25T19:22:17.798Z",
-      "lastEvaluatedAt": "2026-07-27T19:48:15.444Z",
+      "lastEvaluatedAt": "2026-07-28T10:44:38.497Z",
       "eligibleMatchCount": 6,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1589424"
+      ]
     },
     {
       "date": "2026-07-30",
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
-      "lastEvaluatedAt": "2026-07-27T19:48:15.444Z",
+      "lastEvaluatedAt": "2026-07-28T10:44:38.497Z",
       "eligibleMatchCount": 8,
-      "candidateIds": [
-        "fixture:1556506"
-      ]
+      "candidateIds": []
     },
     {
       "date": "2026-07-31",
       "firstEvaluatedAt": "2026-07-27T19:48:15.444Z",
-      "lastEvaluatedAt": "2026-07-27T19:48:15.444Z",
+      "lastEvaluatedAt": "2026-07-28T10:44:38.497Z",
       "eligibleMatchCount": 9,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1593527"
+      ]
     }
   ],
   "candidates": [
@@ -279,6 +281,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1589424",
+      "fixtureId": "1589424",
+      "date": "2026-07-29",
+      "league": "UCL",
+      "homeTeam": "Lincoln Red Imps FC",
+      "awayTeam": "Mjallby AIF",
+      "homeOdds": "5.40",
+      "drawOdds": "4.30",
+      "awayOdds": "1.54",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 72,
+      "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
+      "lastSeenAt": "2026-07-28T10:44:38.497Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1556506",
       "fixtureId": "1556506",
       "date": "2026-07-30",
@@ -298,6 +326,32 @@
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
       "lastSeenAt": "2026-07-27T19:48:15.444Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1593527",
+      "fixtureId": "1593527",
+      "date": "2026-07-31",
+      "league": "UEL",
+      "homeTeam": "Pafos",
+      "awayTeam": "HNK Hajduk Split",
+      "homeOdds": "1.81",
+      "drawOdds": "3.85",
+      "awayOdds": "3.90",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 23,
+      "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
+      "lastSeenAt": "2026-07-28T10:44:38.497Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
