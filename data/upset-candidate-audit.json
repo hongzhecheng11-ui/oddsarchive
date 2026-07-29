@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-28T19:46:52.070Z",
+  "updatedAt": "2026-07-29T10:48:22.612Z",
   "summary": {
     "trackedDays": 16,
-    "trackedCandidates": 9,
+    "trackedCandidates": 10,
     "resolvedCandidates": 7,
     "favoriteFailures": 4,
     "directionHits": 2
@@ -109,14 +109,16 @@
     {
       "date": "2026-07-30",
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
-      "lastEvaluatedAt": "2026-07-28T19:46:52.070Z",
+      "lastEvaluatedAt": "2026-07-29T10:48:22.612Z",
       "eligibleMatchCount": 8,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1589422"
+      ]
     },
     {
       "date": "2026-07-31",
       "firstEvaluatedAt": "2026-07-27T19:48:15.444Z",
-      "lastEvaluatedAt": "2026-07-28T19:46:52.070Z",
+      "lastEvaluatedAt": "2026-07-29T10:48:22.612Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1593527"
@@ -125,8 +127,8 @@
     {
       "date": "2026-08-01",
       "firstEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "lastEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "eligibleMatchCount": 1,
+      "lastEvaluatedAt": "2026-07-29T10:48:22.612Z",
+      "eligibleMatchCount": 9,
       "candidateIds": []
     }
   ],
@@ -340,6 +342,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1589422",
+      "fixtureId": "1589422",
+      "date": "2026-07-30",
+      "league": "UCL",
+      "homeTeam": "Hapoel Beer Sheva",
+      "awayTeam": "Vikingur Reykjavik",
+      "homeOdds": "1.60",
+      "drawOdds": "4.10",
+      "awayOdds": "4.90",
+      "favoriteKey": "H",
+      "candidateLabel": "원정 역배 주의",
+      "predictedDirection": "A",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 158,
+      "firstEvaluatedAt": "2026-07-29T10:48:22.612Z",
+      "lastSeenAt": "2026-07-29T10:48:22.612Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1593527",
       "fixtureId": "1593527",
       "date": "2026-07-31",
@@ -358,7 +386,7 @@
       ],
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
-      "lastSeenAt": "2026-07-28T19:46:52.070Z",
+      "lastSeenAt": "2026-07-29T10:48:22.612Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

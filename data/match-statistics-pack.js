@@ -5,17 +5,17 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-07-28T10:45:01.593Z",
+  "updatedAt": "2026-07-29T10:48:53.524Z",
   "collection": {
     "dates": [
+      "2026-07-28",
       "2026-07-27",
-      "2026-07-26",
-      "2026-07-25"
+      "2026-07-26"
     ],
-    "requestGroups": 4,
-    "skippedGroups": 74,
-    "finishedFixtures": 12,
-    "skippedComplete": 12,
+    "requestGroups": 2,
+    "skippedGroups": 76,
+    "finishedFixtures": 6,
+    "skippedComplete": 6,
     "saved": 0,
     "failures": 0,
     "errors": []
