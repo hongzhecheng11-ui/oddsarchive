@@ -222,6 +222,64 @@ test("upset warning narrative stays separate from draw-heavy conclusion", () => 
   assert(!narrative.usedMeaningKeys.includes("CONCLUSION_DRAW"));
 });
 
+test("upset warning uses stronger copy for 1.20 to 1.39 favorites", () => {
+  const match = makeMatch({ homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 });
+  const analysis = buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({ home: 5, draw: 7, away: 8, homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameOddsMatches: makeMixedMatches({ home: 1, draw: 3, away: 4, homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameLeagueMatches: makeMixedMatches({ home: 4, draw: 6, away: 10, homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 }),
+    homeRecent: makeRecentSequence("home", ["H", "D", "A", "A", "D"]),
+    awayRecent: makeRecentSequence("away", ["H", "H", "D", "H", "A"]),
+    contextProfile: makeContextProfile({ confidence: "蹂댄넻" })
+  });
+  const { direction, narrative } = createNarrative(match, analysis);
+  assert.strictEqual(direction, "UPSET_WARNING");
+  assert(narrative.headline.includes("강한 정배 구간") || narrative.headline.includes("강정배"));
+  assert(
+    narrative.paragraph.includes("강한 정배 구간") ||
+    narrative.paragraph.includes("강정배 경기") ||
+    narrative.paragraph.includes("배당만 보면 정배")
+  );
+});
+
+test("upset warning uses cautionary copy for 1.40 to 1.50 favorites", () => {
+  const match = makeMatch({ homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 });
+  const analysis = buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({ home: 5, draw: 7, away: 8, homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameOddsMatches: makeMixedMatches({ home: 1, draw: 3, away: 4, homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameLeagueMatches: makeMixedMatches({ home: 4, draw: 6, away: 10, homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 }),
+    homeRecent: makeRecentSequence("home", ["H", "D", "A", "A", "D"]),
+    awayRecent: makeRecentSequence("away", ["H", "H", "D", "H", "A"]),
+    contextProfile: makeContextProfile({ confidence: "蹂댄넻" })
+  });
+  const { direction, narrative } = createNarrative(match, analysis);
+  assert.strictEqual(direction, "UPSET_WARNING");
+  assert(
+    narrative.headline.includes("정배") ||
+    narrative.headline.includes("기본 흐름")
+  );
+  assert(
+    narrative.paragraph.includes("이변 가능성도 함께 체크") ||
+    narrative.paragraph.includes("기본 흐름은 정배") ||
+    narrative.paragraph.includes("정배 흐름을 우선 보되")
+  );
+});
+
+test("favorites above 1.50 no longer use upset warning narratives", () => {
+  const match = makeMatch({ homeOdds: 1.51, drawOdds: 4.0, awayOdds: 7.0 });
+  const analysis = buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({ home: 5, draw: 7, away: 8, homeOdds: 1.51, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameOddsMatches: makeMixedMatches({ home: 1, draw: 3, away: 4, homeOdds: 1.51, drawOdds: 4.0, awayOdds: 7.0 }),
+    sameLeagueMatches: makeMixedMatches({ home: 4, draw: 6, away: 10, homeOdds: 1.51, drawOdds: 4.0, awayOdds: 7.0 }),
+    homeRecent: makeRecentSequence("home", ["H", "D", "A", "A", "D"]),
+    awayRecent: makeRecentSequence("away", ["H", "H", "D", "H", "A"]),
+    contextProfile: makeContextProfile({ confidence: "蹂댄넻" })
+  });
+  const { direction, narrative } = createNarrative(match, analysis);
+  assert.notStrictEqual(direction, "UPSET_WARNING");
+  assert(!narrative.headline.includes("이변"));
+});
+
 test("home with draw risk does not collapse into home strong", () => {
   const match = makeMatch({ homeOdds: 1.95, drawOdds: 3.15, awayOdds: 4.4 });
   const analysis = buildAnalysis(match, {

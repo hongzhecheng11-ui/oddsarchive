@@ -6175,6 +6175,14 @@ function getAnalysisFavoriteBandKey(favoriteOdds = null) {
   return "MIXED";
 }
 
+function getAnalysisUpsetWarningTone(favoriteOdds = null) {
+  const value = Number(favoriteOdds);
+  if (!Number.isFinite(value)) return "";
+  if (value >= 1.2 && value <= 1.39) return "STRONG";
+  if (value >= 1.4 && value <= 1.5) return "CAUTION";
+  return "";
+}
+
 function buildAnalysisContextV1(match = {}, analysis = {}) {
   const contextProfile = analysis.contextProfile || {};
   const sameOddsBreakdown = analysis.sameOdds?.breakdown || calculateResultBreakdown([]);
@@ -6323,9 +6331,10 @@ function decideAnalysisDirection(context = {}) {
   const favouriteKey = context.odds?.favoriteKey || "";
   const judgementKey = context.judgement?.key || "GENERAL";
   const topOutcomeKey = similarSample.topOutcomeKey || "";
+  const upsetWarningTone = getAnalysisUpsetWarningTone(context.odds?.favoriteOdds);
 
   if (judgementKey === "DATA_LACK") return "LOW_CONFIDENCE";
-  if (["MAJOR_UPSET_WARNING", "UPSET_WARNING", "FAVORITE_UNSTABLE"].includes(judgementKey)) return "UPSET_WARNING";
+  if (["MAJOR_UPSET_WARNING", "UPSET_WARNING", "FAVORITE_UNSTABLE"].includes(judgementKey) && upsetWarningTone) return "UPSET_WARNING";
   if (signalKeys.has("DRAW_RISK")) {
     if (favouriteKey === "H") return "HOME_WITH_DRAW_RISK";
     if (favouriteKey === "A") return "AWAY_WITH_DRAW_RISK";
@@ -6658,19 +6667,86 @@ function buildAnalysisParagraph(sentences = []) {
   return safeSentences.map((sentence, index) => renderNarrativeSentenceText(sentence, index)).join(" ");
 }
 
+function getAnalysisHeadlineCandidatesForContext(direction = "", context = {}) {
+  const library = getAnalysisHeadlineLibrary();
+  if (direction !== "UPSET_WARNING") return library[direction] || library.BALANCED || [];
+
+  const tone = getAnalysisUpsetWarningTone(context.odds?.favoriteOdds);
+  if (tone === "STRONG") {
+    return [
+      "강한 정배 구간이지만 이변 신호가 겹쳐 주의가 필요한 경기입니다.",
+      "정배 쏠림은 강하지만 결과가 흔들릴 여지도 함께 보이는 매치업입니다.",
+      "강정배 흐름으로 보이지만 예상보다 결과 변동 폭이 클 수 있습니다."
+    ];
+  }
+  if (tone === "CAUTION") {
+    return [
+      "정배 쪽으로 기울어 있지만 이변 가능성도 함께 체크할 경기입니다.",
+      "기본 흐름은 정배지만 방심하기에는 변수 신호가 남아 있습니다.",
+      "정배 우세로 보이더라도 결과가 한쪽으로 쉽게 굳지 않을 수 있습니다."
+    ];
+  }
+  return library[direction] || library.BALANCED || [];
+}
+
+function applyUpsetNarrativeTone(sentences = [], context = {}, { language = "ko" } = {}) {
+  if (!Array.isArray(sentences) || sentences.length === 0 || language !== "ko") return sentences;
+  if (decideAnalysisDirection(context) !== "UPSET_WARNING") return sentences;
+
+  const tone = getAnalysisUpsetWarningTone(context.odds?.favoriteOdds);
+  if (!tone) return sentences;
+
+  const overridesByTone = {
+    STRONG: {
+      INTRO_UPSET_WARNING: [
+        "강한 정배 구간이지만 과거 유사 흐름을 보면 이변 가능성을 가볍게 넘기기 어렵습니다.",
+        "배당만 보면 정배 쪽이 강하지만, 실제 결과 쪽에서는 흔들릴 만한 신호가 겹쳐 있습니다."
+      ],
+      CONCLUSION_UPSET: [
+        "종합하면 강정배 경기로 보이더라도 이변 가능성을 함께 열어두는 편이 좋습니다.",
+        "전체적으로는 정배 우세 경기지만, 이번에는 이변 가능성까지 같이 확인할 필요가 있습니다."
+      ]
+    },
+    CAUTION: {
+      INTRO_UPSET_WARNING: [
+        "정배 쪽으로 기울어 있는 경기지만 이변 가능성도 함께 체크할 필요가 있습니다.",
+        "기본 흐름은 정배에 가깝지만 결과가 예상보다 까다롭게 전개될 여지는 남아 있습니다."
+      ],
+      CONCLUSION_UPSET: [
+        "종합하면 정배 흐름을 우선 보되, 이변 가능성도 같이 경계하는 편이 좋습니다.",
+        "전체적으로는 정배 쪽이 앞서지만, 이번 경기는 변수까지 함께 보는 편이 좋습니다."
+      ]
+    }
+  };
+
+  const overrides = overridesByTone[tone];
+  if (!overrides) return sentences;
+
+  return sentences.map((sentence, index) => {
+    const candidates = overrides[sentence.meaningKey];
+    if (!Array.isArray(candidates) || candidates.length === 0) return sentence;
+    const text = pickSeededValue(
+      candidates,
+      `${buildAnalysisSeedKey(context, { language })}|tone|${sentence.meaningKey}|${index}`
+    ) || sentence.text;
+    return { ...sentence, text };
+  });
+}
+
 function buildAnalysisNarrativeBlock(context = {}, { language = "ko" } = {}) {
   const direction = decideAnalysisDirection(context);
   const selection = buildAnalysisSentenceSelection(context, { language });
-  const headlineCandidates = getAnalysisHeadlineLibrary()[direction] || getAnalysisHeadlineLibrary().BALANCED || [];
+  const resolvedSentences = applyUpsetNarrativeTone(selection.sentences, context, { language });
+  const headlineCandidates = getAnalysisHeadlineCandidatesForContext(direction, context);
   const headline = pickSeededValue(headlineCandidates, `${buildAnalysisSeedKey(context, { language })}|headline`) || "";
   return {
     version: ANALYSIS_SENTENCE_LIBRARY.ANALYSIS_SENTENCE_LIBRARY_VERSION || "analysis-sentences-v1",
     direction,
     headline,
-    sentences: selection.sentences.map((sentence) => sentence.text),
-    paragraph: buildAnalysisParagraph(selection.sentences),
-    usedSentenceIds: selection.sentences.map((sentence) => sentence.id),
-    usedMeaningKeys: selection.sentences.map((sentence) => sentence.meaningKey),
+    sentences: resolvedSentences.map((sentence) => sentence.text),
+    paragraph: buildAnalysisParagraph(resolvedSentences),
+    usedSentenceIds: resolvedSentences.map((sentence) => sentence.id),
+    usedMeaningKeys: resolvedSentences.map((sentence) => sentence.meaningKey),
     evidenceKeys: selection.evidenceKeys
   };
 }

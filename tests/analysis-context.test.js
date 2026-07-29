@@ -172,6 +172,112 @@ test("returns upset warning for strong upset judgement", () => {
   assert.strictEqual(app.decideAnalysisDirection(context), "UPSET_WARNING");
 });
 
+test("returns upset warning only inside the 1.20 to 1.39 band", () => {
+  const buildContextForOdds = (homeOdds) => {
+    const match = makeMatch({ homeOdds, drawOdds: 4.0, awayOdds: 7.0 });
+    return app.buildAnalysisContextV1(match, buildAnalysis(match, {
+      similarOddsMatches: makeMixedMatches({
+        home: 5,
+        draw: 7,
+        away: 8,
+        homeOdds,
+        drawOdds: 4.0,
+        awayOdds: 7.0
+      }),
+      sameLeagueMatches: makeMixedMatches({
+        home: 4,
+        draw: 6,
+        away: 10,
+        homeOdds,
+        drawOdds: 4.0,
+        awayOdds: 7.0
+      }),
+      contextConfidence: "蹂댄넻"
+    }));
+  };
+
+  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.2)), "UPSET_WARNING");
+  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.39)), "UPSET_WARNING");
+});
+
+test("returns upset warning only inside the 1.40 to 1.50 band", () => {
+  const buildContextForOdds = (homeOdds) => {
+    const match = makeMatch({ homeOdds, drawOdds: 4.0, awayOdds: 7.0 });
+    return app.buildAnalysisContextV1(match, buildAnalysis(match, {
+      similarOddsMatches: makeMixedMatches({
+        home: 5,
+        draw: 7,
+        away: 8,
+        homeOdds,
+        drawOdds: 4.0,
+        awayOdds: 7.0
+      }),
+      sameLeagueMatches: makeMixedMatches({
+        home: 4,
+        draw: 6,
+        away: 10,
+        homeOdds,
+        drawOdds: 4.0,
+        awayOdds: 7.0
+      }),
+      contextConfidence: "蹂댄넻"
+    }));
+  };
+
+  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.4)), "UPSET_WARNING");
+  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.5)), "UPSET_WARNING");
+});
+
+test("does not return upset warning above 1.50 even with upset signals", () => {
+  const match = makeMatch({ homeOdds: 1.51, drawOdds: 4.0, awayOdds: 7.0 });
+  const context = app.buildAnalysisContextV1(match, buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({
+      home: 5,
+      draw: 7,
+      away: 8,
+      homeOdds: 1.51,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    sameLeagueMatches: makeMixedMatches({
+      home: 4,
+      draw: 6,
+      away: 10,
+      homeOdds: 1.51,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    contextConfidence: "蹂댄넻"
+  }));
+
+  assert.notStrictEqual(app.decideAnalysisDirection(context), "UPSET_WARNING");
+});
+
+test("does not return upset warning when favorite odds are invalid", () => {
+  const match = makeMatch({ homeOdds: "", drawOdds: 4.0, awayOdds: 7.0 });
+  const context = app.buildAnalysisContextV1(match, buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({
+      home: 5,
+      draw: 7,
+      away: 8,
+      homeOdds: 1.42,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    sameLeagueMatches: makeMixedMatches({
+      home: 4,
+      draw: 6,
+      away: 10,
+      homeOdds: 1.42,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    contextConfidence: "蹂댄넻"
+  }));
+
+  assert.notStrictEqual(app.decideAnalysisDirection(context), "UPSET_WARNING");
+});
+
 test("returns home strong direction for stable home favorite", () => {
   const match = makeMatch({ homeOdds: 1.58, drawOdds: 3.55, awayOdds: 5.5 });
   const similarOddsMatches = makeMixedMatches({
