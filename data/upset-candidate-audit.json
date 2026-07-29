@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-29T10:48:22.612Z",
+  "updatedAt": "2026-07-29T19:38:06.033Z",
   "summary": {
-    "trackedDays": 16,
+    "trackedDays": 17,
     "trackedCandidates": 10,
-    "resolvedCandidates": 7,
-    "favoriteFailures": 4,
-    "directionHits": 2
+    "resolvedCandidates": 9,
+    "favoriteFailures": 5,
+    "directionHits": 3
   },
   "days": [
     {
@@ -118,7 +118,7 @@
     {
       "date": "2026-07-31",
       "firstEvaluatedAt": "2026-07-27T19:48:15.444Z",
-      "lastEvaluatedAt": "2026-07-29T10:48:22.612Z",
+      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1593527"
@@ -127,8 +127,15 @@
     {
       "date": "2026-08-01",
       "firstEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "lastEvaluatedAt": "2026-07-29T10:48:22.612Z",
+      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
       "eligibleMatchCount": 9,
+      "candidateIds": []
+    },
+    {
+      "date": "2026-08-02",
+      "firstEvaluatedAt": "2026-07-29T19:38:06.033Z",
+      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
+      "eligibleMatchCount": 1,
       "candidateIds": []
     }
   ],
@@ -335,11 +342,11 @@
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-07-26T19:24:27.641Z",
       "lastSeenAt": "2026-07-27T19:48:15.444Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "1-1",
+      "resolvedAt": "2026-07-29T19:38:06.033Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1589422",
@@ -361,11 +368,11 @@
       "sampleSize": 158,
       "firstEvaluatedAt": "2026-07-29T10:48:22.612Z",
       "lastSeenAt": "2026-07-29T10:48:22.612Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "2-0",
+      "resolvedAt": "2026-07-29T19:38:06.033Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1593527",
@@ -386,7 +393,7 @@
       ],
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
-      "lastSeenAt": "2026-07-29T10:48:22.612Z",
+      "lastSeenAt": "2026-07-29T19:38:06.033Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
