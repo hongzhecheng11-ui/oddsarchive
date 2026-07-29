@@ -141,6 +141,17 @@ const FAVORITE_SYNC_LIBRARY = (() => {
   }
   return {};
 })();
+const ANALYSIS_SENTENCE_LIBRARY = (() => {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_ANALYSIS_SENTENCES) return window.ODDS_ARCHIVE_ANALYSIS_SENTENCES;
+  if (typeof require !== "undefined") {
+    try {
+      return require("./src/lib/analysis-sentences.js");
+    } catch (_error) {
+      return {};
+    }
+  }
+  return {};
+})();
 const warnedMissingTeamLabels = new Set();
 let currentValidRows = [];
 let memoryStoredMatches = [];
@@ -5733,6 +5744,937 @@ function buildDetailAiViewModel(match = {}, analysis = {}) {
   };
 }
 
+function getAnalysisOutcomeLabel(resultKey = "") {
+  if (resultKey === "H") return "home";
+  if (resultKey === "D") return "draw";
+  if (resultKey === "A") return "away";
+  return "";
+}
+
+function normalizeAnalysisRate(count = 0, total = 0) {
+  const safeTotal = Number(total || 0);
+  if (safeTotal <= 0) return null;
+  return getRatePercent(Number(count || 0), safeTotal);
+}
+
+function getAnalysisSampleBucket(sampleSize = 0) {
+  const safeSampleSize = Number(sampleSize || 0);
+  if (safeSampleSize <= 0) return "none";
+  if (safeSampleSize < 15) return "low";
+  if (safeSampleSize < 30) return "medium";
+  return "high";
+}
+
+function buildAnalysisBreakdownContext(breakdown = {}, favoriteKey = "") {
+  const total = Number(breakdown.totalMatches || 0);
+  const known = Number(breakdown.knownMatches || 0);
+  const homeWins = Number(breakdown.homeWins || 0);
+  const draws = Number(breakdown.draws || 0);
+  const awayWins = Number(breakdown.awayWins || 0);
+  const rates = {
+    home: normalizeAnalysisRate(homeWins, known),
+    draw: normalizeAnalysisRate(draws, known),
+    away: normalizeAnalysisRate(awayWins, known)
+  };
+  const favoriteHitRate = favoriteKey ? normalizeAnalysisRate(
+    favoriteKey === "H" ? homeWins : favoriteKey === "D" ? draws : awayWins,
+    known
+  ) : null;
+  const topOutcome = getTopBreakdownResult({
+    knownMatches: known,
+    homeWins,
+    draws,
+    awayWins,
+    homeRate: rates.home === null ? "" : `${rates.home.toFixed(1)}%`,
+    drawRate: rates.draw === null ? "" : `${rates.draw.toFixed(1)}%`,
+    awayRate: rates.away === null ? "" : `${rates.away.toFixed(1)}%`
+  });
+
+  return {
+    total,
+    known,
+    sampleBucket: getAnalysisSampleBucket(known),
+    counts: {
+      home: homeWins,
+      draw: draws,
+      away: awayWins
+    },
+    rates,
+    favoriteHitRate,
+    topOutcomeKey: topOutcome.key || "",
+    topOutcomeRate: Number.isFinite(Number(topOutcome.rate)) ? Number(topOutcome.rate) : null
+  };
+}
+
+function buildAnalysisTeamProfileContext(profile = {}) {
+  const matches = Number(profile.matches || 0);
+  if (matches <= 0) {
+    return {
+      matches: 0,
+      wins: 0,
+      draws: 0,
+      losses: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+      avgGoalsFor: null,
+      avgGoalsAgainst: null,
+      winRate: null,
+      drawRate: null,
+      pointsPerMatch: null,
+      scoredRate: null,
+      lowConcedeRate: null
+    };
+  }
+
+  return {
+    matches,
+    wins: Number(profile.wins || 0),
+    draws: Number(profile.draws || 0),
+    losses: Number(profile.losses || 0),
+    goalsFor: Number(profile.goalsFor || 0),
+    goalsAgainst: Number(profile.goalsAgainst || 0),
+    avgGoalsFor: Number.isFinite(Number(profile.avgGoalsFor)) ? Number(profile.avgGoalsFor) : null,
+    avgGoalsAgainst: Number.isFinite(Number(profile.avgGoalsAgainst)) ? Number(profile.avgGoalsAgainst) : null,
+    winRate: normalizeAnalysisRate(profile.wins, matches),
+    drawRate: normalizeAnalysisRate(profile.draws, matches),
+    pointsPerMatch: Number.isFinite(Number(profile.pointsPerMatch)) ? Number(profile.pointsPerMatch) : null,
+    scoredRate: Number.isFinite(Number(profile.scoredRate)) ? Number(profile.scoredRate) : null,
+    lowConcedeRate: Number.isFinite(Number(profile.lowConcedeRate)) ? Number(profile.lowConcedeRate) : null
+  };
+}
+
+function buildAnalysisVenueContext(profile = {}) {
+  const normalized = buildAnalysisTeamProfileContext(profile);
+  return {
+    matches: normalized.matches,
+    wins: normalized.wins,
+    draws: normalized.draws,
+    losses: normalized.losses,
+    avgGoalsFor: normalized.avgGoalsFor,
+    avgGoalsAgainst: normalized.avgGoalsAgainst,
+    pointsPerMatch: normalized.pointsPerMatch
+  };
+}
+
+function buildAnalysisStandingContext(row = null) {
+  if (!row) return { rank: null, played: null, points: null, goalDifference: null };
+  return {
+    rank: Number.isFinite(Number(row.rank)) ? Number(row.rank) : null,
+    played: Number.isFinite(Number(row.played)) ? Number(row.played) : null,
+    points: Number.isFinite(Number(row.points)) ? Number(row.points) : null,
+    goalDifference: Number.isFinite(Number(row.goalDifference)) ? Number(row.goalDifference) : null
+  };
+}
+
+function buildAnalysisPerformanceContext(profile = {}) {
+  const matches = Number(profile.matches || 0);
+  return {
+    matches,
+    avgShots: matches > 0 && Number.isFinite(Number(profile.avgShots)) ? Number(profile.avgShots) : null,
+    avgShotsOnGoal: matches > 0 && Number.isFinite(Number(profile.avgShotsOnGoal)) ? Number(profile.avgShotsOnGoal) : null,
+    avgPossession: matches > 0 && Number.isFinite(Number(profile.avgPossession)) ? Number(profile.avgPossession) : null,
+    avgCorners: matches > 0 && Number.isFinite(Number(profile.avgCorners)) ? Number(profile.avgCorners) : null,
+    avgExpectedGoals: matches > 0 && Number.isFinite(Number(profile.avgExpectedGoals)) ? Number(profile.avgExpectedGoals) : null
+  };
+}
+
+function buildAnalysisHeadToHeadContext(match = {}, recentRecords = {}) {
+  const matches = Array.isArray(recentRecords.headToHead) ? recentRecords.headToHead : [];
+  const breakdown = calculateResultBreakdown(matches);
+  const homePerspective = getTeamRecentProfile(match.homeTeam, matches, 10);
+  return {
+    sample: buildAnalysisBreakdownContext(breakdown, ""),
+    homePerspective: buildAnalysisTeamProfileContext(homePerspective)
+  };
+}
+
+function getAnalysisSignalKeys(signals = []) {
+  const map = {
+    "무승부 주의": "DRAW_RISK",
+    "역배 신호": "UNDERDOG_ALERT",
+    "정배 과몰림": "OVERBACKED_FAVORITE",
+    "균형 배당": "BALANCED_ODDS",
+    "정배 적중 낮음": "LOW_FAVORITE_HIT",
+    "같은 리그 정배 낮음": "LOW_LEAGUE_FAVORITE_HIT",
+    "동일/유사 정배 낮음": "LOW_EXACT_AND_SIMILAR_FAVORITE_HIT",
+    "데이터 부족": "DATA_LACK",
+    "표본 부족": "LOW_SAMPLE",
+    "국가대항 보정": "NATIONAL_MATCH_CONTEXT",
+    "컵대회 보정": "CUP_CONTEXT",
+    "친선경기 보정": "FRIENDLY_CONTEXT",
+    "원정 정배": "AWAY_FAVORITE",
+    "강팀 정배": "STRONG_FAVORITE",
+    "중요 경기 보정": "HIGH_IMPORTANCE_CONTEXT",
+    "토너먼트 변수": "TOURNAMENT_CONTEXT",
+    "약팀 득점 흐름": "UNDERDOG_SCORING_FORM",
+    "수비 버팀": "UNDERDOG_DEFENSIVE_STABILITY",
+    "강팀 상대 버팀": "UNDERDOG_STRONG_OPPONENT_RESISTANCE",
+    "정배 수비 불안": "FAVORITE_DEFENSIVE_RISK",
+    "정배 최근 흔들림": "FAVORITE_RECENT_SLIP",
+    "홈원정 흐름 역전": "VENUE_FORM_REVERSAL",
+    "득실점 상성 주의": "GOAL_PROFILE_CAUTION",
+    "리그 순위 역전": "TABLE_REVERSAL",
+    "리그 순위 박빙": "TABLE_BALANCED",
+    "정배 일정 부담": "FAVORITE_SCHEDULE_RISK",
+    "정배 연속 원정": "FAVORITE_AWAY_SEQUENCE",
+    "최근 흐름 역전": "RECENT_FORM_REVERSAL",
+    "득실점 흐름 역전": "GOAL_TREND_REVERSAL",
+    "최근 경기력 역전": "PERFORMANCE_REVERSAL",
+    "기대득점 우세": "XG_EDGE",
+    "정배 공격력 저하": "FAVORITE_ATTACK_DROP"
+  };
+  return [...new Set((Array.isArray(signals) ? signals : []).map((signal) => map[signal]).filter(Boolean))];
+}
+
+function getAnalysisJudgementKey(judgement = "") {
+  const map = {
+    "데이터 부족": "DATA_LACK",
+    "일반": "GENERAL",
+    "대형 이변 후보": "MAJOR_UPSET_WARNING",
+    "이변 후보": "UPSET_WARNING",
+    "정배불안": "FAVORITE_UNSTABLE",
+    "박빙주의": "BALANCED_CAUTION",
+    "혼전": "MIXED"
+  };
+  return map[judgement] || "GENERAL";
+}
+
+function buildAnalysisContextV1(match = {}, analysis = {}) {
+  const contextProfile = analysis.contextProfile || {};
+  const sameOddsBreakdown = analysis.sameOdds?.breakdown || calculateResultBreakdown([]);
+  const similarOddsBreakdown = analysis.similarOdds?.breakdown || calculateResultBreakdown([]);
+  const sameLeagueBreakdown = analysis.sameLeagueSimilar?.breakdown || calculateResultBreakdown([]);
+  const judgement = analysis.similarOdds?.judgement || calculateMatchJudgement(similarOddsBreakdown, analysis.criteria || {});
+  const favoriteKey = judgement.favorite?.key || "";
+  const homeRecent = buildAnalysisTeamProfileContext(getTeamRecentProfile(match.homeTeam, analysis.recentRecords?.homeTeam || [], 5));
+  const awayRecent = buildAnalysisTeamProfileContext(getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5));
+  const upsetScore = calculateAiUpsetScore(judgement, analysis.criteria || {}, Number(similarOddsBreakdown.knownMatches || 0));
+  const homeStanding = contextProfile.favoriteKey === "H" ? contextProfile.favoriteStanding : contextProfile.favoriteKey === "A" ? contextProfile.underdogStanding : null;
+  const awayStanding = contextProfile.favoriteKey === "A" ? contextProfile.favoriteStanding : contextProfile.favoriteKey === "H" ? contextProfile.underdogStanding : null;
+  const dataFingerprintSource = {
+    matchId: getMatchIdentity(match),
+    odds: [match.homeOdds, match.drawOdds, match.awayOdds].map(formatOdds),
+    similarKnown: Number(similarOddsBreakdown.knownMatches || 0),
+    sameKnown: Number(sameOddsBreakdown.knownMatches || 0),
+    leagueKnown: Number(sameLeagueBreakdown.knownMatches || 0),
+    judgement: judgement.judgement || "",
+    confidence: judgement.confidence || "",
+    signals: judgement.signals || [],
+    homeRecent,
+    awayRecent
+  };
+
+  return {
+    version: "analysis-context-v1",
+    matchId: getMatchIdentity(match),
+    fixtureId: String(match.fixtureId || match.id || "").trim() || null,
+    league: String(match.league || "").trim(),
+    homeTeam: String(match.homeTeam || "").trim(),
+    awayTeam: String(match.awayTeam || "").trim(),
+    odds: {
+      home: parseSearchNumber(match.homeOdds),
+      draw: parseSearchNumber(match.drawOdds),
+      away: parseSearchNumber(match.awayOdds),
+      favoriteKey,
+      favoriteLabel: getAnalysisOutcomeLabel(favoriteKey),
+      favoriteOdds: Number.isFinite(Number(judgement.favoriteOdds)) ? Number(judgement.favoriteOdds) : null,
+      favoriteBand: judgement.favoriteBand || ""
+    },
+    samples: {
+      sameOdds: buildAnalysisBreakdownContext(sameOddsBreakdown, favoriteKey),
+      similarOdds: buildAnalysisBreakdownContext(similarOddsBreakdown, favoriteKey),
+      sameLeagueSimilar: buildAnalysisBreakdownContext(sameLeagueBreakdown, favoriteKey)
+    },
+    recent: {
+      headToHead: buildAnalysisHeadToHeadContext(match, analysis.recentRecords || {}),
+      homeTeam: homeRecent,
+      awayTeam: awayRecent
+    },
+    venue: {
+      home: buildAnalysisVenueContext(contextProfile.homeVenueProfile || {}),
+      away: buildAnalysisVenueContext(contextProfile.awayVenueProfile || {})
+    },
+    season: {
+      home: buildAnalysisVenueContext(contextProfile.homeSeasonProfile || {}),
+      away: buildAnalysisVenueContext(contextProfile.awaySeasonProfile || {})
+    },
+    standings: {
+      home: buildAnalysisStandingContext(homeStanding),
+      away: buildAnalysisStandingContext(awayStanding)
+    },
+    performance: {
+      home: buildAnalysisPerformanceContext(contextProfile.homePerformanceProfile || {}),
+      away: buildAnalysisPerformanceContext(contextProfile.awayPerformanceProfile || {})
+    },
+    judgement: {
+      value: judgement.judgement || "",
+      key: getAnalysisJudgementKey(judgement.judgement || ""),
+      confidence: judgement.confidence || "",
+      risk: judgement.risk || "",
+      signalTexts: Array.isArray(judgement.signals) ? judgement.signals.slice() : [],
+      signalKeys: getAnalysisSignalKeys(judgement.signals || []),
+      upsetProbability: judgement.upsetProbability === null ? null : Number(judgement.upsetProbability),
+      baseUpsetProbability: judgement.baseUpsetProbability === null ? null : Number(judgement.baseUpsetProbability),
+      matchAdjustment: Number.isFinite(Number(judgement.matchAdjustment)) ? Number(judgement.matchAdjustment) : null,
+      strongSignalCount: Number.isFinite(Number(judgement.strongSignalCount)) ? Number(judgement.strongSignalCount) : 0,
+      sampleSize: Number.isFinite(Number(judgement.sampleSize)) ? Number(judgement.sampleSize) : 0
+    },
+    upsetScore: upsetScore === null ? null : Number(upsetScore),
+    context: {
+      contextConfidence: String(contextProfile.confidence || ""),
+      contextSignals: Array.isArray(contextProfile.signals) ? contextProfile.signals.slice() : [],
+      officialContextUpdatedAt: String(contextProfile.officialContextUpdatedAt || "").trim() || null
+    },
+    dataFingerprint: JSON.stringify(dataFingerprintSource)
+  };
+}
+
+function buildAnalysisTags(context = {}) {
+  const tags = [];
+  const add = (tag) => {
+    if (tag) tags.push(tag);
+  };
+  const addSampleTags = (prefix, sample = {}) => {
+    const bucket = String(sample.sampleBucket || "none").toUpperCase();
+    add(`${prefix}_SAMPLE_${bucket}`);
+    if (sample.known > 0 && sample.favoriteHitRate !== null) add(`${prefix}_HAS_RESULT_RATES`);
+    if (sample.topOutcomeKey) add(`${prefix}_TOP_${sample.topOutcomeKey}`);
+  };
+
+  addSampleTags("EXACT", context.samples?.sameOdds || {});
+  addSampleTags("SIMILAR", context.samples?.similarOdds || {});
+  addSampleTags("LEAGUE", context.samples?.sameLeagueSimilar || {});
+
+  add(`JUDGEMENT_${context.judgement?.key || "GENERAL"}`);
+  if (context.judgement?.confidence) add(`CONFIDENCE_${String(context.judgement.confidence).toUpperCase()}`);
+  if (context.odds?.favoriteKey) add(`FAVORITE_${context.odds.favoriteKey}`);
+  if (context.odds?.favoriteBand) add(`FAVORITE_BAND_${normalizeTeamSearchText(context.odds.favoriteBand).replace(/[^a-z0-9가-힣]/g, "_").toUpperCase()}`);
+  (context.judgement?.signalKeys || []).forEach((signalKey) => add(`SIGNAL_${signalKey}`));
+
+  return [...new Set(tags)];
+}
+
+function decideAnalysisDirection(context = {}) {
+  const similarSample = context.samples?.similarOdds || {};
+  const signalKeys = new Set(context.judgement?.signalKeys || []);
+  const favouriteKey = context.odds?.favoriteKey || "";
+  const judgementValue = context.judgement?.value || "";
+  const topOutcomeKey = similarSample.topOutcomeKey || "";
+
+  if (Number(similarSample.known || 0) < 15) return "LOW_CONFIDENCE";
+  if (["대형 이변 후보", "이변 후보", "정배불안"].includes(judgementValue)) return "UPSET_WARNING";
+  if (topOutcomeKey === "D" || favouriteKey === "D") return "DRAW_HEAVY";
+  if (signalKeys.has("DRAW_RISK")) {
+    if (favouriteKey === "H") return "HOME_WITH_DRAW_RISK";
+    if (favouriteKey === "A") return "AWAY_WITH_DRAW_RISK";
+    return "DRAW_HEAVY";
+  }
+  if (["박빙주의", "혼전"].includes(judgementValue)) return "BALANCED";
+  if (favouriteKey === "H") return "HOME_STRONG";
+  if (favouriteKey === "A") return "AWAY_STRONG";
+  return "BALANCED";
+}
+
+function hashSeedString(input = "") {
+  let hash = 2166136261;
+  const text = String(input || "");
+  for (let index = 0; index < text.length; index += 1) {
+    hash ^= text.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return Math.abs(hash >>> 0);
+}
+
+function buildAnalysisSeedKey(context = {}, { language = "ko" } = {}) {
+  const similarSample = context.samples?.similarOdds || {};
+  const seedPayload = [
+    context.matchId || "",
+    language,
+    decideAnalysisDirection(context),
+    context.judgement?.value || "",
+    similarSample.sampleBucket || "none",
+    context.dataFingerprint || ""
+  ];
+  return seedPayload.join("|");
+}
+
+function pickSeededValue(values = [], seedKey = "") {
+  const safeValues = Array.isArray(values) ? values.filter((value) => value !== undefined && value !== null) : [];
+  if (safeValues.length === 0) return null;
+  const index = hashSeedString(seedKey) % safeValues.length;
+  return safeValues[index];
+}
+
+function getAnalysisSignalKeys(signals = []) {
+  const map = {
+    "무승부 주의": "DRAW_RISK",
+    "역배 신호": "UNDERDOG_ALERT",
+    "정배 과몰림": "OVERBACKED_FAVORITE",
+    "균형 배당": "BALANCED_ODDS",
+    "정배 적중 낮음": "LOW_FAVORITE_HIT",
+    "같은 리그 정배 낮음": "LOW_LEAGUE_FAVORITE_HIT",
+    "동일/유사 정배 낮음": "LOW_EXACT_AND_SIMILAR_FAVORITE_HIT",
+    "데이터 부족": "DATA_LACK",
+    "표본 부족": "LOW_SAMPLE",
+    "국가대표 보정": "NATIONAL_MATCH_CONTEXT",
+    "컵대회 보정": "CUP_CONTEXT",
+    "친선경기 보정": "FRIENDLY_CONTEXT",
+    "원정 정배": "AWAY_FAVORITE",
+    "강한 정배": "STRONG_FAVORITE",
+    "중요 경기 보정": "HIGH_IMPORTANCE_CONTEXT",
+    "토너먼트 보정": "TOURNAMENT_CONTEXT",
+    "약팀 득점 흐름": "UNDERDOG_SCORING_FORM",
+    "수비 버팀": "UNDERDOG_DEFENSIVE_STABILITY",
+    "강팀 상대 버팀": "UNDERDOG_STRONG_OPPONENT_RESISTANCE",
+    "정배 수비 불안": "FAVORITE_DEFENSIVE_RISK",
+    "정배 최근 흔들림": "FAVORITE_RECENT_SLIP",
+    "원정장 이점 역전": "VENUE_FORM_REVERSAL",
+    "실점/득점 성향 주의": "GOAL_PROFILE_CAUTION",
+    "리그 순위 역전": "TABLE_REVERSAL",
+    "리그 순위 박빙": "TABLE_BALANCED",
+    "정배 일정 부담": "FAVORITE_SCHEDULE_RISK",
+    "정배 연속 원정": "FAVORITE_AWAY_SEQUENCE",
+    "최근 흐름 역전": "RECENT_FORM_REVERSAL",
+    "득점 흐름 역전": "GOAL_TREND_REVERSAL",
+    "최근 경기력 역전": "PERFORMANCE_REVERSAL",
+    "기대 득점 우세": "XG_EDGE",
+    "정배 공격력 저하": "FAVORITE_ATTACK_DROP"
+  };
+  return [...new Set((Array.isArray(signals) ? signals : []).map((signal) => map[signal]).filter(Boolean))];
+}
+
+function getAnalysisJudgementKey(judgement = "") {
+  const map = {
+    "데이터 부족": "DATA_LACK",
+    "일반": "GENERAL",
+    "대형 이변 후보": "MAJOR_UPSET_WARNING",
+    "이변 후보": "UPSET_WARNING",
+    "정배불안": "FAVORITE_UNSTABLE",
+    "박빙주의": "BALANCED_CAUTION",
+    "혼전": "MIXED"
+  };
+  return map[judgement] || "GENERAL";
+}
+
+function getAnalysisConfidenceKey(confidence = "") {
+  const value = String(confidence || "").trim();
+  if (value === "높음") return "HIGH";
+  if (value === "보통") return "MEDIUM";
+  if (value === "낮음") return "LOW";
+  return "";
+}
+
+function getAnalysisFavoriteBandKey(favoriteOdds = null) {
+  const value = Number(favoriteOdds);
+  if (!Number.isFinite(value)) return "NO_ODDS";
+  if (value >= 1.2 && value <= 1.35) return "SUPER_STRONG_FAVORITE";
+  if (value <= 1.5) return "STRONG_FAVORITE";
+  if (value <= 1.65) return "FAVORITE";
+  if (value <= 1.8) return "LIGHT_FAVORITE";
+  if (value <= 2.1) return "BALANCED_FAVORITE";
+  return "MIXED";
+}
+
+function buildAnalysisContextV1(match = {}, analysis = {}) {
+  const contextProfile = analysis.contextProfile || {};
+  const sameOddsBreakdown = analysis.sameOdds?.breakdown || calculateResultBreakdown([]);
+  const similarOddsBreakdown = analysis.similarOdds?.breakdown || calculateResultBreakdown([]);
+  const sameLeagueBreakdown = analysis.sameLeagueSimilar?.breakdown || calculateResultBreakdown([]);
+  const judgement = analysis.similarOdds?.judgement || calculateMatchJudgement(similarOddsBreakdown, analysis.criteria || {});
+  const favoriteKey = judgement.favorite?.key || "";
+  const homeRecent = buildAnalysisTeamProfileContext(getTeamRecentProfile(match.homeTeam, analysis.recentRecords?.homeTeam || [], 5));
+  const awayRecent = buildAnalysisTeamProfileContext(getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5));
+  const upsetScore = calculateAiUpsetScore(judgement, analysis.criteria || {}, Number(similarOddsBreakdown.knownMatches || 0));
+  const homeStanding = contextProfile.favoriteKey === "H" ? contextProfile.favoriteStanding : contextProfile.favoriteKey === "A" ? contextProfile.underdogStanding : null;
+  const awayStanding = contextProfile.favoriteKey === "A" ? contextProfile.favoriteStanding : contextProfile.favoriteKey === "H" ? contextProfile.underdogStanding : null;
+  const dataFingerprintSource = {
+    matchId: getMatchIdentity(match),
+    odds: [match.homeOdds, match.drawOdds, match.awayOdds].map(formatOdds),
+    similarKnown: Number(similarOddsBreakdown.knownMatches || 0),
+    sameKnown: Number(sameOddsBreakdown.knownMatches || 0),
+    leagueKnown: Number(sameLeagueBreakdown.knownMatches || 0),
+    judgement: judgement.judgement || "",
+    confidence: judgement.confidence || "",
+    signals: judgement.signals || [],
+    homeRecent,
+    awayRecent
+  };
+
+  return {
+    version: "analysis-context-v1",
+    matchId: getMatchIdentity(match),
+    fixtureId: String(match.fixtureId || match.id || "").trim() || null,
+    league: String(match.league || "").trim(),
+    homeTeam: String(match.homeTeam || "").trim(),
+    awayTeam: String(match.awayTeam || "").trim(),
+    odds: {
+      home: parseSearchNumber(match.homeOdds),
+      draw: parseSearchNumber(match.drawOdds),
+      away: parseSearchNumber(match.awayOdds),
+      favoriteKey,
+      favoriteLabel: getAnalysisOutcomeLabel(favoriteKey),
+      favoriteOdds: Number.isFinite(Number(judgement.favoriteOdds)) ? Number(judgement.favoriteOdds) : null,
+      favoriteBand: judgement.favoriteBand || "",
+      favoriteBandKey: getAnalysisFavoriteBandKey(judgement.favoriteOdds)
+    },
+    samples: {
+      sameOdds: buildAnalysisBreakdownContext(sameOddsBreakdown, favoriteKey),
+      similarOdds: buildAnalysisBreakdownContext(similarOddsBreakdown, favoriteKey),
+      sameLeagueSimilar: buildAnalysisBreakdownContext(sameLeagueBreakdown, favoriteKey)
+    },
+    recent: {
+      headToHead: buildAnalysisHeadToHeadContext(match, analysis.recentRecords || {}),
+      homeTeam: homeRecent,
+      awayTeam: awayRecent
+    },
+    venue: {
+      home: buildAnalysisVenueContext(contextProfile.homeVenueProfile || {}),
+      away: buildAnalysisVenueContext(contextProfile.awayVenueProfile || {})
+    },
+    season: {
+      home: buildAnalysisVenueContext(contextProfile.homeSeasonProfile || {}),
+      away: buildAnalysisVenueContext(contextProfile.awaySeasonProfile || {})
+    },
+    standings: {
+      home: buildAnalysisStandingContext(homeStanding),
+      away: buildAnalysisStandingContext(awayStanding)
+    },
+    performance: {
+      home: buildAnalysisPerformanceContext(contextProfile.homePerformanceProfile || {}),
+      away: buildAnalysisPerformanceContext(contextProfile.awayPerformanceProfile || {})
+    },
+    judgement: {
+      value: judgement.judgement || "",
+      key: getAnalysisJudgementKey(judgement.judgement || ""),
+      confidence: judgement.confidence || "",
+      confidenceKey: getAnalysisConfidenceKey(judgement.confidence || ""),
+      risk: judgement.risk || "",
+      signalTexts: Array.isArray(judgement.signals) ? judgement.signals.slice() : [],
+      signalKeys: getAnalysisSignalKeys(judgement.signals || []),
+      upsetProbability: judgement.upsetProbability === null ? null : Number(judgement.upsetProbability),
+      baseUpsetProbability: judgement.baseUpsetProbability === null ? null : Number(judgement.baseUpsetProbability),
+      matchAdjustment: Number.isFinite(Number(judgement.matchAdjustment)) ? Number(judgement.matchAdjustment) : null,
+      strongSignalCount: Number.isFinite(Number(judgement.strongSignalCount)) ? Number(judgement.strongSignalCount) : 0,
+      sampleSize: Number.isFinite(Number(judgement.sampleSize)) ? Number(judgement.sampleSize) : 0
+    },
+    upsetScore: upsetScore === null ? null : Number(upsetScore),
+    context: {
+      contextConfidence: String(contextProfile.confidence || ""),
+      contextSignals: Array.isArray(contextProfile.signals) ? contextProfile.signals.slice() : [],
+      officialContextUpdatedAt: String(contextProfile.officialContextUpdatedAt || "").trim() || null
+    },
+    dataFingerprint: JSON.stringify(dataFingerprintSource)
+  };
+}
+
+function buildAnalysisTags(context = {}) {
+  const tags = [];
+  const add = (tag) => {
+    if (tag) tags.push(tag);
+  };
+  const addSampleTags = (prefix, sample = {}) => {
+    const bucket = String(sample.sampleBucket || "none").toUpperCase();
+    add(`${prefix}_SAMPLE_${bucket}`);
+    if (sample.known > 0 && sample.favoriteHitRate !== null) add(`${prefix}_HAS_RESULT_RATES`);
+    if (sample.topOutcomeKey) add(`${prefix}_TOP_${sample.topOutcomeKey}`);
+  };
+
+  addSampleTags("EXACT", context.samples?.sameOdds || {});
+  addSampleTags("SIMILAR", context.samples?.similarOdds || {});
+  addSampleTags("LEAGUE", context.samples?.sameLeagueSimilar || {});
+
+  add(`JUDGEMENT_${context.judgement?.key || "GENERAL"}`);
+  if (context.judgement?.confidenceKey) add(`CONFIDENCE_${context.judgement.confidenceKey}`);
+  if (context.odds?.favoriteKey) add(`FAVORITE_${context.odds.favoriteKey}`);
+  if (context.odds?.favoriteBandKey) add(`FAVORITE_BAND_${context.odds.favoriteBandKey}`);
+  (context.judgement?.signalKeys || []).forEach((signalKey) => add(`SIGNAL_${signalKey}`));
+
+  const recentHome = context.recent?.homeTeam || {};
+  const recentAway = context.recent?.awayTeam || {};
+  if (recentHome.matches >= 3 && recentAway.matches >= 3) {
+    const diff = Number(recentHome.pointsPerMatch || 0) - Number(recentAway.pointsPerMatch || 0);
+    if (diff >= 0.4) add("RECENT_HOME_EDGE");
+    else if (diff <= -0.4) add("RECENT_AWAY_EDGE");
+  }
+
+  const venueHome = context.venue?.home || {};
+  const venueAway = context.venue?.away || {};
+  if (venueHome.matches >= 3 && venueAway.matches >= 3) {
+    const diff = Number(venueHome.pointsPerMatch || 0) - Number(venueAway.pointsPerMatch || 0);
+    if (diff >= 0.35) add("VENUE_HOME_EDGE");
+    else if (diff <= -0.35) add("VENUE_AWAY_EDGE");
+  }
+
+  if (recentHome.matches >= 3 && recentAway.matches >= 3) {
+    const attackDiff = Number(recentHome.avgGoalsFor || 0) - Number(recentAway.avgGoalsFor || 0);
+    const defenseDiff = Number(recentAway.avgGoalsAgainst || 0) - Number(recentHome.avgGoalsAgainst || 0);
+    if (attackDiff >= 0.25) add("ATTACK_HOME_EDGE");
+    else if (attackDiff <= -0.25) add("ATTACK_AWAY_EDGE");
+    if (defenseDiff >= 0.25) add("DEFENSE_HOME_EDGE");
+    else if (defenseDiff <= -0.25) add("DEFENSE_AWAY_EDGE");
+  }
+
+  return [...new Set(tags)];
+}
+
+function decideAnalysisDirection(context = {}) {
+  const similarSample = context.samples?.similarOdds || {};
+  const signalKeys = new Set(context.judgement?.signalKeys || []);
+  const favouriteKey = context.odds?.favoriteKey || "";
+  const judgementKey = context.judgement?.key || "GENERAL";
+  const topOutcomeKey = similarSample.topOutcomeKey || "";
+
+  if (judgementKey === "DATA_LACK") return "LOW_CONFIDENCE";
+  if (["MAJOR_UPSET_WARNING", "UPSET_WARNING", "FAVORITE_UNSTABLE"].includes(judgementKey)) return "UPSET_WARNING";
+  if (signalKeys.has("DRAW_RISK")) {
+    if (favouriteKey === "H") return "HOME_WITH_DRAW_RISK";
+    if (favouriteKey === "A") return "AWAY_WITH_DRAW_RISK";
+    return "DRAW_HEAVY";
+  }
+  if (topOutcomeKey === "D" || favouriteKey === "D") return "DRAW_HEAVY";
+  if (["BALANCED_CAUTION", "MIXED"].includes(judgementKey)) return "BALANCED";
+  if (favouriteKey === "H") return "HOME_STRONG";
+  if (favouriteKey === "A") return "AWAY_STRONG";
+  return "BALANCED";
+}
+
+function buildAnalysisSeedKey(context = {}, { language = "ko" } = {}) {
+  const similarSample = context.samples?.similarOdds || {};
+  const seedPayload = [
+    context.matchId || "",
+    language,
+    decideAnalysisDirection(context),
+    context.judgement?.key || "",
+    similarSample.sampleBucket || "none",
+    context.dataFingerprint || ""
+  ];
+  return seedPayload.join("|");
+}
+
+function getAnalysisSentenceLibrary() {
+  return Array.isArray(ANALYSIS_SENTENCE_LIBRARY.ANALYSIS_SENTENCE_LIBRARY)
+    ? ANALYSIS_SENTENCE_LIBRARY.ANALYSIS_SENTENCE_LIBRARY
+    : [];
+}
+
+function getAnalysisHeadlineLibrary() {
+  return ANALYSIS_SENTENCE_LIBRARY.ANALYSIS_HEADLINE_LIBRARY || {};
+}
+
+function pickWeightedSeededValue(values = [], seedKey = "") {
+  const safeValues = Array.isArray(values) ? values.filter(Boolean) : [];
+  if (safeValues.length === 0) return null;
+  const totalWeight = safeValues.reduce((sum, item) => sum + Math.max(1, Number(item.weight || 1)), 0);
+  const target = hashSeedString(seedKey) % totalWeight;
+  let cursor = 0;
+  for (const item of safeValues) {
+    cursor += Math.max(1, Number(item.weight || 1));
+    if (target < cursor) return item;
+  }
+  return safeValues[safeValues.length - 1] || null;
+}
+
+function getContextValue(object, path) {
+  return String(path || "").split(".").reduce((current, key) => (
+    current && typeof current === "object" ? current[key] : undefined
+  ), object);
+}
+
+function replaceAnalysisPlaceholders(text = "", context = {}) {
+  if (!text) return "";
+  const replacements = {
+    "{{homeTeam}}": context.homeTeam || "",
+    "{{awayTeam}}": context.awayTeam || "",
+    "{{league}}": formatLeagueName(context.league || ""),
+    "{{favoriteLabel}}": context.odds?.favoriteLabel === "home" ? "홈팀"
+      : context.odds?.favoriteLabel === "away" ? "원정팀"
+        : context.odds?.favoriteLabel === "draw" ? "무승부"
+          : "정배 축",
+    "{{similarKnown}}": String(context.samples?.similarOdds?.known ?? 0),
+    "{{exactKnown}}": String(context.samples?.sameOdds?.known ?? 0),
+    "{{leagueKnown}}": String(context.samples?.sameLeagueSimilar?.known ?? 0)
+  };
+  return Object.entries(replacements).reduce((output, [key, value]) => output.replaceAll(key, value), String(text));
+}
+
+function buildAnalysisEvidenceKeys(sentence = {}, context = {}) {
+  return [...new Set((Array.isArray(sentence.evidenceKeys) ? sentence.evidenceKeys : []).filter((path) => {
+    const value = getContextValue(context, path);
+    return value !== null && value !== undefined && value !== "";
+  }))];
+}
+
+function categoryMatchesDirection(sentence = {}, direction = "") {
+  const allowedDirections = Array.isArray(sentence.allowedDirections) ? sentence.allowedDirections : [];
+  return allowedDirections.length === 0 || allowedDirections.includes(direction);
+}
+
+function sentenceMatchesTags(sentence = {}, tags = new Set()) {
+  const requiredTags = Array.isArray(sentence.requiredTags) ? sentence.requiredTags : [];
+  const excludedTags = Array.isArray(sentence.excludedTags) ? sentence.excludedTags : [];
+  return requiredTags.every((tag) => tags.has(tag)) && excludedTags.every((tag) => !tags.has(tag));
+}
+
+function pickAnalysisSentenceCandidate(candidates = [], seedKey = "") {
+  if (!Array.isArray(candidates) || candidates.length === 0) return null;
+  const topPriority = Math.max(...candidates.map((candidate) => Number(candidate.priority || 0)));
+  const priorityCandidates = candidates.filter((candidate) => Number(candidate.priority || 0) === topPriority);
+  return pickWeightedSeededValue(priorityCandidates, seedKey);
+}
+
+const NARRATIVE_EXCLUDED_CATEGORIES = new Set(["closing"]);
+const NARRATIVE_REPEATED_TERM_PATTERNS = [
+  /단단한 흐름/g,
+  /안정적(?:으로|인|이라는)?/g,
+  /방향(?:성)?/g,
+  /해석/g,
+  /데이터/g,
+  /표본/g
+];
+
+function countNarrativeRepeatedTerms(text = "") {
+  const content = String(text || "");
+  return NARRATIVE_REPEATED_TERM_PATTERNS.reduce((count, pattern) => (
+    count + ((content.match(pattern) || []).length > 0 ? 1 : 0)
+  ), 0);
+}
+
+function isNarrativeRepeatedTermSafe(existingSentences = [], candidateText = "") {
+  const usedMatches = new Set();
+  existingSentences.forEach((sentence) => {
+    const text = String(sentence?.text || "");
+    NARRATIVE_REPEATED_TERM_PATTERNS.forEach((pattern) => {
+      if ((text.match(pattern) || []).length > 0) usedMatches.add(pattern.source);
+    });
+  });
+  let repeatedCount = 0;
+  NARRATIVE_REPEATED_TERM_PATTERNS.forEach((pattern) => {
+    if (usedMatches.has(pattern.source) && (String(candidateText || "").match(pattern) || []).length > 0) repeatedCount += 1;
+  });
+  return repeatedCount === 0;
+}
+
+function getNarrativeSentenceStarter(text = "") {
+  const content = String(text || "").trim();
+  const starters = ["다만", "그렇지만", "반대로", "반대 방향", "하지만", "최근", "결론적으로", "종합하면", "정리하면", "전체적으로 보면", "특히", "여기에", "마지막으로"];
+  return starters.find((starter) => content.startsWith(starter)) || "";
+}
+
+function renderNarrativeSentenceText(sentence = {}, index = 0) {
+  const text = String(sentence.text || "").trim();
+  if (index <= 0) return text;
+  if (sentence.connectorType === "contrast" && !/^(다만|그렇지만|반대로|반대 방향|하지만|특히|여기에)/.test(text)) return `다만 ${text}`;
+  if (sentence.connectorType === "conclusion" && !/^(종합하면|전체적으로 보면|결론적으로|정리하면)/.test(text)) return `종합하면 ${text}`;
+  if (sentence.connectorType === "closing" && !/^(마지막으로|끝으로|마무리하면)/.test(text)) return `마지막으로 ${text}`;
+  return text;
+}
+
+function canUseSentenceStarter(existingSentences = [], candidate = {}) {
+  if (existingSentences.length === 0) return true;
+  const previousRendered = renderNarrativeSentenceText(existingSentences[existingSentences.length - 1], existingSentences.length - 1);
+  const candidateRendered = renderNarrativeSentenceText(candidate, existingSentences.length);
+  const previousStarter = getNarrativeSentenceStarter(previousRendered);
+  const candidateStarter = getNarrativeSentenceStarter(candidateRendered);
+  if (!previousStarter || !candidateStarter) return true;
+  return previousStarter !== candidateStarter;
+}
+
+function getAnalysisMeaningPlan(context = {}, direction = "", tagSet = new Set()) {
+  const similarSample = context.samples?.similarOdds || {};
+  const exactSample = context.samples?.sameOdds || {};
+  const leagueSample = context.samples?.sameLeagueSimilar || {};
+  const signalKeys = new Set(context.judgement?.signalKeys || []);
+  const meaningKeys = [];
+  const push = (key, condition = true) => {
+    if (condition && key && !meaningKeys.includes(key)) meaningKeys.push(key);
+  };
+
+  if (direction !== "LOW_CONFIDENCE") {
+    push(`INTRO_${direction}`);
+  }
+  if (direction === "LOW_CONFIDENCE") {
+    if (similarSample.known === 0) push("SAMPLE_NONE");
+    else if (similarSample.sampleBucket === "low") push("SAMPLE_LOW");
+    else if (similarSample.sampleBucket === "medium") push("SAMPLE_MEDIUM");
+    else if (similarSample.sampleBucket === "high") push("SAMPLE_HIGH");
+  } else {
+    if (similarSample.sampleBucket === "low") push("SAMPLE_LOW");
+    else if (similarSample.sampleBucket === "medium") push("SAMPLE_MEDIUM");
+    else if (similarSample.sampleBucket === "high") push("SAMPLE_HIGH");
+  }
+
+  if (exactSample.known >= 15 || exactSample.topOutcomeKey) {
+    if (exactSample.topOutcomeKey === "H") push("EXACT_HOME_SUPPORT");
+    else if (exactSample.topOutcomeKey === "A") push("EXACT_AWAY_SUPPORT");
+    else if (exactSample.topOutcomeKey === "D") push("EXACT_DRAW_SUPPORT");
+  } else if (exactSample.known > 0) {
+    push("EXACT_SAMPLE_THIN");
+  }
+
+  if (similarSample.topOutcomeKey === "H") push("SIMILAR_HOME_SUPPORT");
+  else if (similarSample.topOutcomeKey === "A") push("SIMILAR_AWAY_SUPPORT");
+  else if (similarSample.topOutcomeKey === "D") push("SIMILAR_DRAW_SUPPORT");
+  if (direction === "UPSET_WARNING" || signalKeys.has("UNDERDOG_ALERT")) push("SIMILAR_UPSET_FLAG");
+
+  if (leagueSample.known >= 15 || leagueSample.topOutcomeKey) {
+    if (leagueSample.topOutcomeKey === "H") push("LEAGUE_HOME_SUPPORT");
+    else if (leagueSample.topOutcomeKey === "A") push("LEAGUE_AWAY_SUPPORT");
+    else if (leagueSample.topOutcomeKey === "D") push("LEAGUE_DRAW_SUPPORT");
+  }
+
+  if (tagSet.has("RECENT_HOME_EDGE")) push("RECENT_HOME_EDGE");
+  else if (tagSet.has("RECENT_AWAY_EDGE")) push("RECENT_AWAY_EDGE");
+
+  if (tagSet.has("VENUE_HOME_EDGE")) push("VENUE_HOME_EDGE");
+  else if (tagSet.has("VENUE_AWAY_EDGE")) push("VENUE_AWAY_EDGE");
+
+  if (tagSet.has("ATTACK_HOME_EDGE")) push("ATTACK_HOME_EDGE");
+  else if (tagSet.has("ATTACK_AWAY_EDGE")) push("ATTACK_AWAY_EDGE");
+
+  if (tagSet.has("DEFENSE_HOME_EDGE")) push("DEFENSE_HOME_EDGE");
+  else if (tagSet.has("DEFENSE_AWAY_EDGE")) push("DEFENSE_AWAY_EDGE");
+
+  if (signalKeys.has("DRAW_RISK")) push("RISK_DRAW_SIGNAL");
+  if (signalKeys.has("UNDERDOG_ALERT")) push("RISK_UNDERDOG_SIGNAL");
+  if (direction === "LOW_CONFIDENCE" || (!tagSet.has("RECENT_HOME_EDGE") && !tagSet.has("RECENT_AWAY_EDGE")
+    && !tagSet.has("VENUE_HOME_EDGE") && !tagSet.has("VENUE_AWAY_EDGE"))) {
+    push("DATA_GAP_GENERAL");
+  }
+
+  if (direction === "UPSET_WARNING") push("CONCLUSION_UPSET");
+  else if (direction === "LOW_CONFIDENCE") push("CONCLUSION_LOW_CONFIDENCE");
+  else if (["DRAW_HEAVY", "BALANCED"].includes(direction)) push("CONCLUSION_DRAW");
+  else if (["HOME_STRONG", "HOME_WITH_DRAW_RISK"].includes(direction)) push("CONCLUSION_HOME");
+  else if (["AWAY_STRONG", "AWAY_WITH_DRAW_RISK"].includes(direction)) push("CONCLUSION_AWAY");
+
+  push("CLOSING_MONITOR");
+  return meaningKeys;
+}
+
+function buildAnalysisSentenceSelection(context = {}, { language = "ko" } = {}) {
+  const tags = buildAnalysisTags(context);
+  const tagSet = new Set(tags);
+  const direction = decideAnalysisDirection(context);
+  const library = getAnalysisSentenceLibrary();
+  const meaningPlan = getAnalysisMeaningPlan(context, direction, tagSet);
+  const usedSentenceIds = [];
+  const usedMeaningKeys = [];
+  const usedCooldownKeys = new Set();
+  const evidenceKeys = new Set();
+  const sentences = [];
+  const maxSentences = direction === "LOW_CONFIDENCE" ? 3 : 7;
+  const conclusionMeaningKeys = new Set(["CONCLUSION_HOME", "CONCLUSION_AWAY", "CONCLUSION_DRAW", "CONCLUSION_UPSET", "CONCLUSION_LOW_CONFIDENCE"]);
+  const regularMeaningPlan = meaningPlan.filter((meaningKey) => !conclusionMeaningKeys.has(meaningKey));
+  const conclusionMeaningPlan = meaningPlan.filter((meaningKey) => conclusionMeaningKeys.has(meaningKey));
+
+  for (const meaningKey of regularMeaningPlan) {
+    const remainingConclusionSlots = conclusionMeaningPlan.length > 0 ? 1 : 0;
+    if (sentences.length >= Math.max(0, maxSentences - remainingConclusionSlots)) break;
+    const candidates = library
+      .filter((sentence) => sentence.meaningKey === meaningKey)
+      .filter((sentence) => !NARRATIVE_EXCLUDED_CATEGORIES.has(sentence.category))
+      .filter((sentence) => categoryMatchesDirection(sentence, direction))
+      .filter((sentence) => sentenceMatchesTags(sentence, tagSet))
+      .filter((sentence) => !usedCooldownKeys.has(sentence.cooldownKey))
+      .filter((sentence) => !usedMeaningKeys.includes(sentence.meaningKey));
+
+    const seedKey = `${buildAnalysisSeedKey(context, { language })}|${meaningKey}|${sentences.length}`;
+    const preferredCandidates = candidates.filter((sentence) => {
+      const text = replaceAnalysisPlaceholders(sentence.text, context);
+      const hydratedSentence = { ...sentence, text };
+      return isNarrativeRepeatedTermSafe(sentences, text) && canUseSentenceStarter(sentences, hydratedSentence);
+    });
+    const selected = pickAnalysisSentenceCandidate(preferredCandidates.length > 0 ? preferredCandidates : candidates, seedKey);
+    if (!selected) continue;
+    const text = replaceAnalysisPlaceholders(selected.text, context);
+    if (!text) continue;
+    const sentenceEvidenceKeys = buildAnalysisEvidenceKeys(selected, context);
+    sentences.push({
+      id: selected.id,
+      category: selected.category,
+      meaningKey: selected.meaningKey,
+      cooldownKey: selected.cooldownKey,
+      connectorType: selected.connectorType || "independent",
+      tone: selected.tone || "neutral",
+      text,
+      evidenceKeys: sentenceEvidenceKeys
+    });
+    usedSentenceIds.push(selected.id);
+    usedMeaningKeys.push(selected.meaningKey);
+    usedCooldownKeys.add(selected.cooldownKey);
+    sentenceEvidenceKeys.forEach((key) => evidenceKeys.add(key));
+  }
+
+  for (const meaningKey of conclusionMeaningPlan) {
+    if (sentences.length >= maxSentences) break;
+    const candidates = library
+      .filter((sentence) => sentence.meaningKey === meaningKey)
+      .filter((sentence) => !NARRATIVE_EXCLUDED_CATEGORIES.has(sentence.category))
+      .filter((sentence) => categoryMatchesDirection(sentence, direction))
+      .filter((sentence) => sentenceMatchesTags(sentence, tagSet))
+      .filter((sentence) => !usedCooldownKeys.has(sentence.cooldownKey))
+      .filter((sentence) => !usedMeaningKeys.includes(sentence.meaningKey));
+
+    const seedKey = `${buildAnalysisSeedKey(context, { language })}|${meaningKey}|${sentences.length}`;
+    const preferredCandidates = candidates.filter((sentence) => {
+      const text = replaceAnalysisPlaceholders(sentence.text, context);
+      const hydratedSentence = { ...sentence, text };
+      return isNarrativeRepeatedTermSafe(sentences, text) && canUseSentenceStarter(sentences, hydratedSentence);
+    });
+    const selected = pickAnalysisSentenceCandidate(preferredCandidates.length > 0 ? preferredCandidates : candidates, seedKey);
+    if (!selected) continue;
+    const text = replaceAnalysisPlaceholders(selected.text, context);
+    if (!text) continue;
+    const sentenceEvidenceKeys = buildAnalysisEvidenceKeys(selected, context);
+    sentences.push({
+      id: selected.id,
+      category: selected.category,
+      meaningKey: selected.meaningKey,
+      cooldownKey: selected.cooldownKey,
+      connectorType: selected.connectorType || "independent",
+      tone: selected.tone || "neutral",
+      text,
+      evidenceKeys: sentenceEvidenceKeys
+    });
+    usedSentenceIds.push(selected.id);
+    usedMeaningKeys.push(selected.meaningKey);
+    usedCooldownKeys.add(selected.cooldownKey);
+    sentenceEvidenceKeys.forEach((key) => evidenceKeys.add(key));
+  }
+
+  return {
+    direction,
+    tags,
+    sentences: sentences.slice(0, maxSentences),
+    usedSentenceIds,
+    usedMeaningKeys,
+    evidenceKeys: [...evidenceKeys]
+  };
+}
+
+function buildAnalysisParagraph(sentences = []) {
+  const safeSentences = Array.isArray(sentences) ? sentences.filter((sentence) => sentence?.text) : [];
+  if (safeSentences.length === 0) return "";
+  return safeSentences.map((sentence, index) => renderNarrativeSentenceText(sentence, index)).join(" ");
+}
+
+function buildAnalysisNarrativeBlock(context = {}, { language = "ko" } = {}) {
+  const direction = decideAnalysisDirection(context);
+  const selection = buildAnalysisSentenceSelection(context, { language });
+  const headlineCandidates = getAnalysisHeadlineLibrary()[direction] || getAnalysisHeadlineLibrary().BALANCED || [];
+  const headline = pickSeededValue(headlineCandidates, `${buildAnalysisSeedKey(context, { language })}|headline`) || "";
+  return {
+    version: ANALYSIS_SENTENCE_LIBRARY.ANALYSIS_SENTENCE_LIBRARY_VERSION || "analysis-sentences-v1",
+    direction,
+    headline,
+    sentences: selection.sentences.map((sentence) => sentence.text),
+    paragraph: buildAnalysisParagraph(selection.sentences),
+    usedSentenceIds: selection.sentences.map((sentence) => sentence.id),
+    usedMeaningKeys: selection.sentences.map((sentence) => sentence.meaningKey),
+    evidenceKeys: selection.evidenceKeys
+  };
+}
+
 function createDetailAiScoreRows(scores = []) {
   const list = document.createElement("div");
   list.className = "match-detail-ai-score-list";
@@ -5750,6 +6692,37 @@ function createDetailAiScoreRows(scores = []) {
     list.appendChild(row);
   });
   return list;
+}
+
+function buildDetailNarrativeViewModel(match = {}, analysis = {}, { language = getUiLanguage(), narrative = null } = {}) {
+  if (language !== "ko") return null;
+  const resolvedNarrative = narrative || buildAnalysisNarrativeBlock(buildAnalysisContextV1(match, analysis), { language });
+  const headline = String(resolvedNarrative?.headline || "").trim();
+  const paragraph = String(resolvedNarrative?.paragraph || "").trim();
+  if (!paragraph) return null;
+  return { headline, paragraph };
+}
+
+function createDetailNarrativeSection(match = {}, analysis = {}) {
+  const view = buildDetailNarrativeViewModel(match, analysis);
+  if (!view) return null;
+
+  const section = document.createElement("section");
+  section.className = "match-detail-section";
+
+  const title = document.createElement("strong");
+  title.textContent = "AI 종합 해설";
+
+  const headline = document.createElement("p");
+  headline.className = "match-detail-note";
+  headline.textContent = view.headline;
+
+  const paragraph = document.createElement("p");
+  paragraph.className = "match-detail-note";
+  paragraph.textContent = view.paragraph;
+
+  section.append(title, headline, paragraph);
+  return section;
 }
 
 function createDetailAiPanel(match = {}, analysis = {}) {
@@ -5831,7 +6804,9 @@ function createDetailAiPanel(match = {}, analysis = {}) {
     conclusion.appendChild(paragraph);
   });
 
+  const narrativeSection = createDetailNarrativeSection(match, analysis);
   result.append(heading, badges, scoreCard, grounds, conclusion);
+  if (narrativeSection) result.appendChild(narrativeSection);
   panel.appendChild(result);
   return panel;
 }
@@ -9523,6 +10498,15 @@ if (typeof module !== "undefined") {
     calculateResultBreakdown,
     calculateMatchJudgement,
     calculateAiUpsetScore,
+    buildAnalysisContextV1,
+    buildAnalysisTags,
+    decideAnalysisDirection,
+    buildAnalysisSeedKey,
+    pickSeededValue,
+    buildAnalysisSentenceSelection,
+    buildAnalysisNarrativeBlock,
+    buildAnalysisParagraph,
+    getAnalysisSentenceLibrary,
     deleteSavedSearch,
     deleteSearchHistoryEntry,
     downloadSampleCsv,
@@ -9574,6 +10558,7 @@ if (typeof module !== "undefined") {
     getRecentKnownResults,
     buildMatchDetailAnalysis,
     buildDetailAiViewModel,
+    buildDetailNarrativeViewModel,
     getMatchDetailAnalysisCached,
     formatDetailRecord,
     formatDetailGoalAverage,
