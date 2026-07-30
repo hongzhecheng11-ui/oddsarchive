@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-29T19:38:06.033Z",
+  "updatedAt": "2026-07-30T10:34:15.946Z",
   "summary": {
     "trackedDays": 17,
-    "trackedCandidates": 10,
+    "trackedCandidates": 13,
     "resolvedCandidates": 9,
     "favoriteFailures": 5,
     "directionHits": 3
@@ -118,25 +118,29 @@
     {
       "date": "2026-07-31",
       "firstEvaluatedAt": "2026-07-27T19:48:15.444Z",
-      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
+      "lastEvaluatedAt": "2026-07-30T10:34:15.946Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
-        "fixture:1593527"
+        "fixture:1593526"
       ]
     },
     {
       "date": "2026-08-01",
       "firstEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
+      "lastEvaluatedAt": "2026-07-30T10:34:15.946Z",
       "eligibleMatchCount": 9,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1556628"
+      ]
     },
     {
       "date": "2026-08-02",
       "firstEvaluatedAt": "2026-07-29T19:38:06.033Z",
-      "lastEvaluatedAt": "2026-07-29T19:38:06.033Z",
-      "eligibleMatchCount": 1,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "eligibleMatchCount": 9,
+      "candidateIds": [
+        "fixture:1507019"
+      ]
     }
   ],
   "candidates": [
@@ -375,6 +379,32 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1593526",
+      "fixtureId": "1593526",
+      "date": "2026-07-31",
+      "league": "UEL",
+      "homeTeam": "Maccabi Tel Aviv",
+      "awayTeam": "Sheriff Tiraspol",
+      "homeOdds": "1.32",
+      "drawOdds": "5.30",
+      "awayOdds": "8.20",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 68,
+      "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "lastSeenAt": "2026-07-30T10:34:15.946Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1593527",
       "fixtureId": "1593527",
       "date": "2026-07-31",
@@ -394,6 +424,58 @@
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
       "lastSeenAt": "2026-07-29T19:38:06.033Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1556628",
+      "fixtureId": "1556628",
+      "date": "2026-08-01",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeam": "Dundee Utd",
+      "awayTeam": "Rangers",
+      "homeOdds": "5.30",
+      "drawOdds": "4.35",
+      "awayOdds": "1.53",
+      "favoriteKey": "A",
+      "candidateLabel": "홈 역배 주의",
+      "predictedDirection": "H",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "lastSeenAt": "2026-07-30T10:34:15.946Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1507019",
+      "fixtureId": "1507019",
+      "date": "2026-08-02",
+      "league": "KLEAGUE1",
+      "homeTeam": "Daejeon Citizen",
+      "awayTeam": "Gwangju FC",
+      "homeOdds": "1.50",
+      "drawOdds": "4.10",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 122,
+      "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "lastSeenAt": "2026-07-30T10:34:15.946Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
