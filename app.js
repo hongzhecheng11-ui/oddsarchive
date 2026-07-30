@@ -6331,16 +6331,16 @@ function decideAnalysisDirection(context = {}) {
   const favouriteKey = context.odds?.favoriteKey || "";
   const judgementKey = context.judgement?.key || "GENERAL";
   const topOutcomeKey = similarSample.topOutcomeKey || "";
-  const upsetWarningTone = getAnalysisUpsetWarningTone(context.odds?.favoriteOdds);
+  const hasUpsetJudgement = ["MAJOR_UPSET_WARNING", "UPSET_WARNING", "FAVORITE_UNSTABLE"].includes(judgementKey);
 
   if (judgementKey === "DATA_LACK") return "LOW_CONFIDENCE";
-  if (["MAJOR_UPSET_WARNING", "UPSET_WARNING", "FAVORITE_UNSTABLE"].includes(judgementKey) && upsetWarningTone) return "UPSET_WARNING";
   if (signalKeys.has("DRAW_RISK")) {
     if (favouriteKey === "H") return "HOME_WITH_DRAW_RISK";
     if (favouriteKey === "A") return "AWAY_WITH_DRAW_RISK";
     return "DRAW_HEAVY";
   }
   if (topOutcomeKey === "D" || favouriteKey === "D") return "DRAW_HEAVY";
+  if (hasUpsetJudgement) return "BALANCED";
   if (["BALANCED_CAUTION", "MIXED"].includes(judgementKey)) return "BALANCED";
   if (favouriteKey === "H") return "HOME_STRONG";
   if (favouriteKey === "A") return "AWAY_STRONG";

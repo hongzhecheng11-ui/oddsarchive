@@ -218,11 +218,11 @@ test("upset warning narrative stays separate from draw-heavy conclusion", () => 
     contextProfile: makeContextProfile({ confidence: "보통" })
   });
   const { direction, narrative } = createNarrative(match, analysis);
-  assert.strictEqual(direction, "UPSET_WARNING");
+  assert.strictEqual(direction, "HOME_WITH_DRAW_RISK");
   assert(!narrative.usedMeaningKeys.includes("CONCLUSION_DRAW"));
 });
 
-test("upset warning uses stronger copy for 1.20 to 1.39 favorites", () => {
+test("favorites inside 1.20 to 1.39 no longer produce upset warning narratives", () => {
   const match = makeMatch({ homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 });
   const analysis = buildAnalysis(match, {
     similarOddsMatches: makeMixedMatches({ home: 5, draw: 7, away: 8, homeOdds: 1.39, drawOdds: 4.0, awayOdds: 7.0 }),
@@ -233,16 +233,11 @@ test("upset warning uses stronger copy for 1.20 to 1.39 favorites", () => {
     contextProfile: makeContextProfile({ confidence: "蹂댄넻" })
   });
   const { direction, narrative } = createNarrative(match, analysis);
-  assert.strictEqual(direction, "UPSET_WARNING");
-  assert(narrative.headline.includes("강한 정배 구간") || narrative.headline.includes("강정배"));
-  assert(
-    narrative.paragraph.includes("강한 정배 구간") ||
-    narrative.paragraph.includes("강정배 경기") ||
-    narrative.paragraph.includes("배당만 보면 정배")
-  );
+  assert.notStrictEqual(direction, "UPSET_WARNING");
+  assert(!narrative.usedMeaningKeys.includes("CONCLUSION_UPSET"));
 });
 
-test("upset warning uses cautionary copy for 1.40 to 1.50 favorites", () => {
+test("favorites inside 1.40 to 1.50 no longer produce upset warning narratives", () => {
   const match = makeMatch({ homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 });
   const analysis = buildAnalysis(match, {
     similarOddsMatches: makeMixedMatches({ home: 5, draw: 7, away: 8, homeOdds: 1.5, drawOdds: 4.0, awayOdds: 7.0 }),
@@ -253,16 +248,8 @@ test("upset warning uses cautionary copy for 1.40 to 1.50 favorites", () => {
     contextProfile: makeContextProfile({ confidence: "蹂댄넻" })
   });
   const { direction, narrative } = createNarrative(match, analysis);
-  assert.strictEqual(direction, "UPSET_WARNING");
-  assert(
-    narrative.headline.includes("정배") ||
-    narrative.headline.includes("기본 흐름")
-  );
-  assert(
-    narrative.paragraph.includes("이변 가능성도 함께 체크") ||
-    narrative.paragraph.includes("기본 흐름은 정배") ||
-    narrative.paragraph.includes("정배 흐름을 우선 보되")
-  );
+  assert.notStrictEqual(direction, "UPSET_WARNING");
+  assert(!narrative.usedMeaningKeys.includes("CONCLUSION_UPSET"));
 });
 
 test("favorites above 1.50 no longer use upset warning narratives", () => {

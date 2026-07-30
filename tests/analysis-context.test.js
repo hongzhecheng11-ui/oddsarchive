@@ -145,7 +145,7 @@ test("returns low confidence direction when judgement is data lack", () => {
   assert.strictEqual(app.decideAnalysisDirection(context), "LOW_CONFIDENCE");
 });
 
-test("returns upset warning for strong upset judgement", () => {
+test("routes strong upset judgement into draw-risk direction when draw signal exists", () => {
   const match = makeMatch({ homeOdds: 1.42, drawOdds: 4.0, awayOdds: 7.0 });
   const similarOddsMatches = makeMixedMatches({
     home: 5,
@@ -169,10 +169,10 @@ test("returns upset warning for strong upset judgement", () => {
     contextConfidence: "보통"
   }));
   assert.strictEqual(context.judgement.value, "이변 후보");
-  assert.strictEqual(app.decideAnalysisDirection(context), "UPSET_WARNING");
+  assert.strictEqual(app.decideAnalysisDirection(context), "HOME_WITH_DRAW_RISK");
 });
 
-test("returns upset warning only inside the 1.20 to 1.39 band", () => {
+test("does not return upset warning inside the 1.20 to 1.39 band", () => {
   const buildContextForOdds = (homeOdds) => {
     const match = makeMatch({ homeOdds, drawOdds: 4.0, awayOdds: 7.0 });
     return app.buildAnalysisContextV1(match, buildAnalysis(match, {
@@ -196,11 +196,13 @@ test("returns upset warning only inside the 1.20 to 1.39 band", () => {
     }));
   };
 
-  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.2)), "UPSET_WARNING");
-  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.39)), "UPSET_WARNING");
+  const context120 = { ...buildContextForOdds(1.2), upsetScore: 50 };
+  const context139 = { ...buildContextForOdds(1.39), upsetScore: 50 };
+  assert.notStrictEqual(app.decideAnalysisDirection(context120), "UPSET_WARNING");
+  assert.notStrictEqual(app.decideAnalysisDirection(context139), "UPSET_WARNING");
 });
 
-test("returns upset warning only inside the 1.40 to 1.50 band", () => {
+test("does not return upset warning inside the 1.40 to 1.50 band", () => {
   const buildContextForOdds = (homeOdds) => {
     const match = makeMatch({ homeOdds, drawOdds: 4.0, awayOdds: 7.0 });
     return app.buildAnalysisContextV1(match, buildAnalysis(match, {
@@ -224,8 +226,36 @@ test("returns upset warning only inside the 1.40 to 1.50 band", () => {
     }));
   };
 
-  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.4)), "UPSET_WARNING");
-  assert.strictEqual(app.decideAnalysisDirection(buildContextForOdds(1.5)), "UPSET_WARNING");
+  const context140 = { ...buildContextForOdds(1.4), upsetScore: 50 };
+  const context150 = { ...buildContextForOdds(1.5), upsetScore: 50 };
+  assert.notStrictEqual(app.decideAnalysisDirection(context140), "UPSET_WARNING");
+  assert.notStrictEqual(app.decideAnalysisDirection(context150), "UPSET_WARNING");
+});
+
+test("routes upset-style judgements without draw risk to balanced", () => {
+  const match = makeMatch({ homeOdds: 1.42, drawOdds: 4.0, awayOdds: 7.0 });
+  const context = app.buildAnalysisContextV1(match, buildAnalysis(match, {
+    similarOddsMatches: makeMixedMatches({
+      home: 9,
+      draw: 3,
+      away: 8,
+      homeOdds: 1.42,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    sameLeagueMatches: makeMixedMatches({
+      home: 8,
+      draw: 2,
+      away: 10,
+      homeOdds: 1.42,
+      drawOdds: 4.0,
+      awayOdds: 7.0
+    }),
+    contextConfidence: "蹂댄넻"
+  }));
+
+  assert.notStrictEqual(context.judgement.key, "DATA_LACK");
+  assert.strictEqual(app.decideAnalysisDirection(context), "BALANCED");
 });
 
 test("does not return upset warning above 1.50 even with upset signals", () => {
