@@ -4783,6 +4783,64 @@ function doOddsMatchTarget(match = {}, target = {}, tolerance = 0, exact = false
   });
 }
 
+function getNormalizedImpliedOddsVector(match = {}) {
+  const meta = getMatchDetailMeta(match);
+  const homeOdds = Number(meta.homeOdds);
+  const drawOdds = Number(meta.drawOdds);
+  const awayOdds = Number(meta.awayOdds);
+
+  if (![homeOdds, drawOdds, awayOdds].every((value) => Number.isFinite(value) && value > 0)) {
+    return null;
+  }
+
+  const rawHome = 1 / homeOdds;
+  const rawDraw = 1 / drawOdds;
+  const rawAway = 1 / awayOdds;
+  const total = rawHome + rawDraw + rawAway;
+
+  if (!Number.isFinite(total) || total <= 0) return null;
+
+  return {
+    homeProbability: rawHome / total,
+    drawProbability: rawDraw / total,
+    awayProbability: rawAway / total
+  };
+}
+
+function getImpliedOddsDistance(candidate = {}, target = {}) {
+  const candidateVector = getNormalizedImpliedOddsVector(candidate);
+  const targetVector = getNormalizedImpliedOddsVector(target);
+  if (!candidateVector || !targetVector) return Number.POSITIVE_INFINITY;
+
+  return (
+    Math.abs(candidateVector.homeProbability - targetVector.homeProbability)
+    + Math.abs(candidateVector.drawProbability - targetVector.drawProbability)
+    + Math.abs(candidateVector.awayProbability - targetVector.awayProbability)
+  );
+}
+
+function getSameLeagueClosestOddsMatches(target = {}, matches = [], limit = 5) {
+  const targetMeta = getMatchDetailMeta(target);
+  if (!hasCompleteOdds(target)) return [];
+
+  return (Array.isArray(matches) ? matches : [])
+    .filter(isKnownResultMatch)
+    .filter((match) => !isCurrentMatchRecord(match, target))
+    .filter((match) => hasCompleteOdds(match))
+    .filter((match) => {
+      const matchMeta = getMatchDetailMeta(match);
+      return matchMeta.league === targetMeta.league || leagueMatchesFixture(match.league, target.league);
+    })
+    .map((match) => ({ match, distance: getImpliedOddsDistance(match, target) }))
+    .filter((entry) => Number.isFinite(entry.distance))
+    .sort((left, right) => {
+      if (left.distance !== right.distance) return left.distance - right.distance;
+      return String(right.match.date || "").localeCompare(String(left.match.date || ""));
+    })
+    .slice(0, limit)
+    .map((entry) => entry.match);
+}
+
 function getOddsHistoryMatches(target = {}, matches = [], { tolerance = MATCH_DETAIL_SIMILAR_TOLERANCE, exact = false, sameLeague = false } = {}) {
   if (!hasCompleteOdds(target)) return [];
   return (Array.isArray(matches) ? matches : [])
@@ -4960,6 +5018,13 @@ function buildMatchDetailAnalysis(target = {}, sourceMatches = getSearchableMatc
     contextSignals: contextProfile.signals,
     contextConfidence: contextProfile.confidence
   };
+  const sameLeagueSimilar = buildDetailStats(`${formatLeagueName(target.league)} 유사배당`, sameLeagueSimilarMatches, detailCriteria);
+  const sameLeagueFallbackMatches = sameLeagueSimilarMatches.length > 0
+    ? []
+    : getSameLeagueClosestOddsMatches(target, matches, 5);
+  const sameLeagueDisplay = sameLeagueSimilarMatches.length > 0
+    ? sameLeagueSimilar
+    : buildDetailStats("같은 리그 근접배당", sameLeagueFallbackMatches, detailCriteria);
 
   return {
     match: target,
@@ -4968,7 +5033,8 @@ function buildMatchDetailAnalysis(target = {}, sourceMatches = getSearchableMatc
     oddsMovement: getMatchOddsMovement(target, matches),
     sameOdds: buildDetailStats("동일배당 전적", sameOddsMatches, { ...detailCriteria, tolerance: "0.00" }),
     similarOdds: buildDetailStats("유사배당 전적", similarOddsMatches, detailCriteria),
-    sameLeagueSimilar: buildDetailStats(`${formatLeagueName(target.league)} 유사배당`, sameLeagueSimilarMatches, detailCriteria),
+    sameLeagueSimilar,
+    sameLeagueDisplay,
     recentRecords: {
       headToHead: headToHead.slice(0, 5),
       homeTeam: homeTeamMatches.slice(0, 5),
@@ -5261,7 +5327,12 @@ function renderMatchDetail(match = {}, sourceMatches = getSearchableMatches()) {
   same.id = "detail-same";
   const similar = createDetailStatsSection(analysis.similarOdds, { note: "홈승/무/원정승 각각 ±0.05 범위" });
   similar.id = "detail-similar";
-  const sameLeague = createDetailStatsSection(analysis.sameLeagueSimilar, { note: `${formatLeagueName(match.league)} 안에서만 비교` });
+  const sameLeagueStat = analysis.sameLeagueDisplay || analysis.sameLeagueSimilar;
+  const sameLeague = createDetailStatsSection(sameLeagueStat, {
+    note: sameLeagueStat?.label === "같은 리그 근접배당"
+      ? "엄격한 유사배당 표본이 없어 같은 리그에서 가장 가까운 배당 5경기를 표시합니다."
+      : `${formatLeagueName(match.league)} 안에서만 비교`
+  });
   sameLeague.id = "detail-league";
   const recent = createRecentRecordSection(analysis.recentRecords);
   recent.id = "detail-recent";
@@ -5561,7 +5632,12 @@ function createDetailOddsPanel(match = {}, analysis = {}) {
 
   const same = createDetailStatsSection(analysis.sameOdds, { note: "세 배당이 정확히 같은 과거 경기" });
   const similar = createDetailStatsSection(analysis.similarOdds, { note: "홈승·무·원정승 각각 ±0.05 범위" });
-  const sameLeague = createDetailStatsSection(analysis.sameLeagueSimilar, { note: `${formatLeagueName(match.league)} 안에서 비교` });
+  const sameLeagueStat = analysis.sameLeagueDisplay || analysis.sameLeagueSimilar;
+  const sameLeague = createDetailStatsSection(sameLeagueStat, {
+    note: sameLeagueStat?.label === "같은 리그 근접배당"
+      ? "엄격한 유사배당 표본이 없어 같은 리그에서 가장 가까운 배당 5경기를 표시합니다."
+      : `${formatLeagueName(match.league)} 안에서 비교`
+  });
 
   const related = document.createElement("section");
   related.className = "match-detail-section";

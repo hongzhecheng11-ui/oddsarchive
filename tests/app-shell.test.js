@@ -224,6 +224,69 @@ test("uses dynamic similar-odds tolerance for high-priced detail matches only", 
   assert(!analysis.similarOdds.matches.some((match) => match.homeTeam === "Wide"));
 });
 
+test("falls back to closest same-league completed matches only when strict league samples are empty", () => {
+  const target = {
+    date: "2026-07-31",
+    league: "UEL",
+    homeTeam: "Benfica",
+    awayTeam: "FC ST. Gallen",
+    homeOdds: "1.13",
+    drawOdds: "8.20",
+    awayOdds: "16.50",
+    result: "UNKNOWN"
+  };
+  const matches = [
+    { date: "2025-01-01", league: "UEL", homeTeam: "Alpha", awayTeam: "Beta", homeOdds: "1.20", drawOdds: "7.80", awayOdds: "16.35", result: "H", score: "2-0" },
+    { date: "2025-02-01", league: "UEL", homeTeam: "Gamma", awayTeam: "Delta", homeOdds: "1.19", drawOdds: "8.00", awayOdds: "17.20", result: "D", score: "1-1" },
+    { date: "2025-03-01", league: "UEL", homeTeam: "Wide", awayTeam: "Gap", homeOdds: "1.20", drawOdds: "6.50", awayOdds: "13.00", result: "A", score: "0-1" },
+    { date: "2025-04-01", league: "UEL", homeTeam: "Near 3", awayTeam: "Club", homeOdds: "1.11", drawOdds: "8.60", awayOdds: "17.20", result: "H", score: "3-0" },
+    { date: "2025-05-01", league: "UEL", homeTeam: "Near 4", awayTeam: "Club", homeOdds: "1.15", drawOdds: "8.35", awayOdds: "15.80", result: "H", score: "2-1" },
+    { date: "2025-06-01", league: "UEL", homeTeam: "Near 5", awayTeam: "Club", homeOdds: "1.12", drawOdds: "8.35", awayOdds: "17.25", result: "D", score: "0-0" },
+    { date: "2025-07-01", league: "UEL", homeTeam: "Unknown", awayTeam: "Club", homeOdds: "1.12", drawOdds: "8.10", awayOdds: "16.70", result: "UNKNOWN", score: "" },
+    { date: "2026-07-31", league: "UEL", homeTeam: "Benfica", awayTeam: "FC ST. Gallen", homeOdds: "1.13", drawOdds: "8.20", awayOdds: "16.50", result: "UNKNOWN" }
+  ];
+
+  const analysis = app.buildMatchDetailAnalysis(target, matches);
+
+  assert.strictEqual(analysis.sameLeagueSimilar.matches.length, 0);
+  assert.strictEqual(analysis.sameLeagueDisplay.label, "같은 리그 근접배당");
+  assert.deepStrictEqual(
+    analysis.sameLeagueDisplay.matches.map((match) => match.homeTeam),
+    ["Near 4", "Near 5", "Gamma", "Near 3", "Alpha"]
+  );
+  assert(!analysis.sameLeagueDisplay.matches.some((match) => match.homeTeam === "Wide"));
+  assert(!analysis.sameLeagueDisplay.matches.some((match) => match.homeTeam === "Unknown"));
+  assert.strictEqual(analysis.sameLeagueDisplay.matches.length, 5);
+});
+
+test("keeps strict same-league samples unchanged when they already exist", () => {
+  const target = {
+    date: "2026-07-29",
+    league: "UCL",
+    homeTeam: "KuPS",
+    awayTeam: "Sabah FA",
+    homeOdds: "2.65",
+    drawOdds: "3.45",
+    awayOdds: "2.48",
+    result: "A"
+  };
+  const matches = [
+    { date: "2025-01-01", league: "UCL", homeTeam: "Exact 1", awayTeam: "A", homeOdds: "2.65", drawOdds: "3.45", awayOdds: "2.48", result: "H", score: "1-0" },
+    { date: "2025-02-01", league: "UCL", homeTeam: "Exact 2", awayTeam: "B", homeOdds: "2.65", drawOdds: "3.45", awayOdds: "2.48", result: "D", score: "1-1" },
+    { date: "2025-03-01", league: "UEL", homeTeam: "Other League", awayTeam: "C", homeOdds: "2.65", drawOdds: "3.45", awayOdds: "2.48", result: "A", score: "0-1" }
+  ];
+
+  const analysis = app.buildMatchDetailAnalysis(target, matches);
+
+  assert.strictEqual(analysis.sameLeagueSimilar.matches.length, 2);
+  assert.strictEqual(analysis.sameLeagueDisplay.label, "챔피언스리그 유사배당");
+  assert.strictEqual(analysis.sameLeagueDisplay.matches.length, 2);
+  assert.deepStrictEqual(
+    analysis.sameLeagueDisplay.matches.map((match) => match.homeTeam),
+    analysis.sameLeagueSimilar.matches.map((match) => match.homeTeam)
+  );
+});
+
 test("keeps regular-price detail samples from expanding too aggressively", () => {
   const target = {
     date: "2026-07-29",
