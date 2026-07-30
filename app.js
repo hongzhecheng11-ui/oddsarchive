@@ -4707,6 +4707,13 @@ function getRecentKnownResults(matches = [], limit = 10) {
 const MATCH_DETAIL_SIMILAR_TOLERANCE = 0.05;
 const matchDetailMetaCache = new WeakMap();
 
+function getSimilarOddsTolerance(targetOdds) {
+  const numericTargetOdds = Number(targetOdds);
+  if (!Number.isFinite(numericTargetOdds) || numericTargetOdds <= 0) return MATCH_DETAIL_SIMILAR_TOLERANCE;
+  if (numericTargetOdds < 5) return MATCH_DETAIL_SIMILAR_TOLERANCE;
+  return Math.min(0.75, numericTargetOdds * 0.04);
+}
+
 function isKnownResultMatch(match = {}) {
   return ["H", "D", "A"].includes(match.result);
 }
@@ -4772,7 +4779,7 @@ function doOddsMatchTarget(match = {}, target = {}, tolerance = 0, exact = false
     const targetOdds = targetMeta[field];
     if (matchOdds === null || targetOdds === null) return false;
     if (exact) return Math.round(matchOdds * 100) === Math.round(targetOdds * 100);
-    return Math.abs(matchOdds - targetOdds) <= tolerance;
+    return Math.abs(matchOdds - targetOdds) <= getSimilarOddsTolerance(targetOdds);
   });
 }
 

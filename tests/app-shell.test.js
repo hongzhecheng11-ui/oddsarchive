@@ -196,6 +196,60 @@ test("builds match detail analysis buckets for same and similar odds", () => {
   assert.strictEqual(analysis.recentRecords.awayTeam.length, 2);
 });
 
+test("uses dynamic similar-odds tolerance for high-priced detail matches only", () => {
+  const target = {
+    date: "2026-07-31",
+    league: "UEL",
+    homeTeam: "Benfica",
+    awayTeam: "FC ST. Gallen",
+    homeOdds: "1.13",
+    drawOdds: "8.20",
+    awayOdds: "16.50",
+    result: "UNKNOWN"
+  };
+  const matches = [
+    { date: "2025-01-01", league: "UEL", homeTeam: "Alpha", awayTeam: "Beta", homeOdds: "1.14", drawOdds: "7.88", awayOdds: "16.35", result: "H", score: "2-0" },
+    { date: "2025-02-01", league: "UEL", homeTeam: "Gamma", awayTeam: "Delta", homeOdds: "1.13", drawOdds: "8.00", awayOdds: "17.00", result: "D", score: "1-1" },
+    { date: "2025-03-01", league: "UEL", homeTeam: "Wide", awayTeam: "Gap", homeOdds: "1.20", drawOdds: "6.50", awayOdds: "13.00", result: "A", score: "0-1" },
+    { date: "2026-07-31", league: "UEL", homeTeam: "Benfica", awayTeam: "FC ST. Gallen", homeOdds: "1.13", drawOdds: "8.20", awayOdds: "16.50", result: "UNKNOWN" }
+  ];
+
+  const analysis = app.buildMatchDetailAnalysis(target, matches);
+
+  assert.strictEqual(analysis.sameOdds.matches.length, 0);
+  assert.strictEqual(analysis.similarOdds.matches.length, 2);
+  assert.strictEqual(analysis.sameLeagueSimilar.matches.length, 2);
+  assert(analysis.similarOdds.matches.some((match) => match.homeTeam === "Alpha"));
+  assert(analysis.similarOdds.matches.some((match) => match.homeTeam === "Gamma"));
+  assert(!analysis.similarOdds.matches.some((match) => match.homeTeam === "Wide"));
+});
+
+test("keeps regular-price detail samples from expanding too aggressively", () => {
+  const target = {
+    date: "2026-07-29",
+    league: "UCL",
+    homeTeam: "KuPS",
+    awayTeam: "Sabah FA",
+    homeOdds: "2.65",
+    drawOdds: "3.45",
+    awayOdds: "2.48",
+    result: "A"
+  };
+  const matches = [
+    { date: "2025-01-01", league: "UCL", homeTeam: "Near 1", awayTeam: "A", homeOdds: "2.70", drawOdds: "3.44", awayOdds: "2.49", result: "H", score: "1-0" },
+    { date: "2025-02-01", league: "UCL", homeTeam: "Near 2", awayTeam: "B", homeOdds: "2.55", drawOdds: "3.32", awayOdds: "2.40", result: "D", score: "1-1" },
+    { date: "2025-03-01", league: "UCL", homeTeam: "Far", awayTeam: "C", homeOdds: "2.45", drawOdds: "3.00", awayOdds: "2.10", result: "A", score: "0-1" },
+    { date: "2026-07-29", league: "UCL", homeTeam: "KuPS", awayTeam: "Sabah FA", homeOdds: "2.65", drawOdds: "3.45", awayOdds: "2.48", result: "A", score: "0-2" }
+  ];
+
+  const analysis = app.buildMatchDetailAnalysis(target, matches);
+
+  assert.strictEqual(analysis.similarOdds.matches.length, 0);
+  assert(!analysis.similarOdds.matches.some((match) => match.homeTeam === "Near 1"));
+  assert(!analysis.similarOdds.matches.some((match) => match.homeTeam === "Near 2"));
+  assert(!analysis.similarOdds.matches.some((match) => match.homeTeam === "Far"));
+});
+
 test("formats compact fixture odds only when all 1X2 odds exist", () => {
   assert.strictEqual(app.getCompactFixtureOdds({
     homeOdds: "2.10",
