@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-30T10:34:15.946Z",
+  "updatedAt": "2026-07-30T19:45:42.021Z",
   "summary": {
-    "trackedDays": 17,
+    "trackedDays": 18,
     "trackedCandidates": 13,
-    "resolvedCandidates": 9,
+    "resolvedCandidates": 11,
     "favoriteFailures": 5,
     "directionHits": 3
   },
@@ -127,7 +127,7 @@
     {
       "date": "2026-08-01",
       "firstEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "lastEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "lastEvaluatedAt": "2026-07-30T19:45:42.021Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1556628"
@@ -136,11 +136,18 @@
     {
       "date": "2026-08-02",
       "firstEvaluatedAt": "2026-07-29T19:38:06.033Z",
-      "lastEvaluatedAt": "2026-07-30T10:34:15.946Z",
+      "lastEvaluatedAt": "2026-07-30T19:45:42.021Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1507019"
       ]
+    },
+    {
+      "date": "2026-08-03",
+      "firstEvaluatedAt": "2026-07-30T19:45:42.021Z",
+      "lastEvaluatedAt": "2026-07-30T19:45:42.021Z",
+      "eligibleMatchCount": 1,
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -398,11 +405,11 @@
       "sampleSize": 68,
       "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
       "lastSeenAt": "2026-07-30T10:34:15.946Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "1-0",
+      "resolvedAt": "2026-07-30T19:45:42.021Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1593527",
@@ -424,10 +431,10 @@
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-07-28T10:44:38.497Z",
       "lastSeenAt": "2026-07-29T19:38:06.033Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "H",
+      "score": "4-0",
+      "resolvedAt": "2026-07-30T19:45:42.021Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -449,7 +456,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
-      "lastSeenAt": "2026-07-30T10:34:15.946Z",
+      "lastSeenAt": "2026-07-30T19:45:42.021Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -475,7 +482,7 @@
       ],
       "sampleSize": 122,
       "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
-      "lastSeenAt": "2026-07-30T10:34:15.946Z",
+      "lastSeenAt": "2026-07-30T19:45:42.021Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

@@ -5,325 +5,177 @@
 })(typeof window !== "undefined" ? window : globalThis, function createTeamContextPack() {
   return {
   "version": "team-context-v3",
-  "date": "2026-07-30",
-  "updatedAt": "2026-07-30T10:34:46.107Z",
+  "date": "2026-07-31",
+  "updatedAt": "2026-07-30T19:45:55.909Z",
   "collection": {
     "dates": [
-      "2026-07-30",
-      "2026-07-31",
-      "2026-08-01",
-      "2026-08-02"
+      "2026-07-31"
     ],
-    "requestGroups": 8,
-    "skippedGroups": 96,
+    "requestGroups": 1,
+    "skippedGroups": 25,
     "failures": 0,
     "errors": []
   },
   "leagues": [
     {
-      "key": "UCL",
-      "leagueId": 2,
+      "key": "UEL",
+      "leagueId": 3,
       "season": "2026",
       "standings": [],
       "teams": [
         {
-          "teamId": 664,
-          "team": "Kairat Almaty",
-          "form": "WWLW",
+          "teamId": 853,
+          "team": "CSKA Sofia",
+          "form": "WWD",
           "all": {
-            "played": 4,
+            "played": 3,
+            "wins": 2,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 556,
+          "team": "Qarabag",
+          "form": "WWD",
+          "all": {
+            "played": 3,
+            "wins": 2,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 0
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 554,
+          "team": "Anderlecht",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "home": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 363,
+          "team": "Hammarby FF",
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 651,
+          "team": "Ferencvarosi TC",
+          "form": "WWW",
+          "all": {
+            "played": 3,
             "wins": 3,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
             "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 3402,
-          "team": "Omonia Nicosia",
-          "form": "WL",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 3872,
-          "team": "Kauno Žalgiris",
-          "form": "DWDW",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 701,
-          "team": "KI Klaksvik",
-          "form": "WWDL",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 347,
-          "team": "Lech Poznan",
-          "form": "WL",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 5
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 406,
-          "team": "Aarhus",
-          "form": "LW",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 563,
-          "team": "Hapoel Beer Sheva",
-          "form": "LW",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 278,
-          "team": "Vikingur Reykjavik",
-          "form": "WDWL",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 632,
-          "team": "Universitatea Craiova",
-          "form": "WWLD",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
             "goalsFor": 7,
-            "goalsAgainst": 4
+            "goalsAgainst": 2
           },
           "home": {
-            "played": 2,
+            "played": 1,
             "wins": 1,
-            "draws": 1,
+            "draws": 0,
             "losses": 0,
             "goalsFor": 3,
-            "goalsAgainst": 2
+            "goalsAgainst": 0
           },
           "away": {
             "played": 2,
-            "wins": 1,
+            "wins": 2,
             "draws": 0,
-            "losses": 1,
+            "losses": 0,
             "goalsFor": 4,
             "goalsAgainst": 2
           }
         },
         {
-          "teamId": 646,
-          "team": "Levski Sofia",
-          "form": "DWWD",
+          "teamId": 415,
+          "team": "Twente",
+          "form": "L",
           "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
+            "played": 1,
+            "wins": 0,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 340,
-          "team": "Gornik Zabrze",
-          "form": "LD",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
             "losses": 1,
             "goalsFor": 1,
             "goalsAgainst": 2
@@ -331,28 +183,57 @@
           "home": {
             "played": 1,
             "wins": 0,
-            "draws": 1,
-            "losses": 0,
+            "draws": 0,
+            "losses": 1,
             "goalsFor": 1,
-            "goalsAgainst": 1
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 211,
+          "team": "Benfica",
+          "form": "L",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2
+          },
+          "home": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
           },
           "away": {
             "played": 1,
             "wins": 0,
             "draws": 0,
             "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 1
+            "goalsFor": 1,
+            "goalsAgainst": 2
           }
         },
         {
-          "teamId": 611,
-          "team": "Fenerbahçe",
-          "form": "WD",
+          "teamId": 1011,
+          "team": "FC ST. Gallen",
+          "form": "W",
           "all": {
-            "played": 2,
+            "played": 1,
             "wins": 1,
-            "draws": 1,
+            "draws": 0,
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 1
@@ -362,116 +243,290 @@
             "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 0
+            "goalsFor": 2,
+            "goalsAgainst": 1
           },
           "away": {
-            "played": 1,
+            "played": 0,
             "wins": 0,
-            "draws": 1,
+            "draws": 0,
             "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
+            "goalsFor": 0,
+            "goalsAgainst": 0
           }
         },
         {
-          "teamId": 598,
-          "team": "FK Crvena Zvezda",
+          "teamId": 604,
+          "team": "Maccabi Tel Aviv",
           "form": "WW",
           "all": {
             "played": 2,
             "wins": 2,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 9,
+            "goalsFor": 6,
             "goalsAgainst": 0
           },
           "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0
+          },
+          "away": {
             "played": 1,
             "wins": 1,
             "draws": 0,
             "losses": 0,
             "goalsFor": 5,
             "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 568,
+          "team": "Sheriff Tiraspol",
+          "form": "DWLL",
+          "all": {
+            "played": 4,
+            "wins": 1,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 1,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 5
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 397,
+          "team": "FC Midtjylland",
+          "form": "LL",
+          "all": {
+            "played": 2,
+            "wins": 0,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 0,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 549,
+          "team": "Beşiktaş",
+          "form": "WW",
+          "all": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 0
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0
           },
           "away": {
             "played": 1,
             "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 4,
+            "goalsFor": 2,
             "goalsAgainst": 0
           }
         },
         {
-          "teamId": 5354,
-          "team": "Larne",
-          "form": "WWLL",
+          "teamId": 3403,
+          "team": "Pafos",
+          "form": "LW",
+          "all": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 2
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 2
+          }
+        },
+        {
+          "teamId": 608,
+          "team": "HNK Hajduk Split",
+          "form": "WLWL",
           "all": {
             "played": 4,
             "wins": 2,
             "draws": 0,
             "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 10
+            "goalsFor": 5,
+            "goalsAgainst": 6
           },
           "home": {
             "played": 2,
-            "wins": 1,
+            "wins": 2,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 5
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 0
           },
           "away": {
             "played": 2,
-            "wins": 1,
+            "wins": 0,
             "draws": 0,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 1,
-            "goalsAgainst": 5
+            "goalsAgainst": 6
           }
         },
         {
-          "teamId": 656,
-          "team": "Slovan Bratislava",
-          "form": "WD",
+          "teamId": 3723,
+          "team": "Hradec Králové",
+          "form": "WW",
           "all": {
             "played": 2,
-            "wins": 1,
-            "draws": 1,
+            "wins": 2,
+            "draws": 0,
             "losses": 0,
-            "goalsFor": 3,
+            "goalsFor": 4,
             "goalsAgainst": 1
           },
           "home": {
             "played": 1,
-            "wins": 0,
-            "draws": 1,
+            "wins": 1,
+            "draws": 0,
             "losses": 0,
-            "goalsFor": 1,
+            "goalsFor": 3,
             "goalsAgainst": 1
           },
           "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 325,
+          "team": "Tromso",
+          "form": "LL",
+          "all": {
+            "played": 2,
+            "wins": 0,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 1,
+            "goalsAgainst": 4
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 3
+          }
+        },
+        {
+          "teamId": 619,
+          "team": "PAOK",
+          "form": "WW",
+          "all": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 2
+          },
+          "home": {
             "played": 1,
             "wins": 1,
             "draws": 0,
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 2
           }
         },
         {
-          "teamId": 3502,
-          "team": "Saburtalo",
-          "form": "WDLD",
+          "teamId": 572,
+          "team": "Dynamo Kyiv",
+          "form": "DWLL",
           "all": {
             "played": 4,
             "wins": 1,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 7
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           },
           "home": {
             "played": 2,
@@ -479,569 +534,491 @@
             "draws": 1,
             "losses": 1,
             "goalsFor": 2,
-            "goalsAgainst": 4
+            "goalsAgainst": 3
           },
           "away": {
             "played": 2,
             "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2
           }
         }
       ],
       "fixtures": [
         {
-          "fixtureId": 1591938,
-          "kickoff": "2026-07-30T00:00:00+09:00",
-          "status": "PEN",
-          "homeTeamId": 664,
-          "homeTeam": "Kairat Almaty",
-          "awayTeamId": 3402,
-          "awayTeam": "Omonia Nicosia",
+          "fixtureId": 1593524,
+          "kickoff": "2026-07-31T03:00:00+09:00",
+          "status": "2H",
+          "homeTeamId": 853,
+          "homeTeam": "CSKA Sofia",
+          "awayTeamId": 556,
+          "awayTeam": "Qarabag",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 853,
+              "team": "CSKA Sofia",
+              "formation": "4-1-4-1",
+              "coach": "Hristo Yanev",
+              "starters": [
+                "Fedor Lapoukhov",
+                "Pastor",
+                "Teodor Ivanov",
+                "Facundo Rodríguez",
+                "Ángelo Martino",
+                "Jean-Philippe Gbamin",
+                "Max Ebong",
+                "Stefano Sensi",
+                "Bruno Jordão",
+                "Ioannis Pittas",
+                "Leandro Godoy"
+              ]
+            },
+            {
+              "teamId": 556,
+              "team": "Qarabag",
+              "formation": "4-2-3-1",
+              "coach": "Qurban Qurbanov",
+              "starters": [
+                "Mateusz Kochalski",
+                "Matheus Silva",
+                "Bədavi Hüseynov",
+                "Bence Várkonyi",
+                "Elvin Jafarguliyev",
+                "Pedro Bicalho",
+                "Marko Janković",
+                "Olexiy Kashchuk",
+                "Kady Borges",
+                "Abdellah Zoubir",
+                "Zakaria Sawo"
+              ]
+            }
+          ]
         },
         {
-          "fixtureId": 1591939,
-          "kickoff": "2026-07-30T01:00:00+09:00",
+          "fixtureId": 1556547,
+          "kickoff": "2026-07-31T03:30:00+09:00",
+          "status": "2H",
+          "homeTeamId": 554,
+          "homeTeam": "Anderlecht",
+          "awayTeamId": 363,
+          "awayTeam": "Hammarby FF",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 554,
+              "team": "Anderlecht",
+              "formation": "4-4-2",
+              "coach": "Vitor Bruno",
+              "starters": [
+                "Colin Coosemans",
+                "Ali Maamar",
+                "Léo Pétrot",
+                "Giulian Biancone",
+                "Ludwig Augustinsson",
+                "Joshua Nga Kana",
+                "Marco Kana",
+                "Enric Llansana",
+                "Lukáš Ambros",
+                "Jayden Onia Seke",
+                "Danylo Sikan"
+              ]
+            },
+            {
+              "teamId": 363,
+              "team": "Hammarby FF",
+              "formation": "4-2-3-1",
+              "coach": "Kalle Karlsson",
+              "starters": [
+                "Warner Hahn",
+                "Hampus Skoglund",
+                "Victor Eriksson",
+                "Frederik Winther",
+                "Noah Persson",
+                "Tesfaldet Tekie",
+                "Markus Karlsson",
+                "Montader Madjed",
+                "Oscar Johansson Schellhas",
+                "Victor Lind",
+                "Paulos Abraham"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1593525,
+          "kickoff": "2026-07-31T03:30:00+09:00",
+          "status": "2H",
+          "homeTeamId": 651,
+          "homeTeam": "Ferencvarosi TC",
+          "awayTeamId": 415,
+          "awayTeam": "Twente",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 651,
+              "team": "Ferencvarosi TC",
+              "formation": "4-3-3",
+              "coach": "Balazs Borbely",
+              "starters": [
+                "Dénes Dibusz",
+                "Attila Osváth",
+                "Mariano Gómez",
+                "Toon Raemaekers",
+                "Cadu",
+                "Philippe Rommens",
+                "Gabi Kanichowsky",
+                "Marius Corbu",
+                "Kristoffer Zachariassen",
+                "Lenny Joseph",
+                "Callum O'Dowda"
+              ]
+            },
+            {
+              "teamId": 415,
+              "team": "Twente",
+              "formation": "4-3-3",
+              "coach": "John van den Brom",
+              "starters": [
+                "Lars Unnerstall",
+                "Bart van Rooij",
+                "Stav Lemkin",
+                "Ruud Nijstad",
+                "Aske Adelgaard",
+                "Ramiz Zerrouki",
+                "Kristian Hlynsson",
+                "Thomas Van den Belt",
+                "Daan Rots",
+                "Wout Weghorst",
+                "Sondre Ørjasæter"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1556548,
+          "kickoff": "2026-07-31T04:00:00+09:00",
+          "status": "1H",
+          "homeTeamId": 211,
+          "homeTeam": "Benfica",
+          "awayTeamId": 1011,
+          "awayTeam": "FC ST. Gallen",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 211,
+              "team": "Benfica",
+              "formation": "4-2-3-1",
+              "coach": "Marco Silva",
+              "starters": [
+                "Anatoliy Trubin",
+                "Alexander Bah",
+                "António Silva",
+                "Clément Lenglet",
+                "Samuel Dahl",
+                "Leandro Barreiro",
+                "Enzo Barrenechea",
+                "Rafa Silva",
+                "Georgiy Sudakov",
+                "Jakub Kamiński",
+                "Vangelis Pavlidis"
+              ]
+            },
+            {
+              "teamId": 1011,
+              "team": "FC ST. Gallen",
+              "formation": "3-5-2",
+              "coach": "Enrico Maassen",
+              "starters": [
+                "Lukas Watkowiak",
+                "Tom Gaal",
+                "Jozo Stanić",
+                "Chima Okoroji",
+                "Hugo Vandermersch",
+                "Lukas Görtler",
+                "Lukas Daschner",
+                "Carlo Boukhalfa",
+                "Mihailo Stevanović",
+                "Aliou Balde",
+                "Christian Witzig"
+              ]
+            }
+          ]
+        },
+        {
+          "fixtureId": 1593526,
+          "kickoff": "2026-07-31T01:00:00+09:00",
           "status": "FT",
-          "homeTeamId": 3872,
-          "homeTeam": "Kauno Žalgiris",
-          "awayTeamId": 701,
-          "awayTeam": "KI Klaksvik",
+          "homeTeamId": 604,
+          "homeTeam": "Maccabi Tel Aviv",
+          "awayTeamId": 568,
+          "awayTeam": "Sheriff Tiraspol",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 604,
+              "team": "Maccabi Tel Aviv",
+              "formation": "4-3-3",
+              "coach": "Kenny Miller",
+              "starters": [
+                "Ofek Melika",
+                "Noam Ben Harosh",
+                "Mohamed Camara",
+                "Raz Shlomo",
+                "Roy Revivo",
+                "Dor Peretz",
+                "Issouf Sissokho",
+                "Ido Shahar",
+                "Sagiv Jehezkel",
+                "Saied Abu Farchi",
+                "Hélio Varela"
+              ]
+            },
+            {
+              "teamId": 568,
+              "team": "Sheriff Tiraspol",
+              "formation": "4-3-3",
+              "coach": "Victor Mihailov",
+              "starters": [
+                "Emil Tîmbur",
+                "Mamoutou Ouedraogo",
+                "Baye Assane Ciss",
+                "Fomba Bourama",
+                "Rai Lopes",
+                "Miguel Mota",
+                "Dhoraso Moreo Klas",
+                "Arli Pergjoni",
+                "Konan Jaures-Ulrich Loukou",
+                "Samba Koné",
+                "Danila Forov"
+              ]
+            }
+          ]
         },
         {
-          "fixtureId": 1556508,
-          "kickoff": "2026-07-30T02:00:00+09:00",
-          "status": "PEN",
-          "homeTeamId": 347,
-          "homeTeam": "Lech Poznan",
-          "awayTeamId": 406,
-          "awayTeam": "Aarhus",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1589422,
-          "kickoff": "2026-07-30T02:30:00+09:00",
+          "fixtureId": 1556549,
+          "kickoff": "2026-07-31T02:00:00+09:00",
           "status": "FT",
-          "homeTeamId": 563,
-          "homeTeam": "Hapoel Beer Sheva",
-          "awayTeamId": 278,
-          "awayTeam": "Vikingur Reykjavik",
+          "homeTeamId": 397,
+          "homeTeam": "FC Midtjylland",
+          "awayTeamId": 549,
+          "awayTeam": "Beşiktaş",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 397,
+              "team": "FC Midtjylland",
+              "formation": "4-3-3",
+              "coach": "Mike Tullberg",
+              "starters": [
+                "Elías Ólafsson",
+                "Rasmus Kristensen",
+                "Martin Erlić",
+                "Mads Bech Sørensen",
+                "Denil Castillo",
+                "Philip Billing",
+                "Pedro Bravo",
+                "Valdemar Byskov",
+                "Darío Osorio",
+                "Gue-sung Cho",
+                "Franculino Djú"
+              ]
+            },
+            {
+              "teamId": 549,
+              "team": "Beşiktaş",
+              "formation": "4-1-4-1",
+              "coach": "Vincenzo Italiano",
+              "starters": [
+                "Alexander Nübel",
+                "Amir Murillo",
+                "Tiago Djaló",
+                "Emirhan Topçu",
+                "Rıdvan Yılmaz",
+                "Salih Özcan",
+                "Václav Černý",
+                "Junior Olaitan",
+                "Orkun Kökçü",
+                "İlhan Fakili",
+                "Hyeon-gyu Oh"
+              ]
+            }
+          ]
         },
         {
-          "fixtureId": 1591940,
-          "kickoff": "2026-07-30T02:30:00+09:00",
-          "status": "FT",
-          "homeTeamId": 632,
-          "homeTeam": "Universitatea Craiova",
-          "awayTeamId": 646,
-          "awayTeam": "Levski Sofia",
+          "fixtureId": 1593527,
+          "kickoff": "2026-07-31T02:00:00+09:00",
+          "status": "AET",
+          "homeTeamId": 3403,
+          "homeTeam": "Pafos",
+          "awayTeamId": 608,
+          "awayTeam": "HNK Hajduk Split",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 3403,
+              "team": "Pafos",
+              "formation": "4-3-3",
+              "coach": "Albert Celades",
+              "starters": [
+                "Radosław Majecki",
+                "Bruno",
+                "David Goldar",
+                "David Luiz",
+                "Nikolas Ioannou",
+                "Domingos Quina",
+                "Ivan Šunjić",
+                "Guga",
+                "Biel",
+                "Lelê",
+                "Jajá"
+              ]
+            },
+            {
+              "teamId": 608,
+              "team": "HNK Hajduk Split",
+              "formation": "4-2-3-1",
+              "coach": "Gonzalo Garcia",
+              "starters": [
+                "Toni Silić",
+                "Mathieu Acapandié",
+                "Dario Marešić",
+                "Alec Van Hoorenbeeck",
+                "Šimun Hrgović",
+                "Rokas Pukštas",
+                "Adrion Pajaziti",
+                "Adam Huram",
+                "Dalisson de Almeida",
+                "Dario Melnjak",
+                "Michele Šego"
+              ]
+            }
+          ]
         },
         {
-          "fixtureId": 1556506,
-          "kickoff": "2026-07-30T03:00:00+09:00",
+          "fixtureId": 1556550,
+          "kickoff": "2026-07-31T02:00:00+09:00",
           "status": "FT",
-          "homeTeamId": 340,
-          "homeTeam": "Gornik Zabrze",
-          "awayTeamId": 611,
-          "awayTeam": "Fenerbahçe",
+          "homeTeamId": 3723,
+          "homeTeam": "Hradec Králové",
+          "awayTeamId": 325,
+          "awayTeam": "Tromso",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 3723,
+              "team": "Hradec Králové",
+              "formation": "3-4-2-1",
+              "coach": "David Horejs",
+              "starters": [
+                "Adam Zadražil",
+                "Jakub Uhrinčať",
+                "Filip Čihák",
+                "František Čech",
+                "Jakub Kucera",
+                "Vladimír Darida",
+                "Samuel Dancák",
+                "Daniel Horák",
+                "Mick van Buren",
+                "Tom Slončík",
+                "Ondřej Mihálik"
+              ]
+            },
+            {
+              "teamId": 325,
+              "team": "Tromso",
+              "formation": "5-3-2",
+              "coach": "Jorgen Vik",
+              "starters": [
+                "Jakob Haugaard",
+                "Alexander Warneryd",
+                "Vetle Skjaervik",
+                "Tobias Kvalvagnes Guddal",
+                "Isak Vadebu",
+                "Sander Innvær",
+                "Jens Hjertø-Dahl",
+                "David Edvardsson",
+                "Ruben Jenssen",
+                "Ieltsin Camões",
+                "Heine Asen Larsen"
+              ]
+            }
+          ]
         },
         {
-          "fixtureId": 1589421,
-          "kickoff": "2026-07-30T03:00:00+09:00",
+          "fixtureId": 1593528,
+          "kickoff": "2026-07-31T02:45:00+09:00",
           "status": "FT",
-          "homeTeamId": 598,
-          "homeTeam": "FK Crvena Zvezda",
-          "awayTeamId": 5354,
-          "awayTeam": "Larne",
+          "homeTeamId": 619,
+          "homeTeam": "PAOK",
+          "awayTeamId": 572,
+          "awayTeam": "Dynamo Kyiv",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1589426,
-          "kickoff": "2026-07-30T03:15:00+09:00",
-          "status": "FT",
-          "homeTeamId": 656,
-          "homeTeam": "Slovan Bratislava",
-          "awayTeamId": 3502,
-          "awayTeam": "Saburtalo",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 619,
+              "team": "PAOK",
+              "formation": "4-2-3-1",
+              "coach": "Alessio Lisci",
+              "starters": [
+                "Jiří Pavlenka",
+                "Jonjoe Kenny",
+                "Pantelis Hatzidiakos",
+                "Giannis Michailidis",
+                "Jonathan Gómez",
+                "Christos Zafeiris",
+                "Baptiste Santamaria",
+                "Andrija Živković",
+                "Giannis Konstantelias",
+                "Taison",
+                "Anestis Mythou"
+              ]
+            },
+            {
+              "teamId": 572,
+              "team": "Dynamo Kyiv",
+              "formation": "4-2-3-1",
+              "coach": "Igor Kostyuk",
+              "starters": [
+                "Vyacheslav Surkis",
+                "Oleksii Sych",
+                "Tomasz Kędziora",
+                "Aliou Thiare",
+                "Taras Mykhavko",
+                "Volodymyr Brazhko",
+                "Justin Lonwijk",
+                "Nazar Voloshyn",
+                "Vitaliy Buyalskiy",
+                "Bogdan Redushko",
+                "Matvii Ponomarenko"
+              ]
+            }
+          ]
         }
       ]
     }
   ],
   "dates": [
-    {
-      "date": "2026-07-29",
-      "updatedAt": "2026-07-29T10:48:33.257Z",
-      "leagues": [
-        {
-          "key": "UCL",
-          "leagueId": 2,
-          "season": "2026",
-          "standings": [],
-          "teams": [
-            {
-              "teamId": 1165,
-              "team": "KuPS",
-              "form": "WLLL",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 0,
-                "losses": 3,
-                "goalsFor": 4,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 5
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 13976,
-              "team": "Sabah FA",
-              "form": "WWWW",
-              "all": {
-                "played": 4,
-                "wins": 4,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 667,
-              "team": "Lincoln Red Imps FC",
-              "form": "WDLD",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 2240,
-              "team": "Mjallby AIF",
-              "form": "WD",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 620,
-              "team": "Dinamo Zagreb",
-              "form": "DW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 1012,
-              "team": "FC Thun",
-              "form": "DL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 4360,
-              "team": "Celje",
-              "form": "DW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 3327,
-              "team": "Egnatia Rrogozhinë",
-              "form": "DWDL",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 12,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 254,
-              "team": "Heart Of Midlothian",
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 637,
-              "team": "Sturm Graz",
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 652,
-              "team": "Shamrock Rovers",
-              "form": "LWLW",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 7,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 3683,
-              "team": "Ararat-Armenia",
-              "form": "WLWL",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 7,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 5
-              }
-            }
-          ],
-          "fixtures": [
-            {
-              "fixtureId": 1589423,
-              "kickoff": "2026-07-29T00:00:00+09:00",
-              "status": "FT",
-              "homeTeamId": 1165,
-              "homeTeam": "KuPS",
-              "awayTeamId": 13976,
-              "awayTeam": "Sabah FA",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1589424,
-              "kickoff": "2026-07-29T01:00:00+09:00",
-              "status": "FT",
-              "homeTeamId": 667,
-              "homeTeam": "Lincoln Red Imps FC",
-              "awayTeamId": 2240,
-              "awayTeam": "Mjallby AIF",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1556505,
-              "kickoff": "2026-07-29T03:00:00+09:00",
-              "status": "AET",
-              "homeTeamId": 620,
-              "homeTeam": "Dinamo Zagreb",
-              "awayTeamId": 1012,
-              "awayTeam": "FC Thun",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1591937,
-              "kickoff": "2026-07-29T03:15:00+09:00",
-              "status": "PEN",
-              "homeTeamId": 4360,
-              "homeTeam": "Celje",
-              "awayTeamId": 3327,
-              "awayTeam": "Egnatia Rrogozhinë",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1556507,
-              "kickoff": "2026-07-29T03:45:00+09:00",
-              "status": "FT",
-              "homeTeamId": 254,
-              "homeTeam": "Heart Of Midlothian",
-              "awayTeamId": 637,
-              "awayTeam": "Sturm Graz",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1589425,
-              "kickoff": "2026-07-29T04:00:00+09:00",
-              "status": "FT",
-              "homeTeamId": 652,
-              "homeTeam": "Shamrock Rovers",
-              "awayTeamId": 3683,
-              "awayTeam": "Ararat-Armenia",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            }
-          ]
-        }
-      ]
-    },
     {
       "date": "2026-07-30",
       "updatedAt": "2026-07-30T10:34:26.779Z",
@@ -1628,7 +1605,7 @@
     },
     {
       "date": "2026-07-31",
-      "updatedAt": "2026-07-30T10:34:32.627Z",
+      "updatedAt": "2026-07-30T19:45:55.905Z",
       "leagues": [
         {
           "key": "UEL",
@@ -1636,296 +1613,6 @@
           "season": "2026",
           "standings": [],
           "teams": [
-            {
-              "teamId": 604,
-              "team": "Maccabi Tel Aviv",
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 568,
-              "team": "Sheriff Tiraspol",
-              "form": "DWL",
-              "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 5
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 397,
-              "team": "FC Midtjylland",
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 549,
-              "team": "Beşiktaş",
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 3403,
-              "team": "Pafos",
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 608,
-              "team": "HNK Hajduk Split",
-              "form": "WLW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 5,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 3723,
-              "team": "Hradec Králové",
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 325,
-              "team": "Tromso",
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 619,
-              "team": "PAOK",
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 572,
-              "team": "Dynamo Kyiv",
-              "form": "DWL",
-              "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              }
-            },
             {
               "teamId": 853,
               "team": "CSKA Sofia",
@@ -2157,125 +1844,766 @@
                 "goalsFor": 0,
                 "goalsAgainst": 0
               }
+            },
+            {
+              "teamId": 604,
+              "team": "Maccabi Tel Aviv",
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 568,
+              "team": "Sheriff Tiraspol",
+              "form": "DWLL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 397,
+              "team": "FC Midtjylland",
+              "form": "LL",
+              "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 0,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 549,
+              "team": "Beşiktaş",
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 3403,
+              "team": "Pafos",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 608,
+              "team": "HNK Hajduk Split",
+              "form": "WLWL",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 3723,
+              "team": "Hradec Králové",
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 325,
+              "team": "Tromso",
+              "form": "LL",
+              "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 619,
+              "team": "PAOK",
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 572,
+              "team": "Dynamo Kyiv",
+              "form": "DWLL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              }
             }
           ],
           "fixtures": [
             {
-              "fixtureId": 1593526,
-              "kickoff": "2026-07-31T01:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 604,
-              "homeTeam": "Maccabi Tel Aviv",
-              "awayTeamId": 568,
-              "awayTeam": "Sheriff Tiraspol",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1556549,
-              "kickoff": "2026-07-31T02:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 397,
-              "homeTeam": "FC Midtjylland",
-              "awayTeamId": 549,
-              "awayTeam": "Beşiktaş",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1593527,
-              "kickoff": "2026-07-31T02:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 3403,
-              "homeTeam": "Pafos",
-              "awayTeamId": 608,
-              "awayTeam": "HNK Hajduk Split",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1556550,
-              "kickoff": "2026-07-31T02:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 3723,
-              "homeTeam": "Hradec Králové",
-              "awayTeamId": 325,
-              "awayTeam": "Tromso",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1593528,
-              "kickoff": "2026-07-31T02:45:00+09:00",
-              "status": "NS",
-              "homeTeamId": 619,
-              "homeTeam": "PAOK",
-              "awayTeamId": 572,
-              "awayTeam": "Dynamo Kyiv",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
               "fixtureId": 1593524,
               "kickoff": "2026-07-31T03:00:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 853,
               "homeTeam": "CSKA Sofia",
               "awayTeamId": 556,
               "awayTeam": "Qarabag",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 853,
+                  "team": "CSKA Sofia",
+                  "formation": "4-1-4-1",
+                  "coach": "Hristo Yanev",
+                  "starters": [
+                    "Fedor Lapoukhov",
+                    "Pastor",
+                    "Teodor Ivanov",
+                    "Facundo Rodríguez",
+                    "Ángelo Martino",
+                    "Jean-Philippe Gbamin",
+                    "Max Ebong",
+                    "Stefano Sensi",
+                    "Bruno Jordão",
+                    "Ioannis Pittas",
+                    "Leandro Godoy"
+                  ]
+                },
+                {
+                  "teamId": 556,
+                  "team": "Qarabag",
+                  "formation": "4-2-3-1",
+                  "coach": "Qurban Qurbanov",
+                  "starters": [
+                    "Mateusz Kochalski",
+                    "Matheus Silva",
+                    "Bədavi Hüseynov",
+                    "Bence Várkonyi",
+                    "Elvin Jafarguliyev",
+                    "Pedro Bicalho",
+                    "Marko Janković",
+                    "Olexiy Kashchuk",
+                    "Kady Borges",
+                    "Abdellah Zoubir",
+                    "Zakaria Sawo"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1556547,
               "kickoff": "2026-07-31T03:30:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 554,
               "homeTeam": "Anderlecht",
               "awayTeamId": 363,
               "awayTeam": "Hammarby FF",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 554,
+                  "team": "Anderlecht",
+                  "formation": "4-4-2",
+                  "coach": "Vitor Bruno",
+                  "starters": [
+                    "Colin Coosemans",
+                    "Ali Maamar",
+                    "Léo Pétrot",
+                    "Giulian Biancone",
+                    "Ludwig Augustinsson",
+                    "Joshua Nga Kana",
+                    "Marco Kana",
+                    "Enric Llansana",
+                    "Lukáš Ambros",
+                    "Jayden Onia Seke",
+                    "Danylo Sikan"
+                  ]
+                },
+                {
+                  "teamId": 363,
+                  "team": "Hammarby FF",
+                  "formation": "4-2-3-1",
+                  "coach": "Kalle Karlsson",
+                  "starters": [
+                    "Warner Hahn",
+                    "Hampus Skoglund",
+                    "Victor Eriksson",
+                    "Frederik Winther",
+                    "Noah Persson",
+                    "Tesfaldet Tekie",
+                    "Markus Karlsson",
+                    "Montader Madjed",
+                    "Oscar Johansson Schellhas",
+                    "Victor Lind",
+                    "Paulos Abraham"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1593525,
               "kickoff": "2026-07-31T03:30:00+09:00",
-              "status": "NS",
+              "status": "2H",
               "homeTeamId": 651,
               "homeTeam": "Ferencvarosi TC",
               "awayTeamId": 415,
               "awayTeam": "Twente",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 651,
+                  "team": "Ferencvarosi TC",
+                  "formation": "4-3-3",
+                  "coach": "Balazs Borbely",
+                  "starters": [
+                    "Dénes Dibusz",
+                    "Attila Osváth",
+                    "Mariano Gómez",
+                    "Toon Raemaekers",
+                    "Cadu",
+                    "Philippe Rommens",
+                    "Gabi Kanichowsky",
+                    "Marius Corbu",
+                    "Kristoffer Zachariassen",
+                    "Lenny Joseph",
+                    "Callum O'Dowda"
+                  ]
+                },
+                {
+                  "teamId": 415,
+                  "team": "Twente",
+                  "formation": "4-3-3",
+                  "coach": "John van den Brom",
+                  "starters": [
+                    "Lars Unnerstall",
+                    "Bart van Rooij",
+                    "Stav Lemkin",
+                    "Ruud Nijstad",
+                    "Aske Adelgaard",
+                    "Ramiz Zerrouki",
+                    "Kristian Hlynsson",
+                    "Thomas Van den Belt",
+                    "Daan Rots",
+                    "Wout Weghorst",
+                    "Sondre Ørjasæter"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1556548,
               "kickoff": "2026-07-31T04:00:00+09:00",
-              "status": "NS",
+              "status": "1H",
               "homeTeamId": 211,
               "homeTeam": "Benfica",
               "awayTeamId": 1011,
               "awayTeam": "FC ST. Gallen",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 211,
+                  "team": "Benfica",
+                  "formation": "4-2-3-1",
+                  "coach": "Marco Silva",
+                  "starters": [
+                    "Anatoliy Trubin",
+                    "Alexander Bah",
+                    "António Silva",
+                    "Clément Lenglet",
+                    "Samuel Dahl",
+                    "Leandro Barreiro",
+                    "Enzo Barrenechea",
+                    "Rafa Silva",
+                    "Georgiy Sudakov",
+                    "Jakub Kamiński",
+                    "Vangelis Pavlidis"
+                  ]
+                },
+                {
+                  "teamId": 1011,
+                  "team": "FC ST. Gallen",
+                  "formation": "3-5-2",
+                  "coach": "Enrico Maassen",
+                  "starters": [
+                    "Lukas Watkowiak",
+                    "Tom Gaal",
+                    "Jozo Stanić",
+                    "Chima Okoroji",
+                    "Hugo Vandermersch",
+                    "Lukas Görtler",
+                    "Lukas Daschner",
+                    "Carlo Boukhalfa",
+                    "Mihailo Stevanović",
+                    "Aliou Balde",
+                    "Christian Witzig"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1593526,
+              "kickoff": "2026-07-31T01:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 604,
+              "homeTeam": "Maccabi Tel Aviv",
+              "awayTeamId": 568,
+              "awayTeam": "Sheriff Tiraspol",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 604,
+                  "team": "Maccabi Tel Aviv",
+                  "formation": "4-3-3",
+                  "coach": "Kenny Miller",
+                  "starters": [
+                    "Ofek Melika",
+                    "Noam Ben Harosh",
+                    "Mohamed Camara",
+                    "Raz Shlomo",
+                    "Roy Revivo",
+                    "Dor Peretz",
+                    "Issouf Sissokho",
+                    "Ido Shahar",
+                    "Sagiv Jehezkel",
+                    "Saied Abu Farchi",
+                    "Hélio Varela"
+                  ]
+                },
+                {
+                  "teamId": 568,
+                  "team": "Sheriff Tiraspol",
+                  "formation": "4-3-3",
+                  "coach": "Victor Mihailov",
+                  "starters": [
+                    "Emil Tîmbur",
+                    "Mamoutou Ouedraogo",
+                    "Baye Assane Ciss",
+                    "Fomba Bourama",
+                    "Rai Lopes",
+                    "Miguel Mota",
+                    "Dhoraso Moreo Klas",
+                    "Arli Pergjoni",
+                    "Konan Jaures-Ulrich Loukou",
+                    "Samba Koné",
+                    "Danila Forov"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1556549,
+              "kickoff": "2026-07-31T02:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 397,
+              "homeTeam": "FC Midtjylland",
+              "awayTeamId": 549,
+              "awayTeam": "Beşiktaş",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 397,
+                  "team": "FC Midtjylland",
+                  "formation": "4-3-3",
+                  "coach": "Mike Tullberg",
+                  "starters": [
+                    "Elías Ólafsson",
+                    "Rasmus Kristensen",
+                    "Martin Erlić",
+                    "Mads Bech Sørensen",
+                    "Denil Castillo",
+                    "Philip Billing",
+                    "Pedro Bravo",
+                    "Valdemar Byskov",
+                    "Darío Osorio",
+                    "Gue-sung Cho",
+                    "Franculino Djú"
+                  ]
+                },
+                {
+                  "teamId": 549,
+                  "team": "Beşiktaş",
+                  "formation": "4-1-4-1",
+                  "coach": "Vincenzo Italiano",
+                  "starters": [
+                    "Alexander Nübel",
+                    "Amir Murillo",
+                    "Tiago Djaló",
+                    "Emirhan Topçu",
+                    "Rıdvan Yılmaz",
+                    "Salih Özcan",
+                    "Václav Černý",
+                    "Junior Olaitan",
+                    "Orkun Kökçü",
+                    "İlhan Fakili",
+                    "Hyeon-gyu Oh"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1593527,
+              "kickoff": "2026-07-31T02:00:00+09:00",
+              "status": "AET",
+              "homeTeamId": 3403,
+              "homeTeam": "Pafos",
+              "awayTeamId": 608,
+              "awayTeam": "HNK Hajduk Split",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 3403,
+                  "team": "Pafos",
+                  "formation": "4-3-3",
+                  "coach": "Albert Celades",
+                  "starters": [
+                    "Radosław Majecki",
+                    "Bruno",
+                    "David Goldar",
+                    "David Luiz",
+                    "Nikolas Ioannou",
+                    "Domingos Quina",
+                    "Ivan Šunjić",
+                    "Guga",
+                    "Biel",
+                    "Lelê",
+                    "Jajá"
+                  ]
+                },
+                {
+                  "teamId": 608,
+                  "team": "HNK Hajduk Split",
+                  "formation": "4-2-3-1",
+                  "coach": "Gonzalo Garcia",
+                  "starters": [
+                    "Toni Silić",
+                    "Mathieu Acapandié",
+                    "Dario Marešić",
+                    "Alec Van Hoorenbeeck",
+                    "Šimun Hrgović",
+                    "Rokas Pukštas",
+                    "Adrion Pajaziti",
+                    "Adam Huram",
+                    "Dalisson de Almeida",
+                    "Dario Melnjak",
+                    "Michele Šego"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1556550,
+              "kickoff": "2026-07-31T02:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 3723,
+              "homeTeam": "Hradec Králové",
+              "awayTeamId": 325,
+              "awayTeam": "Tromso",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 3723,
+                  "team": "Hradec Králové",
+                  "formation": "3-4-2-1",
+                  "coach": "David Horejs",
+                  "starters": [
+                    "Adam Zadražil",
+                    "Jakub Uhrinčať",
+                    "Filip Čihák",
+                    "František Čech",
+                    "Jakub Kucera",
+                    "Vladimír Darida",
+                    "Samuel Dancák",
+                    "Daniel Horák",
+                    "Mick van Buren",
+                    "Tom Slončík",
+                    "Ondřej Mihálik"
+                  ]
+                },
+                {
+                  "teamId": 325,
+                  "team": "Tromso",
+                  "formation": "5-3-2",
+                  "coach": "Jorgen Vik",
+                  "starters": [
+                    "Jakob Haugaard",
+                    "Alexander Warneryd",
+                    "Vetle Skjaervik",
+                    "Tobias Kvalvagnes Guddal",
+                    "Isak Vadebu",
+                    "Sander Innvær",
+                    "Jens Hjertø-Dahl",
+                    "David Edvardsson",
+                    "Ruben Jenssen",
+                    "Ieltsin Camões",
+                    "Heine Asen Larsen"
+                  ]
+                }
+              ]
+            },
+            {
+              "fixtureId": 1593528,
+              "kickoff": "2026-07-31T02:45:00+09:00",
+              "status": "FT",
+              "homeTeamId": 619,
+              "homeTeam": "PAOK",
+              "awayTeamId": 572,
+              "awayTeam": "Dynamo Kyiv",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 619,
+                  "team": "PAOK",
+                  "formation": "4-2-3-1",
+                  "coach": "Alessio Lisci",
+                  "starters": [
+                    "Jiří Pavlenka",
+                    "Jonjoe Kenny",
+                    "Pantelis Hatzidiakos",
+                    "Giannis Michailidis",
+                    "Jonathan Gómez",
+                    "Christos Zafeiris",
+                    "Baptiste Santamaria",
+                    "Andrija Živković",
+                    "Giannis Konstantelias",
+                    "Taison",
+                    "Anestis Mythou"
+                  ]
+                },
+                {
+                  "teamId": 572,
+                  "team": "Dynamo Kyiv",
+                  "formation": "4-2-3-1",
+                  "coach": "Igor Kostyuk",
+                  "starters": [
+                    "Vyacheslav Surkis",
+                    "Oleksii Sych",
+                    "Tomasz Kędziora",
+                    "Aliou Thiare",
+                    "Taras Mykhavko",
+                    "Volodymyr Brazhko",
+                    "Justin Lonwijk",
+                    "Nazar Voloshyn",
+                    "Vitaliy Buyalskiy",
+                    "Bogdan Redushko",
+                    "Matvii Ponomarenko"
+                  ]
+                }
+              ]
             }
           ]
         }
