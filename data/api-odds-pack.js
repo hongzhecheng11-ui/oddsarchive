@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-07-31T10:49:58.115Z",
+  "updatedAt": "2026-07-31T19:47:03.590Z",
   "collection": {
-    "lastAttemptAt": "2026-07-31T10:49:20.222Z",
-    "lastSuccessAt": "2026-07-31T10:49:58.115Z",
-    "requestSuccesses": 104,
+    "lastAttemptAt": "2026-07-31T19:46:51.870Z",
+    "lastSuccessAt": "2026-07-31T19:47:03.590Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
-    "addedCount": 1,
-    "updatedCount": 11,
-    "duplicateCount": 8,
+    "addedCount": 0,
+    "updatedCount": 1,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -7779,13 +7779,13 @@
       "fixtureId": "1556628",
       "homeTeam": "Dundee Utd",
       "awayTeam": "Rangers",
-      "homeOdds": "5.50",
-      "drawOdds": "4.30",
-      "awayOdds": "1.53",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "5.00",
+      "drawOdds": "3.90",
+      "awayOdds": "1.64",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-07-31T10:49:32.000Z",
+      "oddsUpdatedAt": "2026-07-31T19:46:56.140Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-07-28T10:44:09.160Z",
