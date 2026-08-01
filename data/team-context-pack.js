@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-08-01",
-  "updatedAt": "2026-07-31T19:47:17.002Z",
+  "updatedAt": "2026-08-01T10:09:08.811Z",
   "collection": {
     "dates": [
-      "2026-08-01"
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04"
     ],
-    "requestGroups": 3,
-    "skippedGroups": 23,
+    "requestGroups": 8,
+    "skippedGroups": 96,
     "failures": 0,
     "errors": []
   },
@@ -26,24 +29,24 @@
           "teamId": 1386,
           "team": "Dundee Utd",
           "rank": 1,
-          "points": 0,
+          "points": 1,
           "goalsDiff": 0,
-          "form": "",
+          "form": "D",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "away": {
             "played": 0,
@@ -55,9 +58,41 @@
           }
         },
         {
+          "teamId": 257,
+          "team": "Rangers",
+          "rank": 2,
+          "points": 1,
+          "goalsDiff": 0,
+          "form": "D",
+          "all": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "home": {
+            "played": 0,
+            "wins": 0,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 0,
+            "goalsAgainst": 0
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          }
+        },
+        {
           "teamId": 1389,
           "team": "Falkirk",
-          "rank": 2,
+          "rank": 3,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -89,7 +124,7 @@
         {
           "teamId": 254,
           "team": "Heart Of Midlothian",
-          "rank": 3,
+          "rank": 4,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -121,7 +156,7 @@
         {
           "teamId": 249,
           "team": "Hibernian",
-          "rank": 4,
+          "rank": 5,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -153,7 +188,7 @@
         {
           "teamId": 250,
           "team": "Kilmarnock",
-          "rank": 5,
+          "rank": 6,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -185,7 +220,7 @@
         {
           "teamId": 256,
           "team": "Motherwell",
-          "rank": 6,
+          "rank": 7,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -217,7 +252,7 @@
         {
           "teamId": 251,
           "team": "ST Mirren",
-          "rank": 7,
+          "rank": 8,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -249,7 +284,7 @@
         {
           "teamId": 253,
           "team": "Dundee",
-          "rank": 8,
+          "rank": 9,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -281,7 +316,7 @@
         {
           "teamId": 258,
           "team": "ST Johnstone",
-          "rank": 9,
+          "rank": 10,
           "points": 0,
           "goalsDiff": 0,
           "form": "",
@@ -313,38 +348,6 @@
         {
           "teamId": 247,
           "team": "Celtic",
-          "rank": 10,
-          "points": 0,
-          "goalsDiff": 0,
-          "form": "",
-          "all": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 257,
-          "team": "Rangers",
           "rank": 11,
           "points": 0,
           "goalsDiff": 0,
@@ -411,22 +414,22 @@
         {
           "teamId": 1386,
           "team": "Dundee Utd",
-          "form": "",
+          "form": "D",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "away": {
             "played": 0,
@@ -440,14 +443,14 @@
         {
           "teamId": 257,
           "team": "Rangers",
-          "form": "",
+          "form": "D",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "home": {
             "played": 0,
@@ -458,12 +461,12 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           }
         },
         {
@@ -529,54 +532,15 @@
         {
           "fixtureId": 1556628,
           "kickoff": "2026-08-01T04:00:00+09:00",
-          "status": "1H",
+          "status": "FT",
           "homeTeamId": 1386,
           "homeTeam": "Dundee Utd",
           "awayTeamId": 257,
           "awayTeam": "Rangers",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 1386,
-              "team": "Dundee Utd",
-              "formation": "4-3-3",
-              "coach": "Jim Goodwin",
-              "starters": [
-                "Jack James Walton",
-                "Joshua Rawlins",
-                "Bert Esselink",
-                "Michael Forbes",
-                "William Ferry",
-                "Vicko Ševelj",
-                "Dylan Tait",
-                "Emmanuel Agyei",
-                "Jesse Randall",
-                "Lachlan Rose",
-                "Zachary Sapsford"
-              ]
-            },
-            {
-              "teamId": 257,
-              "team": "Rangers",
-              "formation": "4-2-3-1",
-              "coach": "Derek McInnes",
-              "starters": [
-                "Ivor Pandur",
-                "Dujon Sterling",
-                "Ben Godfrey",
-                "Emmanuel Fernandez",
-                "Tuur Rommens",
-                "Cameron Devlin",
-                "Mohammed Diomande",
-                "Ryan Don Naderi",
-                "Thelo Aasgaard",
-                "Djeidi Gassama",
-                "Lawrence Shankland"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1556629,
@@ -588,7 +552,7 @@
           "awayTeam": "ST Mirren",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1170,8 +1134,45 @@
           "awayTeam": "Bucheon FC 1995",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2746,
+              "team": "Gangwon FC",
+              "formation": "4-4-2",
+              "coach": "Kyung-ho Chung",
+              "starters": [
+                "Park Cheong-Hyo",
+                "Kang Joon-Hyuck",
+                "M. Tuci",
+                "Lee Gi-Hyuk",
+                "Song Jun-Seok",
+                "Kang Yun-Gu",
+                "Lee You-Hyeon",
+                "Kim Dae-Won",
+                "Choe Byeong-Chan",
+                "Goh Young-Jun"
+              ]
+            },
+            {
+              "teamId": 2745,
+              "team": "Bucheon FC 1995",
+              "formation": "3-4-3",
+              "coach": "Young-min Lee",
+              "starters": [
+                "Kim Hyeon-Yeob",
+                "Patrick William",
+                "Baek Dong-Gyu",
+                "Hong Sung-Wook",
+                "Thiaguinho",
+                "Kim Sang-Jun",
+                "Bong-Hun Yeo",
+                "Rodrigo Bassani",
+                "Vitor Gabriel",
+                "Jefferson Galego"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1507017,
@@ -1183,8 +1184,47 @@
           "awayTeam": "FC Seoul",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2762,
+              "team": "Jeonbuk Motors",
+              "formation": "4-2-3-1",
+              "coach": "Jung-yong Chung",
+              "starters": [
+                "Song Bum-Keun",
+                "Kim Tae-Hwan",
+                "Cho Wi-Je",
+                "Kim Young-Bin",
+                "Choi Woo-Jin",
+                "Oberdan",
+                "Kim Jin-Gyu",
+                "Kim Seung-Sub",
+                "Kang Sang-Yoon",
+                "Lee Seung-Woo",
+                "G. Paulauskas"
+              ]
+            },
+            {
+              "teamId": 2766,
+              "team": "FC Seoul",
+              "formation": "4-4-2",
+              "coach": "Gi-dong Kim",
+              "starters": [
+                "Gu Sung-Yun",
+                "Choi Jun",
+                "Yazan Al Arab",
+                "Juan Antonio",
+                "Kim Jin-Su",
+                "Jeong Seung-Won",
+                "J. Son",
+                "H. Babec",
+                "Song Min-Kyu",
+                "Anderson Oliveira",
+                "P. Klimala"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1507018,
@@ -1196,8 +1236,44 @@
           "awayTeam": "Gimcheon Sangmu FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2764,
+              "team": "Pohang Steelers",
+              "formation": "3-4-3",
+              "coach": "Tae-ha Park",
+              "starters": [
+                "Hong Seong-Min",
+                "Shin Kwang-Hoon",
+                "Park Chan-Yong",
+                "H. Kim",
+                "Eo Jeong-Won",
+                "Kim Dong-Jin",
+                "Ki Sung-Yueng",
+                "Wanderson",
+                "Cho Sang-Hyeok",
+                "J. Tranziska"
+              ]
+            },
+            {
+              "teamId": 2768,
+              "team": "Gimcheon Sangmu FC",
+              "formation": "4-1-4-1",
+              "coach": "Seung-jin Joo",
+              "starters": [
+                "Baek Jong-Beom",
+                "Kim Tae-Hwan",
+                "Byeon Jun-Soo",
+                "Lee Jung-Taek",
+                "Park Cheol-Woo",
+                "Lee Kang-Hyun",
+                "Go Jae-Hyeon",
+                "Hong Yun-Sang",
+                "Jeong Jae-Min"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1996,8 +2072,42 @@
           "awayTeam": "Seongnam FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2753,
+              "team": "Asan Mugunghwa",
+              "formation": "3-4-3",
+              "coach": "André Gaspar",
+              "starters": [
+                "Shin Song-Hun",
+                "Lee Ho-In",
+                "Jeong Woo-Jae",
+                "Kim Young-Nam",
+                "Son Jun-Ho",
+                "Kim Ju-Sung",
+                "Denisson",
+                "Kim Jong-Min"
+              ]
+            },
+            {
+              "teamId": 2757,
+              "team": "Seongnam FC",
+              "formation": "4-4-2",
+              "coach": "Kyung-jun Jeon",
+              "starters": [
+                "Lee Gwang-Yeon",
+                "You Ju-An",
+                "Lee Sang-Min",
+                "Yu Sun",
+                "Lee Jeong-Bin",
+                "Ryu Jun-Sun",
+                "Park Su-Bin",
+                "Yang Tae-Yang",
+                "Yun Min-Ho"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1510396,
@@ -2009,8 +2119,39 @@
           "awayTeam": "Yongin City",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 7060,
+              "team": "Cheonan City",
+              "formation": "3-4-3",
+              "coach": "Jin-sub Park",
+              "starters": [
+                "Park Dae-Han",
+                "Kim Seong-Ju",
+                "Choi Jun-Hyeok",
+                "Cha Seung-Hyeon",
+                "Bruno Lamas",
+                "Koo Jong-Uk",
+                "Lee Dong-hyeop",
+                "Lee Kyu-Min",
+                "A. Toungara"
+              ]
+            },
+            {
+              "teamId": 9171,
+              "team": "Yongin City",
+              "formation": "3-4-3",
+              "coach": "Yun-kyum Choi",
+              "starters": [
+                "Kim Hyeon-Jun",
+                "Kim Jin-Ho",
+                "Kim Han-seo",
+                "Kim Han-Gil",
+                "Vitinho"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1510397,
@@ -2022,8 +2163,42 @@
           "awayTeam": "Suwon Bluewings",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 7061,
+              "team": "Cheongju",
+              "formation": "4-3-3",
+              "coach": "Rui Quinta",
+              "starters": [
+                "Lee Seung-Hwan",
+                "Bak Keon-Woo",
+                "Ju-Young Jo",
+                "Kim Seon-Min",
+                "Jeong Jin-Woo",
+                "Seung-Chan Heo",
+                "Lee Jong-Eon"
+              ]
+            },
+            {
+              "teamId": 2765,
+              "team": "Suwon Bluewings",
+              "formation": "4-4-2",
+              "coach": "Jung-hyo Lee",
+              "starters": [
+                "Kim Joon-Hong",
+                "Lee Geon-Hee",
+                "Ko Jong-Hyun",
+                "Han Hyeon-Seo",
+                "Lee Jun-Jae",
+                "Fessin",
+                "Park Hyun-Bin",
+                "Jeong Ho-Yeon",
+                "Reis",
+                "Kang Hyun-Muk"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1510398,
@@ -2035,8 +2210,44 @@
           "awayTeam": "Daegu FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 7087,
+              "team": "Hwaseong",
+              "formation": "3-4-3",
+              "coach": "Du-ri Cha",
+              "starters": [
+                "Kim Seung-Gun",
+                "Park Jun-Seo",
+                "A. Vojnović",
+                "Min-Jun Jang",
+                "Kim Dae-Hwan",
+                "Park Jae-Seong",
+                "Lee Jong-Sung",
+                "L. Pllana",
+                "Kim Byong-Oh",
+                "Jegal Jae-Min"
+              ]
+            },
+            {
+              "teamId": 2747,
+              "team": "Daegu FC",
+              "formation": "3-4-3",
+              "coach": "Sung-yong Choi",
+              "starters": [
+                "Kim Kang-San",
+                "Kim Hyeong-Jin",
+                "Hwang In-Taek",
+                "Hwang Jae-Won",
+                "Han Jong-Mu",
+                "Ryu Jae-Moon",
+                "Choi Kang-min",
+                "Danrlei",
+                "Kim Ju-Kong"
+              ]
+            }
+          ]
         }
       ]
     }
@@ -2699,7 +2910,7 @@
     },
     {
       "date": "2026-08-01",
-      "updatedAt": "2026-07-31T19:47:16.996Z",
+      "updatedAt": "2026-08-01T10:08:59.786Z",
       "leagues": [
         {
           "key": "SCOTTISH_PREMIERSHIP",
@@ -2710,24 +2921,24 @@
               "teamId": 1386,
               "team": "Dundee Utd",
               "rank": 1,
-              "points": 0,
+              "points": 1,
               "goalsDiff": 0,
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 0,
@@ -2739,9 +2950,41 @@
               }
             },
             {
+              "teamId": 257,
+              "team": "Rangers",
+              "rank": 2,
+              "points": 1,
+              "goalsDiff": 0,
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 1389,
               "team": "Falkirk",
-              "rank": 2,
+              "rank": 3,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2773,7 +3016,7 @@
             {
               "teamId": 254,
               "team": "Heart Of Midlothian",
-              "rank": 3,
+              "rank": 4,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2805,7 +3048,7 @@
             {
               "teamId": 249,
               "team": "Hibernian",
-              "rank": 4,
+              "rank": 5,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2837,7 +3080,7 @@
             {
               "teamId": 250,
               "team": "Kilmarnock",
-              "rank": 5,
+              "rank": 6,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2869,7 +3112,7 @@
             {
               "teamId": 256,
               "team": "Motherwell",
-              "rank": 6,
+              "rank": 7,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2901,7 +3144,7 @@
             {
               "teamId": 251,
               "team": "ST Mirren",
-              "rank": 7,
+              "rank": 8,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2933,7 +3176,7 @@
             {
               "teamId": 253,
               "team": "Dundee",
-              "rank": 8,
+              "rank": 9,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2965,7 +3208,7 @@
             {
               "teamId": 258,
               "team": "ST Johnstone",
-              "rank": 9,
+              "rank": 10,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -2997,38 +3240,6 @@
             {
               "teamId": 247,
               "team": "Celtic",
-              "rank": 10,
-              "points": 0,
-              "goalsDiff": 0,
-              "form": "",
-              "all": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 257,
-              "team": "Rangers",
               "rank": 11,
               "points": 0,
               "goalsDiff": 0,
@@ -3095,22 +3306,22 @@
             {
               "teamId": 1386,
               "team": "Dundee Utd",
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 0,
@@ -3124,14 +3335,14 @@
             {
               "teamId": 257,
               "team": "Rangers",
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
                 "played": 0,
@@ -3142,12 +3353,12 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               }
             },
             {
@@ -3213,54 +3424,15 @@
             {
               "fixtureId": 1556628,
               "kickoff": "2026-08-01T04:00:00+09:00",
-              "status": "1H",
+              "status": "FT",
               "homeTeamId": 1386,
               "homeTeam": "Dundee Utd",
               "awayTeamId": 257,
               "awayTeam": "Rangers",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 1386,
-                  "team": "Dundee Utd",
-                  "formation": "4-3-3",
-                  "coach": "Jim Goodwin",
-                  "starters": [
-                    "Jack James Walton",
-                    "Joshua Rawlins",
-                    "Bert Esselink",
-                    "Michael Forbes",
-                    "William Ferry",
-                    "Vicko Ševelj",
-                    "Dylan Tait",
-                    "Emmanuel Agyei",
-                    "Jesse Randall",
-                    "Lachlan Rose",
-                    "Zachary Sapsford"
-                  ]
-                },
-                {
-                  "teamId": 257,
-                  "team": "Rangers",
-                  "formation": "4-2-3-1",
-                  "coach": "Derek McInnes",
-                  "starters": [
-                    "Ivor Pandur",
-                    "Dujon Sterling",
-                    "Ben Godfrey",
-                    "Emmanuel Fernandez",
-                    "Tuur Rommens",
-                    "Cameron Devlin",
-                    "Mohammed Diomande",
-                    "Ryan Don Naderi",
-                    "Thelo Aasgaard",
-                    "Djeidi Gassama",
-                    "Lawrence Shankland"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1556629,
@@ -3272,7 +3444,7 @@
               "awayTeam": "ST Mirren",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -3854,8 +4026,45 @@
               "awayTeam": "Bucheon FC 1995",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2746,
+                  "team": "Gangwon FC",
+                  "formation": "4-4-2",
+                  "coach": "Kyung-ho Chung",
+                  "starters": [
+                    "Park Cheong-Hyo",
+                    "Kang Joon-Hyuck",
+                    "M. Tuci",
+                    "Lee Gi-Hyuk",
+                    "Song Jun-Seok",
+                    "Kang Yun-Gu",
+                    "Lee You-Hyeon",
+                    "Kim Dae-Won",
+                    "Choe Byeong-Chan",
+                    "Goh Young-Jun"
+                  ]
+                },
+                {
+                  "teamId": 2745,
+                  "team": "Bucheon FC 1995",
+                  "formation": "3-4-3",
+                  "coach": "Young-min Lee",
+                  "starters": [
+                    "Kim Hyeon-Yeob",
+                    "Patrick William",
+                    "Baek Dong-Gyu",
+                    "Hong Sung-Wook",
+                    "Thiaguinho",
+                    "Kim Sang-Jun",
+                    "Bong-Hun Yeo",
+                    "Rodrigo Bassani",
+                    "Vitor Gabriel",
+                    "Jefferson Galego"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1507017,
@@ -3867,8 +4076,47 @@
               "awayTeam": "FC Seoul",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2762,
+                  "team": "Jeonbuk Motors",
+                  "formation": "4-2-3-1",
+                  "coach": "Jung-yong Chung",
+                  "starters": [
+                    "Song Bum-Keun",
+                    "Kim Tae-Hwan",
+                    "Cho Wi-Je",
+                    "Kim Young-Bin",
+                    "Choi Woo-Jin",
+                    "Oberdan",
+                    "Kim Jin-Gyu",
+                    "Kim Seung-Sub",
+                    "Kang Sang-Yoon",
+                    "Lee Seung-Woo",
+                    "G. Paulauskas"
+                  ]
+                },
+                {
+                  "teamId": 2766,
+                  "team": "FC Seoul",
+                  "formation": "4-4-2",
+                  "coach": "Gi-dong Kim",
+                  "starters": [
+                    "Gu Sung-Yun",
+                    "Choi Jun",
+                    "Yazan Al Arab",
+                    "Juan Antonio",
+                    "Kim Jin-Su",
+                    "Jeong Seung-Won",
+                    "J. Son",
+                    "H. Babec",
+                    "Song Min-Kyu",
+                    "Anderson Oliveira",
+                    "P. Klimala"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1507018,
@@ -3880,8 +4128,44 @@
               "awayTeam": "Gimcheon Sangmu FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2764,
+                  "team": "Pohang Steelers",
+                  "formation": "3-4-3",
+                  "coach": "Tae-ha Park",
+                  "starters": [
+                    "Hong Seong-Min",
+                    "Shin Kwang-Hoon",
+                    "Park Chan-Yong",
+                    "H. Kim",
+                    "Eo Jeong-Won",
+                    "Kim Dong-Jin",
+                    "Ki Sung-Yueng",
+                    "Wanderson",
+                    "Cho Sang-Hyeok",
+                    "J. Tranziska"
+                  ]
+                },
+                {
+                  "teamId": 2768,
+                  "team": "Gimcheon Sangmu FC",
+                  "formation": "4-1-4-1",
+                  "coach": "Seung-jin Joo",
+                  "starters": [
+                    "Baek Jong-Beom",
+                    "Kim Tae-Hwan",
+                    "Byeon Jun-Soo",
+                    "Lee Jung-Taek",
+                    "Park Cheol-Woo",
+                    "Lee Kang-Hyun",
+                    "Go Jae-Hyeon",
+                    "Hong Yun-Sang",
+                    "Jeong Jae-Min"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -4680,8 +4964,42 @@
               "awayTeam": "Seongnam FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2753,
+                  "team": "Asan Mugunghwa",
+                  "formation": "3-4-3",
+                  "coach": "André Gaspar",
+                  "starters": [
+                    "Shin Song-Hun",
+                    "Lee Ho-In",
+                    "Jeong Woo-Jae",
+                    "Kim Young-Nam",
+                    "Son Jun-Ho",
+                    "Kim Ju-Sung",
+                    "Denisson",
+                    "Kim Jong-Min"
+                  ]
+                },
+                {
+                  "teamId": 2757,
+                  "team": "Seongnam FC",
+                  "formation": "4-4-2",
+                  "coach": "Kyung-jun Jeon",
+                  "starters": [
+                    "Lee Gwang-Yeon",
+                    "You Ju-An",
+                    "Lee Sang-Min",
+                    "Yu Sun",
+                    "Lee Jeong-Bin",
+                    "Ryu Jun-Sun",
+                    "Park Su-Bin",
+                    "Yang Tae-Yang",
+                    "Yun Min-Ho"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1510396,
@@ -4693,8 +5011,39 @@
               "awayTeam": "Yongin City",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 7060,
+                  "team": "Cheonan City",
+                  "formation": "3-4-3",
+                  "coach": "Jin-sub Park",
+                  "starters": [
+                    "Park Dae-Han",
+                    "Kim Seong-Ju",
+                    "Choi Jun-Hyeok",
+                    "Cha Seung-Hyeon",
+                    "Bruno Lamas",
+                    "Koo Jong-Uk",
+                    "Lee Dong-hyeop",
+                    "Lee Kyu-Min",
+                    "A. Toungara"
+                  ]
+                },
+                {
+                  "teamId": 9171,
+                  "team": "Yongin City",
+                  "formation": "3-4-3",
+                  "coach": "Yun-kyum Choi",
+                  "starters": [
+                    "Kim Hyeon-Jun",
+                    "Kim Jin-Ho",
+                    "Kim Han-seo",
+                    "Kim Han-Gil",
+                    "Vitinho"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1510397,
@@ -4706,8 +5055,42 @@
               "awayTeam": "Suwon Bluewings",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 7061,
+                  "team": "Cheongju",
+                  "formation": "4-3-3",
+                  "coach": "Rui Quinta",
+                  "starters": [
+                    "Lee Seung-Hwan",
+                    "Bak Keon-Woo",
+                    "Ju-Young Jo",
+                    "Kim Seon-Min",
+                    "Jeong Jin-Woo",
+                    "Seung-Chan Heo",
+                    "Lee Jong-Eon"
+                  ]
+                },
+                {
+                  "teamId": 2765,
+                  "team": "Suwon Bluewings",
+                  "formation": "4-4-2",
+                  "coach": "Jung-hyo Lee",
+                  "starters": [
+                    "Kim Joon-Hong",
+                    "Lee Geon-Hee",
+                    "Ko Jong-Hyun",
+                    "Han Hyeon-Seo",
+                    "Lee Jun-Jae",
+                    "Fessin",
+                    "Park Hyun-Bin",
+                    "Jeong Ho-Yeon",
+                    "Reis",
+                    "Kang Hyun-Muk"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1510398,
@@ -4719,8 +5102,44 @@
               "awayTeam": "Daegu FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 7087,
+                  "team": "Hwaseong",
+                  "formation": "3-4-3",
+                  "coach": "Du-ri Cha",
+                  "starters": [
+                    "Kim Seung-Gun",
+                    "Park Jun-Seo",
+                    "A. Vojnović",
+                    "Min-Jun Jang",
+                    "Kim Dae-Hwan",
+                    "Park Jae-Seong",
+                    "Lee Jong-Sung",
+                    "L. Pllana",
+                    "Kim Byong-Oh",
+                    "Jegal Jae-Min"
+                  ]
+                },
+                {
+                  "teamId": 2747,
+                  "team": "Daegu FC",
+                  "formation": "3-4-3",
+                  "coach": "Sung-yong Choi",
+                  "starters": [
+                    "Kim Kang-San",
+                    "Kim Hyeong-Jin",
+                    "Hwang In-Taek",
+                    "Hwang Jae-Won",
+                    "Han Jong-Mu",
+                    "Ryu Jae-Moon",
+                    "Choi Kang-min",
+                    "Danrlei",
+                    "Kim Ju-Kong"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -4728,7 +5147,7 @@
     },
     {
       "date": "2026-08-02",
-      "updatedAt": "2026-07-31T10:50:18.927Z",
+      "updatedAt": "2026-08-01T10:09:06.625Z",
       "leagues": [
         {
           "key": "SCOTTISH_PREMIERSHIP",
@@ -4739,24 +5158,24 @@
               "teamId": 1386,
               "team": "Dundee Utd",
               "rank": 1,
-              "points": 0,
+              "points": 1,
               "goalsDiff": 0,
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 0,
@@ -4768,9 +5187,41 @@
               }
             },
             {
+              "teamId": 257,
+              "team": "Rangers",
+              "rank": 2,
+              "points": 1,
+              "goalsDiff": 0,
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 1389,
               "team": "Falkirk",
-              "rank": 2,
+              "rank": 3,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4802,7 +5253,7 @@
             {
               "teamId": 254,
               "team": "Heart Of Midlothian",
-              "rank": 3,
+              "rank": 4,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4834,7 +5285,7 @@
             {
               "teamId": 249,
               "team": "Hibernian",
-              "rank": 4,
+              "rank": 5,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4866,7 +5317,7 @@
             {
               "teamId": 250,
               "team": "Kilmarnock",
-              "rank": 5,
+              "rank": 6,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4898,7 +5349,7 @@
             {
               "teamId": 256,
               "team": "Motherwell",
-              "rank": 6,
+              "rank": 7,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4930,7 +5381,7 @@
             {
               "teamId": 251,
               "team": "ST Mirren",
-              "rank": 7,
+              "rank": 8,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4962,7 +5413,7 @@
             {
               "teamId": 253,
               "team": "Dundee",
-              "rank": 8,
+              "rank": 9,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -4994,7 +5445,7 @@
             {
               "teamId": 258,
               "team": "ST Johnstone",
-              "rank": 9,
+              "rank": 10,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -5026,38 +5477,6 @@
             {
               "teamId": 247,
               "team": "Celtic",
-              "rank": 10,
-              "points": 0,
-              "goalsDiff": 0,
-              "form": "",
-              "all": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 257,
-              "team": "Rangers",
               "rank": 11,
               "points": 0,
               "goalsDiff": 0,
@@ -5341,15 +5760,15 @@
               "team": "Gangwon FC",
               "rank": 3,
               "points": 32,
-              "goalsDiff": 12,
+              "goalsDiff": 11,
               "form": "LDWDW",
               "all": {
-                "played": 19,
+                "played": 20,
                 "wins": 8,
                 "draws": 8,
-                "losses": 3,
-                "goalsFor": 24,
-                "goalsAgainst": 12
+                "losses": 4,
+                "goalsFor": 25,
+                "goalsAgainst": 14
               },
               "home": {
                 "played": 9,
@@ -5360,12 +5779,12 @@
                 "goalsAgainst": 6
               },
               "away": {
-                "played": 10,
+                "played": 11,
                 "wins": 4,
                 "draws": 4,
-                "losses": 2,
-                "goalsFor": 10,
-                "goalsAgainst": 6
+                "losses": 3,
+                "goalsFor": 11,
+                "goalsAgainst": 8
               }
             },
             {
@@ -5401,9 +5820,41 @@
               }
             },
             {
+              "teamId": 2748,
+              "team": "FC Anyang",
+              "rank": 5,
+              "points": 30,
+              "goalsDiff": 5,
+              "form": "WWDWL",
+              "all": {
+                "played": 20,
+                "wins": 7,
+                "draws": 9,
+                "losses": 4,
+                "goalsFor": 28,
+                "goalsAgainst": 23
+              },
+              "home": {
+                "played": 10,
+                "wins": 2,
+                "draws": 5,
+                "losses": 3,
+                "goalsFor": 12,
+                "goalsAgainst": 13
+              },
+              "away": {
+                "played": 10,
+                "wins": 5,
+                "draws": 4,
+                "losses": 1,
+                "goalsFor": 16,
+                "goalsAgainst": 10
+              }
+            },
+            {
               "teamId": 2763,
               "team": "Incheon United",
-              "rank": 5,
+              "rank": 6,
               "points": 28,
               "goalsDiff": 4,
               "form": "DWWLL",
@@ -5435,7 +5886,7 @@
             {
               "teamId": 2764,
               "team": "Pohang Steelers",
-              "rank": 6,
+              "rank": 7,
               "points": 28,
               "goalsDiff": -1,
               "form": "LLLWW",
@@ -5462,38 +5913,6 @@
                 "losses": 4,
                 "goalsFor": 16,
                 "goalsAgainst": 14
-              }
-            },
-            {
-              "teamId": 2748,
-              "team": "FC Anyang",
-              "rank": 7,
-              "points": 27,
-              "goalsDiff": 4,
-              "form": "WWDWL",
-              "all": {
-                "played": 19,
-                "wins": 6,
-                "draws": 9,
-                "losses": 4,
-                "goalsFor": 26,
-                "goalsAgainst": 22
-              },
-              "home": {
-                "played": 9,
-                "wins": 1,
-                "draws": 5,
-                "losses": 3,
-                "goalsFor": 10,
-                "goalsAgainst": 12
-              },
-              "away": {
-                "played": 10,
-                "wins": 5,
-                "draws": 4,
-                "losses": 1,
-                "goalsFor": 16,
-                "goalsAgainst": 10
               }
             },
             {
@@ -6718,7 +7137,7 @@
     },
     {
       "date": "2026-08-03",
-      "updatedAt": "2026-07-31T10:50:19.757Z",
+      "updatedAt": "2026-08-01T10:09:07.714Z",
       "leagues": [
         {
           "key": "SCOTTISH_PREMIERSHIP",
@@ -6729,24 +7148,24 @@
               "teamId": 1386,
               "team": "Dundee Utd",
               "rank": 1,
-              "points": 0,
+              "points": 1,
               "goalsDiff": 0,
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 0,
@@ -6758,9 +7177,41 @@
               }
             },
             {
+              "teamId": 257,
+              "team": "Rangers",
+              "rank": 2,
+              "points": 1,
+              "goalsDiff": 0,
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 1389,
               "team": "Falkirk",
-              "rank": 2,
+              "rank": 3,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6792,7 +7243,7 @@
             {
               "teamId": 254,
               "team": "Heart Of Midlothian",
-              "rank": 3,
+              "rank": 4,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6824,7 +7275,7 @@
             {
               "teamId": 249,
               "team": "Hibernian",
-              "rank": 4,
+              "rank": 5,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6856,7 +7307,7 @@
             {
               "teamId": 250,
               "team": "Kilmarnock",
-              "rank": 5,
+              "rank": 6,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6888,7 +7339,7 @@
             {
               "teamId": 256,
               "team": "Motherwell",
-              "rank": 6,
+              "rank": 7,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6920,7 +7371,7 @@
             {
               "teamId": 251,
               "team": "ST Mirren",
-              "rank": 7,
+              "rank": 8,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6952,7 +7403,7 @@
             {
               "teamId": 253,
               "team": "Dundee",
-              "rank": 8,
+              "rank": 9,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -6984,7 +7435,7 @@
             {
               "teamId": 258,
               "team": "ST Johnstone",
-              "rank": 9,
+              "rank": 10,
               "points": 0,
               "goalsDiff": 0,
               "form": "",
@@ -7016,38 +7467,6 @@
             {
               "teamId": 247,
               "team": "Celtic",
-              "rank": 10,
-              "points": 0,
-              "goalsDiff": 0,
-              "form": "",
-              "all": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 257,
-              "team": "Rangers",
               "rank": 11,
               "points": 0,
               "goalsDiff": 0,
@@ -7179,6 +7598,478 @@
               "homeTeam": "Hibernian",
               "awayTeamId": 256,
               "awayTeam": "Motherwell",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "updatedAt": "2026-08-01T10:09:08.806Z",
+      "leagues": [
+        {
+          "key": "SCOTTISH_PREMIERSHIP",
+          "leagueId": 179,
+          "season": "2026",
+          "standings": [
+            {
+              "teamId": 1386,
+              "team": "Dundee Utd",
+              "rank": 1,
+              "points": 1,
+              "goalsDiff": 0,
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 257,
+              "team": "Rangers",
+              "rank": 2,
+              "points": 1,
+              "goalsDiff": 0,
+              "form": "D",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 1389,
+              "team": "Falkirk",
+              "rank": 3,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 254,
+              "team": "Heart Of Midlothian",
+              "rank": 4,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 249,
+              "team": "Hibernian",
+              "rank": 5,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 250,
+              "team": "Kilmarnock",
+              "rank": 6,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 256,
+              "team": "Motherwell",
+              "rank": 7,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 251,
+              "team": "ST Mirren",
+              "rank": 8,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 253,
+              "team": "Dundee",
+              "rank": 9,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 258,
+              "team": "ST Johnstone",
+              "rank": 10,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 247,
+              "team": "Celtic",
+              "rank": 11,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 252,
+              "team": "Aberdeen",
+              "rank": 12,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            }
+          ],
+          "teams": [
+            {
+              "teamId": 247,
+              "team": "Celtic",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 253,
+              "team": "Dundee",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1556633,
+              "kickoff": "2026-08-04T03:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 247,
+              "homeTeam": "Celtic",
+              "awayTeamId": 253,
+              "awayTeam": "Dundee",
               "injuriesChecked": true,
               "injuries": [],
               "lineupsChecked": false,

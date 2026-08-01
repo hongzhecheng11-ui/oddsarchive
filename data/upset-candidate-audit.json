@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-07-31T19:47:03.837Z",
+  "updatedAt": "2026-08-01T10:08:46.094Z",
   "summary": {
     "trackedDays": 19,
-    "trackedCandidates": 13,
+    "trackedCandidates": 14,
     "resolvedCandidates": 12,
     "favoriteFailures": 6,
     "directionHits": 4
@@ -127,14 +127,14 @@
     {
       "date": "2026-08-01",
       "firstEvaluatedAt": "2026-07-28T19:46:52.070Z",
-      "lastEvaluatedAt": "2026-07-31T19:47:03.837Z",
+      "lastEvaluatedAt": "2026-08-01T10:08:46.094Z",
       "eligibleMatchCount": 8,
       "candidateIds": []
     },
     {
       "date": "2026-08-02",
       "firstEvaluatedAt": "2026-07-29T19:38:06.033Z",
-      "lastEvaluatedAt": "2026-07-31T19:47:03.837Z",
+      "lastEvaluatedAt": "2026-08-01T10:08:46.094Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1507019"
@@ -143,16 +143,18 @@
     {
       "date": "2026-08-03",
       "firstEvaluatedAt": "2026-07-30T19:45:42.021Z",
-      "lastEvaluatedAt": "2026-07-31T19:47:03.837Z",
+      "lastEvaluatedAt": "2026-08-01T10:08:46.094Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
     },
     {
       "date": "2026-08-04",
       "firstEvaluatedAt": "2026-07-31T19:47:03.837Z",
-      "lastEvaluatedAt": "2026-07-31T19:47:03.837Z",
+      "lastEvaluatedAt": "2026-08-01T10:08:46.094Z",
       "eligibleMatchCount": 1,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1556633"
+      ]
     }
   ],
   "candidates": [
@@ -487,7 +489,33 @@
       ],
       "sampleSize": 122,
       "firstEvaluatedAt": "2026-07-30T10:34:15.946Z",
-      "lastSeenAt": "2026-07-31T19:47:03.837Z",
+      "lastSeenAt": "2026-08-01T10:08:46.094Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1556633",
+      "fixtureId": "1556633",
+      "date": "2026-08-04",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeam": "Celtic",
+      "awayTeam": "Dundee",
+      "homeOdds": "1.20",
+      "drawOdds": "6.60",
+      "awayOdds": "12.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 69,
+      "firstEvaluatedAt": "2026-08-01T10:08:46.094Z",
+      "lastSeenAt": "2026-08-01T10:08:46.094Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
