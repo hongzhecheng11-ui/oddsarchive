@@ -5,22 +5,676 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-08-01T10:09:17.650Z",
+  "updatedAt": "2026-08-02T10:07:12.199Z",
   "collection": {
     "dates": [
+      "2026-08-01",
       "2026-07-31",
-      "2026-07-30",
-      "2026-07-29"
+      "2026-07-30"
     ],
-    "requestGroups": 3,
-    "skippedGroups": 75,
-    "finishedFixtures": 23,
-    "skippedComplete": 14,
+    "requestGroups": 5,
+    "skippedGroups": 73,
+    "finishedFixtures": 26,
+    "skippedComplete": 17,
     "saved": 9,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1556628,
+      "date": "2026-08-01",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 1386,
+      "homeTeam": "Dundee Utd",
+      "awayTeamId": 257,
+      "awayTeam": "Rangers",
+      "home": {
+        "teamId": 1386,
+        "team": "Dundee Utd",
+        "shots": 11,
+        "shotsOnGoal": 3,
+        "possession": 45,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 1.59
+      },
+      "away": {
+        "teamId": 257,
+        "team": "Rangers",
+        "shots": 21,
+        "shotsOnGoal": 7,
+        "possession": 55,
+        "corners": 10,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 1.43
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1386,
+          "team": "Dundee Utd",
+          "formation": "4-3-3",
+          "coach": "Jim Goodwin",
+          "starters": [
+            "J. Walton",
+            "J. Rawlins",
+            "B. Esselink",
+            "M. Forbes",
+            "W. Ferry",
+            "V. Sevelj",
+            "D. Tait",
+            "E. Agyei",
+            "J. Randall",
+            "L. Rose",
+            "Z. Sapsford"
+          ]
+        },
+        {
+          "teamId": 257,
+          "team": "Rangers",
+          "formation": "4-2-3-1",
+          "coach": "Derek McInnes",
+          "starters": [
+            "I. Pandur",
+            "D. Sterling",
+            "B. Godfrey",
+            "E. Fernandez",
+            "T. Rommens",
+            "M. Diomande",
+            "C. Devlin",
+            "R. Naderi",
+            "T. Aasgaard",
+            "D. Gassama",
+            "L. Shankland"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556629,
+      "date": "2026-08-01",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 1389,
+      "homeTeam": "Falkirk",
+      "awayTeamId": 251,
+      "awayTeam": "ST Mirren",
+      "home": {
+        "teamId": 1389,
+        "team": "Falkirk",
+        "shots": 10,
+        "shotsOnGoal": 1,
+        "possession": 58,
+        "corners": 7,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": 0.77
+      },
+      "away": {
+        "teamId": 251,
+        "team": "ST Mirren",
+        "shots": 15,
+        "shotsOnGoal": 5,
+        "possession": 42,
+        "corners": 7,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": 1.52
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1389,
+          "team": "Falkirk",
+          "formation": "4-2-3-1",
+          "coach": "John McGlynn",
+          "starters": [
+            "S. Bain",
+            "R. Strain",
+            "D. Melniks",
+            "L. Henderson",
+            "S. Tanser",
+            "J. McMillan",
+            "C. Sibbald",
+            "J. Gardner",
+            "F. Yeats",
+            "E. Laidlaw",
+            "R. MacIver"
+          ]
+        },
+        {
+          "teamId": 251,
+          "team": "ST Mirren",
+          "formation": "4-2-3-1",
+          "coach": "Craig McLeish",
+          "starters": [
+            "J. Chapman",
+            "J. Richardson",
+            "A. Gogic",
+            "M. Fraser",
+            "H. Fieldson",
+            "R. Carr",
+            "P. Nsio",
+            "S. Ramos",
+            "K. Phillips",
+            "C. R. Mochrie",
+            "E. Sule"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507016,
+      "date": "2026-08-01",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2746,
+      "homeTeam": "Gangwon FC",
+      "awayTeamId": 2745,
+      "awayTeam": "Bucheon FC 1995",
+      "home": {
+        "teamId": 2746,
+        "team": "Gangwon FC",
+        "shots": 11,
+        "shotsOnGoal": 3,
+        "possession": 67,
+        "corners": 6,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2745,
+        "team": "Bucheon FC 1995",
+        "shots": 10,
+        "shotsOnGoal": 6,
+        "possession": 33,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2746,
+          "team": "Gangwon FC",
+          "formation": "",
+          "coach": "Kyung-Ho Chung",
+          "starters": [
+            "Park Cheong-hyo",
+            "Kang Joon-hyuk",
+            "Marko Tuci",
+            "Gi-Hyuk Lee",
+            "Song Jun-Seok",
+            "Kang Yun-Gu",
+            "You-Hyeon Lee",
+            "Kim Dong-hyeon",
+            "Dae-won Kim",
+            "Byeong-chan Choi",
+            "Young-jun Goh"
+          ]
+        },
+        {
+          "teamId": 2745,
+          "team": "Bucheon FC 1995",
+          "formation": "",
+          "coach": "Ou-Ghu Kwon",
+          "starters": [
+            "Hyeon-yeob kim",
+            "Patrick William",
+            "Dong-kyu Baek",
+            "Sung-wook Hong",
+            "Thiaguinho Santos",
+            "Sung Ye-geon",
+            "Sang-jun Kim",
+            "Bong-hun Yeo",
+            "Rodrigo Bassani",
+            "Vitor Gabriel",
+            "Galego"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507017,
+      "date": "2026-08-01",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2762,
+      "homeTeam": "Jeonbuk Motors",
+      "awayTeamId": 2766,
+      "awayTeam": "FC Seoul",
+      "home": {
+        "teamId": 2762,
+        "team": "Jeonbuk Motors",
+        "shots": 3,
+        "shotsOnGoal": 0,
+        "possession": 53,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2766,
+        "team": "FC Seoul",
+        "shots": 2,
+        "shotsOnGoal": 0,
+        "possession": 47,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2762,
+          "team": "Jeonbuk Motors",
+          "formation": "",
+          "coach": "Jung-Yong Chung",
+          "starters": [
+            "Song Bum-keun",
+            "Tae-hwan Kim",
+            "Wi-je Cho",
+            "Yeong-bin Kim",
+            "Choi Woo-jin",
+            "Oberdan Alionço",
+            "Jin-gyu Kim",
+            "Seung-seob Kim",
+            "Kang Sang-Yun",
+            "Seung-Woo Lee",
+            "Gytis Paulauskas"
+          ]
+        },
+        {
+          "teamId": 2766,
+          "team": "FC Seoul",
+          "formation": "",
+          "coach": "Gi-Dong Kim",
+          "starters": [
+            "Gu Sung-yun",
+            "Choi Jun",
+            "Yazan Al-Arab",
+            "Juan Antonio Ros",
+            "Kim Jin-su",
+            "Seung-Won Jeong",
+            "Son Jeong-beom",
+            "Hrvoje Babec",
+            "Min-kyu Song",
+            "Anderson Oliveira",
+            "Patryk Klimala"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507018,
+      "date": "2026-08-01",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2764,
+      "homeTeam": "Pohang Steelers",
+      "awayTeamId": 2768,
+      "awayTeam": "Gimcheon Sangmu FC",
+      "home": {
+        "teamId": 2764,
+        "team": "Pohang Steelers",
+        "shots": 6,
+        "shotsOnGoal": 2,
+        "possession": 39,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2768,
+        "team": "Gimcheon Sangmu FC",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 61,
+        "corners": 7,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2764,
+          "team": "Pohang Steelers",
+          "formation": "",
+          "coach": "Tae-Ha Park",
+          "starters": [
+            "Sung-min Hong",
+            "Kwang-hun Shin",
+            "Park Chan-Yong",
+            "Ho-jin Kim",
+            "Jeong-won Eo",
+            "Dong-jin Kim",
+            "Sung-Yueng Ki",
+            "Wanderson",
+            "An Jae-joon",
+            "Sang-hyeok Cho",
+            "Jakob Tranziska"
+          ]
+        },
+        {
+          "teamId": 2768,
+          "team": "Gimcheon Sangmu FC",
+          "formation": "",
+          "coach": "Seung-jin Joo",
+          "starters": [
+            "Jong-beom Baek",
+            "Tae-hwan Kim",
+            "Byeon Jun-soo",
+            "Jung-taek Lee",
+            "Park Cheol-woo",
+            "Lee Kang-Hyeon",
+            "Jae-hyeon Go",
+            "Se-jin Park",
+            "Tae-jun Park",
+            "Yun-sang Hong",
+            "Jeong Jae-Min"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510395,
+      "date": "2026-08-01",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2753,
+      "homeTeam": "Asan Mugunghwa",
+      "awayTeamId": 2757,
+      "awayTeam": "Seongnam FC",
+      "home": {
+        "teamId": 2753,
+        "team": "Asan Mugunghwa",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2757,
+        "team": "Seongnam FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2753,
+          "team": "Asan Mugunghwa",
+          "formation": "3-4-3",
+          "coach": "André Gaspar",
+          "starters": [
+            "Shin Song-Hun",
+            "Lee Ho-In",
+            "Jeong Woo-Jae",
+            "Kim Young-Nam",
+            "Son Jun-Ho",
+            "Kim Ju-Sung",
+            "Kim Jong-Min",
+            "Denisson"
+          ]
+        },
+        {
+          "teamId": 2757,
+          "team": "Seongnam FC",
+          "formation": "4-4-2",
+          "coach": "Kyung-jun Jeon",
+          "starters": [
+            "Lee Gwang-Yeon",
+            "You Ju-An",
+            "Lee Sang-Min",
+            "Yu Sun",
+            "Lee Jeong-Bin",
+            "Ryu Jun-Sun",
+            "Park Su-Bin",
+            "Yang Tae-Yang",
+            "Yun Min-Ho"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510396,
+      "date": "2026-08-01",
+      "league": "KLEAGUE2",
+      "homeTeamId": 7060,
+      "homeTeam": "Cheonan City",
+      "awayTeamId": 9171,
+      "awayTeam": "Yongin City",
+      "home": {
+        "teamId": 7060,
+        "team": "Cheonan City",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 9171,
+        "team": "Yongin City",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 7060,
+          "team": "Cheonan City",
+          "formation": "3-4-3",
+          "coach": "Jin-sub Park",
+          "starters": [
+            "Park Dae-Han",
+            "Kim Seong-Ju",
+            "Choi Jun-Hyeok",
+            "Cha Seung-Hyeon",
+            "Bruno Lamas",
+            "Koo Jong-Uk",
+            "Lee Dong-hyeop",
+            "Lee Kyu-Min",
+            "A. Toungara"
+          ]
+        },
+        {
+          "teamId": 9171,
+          "team": "Yongin City",
+          "formation": "3-4-3",
+          "coach": "Yun-kyum Choi",
+          "starters": [
+            "Kim Hyeon-Jun",
+            "Kim Jin-Ho",
+            "Kim Han-seo",
+            "Kim Han-Gil",
+            "Vitinho"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510397,
+      "date": "2026-08-01",
+      "league": "KLEAGUE2",
+      "homeTeamId": 7061,
+      "homeTeam": "Cheongju",
+      "awayTeamId": 2765,
+      "awayTeam": "Suwon Bluewings",
+      "home": {
+        "teamId": 7061,
+        "team": "Cheongju",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2765,
+        "team": "Suwon Bluewings",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 7061,
+          "team": "Cheongju",
+          "formation": "4-3-3",
+          "coach": "Rui Quinta",
+          "starters": [
+            "Lee Seung-Hwan",
+            "Bak Keon-Woo",
+            "Ju-Young Jo",
+            "Kim Seon-Min",
+            "Jeong Jin-Woo",
+            "Seung-Chan Heo",
+            "Lee Jong-Eon"
+          ]
+        },
+        {
+          "teamId": 2765,
+          "team": "Suwon Bluewings",
+          "formation": "4-4-2",
+          "coach": "Jung-hyo Lee",
+          "starters": [
+            "Kim Joon-Hong",
+            "Lee Geon-Hee",
+            "Ko Jong-Hyun",
+            "Han Hyeon-Seo",
+            "Lee Jun-Jae",
+            "Fessin",
+            "Park Hyun-Bin",
+            "Jeong Ho-Yeon",
+            "Reis",
+            "Kang Hyun-Muk"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510398,
+      "date": "2026-08-01",
+      "league": "KLEAGUE2",
+      "homeTeamId": 7087,
+      "homeTeam": "Hwaseong",
+      "awayTeamId": 2747,
+      "awayTeam": "Daegu FC",
+      "home": {
+        "teamId": 7087,
+        "team": "Hwaseong",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2747,
+        "team": "Daegu FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 7087,
+          "team": "Hwaseong",
+          "formation": "3-4-3",
+          "coach": "Du-ri Cha",
+          "starters": [
+            "Kim Seung-Gun",
+            "Park Jun-Seo",
+            "A. Vojnović",
+            "Min-Jun Jang",
+            "Kim Dae-Hwan",
+            "Park Jae-Seong",
+            "Lee Jong-Sung",
+            "L. Pllana",
+            "Kim Byong-Oh",
+            "Jegal Jae-Min"
+          ]
+        },
+        {
+          "teamId": 2747,
+          "team": "Daegu FC",
+          "formation": "3-4-3",
+          "coach": "Sung-yong Choi",
+          "starters": [
+            "Kim Kang-San",
+            "Kim Hyeong-Jin",
+            "Hwang In-Taek",
+            "Hwang Jae-Won",
+            "Han Jong-Mu",
+            "Ryu Jae-Moon",
+            "Choi Kang-min",
+            "Danrlei",
+            "Kim Ju-Kong"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1593526,
       "date": "2026-07-31",
