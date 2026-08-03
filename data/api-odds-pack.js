@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-08-03T11:40:28.559Z",
+  "updatedAt": "2026-08-03T19:50:50.558Z",
   "collection": {
-    "lastAttemptAt": "2026-08-03T11:39:42.356Z",
-    "lastSuccessAt": "2026-08-03T11:40:28.559Z",
-    "requestSuccesses": 104,
+    "lastAttemptAt": "2026-08-03T19:50:40.866Z",
+    "lastSuccessAt": "2026-08-03T19:50:50.558Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
-    "addedCount": 10,
-    "updatedCount": 11,
-    "duplicateCount": 3,
+    "addedCount": 0,
+    "updatedCount": 1,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -8211,13 +8211,13 @@
       "fixtureId": "1556633",
       "homeTeam": "Celtic",
       "awayTeam": "Dundee",
-      "homeOdds": "1.17",
-      "drawOdds": "6.80",
-      "awayOdds": "15.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.14",
+      "drawOdds": "8.00",
+      "awayOdds": "16.00",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-03T11:39:57.077Z",
+      "oddsUpdatedAt": "2026-08-03T19:50:44.218Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-01T10:08:13.996Z",

@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-03T11:40:28.806Z",
+  "updatedAt": "2026-08-03T19:50:50.805Z",
   "summary": {
-    "trackedDays": 21,
-    "trackedCandidates": 14,
-    "resolvedCandidates": 13,
+    "trackedDays": 22,
+    "trackedCandidates": 15,
+    "resolvedCandidates": 14,
     "favoriteFailures": 6,
     "directionHits": 4
   },
@@ -157,16 +157,25 @@
     {
       "date": "2026-08-05",
       "firstEvaluatedAt": "2026-08-01T19:22:47.881Z",
-      "lastEvaluatedAt": "2026-08-03T11:40:28.806Z",
+      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-08-06",
       "firstEvaluatedAt": "2026-08-02T19:23:21.602Z",
-      "lastEvaluatedAt": "2026-08-03T11:40:28.806Z",
+      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
+    },
+    {
+      "date": "2026-08-07",
+      "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
+      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
+      "eligibleMatchCount": 10,
+      "candidateIds": [
+        "fixture:1607564"
+      ]
     }
   ],
   "candidates": [
@@ -528,6 +537,32 @@
       "sampleSize": 69,
       "firstEvaluatedAt": "2026-08-01T10:08:46.094Z",
       "lastSeenAt": "2026-08-01T19:22:47.881Z",
+      "result": "H",
+      "score": "1-0",
+      "resolvedAt": "2026-08-03T19:50:50.805Z",
+      "favoriteFailed": false,
+      "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1607564",
+      "fixtureId": "1607564",
+      "date": "2026-08-07",
+      "league": "UEL",
+      "homeTeam": "Red Bull Salzburg",
+      "awayTeam": "Pafos",
+      "homeOdds": "4.90",
+      "drawOdds": "3.90",
+      "awayOdds": "1.70",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 16,
+      "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
+      "lastSeenAt": "2026-08-03T19:50:50.805Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
