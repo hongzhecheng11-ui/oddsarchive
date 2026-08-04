@@ -5,22 +5,97 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-08-03T11:40:56.563Z",
+  "updatedAt": "2026-08-04T10:49:38.285Z",
   "collection": {
     "dates": [
+      "2026-08-03",
       "2026-08-02",
-      "2026-08-01",
-      "2026-07-31"
+      "2026-08-01"
     ],
     "requestGroups": 7,
     "skippedGroups": 71,
-    "finishedFixtures": 27,
+    "finishedFixtures": 19,
     "skippedComplete": 18,
-    "saved": 9,
+    "saved": 1,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1556632,
+      "date": "2026-08-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 249,
+      "homeTeam": "Hibernian",
+      "awayTeamId": 256,
+      "awayTeam": "Motherwell",
+      "home": {
+        "teamId": 249,
+        "team": "Hibernian",
+        "shots": 19,
+        "shotsOnGoal": 6,
+        "possession": 48,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 1.92
+      },
+      "away": {
+        "teamId": 256,
+        "team": "Motherwell",
+        "shots": 9,
+        "shotsOnGoal": 5,
+        "possession": 52,
+        "corners": 2,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 2
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 249,
+          "team": "Hibernian",
+          "formation": "3-4-3",
+          "coach": "David Gray",
+          "starters": [
+            "R. Sallinger",
+            "W. O'Hora",
+            "J. Kerr",
+            "J. Obita",
+            "F. Passlack",
+            "J. Mulligan",
+            "M. Chaiwa",
+            "A. Mayor",
+            "O. Elding",
+            "N. Lowe",
+            "M. Boyle"
+          ]
+        },
+        {
+          "teamId": 256,
+          "team": "Motherwell",
+          "formation": "4-4-2",
+          "coach": "Alfred Johansson",
+          "starters": [
+            "A. Paulsen",
+            "T. Sparrow",
+            "J. Girdwood-Reich",
+            "M. Moormann",
+            "D. Williams",
+            "W. Vogt",
+            "O. Priestman",
+            "L. Fadinger",
+            "E. Longelo",
+            "I. Said",
+            "R. Charles-Cook"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1556630,
       "date": "2026-08-02",

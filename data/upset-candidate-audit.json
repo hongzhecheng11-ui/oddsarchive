@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-03T19:50:50.805Z",
+  "updatedAt": "2026-08-04T10:49:04.690Z",
   "summary": {
     "trackedDays": 22,
-    "trackedCandidates": 15,
+    "trackedCandidates": 16,
     "resolvedCandidates": 14,
     "favoriteFailures": 6,
     "directionHits": 4
@@ -157,22 +157,24 @@
     {
       "date": "2026-08-05",
       "firstEvaluatedAt": "2026-08-01T19:22:47.881Z",
-      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
+      "lastEvaluatedAt": "2026-08-04T10:49:04.690Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-08-06",
       "firstEvaluatedAt": "2026-08-02T19:23:21.602Z",
-      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
+      "lastEvaluatedAt": "2026-08-04T10:49:04.690Z",
       "eligibleMatchCount": 3,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1607165"
+      ]
     },
     {
       "date": "2026-08-07",
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "eligibleMatchCount": 10,
+      "lastEvaluatedAt": "2026-08-04T10:49:04.690Z",
+      "eligibleMatchCount": 16,
       "candidateIds": [
         "fixture:1607564"
       ]
@@ -544,6 +546,32 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1607165",
+      "fixtureId": "1607165",
+      "date": "2026-08-06",
+      "league": "UCL",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Sturm Graz",
+      "homeOdds": "1.34",
+      "drawOdds": "4.65",
+      "awayOdds": "9.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 54,
+      "firstEvaluatedAt": "2026-08-04T10:49:04.690Z",
+      "lastSeenAt": "2026-08-04T10:49:04.690Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1607564",
       "fixtureId": "1607564",
       "date": "2026-08-07",
@@ -562,7 +590,7 @@
       ],
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastSeenAt": "2026-08-03T19:50:50.805Z",
+      "lastSeenAt": "2026-08-04T10:49:04.690Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
