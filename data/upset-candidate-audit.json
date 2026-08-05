@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-04T19:50:07.658Z",
+  "updatedAt": "2026-08-05T10:45:40.748Z",
   "summary": {
     "trackedDays": 23,
-    "trackedCandidates": 16,
+    "trackedCandidates": 19,
     "resolvedCandidates": 14,
     "favoriteFailures": 6,
     "directionHits": 4
@@ -164,26 +164,27 @@
     {
       "date": "2026-08-06",
       "firstEvaluatedAt": "2026-08-02T19:23:21.602Z",
-      "lastEvaluatedAt": "2026-08-04T19:50:07.658Z",
+      "lastEvaluatedAt": "2026-08-05T10:45:40.748Z",
       "eligibleMatchCount": 3,
-      "candidateIds": [
-        "fixture:1607165"
-      ]
+      "candidateIds": []
     },
     {
       "date": "2026-08-07",
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastEvaluatedAt": "2026-08-04T19:50:07.658Z",
+      "lastEvaluatedAt": "2026-08-05T10:45:40.748Z",
       "eligibleMatchCount": 16,
       "candidateIds": [
-        "fixture:1607564"
+        "fixture:1607564",
+        "fixture:1510408",
+        "fixture:1607175",
+        "fixture:1607178"
       ]
     },
     {
       "date": "2026-08-08",
       "firstEvaluatedAt": "2026-08-04T19:50:07.658Z",
-      "lastEvaluatedAt": "2026-08-04T19:50:07.658Z",
-      "eligibleMatchCount": 3,
+      "lastEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "eligibleMatchCount": 13,
       "candidateIds": []
     }
   ],
@@ -579,6 +580,84 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1510408",
+      "fixtureId": "1510408",
+      "date": "2026-08-07",
+      "league": "KLEAGUE2",
+      "homeTeam": "Yongin City",
+      "awayTeam": "Busan I Park",
+      "homeOdds": "3.65",
+      "drawOdds": "3.45",
+      "awayOdds": "1.90",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 16,
+      "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1607175",
+      "fixtureId": "1607175",
+      "date": "2026-08-07",
+      "league": "UEL",
+      "homeTeam": "KuPS",
+      "awayTeam": "Universitatea Craiova",
+      "homeOdds": "3.90",
+      "drawOdds": "3.45",
+      "awayOdds": "1.90",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1607178",
+      "fixtureId": "1607178",
+      "date": "2026-08-07",
+      "league": "UEL",
+      "homeTeam": "Lincoln Red Imps FC",
+      "awayTeam": "Omonia Nicosia",
+      "homeOdds": "5.30",
+      "drawOdds": "4.20",
+      "awayOdds": "1.55",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 38,
+      "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1607564",
       "fixtureId": "1607564",
       "date": "2026-08-07",
@@ -597,7 +676,7 @@
       ],
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastSeenAt": "2026-08-04T19:50:07.658Z",
+      "lastSeenAt": "2026-08-05T10:45:40.748Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

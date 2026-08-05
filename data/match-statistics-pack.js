@@ -5,22 +5,97 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-08-04T10:49:38.285Z",
+  "updatedAt": "2026-08-05T10:46:15.456Z",
   "collection": {
     "dates": [
+      "2026-08-04",
       "2026-08-03",
-      "2026-08-02",
-      "2026-08-01"
+      "2026-08-02"
     ],
-    "requestGroups": 7,
-    "skippedGroups": 71,
-    "finishedFixtures": 19,
-    "skippedComplete": 18,
+    "requestGroups": 5,
+    "skippedGroups": 73,
+    "finishedFixtures": 11,
+    "skippedComplete": 10,
     "saved": 1,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1556633,
+      "date": "2026-08-04",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 247,
+      "homeTeam": "Celtic",
+      "awayTeamId": 253,
+      "awayTeam": "Dundee",
+      "home": {
+        "teamId": 247,
+        "team": "Celtic",
+        "shots": 18,
+        "shotsOnGoal": 4,
+        "possession": 65,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 2.55
+      },
+      "away": {
+        "teamId": 253,
+        "team": "Dundee",
+        "shots": 11,
+        "shotsOnGoal": 3,
+        "possession": 35,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 0.47
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 247,
+          "team": "Celtic",
+          "formation": "4-2-3-1",
+          "coach": "Martin O'Neill",
+          "starters": [
+            "Viljami Sinisalo",
+            "Alistair Johnston",
+            "Cameron Carter-Vickers",
+            "Auston Trusty",
+            "Kieran Tierney",
+            "Callum McGregor",
+            "Arne Engels",
+            "Camilo Durán",
+            "Benjamin Nygren",
+            "Yang Hyun-Jun",
+            "Kasper Høgh"
+          ]
+        },
+        {
+          "teamId": 253,
+          "team": "Dundee",
+          "formation": "4-4-2",
+          "coach": "Steven Pressley",
+          "starters": [
+            "Owen Goodman",
+            "Drey Wright",
+            "Ryan Astley",
+            "Owen Bevan",
+            "Idris Odutayo",
+            "Joe Bevan",
+            "Ethan Hamilton",
+            "Ryan Finnigan",
+            "Charlie Reilly",
+            "Joe Westley",
+            "Simon Murray"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1556632,
       "date": "2026-08-03",
