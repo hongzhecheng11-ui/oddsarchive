@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-05T10:45:40.748Z",
+  "updatedAt": "2026-08-05T19:49:18.295Z",
   "summary": {
-    "trackedDays": 23,
-    "trackedCandidates": 19,
-    "resolvedCandidates": 14,
+    "trackedDays": 24,
+    "trackedCandidates": 20,
+    "resolvedCandidates": 15,
     "favoriteFailures": 6,
     "directionHits": 4
   },
@@ -171,7 +171,7 @@
     {
       "date": "2026-08-07",
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "lastEvaluatedAt": "2026-08-05T19:49:18.295Z",
       "eligibleMatchCount": 16,
       "candidateIds": [
         "fixture:1607564",
@@ -183,9 +183,18 @@
     {
       "date": "2026-08-08",
       "firstEvaluatedAt": "2026-08-04T19:50:07.658Z",
-      "lastEvaluatedAt": "2026-08-05T10:45:40.748Z",
+      "lastEvaluatedAt": "2026-08-05T19:49:18.295Z",
       "eligibleMatchCount": 13,
       "candidateIds": []
+    },
+    {
+      "date": "2026-08-09",
+      "firstEvaluatedAt": "2026-08-05T19:49:18.295Z",
+      "lastEvaluatedAt": "2026-08-05T19:49:18.295Z",
+      "eligibleMatchCount": 8,
+      "candidateIds": [
+        "fixture:1552119"
+      ]
     }
   ],
   "candidates": [
@@ -573,11 +582,11 @@
       "sampleSize": 54,
       "firstEvaluatedAt": "2026-08-04T10:49:04.690Z",
       "lastSeenAt": "2026-08-04T19:50:07.658Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "2-0",
+      "resolvedAt": "2026-08-05T19:49:18.295Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1510408",
@@ -598,7 +607,7 @@
       ],
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
-      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T19:49:18.295Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -624,7 +633,7 @@
       ],
       "sampleSize": 24,
       "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
-      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T19:49:18.295Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -650,7 +659,7 @@
       ],
       "sampleSize": 38,
       "firstEvaluatedAt": "2026-08-05T10:45:40.748Z",
-      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T19:49:18.295Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -676,7 +685,33 @@
       ],
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-08-03T19:50:50.805Z",
-      "lastSeenAt": "2026-08-05T10:45:40.748Z",
+      "lastSeenAt": "2026-08-05T19:49:18.295Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552119",
+      "fixtureId": "1552119",
+      "date": "2026-08-09",
+      "league": "EREDIVISIE",
+      "homeTeam": "GO Ahead Eagles",
+      "awayTeam": "Willem II",
+      "homeOdds": "1.59",
+      "drawOdds": "4.10",
+      "awayOdds": "5.00",
+      "favoriteKey": "H",
+      "candidateLabel": "원정 역배 주의",
+      "predictedDirection": "A",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 155,
+      "firstEvaluatedAt": "2026-08-05T19:49:18.295Z",
+      "lastSeenAt": "2026-08-05T19:49:18.295Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
