@@ -31,7 +31,7 @@ jobs:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=0 --leagues=KLEAGUE1
+            npm run collect:api-odds:auto
           elif [ "${{ github.event.schedule }}" = "10 8 * * *" ]; then
             npm run collect:api-odds:auto
           else
