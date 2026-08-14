@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-14T08:48:03.140Z",
+  "updatedAt": "2026-08-14T08:55:08.463Z",
   "summary": {
-    "trackedDays": 24,
-    "trackedCandidates": 20,
+    "trackedDays": 27,
+    "trackedCandidates": 22,
     "resolvedCandidates": 15,
     "favoriteFailures": 6,
     "directionHits": 4
@@ -195,6 +195,31 @@
       "candidateIds": [
         "fixture:1552119"
       ]
+    },
+    {
+      "date": "2026-08-15",
+      "firstEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "lastEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "eligibleMatchCount": 22,
+      "candidateIds": [
+        "fixture:1558591"
+      ]
+    },
+    {
+      "date": "2026-08-16",
+      "firstEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "lastEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "eligibleMatchCount": 31,
+      "candidateIds": [
+        "fixture:1552134"
+      ]
+    },
+    {
+      "date": "2026-08-17",
+      "firstEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "lastEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "eligibleMatchCount": 11,
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -712,6 +737,58 @@
       "sampleSize": 155,
       "firstEvaluatedAt": "2026-08-05T19:49:18.295Z",
       "lastSeenAt": "2026-08-05T19:49:18.295Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1558591",
+      "fixtureId": "1558591",
+      "date": "2026-08-15",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeam": "Union St. Gilloise",
+      "awayTeam": "Zulte Waregem",
+      "homeOdds": "1.33",
+      "drawOdds": "4.80",
+      "awayOdds": "9.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 52,
+      "firstEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "lastSeenAt": "2026-08-14T08:55:08.463Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552134",
+      "fixtureId": "1552134",
+      "date": "2026-08-16",
+      "league": "EREDIVISIE",
+      "homeTeam": "Ajax",
+      "awayTeam": "Heerenveen",
+      "homeOdds": "1.44",
+      "drawOdds": "4.85",
+      "awayOdds": "6.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 39,
+      "firstEvaluatedAt": "2026-08-14T08:55:08.463Z",
+      "lastSeenAt": "2026-08-14T08:55:08.463Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
