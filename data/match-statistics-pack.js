@@ -5,22 +5,1222 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-08-05T10:46:15.456Z",
+  "updatedAt": "2026-08-14T09:19:15.677Z",
   "collection": {
     "dates": [
-      "2026-08-04",
-      "2026-08-03",
-      "2026-08-02"
+      "2026-08-13",
+      "2026-08-12",
+      "2026-08-11"
     ],
     "requestGroups": 5,
     "skippedGroups": 73,
-    "finishedFixtures": 11,
-    "skippedComplete": 10,
-    "saved": 1,
+    "finishedFixtures": 16,
+    "skippedComplete": 0,
+    "saved": 16,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1607170,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 664,
+      "homeTeam": "Kairat Almaty",
+      "awayTeamId": 646,
+      "awayTeam": "Levski Sofia",
+      "home": {
+        "teamId": 664,
+        "team": "Kairat Almaty",
+        "shots": 20,
+        "shotsOnGoal": 6,
+        "possession": 56,
+        "corners": 9,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 646,
+        "team": "Levski Sofia",
+        "shots": 9,
+        "shotsOnGoal": 2,
+        "possession": 44,
+        "corners": 4,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 664,
+          "team": "Kairat Almaty",
+          "formation": "4-2-3-1",
+          "coach": "Rafael Urazbakhtin",
+          "starters": [
+            "T. Anarbekov",
+            "D. Kasabulat",
+            "A. Shirobokov",
+            "Lucas Africo",
+            "L. Mata",
+            "O. Baybek",
+            "J. Oksanen",
+            "A. Mrynskiy",
+            "G. Mendonsa",
+            "O. Jukkola",
+            "M. Gual"
+          ]
+        },
+        {
+          "teamId": 646,
+          "team": "Levski Sofia",
+          "formation": "4-2-3-1",
+          "coach": "Julio Velazquez",
+          "starters": [
+            "S. Vutsov",
+            "A. Neves",
+            "K. Dimitrov",
+            "N. Serafimov",
+            "A. Centelles",
+            "G. Trdin",
+            "M. Moubarik",
+            "A. Oko-Flex",
+            "Serginho",
+            "Everton Bala",
+            "Reinaldo"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1598827,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 327,
+      "homeTeam": "Bodo/Glimt",
+      "awayTeamId": 1393,
+      "awayTeam": "Union St. Gilloise",
+      "home": {
+        "teamId": 327,
+        "team": "Bodo/Glimt",
+        "shots": 23,
+        "shotsOnGoal": 9,
+        "possession": 70,
+        "corners": 10,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1393,
+        "team": "Union St. Gilloise",
+        "shots": 19,
+        "shotsOnGoal": 5,
+        "possession": 30,
+        "corners": 1,
+        "yellowCards": 4,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 327,
+          "team": "Bodo/Glimt",
+          "formation": "4-3-3",
+          "coach": "Kjetil Knutsen",
+          "starters": [
+            "N. Haikin",
+            "F. Sjovold",
+            "O. L. Bjortuft",
+            "J. Gundersen",
+            "F. Bjorkan",
+            "S. Auklend",
+            "P. Berg",
+            "S. Fet",
+            "O. Blomberg",
+            "O. Brynhildsen",
+            "J. Hauge"
+          ]
+        },
+        {
+          "teamId": 1393,
+          "team": "Union St. Gilloise",
+          "formation": "3-5-2",
+          "coach": "David Hubert",
+          "starters": [
+            "V. Chambaere",
+            "K. Mac Allister",
+            "M. Sylla",
+            "N. Havenaar",
+            "L. Patris",
+            "B. Zeneli",
+            "K. Van De Perre",
+            "A. Zorgane",
+            "Guilherme Smith",
+            "P. David",
+            "D. Olaru"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607172,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 13976,
+      "homeTeam": "Sabah FA",
+      "awayTeamId": 406,
+      "awayTeam": "Aarhus",
+      "home": {
+        "teamId": 13976,
+        "team": "Sabah FA",
+        "shots": 29,
+        "shotsOnGoal": 10,
+        "possession": 50,
+        "corners": 7,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 406,
+        "team": "Aarhus",
+        "shots": 14,
+        "shotsOnGoal": 5,
+        "possession": 50,
+        "corners": 4,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 13976,
+          "team": "Sabah FA",
+          "formation": "4-2-3-1",
+          "coach": "Valdas Dambrauskas",
+          "starters": [
+            "S. Pokatilov",
+            "A. Zedadka",
+            "S. Solvet",
+            "R. Dashdamirov",
+            "T. Puchacz",
+            "U. Rakhmonaliyev",
+            "I. Lepinjica",
+            "V. Simic",
+            "A. Isayev",
+            "J. Mickels",
+            "O. Mbina"
+          ]
+        },
+        {
+          "teamId": 406,
+          "team": "Aarhus",
+          "formation": "3-1-4-2",
+          "coach": "Jakob Poulsen",
+          "starters": [
+            "M. Hedenstad",
+            "J. Andersen",
+            "C. Rosler",
+            "E. Kahl",
+            "J. Jonsson",
+            "R. Carstensen",
+            "M. Knudsen",
+            "K. Arnstad",
+            "G. Links",
+            "T. Bech",
+            "J. Bogere"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607171,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 3872,
+      "homeTeam": "Kauno Žalgiris",
+      "awayTeamId": 620,
+      "awayTeam": "Dinamo Zagreb",
+      "home": {
+        "teamId": 3872,
+        "team": "Kauno Žalgiris",
+        "shots": null,
+        "shotsOnGoal": 7,
+        "possession": 61,
+        "corners": 8,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 620,
+        "team": "Dinamo Zagreb",
+        "shots": null,
+        "shotsOnGoal": 5,
+        "possession": 39,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3872,
+          "team": "Kauno Žalgiris",
+          "formation": "4-1-4-1",
+          "coach": "Eivinas Cerniauskas",
+          "starters": [
+            "D. Mikelionis",
+            "J. Moutachy",
+            "A. Tolordava",
+            "R. Lekiatas",
+            "M. Konatar",
+            "F. Baldassarra",
+            "M. Burba",
+            "A. Benchaib",
+            "V. Slivka",
+            "L. Krekovic",
+            "Renan Oliveira"
+          ]
+        },
+        {
+          "teamId": 620,
+          "team": "Dinamo Zagreb",
+          "formation": "4-3-3",
+          "coach": "Mario Kovacevic",
+          "starters": [
+            "I. Filipovic",
+            "M. Valincic",
+            "S. Dominguez",
+            "S. McKenna",
+            "M. Perez Vinlof",
+            "L. Kacavenda",
+            "J. Misic",
+            "L. Stojkovic",
+            "M. Lisica",
+            "D. Beljo",
+            "M. Orsic"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1598829,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 413,
+      "homeTeam": "NEC Nijmegen",
+      "awayTeamId": 553,
+      "awayTeam": "Olympiakos Piraeus",
+      "home": {
+        "teamId": 413,
+        "team": "NEC Nijmegen",
+        "shots": 16,
+        "shotsOnGoal": 7,
+        "possession": 54,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 553,
+        "team": "Olympiakos Piraeus",
+        "shots": 10,
+        "shotsOnGoal": 2,
+        "possession": 46,
+        "corners": 4,
+        "yellowCards": 4,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 413,
+          "team": "NEC Nijmegen",
+          "formation": "3-1-4-2",
+          "coach": "Dick Schreuder",
+          "starters": [
+            "G. Crettaz",
+            "T. Storm",
+            "P. Sandler",
+            "D. Fonville",
+            "D. Nejasmic",
+            "S. Ouaissa",
+            "N. Lebreton",
+            "D. Tadic",
+            "C. Bischoff",
+            "T. Chery",
+            "B. Linssen"
+          ]
+        },
+        {
+          "teamId": 553,
+          "team": "Olympiakos Piraeus",
+          "formation": "4-2-3-1",
+          "coach": "Luis Mendilibar Jose",
+          "starters": [
+            "B. Popovic",
+            "Rodinei",
+            "P. Retsos",
+            "L. Pirola",
+            "B. Onyemaechi",
+            "D. Garcia",
+            "S. Hezze",
+            "G. Martins",
+            "G. Sa",
+            "Jota Silva",
+            "A. El Kaabi"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607169,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 598,
+      "homeTeam": "FK Crvena Zvezda",
+      "awayTeamId": 563,
+      "awayTeam": "Hapoel Beer Sheva",
+      "home": {
+        "teamId": 598,
+        "team": "FK Crvena Zvezda",
+        "shots": null,
+        "shotsOnGoal": 2,
+        "possession": 4,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 563,
+        "team": "Hapoel Beer Sheva",
+        "shots": null,
+        "shotsOnGoal": 6,
+        "possession": 96,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 598,
+          "team": "FK Crvena Zvezda",
+          "formation": "4-2-3-1",
+          "coach": "Dejan Stankovic",
+          "starters": [
+            "Matheus",
+            "Seol Young-Woo",
+            "D. Luckassen",
+            "S. Erakovic",
+            "N. Tiknizyan",
+            "T. Elsnik",
+            "R. Krunic",
+            "O. Bukari",
+            "V. Kostov",
+            "Bruno Duarte",
+            "J. Enem"
+          ]
+        },
+        {
+          "teamId": 563,
+          "team": "Hapoel Beer Sheva",
+          "formation": "4-3-3",
+          "coach": "Ran Kozuch",
+          "starters": [
+            "O. Marciano",
+            "G. Mizrahi",
+            "Miguel Vitor",
+            "I. Rotman",
+            "P. Amador",
+            "E. Peretz",
+            "Lucas Ventura",
+            "N. Yehoshua",
+            "J. East",
+            "I. Zlatanovic",
+            "Z. Ahmed"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607173,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 656,
+      "homeTeam": "Slovan Bratislava",
+      "awayTeamId": 2240,
+      "awayTeam": "Mjallby AIF",
+      "home": {
+        "teamId": 656,
+        "team": "Slovan Bratislava",
+        "shots": null,
+        "shotsOnGoal": 4,
+        "possession": 50,
+        "corners": 2,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2240,
+        "team": "Mjallby AIF",
+        "shots": null,
+        "shotsOnGoal": 2,
+        "possession": 50,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 656,
+          "team": "Slovan Bratislava",
+          "formation": "4-1-4-1",
+          "coach": "Yaya Toure",
+          "starters": [
+            "D. Takac",
+            "C. Blackman",
+            "K. Bajric",
+            "S. Markovic",
+            "S. Cruz",
+            "P. Pokorny",
+            "M. Kianga",
+            "A. Mustafic",
+            "R. Ibrahim",
+            "S. Camara",
+            "M. Kukharevych"
+          ]
+        },
+        {
+          "teamId": 2240,
+          "team": "Mjallby AIF",
+          "formation": "3-4-3",
+          "coach": "Karl Aksum",
+          "starters": [
+            "R. Wallinder",
+            "A. Iqbal",
+            "L. Svanberg",
+            "T. Pettersson",
+            "V. Granath",
+            "J. Gustavsson",
+            "V. Gustafson",
+            "I. Hoffmann",
+            "J. Kjaer",
+            "J. Bergstrom",
+            "A. Samuelsen"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1605371,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 4360,
+      "homeTeam": "Celje",
+      "awayTeamId": 3683,
+      "awayTeam": "Ararat-Armenia",
+      "home": {
+        "teamId": 4360,
+        "team": "Celje",
+        "shots": null,
+        "shotsOnGoal": 8,
+        "possession": 50,
+        "corners": 12,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 3683,
+        "team": "Ararat-Armenia",
+        "shots": null,
+        "shotsOnGoal": 3,
+        "possession": 50,
+        "corners": 9,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 4360,
+          "team": "Celje",
+          "formation": "4-3-3",
+          "coach": "Vitor Campelos",
+          "starters": [
+            "Z. Leban",
+            "P. Sirvys",
+            "D. Hrka",
+            "A. Tutyskinas",
+            "L. Koutris",
+            "M. Kvesic",
+            "M. Zabukovnik",
+            "S. Seslar",
+            "M. Ivansek",
+            "A. Kucys",
+            "M. Avdyli"
+          ]
+        },
+        {
+          "teamId": 3683,
+          "team": "Ararat-Armenia",
+          "formation": "4-3-3",
+          "coach": "Tulipa",
+          "starters": [
+            "Joao Bravim",
+            "Junior Julio",
+            "B. R. Wilson Valdez",
+            "A. Malis",
+            "E. Grigoryan",
+            "H. Oliveira",
+            "K. Muradyan",
+            "A. Tera",
+            "A. Serobyan",
+            "Sandro Lima",
+            "Z. Banjaqui"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607174,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 637,
+      "homeTeam": "Sturm Graz",
+      "awayTeamId": 611,
+      "awayTeam": "Fenerbahçe",
+      "home": {
+        "teamId": 637,
+        "team": "Sturm Graz",
+        "shots": 19,
+        "shotsOnGoal": 2,
+        "possession": 50,
+        "corners": 7,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 611,
+        "team": "Fenerbahçe",
+        "shots": 11,
+        "shotsOnGoal": 6,
+        "possession": 50,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 637,
+          "team": "Sturm Graz",
+          "formation": "4-4-2",
+          "coach": "Fabio Ingolitsch",
+          "starters": [
+            "D. Khudyakov",
+            "A. Malic",
+            "J. Mitchell",
+            "P. Petrovic",
+            "E. Soglo",
+            "S. Seidl",
+            "J. Gorenc Stankovic",
+            "L. Weinhandl",
+            "J. Hodl",
+            "A. Kayombo",
+            "S. Jatta"
+          ]
+        },
+        {
+          "teamId": 611,
+          "team": "Fenerbahçe",
+          "formation": "4-2-3-1",
+          "coach": "Ismail Kartal",
+          "starters": [
+            "M. Gunok",
+            "N. Semedo",
+            "M. Skriniar",
+            "N. Ake",
+            "A. Brown",
+            "M. Guendouzi",
+            "N. Kante",
+            "M. Greenwood",
+            "M. Asensio",
+            "K. Akturkoglu",
+            "Talisca"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1598828,
+      "date": "2026-08-12",
+      "league": "UCL",
+      "homeTeamId": 80,
+      "homeTeam": "Lyon",
+      "awayTeamId": 628,
+      "awayTeam": "Sparta Praha",
+      "home": {
+        "teamId": 80,
+        "team": "Lyon",
+        "shots": 19,
+        "shotsOnGoal": 11,
+        "possession": 56,
+        "corners": 7,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 628,
+        "team": "Sparta Praha",
+        "shots": 6,
+        "shotsOnGoal": 1,
+        "possession": 44,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 80,
+          "team": "Lyon",
+          "formation": "4-2-3-1",
+          "coach": "Paulo Fonseca",
+          "starters": [
+            "D. Greif",
+            "A. Maitland-Niles",
+            "R. Kluivert",
+            "M. Niakhate",
+            "Abner Vinicius",
+            "T. Tessmann",
+            "T. Morton",
+            "E. Nuamah",
+            "C. Tolisso",
+            "M. Fofana",
+            "L. Openda"
+          ]
+        },
+        {
+          "teamId": 628,
+          "team": "Sparta Praha",
+          "formation": "4-2-3-1",
+          "coach": "Brian Priske",
+          "starters": [
+            "J. Surovcik",
+            "M. Suchomel",
+            "A. Sevinsky",
+            "A. Sorensen",
+            "M. Rynes",
+            "R. Macek",
+            "A. Irving",
+            "J. Mercado",
+            "A. Karabec",
+            "J. Alcocer",
+            "J. Brunes"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1607180,
+      "date": "2026-08-12",
+      "league": "UEL",
+      "homeTeamId": 3502,
+      "homeTeam": "Saburtalo",
+      "awayTeamId": 5354,
+      "awayTeam": "Larne",
+      "home": {
+        "teamId": 3502,
+        "team": "Saburtalo",
+        "shots": null,
+        "shotsOnGoal": 5,
+        "possession": 68,
+        "corners": 11,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5354,
+        "team": "Larne",
+        "shots": null,
+        "shotsOnGoal": 1,
+        "possession": 32,
+        "corners": 1,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3502,
+          "team": "Saburtalo",
+          "formation": "4-3-3",
+          "coach": "Andriy Demchenko",
+          "starters": [
+            "G. Makaridze",
+            "V. Selimovic",
+            "G. Kobuladze",
+            "A. Amisulashvili",
+            "J. Jinjolava",
+            "N. Dadiani",
+            "G. Kutsia",
+            "B. Kardava",
+            "N. Sikharulashvili",
+            "Z. Natchkebia",
+            "V. Bedoshvili"
+          ]
+        },
+        {
+          "teamId": 5354,
+          "team": "Larne",
+          "formation": "4-3-3",
+          "coach": "Gary Haveron",
+          "starters": [
+            "R. Ferguson",
+            "T. Cosgrove",
+            "M. Ridley",
+            "D. Bent",
+            "A. Donnelly",
+            "R. Doherty",
+            "C. Gallagher",
+            "S. Graham",
+            "D. Sloan",
+            "M. Gibson",
+            "M. Lusty"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1567329,
+      "date": "2026-08-12",
+      "league": "ACL",
+      "homeTeamId": 4220,
+      "homeTeam": "Pakhtakor",
+      "awayTeamId": 4532,
+      "awayTeam": "Al Hussein",
+      "home": {
+        "teamId": 4220,
+        "team": "Pakhtakor",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 4532,
+        "team": "Al Hussein",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 4220,
+          "team": "Pakhtakor",
+          "formation": "4-2-3-1",
+          "coach": "Kamoliddin Tadzhiev",
+          "starters": [
+            "Sandzhar Kuvvatov",
+            "Sherzod Nasrullaev",
+            "Muhammadrasul Abdumajidov",
+            "Zaid Tahseen",
+            "Dilshod Saitov",
+            "Akmal Mozgovoy",
+            "Abdurauf Buriev",
+            "Bashar Resan",
+            "Giovino Flamarion",
+            "Dostonbek Khamdamov",
+            "Aymen Hussein"
+          ]
+        },
+        {
+          "teamId": 4532,
+          "team": "Al Hussein",
+          "formation": "5-4-1",
+          "coach": "Ney Franco",
+          "starters": [
+            "Yazeed Abu Laila",
+            "Ahmad Assaf",
+            "Saleem Obaid",
+            "Yousef Abu Al Jazar",
+            "Ali Ahmad Hajabi",
+            "Mahmoud Deeb",
+            "Aref Al-Haj",
+            "Ahmad Haikal",
+            "Yousef Qashi",
+            "Mahmoud Al-Mardi",
+            "Paul Komolafe"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1567327,
+      "date": "2026-08-12",
+      "league": "ACL",
+      "homeTeamId": 2871,
+      "homeTeam": "Al-Jazira",
+      "awayTeamId": 2938,
+      "awayTeam": "Al-Ittihad FC",
+      "home": {
+        "teamId": 2871,
+        "team": "Al-Jazira",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2938,
+        "team": "Al-Ittihad FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2871,
+          "team": "Al-Jazira",
+          "formation": "4-4-2",
+          "coach": "Hussein Ammouta",
+          "starters": [
+            "Ali Khasif",
+            "Mohammed Rabii",
+            "Willyan Rocha",
+            "Khalifa Al-Hammadi",
+            "Rúben Amaral",
+            "Bruno Oliveira",
+            "Marcus Meloni",
+            "Mamadou Coulibaly",
+            "Milson",
+            "Vinicius Mello",
+            "Simon Banza"
+          ]
+        },
+        {
+          "teamId": 2938,
+          "team": "Al-Ittihad FC",
+          "formation": "4-2-3-1",
+          "coach": "Sergio Conceicao",
+          "starters": [
+            "Predrag Rajković",
+            "Jan-Carlo Simić",
+            "Stephane Keller",
+            "Danilo Pereira",
+            "Faris Abdi",
+            "Dion Lopy",
+            "Houssem Aouar",
+            "Moussa Diaby",
+            "Farhah Ali Alshamrani",
+            "Steven Bergwijn",
+            "Youssef En-Nesyri"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1575453,
+      "date": "2026-08-11",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeamId": 227,
+      "homeTeam": "Santa Clara",
+      "awayTeamId": 225,
+      "awayTeam": "Nacional",
+      "home": {
+        "teamId": 227,
+        "team": "Santa Clara",
+        "shots": 19,
+        "shotsOnGoal": 7,
+        "possession": 52,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.43
+      },
+      "away": {
+        "teamId": 225,
+        "team": "Nacional",
+        "shots": 10,
+        "shotsOnGoal": 4,
+        "possession": 48,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.23
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 227,
+          "team": "Santa Clara",
+          "formation": "4-2-3-1",
+          "coach": "Petit",
+          "starters": [
+            "Lucas Franca",
+            "Diogo Calila",
+            "S. Lima",
+            "P. Pacheco",
+            "Guilherme Romao",
+            "P. Ferreira",
+            "Daniel Borges",
+            "Sorriso",
+            "J. Tavares",
+            "Vinicius Lopes",
+            "G. Paciencia"
+          ]
+        },
+        {
+          "teamId": 225,
+          "team": "Nacional",
+          "formation": "",
+          "coach": "",
+          "starters": [
+            "R. Marin",
+            "Leo Santos",
+            "Matheus Dias",
+            "Ze Vitor",
+            "Wesley Gasolina",
+            "Liziero",
+            "J. Silva",
+            "M. Jensen",
+            "M. Baeza",
+            "Pablo Ruan",
+            "Daniel Junior"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1567326,
+      "date": "2026-08-11",
+      "league": "ACL",
+      "homeTeamId": 948,
+      "homeTeam": "Adelaide United",
+      "awayTeamId": 16400,
+      "awayTeam": "Công An Nhân Dân",
+      "home": {
+        "teamId": 948,
+        "team": "Adelaide United",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 16400,
+        "team": "Công An Nhân Dân",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 948,
+          "team": "Adelaide United",
+          "formation": "4-3-3",
+          "coach": "Airton Andrioli",
+          "starters": [
+            "Joshua Smits",
+            "Bart Vriends",
+            "Jay Barnett",
+            "Panagiotis Kikianis",
+            "Fabian Talladira",
+            "Harry Crawford",
+            "Ethan Alagich",
+            "Ryan White",
+            "Juan Muñiz",
+            "Jonny Yull",
+            "Craig Goodwin"
+          ]
+        },
+        {
+          "teamId": 16400,
+          "team": "Công An Nhân Dân",
+          "formation": "3-4-3",
+          "coach": "Alexandre Polking",
+          "starters": [
+            "Nguyễn Filip",
+            "Frans Putros",
+            "Trần Đình Trọng",
+            "Adou Leygley Minh",
+            "Kevin Phạm Ba",
+            "Stefan Mauk",
+            "Damia Sabater",
+            "Cao Pendant Quang Vinh",
+            "David Henen",
+            "Brayan Perea",
+            "Alan Grafite"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1567328,
+      "date": "2026-08-11",
+      "league": "ACL",
+      "homeTeamId": 2746,
+      "homeTeam": "Gangwon FC",
+      "awayTeamId": 293,
+      "awayTeam": "Gamba Osaka",
+      "home": {
+        "teamId": 2746,
+        "team": "Gangwon FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 293,
+        "team": "Gamba Osaka",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2746,
+          "team": "Gangwon FC",
+          "formation": "4-4-2",
+          "coach": "Kyung-Ho Chung",
+          "starters": [
+            "Park Cheong-hyo",
+            "Kang Joon-hyuk",
+            "Marko Tuci",
+            "Gi-Hyuk Lee",
+            "Hong Chul",
+            "Jesse Sekidika",
+            "You-Hyeon Lee",
+            "Min-woo Seo",
+            "Dae-won Kim",
+            "Young-jun Goh",
+            "Byeong-chan Choi"
+          ]
+        },
+        {
+          "teamId": 293,
+          "team": "Gamba Osaka",
+          "formation": "4-2-3-1",
+          "coach": "Tomokazu Myojin",
+          "starters": [
+            "Rui Araki",
+            "Shinya Nakano",
+            "Ginjiro Ikegaya",
+            "Shinnosuke Nakatani",
+            "Ryo Hatsuse",
+            "Rin Mito",
+            "Shuto Abe",
+            "Ryoya Yamashita",
+            "Issam Jebali",
+            "Takeru Kishimoto",
+            "Deniz Hümmet"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1556633,
       "date": "2026-08-04",
