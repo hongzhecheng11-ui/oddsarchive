@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-08-14T09:18:05.155Z",
+  "updatedAt": "2026-08-14T19:07:24.173Z",
   "collection": {
-    "lastAttemptAt": "2026-08-14T09:17:26.165Z",
-    "lastSuccessAt": "2026-08-14T09:18:05.155Z",
-    "requestSuccesses": 104,
+    "lastAttemptAt": "2026-08-14T19:07:11.705Z",
+    "lastSuccessAt": "2026-08-14T19:07:24.173Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
-    "addedCount": 0,
-    "updatedCount": 0,
-    "duplicateCount": 68,
+    "addedCount": 1,
+    "updatedCount": 5,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -10307,13 +10307,13 @@
       "fixtureId": "1558590",
       "homeTeam": "Cercle Brugge",
       "awayTeam": "St. Truiden",
-      "homeOdds": "2.25",
-      "drawOdds": "3.55",
-      "awayOdds": "2.90",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "2.45",
+      "drawOdds": "3.50",
+      "awayOdds": "2.65",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-14T09:17:40.434Z",
+      "oddsUpdatedAt": "2026-08-14T19:07:16.663Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-14T09:17:40.434Z",
@@ -10505,13 +10505,13 @@
       "fixtureId": "1563083",
       "homeTeam": "Wolves",
       "awayTeam": "Blackburn",
-      "homeOdds": "1.52",
-      "drawOdds": "4.00",
-      "awayOdds": "6.20",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.51",
+      "drawOdds": "3.90",
+      "awayOdds": "6.50",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-14T09:17:27.924Z",
+      "oddsUpdatedAt": "2026-08-14T19:07:12.720Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-14T09:17:27.924Z",
@@ -10527,13 +10527,13 @@
       "fixtureId": "1552126",
       "homeTeam": "Telstar",
       "awayTeam": "Sparta Rotterdam",
-      "homeOdds": "2.16",
-      "drawOdds": "3.75",
-      "awayOdds": "2.95",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "2.22",
+      "drawOdds": "3.70",
+      "awayOdds": "2.86",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-14T09:17:35.573Z",
+      "oddsUpdatedAt": "2026-08-14T19:07:15.037Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-14T09:17:35.573Z",
@@ -10747,19 +10747,25 @@
       "fixtureId": "1575463",
       "homeTeam": "Sporting CP",
       "awayTeam": "Vitória SC",
-      "homeOdds": "1.23",
-      "drawOdds": "5.70",
-      "awayOdds": "12.00",
+      "homeOdds": "1.31",
+      "drawOdds": "5.20",
+      "awayOdds": "8.70",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-14T09:17:37.262Z",
+      "oddsUpdatedAt": "2026-08-14T19:07:15.643Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-14T09:17:37.262Z",
           "homeOdds": "1.23",
           "drawOdds": "5.70",
           "awayOdds": "12.00"
+        },
+        {
+          "capturedAt": "2026-08-14T19:07:15.643Z",
+          "homeOdds": "1.31",
+          "drawOdds": "5.20",
+          "awayOdds": "8.70"
         }
       ]
     },
@@ -10769,13 +10775,13 @@
       "fixtureId": "1584370",
       "homeTeam": "Galatasaray",
       "awayTeam": "Çorum FK",
-      "homeOdds": "1.18",
-      "drawOdds": "6.60",
-      "awayOdds": "14.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.32",
+      "drawOdds": "5.30",
+      "awayOdds": "8.20",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-14T09:17:42.119Z",
+      "oddsUpdatedAt": "2026-08-14T19:07:17.273Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-14T09:17:42.119Z",
@@ -10784,6 +10790,20 @@
           "awayOdds": "14.50"
         }
       ]
+    },
+    {
+      "date": "2026-08-15",
+      "league": "UEL",
+      "fixtureId": "1607181",
+      "homeTeam": "KI Klaksvik",
+      "awayTeam": "Lech Poznan",
+      "homeOdds": "5.70",
+      "drawOdds": "4.10",
+      "awayOdds": "1.54",
+      "result": "A",
+      "score": "0-1",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-08-14T19:07:18.348Z"
     },
     {
       "date": "2026-08-16",
