@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-08-18T08:51:20.899Z",
+  "updatedAt": "2026-08-18T18:51:31.337Z",
   "collection": {
-    "lastAttemptAt": "2026-08-18T08:50:40.047Z",
-    "lastSuccessAt": "2026-08-18T08:51:20.899Z",
-    "requestSuccesses": 113,
+    "lastAttemptAt": "2026-08-18T18:51:19.944Z",
+    "lastSuccessAt": "2026-08-18T18:51:31.337Z",
+    "requestSuccesses": 30,
     "requestFailures": 0,
-    "addedCount": 5,
-    "updatedCount": 14,
-    "duplicateCount": 5,
+    "addedCount": 0,
+    "updatedCount": 3,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -12249,13 +12249,13 @@
       "fixtureId": "1622620",
       "homeTeam": "Dinamo Zagreb",
       "awayTeam": "Viking",
-      "homeOdds": "1.70",
+      "homeOdds": "1.66",
       "drawOdds": "3.95",
-      "awayOdds": "4.35",
+      "awayOdds": "4.65",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-18T08:50:56.593Z",
+      "oddsUpdatedAt": "2026-08-18T18:51:24.675Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-17T08:57:16.306Z",
@@ -12268,6 +12268,12 @@
           "homeOdds": "1.70",
           "drawOdds": "3.95",
           "awayOdds": "4.35"
+        },
+        {
+          "capturedAt": "2026-08-18T18:51:24.675Z",
+          "homeOdds": "1.66",
+          "drawOdds": "3.95",
+          "awayOdds": "4.65"
         }
       ]
     },
@@ -12277,13 +12283,13 @@
       "fixtureId": "1622621",
       "homeTeam": "Fenerbahçe",
       "awayTeam": "Lyon",
-      "homeOdds": "2.08",
-      "drawOdds": "3.70",
-      "awayOdds": "3.15",
+      "homeOdds": "1.99",
+      "drawOdds": "3.60",
+      "awayOdds": "3.45",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-18T08:50:56.593Z",
+      "oddsUpdatedAt": "2026-08-18T18:51:24.675Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-17T08:57:16.306Z",
@@ -12296,6 +12302,12 @@
           "homeOdds": "2.08",
           "drawOdds": "3.70",
           "awayOdds": "3.15"
+        },
+        {
+          "capturedAt": "2026-08-18T18:51:24.675Z",
+          "homeOdds": "1.99",
+          "drawOdds": "3.60",
+          "awayOdds": "3.45"
         }
       ]
     },
@@ -12305,13 +12317,13 @@
       "fixtureId": "1622622",
       "homeTeam": "Levski Sofia",
       "awayTeam": "AEK Athens FC",
-      "homeOdds": "3.10",
+      "homeOdds": "3.20",
       "drawOdds": "3.10",
-      "awayOdds": "2.34",
+      "awayOdds": "2.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-18T08:50:56.593Z",
+      "oddsUpdatedAt": "2026-08-18T18:51:24.675Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-16T08:43:52.761Z",
@@ -12330,6 +12342,12 @@
           "homeOdds": "3.10",
           "drawOdds": "3.10",
           "awayOdds": "2.34"
+        },
+        {
+          "capturedAt": "2026-08-18T18:51:24.675Z",
+          "homeOdds": "3.20",
+          "drawOdds": "3.10",
+          "awayOdds": "2.30"
         }
       ]
     },
