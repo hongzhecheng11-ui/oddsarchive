@@ -5,22 +5,469 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-08-18T08:51:55.877Z",
+  "updatedAt": "2026-08-19T08:53:12.519Z",
   "collection": {
     "dates": [
+      "2026-08-18",
       "2026-08-17",
-      "2026-08-16",
-      "2026-08-15"
+      "2026-08-16"
     ],
-    "requestGroups": 23,
-    "skippedGroups": 55,
-    "finishedFixtures": 73,
-    "skippedComplete": 63,
-    "saved": 10,
+    "requestGroups": 18,
+    "skippedGroups": 60,
+    "finishedFixtures": 46,
+    "skippedComplete": 42,
+    "saved": 4,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1563094,
+      "date": "2026-08-18",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 43,
+      "homeTeam": "Cardiff",
+      "awayTeamId": 1837,
+      "awayTeam": "Wrexham",
+      "home": {
+        "teamId": 43,
+        "team": "Cardiff",
+        "shots": 11,
+        "shotsOnGoal": 3,
+        "possession": 67,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 0.9
+      },
+      "away": {
+        "teamId": 1837,
+        "team": "Wrexham",
+        "shots": 18,
+        "shotsOnGoal": 8,
+        "possession": 33,
+        "corners": 9,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.43
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 43,
+          "team": "Cardiff",
+          "formation": "4-1-4-1",
+          "coach": "Brian Barry-Murphy",
+          "starters": [
+            "N. Trott",
+            "P. Ng",
+            "G. Osho",
+            "J. Bagan",
+            "C. Scanlon",
+            "A. Robertson",
+            "O. Tanner",
+            "J. Moylan",
+            "C. Ashford",
+            "C. Willock",
+            "Y. Salech"
+          ]
+        },
+        {
+          "teamId": 1837,
+          "team": "Wrexham",
+          "formation": "5-4-1",
+          "coach": "Phil Parkinson",
+          "starters": [
+            "A. Patterson",
+            "D. Imray",
+            "Z. Vyner",
+            "D. Hyam",
+            "C. Doyle",
+            "G. Thomason",
+            "O. Rathbone",
+            "M. James",
+            "L. O'Brien",
+            "N. Broadhead",
+            "K. Moore"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563094,
+          "teamId": 43,
+          "playerId": 153434,
+          "player": "W. Fish",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563094,
+          "teamId": 43,
+          "playerId": 394973,
+          "player": "D. Lawlor",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563094,
+          "teamId": 1837,
+          "playerId": 6931,
+          "player": "L. Cacace",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563094,
+          "teamId": 1837,
+          "playerId": 278123,
+          "player": "S. Revan",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563094,
+          "teamId": 1837,
+          "playerId": 88457,
+          "player": "B. Sheaf",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563094,
+          "teamId": 1837,
+          "playerId": 19566,
+          "player": "J. Windass",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1570337,
+      "date": "2026-08-18",
+      "league": "LALIGA",
+      "homeTeamId": 544,
+      "homeTeam": "Deportivo La Coruna",
+      "awayTeamId": 797,
+      "awayTeam": "Elche",
+      "home": {
+        "teamId": 544,
+        "team": "Deportivo La Coruna",
+        "shots": 8,
+        "shotsOnGoal": 3,
+        "possession": 39,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.34
+      },
+      "away": {
+        "teamId": 797,
+        "team": "Elche",
+        "shots": 11,
+        "shotsOnGoal": 6,
+        "possession": 61,
+        "corners": 6,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.23
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 544,
+          "team": "Deportivo La Coruna",
+          "formation": "4-2-3-1",
+          "coach": "Antonio Hidalgo",
+          "starters": [
+            "L. Roman",
+            "X. Navarro",
+            "L. Noubi",
+            "B. Ede",
+            "G. Quagliata",
+            "M. Soriano",
+            "L. Amatucci",
+            "A. Altimira",
+            "B. Nsongo",
+            "J. Asp",
+            "P. Aubameyang"
+          ]
+        },
+        {
+          "teamId": 797,
+          "team": "Elche",
+          "formation": "5-4-1",
+          "coach": "Martin Anselmi",
+          "starters": [
+            "M. Dituro",
+            "Buba Sangare",
+            "D. Affengruber",
+            "F. Redondo Solari",
+            "V. Chust",
+            "G. Valera",
+            "G. Villar",
+            "M. Neto",
+            "M. Aguado",
+            "A. Houary",
+            "F. Nino"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1570337,
+          "teamId": 544,
+          "playerId": 628615,
+          "player": "N. Carrillo",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1570337,
+          "teamId": 544,
+          "playerId": 295880,
+          "player": "Y. Hernandez",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1570337,
+          "teamId": 797,
+          "playerId": 439293,
+          "player": "A. Boayar",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570337,
+          "teamId": 797,
+          "playerId": 18821,
+          "player": "G. Diangana",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1570337,
+          "teamId": 797,
+          "playerId": 358600,
+          "player": "A. Osorio",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570337,
+          "teamId": 797,
+          "playerId": 284415,
+          "player": "Y. Santiago",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575459,
+      "date": "2026-08-18",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeamId": 4716,
+      "homeTeam": "Casa Pia",
+      "awayTeamId": 211,
+      "awayTeam": "Benfica",
+      "home": {
+        "teamId": 4716,
+        "team": "Casa Pia",
+        "shots": 3,
+        "shotsOnGoal": 0,
+        "possession": 36,
+        "corners": 1,
+        "yellowCards": 3,
+        "redCards": 1,
+        "expectedGoals": 0.12
+      },
+      "away": {
+        "teamId": 211,
+        "team": "Benfica",
+        "shots": 20,
+        "shotsOnGoal": 8,
+        "possession": 64,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": 3.04
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 4716,
+          "team": "Casa Pia",
+          "formation": "4-3-3",
+          "coach": "Filipe Coelho",
+          "starters": [
+            "A. Gomes",
+            "A. Geraldes",
+            "J. Goulart",
+            "D. Sousa",
+            "A. Conte",
+            "S. Perez",
+            "L. Ofori",
+            "Gabi",
+            "K. Prieto",
+            "H. Araujo",
+            "Rochinha"
+          ]
+        },
+        {
+          "teamId": 211,
+          "team": "Benfica",
+          "formation": "4-2-3-1",
+          "coach": "Marco Silva",
+          "starters": [
+            "S. Soares",
+            "A. Bah",
+            "T. Araujo",
+            "C. Lenglet",
+            "S. Dahl",
+            "L. Barreiro",
+            "E. Barrenechea",
+            "Rafa Silva",
+            "G. Sudakov",
+            "G. Prestianni",
+            "V. Pavlidis"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1584375,
+      "date": "2026-08-18",
+      "league": "SUPER_LIG",
+      "homeTeamId": 3603,
+      "homeTeam": "Samsunspor",
+      "awayTeamId": 994,
+      "awayTeam": "Göztepe",
+      "home": {
+        "teamId": 3603,
+        "team": "Samsunspor",
+        "shots": 21,
+        "shotsOnGoal": 3,
+        "possession": 69,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 2.8
+      },
+      "away": {
+        "teamId": 994,
+        "team": "Göztepe",
+        "shots": 20,
+        "shotsOnGoal": 7,
+        "possession": 31,
+        "corners": 8,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": 1.71
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 3603,
+          "team": "Samsunspor",
+          "formation": "4-3-3",
+          "coach": "Thorsten Fink",
+          "starters": [
+            "O. Kocuk",
+            "J. Mendes",
+            "T. Borevkovic",
+            "A. B. Diabbate",
+            "L. Tomasson",
+            "A. Makoumbou",
+            "C. Yuksel",
+            "Y. Kayan",
+            "S. Jarju",
+            "Marius",
+            "E. Kilinc"
+          ]
+        },
+        {
+          "teamId": 994,
+          "team": "Göztepe",
+          "formation": "3-4-1-2",
+          "coach": "Stanimir Stoilov",
+          "starters": [
+            "L. Gugeshashvili",
+            "T. Altikardes",
+            "Allan Godoi",
+            "E. Yildirim",
+            "A. Kurtulan",
+            "A. Matos",
+            "N. Miroshi",
+            "A. Cherni",
+            "A. Antunes",
+            "Andre Henrique",
+            "S. Armstrong"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 356998,
+          "player": "J. Assoumou",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 273762,
+          "player": "Y. E. Cift",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 113581,
+          "player": "T. Coulibaly",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 346522,
+          "player": "I. Drapinski",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 93001,
+          "player": "E. Tavsan",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584375,
+          "teamId": 3603,
+          "playerId": 18749,
+          "player": "E. Watt",
+          "type": "Missing Fixture",
+          "reason": "Suspended"
+        }
+      ]
+    },
     {
       "fixtureId": 1563093,
       "date": "2026-08-17",

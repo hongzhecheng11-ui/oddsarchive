@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-18T18:51:31.588Z",
+  "updatedAt": "2026-08-19T08:52:05.041Z",
   "summary": {
     "trackedDays": 32,
-    "trackedCandidates": 22,
+    "trackedCandidates": 23,
     "resolvedCandidates": 19,
     "favoriteFailures": 9,
     "directionHits": 6
@@ -229,30 +229,32 @@
     {
       "date": "2026-08-19",
       "firstEvaluatedAt": "2026-08-15T18:42:00.681Z",
-      "lastEvaluatedAt": "2026-08-18T18:51:31.588Z",
+      "lastEvaluatedAt": "2026-08-19T08:52:05.041Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-08-20",
       "firstEvaluatedAt": "2026-08-16T18:41:23.764Z",
-      "lastEvaluatedAt": "2026-08-18T18:51:31.588Z",
+      "lastEvaluatedAt": "2026-08-19T08:52:05.041Z",
       "eligibleMatchCount": 5,
       "candidateIds": []
     },
     {
       "date": "2026-08-21",
       "firstEvaluatedAt": "2026-08-17T18:52:52.318Z",
-      "lastEvaluatedAt": "2026-08-18T18:51:31.588Z",
+      "lastEvaluatedAt": "2026-08-19T08:52:05.041Z",
       "eligibleMatchCount": 11,
       "candidateIds": []
     },
     {
       "date": "2026-08-22",
       "firstEvaluatedAt": "2026-08-18T18:51:31.588Z",
-      "lastEvaluatedAt": "2026-08-18T18:51:31.588Z",
-      "eligibleMatchCount": 5,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-08-19T08:52:05.041Z",
+      "eligibleMatchCount": 39,
+      "candidateIds": [
+        "fixture:1507034"
+      ]
     }
   ],
   "candidates": [
@@ -827,6 +829,32 @@
       "resolvedAt": "2026-08-16T18:41:23.764Z",
       "favoriteFailed": true,
       "directionHit": true
+    },
+    {
+      "candidateId": "fixture:1507034",
+      "fixtureId": "1507034",
+      "date": "2026-08-22",
+      "league": "KLEAGUE1",
+      "homeTeam": "FC Anyang",
+      "awayTeam": "FC Seoul",
+      "homeOdds": "3.90",
+      "drawOdds": "3.45",
+      "awayOdds": "1.90",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 25,
+      "firstEvaluatedAt": "2026-08-19T08:52:05.041Z",
+      "lastSeenAt": "2026-08-19T08:52:05.041Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     }
   ]
 }
