@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-20T08:53:29.309Z",
+  "updatedAt": "2026-08-20T18:54:13.976Z",
   "summary": {
-    "trackedDays": 33,
-    "trackedCandidates": 27,
-    "resolvedCandidates": 19,
+    "trackedDays": 34,
+    "trackedCandidates": 28,
+    "resolvedCandidates": 20,
     "favoriteFailures": 9,
     "directionHits": 6
   },
@@ -243,16 +243,14 @@
     {
       "date": "2026-08-21",
       "firstEvaluatedAt": "2026-08-17T18:52:52.318Z",
-      "lastEvaluatedAt": "2026-08-20T08:53:29.309Z",
-      "eligibleMatchCount": 11,
-      "candidateIds": [
-        "fixture:1623434"
-      ]
+      "lastEvaluatedAt": "2026-08-20T18:54:13.976Z",
+      "eligibleMatchCount": 2,
+      "candidateIds": []
     },
     {
       "date": "2026-08-22",
       "firstEvaluatedAt": "2026-08-18T18:51:31.588Z",
-      "lastEvaluatedAt": "2026-08-20T08:53:29.309Z",
+      "lastEvaluatedAt": "2026-08-20T18:54:13.976Z",
       "eligibleMatchCount": 39,
       "candidateIds": [
         "fixture:1507034",
@@ -262,10 +260,19 @@
     {
       "date": "2026-08-23",
       "firstEvaluatedAt": "2026-08-19T18:48:59.086Z",
-      "lastEvaluatedAt": "2026-08-20T08:53:29.309Z",
+      "lastEvaluatedAt": "2026-08-20T18:54:13.976Z",
       "eligibleMatchCount": 39,
       "candidateIds": [
         "fixture:1557374"
+      ]
+    },
+    {
+      "date": "2026-08-24",
+      "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
+      "lastEvaluatedAt": "2026-08-20T18:54:13.976Z",
+      "eligibleMatchCount": 17,
+      "candidateIds": [
+        "fixture:1570346"
       ]
     }
   ],
@@ -862,10 +869,10 @@
       "sampleSize": 53,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
       "lastSeenAt": "2026-08-20T08:53:29.309Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "H",
+      "score": "4-0",
+      "resolvedAt": "2026-08-20T18:54:13.976Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -887,7 +894,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-08-19T08:52:05.041Z",
-      "lastSeenAt": "2026-08-20T08:53:29.309Z",
+      "lastSeenAt": "2026-08-20T18:54:13.976Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -913,7 +920,7 @@
       ],
       "sampleSize": 42,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
-      "lastSeenAt": "2026-08-20T08:53:29.309Z",
+      "lastSeenAt": "2026-08-20T18:54:13.976Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -965,7 +972,33 @@
       ],
       "sampleSize": 45,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
-      "lastSeenAt": "2026-08-20T08:53:29.309Z",
+      "lastSeenAt": "2026-08-20T18:54:13.976Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570346",
+      "fixtureId": "1570346",
+      "date": "2026-08-24",
+      "league": "LALIGA",
+      "homeTeam": "Elche",
+      "awayTeam": "Barcelona",
+      "homeOdds": "8.80",
+      "drawOdds": "5.10",
+      "awayOdds": "1.31",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 73,
+      "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
+      "lastSeenAt": "2026-08-20T18:54:13.976Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
