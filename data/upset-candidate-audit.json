@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-21T08:54:51.770Z",
+  "updatedAt": "2026-08-21T18:50:35.465Z",
   "summary": {
-    "trackedDays": 34,
-    "trackedCandidates": 28,
+    "trackedDays": 35,
+    "trackedCandidates": 29,
     "resolvedCandidates": 20,
     "favoriteFailures": 9,
     "directionHits": 6
@@ -250,8 +250,8 @@
     {
       "date": "2026-08-22",
       "firstEvaluatedAt": "2026-08-18T18:51:31.588Z",
-      "lastEvaluatedAt": "2026-08-21T08:54:51.770Z",
-      "eligibleMatchCount": 39,
+      "lastEvaluatedAt": "2026-08-21T18:50:35.465Z",
+      "eligibleMatchCount": 36,
       "candidateIds": [
         "fixture:1507034",
         "fixture:1552135"
@@ -260,7 +260,7 @@
     {
       "date": "2026-08-23",
       "firstEvaluatedAt": "2026-08-19T18:48:59.086Z",
-      "lastEvaluatedAt": "2026-08-21T08:54:51.770Z",
+      "lastEvaluatedAt": "2026-08-21T18:50:35.465Z",
       "eligibleMatchCount": 39,
       "candidateIds": [
         "fixture:1557374"
@@ -269,10 +269,19 @@
     {
       "date": "2026-08-24",
       "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
-      "lastEvaluatedAt": "2026-08-21T08:54:51.770Z",
+      "lastEvaluatedAt": "2026-08-21T18:50:35.465Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1570346"
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
+      "lastEvaluatedAt": "2026-08-21T18:50:35.465Z",
+      "eligibleMatchCount": 7,
+      "candidateIds": [
+        "fixture:1550087"
       ]
     }
   ],
@@ -894,7 +903,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-08-19T08:52:05.041Z",
-      "lastSeenAt": "2026-08-21T08:54:51.770Z",
+      "lastSeenAt": "2026-08-21T18:50:35.465Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -920,7 +929,7 @@
       ],
       "sampleSize": 42,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
-      "lastSeenAt": "2026-08-21T08:54:51.770Z",
+      "lastSeenAt": "2026-08-21T18:50:35.465Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -972,7 +981,7 @@
       ],
       "sampleSize": 45,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
-      "lastSeenAt": "2026-08-21T08:54:51.770Z",
+      "lastSeenAt": "2026-08-21T18:50:35.465Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -998,7 +1007,33 @@
       ],
       "sampleSize": 73,
       "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
-      "lastSeenAt": "2026-08-21T08:54:51.770Z",
+      "lastSeenAt": "2026-08-21T18:50:35.465Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1550087",
+      "fixtureId": "1550087",
+      "date": "2026-08-25",
+      "league": "SERIEA",
+      "homeTeam": "AS Roma",
+      "awayTeam": "Fiorentina",
+      "homeOdds": "1.55",
+      "drawOdds": "3.90",
+      "awayOdds": "5.90",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
+      "lastSeenAt": "2026-08-21T18:50:35.465Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
