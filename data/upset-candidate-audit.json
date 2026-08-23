@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-23T08:45:44.570Z",
+  "updatedAt": "2026-08-23T18:43:03.994Z",
   "summary": {
-    "trackedDays": 36,
-    "trackedCandidates": 29,
-    "resolvedCandidates": 23,
+    "trackedDays": 37,
+    "trackedCandidates": 30,
+    "resolvedCandidates": 24,
     "favoriteFailures": 9,
     "directionHits": 6
   },
@@ -267,23 +267,32 @@
     {
       "date": "2026-08-24",
       "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
-      "lastEvaluatedAt": "2026-08-23T08:45:44.570Z",
-      "eligibleMatchCount": 17,
+      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "eligibleMatchCount": 5,
       "candidateIds": []
     },
     {
       "date": "2026-08-25",
       "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
-      "lastEvaluatedAt": "2026-08-23T08:45:44.570Z",
+      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-08-26",
       "firstEvaluatedAt": "2026-08-22T18:43:57.795Z",
-      "lastEvaluatedAt": "2026-08-23T08:45:44.570Z",
+      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
       "eligibleMatchCount": 4,
       "candidateIds": []
+    },
+    {
+      "date": "2026-08-27",
+      "firstEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "eligibleMatchCount": 5,
+      "candidateIds": [
+        "fixture:1570340"
+      ]
     }
   ],
   "candidates": [
@@ -983,11 +992,11 @@
       "sampleSize": 45,
       "firstEvaluatedAt": "2026-08-20T08:53:29.309Z",
       "lastSeenAt": "2026-08-22T18:43:57.795Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "2-1",
+      "resolvedAt": "2026-08-23T18:43:03.994Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1570346",
@@ -1035,6 +1044,32 @@
       "sampleSize": 17,
       "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
       "lastSeenAt": "2026-08-22T18:43:57.795Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570340",
+      "fixtureId": "1570340",
+      "date": "2026-08-27",
+      "league": "LALIGA",
+      "homeTeam": "Real Madrid",
+      "awayTeam": "Real Sociedad",
+      "homeOdds": "1.40",
+      "drawOdds": "4.60",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 69,
+      "firstEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "lastSeenAt": "2026-08-23T18:43:03.994Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
