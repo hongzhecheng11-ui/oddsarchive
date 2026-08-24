@@ -118,6 +118,7 @@
     [/^표본\s*(\d+)\/(\d+)$/, "Sample $1/$2"], [/^표본\s*(\d+)경기$/, "Sample: $1 matches"],
     [/^(\d+)경기$/, "$1 matches"], [/^더보기\s*\((\d+)개\)$/, "Show More ($1)"],
     [/^(\d+)경기\s*·\s*저장된 일정$/, "$1 matches · Saved fixtures"],
+    [/^(\d+)경기\s*·\s*최신 일정 확인 중$/, "$1 matches · Checking latest fixtures"],
     [/^시간 미정\s*·\s*경기 전$/, "Time TBA · Scheduled"],
     [/^과거 유사배당 표본\s*(\d+)경기$/, "Similar-odds sample: $1 matches"],
     [/^경기결과:\s*홈승\s+(.+)$/, "Match Result: Home Win $1"], [/^경기결과:\s*홈승$/, "Match Result: Home Win"],

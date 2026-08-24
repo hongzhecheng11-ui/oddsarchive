@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   "/data/api-odds-pack.js",
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
-  "/src/lib/i18n.js?v=4",
+  "/src/lib/i18n.js?v=5",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
   "/src/lib/auth.js?v=4",

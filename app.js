@@ -7816,10 +7816,19 @@ function getMajorTodayMatches(matches = []) {
     .filter((match) => isMajorTodayMatch(match) && hasCompleteOdds(match));
 }
 
+// 리그명은 종류가 한정적이라 우선순위를 리그 문자열 단위로 재사용한다.
+const MATCH_LEAGUE_PRIORITY_CACHE = new Map();
+
 function getMatchLeaguePriority(match = {}) {
+  const leagueText = String(match.league || "");
+  const cached = MATCH_LEAGUE_PRIORITY_CACHE.get(leagueText);
+  if (cached !== undefined) return cached;
+
   const leagueKey = getLeagueKeyFromText(match.league);
   const index = HOME_TODAY_LEAGUE_PRIORITY.indexOf(leagueKey);
-  return index === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : index;
+  const priority = index === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : index;
+  MATCH_LEAGUE_PRIORITY_CACHE.set(leagueText, priority);
+  return priority;
 }
 
 function getMatchStartTimestamp(match = {}) {
@@ -7832,6 +7841,14 @@ function getMatchStartTimestamp(match = {}) {
   return Number.isFinite(timestamp) ? timestamp : Number.MAX_SAFE_INTEGER;
 }
 
+// 힌트 목록은 상수라 정규화 결과를 한 번만 만든다.
+let strongTeamHintKeys = null;
+
+function getStrongTeamHintKeys() {
+  if (!strongTeamHintKeys) strongTeamHintKeys = HOME_TODAY_STRONG_TEAM_HINTS.map(normalizeTeamSearchText);
+  return strongTeamHintKeys;
+}
+
 function hasStrongTeamHint(match = {}) {
   const text = normalizeTeamSearchText([
     match.homeTeam,
@@ -7839,22 +7856,24 @@ function hasStrongTeamHint(match = {}) {
     formatTeamName(match.homeTeam),
     formatTeamName(match.awayTeam)
   ].filter(Boolean).join(" "));
-  return HOME_TODAY_STRONG_TEAM_HINTS.some((hint) => text.includes(normalizeTeamSearchText(hint)));
+  return getStrongTeamHintKeys().some((hint) => text.includes(hint));
+}
+
+function compareHomeTodayMatches(left, right) {
+  const oddsDifference = Number(hasCompleteOdds(right)) - Number(hasCompleteOdds(left));
+  if (oddsDifference !== 0) return oddsDifference;
+
+  const leagueDifference = getMatchLeaguePriority(left) - getMatchLeaguePriority(right);
+  if (leagueDifference !== 0) return leagueDifference;
+
+  const timeDifference = getMatchStartTimestamp(left) - getMatchStartTimestamp(right);
+  if (timeDifference !== 0) return timeDifference;
+
+  return Number(hasStrongTeamHint(right)) - Number(hasStrongTeamHint(left));
 }
 
 function sortHomeTodayMatches(matches = []) {
-  return [...matches].sort((left, right) => {
-    const oddsDifference = Number(hasCompleteOdds(right)) - Number(hasCompleteOdds(left));
-    if (oddsDifference !== 0) return oddsDifference;
-
-    const leagueDifference = getMatchLeaguePriority(left) - getMatchLeaguePriority(right);
-    if (leagueDifference !== 0) return leagueDifference;
-
-    const timeDifference = getMatchStartTimestamp(left) - getMatchStartTimestamp(right);
-    if (timeDifference !== 0) return timeDifference;
-
-    return Number(hasStrongTeamHint(right)) - Number(hasStrongTeamHint(left));
-  });
+  return [...matches].sort(compareHomeTodayMatches);
 }
 
 function getTodayUserInsight(match = {}, analysis = null) {
@@ -8051,7 +8070,7 @@ function sortHomeTodayMatchesForUsers(matches = [], searchableMatches = getSearc
     const insightDifference = rightInsight.score - leftInsight.score;
     if (insightDifference !== 0) return insightDifference;
 
-    return sortHomeTodayMatches([left, right])[0] === left ? -1 : 1;
+    return compareHomeTodayMatches(left, right) <= 0 ? -1 : 1;
   });
 }
 
@@ -8622,14 +8641,24 @@ function getCompactFixtureOdds(match = {}) {
 }
 
 function sortDateFixtureMatches(matches = [], date = getTodayKey()) {
-  return [...(Array.isArray(matches) ? matches : [])].sort((left, right) => {
-    if (date === getTodayKey()) {
-      const leftMajor = Number(isMajorTodayMatch(left) && hasCompleteOdds(left));
-      const rightMajor = Number(isMajorTodayMatch(right) && hasCompleteOdds(right));
-      if (leftMajor !== rightMajor) return rightMajor - leftMajor;
+  // 비교마다 다시 구하던 오늘 여부와 주요 경기 여부를 정렬 전에 한 번만 계산한다.
+  const isToday = date === getTodayKey();
+  const majorFlags = new Map();
+  const getMajorFlag = (match) => {
+    let flag = majorFlags.get(match);
+    if (flag === undefined) {
+      flag = Number(isMajorTodayMatch(match) && hasCompleteOdds(match));
+      majorFlags.set(match, flag);
     }
-    const sortedPair = sortHomeTodayMatches([left, right]);
-    return sortedPair[0] === left ? -1 : 1;
+    return flag;
+  };
+
+  return [...(Array.isArray(matches) ? matches : [])].sort((left, right) => {
+    if (isToday) {
+      const majorDifference = getMajorFlag(right) - getMajorFlag(left);
+      if (majorDifference !== 0) return majorDifference;
+    }
+    return compareHomeTodayMatches(left, right) <= 0 ? -1 : 1;
   });
 }
 
@@ -8640,16 +8669,18 @@ function renderDateFixtures(matches = [], date = selectedFixtureDate || getToday
   if (title) title.textContent = formatFixtureDateTitle(date);
   if (!list) return;
 
-  const dateMatches = sortDateFixtureMatches(getVisibleFixturesForDate(matches, date), date);
+  const visibleMatches = getVisibleFixturesForDate(matches, date);
+  const dateMatches = sortDateFixtureMatches(visibleMatches, date);
   if (dateMatches.length === 0) {
     const empty = document.createElement("div");
     empty.className = "empty-state compact-empty";
     empty.textContent = loading ? "경기 일정을 불러오는 중입니다." : "이 날짜와 카테고리에 표시할 경기가 없습니다.";
     list.replaceChildren(empty);
-    return;
+    return visibleMatches;
   }
 
   list.replaceChildren(...dateMatches.map(createDateFixtureCard));
+  return visibleMatches;
 }
 
 async function selectFixtureDate(date, { force = false } = {}) {
@@ -8657,15 +8688,16 @@ async function selectFixtureDate(date, { force = false } = {}) {
   selectedFixtureDate = targetDate;
   renderFixtureDateTabs(targetDate);
   const cachedMatches = getCachedFixturesForDate(targetDate);
-  renderDateFixtures(cachedMatches, targetDate, { loading: cachedMatches.length === 0 });
+  // 렌더가 이미 계산한 노출 목록을 상태 문구에서 재사용한다.
+  const renderedVisible = renderDateFixtures(cachedMatches, targetDate, { loading: cachedMatches.length === 0 });
+  const cachedVisibleCount = (renderedVisible || getVisibleFixturesForDate(cachedMatches, targetDate)).length;
 
   const cached = dateFixtureCache.get(targetDate);
   if (!force && cached && Date.now() - cached.fetchedAt < DATE_FIXTURE_CACHE_TTL) {
-    setDateFixtureStatus(`${getVisibleFixturesForDate(cached.matches, targetDate).length}경기`);
+    setDateFixtureStatus(`${cachedVisibleCount}경기`);
     return { error: "", matches: cached.matches, cached: true };
   }
 
-  const cachedVisibleCount = getVisibleFixturesForDate(cachedMatches, targetDate).length;
   setDateFixtureStatus(cachedMatches.length > 0 ? `${cachedVisibleCount}경기 · 최신 일정 확인 중` : "경기 일정 확인 중");
   const requestId = ++dateFixtureRequestId;
   try {
@@ -8686,8 +8718,8 @@ async function selectFixtureDate(date, { force = false } = {}) {
     dateFixtureCache.set(targetDate, { matches, fetchedAt: Date.now() });
     if (fetchedMatches.length > 0) mergeTodayMatches(fetchedMatches);
     if (selectedFixtureDate === targetDate) {
-      renderDateFixtures(matches, targetDate);
-      setDateFixtureStatus(`${getVisibleFixturesForDate(matches, targetDate).length}경기`);
+      const visibleMatches = renderDateFixtures(matches, targetDate);
+      setDateFixtureStatus(`${(visibleMatches || getVisibleFixturesForDate(matches, targetDate)).length}경기`);
     }
     if (targetDate === getTodayKey()) {
       homeTodayMatches = sortHomeTodayMatches(matches);
