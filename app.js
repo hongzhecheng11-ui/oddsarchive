@@ -8745,12 +8745,60 @@ function mergeStoredOddsIntoFixtures(matches = [], storedMatches = []) {
   });
 }
 
+// 값은 "ALL", 기존 카테고리 키, 또는 리그 키 하나를 받는다.
 function filterFixturesByCategory(matches = [], category = "ALL") {
-  const leagueKeys = DATE_FIXTURE_CATEGORY_LEAGUES[String(category || "ALL").toUpperCase()];
-  if (!leagueKeys) return [...(Array.isArray(matches) ? matches : [])];
-  return (Array.isArray(matches) ? matches : []).filter((match) => (
-    leagueKeys.some((leagueKey) => leagueMatchesFixture(match.league, leagueKey))
-  ));
+  const list = Array.isArray(matches) ? matches : [];
+  const key = String(category || "ALL").toUpperCase();
+  if (!key || key === "ALL") return [...list];
+
+  const leagueKeys = DATE_FIXTURE_CATEGORY_LEAGUES[key] || [key];
+  return list.filter((match) => leagueKeys.some((leagueKey) => leagueMatchesFixture(match.league, leagueKey)));
+}
+
+// 그 날짜에 실제로 있는 리그만 뽑는다. 주요 리그를 먼저, 그다음 경기 많은 순.
+// 전체 리그 목록을 주는 getFixtureLeagueOptions 와는 용도가 다르다.
+function getDateFixtureLeagueOptions(matches = []) {
+  const options = new Map();
+  for (const match of Array.isArray(matches) ? matches : []) {
+    const key = getLeagueKeyFromText(match?.league) || String(match?.league || "").trim().toUpperCase();
+    if (!key) continue;
+    if (!options.has(key)) options.set(key, { key, label: formatLeagueName(match.league), count: 0 });
+    options.get(key).count += 1;
+  }
+
+  return [...options.values()].sort((left, right) => {
+    const leftRank = HOME_TODAY_LEAGUE_PRIORITY.indexOf(left.key);
+    const rightRank = HOME_TODAY_LEAGUE_PRIORITY.indexOf(right.key);
+    const leftOrder = leftRank === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : leftRank;
+    const rightOrder = rightRank === -1 ? HOME_TODAY_LEAGUE_PRIORITY.length : rightRank;
+    if (leftOrder !== rightOrder) return leftOrder - rightOrder;
+    if (left.count !== right.count) return right.count - left.count;
+    return String(left.label).localeCompare(String(right.label));
+  });
+}
+
+function renderFixtureLeagueFilter(matches = [], date = selectedFixtureDate || getTodayKey()) {
+  if (typeof document === "undefined") return;
+  const select = document.getElementById("fixture-category-filter");
+  if (!select) return;
+
+  const options = getDateFixtureLeagueOptions(getFixturesForDate(matches, date));
+  // 고른 리그가 이 날짜에 없으면 전체로 되돌린다.
+  if (selectedFixtureCategory !== "ALL" && !options.some((option) => option.key === selectedFixtureCategory)) {
+    selectedFixtureCategory = "ALL";
+  }
+
+  const allOption = document.createElement("option");
+  allOption.value = "ALL";
+  allOption.textContent = "전체";
+
+  select.replaceChildren(allOption, ...options.map((option) => {
+    const element = document.createElement("option");
+    element.value = option.key;
+    element.textContent = `${option.label} ${option.count}`;
+    return element;
+  }));
+  select.value = selectedFixtureCategory;
 }
 
 function filterFixturesByText(matches = [], query = "") {
@@ -8975,6 +9023,7 @@ function renderDateFixtures(matches = [], date = selectedFixtureDate || getToday
   if (title) title.textContent = formatFixtureDateTitle(date);
   if (!list) return;
 
+  renderFixtureLeagueFilter(matches, date);
   const visibleMatches = getVisibleFixturesForDate(matches, date);
   const dateMatches = sortDateFixtureMatches(visibleMatches, date);
   if (dateMatches.length === 0) {
@@ -11410,6 +11459,7 @@ if (typeof module !== "undefined") {
     getHomeTodayCardViewModel,
     getFixturesForDate,
     filterFixturesByCategory,
+    getDateFixtureLeagueOptions,
     filterFixturesByText,
     getMatchStatusLabel,
     getMatchContextProfile,
