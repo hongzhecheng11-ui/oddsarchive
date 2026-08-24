@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v118-auth-copy-en";
+const CACHE_NAME = "oddsarchive-v119-date-perf";
 const CORE_ASSETS = [
   "/",
   "/index.html",

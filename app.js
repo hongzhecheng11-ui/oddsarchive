@@ -519,9 +519,10 @@ function getTeamTranslationLabel(teamName, language = "ko") {
   return aliasEntry ? aliasEntry[1] : "";
 }
 
-function normalizeTeamNameForStorage(teamName) {
-  const originalName = String(teamName || "").trim();
-  if (!originalName) return "";
+// 팀명 사전은 로드 후 변경되지 않으므로 이름별 결과를 재사용한다.
+const TEAM_NAME_STORAGE_CACHE = new Map();
+
+function resolveTeamNameForStorage(originalName) {
   const translatedLabel = getTeamTranslationLabel(originalName);
   if (translatedLabel) return translatedLabel;
   if (Object.values(TEAM_NAME_LABELS).includes(originalName)) return originalName;
@@ -532,6 +533,17 @@ function normalizeTeamNameForStorage(teamName) {
   const normalizedName = getNormalizedLabelKey(originalName);
   const matchedEntry = Object.entries(TEAM_NAME_LABELS).find(([englishName]) => getNormalizedLabelKey(englishName) === normalizedName);
   return matchedEntry ? matchedEntry[1] : originalName;
+}
+
+function normalizeTeamNameForStorage(teamName) {
+  const originalName = String(teamName || "").trim();
+  if (!originalName) return "";
+  const cached = TEAM_NAME_STORAGE_CACHE.get(originalName);
+  if (cached !== undefined) return cached;
+
+  const resolved = resolveTeamNameForStorage(originalName);
+  TEAM_NAME_STORAGE_CACHE.set(originalName, resolved);
+  return resolved;
 }
 
 function maybeWarnMissingTeamLabel(teamName) {
@@ -4297,6 +4309,20 @@ function getApiOddsPackRows(pack = getBundledApiOddsPack()) {
     .filter(Boolean);
 }
 
+// 번들 팩은 런타임에 바뀌지 않으므로 행별 정규화 결과를 재사용한다.
+// 호출부가 결과를 수정해도 캐시가 오염되지 않도록 매번 얕은 복사본을 돌려준다.
+const API_ODDS_PACK_NORMALIZED_CACHE = new WeakMap();
+
+function getNormalizedApiOddsPackMatch(match) {
+  if (!match || typeof match !== "object") return normalizeApiOddsPackMatch(match);
+  let normalized = API_ODDS_PACK_NORMALIZED_CACHE.get(match);
+  if (normalized === undefined) {
+    normalized = normalizeApiOddsPackMatch(match);
+    API_ODDS_PACK_NORMALIZED_CACHE.set(match, normalized);
+  }
+  return normalized ? { ...normalized } : normalized;
+}
+
 function getApiOddsPackRowsForDates(dates = [], pack = getBundledApiOddsPack()) {
   const dateSet = new Set(
     (dates instanceof Set ? [...dates] : Array.isArray(dates) ? dates : [dates])
@@ -4308,7 +4334,7 @@ function getApiOddsPackRowsForDates(dates = [], pack = getBundledApiOddsPack()) 
   const matches = Array.isArray(pack?.matches) ? pack.matches : [];
   return matches
     .filter((match) => dateSet.has(String(match?.date || match?.fixtureDate || "").slice(0, 10)))
-    .map(normalizeApiOddsPackMatch)
+    .map(getNormalizedApiOddsPackMatch)
     .filter(Boolean);
 }
 
