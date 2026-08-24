@@ -2,6 +2,11 @@
 // 화면에 실제로 닿는 자리만 본다: index.html 의 텍스트와 접근성 속성,
 // app.js 에서 textContent / aria-label / placeholder / title 에 넣는 값.
 // 팀명·리그명 사전은 별도 경로(translateTeamName)로 처리되므로 대상이 아니다.
+//
+// 한계: 소스만 읽으므로 다른 함수가 돌려준 한글을 합쳐 만든 문자열은 못 잡는다.
+// 예) chip.title = `${팀} vs ${팀} · ${formatMatchResultText(match)}`
+// 리터럴에는 한글이 없지만 실제 렌더 결과에는 있다. 이런 건 브라우저에서
+// 영어 모드로 화면을 돌며 확인해야 한다.
 const fs = require("fs");
 const path = require("path");
 
