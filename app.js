@@ -256,6 +256,29 @@ const LEAGUE_NAME_LABELS = {
   USA: "미국",
   Chile: "칠레"
 };
+const ENGLISH_LEAGUE_LABELS = {
+  EPL: "EPL",
+  LALIGA: "La Liga",
+  SERIEA: "Serie A",
+  BUNDESLIGA: "Bundesliga",
+  LIGUE1: "Ligue 1",
+  WORLDCUP: "World Cup",
+  UCL: "Champions League",
+  UEL: "Europa League",
+  CHAMPIONSHIP: "EFL Championship",
+  EREDIVISIE: "Eredivisie",
+  PRIMEIRA_LIGA: "Primeira Liga",
+  SCOTTISH_PREMIERSHIP: "Scottish Premiership",
+  BELGIAN_PRO_LEAGUE: "Belgian Pro League",
+  SUPER_LIG: "Super Lig",
+  KLEAGUE1: "K League 1",
+  KLEAGUE2: "K League 2",
+  J1LEAGUE: "J1 League",
+  J2LEAGUE: "J2 League",
+  ACL: "AFC Champions League",
+  WCQ: "World Cup Qualifiers",
+  INTL_FRIENDLIES: "International Friendlies"
+};
 const TEAM_NAME_LABELS = {
   ...(EXTERNAL_TRANSLATIONS.teams?.labels || {}),
   Arsenal: "아스널",
@@ -1910,6 +1933,13 @@ function getUiLanguage() {
   return "ko";
 }
 
+function translateUiText(value) {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_I18N) {
+    return window.ODDS_ARCHIVE_I18N.translateText(value, getUiLanguage());
+  }
+  return value;
+}
+
 function translateTeamName(teamName, language = getUiLanguage()) {
   const originalName = String(teamName || "").trim();
   const displayName = language === "ko"
@@ -1939,14 +1969,20 @@ function formatLeagueName(leagueName) {
   const normalizedOriginal = normalizeTeamSearchText(originalName);
   const lowerOriginal = originalName.toLowerCase();
   const isQualifier = /(QUALIF|QUALIFY|QUALIFYING|QUALIFICATION|QUALIFIER|PRELIMINARY|예선)/i.test(originalName);
+  const language = getUiLanguage();
   if (isQualifier && (lowerOriginal.includes("champions league") || normalizedOriginal.includes("championsleague") || lowerOriginal.includes("ucl"))) {
-    return "챔피언스리그 예선";
+    return language === "en" ? "Champions League Qualifying" : "챔피언스리그 예선";
   }
   if (isQualifier && (lowerOriginal.includes("europa league") || normalizedOriginal.includes("europaleague") || lowerOriginal.includes("uel"))) {
-    return "유로파리그 예선";
+    return language === "en" ? "Europa League Qualifying" : "유로파리그 예선";
   }
   const matchedLeagueKey = getLeagueKeyFromText(originalName);
-  if (matchedLeagueKey) return LEAGUE_NAME_LABELS[matchedLeagueKey] || matchedLeagueKey;
+  if (matchedLeagueKey) {
+    return language === "en"
+      ? (ENGLISH_LEAGUE_LABELS[matchedLeagueKey] || matchedLeagueKey)
+      : (LEAGUE_NAME_LABELS[matchedLeagueKey] || matchedLeagueKey);
+  }
+  if (language === "en") return originalName;
   return originalName
     .split("/")
     .map((part) => getDisplayLeagueLabel(part.trim()))
@@ -1954,8 +1990,8 @@ function formatLeagueName(leagueName) {
 }
 
 function translateLeagueName(leagueName, language = getUiLanguage()) {
-  if (language !== "ko") return String(leagueName || "").trim();
-  return formatLeagueName(leagueName);
+  if (language === getUiLanguage()) return formatLeagueName(leagueName);
+  return String(leagueName || "").trim();
 }
 
 function formatTableValue(header, value) {
@@ -4257,6 +4293,21 @@ function normalizeApiOddsPackMatch(match = {}) {
 function getApiOddsPackRows(pack = getBundledApiOddsPack()) {
   const matches = Array.isArray(pack?.matches) ? pack.matches : [];
   return matches
+    .map(normalizeApiOddsPackMatch)
+    .filter(Boolean);
+}
+
+function getApiOddsPackRowsForDates(dates = [], pack = getBundledApiOddsPack()) {
+  const dateSet = new Set(
+    (dates instanceof Set ? [...dates] : Array.isArray(dates) ? dates : [dates])
+      .map((date) => String(date || "").slice(0, 10))
+      .filter(Boolean)
+  );
+  if (dateSet.size === 0) return [];
+
+  const matches = Array.isArray(pack?.matches) ? pack.matches : [];
+  return matches
+    .filter((match) => dateSet.has(String(match?.date || match?.fixtureDate || "").slice(0, 10)))
     .map(normalizeApiOddsPackMatch)
     .filter(Boolean);
 }
@@ -7971,12 +8022,12 @@ function sortHomeTodayMatchesForUsers(matches = [], searchableMatches = getSearc
 function formatMatchStartTime(match = {}) {
   const timeText = String(match.startTime || match.kickoff || match.time || "").trim();
   if (timeText) return timeText.slice(0, 5);
-  return "시간 미정";
+  return translateUiText("시간 미정");
 }
 
 function getMatchStatusLabel(match = {}) {
   const status = String(match.status || match.fixtureStatus || match.statusShort || "").trim();
-  if (!status) return "경기 전";
+  if (!status) return translateUiText("경기 전");
   const normalizedStatus = status.toUpperCase().replaceAll("_", " ");
   const labels = {
     NS: "경기 전",
@@ -8004,7 +8055,7 @@ function getMatchStatusLabel(match = {}) {
     AWD: "몰수 종료",
     WO: "부전승"
   };
-  return labels[normalizedStatus] || status;
+  return translateUiText(labels[normalizedStatus] || status);
 }
 
 function getOddsUpdateAgeHours(value, now = Date.now()) {
@@ -8222,7 +8273,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
       ? "오늘 경기 불러오는 중"
       : status && status.includes("실패")
         ? "오늘 경기 정보를 불러오지 못했습니다. 새로고침을 눌러 다시 시도해보세요."
-        : "오늘 표시할 주요 경기가 없습니다";
+        : translateUiText("오늘 표시할 주요 경기가 없습니다");
     list.replaceChildren(empty);
     return;
   }
@@ -8265,7 +8316,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 }
 
 function getFixtureDateOptions(todayKey = getTodayKey()) {
-  const weekdayFormatter = new Intl.DateTimeFormat("ko-KR", {
+  const weekdayFormatter = new Intl.DateTimeFormat(getUiLanguage() === "en" ? "en-US" : "ko-KR", {
     timeZone: "Asia/Seoul",
     weekday: "short"
   });
@@ -8282,10 +8333,11 @@ function getFixtureDateOptions(todayKey = getTodayKey()) {
 }
 
 function getStoredFixturesForDate(date, storage) {
+  const targetDate = String(date || "").slice(0, 10);
   return getFixturesForDate([
     ...getStorageTodayMatches(storage),
-    ...getApiOddsPackRows()
-  ], date);
+    ...getApiOddsPackRowsForDates([targetDate])
+  ], targetDate);
 }
 
 function getFixturesForDate(matches = [], date = "") {
@@ -8295,9 +8347,14 @@ function getFixturesForDate(matches = [], date = "") {
 }
 
 function mergeStoredOddsIntoFixtures(matches = [], storedMatches = []) {
+  const fixtureDates = new Set(
+    (Array.isArray(matches) ? matches : [])
+      .map((match) => String(match?.date || "").slice(0, 10))
+      .filter(Boolean)
+  );
   const fallbackRows = [
     ...(Array.isArray(storedMatches) ? storedMatches : []),
-    ...getApiOddsPackRows()
+    ...getApiOddsPackRowsForDates(fixtureDates)
   ].filter(hasCompleteOdds);
   if (fallbackRows.length === 0) return [...(Array.isArray(matches) ? matches : [])];
 
@@ -8370,9 +8427,9 @@ function setDateFixtureStatus(message) {
 }
 
 function formatFixtureDateTitle(date) {
-  if (date === getTodayKey()) return "오늘 경기";
+  if (date === getTodayKey()) return translateUiText("오늘 경기");
   const parsedDate = new Date(`${date}T12:00:00+09:00`);
-  return new Intl.DateTimeFormat("ko-KR", {
+  return new Intl.DateTimeFormat(getUiLanguage() === "en" ? "en-US" : "ko-KR", {
     timeZone: "Asia/Seoul",
     month: "long",
     day: "numeric",
@@ -8393,7 +8450,7 @@ function renderFixtureDateTabs(selectedDate = selectedFixtureDate || getTodayKey
     button.dataset.fixtureDate = item.date;
     button.setAttribute("role", "tab");
     button.setAttribute("aria-selected", String(item.date === selectedDate));
-    button.setAttribute("aria-label", `${item.date}${item.isToday ? " 오늘" : ""}`);
+    button.setAttribute("aria-label", `${item.date}${item.isToday ? ` ${translateUiText("오늘")}` : ""}`);
 
     const weekday = document.createElement("span");
     weekday.textContent = item.weekday;
@@ -8403,7 +8460,7 @@ function renderFixtureDateTabs(selectedDate = selectedFixtureDate || getTodayKey
 
     if (item.isToday) {
       const badge = document.createElement("small");
-      badge.textContent = "●오늘";
+      badge.textContent = getUiLanguage() === "en" ? "●Today" : "●오늘";
       button.appendChild(badge);
     }
     button.addEventListener("click", () => selectFixtureDate(item.date));
@@ -8437,7 +8494,7 @@ function createDateFixtureCard(match = {}) {
   if (isTodayMajor) {
     const majorBadge = document.createElement("b");
     majorBadge.className = "date-fixture-major-badge";
-    majorBadge.textContent = "🔥 주요";
+    majorBadge.textContent = getUiLanguage() === "en" ? "🔥 Featured" : "🔥 주요";
     leagueRow.appendChild(majorBadge);
     card.classList.add("major");
   }
@@ -9228,7 +9285,9 @@ function wireTodayCsvImport() {
   const apiButton = document.getElementById("load-live-odds");
   if (!input && !totoRoundInput && !protoInput && !sampleButton && !apiButton) return;
 
-  initializeLiveOddsControls();
+  // This panel is hidden for ordinary users. Initializing it here scans the
+  // full local match archive before the visible today screen can respond.
+  // The controls already have safe HTML defaults for administrator actions.
   if (apiButton) {
     apiButton.addEventListener("click", () => {
       loadLiveOddsFromApi();
@@ -9330,7 +9389,7 @@ function wireHomeTodayMatches() {
   });
   const majorHeading = document.querySelector(".home-major-heading strong");
   const upsetHeading = document.querySelector(".home-upset-heading strong");
-  if (majorHeading) majorHeading.textContent = "오늘 주요 경기";
+  if (majorHeading) majorHeading.textContent = translateUiText("오늘 주요 경기");
   if (upsetHeading) upsetHeading.textContent = "오늘 이변 후보";
 
   const today = getTodayKey();

@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v115-local-data-fixes";
+const CACHE_NAME = "oddsarchive-v116-english-ui";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -11,7 +11,7 @@ const CORE_ASSETS = [
   "/data/api-odds-pack.js",
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
-  "/src/lib/i18n.js?v=1",
+  "/src/lib/i18n.js?v=2",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
   "/src/lib/auth.js?v=4",

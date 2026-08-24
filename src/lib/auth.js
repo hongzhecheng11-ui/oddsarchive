@@ -117,11 +117,17 @@
       userId = nextUserId;
       isAdmin = false;
       accessToken = String(session?.access_token || "");
-      emit("syncing");
-      const adminAccessPromise = checkAdminAccess(userId);
       const localRecords = favorites?.getLocalRecords?.() || [];
       const cachedRecords = readCache(userId);
       const queuedRecords = readQueue(userId);
+      const cachedMerge = syncTools.mergeFavoriteRecords({
+        local: localRecords,
+        cache: [...cachedRecords, ...queuedRecords]
+      });
+      writeCache(userId, cachedMerge);
+      favorites?.setAccountRecords?.(userId, cachedMerge);
+      emit("syncing");
+      const adminAccessPromise = checkAdminAccess(userId);
       let serverRecords = [];
       let offline = false;
       try {
