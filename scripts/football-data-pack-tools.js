@@ -6,7 +6,7 @@ const ROOT_DIR = path.resolve(__dirname, "..");
 const PACK_PATH = path.join(ROOT_DIR, "data", "football-data-pack.js");
 const TEAM_TRANSLATIONS = require(path.join(ROOT_DIR, "src", "lib", "translations", "teams.js"));
 
-const RECENT_SEASONS = ["2122", "2223", "2324", "2425", "2526"];
+const RECENT_SEASONS = ["2122", "2223", "2324", "2425", "2526", "2627"];
 
 const FOOTBALL_DATA_LEAGUES = {
   EPL: { label: "EPL", code: "E0", source: "football-data.co.uk" },

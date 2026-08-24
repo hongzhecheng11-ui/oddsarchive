@@ -4295,19 +4295,28 @@ const ODDS_BASE_RATE_BANDS = [
 
 // RESULT_VALUES 는 UNKNOWN 을 포함하므로 여기서는 확정 결과만 따로 둔다.
 const BASE_RATE_RESULTS = new Set(["H", "D", "A"]);
+
+// 기저율은 경기 전 배당 하나의 기준으로만 계산한다.
+// football-data.co.uk 의 new/*.csv 는 마감 배당만 제공하므로 그 리그는 제외한다.
+// 마감 배당은 시장 정보가 더 반영돼 이변률이 낮게 나오고, 섞으면 기준이 오염된다.
+const CLOSING_ODDS_LEAGUES = new Set(["J1LEAGUE"]);
+
+function usesClosingOdds(league) {
+  return CLOSING_ODDS_LEAGUES.has(String(league || "").trim().toUpperCase());
+}
 const BASE_RATE_MIN_SAMPLE = 200;
 
 // 과거 데이터팩(4.9MB)은 경기 상세와 배당 검색에서만 로드된다.
 // 팩이 없는 화면에서도 같은 기준을 쓰기 위해 구간 집계를 내장해 둔다.
 // 이 값이 팩과 어긋나지 않는지는 tests/base-rate.test.js 가 강제한다.
 const ODDS_BASE_RATE_FALLBACK = {
-  "~1.30": { matches: 4378, favoriteWins: 3644, upsets: 734, draws: 516 },
-  "1.30~1.50": { matches: 5846, favoriteWins: 4133, upsets: 1713, draws: 1104 },
-  "1.50~1.70": { matches: 7884, favoriteWins: 4810, upsets: 3074, draws: 1858 },
-  "1.70~1.90": { matches: 7933, favoriteWins: 4297, upsets: 3636, draws: 2096 },
-  "1.90~2.10": { matches: 8087, favoriteWins: 3840, upsets: 4247, draws: 2276 },
-  "2.10~2.40": { matches: 13489, favoriteWins: 5799, upsets: 7690, draws: 3977 },
-  "2.40~": { matches: 8835, favoriteWins: 3375, upsets: 5460, draws: 2654 }
+  "~1.30": { matches: 4369, favoriteWins: 3637, upsets: 732, draws: 515 },
+  "1.30~1.50": { matches: 5770, favoriteWins: 4079, upsets: 1691, draws: 1093 },
+  "1.50~1.70": { matches: 7706, favoriteWins: 4694, upsets: 3012, draws: 1822 },
+  "1.70~1.90": { matches: 7679, favoriteWins: 4165, upsets: 3514, draws: 2033 },
+  "1.90~2.10": { matches: 7791, favoriteWins: 3687, upsets: 4104, draws: 2195 },
+  "2.10~2.40": { matches: 12964, favoriteWins: 5593, upsets: 7371, draws: 3818 },
+  "2.40~": { matches: 8417, favoriteWins: 3240, upsets: 5177, draws: 2532 }
 };
 
 function buildFallbackOddsBaseRateIndex() {
@@ -4358,6 +4367,7 @@ function buildOddsBaseRateIndex(rows = []) {
   for (const row of Array.isArray(rows) ? rows : []) {
     const result = String(row?.result || "").trim().toUpperCase();
     if (!BASE_RATE_RESULTS.has(result)) continue;
+    if (usesClosingOdds(row?.league)) continue;
 
     const info = getFavoriteOddsInfo(row);
     if (!info) continue;
@@ -11377,6 +11387,8 @@ if (typeof module !== "undefined") {
   module.exports = {
     AUTO_UPDATE_KEY,
     ODDS_BASE_RATE_BANDS,
+    CLOSING_ODDS_LEAGUES,
+    usesClosingOdds,
     getFavoriteOddsInfo,
     getOddsBandKey,
     buildOddsBaseRateIndex,

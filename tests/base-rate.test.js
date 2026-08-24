@@ -246,3 +246,41 @@ test("writes nothing when there is no resolved candidate", () => {
   assert.strictEqual(app.formatUpsetTrackRecordText({ resolved: 0 }), "");
   assert.strictEqual(app.formatUpsetTrackRecordText({}), "");
 });
+
+// ---- 배당 기준 (경기 전 / 마감) ----
+
+test("flags only the leagues published with closing odds", () => {
+  assert.strictEqual(app.usesClosingOdds("J1LEAGUE"), true);
+  assert.strictEqual(app.usesClosingOdds("j1league"), true);
+  assert.strictEqual(app.usesClosingOdds(" J1LEAGUE "), true);
+  assert.strictEqual(app.usesClosingOdds("EPL"), false);
+  assert.strictEqual(app.usesClosingOdds("E0"), false);
+  assert.strictEqual(app.usesClosingOdds(""), false);
+  assert.strictEqual(app.usesClosingOdds(undefined), false);
+});
+
+test("keeps closing-odds rows out of the base rate index", () => {
+  const index = app.buildOddsBaseRateIndex([
+    { league: "E0", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8", result: "H" },
+    { league: "J1LEAGUE", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8", result: "A" },
+    { league: "J1LEAGUE", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8", result: "D" }
+  ]);
+
+  assert.strictEqual(index.overall.matches, 1);
+  assert.strictEqual(index.overall.favoriteWins, 1);
+  assert.strictEqual(index.bands["1.90~2.10"].matches, 1);
+  assert.strictEqual(index.leagues.J1LEAGUE, undefined);
+});
+
+test("a closing-odds match still gets a rate, taken from the pre-match band", () => {
+  const index = app.buildOddsBaseRateIndex([
+    { league: "E0", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8", result: "A" },
+    { league: "E0", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8", result: "H" }
+  ]);
+  const rate = app.getOddsBaseRate({ league: "J1LEAGUE", homeOdds: "1.95", drawOdds: "3.4", awayOdds: "3.8" }, { index });
+
+  assert.strictEqual(rate.band, "1.90~2.10");
+  assert.strictEqual(rate.scope, "band");
+  assert.strictEqual(rate.sampleSize, 2);
+  assert.strictEqual(rate.upsetRate, 0.5);
+});

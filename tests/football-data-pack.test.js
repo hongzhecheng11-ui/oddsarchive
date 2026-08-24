@@ -33,7 +33,8 @@ test("detects recent target coverage and missing expanded leagues", () => {
       "2223": "Div,Date\nE0,01/01/2023",
       "2324": "Div,Date\nE0,01/01/2024",
       "2425": "Div,Date\nE0,01/01/2025",
-      "2526": "Div,Date\nE0,01/01/2026"
+      "2526": "Div,Date\nE0,01/01/2026",
+      "2627": "Div,Date\nE0,01/01/2027"
     }
   };
 
@@ -50,7 +51,7 @@ test("detects recent target coverage and missing expanded leagues", () => {
   const superLig = coverage.find((item) => item.key === "SUPER_LIG");
 
   assert.strictEqual(epl.isCoveredForRecentTarget, true);
-  assert.strictEqual(epl.totalMatches, 5);
+  assert.strictEqual(epl.totalMatches, 6);
   assert.strictEqual(ucl.isCoveredForRecentTarget, false);
   assert.deepStrictEqual(ucl.missingSeasons, tools.RECENT_SEASONS);
   assert(championship);

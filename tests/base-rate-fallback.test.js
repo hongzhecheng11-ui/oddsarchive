@@ -47,10 +47,23 @@ function parsePackRows() {
   return rows;
 }
 
-const packIndex = app.buildOddsBaseRateIndex(parsePackRows());
+// 기저율은 경기 전 배당만 쓰므로, 마감 배당 리그는 기대치 계산에서도 뺀다.
+function withoutClosingOddsLeagues(rows) {
+  return rows.filter((row) => !app.usesClosingOdds(row.league));
+}
+
+const packRows = parsePackRows();
+const packIndex = app.buildOddsBaseRateIndex(packRows);
 
 test("the bundled pack still has odds and results to aggregate", () => {
   assert(packIndex.overall.matches > 50000, `expected a large sample, got ${packIndex.overall.matches}`);
+});
+
+test("closing-odds leagues are kept out of the base rate", () => {
+  const closingRows = packRows.filter((row) => app.usesClosingOdds(row.league));
+  assert(closingRows.length > 0, "expected the pack to still contain a closing-odds league");
+  assert.strictEqual(packIndex.overall.matches, app.buildOddsBaseRateIndex(withoutClosingOddsLeagues(packRows)).overall.matches);
+  assert.strictEqual(packIndex.leagues.J1LEAGUE, undefined);
 });
 
 test("the built-in band table matches the pack exactly", () => {
