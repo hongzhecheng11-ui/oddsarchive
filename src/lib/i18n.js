@@ -106,7 +106,13 @@
     "세 배당이 정확히 같은 과거 경기": "Past matches with identical odds",
     "홈승·무·원정승 각각 ±0.05 범위": "Within ±0.05 on home, draw and away",
     "홈승/무/원정승 각각 ±0.05 범위": "Within ±0.05 on home, draw and away",
-    "두 팀의 최근 기록과 배당 데이터를 합친 경기 전체 점수": "Overall match score combining both teams' recent form and odds data"
+    "두 팀의 최근 기록과 배당 데이터를 합친 경기 전체 점수": "Overall match score combining both teams' recent form and odds data",
+    "배당 검색 또는 경기 상세를 한 번 무료로 체험할 수 있습니다.": "Try one odds search or match detail for free.",
+    "무료 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다.": "You have used your free trial. Sign in with Google to continue.",
+    "즐겨찾기를 안전하게 병합하는 중입니다.": "Merging your favorites securely.",
+    "Google 계정과 즐겨찾기가 동기화되었습니다.": "Your favorites are synced with your Google account.",
+    "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.": "The server could not be reached, so this was saved to the local and account cache. It will sync again once reconnected.",
+    "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요.": "Google sign-in is unavailable. Please try again shortly."
   };
   const EN_PATTERNS = [
     [/^표본\s*(\d+)\/(\d+)$/, "Sample $1/$2"], [/^표본\s*(\d+)경기$/, "Sample: $1 matches"],
