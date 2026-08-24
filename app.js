@@ -296,7 +296,7 @@ const TEAM_NAME_LABELS = {
   "Crystal Palace": "크리스탈 팰리스",
   Fulham: "풀럼",
   Bournemouth: "본머스",
-  Brentford: "브렌트포드",
+  Brentford: "브렌트퍼드",
   "Nott'm Forest": "노팅엄 포레스트",
   Burnley: "번리",
   Ipswich: "입스위치",
@@ -4662,10 +4662,15 @@ function updateDashboard(matches = getSearchableMatches()) {
   updateEmptyDataActions(matches);
 }
 
-function updateEmptyDataActions(matches = getSearchableMatches()) {
+function updateEmptyDataActions(matches) {
   const actions = document.getElementById("empty-data-actions");
   if (!actions) return;
-  actions.hidden = !isAdminMode() || (Array.isArray(matches) && matches.length > 0);
+  if (!isAdminMode()) {
+    actions.hidden = true;
+    return;
+  }
+  const availableMatches = Array.isArray(matches) ? matches : getSearchableMatches();
+  actions.hidden = availableMatches.length > 0;
 }
 
 function updateDataStatus(storage) {
@@ -4925,6 +4930,11 @@ function getResultChipClass(result) {
   if (result === "D") return "result-chip-draw";
   if (result === "A") return "result-chip-away";
   return "result-chip-unknown";
+}
+
+function formatResultChipLabel(result) {
+  if (getUiLanguage() === "en") return ["H", "D", "A"].includes(result) ? result : "?";
+  return formatResultLabel(result).slice(0, 1);
 }
 
 function getRecentKnownResults(matches = [], limit = 10) {
@@ -5308,7 +5318,7 @@ function createDetailResultFlow(matches = []) {
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = `result-chip ${getResultChipClass(match.result)}`;
-    chip.textContent = formatResultLabel(match.result).slice(0, 1);
+    chip.textContent = formatResultChipLabel(match.result);
     chip.title = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · ${formatMatchResultText(match)}`;
     chip.addEventListener("click", () => openMatchDetail(match));
     flow.appendChild(chip);
@@ -7422,7 +7432,7 @@ function renderResultBreakdownExtras(matches = [], breakdown = {}) {
       const chip = document.createElement("button");
       chip.type = "button";
       chip.className = `result-chip ${getResultChipClass(match.result)}`;
-      chip.textContent = formatResultLabel(match.result).slice(0, 1);
+      chip.textContent = formatResultChipLabel(match.result);
       chip.title = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · ${formatMatchResultText(match)}`;
       chip.addEventListener("click", () => openMatchDetail(match));
       recentChips.appendChild(chip);
@@ -10934,7 +10944,7 @@ if (typeof document !== "undefined") {
   }
   renderTeamMatchResults([], "팀명을 입력하면 과거 경기 기록과 배당이 표시됩니다.", { show: false });
   renderTeamMatchBreakdown([]);
-  renderOddsSearchResults([], loadStoredMatches().length === 0 ? "저장된 경기 데이터가 없습니다." : "조건에 맞는 유사 배당 경기가 없습니다.", { show: false });
+  renderOddsSearchResults([], "조건에 맞는 유사 배당 경기가 없습니다.", { show: false });
   renderResultBreakdown([]);
   renderSearchHistory();
   renderOddsPatternSuggestions();

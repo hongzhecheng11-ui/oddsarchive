@@ -88,7 +88,25 @@
     "휴대폰에 설치": "Install on Phone", "앱으로 설치": "Install App",
     "브라우저 주소창 없이 일반 앱처럼 빠르게 실행할 수 있습니다.": "Launch it quickly like a regular app without the browser address bar.",
     "Chrome 메뉴의 '홈 화면에 추가'로도 설치할 수 있습니다.": "You can also use Add to Home screen from the Chrome menu.",
-    "개인정보 처리방침": "Privacy Policy", "이용약관": "Terms of Service", "계정 삭제 안내": "Account Deletion"
+    "개인정보 처리방침": "Privacy Policy", "이용약관": "Terms of Service", "계정 삭제 안내": "Account Deletion",
+    "오즈아카이브": "OddsArchive",
+    "이 앱은 사용자가 보유한 축구 배당 CSV 데이터를 기록, 검색, 분석하기 위한 정보 제공용 도구입니다. 구매 연결, 구매 대행, 사설 사이트 연결 기능은 제공하지 않습니다.": "This app is an informational tool for recording, searching and analysing football odds CSV data you already own. It does not provide purchase links, purchase agency or private site connections.",
+    "인기": "Popular", "유럽": "Europe", "아시아": "Asia", "국가대항": "International",
+    "경기를 선택하면 상세 분석이 표시됩니다.": "Select a match to see the detailed analysis.",
+    "맞대결": "Head-to-Head", "홈팀 최근": "Home Team Form", "원정팀 최근": "Away Team Form",
+    "부상·결장": "Injuries & Absences", "선발": "Lineup",
+    "미공개": "Not Announced", "공개": "Announced", "포메이션 미정": "Formation TBD",
+    "부상·결장 확인 전": "Injuries & Absences: Not checked",
+    "부상·결장 등록 정보 없음": "Injuries & Absences: None reported",
+    "선발 명단 미공개": "Lineup: Not announced",
+    "선발 명단 확인 전": "Lineup: Not checked",
+    "무승부 주의": "Draw Watch", "균형 배당": "Balanced Odds",
+    "같은 리그 정배 낮음": "Same League: Low Favorite Rate",
+    "동일/유사 정배 낮음": "Exact/Similar: Low Favorite Rate",
+    "세 배당이 정확히 같은 과거 경기": "Past matches with identical odds",
+    "홈승·무·원정승 각각 ±0.05 범위": "Within ±0.05 on home, draw and away",
+    "홈승/무/원정승 각각 ±0.05 범위": "Within ±0.05 on home, draw and away",
+    "두 팀의 최근 기록과 배당 데이터를 합친 경기 전체 점수": "Overall match score combining both teams' recent form and odds data"
   };
   const EN_PATTERNS = [
     [/^표본\s*(\d+)\/(\d+)$/, "Sample $1/$2"], [/^표본\s*(\d+)경기$/, "Sample: $1 matches"],
@@ -133,7 +151,15 @@
     [/^홈승\s*(\d+(?:\.\d+)?)%$/, "Home $1%"], [/^무승부\s*(\d+(?:\.\d+)?)%$/, "Draw $1%"],
     [/^원정승\s*(\d+(?:\.\d+)?)%$/, "Away $1%"], [/^홈\s*(\d+(?:\.\d+)?)%$/, "Home $1%"],
     [/^무\s*(\d+(?:\.\d+)?)%$/, "Draw $1%"], [/^원정\s*(\d+(?:\.\d+)?)%$/, "Away $1%"],
-    [/^업데이트\s+(.+)$/, "Updated $1"], [/^배당\s+(.+)$/, "Odds $1"], [/^허용 오차\s+(.+)$/, "Tolerance $1"]
+    [/^업데이트\s+(.+)$/, "Updated $1"], [/^배당\s+(.+)$/, "Odds $1"], [/^허용 오차\s+(.+)$/, "Tolerance $1"],
+    [/^(\d+)위$/, "#$1"], [/^(\d+)명$/, "$1 players"],
+    [/^(\d{4}-\d{2}-\d{2})\s*·\s*결과\s+(.+)$/, "$1 · Result: $2"],
+    [/^부상·결장\s+(.+)$/, "Injuries & Absences: $1"],
+    [/^선발\s+·\s*(.+)$/, "Lineup · $1"],
+    [/^선발\s+(.+?)\s*·\s*(.+)$/, "Lineup $1 · $2"],
+    [/^(\d+)승\s+(\d+)무\s+(\d+)패\s*·\s*득\s*([\d.]+)\s*·\s*실\s*([\d.]+)$/, "$1 W $2 D $3 L · GF $4 · GA $5"],
+    [/^(\d+)승\s+([\d.]+%)$/, "$1 W $2"], [/^(\d+)무\s+([\d.]+%)$/, "$1 D $2"], [/^(\d+)패\s+([\d.]+%)$/, "$1 L $2"],
+    [/^(.+)\s+유사배당$/, "$1 Similar Odds"], [/^(.+)\s+안에서 비교$/, "Compared within $1"]
   ];
   const EN_INLINE_TERMS = [
     ["승부차기 종료", "After Penalties"], ["연장 종료", "After Extra Time"], ["경기 전", "Scheduled"],
