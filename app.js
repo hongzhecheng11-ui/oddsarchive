@@ -6197,35 +6197,100 @@ function createDetailOddsMovementSection(movement = {}) {
   return section;
 }
 
-function createDetailOverviewPanel(match = {}, analysis = {}) {
+function createDetailTabPanel(tabName, { active = false } = {}) {
   const panel = document.createElement("div");
-  panel.className = "match-detail-tab-panel active";
-  panel.dataset.detailTabPanel = "summary";
+  panel.className = active ? "match-detail-tab-panel active" : "match-detail-tab-panel";
+  panel.dataset.detailTabPanel = tabName;
   panel.setAttribute("role", "tabpanel");
+  return panel;
+}
 
+// 요약: 경기 흐름만 남긴다. 팀 전력과 선발 정보는 각자의 탭으로 옮겼다.
+function createDetailOverviewPanel(match = {}, analysis = {}) {
+  const panel = createDetailTabPanel("summary", { active: true });
+  const recent = createRecentRecordSection(analysis.recentRecords || {});
+  recent.classList.add("match-detail-recent-section");
+  panel.append(createDetailOddsMovementSection(analysis.oddsMovement || {}), recent);
+  return panel;
+}
+
+// 전력: 순위·최근 폼·홈원정 성적·평균 득실을 팀별로 모아 본다.
+function createDetailStrengthPanel(match = {}, analysis = {}) {
+  const panel = createDetailTabPanel("strength");
   const context = analysis.contextProfile || {};
   const homeProfile = getTeamRecentProfile(match.homeTeam, analysis.recentRecords?.homeTeam || [], 5);
   const awayProfile = getTeamRecentProfile(match.awayTeam, analysis.recentRecords?.awayTeam || [], 5);
   const homeStanding = context.favoriteKey === "H" ? context.favoriteStanding : context.favoriteKey === "A" ? context.underdogStanding : null;
   const awayStanding = context.favoriteKey === "A" ? context.favoriteStanding : context.favoriteKey === "H" ? context.underdogStanding : null;
   const fixtureContext = getOfficialFixtureContext(match);
-  const homeAvailability = getFixtureTeamAvailability(fixtureContext, match.homeTeam);
-  const awayAvailability = getFixtureTeamAvailability(fixtureContext, match.awayTeam);
 
   const teams = document.createElement("section");
   teams.className = "match-detail-team-grid";
   teams.append(
-    createDetailTeamOverview("홈팀", match.homeTeam, homeProfile, context.homeVenueProfile, homeStanding, context.homeSeasonProfile, context.homePerformanceProfile, homeAvailability),
-    createDetailTeamOverview("원정팀", match.awayTeam, awayProfile, context.awayVenueProfile, awayStanding, context.awaySeasonProfile, context.awayPerformanceProfile, awayAvailability)
+    createDetailTeamOverview("홈팀", match.homeTeam, homeProfile, context.homeVenueProfile, homeStanding, context.homeSeasonProfile, context.homePerformanceProfile, getFixtureTeamAvailability(fixtureContext, match.homeTeam)),
+    createDetailTeamOverview("원정팀", match.awayTeam, awayProfile, context.awayVenueProfile, awayStanding, context.awaySeasonProfile, context.awayPerformanceProfile, getFixtureTeamAvailability(fixtureContext, match.awayTeam))
   );
-
-  const recent = createRecentRecordSection(analysis.recentRecords || {});
-  recent.classList.add("match-detail-recent-section");
-  const oddsMovement = createDetailOddsMovementSection(analysis.oddsMovement || {});
-  const availability = createDetailAvailabilitySection(fixtureContext);
   panel.append(teams);
-  if (availability) panel.append(availability);
-  panel.append(oddsMovement, recent);
+  return panel;
+}
+
+// 선발: 공식 라인업과 결장 정보. 임박하거나 종료된 경기에만 들어온다.
+function createDetailLineupPanel(match = {}) {
+  const panel = createDetailTabPanel("lineup");
+  const availability = createDetailAvailabilitySection(getOfficialFixtureContext(match));
+
+  if (availability) {
+    panel.append(availability);
+    return panel;
+  }
+
+  const empty = document.createElement("div");
+  empty.className = "empty-state compact-empty";
+  empty.textContent = "선발 명단은 경기가 임박하면 공개됩니다.";
+  panel.append(empty);
+  return panel;
+}
+
+// 기저율: 이 경기의 정배 구간이 역대 어디쯤인지 표로 보여준다.
+function createDetailBaseRatePanel(match = {}) {
+  const panel = createDetailTabPanel("baserate");
+  const rate = getOddsBaseRate(match);
+  const table = getOddsBaseRateTable();
+  const hasSample = table.some((row) => row.sampleSize > 0);
+
+  if (!hasSample) {
+    const empty = document.createElement("div");
+    empty.className = "empty-state compact-empty";
+    empty.textContent = "과거 배당 데이터를 불러오는 중입니다.";
+    panel.append(empty);
+    return panel;
+  }
+
+  const section = document.createElement("section");
+  section.className = "match-detail-section";
+  const title = document.createElement("strong");
+  title.textContent = "정배 배당 구간별 이변률";
+  const note = document.createElement("small");
+  note.className = "match-detail-base-rate-note";
+  note.textContent = "정배가 무너진 비율입니다. 무승부도 실패로 셉니다.";
+
+  const list = document.createElement("div");
+  list.className = "match-detail-base-rate-list";
+  for (const row of table) {
+    const item = document.createElement("div");
+    item.className = row.band === rate.band ? "match-detail-base-rate-row current" : "match-detail-base-rate-row";
+    const band = document.createElement("span");
+    band.textContent = row.band;
+    const value = document.createElement("strong");
+    value.textContent = row.sampleSize > 0 ? `${(row.upsetRate * 100).toFixed(1)}%` : "-";
+    const sample = document.createElement("small");
+    sample.textContent = row.sampleSize > 0 ? `${row.sampleSize.toLocaleString("en-US")}경기` : "표본 없음";
+    item.append(band, value, sample);
+    list.appendChild(item);
+  }
+
+  section.append(title, note, list);
+  panel.append(section);
   return panel;
 }
 
@@ -7641,7 +7706,14 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   const tabs = document.createElement("nav");
   tabs.className = "match-detail-tabs match-detail-primary-tabs";
   tabs.setAttribute("role", "tablist");
-  [["summary", "경기 요약"], ["odds", "동일 배당"], ["ai", "AI 분석"]].forEach(([value, label]) => {
+  [
+    ["summary", "경기 요약"],
+    ["odds", "동일 배당"],
+    ["baserate", "기저율"],
+    ["strength", "팀 전력"],
+    ["lineup", "라인업"],
+    ["ai", "AI 분석"]
+  ].forEach(([value, label]) => {
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.detailTab = value;
@@ -7658,6 +7730,9 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
     tabs,
     createDetailOverviewPanel(match, analysis),
     createDetailOddsPanel(match, analysis),
+    createDetailBaseRatePanel(match),
+    createDetailStrengthPanel(match, analysis),
+    createDetailLineupPanel(match),
     createDetailAiPanel(match, analysis)
   );
   activateMatchDetailTab(shell, activeTab);
