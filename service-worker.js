@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v119-date-perf";
+const CACHE_NAME = "oddsarchive-v120-base-rate";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -11,7 +11,8 @@ const CORE_ASSETS = [
   "/data/api-odds-pack.js",
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
-  "/src/lib/i18n.js?v=5",
+  "/data/upset-candidate-audit.json",
+  "/src/lib/i18n.js?v=6",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
   "/src/lib/auth.js?v=4",

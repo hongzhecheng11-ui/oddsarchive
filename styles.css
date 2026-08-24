@@ -2981,6 +2981,22 @@ body.match-detail-open {
   white-space: nowrap;
 }
 
+.home-upset-track-record {
+  display: block;
+  margin: -2px 0 6px;
+  color: #4a5c68;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.match-detail-base-rate {
+  display: block;
+  margin-top: 2px;
+  color: #4a5c68;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .match-detail-screen-top span:last-child {
   padding: 3px 7px;
   border-radius: 999px;

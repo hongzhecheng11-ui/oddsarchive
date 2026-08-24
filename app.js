@@ -4039,6 +4039,7 @@ function ensureFootballDataPackLoaded() {
     script.onload = () => {
       cachedDefaultPackRows = null;
       cachedBaseMatches = null;
+      cachedOddsBaseRateIndex = null;
       invalidateSearchableMatchesCache();
       resolve();
     };
@@ -4275,6 +4276,307 @@ function getDefaultPackRows() {
   const merged = mergeCsvParseResults(parsedResults);
   cachedDefaultPackRows = validateCsvRows(merged.rows).validRows;
   return cachedDefaultPackRows;
+}
+
+// ---- 배당 구간 기저율 엔진 ----
+// 관측값 옆에 비교 기준을 두기 위한 공용 계산부.
+// 정배(배당이 낮은 쪽)의 배당 구간별로 그 정배가 실패한 비율을 집계한다.
+// 무승부는 정배 실패로 계산한다(track-upset-candidates.js 의 favoriteFailed 와 동일 기준).
+
+const ODDS_BASE_RATE_BANDS = [
+  { key: "~1.30", min: 0, max: 1.3 },
+  { key: "1.30~1.50", min: 1.3, max: 1.5 },
+  { key: "1.50~1.70", min: 1.5, max: 1.7 },
+  { key: "1.70~1.90", min: 1.7, max: 1.9 },
+  { key: "1.90~2.10", min: 1.9, max: 2.1 },
+  { key: "2.10~2.40", min: 2.1, max: 2.4 },
+  { key: "2.40~", min: 2.4, max: Infinity }
+];
+
+// RESULT_VALUES 는 UNKNOWN 을 포함하므로 여기서는 확정 결과만 따로 둔다.
+const BASE_RATE_RESULTS = new Set(["H", "D", "A"]);
+const BASE_RATE_MIN_SAMPLE = 200;
+
+// 과거 데이터팩(4.9MB)은 경기 상세와 배당 검색에서만 로드된다.
+// 팩이 없는 화면에서도 같은 기준을 쓰기 위해 구간 집계를 내장해 둔다.
+// 이 값이 팩과 어긋나지 않는지는 tests/base-rate.test.js 가 강제한다.
+const ODDS_BASE_RATE_FALLBACK = {
+  "~1.30": { matches: 4378, favoriteWins: 3644, upsets: 734, draws: 516 },
+  "1.30~1.50": { matches: 5846, favoriteWins: 4133, upsets: 1713, draws: 1104 },
+  "1.50~1.70": { matches: 7884, favoriteWins: 4810, upsets: 3074, draws: 1858 },
+  "1.70~1.90": { matches: 7933, favoriteWins: 4297, upsets: 3636, draws: 2096 },
+  "1.90~2.10": { matches: 8087, favoriteWins: 3840, upsets: 4247, draws: 2276 },
+  "2.10~2.40": { matches: 13489, favoriteWins: 5799, upsets: 7690, draws: 3977 },
+  "2.40~": { matches: 8835, favoriteWins: 3375, upsets: 5460, draws: 2654 }
+};
+
+function buildFallbackOddsBaseRateIndex() {
+  const bands = {};
+  const overall = createBaseRateBucket();
+  for (const [band, bucket] of Object.entries(ODDS_BASE_RATE_FALLBACK)) {
+    bands[band] = { ...bucket };
+    overall.matches += bucket.matches;
+    overall.favoriteWins += bucket.favoriteWins;
+    overall.upsets += bucket.upsets;
+    overall.draws += bucket.draws;
+  }
+  return { overall, bands, leagues: {} };
+}
+
+let cachedOddsBaseRateIndex = null;
+
+function getFavoriteOddsInfo(match = {}) {
+  const homeOdds = Number.parseFloat(match.homeOdds);
+  const awayOdds = Number.parseFloat(match.awayOdds);
+  if (!(homeOdds > 0) || !(awayOdds > 0)) return null;
+  return homeOdds <= awayOdds
+    ? { favoriteKey: "H", favoriteOdds: homeOdds }
+    : { favoriteKey: "A", favoriteOdds: awayOdds };
+}
+
+function getOddsBandKey(favoriteOdds) {
+  const odds = Number.parseFloat(favoriteOdds);
+  if (!(odds > 0)) return "";
+  const band = ODDS_BASE_RATE_BANDS.find((entry) => odds >= entry.min && odds < entry.max);
+  return band ? band.key : "";
+}
+
+function createBaseRateBucket() {
+  return { matches: 0, favoriteWins: 0, upsets: 0, draws: 0 };
+}
+
+function addToBaseRateBucket(bucket, result, favoriteKey) {
+  bucket.matches += 1;
+  if (result === favoriteKey) bucket.favoriteWins += 1;
+  else bucket.upsets += 1;
+  if (result === "D") bucket.draws += 1;
+}
+
+function buildOddsBaseRateIndex(rows = []) {
+  const index = { overall: createBaseRateBucket(), bands: {}, leagues: {} };
+
+  for (const row of Array.isArray(rows) ? rows : []) {
+    const result = String(row?.result || "").trim().toUpperCase();
+    if (!BASE_RATE_RESULTS.has(result)) continue;
+
+    const info = getFavoriteOddsInfo(row);
+    if (!info) continue;
+
+    const band = getOddsBandKey(info.favoriteOdds);
+    if (!band) continue;
+
+    addToBaseRateBucket(index.overall, result, info.favoriteKey);
+
+    if (!index.bands[band]) index.bands[band] = createBaseRateBucket();
+    addToBaseRateBucket(index.bands[band], result, info.favoriteKey);
+
+    const league = String(row.league || "").trim();
+    if (!league) continue;
+    if (!index.leagues[league]) index.leagues[league] = {};
+    if (!index.leagues[league][band]) index.leagues[league][band] = createBaseRateBucket();
+    addToBaseRateBucket(index.leagues[league][band], result, info.favoriteKey);
+  }
+
+  return index;
+}
+
+function summarizeBaseRateBucket(bucket) {
+  const matches = Number(bucket?.matches || 0);
+  if (matches <= 0) {
+    return { sampleSize: 0, upsetRate: null, drawRate: null, favoriteWinRate: null };
+  }
+  return {
+    sampleSize: matches,
+    upsetRate: bucket.upsets / matches,
+    drawRate: bucket.draws / matches,
+    favoriteWinRate: bucket.favoriteWins / matches
+  };
+}
+
+function getDefaultOddsBaseRateIndex() {
+  if (cachedOddsBaseRateIndex) return cachedOddsBaseRateIndex;
+
+  const index = buildOddsBaseRateIndex(getDefaultPackRows());
+  // 팩이 아직 없으면 내장 집계로 답한다. 캐시하지 않으므로 로드 후에는 실제 값으로 바뀐다.
+  if (index.overall.matches <= 0) return buildFallbackOddsBaseRateIndex();
+
+  cachedOddsBaseRateIndex = index;
+  return index;
+}
+
+function createOddsBaseRateNote(match = {}) {
+  if (typeof document === "undefined") return null;
+
+  const baseRate = getOddsBaseRate(match);
+  if (!(baseRate.sampleSize > 0)) return null;
+
+  const note = document.createElement("small");
+  note.className = "match-detail-base-rate";
+  const rate = `${(baseRate.upsetRate * 100).toFixed(1)}%`;
+  const sample = baseRate.sampleSize.toLocaleString("en-US");
+  const favorite = formatOdds(baseRate.favoriteOdds);
+  note.textContent = baseRate.scope === "league"
+    ? `정배 ${favorite} · ${formatLeagueName(baseRate.league)} 역대 이변률 ${rate} · 표본 ${sample}경기`
+    : `정배 ${favorite} · 역대 이변률 ${rate} · 표본 ${sample}경기`;
+  return note;
+}
+
+// 리그 표본이 충분하면 리그 기준, 아니면 전체 구간 기준으로 물러선다.
+// 어느 기준을 썼는지 scope 로 함께 돌려주어 화면에서 숨기지 않는다.
+function getOddsBaseRate(match = {}, options = {}) {
+  const {
+    league = String(match.league || "").trim(),
+    index = getDefaultOddsBaseRateIndex(),
+    minimumSampleSize = BASE_RATE_MIN_SAMPLE
+  } = options;
+
+  const info = getFavoriteOddsInfo(match);
+  const empty = {
+    band: "",
+    scope: "none",
+    league: "",
+    favoriteKey: "",
+    favoriteOdds: null,
+    sampleSize: 0,
+    upsetRate: null,
+    drawRate: null,
+    favoriteWinRate: null
+  };
+  if (!info) return empty;
+
+  const band = getOddsBandKey(info.favoriteOdds);
+  if (!band) return empty;
+
+  const leagueBucket = league ? index?.leagues?.[league]?.[band] : null;
+  const useLeague = Number(leagueBucket?.matches || 0) >= minimumSampleSize;
+  const bucket = useLeague ? leagueBucket : index?.bands?.[band];
+  const summary = summarizeBaseRateBucket(bucket);
+
+  return {
+    band,
+    scope: summary.sampleSize > 0 ? (useLeague ? "league" : "band") : "none",
+    league: useLeague ? league : "",
+    favoriteKey: info.favoriteKey,
+    favoriteOdds: info.favoriteOdds,
+    ...summary
+  };
+}
+
+function getOddsBaseRateTable(options = {}) {
+  const { index = getDefaultOddsBaseRateIndex(), league = "" } = options;
+  const source = league ? index?.leagues?.[league] || {} : index?.bands || {};
+  return ODDS_BASE_RATE_BANDS.map((entry) => ({
+    band: entry.key,
+    ...summarizeBaseRateBucket(source[entry.key])
+  }));
+}
+
+// ---- 이변 후보 공개 검증 기록 ----
+// 후보별로 그 경기의 정배 배당 구간 기저율을 더해 기대치를 만들고 실제와 비교한다.
+// 전체 평균이 아니라 구간을 맞춰야 비교가 성립한다.
+
+const UPSET_AUDIT_PATH = "data/upset-candidate-audit.json";
+let upsetAuditPack = null;
+let upsetAuditLoadPromise = null;
+
+function buildUpsetTrackRecord(audit = {}, options = {}) {
+  const { index = getDefaultOddsBaseRateIndex() } = options;
+  const candidates = Object.values(audit?.candidates || {});
+  const labels = new Map();
+  let resolved = 0;
+  let actualFailures = 0;
+  let expectedFailures = 0;
+
+  for (const candidate of candidates) {
+    if (candidate?.favoriteFailed !== true && candidate?.favoriteFailed !== false) continue;
+
+    const rate = getOddsBaseRate({
+      homeOdds: candidate.homeOdds,
+      drawOdds: candidate.drawOdds,
+      awayOdds: candidate.awayOdds,
+      league: candidate.league
+    }, { index });
+    if (rate.upsetRate === null) continue;
+
+    const failed = candidate.favoriteFailed === true;
+    resolved += 1;
+    if (failed) actualFailures += 1;
+    expectedFailures += rate.upsetRate;
+
+    const label = String(candidate.candidateLabel || "").trim() || "기타";
+    if (!labels.has(label)) labels.set(label, { label, resolved: 0, actualFailures: 0, expectedFailures: 0 });
+    const bucket = labels.get(label);
+    bucket.resolved += 1;
+    if (failed) bucket.actualFailures += 1;
+    bucket.expectedFailures += rate.upsetRate;
+  }
+
+  return {
+    resolved,
+    actualFailures,
+    expectedFailures,
+    actualRate: resolved > 0 ? actualFailures / resolved : null,
+    expectedRate: resolved > 0 ? expectedFailures / resolved : null,
+    byLabel: [...labels.values()].sort((left, right) => right.resolved - left.resolved)
+  };
+}
+
+function ensureUpsetAuditLoaded() {
+  if (upsetAuditPack) return Promise.resolve(upsetAuditPack);
+  if (upsetAuditLoadPromise) return upsetAuditLoadPromise;
+  if (typeof fetch !== "function") return Promise.resolve(null);
+
+  upsetAuditLoadPromise = fetch(UPSET_AUDIT_PATH)
+    .then((response) => (response.ok ? response.json() : null))
+    .then((pack) => {
+      upsetAuditPack = pack;
+      return pack;
+    })
+    .catch(() => {
+      upsetAuditLoadPromise = null;
+      return null;
+    });
+
+  return upsetAuditLoadPromise;
+}
+
+function formatUpsetTrackRecordText(record = {}) {
+  if (!record || !(record.resolved > 0)) return "";
+  const actual = `${(record.actualRate * 100).toFixed(1)}%`;
+  const expected = `${(record.expectedRate * 100).toFixed(1)}%`;
+  return `검증 ${record.resolved}건 · 실제 ${actual} · 같은 구간 기저율 ${expected}`;
+}
+
+function renderUpsetTrackRecord(record = {}) {
+  if (typeof document === "undefined") return;
+  const panel = document.querySelector(".home-upset-panel");
+  if (!panel) return;
+
+  const text = formatUpsetTrackRecordText(record);
+  let note = document.getElementById("home-upset-track-record");
+
+  if (!text) {
+    if (note) note.remove();
+    return;
+  }
+
+  if (!note) {
+    note = document.createElement("small");
+    note.id = "home-upset-track-record";
+    note.className = "home-upset-track-record";
+    const heading = panel.querySelector(".home-upset-heading");
+    if (heading && heading.nextSibling) panel.insertBefore(note, heading.nextSibling);
+    else panel.appendChild(note);
+  }
+  note.textContent = text;
+}
+
+async function loadUpsetTrackRecord() {
+  const audit = await ensureUpsetAuditLoaded();
+  if (!audit) return null;
+  const record = buildUpsetTrackRecord(audit);
+  renderUpsetTrackRecord(record);
+  return record;
 }
 
 function normalizeApiOddsPackMatch(match = {}) {
@@ -7286,14 +7588,15 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   odds.textContent = hasOdds
     ? `홈 ${formatOdds(match.homeOdds)} · 무 ${formatOdds(match.drawOdds)} · 원정 ${formatOdds(match.awayOdds)}`
     : "배당 준비 중";
+  const baseRateNote = createOddsBaseRateNote(match);
   const resultText = formatMatchResultText(match);
   if (resultText) {
     const result = document.createElement("strong");
     result.className = "match-detail-final-result";
     result.textContent = resultText.replace(/^경기결과:\s*/, "최종 ");
-    hero.append(top, title, meta, odds, result);
+    hero.append(...[top, title, meta, odds, baseRateNote, result].filter(Boolean));
   } else {
-    hero.append(top, title, meta, odds);
+    hero.append(...[top, title, meta, odds, baseRateNote].filter(Boolean));
   }
 
   const tabs = document.createElement("nav");
@@ -8233,6 +8536,9 @@ function renderHomeUpsetCandidates(matches = []) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("home-upset-list");
   if (!list) return;
+
+  // 후보 목록 옆에 지금까지의 검증 성적을 같이 둔다. 실패해도 화면은 그대로 진행한다.
+  loadUpsetTrackRecord().catch(() => {});
 
   if (!cachedSearchableMatches) {
     const empty = document.createElement("div");
@@ -11021,6 +11327,18 @@ if (typeof document !== "undefined") {
 if (typeof module !== "undefined") {
   module.exports = {
     AUTO_UPDATE_KEY,
+    ODDS_BASE_RATE_BANDS,
+    getFavoriteOddsInfo,
+    getOddsBandKey,
+    buildOddsBaseRateIndex,
+    summarizeBaseRateBucket,
+    getOddsBaseRate,
+    getOddsBaseRateTable,
+    createOddsBaseRateNote,
+    ODDS_BASE_RATE_FALLBACK,
+    buildFallbackOddsBaseRateIndex,
+    buildUpsetTrackRecord,
+    formatUpsetTrackRecordText,
     CSV_HEADERS,
     clearStoredMatches,
     clearLocalAccount,
