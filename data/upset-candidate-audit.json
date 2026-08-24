@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-23T18:43:03.994Z",
+  "updatedAt": "2026-08-24T09:01:27.165Z",
   "summary": {
     "trackedDays": 37,
-    "trackedCandidates": 30,
+    "trackedCandidates": 31,
     "resolvedCandidates": 24,
     "favoriteFailures": 9,
     "directionHits": 6
@@ -267,31 +267,31 @@
     {
       "date": "2026-08-24",
       "firstEvaluatedAt": "2026-08-20T18:54:13.976Z",
-      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "lastEvaluatedAt": "2026-08-24T09:01:27.165Z",
       "eligibleMatchCount": 5,
       "candidateIds": []
     },
     {
       "date": "2026-08-25",
       "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
-      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "lastEvaluatedAt": "2026-08-24T09:01:27.165Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-08-26",
       "firstEvaluatedAt": "2026-08-22T18:43:57.795Z",
-      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
-      "eligibleMatchCount": 4,
+      "lastEvaluatedAt": "2026-08-24T09:01:27.165Z",
+      "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-08-27",
       "firstEvaluatedAt": "2026-08-23T18:43:03.994Z",
-      "lastEvaluatedAt": "2026-08-23T18:43:03.994Z",
+      "lastEvaluatedAt": "2026-08-24T09:01:27.165Z",
       "eligibleMatchCount": 5,
       "candidateIds": [
-        "fixture:1570340"
+        "fixture:1622630"
       ]
     }
   ],
@@ -1070,6 +1070,32 @@
       "sampleSize": 69,
       "firstEvaluatedAt": "2026-08-23T18:43:03.994Z",
       "lastSeenAt": "2026-08-23T18:43:03.994Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1622630",
+      "fixtureId": "1622630",
+      "date": "2026-08-27",
+      "league": "UCL",
+      "homeTeam": "Lyon",
+      "awayTeam": "Fenerbahçe",
+      "homeOdds": "1.91",
+      "drawOdds": "3.40",
+      "awayOdds": "3.60",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 25,
+      "firstEvaluatedAt": "2026-08-24T09:01:27.165Z",
+      "lastSeenAt": "2026-08-24T09:01:27.165Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
