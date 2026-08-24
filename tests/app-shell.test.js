@@ -12,6 +12,43 @@ function test(name, fn) {
   }
 }
 
+test("parses a Toto round CSV without changing fixture data", () => {
+  const csv = [
+    "roundName,no,date,league,homeTeam,awayTeam,homeOdds,drawOdds,awayOdds",
+    "승무패 1,1,2026-08-10,EPL,Arsenal,Chelsea,1.80,3.40,4.20",
+    "승무패 1,2,2026-08-10,LALIGA,Barcelona,Valencia,1.55,4.10,6.20"
+  ].join("\n");
+  const result = app.parseTotoRoundCsv(csv);
+
+  assert.strictEqual(result.error, "");
+  assert.strictEqual(result.pack.currentRound.roundName, "승무패 1");
+  assert.strictEqual(result.pack.currentRound.fixtures.length, 2);
+  assert.strictEqual(result.pack.currentRound.fixtures[1].awayOdds, "6.20");
+});
+
+test("rejects a Toto round CSV with more than 14 fixtures", () => {
+  const header = "roundName,no,date,league,homeTeam,awayTeam,homeOdds,drawOdds,awayOdds";
+  const rows = Array.from({ length: 15 }, (_, index) => `round,${index + 1},2026-08-10,EPL,Home${index},Away${index},1.80,3.40,4.20`);
+  const result = app.parseTotoRoundCsv([header, ...rows].join("\n"));
+
+  assert.match(result.error, /1~14/);
+});
+
+test("parses separate Proto markets for one fixture", () => {
+  const csv = [
+    "gameNo,kickoffAt,league,homeTeam,awayTeam,marketType,line,homeLabel,drawLabel,awayLabel,homeOdds,drawOdds,awayOdds",
+    "1566,2026-08-12 00:00,AFC Champions League Elite,Partizan,Al-Hussein,1X2,,승,무,패,3.05,3.20,1.96",
+    "1566,2026-08-12 00:00,AFC Champions League Elite,Partizan,Al-Hussein,HANDICAP,H -1.0,승,,패,3.05,,1.96",
+    "1567,2026-08-12 00:00,AFC Champions League Elite,Partizan,Al-Hussein,TOTAL,U/O 2.5,언더,,오버,1.66,,1.87"
+  ].join("\n");
+  const result = app.parseProtoCsv(csv);
+
+  assert.strictEqual(result.error, "");
+  assert.strictEqual(result.pack.markets.length, 3);
+  assert.strictEqual(result.pack.markets[1].marketType, "HANDICAP");
+  assert.strictEqual(result.pack.markets[2].line, "U/O 2.5");
+});
+
 test("shows Google login in the account header when a cloud account is active", () => {
   const storage = {
     getItem() { return null; },

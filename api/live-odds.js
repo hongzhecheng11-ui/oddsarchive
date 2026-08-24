@@ -33,6 +33,21 @@ const CALENDAR_YEAR_LEAGUES = new Set([
   "J2LEAGUE",
   "ACL"
 ]);
+const EUROPEAN_ODDS_PRIORITY = new Set([
+  "EPL",
+  "LALIGA",
+  "SERIEA",
+  "BUNDESLIGA",
+  "LIGUE1",
+  "UCL",
+  "UEL",
+  "CHAMPIONSHIP",
+  "EREDIVISIE",
+  "PRIMEIRA_LIGA",
+  "SCOTTISH_PREMIERSHIP",
+  "BELGIAN_PRO_LEAGUE",
+  "SUPER_LIG"
+]);
 
 function getLeagueKeyByApiLeague(league = {}) {
   const leagueId = Number(league.id || 0);
@@ -175,6 +190,7 @@ function normalizeFixtureItem(item, leagueKey, dateText) {
   return {
     id: fixture.id ? `api-football-${fixture.id}` : `api-football-fixture-${leagueKey}-${dateText}-${teams.home?.name || ""}-${teams.away?.name || ""}`,
     fixtureId: fixture.id || "",
+    leagueId: league.id || "",
     date: seoulDateTime.date || String(fixture.date || dateText).slice(0, 10),
     league: leagueLabel,
     homeTeam: teams.home?.name || "",
@@ -199,7 +215,10 @@ async function fetchApiFootball(path, apiKey) {
   });
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(payload.message || payload.errors?.token || `API-Football 응답 오류 ${response.status}`);
+    const providerError = payload.errors && typeof payload.errors === "object"
+      ? Object.values(payload.errors).find((value) => String(value || "").trim())
+      : "";
+    throw new Error(payload.message || providerError || `API-Football 응답 오류 ${response.status}`);
   }
   return payload;
 }
@@ -226,9 +245,16 @@ function getDateRange(endDateText, days = 7) {
 
 async function loadLeagueOdds({ date, leagueKey, leagueId, apiKey }) {
   const season = getSeason(date, leagueKey);
-  const path = `/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1`;
-  const payload = await fetchApiFootball(path, apiKey);
-  const rows = Array.isArray(payload.response) ? payload.response : [];
+  const rows = [];
+  let page = 1;
+  let totalPages = 1;
+  do {
+    const path = `/odds?league=${leagueId}&season=${season}&date=${encodeURIComponent(date)}&bet=1&page=${page}`;
+    const payload = await fetchApiFootball(path, apiKey);
+    rows.push(...(Array.isArray(payload.response) ? payload.response : []));
+    totalPages = Math.max(1, Number(payload.paging?.total || 1));
+    page += 1;
+  } while (page <= totalPages);
   return rows.map((item) => normalizeOddsItem(item, leagueKey, date));
 }
 
@@ -273,11 +299,24 @@ async function loadGlobalFixtures({ date, apiKey, filter } = {}) {
 }
 
 async function loadOddsForFixtures({ fixtures, leagueKey, date, apiKey }) {
-  const limitedFixtures = fixtures.filter((match) => match.fixtureId).slice(0, 12);
-  const results = await Promise.all(limitedFixtures.map((match) => (
-    loadFixtureOdds({ fixtureId: match.fixtureId, leagueKey, date, apiKey }).catch(() => [])
+  const fixtureCandidates = fixtures.filter((match) => match.fixtureId);
+  const fixtureIds = new Set(fixtureCandidates.map((match) => String(match.fixtureId)));
+  const leagueRequests = new Map();
+
+  fixtureCandidates.forEach((match) => {
+    const matchLeagueKey = String(match.league || leagueKey || "").trim().toUpperCase();
+    const mappedLeagueIds = getLeagueIds(matchLeagueKey).filter(Boolean);
+    const matchLeagueId = Number(match.leagueId || 0);
+    const leagueIds = matchLeagueId ? [matchLeagueId] : mappedLeagueIds;
+    leagueIds.forEach((leagueId) => {
+      leagueRequests.set(`${matchLeagueKey}:${leagueId}`, { leagueKey: matchLeagueKey, leagueId });
+    });
+  });
+
+  const results = await Promise.all([...leagueRequests.values()].map((request) => (
+    loadLeagueOdds({ ...request, date, apiKey }).catch(() => [])
   )));
-  return results.flat();
+  return results.flat().filter((match) => fixtureIds.has(String(match.fixtureId)));
 }
 
 function mergeFixturesWithOdds(fixtures, odds) {

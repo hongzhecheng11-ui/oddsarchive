@@ -16,6 +16,8 @@ const SEARCH_HISTORY_KEY = "oddsArchiveSearchHistory";
 const AUTO_UPDATE_KEY = "oddsArchiveAutoUpdate";
 const LOCAL_ACCOUNT_KEY = "oddsArchiveLocalAccount";
 const TODAY_MATCHES_KEY = "oddsArchiveTodayMatches";
+const TOTO_ROUND_PACK_KEY = "oddsArchiveTotoRoundPack";
+const PROTO_MARKET_PACK_KEY = "oddsArchiveProtoMarketPack";
 const API_HISTORY_CACHE_KEY = "oddsArchiveApiHistoryCache";
 const GUEST_SEARCH_TRIAL_KEY = "oddsArchiveGuestSearchTrialUsed";
 const MATCH_TABLE_COLUMN_COUNT = CSV_HEADERS.length + 1;
@@ -455,6 +457,18 @@ const TEAM_TRANSLATION_ALIAS_LABELS = Object.entries(EXTERNAL_TRANSLATIONS.teams
   return labels;
 }, {});
 
+const TEAM_TRANSLATION_ENGLISH_LABELS = Object.entries(TEAM_NAME_LABELS).reduce((labels, [englishName, koreanName]) => {
+  const normalizedKoreanName = getNormalizedLabelKey(koreanName);
+  if (normalizedKoreanName && !labels[normalizedKoreanName]) labels[normalizedKoreanName] = englishName;
+  return labels;
+}, {});
+Object.entries(TEAM_TRANSLATION_ALIAS_LABELS).forEach(([alias, displayName]) => {
+  const normalizedDisplayName = getNormalizedLabelKey(displayName);
+  if (normalizedDisplayName && !TEAM_TRANSLATION_ENGLISH_LABELS[normalizedDisplayName]) {
+    TEAM_TRANSLATION_ENGLISH_LABELS[normalizedDisplayName] = alias;
+  }
+});
+
 function getNormalizedLabelKey(value) {
   return String(value || "")
     .trim()
@@ -465,7 +479,10 @@ function getNormalizedLabelKey(value) {
 function getTeamTranslationLabel(teamName, language = "ko") {
   const originalName = String(teamName || "").trim();
   if (!originalName) return "";
-  if (language !== "ko") return originalName;
+  if (language !== "ko") {
+    const englishName = TEAM_TRANSLATION_ENGLISH_LABELS[getNormalizedLabelKey(originalName)];
+    return englishName || originalName;
+  }
   if (Object.values(EXTERNAL_TRANSLATIONS.teams?.labels || {}).includes(originalName)) return originalName;
 
   const directLabel = EXTERNAL_TRANSLATIONS.teams?.labels?.[originalName] || TEAM_TRANSLATION_ALIAS_LABELS[originalName];
@@ -1189,8 +1206,8 @@ function getTodayMatchKey(match) {
   return [
     match.date || "",
     league,
-    normalizeTeamSearchText(formatTeamName(match.homeTeam || "")),
-    normalizeTeamSearchText(formatTeamName(match.awayTeam || ""))
+    normalizeTeamSearchText(normalizeTeamNameForStorage(match.homeTeam || "")),
+    normalizeTeamSearchText(normalizeTeamNameForStorage(match.awayTeam || ""))
   ].join("|");
 }
 
@@ -1213,6 +1230,10 @@ function mergeTodayMatches(matches, storage) {
       homeOdds: String(match.homeOdds || "").trim(),
       drawOdds: String(match.drawOdds || "").trim(),
       awayOdds: String(match.awayOdds || "").trim(),
+      result: String(match.result || "").trim().toUpperCase(),
+      score: String(match.score || "").trim(),
+      updatedAt: String(match.updatedAt || match.oddsUpdatedAt || "").trim(),
+      fixtureId: String(match.fixtureId || "").trim(),
       tolerance: match.tolerance || "0.05",
       roundName: match.roundName || "",
       totoNo: match.totoNo || "",
@@ -1220,7 +1241,26 @@ function mergeTodayMatches(matches, storage) {
     };
     const key = getTodayMatchKey(normalizedMatch);
 
-    if (!normalizedMatch.homeTeam || !normalizedMatch.awayTeam || existingKeys.has(key)) {
+    if (!normalizedMatch.homeTeam || !normalizedMatch.awayTeam) {
+      duplicateCount += 1;
+      continue;
+    }
+
+    const existingIndex = nextMatches.findIndex((item) => getTodayMatchKey(item) === key);
+    if (existingIndex >= 0) {
+      const existingMatch = nextMatches[existingIndex];
+      const mergedMatch = { ...existingMatch, ...normalizedMatch, id: existingMatch.id || normalizedMatch.id };
+      if (!hasCompleteOdds(normalizedMatch) && hasCompleteOdds(existingMatch)) {
+        mergedMatch.homeOdds = existingMatch.homeOdds;
+        mergedMatch.drawOdds = existingMatch.drawOdds;
+        mergedMatch.awayOdds = existingMatch.awayOdds;
+      }
+      const incomingHasResult = ["H", "D", "A"].includes(normalizedMatch.result);
+      const existingHasResult = ["H", "D", "A"].includes(String(existingMatch.result || "").toUpperCase());
+      if (!incomingHasResult && existingHasResult) mergedMatch.result = existingMatch.result;
+      if (!mergedMatch.score && existingMatch.score) mergedMatch.score = existingMatch.score;
+      if (!mergedMatch.updatedAt && existingMatch.updatedAt) mergedMatch.updatedAt = existingMatch.updatedAt;
+      nextMatches[existingIndex] = mergedMatch;
       duplicateCount += 1;
       continue;
     }
@@ -1872,7 +1912,9 @@ function getUiLanguage() {
 
 function translateTeamName(teamName, language = getUiLanguage()) {
   const originalName = String(teamName || "").trim();
-  const displayName = language === "ko" ? normalizeTeamNameForStorage(originalName) : originalName;
+  const displayName = language === "ko"
+    ? normalizeTeamNameForStorage(originalName)
+    : getTeamTranslationLabel(originalName, language);
   if (displayName === originalName) maybeWarnMissingTeamLabel(originalName);
   return displayName;
 }
@@ -3969,9 +4011,146 @@ function getBundledApiOddsPack() {
 }
 
 function getBundledTotoRoundPack() {
+  const storedPack = getStoredTotoRoundPack();
+  if (storedPack.currentRound?.fixtures?.length) return storedPack;
   if (typeof window !== "undefined" && window.TOTO_ROUND_PACK) return window.TOTO_ROUND_PACK;
   if (typeof globalThis !== "undefined" && globalThis.TOTO_ROUND_PACK) return globalThis.TOTO_ROUND_PACK;
   return {};
+}
+
+function getStoredTotoRoundPack(storage) {
+  const targetStorage = getStorageTarget(storage);
+  if (!targetStorage) return {};
+  try {
+    const value = JSON.parse(targetStorage.getItem(TOTO_ROUND_PACK_KEY) || "{}");
+    return value && typeof value === "object" ? value : {};
+  } catch (_error) {
+    return {};
+  }
+}
+
+function setStoredTotoRoundPack(pack, storage) {
+  const targetStorage = getStorageTarget(storage);
+  if (!targetStorage) return false;
+  try {
+    targetStorage.setItem(TOTO_ROUND_PACK_KEY, JSON.stringify(pack || {}));
+    return true;
+  } catch (_error) {
+    return false;
+  }
+}
+
+function getStoredProtoMarketPack(storage) {
+  const targetStorage = getStorageTarget(storage);
+  if (!targetStorage) return { markets: [] };
+  try {
+    const value = JSON.parse(targetStorage.getItem(PROTO_MARKET_PACK_KEY) || "{}");
+    return value && Array.isArray(value.markets) ? value : { markets: [] };
+  } catch (_error) {
+    return { markets: [] };
+  }
+}
+
+function setStoredProtoMarketPack(pack, storage) {
+  const targetStorage = getStorageTarget(storage);
+  if (!targetStorage) return false;
+  try {
+    targetStorage.setItem(PROTO_MARKET_PACK_KEY, JSON.stringify(pack || { markets: [] }));
+    return true;
+  } catch (_error) {
+    return false;
+  }
+}
+
+function parseProtoCsv(csvText) {
+  const lines = String(csvText || "")
+    .replace(/^\uFEFF/, "")
+    .split(/\r?\n/)
+    .filter((line) => line.trim());
+  const headers = parseCsvLine(lines.shift() || "").map((header) => normalizeCsvHeaderName(header));
+  const requiredHeaders = ["gameno", "kickoffat", "league", "hometeam", "awayteam", "markettype", "line", "homelabel", "awaylabel", "homeodds", "awayodds"];
+  if (requiredHeaders.some((header) => !headers.includes(header))) {
+    return { error: "프로토 CSV 헤더가 올바르지 않습니다.", pack: { markets: [] } };
+  }
+
+  const markets = lines.map((line) => {
+    const values = parseCsvLine(line);
+    const row = Object.fromEntries(headers.map((header, index) => [header, String(values[index] || "").trim()]));
+    return {
+      gameNo: row.gameno,
+      kickoffAt: row.kickoffat,
+      league: row.league,
+      homeTeam: row.hometeam,
+      awayTeam: row.awayteam,
+      marketType: row.markettype,
+      line: row.line,
+      homeLabel: row.homelabel,
+      drawLabel: row.drawlabel || "",
+      awayLabel: row.awaylabel,
+      homeOdds: row.homeodds,
+      drawOdds: row.drawodds || "",
+      awayOdds: row.awayodds
+    };
+  }).filter((market) => market.gameNo && market.homeTeam && market.awayTeam && market.marketType);
+
+  if (markets.length === 0) {
+    return { error: "프로토 경기 데이터가 없습니다.", pack: { markets: [] } };
+  }
+  return { error: "", pack: { markets } };
+}
+
+async function loadProtoCsvFile(file, storage) {
+  if (!requireAdminMode()) return { error: "관리자 권한이 필요합니다.", pack: { markets: [] } };
+  if (!file || typeof file.text !== "function") return { error: "프로토 CSV를 선택해주세요.", pack: { markets: [] } };
+  const result = parseProtoCsv(await file.text());
+  if (!result.error && !setStoredProtoMarketPack(result.pack, storage)) {
+    return { error: "프로토 데이터를 저장하지 못했습니다.", pack: { markets: [] } };
+  }
+  return result;
+}
+
+function parseTotoRoundCsv(csvText) {
+  const lines = String(csvText || "")
+    .replace(/^\uFEFF/, "")
+    .split(/\r?\n/)
+    .filter((line) => line.trim());
+  const headers = parseCsvLine(lines.shift() || "").map((header) => normalizeCsvHeaderName(header));
+  const requiredHeaders = ["roundname", "no", "date", "league", "hometeam", "awayteam", "homeodds", "drawodds", "awayodds"];
+  if (requiredHeaders.some((header) => !headers.includes(header))) {
+    return { error: "승무패 회차 CSV 헤더가 올바르지 않습니다.", pack: {} };
+  }
+
+  const rows = lines.map((line) => {
+    const values = parseCsvLine(line);
+    const row = Object.fromEntries(headers.map((header, index) => [header, String(values[index] || "").trim()]));
+    return {
+      roundName: row.roundname,
+      date: row.date,
+      league: row.league,
+      homeTeam: row.hometeam,
+      awayTeam: row.awayteam,
+      homeOdds: row.homeodds,
+      drawOdds: row.drawodds,
+      awayOdds: row.awayodds,
+      no: row.no
+    };
+  }).filter((row) => row.homeTeam && row.awayTeam && row.no);
+
+  if (rows.length === 0 || rows.length > 14) {
+    return { error: "승무패 회차는 1~14경기만 등록할 수 있습니다.", pack: {} };
+  }
+  const roundName = String(rows[0].roundName || "").trim();
+  return { error: "", pack: { currentRound: { roundName, fixtures: rows } } };
+}
+
+async function loadTotoRoundCsvFile(file, storage) {
+  if (!requireAdminMode()) return { error: "관리자 권한이 필요합니다.", pack: {} };
+  if (!file || typeof file.text !== "function") return { error: "승무패 회차 CSV를 선택해주세요.", pack: {} };
+  const result = parseTotoRoundCsv(await file.text());
+  if (!result.error && !setStoredTotoRoundPack(result.pack, storage)) {
+    return { error: "승무패 회차를 저장하지 못했습니다.", pack: {} };
+  }
+  return result;
 }
 
 function normalizeTotoRoundFixture(fixture, round = {}) {
@@ -5571,22 +5750,21 @@ function createDetailOddsMovementSection(movement = {}) {
     const card = document.createElement("div");
     const label = document.createElement("span");
     label.textContent = item.label;
-    const odds = document.createElement("strong");
-    odds.textContent = `${item.from.toFixed(2)} → ${item.to.toFixed(2)}`;
-    const change = document.createElement("small");
-    change.className = item.difference < 0 ? "down" : item.difference > 0 ? "up" : "same";
-    change.textContent = item.difference === 0
-      ? "변동 없음"
-      : `${item.difference < 0 ? "▼" : "▲"} ${Math.abs(item.difference).toFixed(2)}`;
     const values = document.createElement("div");
     values.className = "match-detail-odds-movement-values";
-    values.append(change, odds);
+    const previous = document.createElement("span");
+    previous.className = "match-detail-odds-movement-previous";
+    previous.textContent = `이전 ${item.from.toFixed(2)}`;
+    const latest = document.createElement("strong");
+    latest.className = "match-detail-odds-movement-latest";
+    const arrow = item.difference > 0 ? "↑" : item.difference < 0 ? "↓" : "";
+    latest.textContent = `${arrow ? `${arrow} ` : ""}${item.to.toFixed(2)}`;
+    latest.classList.add(item.difference > 0 ? "up" : item.difference < 0 ? "down" : "same");
+    values.append(previous, latest);
     card.append(label, values);
     grid.appendChild(card);
   });
-  const chart = createOddsMovementChart(movement);
   section.appendChild(heading);
-  if (chart) section.appendChild(chart);
   section.appendChild(grid);
   return section;
 }
@@ -7021,7 +7199,15 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   odds.textContent = hasOdds
     ? `홈 ${formatOdds(match.homeOdds)} · 무 ${formatOdds(match.drawOdds)} · 원정 ${formatOdds(match.awayOdds)}`
     : "배당 준비 중";
-  hero.append(top, title, meta, odds);
+  const resultText = formatMatchResultText(match);
+  if (resultText) {
+    const result = document.createElement("strong");
+    result.className = "match-detail-final-result";
+    result.textContent = resultText.replace(/^경기결과:\s*/, "최종 ");
+    hero.append(top, title, meta, odds, result);
+  } else {
+    hero.append(top, title, meta, odds);
+  }
 
   const tabs = document.createElement("nav");
   tabs.className = "match-detail-tabs match-detail-primary-tabs";
@@ -8096,13 +8282,49 @@ function getFixtureDateOptions(todayKey = getTodayKey()) {
 }
 
 function getStoredFixturesForDate(date, storage) {
-  return getFixturesForDate(getStorageTodayMatches(storage), date);
+  return getFixturesForDate([
+    ...getStorageTodayMatches(storage),
+    ...getApiOddsPackRows()
+  ], date);
 }
 
 function getFixturesForDate(matches = [], date = "") {
   return deduplicateTodayMatches((Array.isArray(matches) ? matches : []).filter((match) => (
     String(match.date || "").slice(0, 10) === date
   )));
+}
+
+function mergeStoredOddsIntoFixtures(matches = [], storedMatches = []) {
+  const fallbackRows = [
+    ...(Array.isArray(storedMatches) ? storedMatches : []),
+    ...getApiOddsPackRows()
+  ].filter(hasCompleteOdds);
+  if (fallbackRows.length === 0) return [...(Array.isArray(matches) ? matches : [])];
+
+  const byFixtureId = new Map();
+  const byMatchKey = new Map();
+  for (const row of fallbackRows) {
+    const fixtureId = String(row.fixtureId || row.id || "").trim();
+    if (fixtureId && !byFixtureId.has(fixtureId)) byFixtureId.set(fixtureId, row);
+    const key = getTodayMatchKey(row);
+    if (key && key !== "|||" && !byMatchKey.has(key)) byMatchKey.set(key, row);
+  }
+
+  return (Array.isArray(matches) ? matches : []).map((match) => {
+    if (hasCompleteOdds(match)) return match;
+    const fixtureId = String(match.fixtureId || match.id || "").trim();
+    const fallback = byFixtureId.get(fixtureId) || byMatchKey.get(getTodayMatchKey(match));
+    if (!fallback) return match;
+    return {
+      ...match,
+      homeOdds: fallback.homeOdds,
+      drawOdds: fallback.drawOdds,
+      awayOdds: fallback.awayOdds,
+      oddsUpdatedAt: fallback.oddsUpdatedAt || match.oddsUpdatedAt || "",
+      oddsHistory: fallback.oddsHistory || match.oddsHistory || [],
+      source: match.source || fallback.source
+    };
+  });
 }
 
 function filterFixturesByCategory(matches = [], category = "ALL") {
@@ -8363,7 +8585,10 @@ async function selectFixtureDate(date, { force = false } = {}) {
     }
 
     const fetchedMatches = deduplicateTodayMatches(result.matches || []);
-    const fetchedTargetMatches = getFixturesForDate(fetchedMatches, targetDate);
+    const fetchedTargetMatches = mergeStoredOddsIntoFixtures(
+      getFixturesForDate(fetchedMatches, targetDate),
+      cachedMatches
+    );
     const matches = fetchedTargetMatches.length > 0 ? fetchedTargetMatches : cachedMatches;
     dateFixtureCache.set(targetDate, { matches, fetchedAt: Date.now() });
     if (fetchedMatches.length > 0) mergeTodayMatches(fetchedMatches);
@@ -8396,14 +8621,22 @@ async function loadHomeTodayMatches() {
     const result = await fetchLiveOdds({ date: today, league: "ALL" });
     if (result.error) {
       setHomeTodayStatus("오늘 경기 업데이트 실패");
+      const cachedTodayMatches = getCachedFixturesForDate(today);
+      renderDateFixtures(cachedTodayMatches, today);
+      setDateFixtureStatus(cachedTodayMatches.length > 0
+        ? `${getVisibleFixturesForDate(cachedTodayMatches, today).length}경기 · 저장된 일정`
+        : "일정을 불러오지 못했습니다");
       renderHomeTodayMatches(homeTodayMatches, { status: "저장된 일정 표시 중" });
       return result;
     }
 
     homeTodayLastUpdatedAt = getCurrentTimestamp();
     const fetchedMatches = deduplicateTodayMatches(result.matches || []);
-    const fetchedTodayMatches = getFixturesForDate(fetchedMatches, today);
     const storedTodayMatches = getStoredFixturesForDate(today);
+    const fetchedTodayMatches = mergeStoredOddsIntoFixtures(
+      getFixturesForDate(fetchedMatches, today),
+      storedTodayMatches
+    );
     homeTodayMatches = sortHomeTodayMatches(fetchedTodayMatches.length > 0 ? fetchedTodayMatches : storedTodayMatches);
     dateFixtureCache.set(today, { matches: homeTodayMatches, fetchedAt: Date.now() });
     if (fetchedMatches.length > 0) {
@@ -8421,6 +8654,12 @@ async function loadHomeTodayMatches() {
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
     setHomeTodayStatus(`오늘 경기 업데이트 실패: ${message}`);
+    const today = getTodayKey();
+    const cachedTodayMatches = getCachedFixturesForDate(today);
+    renderDateFixtures(cachedTodayMatches, today);
+    setDateFixtureStatus(cachedTodayMatches.length > 0
+      ? `${getVisibleFixturesForDate(cachedTodayMatches, today).length}경기 · 저장된 일정`
+      : "일정을 불러오지 못했습니다");
     renderHomeTodayMatches(homeTodayMatches, { status: "저장된 일정 표시 중" });
     return { error: message, matches: homeTodayMatches };
   } finally {
@@ -8735,14 +8974,19 @@ async function fetchLiveOdds(criteria = getLiveOddsCriteria()) {
   }
 
   let response;
+  const requestController = typeof AbortController === "function" ? new AbortController() : null;
+  const requestTimeout = requestController ? setTimeout(() => requestController.abort(), 12000) : null;
   try {
     response = await fetch(`${LIVE_ODDS_ENDPOINT}?${params.toString()}`, {
       cache: "no-store",
-      headers
+      headers,
+      ...(requestController ? { signal: requestController.signal } : {})
     });
   } catch (error) {
     appTelemetry?.recordApiFailure({ api: "live_odds", status: 0, reason: "network" });
     throw error;
+  } finally {
+    if (requestTimeout) clearTimeout(requestTimeout);
   }
 
   let payload = {};
@@ -8978,9 +9222,11 @@ async function loadTodayCsvFiles(files) {
 
 function wireTodayCsvImport() {
   const input = document.getElementById("today-csv-input");
+  const totoRoundInput = document.getElementById("toto-round-csv-input");
+  const protoInput = document.getElementById("proto-csv-input");
   const sampleButton = document.getElementById("download-today-csv-sample");
   const apiButton = document.getElementById("load-live-odds");
-  if (!input && !sampleButton && !apiButton) return;
+  if (!input && !totoRoundInput && !protoInput && !sampleButton && !apiButton) return;
 
   initializeLiveOddsControls();
   if (apiButton) {
@@ -8991,6 +9237,19 @@ function wireTodayCsvImport() {
   if (input) {
     input.addEventListener("change", () => {
       loadTodayCsvFiles(input.files);
+    });
+  }
+  if (totoRoundInput) {
+    totoRoundInput.addEventListener("change", async () => {
+      const result = await loadTotoRoundCsvFile(totoRoundInput.files?.[0]);
+      setLiveOddsStatus(result.error || `승무패 회차 ${result.pack.currentRound.fixtures.length}경기를 저장했습니다.`);
+      if (!result.error) importTotoRoundPack();
+    });
+  }
+  if (protoInput) {
+    protoInput.addEventListener("change", async () => {
+      const result = await loadProtoCsvFile(protoInput.files?.[0]);
+      setLiveOddsStatus(result.error || `프로토 게임 ${result.pack.markets.length}개를 저장했습니다.`);
     });
   }
   if (sampleButton) {
@@ -10649,6 +10908,8 @@ if (typeof module !== "undefined") {
     SAVED_SEARCHES_KEY,
     SEARCH_HISTORY_KEY,
     STORAGE_KEY,
+    TOTO_ROUND_PACK_KEY,
+    PROTO_MARKET_PACK_KEY,
     TODAY_MATCHES_KEY,
     autoUpdateDefaultData,
     autoUpdateLeagues,
@@ -10687,6 +10948,10 @@ if (typeof module !== "undefined") {
     getBundledTotoRoundPack,
     getApiOddsPackRows,
     getCurrentTotoRoundFixtures,
+    getStoredTotoRoundPack,
+    parseTotoRoundCsv,
+    getStoredProtoMarketPack,
+    parseProtoCsv,
     getDashboardCounts,
     getDuplicateKey,
     getBaseMatches,

@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v112-bilingual-core";
+const CACHE_NAME = "oddsarchive-v115-local-data-fixes";
 const CORE_ASSETS = [
   "/",
   "/index.html",

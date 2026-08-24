@@ -480,6 +480,20 @@
               </div>
 
               <div class="upload-box">
+                <details class="subsection" data-admin-only hidden>
+                  <summary>14경기 승무패 회차 가져오기</summary>
+                  <p>베트맨에서 받은 회차 CSV를 선택하면 회차와 14경기를 관리자 저장소에 보관합니다.</p>
+                  <label class="file-picker">
+                    승무패 회차 CSV 선택
+                    <input id="toto-round-csv-input" type="file" accept=".csv,text/csv">
+                  </label>
+                  <small>헤더: roundName,no,date,league,homeTeam,awayTeam,homeOdds,drawOdds,awayOdds</small>
+                  <label class="file-picker">
+                    프로토 경기 CSV 선택
+                    <input id="proto-csv-input" type="file" accept=".csv,text/csv">
+                  </label>
+                  <small>헤더: gameNo,kickoffAt,league,homeTeam,awayTeam,marketType,line,homeLabel,drawLabel,awayLabel,homeOdds,drawOdds,awayOdds</small>
+                </details>
                 <div class="upload-guide">
                   <strong>파일을 넣으면 배당 검색에 쓸 과거 경기 데이터가 늘어납니다.</strong>
                   <span>샘플 파일을 받아 같은 모양으로 채우거나, Football-Data 파일을 그대로 선택하세요.</span>

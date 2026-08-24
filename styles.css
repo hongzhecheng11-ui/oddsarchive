@@ -1997,9 +1997,9 @@ tbody tr:last-child td {
 
 .date-fixture-result {
   grid-column: 1 / -1;
-  color: #475569;
-  font-size: 9px;
-  font-weight: 800;
+  color: var(--accent-strong);
+  font-size: 10px;
+  font-weight: 950;
 }
 
 .date-fixture-odds {
@@ -2183,8 +2183,8 @@ tbody tr:last-child td {
 
 .home-today-result {
   margin: 0;
-  color: #334155;
-  font-size: 10px;
+  color: var(--accent-strong);
+  font-size: 11px;
   font-weight: 900;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -3435,17 +3435,17 @@ body.match-detail-open {
 
 .match-detail-odds-movement-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 6px;
 }
 
 .match-detail-odds-movement-grid > div {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   min-width: 0;
-  min-height: 38px;
+  min-height: 60px;
   padding: 7px 10px;
   border-radius: 7px;
   background: #f1f5f9;
@@ -3466,21 +3466,27 @@ body.match-detail-open {
 
 .match-detail-odds-movement-values {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 3px;
   min-width: 0;
 }
 
-.match-detail-odds-movement-values small {
-  min-width: 43px;
+.match-detail-odds-movement-previous {
+  color: var(--muted);
   font-size: 10px;
-  text-align: left;
   white-space: nowrap;
 }
 
-.match-detail-odds-movement-grid small.down { color: #2563eb; }
-.match-detail-odds-movement-grid small.up { color: #be123c; }
-.match-detail-odds-movement-grid small.same { color: #64748b; }
+.match-detail-odds-movement-latest {
+  font-size: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.match-detail-odds-movement-latest.down { color: #dc2626; }
+.match-detail-odds-movement-latest.up { color: #15803d; }
+.match-detail-odds-movement-latest.same { color: var(--ink); }
 
 .match-detail-ai-score-list {
   display: grid;
@@ -5791,4 +5797,14 @@ select {
   .search-panel .compact-results .result-card-footer {
     display: flex;
   }
+}
+.match-detail-final-result {
+  display: inline-flex;
+  width: fit-content;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #e2f3ed;
+  color: var(--accent-strong);
+  font-size: 14px;
+  font-weight: 950;
 }
