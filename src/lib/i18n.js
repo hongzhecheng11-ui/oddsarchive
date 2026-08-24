@@ -389,6 +389,7 @@
     [/^(\d+)승\s+([\d.]+%)$/, "$1 W $2"], [/^(\d+)무\s+([\d.]+%)$/, "$1 D $2"], [/^(\d+)패\s+([\d.]+%)$/, "$1 L $2"],
     [/^(.+)\s+유사배당$/, "$1 Similar Odds"], [/^(.+)\s+안에서 비교$/, "Compared within $1"],
     [/^(.+?)\s+유사배당 전적이 없습니다$/, "No similar-odds history for $1"],
+    [/^(.+?)\s+배당 검색 열기$/, "Open odds search for $1"],
     [/^오늘 경기 업데이트 실패:\s*(.+)$/, "Fixture update failed: $1"],
     [/^(.+?)\s+배당을 직접 입력하면 과거 유사 배당을 바로 확인할 수 있습니다\.$/, "Enter the odds for $1 to see similar past matches right away."],
     [/^(.+?)\s+API 배당이 아직 없어서 직접 입력 모드로 열었습니다\.$/, "No API odds yet for $1, so manual entry is open."],

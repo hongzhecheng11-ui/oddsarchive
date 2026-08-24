@@ -111,6 +111,14 @@ function collectFromScript(source, file) {
     add(attribute, text, isTranslated(text));
   }
 
+  // setAttribute("aria-label", `...${값}...`)
+  const ariaTemplateMatcher = /setAttribute\??\(\s*"(aria-label|title|placeholder)"\s*,\s*`([^`]*)`/g;
+  while ((match = ariaTemplateMatcher.exec(source))) {
+    const [, attribute, text] = match;
+    if (!HANGUL.test(text)) continue;
+    add(`${attribute} (템플릿)`, text, isTemplateTranslated(text));
+  }
+
   return findings;
 }
 
