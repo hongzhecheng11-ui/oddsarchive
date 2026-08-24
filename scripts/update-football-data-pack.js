@@ -71,7 +71,14 @@ async function updateFootballDataPack({
 
     pack[leagueKey] = pack[leagueKey] || {};
     if (league.directUrl) {
-      const seasonPack = await downloadExtraLeagueSeasonPack({ leagueKey, fetcher });
+      // 시즌 초에는 아직 올라오지 않은 리그가 있다. 하나가 없다고 전체를 멈추지 않는다.
+      let seasonPack;
+      try {
+        seasonPack = await downloadExtraLeagueSeasonPack({ leagueKey, fetcher });
+      } catch (error) {
+        skipped.push({ leagueKey, reason: error instanceof Error ? error.message : "원본 CSV를 받지 못했습니다" });
+        continue;
+      }
       const targetSeasons = seasons.length > 0 ? seasons : (league.targetSeasons || Object.keys(seasonPack));
 
       for (const season of targetSeasons) {
@@ -97,7 +104,15 @@ async function updateFootballDataPack({
         continue;
       }
 
-      const csvText = await downloadFootballDataCsv({ season, leagueKey, fetcher });
+      let csvText;
+      try {
+        csvText = await downloadFootballDataCsv({ season, leagueKey, fetcher });
+      } catch (error) {
+        // 아직 공개되지 않은 시즌은 건너뛰고 다음 실행에서 다시 시도한다.
+        skipped.push({ leagueKey, season, reason: error instanceof Error ? error.message : "다운로드 실패" });
+        continue;
+      }
+
       pack[leagueKey][season] = csvText;
       changes.push({ leagueKey, season });
     }

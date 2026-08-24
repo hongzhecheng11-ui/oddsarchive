@@ -4664,9 +4664,38 @@ function getUniqueMatches(matches) {
   return uniqueMatches;
 }
 
+// 같은 경기가 두 소스에 있으면 과거 데이터팩을 채택한다.
+// 팩은 경기 전 배당이고 26시즌과 팀명 표기가 같아 기저율 기준과 어긋나지 않는다.
+// 팩에는 종료된 경기만 있으므로, 예정 경기는 이 규칙에 걸리지 않고 API 행이 그대로 남는다.
+function getCrossSourceMatchKey(match = {}) {
+  const date = String(match?.date || "").slice(0, 10);
+  if (!date) return "";
+
+  const homeTeam = normalizeTeamNameForStorage(match?.homeTeam);
+  const awayTeam = normalizeTeamNameForStorage(match?.awayTeam);
+  if (!homeTeam || !awayTeam) return "";
+
+  return [date, homeTeam, awayTeam].join("|");
+}
+
+function dropRowsCoveredByPack(packRows = [], apiRows = []) {
+  const covered = new Set();
+  for (const row of Array.isArray(packRows) ? packRows : []) {
+    const key = getCrossSourceMatchKey(row);
+    if (key) covered.add(key);
+  }
+
+  return (Array.isArray(apiRows) ? apiRows : []).filter((row) => {
+    const key = getCrossSourceMatchKey(row);
+    return !key || !covered.has(key);
+  });
+}
+
 function getBaseMatches() {
   if (cachedBaseMatches) return cachedBaseMatches;
-  cachedBaseMatches = getUniqueMatches([...getDefaultPackRows(), ...getApiOddsPackRows()]);
+
+  const packRows = getDefaultPackRows();
+  cachedBaseMatches = getUniqueMatches([...packRows, ...dropRowsCoveredByPack(packRows, getApiOddsPackRows())]);
   return cachedBaseMatches;
 }
 
@@ -11472,6 +11501,8 @@ if (typeof module !== "undefined") {
     getFixturesForDate,
     filterFixturesByCategory,
     getDateFixtureLeagueOptions,
+    getCrossSourceMatchKey,
+    dropRowsCoveredByPack,
     filterFixturesByText,
     getMatchStatusLabel,
     getMatchContextProfile,
