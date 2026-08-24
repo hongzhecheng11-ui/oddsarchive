@@ -105,6 +105,7 @@
     "선발 명단은 경기가 임박하면 공개됩니다.": "Lineups are published closer to kick-off.",
     "과거 배당 데이터를 불러오는 중입니다.": "Loading historical odds data.",
     "표본 없음": "No sample",
+    "유사 경기": "Similar matches", "결과 확인": "Confirmed results",
     "오늘 경기 업데이트 실패": "Fixture update failed",
     "날짜를 바꿨습니다. 해당 날짜의 경기/배당을 다시 확인합니다.": "Date changed. Re-checking fixtures and odds for that date.",
     "경기 일정과 배당을 확인하는 중입니다.": "Checking fixtures and odds.",
@@ -349,6 +350,7 @@
     [/^상태\s+(.+)\s+·\s+결과\s+무승부$/, "Status: $1 · Result: Draw"],
     [/^상태\s+(.+)\s+·\s+결과\s+원정승$/, "Status: $1 · Result: Away Win"],
     [/^홈승\s*\/\s*무\s*\/\s*원정승\s+(.+)$/, "Home / Draw / Away $1"],
+    [/^홈\s+(.+?)\s*·\s*무\s+(.+?)\s*·\s*원정\s+(.+?)\s*·\s*표본\s+([\d,]+)$/, "Home $1 · Draw $2 · Away $3 · Sample $4"],
     [/^홈\s+(.+?)\s*·\s*무\s+(.+?)\s*·\s*원정\s+(.+)$/, "Home $1 · Draw $2 · Away $3"],
     [/^홈승\s+(.+?)\s*·\s*무승부\s+(.+?)\s*·\s*원정승\s+(.+)$/, "Home $1 · Draw $2 · Away $3"],
     [/^홈승\s+(\d+)승\s+(.+)$/, "Home $1 W $2"],
@@ -373,6 +375,8 @@
     [/^홈승\s*(\d+(?:\.\d+)?)%$/, "Home $1%"], [/^무승부\s*(\d+(?:\.\d+)?)%$/, "Draw $1%"],
     [/^원정승\s*(\d+(?:\.\d+)?)%$/, "Away $1%"], [/^홈\s*(\d+(?:\.\d+)?)%$/, "Home $1%"],
     [/^무\s*(\d+(?:\.\d+)?)%$/, "Draw $1%"], [/^원정\s*(\d+(?:\.\d+)?)%$/, "Away $1%"],
+    [/^배당\s+(.+?)\s*·\s*허용 오차\s*([\d.]+)$/, "Odds $1 · Tolerance $2"],
+    [/^(.+?)\s*·\s*결과 확인\s+([\d,]+)\/([\d,]+)$/, "$1 · Confirmed $2 of $3"],
     // "배당 구간: X" 는 아래 "배당 X" 보다 먼저 걸려야 한다.
     [/^배당 구간:\s*(.+)$/, "Odds Band: $1"],
     [/^업데이트\s+(.+)$/, "Updated $1"], [/^배당\s+(.+)$/, "Odds $1"], [/^허용 오차\s+(.+)$/, "Tolerance $1"],
@@ -421,7 +425,7 @@
     [/^헤더:\s*([A-Za-z0-9,]+)$/, "Header: $1"]
   ];
   const EN_INLINE_TERMS = [
-    ["배당 없음", "No odds"], ["확인 중", "Checking"], ["정배불안", "Favorite at Risk"],
+    ["배당 없음", "No odds"], ["전적 없음", "No Record"], ["확인 중", "Checking"], ["정배불안", "Favorite at Risk"],
     ["초강정배", "Very Strong Favorite"], ["박빙정배", "Narrow Favorite"],
     ["약정배", "Slight Favorite"], ["강정배", "Strong Favorite"], ["정배", "Favorite"],
     ["승부차기 종료", "After Penalties"], ["연장 종료", "After Extra Time"], ["경기 전", "Scheduled"],
