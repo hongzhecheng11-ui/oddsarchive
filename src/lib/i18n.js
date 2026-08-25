@@ -105,6 +105,14 @@
     "선발 명단은 경기가 임박하면 공개됩니다.": "Lineups are published closer to kick-off.",
     "과거 배당 데이터를 불러오는 중입니다.": "Loading historical odds data.",
     "표본 없음": "No sample",
+    "전반 진행": "First half",
+    "하프타임": "Half-time",
+    "후반 진행": "Second half",
+    "연장": "Extra time",
+    "휴식": "Break",
+    "승부차기": "Penalties",
+    "배당 기준 초과 위험": "Above the odds baseline",
+    "무승부·역배 초과 발생": "Draws and upsets above baseline",
     "홈 어드밴티지 추이": "Home advantage over time",
     "5대 리그 합산": "Top 5 leagues combined",
     "시즌별 홈승률 추이": "Home win rate by season",
@@ -393,6 +401,7 @@
     [/^(.+)\s+유사배당$/, "$1 Similar Odds"], [/^(.+)\s+안에서 비교$/, "Compared within $1"],
     [/^(.+?)\s+유사배당 전적이 없습니다$/, "No similar-odds history for $1"],
     [/^(.+?)\s+배당 검색 열기$/, "Open odds search for $1"],
+    [/^(\d{1,2}:\d{2})\s*·\s*(.+)$/, "$1 · $2"],
     [/^([\d,]+)시즌 동안 홈승률\s+([\d.]+%)\s*→\s*([\d.]+%)\s*·\s*변화\s+(-?[\d.]+)%p\s*·\s*최저\s+([\d,]+)년\s+([\d.]+%)$/, "Home win rate over $1 seasons: $2 to $3 · change $4%p · lowest $5 at $6"],
     [/^(.+?)\s*·\s*경기결과:\s*(.+)$/, "$1 · Match Result: $2"],
     [/^오늘 경기 업데이트 실패:\s*(.+)$/, "Fixture update failed: $1"],
@@ -440,7 +449,10 @@
     ["박빙주의", "Close Match"], ["원정승", "Away Win"], ["무승부", "Draw"], ["홈승", "Home Win"],
     ["같은 리그", "Same League"], ["매우 높음", "Very High"], ["높음", "High"], ["보통", "Medium"],
     ["낮음", "Low"], ["종료", "Finished"], ["취소", "Cancelled"], ["연기", "Postponed"],
-    ["중단", "Suspended"], ["일반", "Normal"], ["안정", "Stable"], ["주의", "Caution"], ["혼전", "Wide Open"]
+    ["중단", "Suspended"], ["일반", "Normal"], ["안정", "Stable"], ["주의", "Caution"], ["혼전", "Wide Open"],
+    // "연장 종료" 등 긴 표현이 위에 먼저 있어야 아래 짧은 표현에 쪼개지지 않는다.
+    ["전반 진행", "First half"], ["후반 진행", "Second half"], ["하프타임", "Half-time"],
+    ["승부차기", "Penalties"], ["연장", "Extra time"], ["휴식", "Break"]
   ];
 
   function translateInlineTerms(value) {
