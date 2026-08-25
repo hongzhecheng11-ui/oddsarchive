@@ -4315,6 +4315,169 @@ function getSeasonLabel(leagueKey, seasonCode) {
   return `${startYear}-${String((startYear + 1) % 100).padStart(2, "0")}`;
 }
 
+// ---- 팀 프로필 ----
+// 팀의 전적을 배당 구간 기저율과 나란히 놓는다.
+// "정배일 때 몇 번 이겼나" 만으로는 의미가 없고, 같은 배당대의 평균과 비교해야 한다.
+function buildTeamProfile(teamName, matches = [], options = {}) {
+  const { index = getDefaultOddsBaseRateIndex() } = options;
+  const target = normalizeTeamSearchText(normalizeTeamNameForStorage(teamName));
+  const empty = {
+    team: String(teamName || "").trim(),
+    matches: 0,
+    wins: 0,
+    draws: 0,
+    losses: 0,
+    home: { matches: 0, wins: 0, draws: 0, losses: 0 },
+    away: { matches: 0, wins: 0, draws: 0, losses: 0 },
+    goalsFor: 0,
+    goalsAgainst: 0,
+    favorite: { matches: 0, wins: 0, expectedWins: 0 }
+  };
+  if (!target) return empty;
+
+  const profile = { ...empty, home: { ...empty.home }, away: { ...empty.away }, favorite: { ...empty.favorite } };
+
+  for (const match of Array.isArray(matches) ? matches : []) {
+    const result = String(match?.result || "").trim().toUpperCase();
+    if (!BASE_RATE_RESULTS.has(result)) continue;
+
+    const home = normalizeTeamSearchText(normalizeTeamNameForStorage(match.homeTeam));
+    const away = normalizeTeamSearchText(normalizeTeamNameForStorage(match.awayTeam));
+    const isHome = home === target;
+    const isAway = away === target;
+    if (!isHome && !isAway) continue;
+
+    const side = isHome ? profile.home : profile.away;
+    profile.matches += 1;
+    side.matches += 1;
+
+    const won = (isHome && result === "H") || (isAway && result === "A");
+    const lost = (isHome && result === "A") || (isAway && result === "H");
+    if (result === "D") {
+      profile.draws += 1;
+      side.draws += 1;
+    } else if (won) {
+      profile.wins += 1;
+      side.wins += 1;
+    } else if (lost) {
+      profile.losses += 1;
+      side.losses += 1;
+    }
+
+    const score = String(match.score || "").match(/^(\d+)\s*-\s*(\d+)$/);
+    if (score) {
+      const homeGoals = Number(score[1]);
+      const awayGoals = Number(score[2]);
+      profile.goalsFor += isHome ? homeGoals : awayGoals;
+      profile.goalsAgainst += isHome ? awayGoals : homeGoals;
+    }
+
+    // 이 팀이 정배였던 경기만 모아, 같은 구간의 평균 승률과 비교한다.
+    const info = getFavoriteOddsInfo(match);
+    if (!info) continue;
+    const teamIsFavorite = (isHome && info.favoriteKey === "H") || (isAway && info.favoriteKey === "A");
+    if (!teamIsFavorite) continue;
+
+    const rate = getOddsBaseRate(match, { index });
+    if (rate.favoriteWinRate === null) continue;
+    profile.favorite.matches += 1;
+    profile.favorite.expectedWins += rate.favoriteWinRate;
+    if (won) profile.favorite.wins += 1;
+  }
+
+  return profile;
+}
+
+function summarizeTeamProfile(profile = {}) {
+  const matches = Number(profile.matches || 0);
+  const favoriteMatches = Number(profile.favorite?.matches || 0);
+  return {
+    ...profile,
+    winRate: matches > 0 ? profile.wins / matches : null,
+    goalsForAverage: matches > 0 ? profile.goalsFor / matches : null,
+    goalsAgainstAverage: matches > 0 ? profile.goalsAgainst / matches : null,
+    favoriteWinRate: favoriteMatches > 0 ? profile.favorite.wins / favoriteMatches : null,
+    favoriteExpectedRate: favoriteMatches > 0 ? profile.favorite.expectedWins / favoriteMatches : null,
+    favoriteLift: favoriteMatches > 0 ? (profile.favorite.wins - profile.favorite.expectedWins) / favoriteMatches : null
+  };
+}
+
+function createTeamProfileRow(label, value, note = "") {
+  const row = document.createElement("div");
+  row.className = "team-profile-row";
+  const name = document.createElement("span");
+  name.textContent = label;
+  const amount = document.createElement("strong");
+  amount.textContent = value;
+  row.append(name, amount);
+  if (note) {
+    const hint = document.createElement("small");
+    hint.textContent = note;
+    row.appendChild(hint);
+  }
+  return row;
+}
+
+function renderTeamProfile(teamName) {
+  if (typeof document === "undefined") return;
+  const body = document.getElementById("team-profile-body");
+  const status = document.getElementById("team-profile-status");
+  if (!body || !status) return;
+
+  const name = String(teamName || "").trim();
+  if (!name) {
+    body.hidden = true;
+    status.textContent = "팀 이름을 넣으면 과거 전적과 배당 대비 성적을 보여줍니다.";
+    return;
+  }
+
+  const summary = summarizeTeamProfile(buildTeamProfile(name, getSearchableMatches()));
+  if (summary.matches === 0) {
+    body.hidden = true;
+    status.textContent = "그 이름으로 찾은 과거 경기가 없습니다.";
+    return;
+  }
+
+  const percent = (value) => (value === null ? "-" : `${(value * 100).toFixed(1)}%`);
+  const record = (side) => `${side.wins}승 ${side.draws}무 ${side.losses}패`;
+
+  const rows = [
+    createTeamProfileRow("전체 전적", record(summary), `${summary.matches}경기 · 승률 ${percent(summary.winRate)}`),
+    createTeamProfileRow("홈", record(summary.home), `${summary.home.matches}경기`),
+    createTeamProfileRow("원정", record(summary.away), `${summary.away.matches}경기`),
+    createTeamProfileRow("평균 득실", `득 ${(summary.goalsForAverage || 0).toFixed(2)} · 실 ${(summary.goalsAgainstAverage || 0).toFixed(2)}`, "")
+  ];
+
+  if (summary.favorite.matches > 0) {
+    const lift = summary.favoriteLift;
+    const liftText = `${lift >= 0 ? "+" : ""}${(lift * 100).toFixed(1)}%p`;
+    rows.push(createTeamProfileRow(
+      "정배일 때 승률",
+      percent(summary.favoriteWinRate),
+      `같은 구간 기저율 ${percent(summary.favoriteExpectedRate)} · 차이 ${liftText} · 표본 ${summary.favorite.matches}경기`
+    ));
+  }
+
+  body.replaceChildren(...rows);
+  body.hidden = false;
+  status.textContent = `${formatTeamName(name)} 기록입니다.`;
+}
+
+function wireTeamProfile() {
+  if (typeof document === "undefined") return;
+  const input = document.getElementById("team-profile-input");
+  const button = document.getElementById("team-profile-search");
+  if (!input || !button) return;
+
+  const run = () => renderTeamProfile(input.value);
+  button.addEventListener("click", run);
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    run();
+  });
+}
+
 // ---- 홈 어드밴티지 추이 ----
 // 5대 리그(EPL·라리가·세리에A·분데스리가·리그앙)를 합친 시즌별 결과 분포.
 // 과거 데이터팩은 지연 로딩이라 여기 담아 두고,
@@ -11642,6 +11805,7 @@ if (typeof document !== "undefined") {
   }
   renderAutoUpdateManager();
   renderHomeAdvantageTrend();
+  wireTeamProfile();
   setAutoUpdateStatus("자동 업데이트는 꺼져 있습니다. 필요할 때 데이터 추가에서 직접 확인하세요.");
   registerServiceWorker();
 }
@@ -11650,6 +11814,10 @@ if (typeof module !== "undefined") {
   module.exports = {
     AUTO_UPDATE_KEY,
     ODDS_BASE_RATE_BANDS,
+    buildTeamProfile,
+    renderTeamProfile,
+    wireTeamProfile,
+    summarizeTeamProfile,
     HOME_ADVANTAGE_LEAGUES,
     HOME_ADVANTAGE_BY_SEASON,
     HOME_ADVANTAGE_MIN_SEASON_MATCHES,
