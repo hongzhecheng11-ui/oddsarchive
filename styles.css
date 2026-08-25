@@ -2981,6 +2981,52 @@ body.match-detail-open {
   white-space: nowrap;
 }
 
+.home-advantage-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border: 1px solid #dfe6ea;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.home-advantage-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.home-advantage-heading small {
+  color: #6b7a82;
+  font-size: 11px;
+}
+
+.home-advantage-summary {
+  margin: 0;
+  color: #4a5c68;
+  font-size: 12px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-advantage-chart {
+  overflow-x: auto;
+}
+
+.home-advantage-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: #0f6e5c;
+}
+
+.home-advantage-axis {
+  font-size: 9px;
+  fill: #6b7a82;
+}
+
 .home-upset-track-record {
   display: block;
   margin: -2px 0 6px;

@@ -491,6 +491,14 @@ Object.entries(TEAM_TRANSLATION_ALIAS_LABELS).forEach(([alias, displayName]) => 
     TEAM_TRANSLATION_ENGLISH_LABELS[normalizedDisplayName] = alias;
   }
 });
+// teams.js 에만 있는 팀도 한글에서 영문으로 되돌릴 수 있어야 한다.
+// 앞의 두 출처를 덮어쓰지 않으므로 기존 표기가 우선한다.
+Object.entries(EXTERNAL_TRANSLATIONS.teams?.labels || {}).forEach(([englishName, koreanName]) => {
+  const normalizedKoreanName = getNormalizedLabelKey(koreanName);
+  if (normalizedKoreanName && !TEAM_TRANSLATION_ENGLISH_LABELS[normalizedKoreanName]) {
+    TEAM_TRANSLATION_ENGLISH_LABELS[normalizedKoreanName] = englishName;
+  }
+});
 
 function getNormalizedLabelKey(value) {
   return String(value || "")
@@ -4276,6 +4284,156 @@ function getDefaultPackRows() {
   const merged = mergeCsvParseResults(parsedResults);
   cachedDefaultPackRows = validateCsvRows(merged.rows).validRows;
   return cachedDefaultPackRows;
+}
+
+// ---- 시즌 키 해석 ----
+// 데이터팩의 시즌 키는 세 형식이 섞여 있다.
+//   "102"  -> 0102 -> 2001-02   (앞자리 0 이 빠진 분할 시즌)
+//   "0506" -> 2005-06           (분할 시즌)
+//   "2021" -> 리그에 따라 다르다: EPL 은 2020-21, J리그는 달력연도 2021
+// 그래서 리그를 함께 봐야 한다. 단일 연도로 도는 대회만 따로 둔다.
+const CALENDAR_SEASON_LEAGUES = new Set(["J1LEAGUE", "J2LEAGUE", "KLEAGUE1", "KLEAGUE2", "WORLDCUP", "WCQ", "ACL"]);
+
+function usesCalendarSeason(leagueKey) {
+  return CALENDAR_SEASON_LEAGUES.has(String(leagueKey || "").trim().toUpperCase());
+}
+
+function getSeasonStartYear(leagueKey, seasonCode) {
+  const code = String(seasonCode || "").trim();
+  if (!/^\d{3,4}$/.test(code)) return null;
+
+  if (usesCalendarSeason(leagueKey) && code.length === 4 && Number(code) >= 1990) return Number(code);
+
+  const startTwoDigits = Number(code.padStart(4, "0").slice(0, 2));
+  return startTwoDigits >= 80 ? 1900 + startTwoDigits : 2000 + startTwoDigits;
+}
+
+function getSeasonLabel(leagueKey, seasonCode) {
+  const startYear = getSeasonStartYear(leagueKey, seasonCode);
+  if (startYear === null) return String(seasonCode || "");
+  if (usesCalendarSeason(leagueKey)) return String(startYear);
+  return `${startYear}-${String((startYear + 1) % 100).padStart(2, "0")}`;
+}
+
+// ---- 홈 어드밴티지 추이 ----
+// 5대 리그(EPL·라리가·세리에A·분데스리가·리그앙)를 합친 시즌별 결과 분포.
+// 과거 데이터팩은 지연 로딩이라 여기 담아 두고,
+// tests/home-advantage.test.js 가 팩과 어긋나지 않는지 지킨다.
+const HOME_ADVANTAGE_LEAGUES = ["EPL", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1"];
+const HOME_ADVANTAGE_MIN_SEASON_MATCHES = 500;
+
+const HOME_ADVANTAGE_BY_SEASON = [
+  { year: 2000, matches: 1678, home: 836, draw: 441, away: 401 },
+  { year: 2001, matches: 1678, home: 810, draw: 443, away: 425 },
+  { year: 2002, matches: 1752, home: 836, draw: 470, away: 446 },
+  { year: 2003, matches: 1752, home: 816, draw: 464, away: 472 },
+  { year: 2004, matches: 1826, home: 857, draw: 532, away: 437 },
+  { year: 2005, matches: 1826, home: 831, draw: 504, away: 491 },
+  { year: 2006, matches: 1826, home: 842, draw: 506, away: 478 },
+  { year: 2007, matches: 1826, home: 843, draw: 493, away: 490 },
+  { year: 2008, matches: 1826, home: 861, draw: 461, away: 504 },
+  { year: 2009, matches: 1826, home: 877, draw: 476, away: 473 },
+  { year: 2010, matches: 1826, home: 853, draw: 480, away: 493 },
+  { year: 2011, matches: 1826, home: 850, draw: 485, away: 491 },
+  { year: 2012, matches: 1826, home: 832, draw: 474, away: 520 },
+  { year: 2013, matches: 1826, home: 852, draw: 426, away: 548 },
+  { year: 2014, matches: 1826, home: 821, draw: 474, away: 531 },
+  { year: 2015, matches: 1826, home: 810, draw: 473, away: 543 },
+  { year: 2016, matches: 1826, home: 888, draw: 421, away: 517 },
+  { year: 2017, matches: 1826, home: 828, draw: 447, away: 551 },
+  { year: 2018, matches: 1826, home: 817, draw: 472, away: 537 },
+  { year: 2019, matches: 1725, home: 761, draw: 420, away: 544 },
+  { year: 2020, matches: 1826, home: 728, draw: 465, away: 633 },
+  { year: 2021, matches: 1826, home: 781, draw: 472, away: 573 },
+  { year: 2022, matches: 1826, home: 835, draw: 443, away: 548 },
+  { year: 2023, matches: 1752, home: 755, draw: 463, away: 534 },
+  { year: 2024, matches: 1752, home: 736, draw: 437, away: 579 },
+  { year: 2025, matches: 1751, home: 771, draw: 445, away: 535 }
+];
+
+function summarizeHomeAdvantageSeason(season = {}) {
+  const matches = Number(season.matches || 0);
+  if (matches <= 0) return { year: season.year, matches: 0, homeRate: null, drawRate: null, awayRate: null };
+  return {
+    year: season.year,
+    matches,
+    homeRate: season.home / matches,
+    drawRate: season.draw / matches,
+    awayRate: season.away / matches
+  };
+}
+
+function getHomeAdvantageTrend(seasons = HOME_ADVANTAGE_BY_SEASON) {
+  return seasons.map(summarizeHomeAdvantageSeason).sort((left, right) => left.year - right.year);
+}
+
+// 처음 몇 시즌과 최근 몇 시즌의 홈승률을 비교해 변화 폭을 돌려준다.
+function getHomeAdvantageShift(seasons = HOME_ADVANTAGE_BY_SEASON, span = 5) {
+  const trend = getHomeAdvantageTrend(seasons).filter((season) => season.homeRate !== null);
+  if (trend.length < span * 2) return null;
+
+  const average = (list) => list.reduce((total, season) => total + season.homeRate, 0) / list.length;
+  const earlyRate = average(trend.slice(0, span));
+  const recentRate = average(trend.slice(-span));
+  const lowest = trend.reduce((low, season) => (season.homeRate < low.homeRate ? season : low), trend[0]);
+
+  return {
+    span,
+    earlyRate,
+    recentRate,
+    change: recentRate - earlyRate,
+    lowestYear: lowest.year,
+    lowestRate: lowest.homeRate,
+    seasons: trend.length
+  };
+}
+
+function renderHomeAdvantageTrend() {
+  if (typeof document === "undefined") return;
+  const chart = document.getElementById("home-advantage-chart");
+  const summary = document.getElementById("home-advantage-summary");
+  if (!chart || !summary) return;
+
+  const trend = getHomeAdvantageTrend();
+  const shift = getHomeAdvantageShift();
+  if (trend.length === 0 || !shift) return;
+
+  const change = (shift.change * 100).toFixed(1);
+  summary.textContent = `${shift.seasons}시즌 동안 홈승률 ${(shift.earlyRate * 100).toFixed(1)}% → ${(shift.recentRate * 100).toFixed(1)}% · 변화 ${change}%p · 최저 ${shift.lowestYear}년 ${(shift.lowestRate * 100).toFixed(1)}%`;
+
+  const width = 320;
+  const height = 96;
+  const padding = { top: 8, right: 6, bottom: 16, left: 6 };
+  const rates = trend.map((season) => season.homeRate);
+  const lowest = Math.min(...rates);
+  const highest = Math.max(...rates);
+  const span = highest - lowest || 1;
+  const innerWidth = width - padding.left - padding.right;
+  const innerHeight = height - padding.top - padding.bottom;
+  const step = trend.length > 1 ? innerWidth / (trend.length - 1) : 0;
+  const pointX = (index) => padding.left + step * index;
+  const pointY = (rate) => padding.top + innerHeight - ((rate - lowest) / span) * innerHeight;
+
+  const line = trend.map((season, index) => `${index === 0 ? "M" : "L"}${pointX(index).toFixed(1)} ${pointY(season.homeRate).toFixed(1)}`).join(" ");
+  const lowestIndex = trend.findIndex((season) => season.year === shift.lowestYear);
+  const firstYear = trend[0].year;
+  const lastYear = trend[trend.length - 1].year;
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "시즌별 홈승률 추이");
+  svg.classList.add("home-advantage-svg");
+  svg.innerHTML = [
+    `<path d="${line}" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />`,
+    lowestIndex >= 0
+      ? `<circle cx="${pointX(lowestIndex).toFixed(1)}" cy="${pointY(trend[lowestIndex].homeRate).toFixed(1)}" r="3" fill="currentColor" />`
+      : "",
+    `<text x="${padding.left}" y="${height - 4}" class="home-advantage-axis">${firstYear}</text>`,
+    `<text x="${width - padding.right}" y="${height - 4}" text-anchor="end" class="home-advantage-axis">${lastYear}</text>`
+  ].join("");
+
+  chart.replaceChildren(svg);
 }
 
 // ---- 배당 구간 기저율 엔진 ----
@@ -11483,6 +11641,7 @@ if (typeof document !== "undefined") {
     ensureCloudAccountReady().catch(() => {});
   }
   renderAutoUpdateManager();
+  renderHomeAdvantageTrend();
   setAutoUpdateStatus("자동 업데이트는 꺼져 있습니다. 필요할 때 데이터 추가에서 직접 확인하세요.");
   registerServiceWorker();
 }
@@ -11491,6 +11650,16 @@ if (typeof module !== "undefined") {
   module.exports = {
     AUTO_UPDATE_KEY,
     ODDS_BASE_RATE_BANDS,
+    HOME_ADVANTAGE_LEAGUES,
+    HOME_ADVANTAGE_BY_SEASON,
+    HOME_ADVANTAGE_MIN_SEASON_MATCHES,
+    getHomeAdvantageTrend,
+    getHomeAdvantageShift,
+    renderHomeAdvantageTrend,
+    CALENDAR_SEASON_LEAGUES,
+    usesCalendarSeason,
+    getSeasonStartYear,
+    getSeasonLabel,
     CLOSING_ODDS_LEAGUES,
     usesClosingOdds,
     getFavoriteOddsInfo,
