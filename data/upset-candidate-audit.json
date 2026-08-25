@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-24T18:53:27.975Z",
+  "updatedAt": "2026-08-25T08:56:33.714Z",
   "summary": {
     "trackedDays": 38,
-    "trackedCandidates": 32,
+    "trackedCandidates": 34,
     "resolvedCandidates": 25,
     "favoriteFailures": 10,
     "directionHits": 7
@@ -274,33 +274,33 @@
     {
       "date": "2026-08-25",
       "firstEvaluatedAt": "2026-08-21T18:50:35.465Z",
-      "lastEvaluatedAt": "2026-08-24T18:53:27.975Z",
+      "lastEvaluatedAt": "2026-08-25T08:56:33.714Z",
       "eligibleMatchCount": 6,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1507042"
+      ]
     },
     {
       "date": "2026-08-26",
       "firstEvaluatedAt": "2026-08-22T18:43:57.795Z",
-      "lastEvaluatedAt": "2026-08-24T18:53:27.975Z",
+      "lastEvaluatedAt": "2026-08-25T08:56:33.714Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-08-27",
       "firstEvaluatedAt": "2026-08-23T18:43:03.994Z",
-      "lastEvaluatedAt": "2026-08-24T18:53:27.975Z",
+      "lastEvaluatedAt": "2026-08-25T08:56:33.714Z",
       "eligibleMatchCount": 5,
-      "candidateIds": [
-        "fixture:1622630"
-      ]
+      "candidateIds": []
     },
     {
       "date": "2026-08-28",
       "firstEvaluatedAt": "2026-08-24T18:53:27.975Z",
-      "lastEvaluatedAt": "2026-08-24T18:53:27.975Z",
-      "eligibleMatchCount": 12,
+      "lastEvaluatedAt": "2026-08-25T08:56:33.714Z",
+      "eligibleMatchCount": 14,
       "candidateIds": [
-        "fixture:1623449"
+        "fixture:1623441"
       ]
     }
   ],
@@ -1034,6 +1034,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1507042",
+      "fixtureId": "1507042",
+      "date": "2026-08-25",
+      "league": "KLEAGUE1",
+      "homeTeam": "FC Seoul",
+      "awayTeam": "Bucheon FC 1995",
+      "homeOdds": "1.50",
+      "drawOdds": "4.00",
+      "awayOdds": "6.60",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 125,
+      "firstEvaluatedAt": "2026-08-25T08:56:33.714Z",
+      "lastSeenAt": "2026-08-25T08:56:33.714Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1550087",
       "fixtureId": "1550087",
       "date": "2026-08-25",
@@ -1105,6 +1131,32 @@
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-08-24T09:01:27.165Z",
       "lastSeenAt": "2026-08-24T18:53:27.975Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1623441",
+      "fixtureId": "1623441",
+      "date": "2026-08-28",
+      "league": "UEL",
+      "homeTeam": "Aarhus",
+      "awayTeam": "Benfica",
+      "homeOdds": "5.75",
+      "drawOdds": "4.55",
+      "awayOdds": "1.48",
+      "favoriteKey": "A",
+      "candidateLabel": "홈 역배 주의",
+      "predictedDirection": "H",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 23,
+      "firstEvaluatedAt": "2026-08-25T08:56:33.714Z",
+      "lastSeenAt": "2026-08-25T08:56:33.714Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
