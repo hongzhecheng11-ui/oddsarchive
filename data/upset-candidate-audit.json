@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-27T14:05:01.021Z",
+  "updatedAt": "2026-08-27T19:03:43.689Z",
   "summary": {
-    "trackedDays": 40,
-    "trackedCandidates": 35,
-    "resolvedCandidates": 28,
+    "trackedDays": 41,
+    "trackedCandidates": 40,
+    "resolvedCandidates": 30,
     "favoriteFailures": 12,
     "directionHits": 8
   },
@@ -297,14 +297,14 @@
     {
       "date": "2026-08-28",
       "firstEvaluatedAt": "2026-08-24T18:53:27.975Z",
-      "lastEvaluatedAt": "2026-08-27T14:05:01.021Z",
-      "eligibleMatchCount": 14,
+      "lastEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-08-29",
       "firstEvaluatedAt": "2026-08-25T18:52:21.647Z",
-      "lastEvaluatedAt": "2026-08-27T14:05:01.021Z",
+      "lastEvaluatedAt": "2026-08-27T19:03:43.689Z",
       "eligibleMatchCount": 42,
       "candidateIds": [
         "fixture:1575481"
@@ -313,9 +313,23 @@
     {
       "date": "2026-08-30",
       "firstEvaluatedAt": "2026-08-26T19:59:00.101Z",
-      "lastEvaluatedAt": "2026-08-27T14:05:01.021Z",
-      "eligibleMatchCount": 23,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "eligibleMatchCount": 44,
+      "candidateIds": [
+        "fixture:1550100",
+        "fixture:1550101"
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "eligibleMatchCount": 18,
+      "candidateIds": [
+        "fixture:1557384",
+        "fixture:1552152",
+        "fixture:1584393"
+      ]
     }
   ],
   "candidates": [
@@ -1171,11 +1185,11 @@
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-08-25T08:56:33.714Z",
       "lastSeenAt": "2026-08-26T19:59:00.101Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "A",
+      "score": "0-1",
+      "resolvedAt": "2026-08-27T19:03:43.689Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1623449",
@@ -1197,10 +1211,10 @@
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-08-24T18:53:27.975Z",
       "lastSeenAt": "2026-08-24T18:53:27.975Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "H",
+      "score": "4-2",
+      "resolvedAt": "2026-08-27T19:03:43.689Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -1222,7 +1236,137 @@
       ],
       "sampleSize": 51,
       "firstEvaluatedAt": "2026-08-25T18:52:21.647Z",
-      "lastSeenAt": "2026-08-27T14:05:01.021Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1550100",
+      "fixtureId": "1550100",
+      "date": "2026-08-30",
+      "league": "SERIEA",
+      "homeTeam": "Fiorentina",
+      "awayTeam": "Frosinone",
+      "homeOdds": "1.63",
+      "drawOdds": "3.95",
+      "awayOdds": "5.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1550101",
+      "fixtureId": "1550101",
+      "date": "2026-08-30",
+      "league": "SERIEA",
+      "homeTeam": "Juventus",
+      "awayTeam": "Parma",
+      "homeOdds": "1.20",
+      "drawOdds": "5.75",
+      "awayOdds": "16.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552152",
+      "fixtureId": "1552152",
+      "date": "2026-08-31",
+      "league": "EREDIVISIE",
+      "homeTeam": "Cambuur",
+      "awayTeam": "Twente",
+      "homeOdds": "7.90",
+      "drawOdds": "5.25",
+      "awayOdds": "1.33",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 22,
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1557384",
+      "fixtureId": "1557384",
+      "date": "2026-08-31",
+      "league": "EPL",
+      "homeTeam": "Manchester United",
+      "awayTeam": "Ipswich",
+      "homeOdds": "1.44",
+      "drawOdds": "4.50",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 91,
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1584393",
+      "fixtureId": "1584393",
+      "date": "2026-08-31",
+      "league": "SUPER_LIG",
+      "homeTeam": "Samsunspor",
+      "awayTeam": "Fenerbahçe",
+      "homeOdds": "5.25",
+      "drawOdds": "4.10",
+      "awayOdds": "1.58",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 41,
+      "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
+      "lastSeenAt": "2026-08-27T19:03:43.689Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
