@@ -201,11 +201,14 @@ function shouldCollectLineup(fixture = {}, now = new Date(), windowHours = 4) {
   return differenceHours <= windowHours && differenceHours >= -6;
 }
 
-function attachFixtureIntel(fixtures = [], injuries = [], lineupByFixture = new Map(), injuriesChecked = false) {
+// 경기별로 조회한 부상 정보를 fixtureId 로 붙인다.
+// 리그+날짜 단위 부상 엔드포인트는 예정 경기에서 거의 항상 빈 값을 돌려주므로,
+// collect-match-statistics.js 가 종료 경기에 쓰는 것과 같은 경기 단위 엔드포인트로 통일했다.
+function attachFixtureIntel(fixtures = [], injuriesByFixture = new Map(), lineupByFixture = new Map()) {
   return fixtures.map((fixture) => ({
     ...fixture,
-    injuriesChecked,
-    injuries: injuries.filter((item) => item.fixtureId === fixture.fixtureId),
+    injuriesChecked: injuriesByFixture.has(fixture.fixtureId),
+    injuries: injuriesByFixture.get(fixture.fixtureId) || [],
     lineupsChecked: lineupByFixture.has(fixture.fixtureId),
     lineups: lineupByFixture.get(fixture.fixtureId) || []
   }));
@@ -266,13 +269,16 @@ async function collectLeagueContext({ apiKey, leagueKey, leagueId, date, fetcher
     await wait(120);
   }
 
-  let injuries = [];
-  let injuriesChecked = false;
-  try {
-    injuries = normalizeInjuries(await fetcher(`/injuries?league=${leagueId}&season=${season}&date=${date}`, apiKey));
-    injuriesChecked = true;
-  } catch (error) {
-    console.warn(`${leagueKey} injuries unavailable: ${error.message}`);
+  // 경기 단위로 조회한다. 리그+날짜 단위 조회는 예정 경기에서 거의 항상 빈 값을 돌려줬다.
+  const injuriesByFixture = new Map();
+  for (const fixture of fixtureSummaries) {
+    try {
+      const injuries = normalizeInjuries(await fetcher(`/injuries?fixture=${fixture.fixtureId}`, apiKey));
+      injuriesByFixture.set(fixture.fixtureId, injuries);
+    } catch (error) {
+      console.warn(`${leagueKey} fixture ${fixture.fixtureId} injuries unavailable: ${error.message}`);
+    }
+    await wait(120);
   }
 
   const lineupByFixture = new Map();
@@ -292,7 +298,7 @@ async function collectLeagueContext({ apiKey, leagueKey, leagueId, date, fetcher
     season,
     standings,
     teams,
-    fixtures: attachFixtureIntel(fixtureSummaries, injuries, lineupByFixture, injuriesChecked)
+    fixtures: attachFixtureIntel(fixtureSummaries, injuriesByFixture, lineupByFixture)
   };
 }
 

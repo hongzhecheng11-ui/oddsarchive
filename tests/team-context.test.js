@@ -49,6 +49,51 @@ test("collects standings and statistics only for teams playing on the target dat
   assert.strictEqual(context.teams[0].all.goalsFor, 9);
 });
 
+test("collects injuries per fixture instead of one league-wide call", async () => {
+  const fetcher = async (pathname) => {
+    if (pathname.startsWith("/fixtures/lineups")) return [];
+    if (pathname.startsWith("/fixtures")) {
+      return [
+        { fixture: { id: 501, date: "2026-08-30T10:00:00+09:00", status: { short: "NS" } }, teams: { home: { id: 1, name: "Arsenal" }, away: { id: 2, name: "Chelsea" } } },
+        { fixture: { id: 502, date: "2026-08-30T12:00:00+09:00", status: { short: "NS" } }, teams: { home: { id: 3, name: "Fulham" }, away: { id: 4, name: "Everton" } } }
+      ];
+    }
+    if (pathname.startsWith("/standings")) return [];
+    if (pathname.startsWith("/injuries?fixture=501")) {
+      return [{ fixture: { id: 501 }, team: { id: 1 }, player: { id: 9, name: "Player One", type: "Missing Fixture", reason: "Injury" } }];
+    }
+    if (pathname.startsWith("/injuries?fixture=502")) return [];
+    if (pathname.startsWith("/injuries")) throw new Error("should not call the league-wide injuries endpoint");
+    if (pathname.startsWith("/teams/statistics")) {
+      const teamId = Number(new URLSearchParams(pathname.split("?")[1]).get("team"));
+      return [{
+        team: { id: teamId, name: "Team" + teamId },
+        form: "",
+        fixtures: { played: { home: 0, away: 0, total: 0 }, wins: { home: 0, away: 0, total: 0 }, draws: { home: 0, away: 0, total: 0 }, loses: { home: 0, away: 0, total: 0 } },
+        goals: { for: { total: { home: 0, away: 0, total: 0 } }, against: { total: { home: 0, away: 0, total: 0 } } }
+      }];
+    }
+    return [];
+  };
+
+  const context = await collector.collectLeagueContext({
+    apiKey: "test-key",
+    leagueKey: "EPL",
+    leagueId: 39,
+    date: "2026-08-30",
+    fetcher
+  });
+
+  const withInjury = context.fixtures.find((fixture) => fixture.fixtureId === 501);
+  const withoutInjury = context.fixtures.find((fixture) => fixture.fixtureId === 502);
+
+  assert.strictEqual(withInjury.injuriesChecked, true);
+  assert.strictEqual(withInjury.injuries.length, 1);
+  assert.strictEqual(withInjury.injuries[0].player, "Player One");
+  assert.strictEqual(withoutInjury.injuriesChecked, true);
+  assert.strictEqual(withoutInjury.injuries.length, 0);
+});
+
 test("preserves API object responses for team statistics without changing array callers", async () => {
   const fetcher = async () => ({
     ok: true,
@@ -78,7 +123,8 @@ test("normalizes fixture injuries and lineups without duplicate players", () => 
     startXI: [{ player: { name: "Starter One" } }]
   }]);
   const lineupByFixture = new Map([[101, lineups]]);
-  const attached = collector.attachFixtureIntel(fixtures, injuries, lineupByFixture, true);
+  const injuriesByFixture = new Map([[101, injuries]]);
+  const attached = collector.attachFixtureIntel(fixtures, injuriesByFixture, lineupByFixture);
 
   assert.strictEqual(injuries.length, 1);
   assert.strictEqual(attached[0].injuries.length, 1);
