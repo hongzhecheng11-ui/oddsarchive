@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-08-27T19:03:43.416Z",
+  "updatedAt": "2026-08-27T22:13:20.919Z",
   "collection": {
-    "lastAttemptAt": "2026-08-27T19:02:52.761Z",
-    "lastSuccessAt": "2026-08-27T19:03:43.416Z",
-    "requestSuccesses": 113,
+    "lastAttemptAt": "2026-08-27T22:13:09.165Z",
+    "lastSuccessAt": "2026-08-27T22:13:20.919Z",
+    "requestSuccesses": 28,
     "requestFailures": 0,
-    "addedCount": 39,
-    "updatedCount": 72,
-    "duplicateCount": 7,
+    "addedCount": 0,
+    "updatedCount": 1,
+    "duplicateCount": 11,
     "errors": []
   },
   "matches": [
@@ -16509,13 +16509,13 @@
       "fixtureId": "1570335",
       "homeTeam": "Barcelona",
       "awayTeam": "Athletic Club",
-      "homeOdds": "1.24",
-      "drawOdds": "6.50",
-      "awayOdds": "9.20",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.23",
+      "drawOdds": "6.25",
+      "awayOdds": "10.25",
+      "result": "H",
+      "score": "2-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-27T19:02:57.306Z",
+      "oddsUpdatedAt": "2026-08-27T22:13:10.582Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-24T09:00:37.444Z",
