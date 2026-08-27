@@ -3317,6 +3317,153 @@ body.match-detail-open {
   gap: 7px;
 }
 
+.match-detail-venue-toggle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.match-detail-venue-toggle button {
+  min-height: 34px;
+  padding: 6px 4px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(15, 110, 92, 0.06);
+  color: #4a5c68;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.match-detail-venue-toggle button.active {
+  background: #0f6e5c;
+  color: #ffffff;
+}
+
+.match-detail-venue-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.match-detail-venue-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #dfe6ea;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.match-detail-venue-card > span {
+  font-size: 11px;
+  color: #6b7a82;
+}
+
+.match-detail-venue-card > strong {
+  font-size: 14px;
+}
+
+.match-detail-venue-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 7px;
+  border-radius: 6px;
+  background: rgba(15, 110, 92, 0.04);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.match-detail-venue-row small {
+  grid-column: 1 / -1;
+  color: #6b7a82;
+  font-size: 10.5px;
+}
+
+.match-detail-venue-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.match-detail-venue-recent small {
+  color: #6b7a82;
+  font-size: 10.5px;
+}
+
+.match-detail-venue-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.match-detail-venue-dot {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #9aa7ad;
+}
+
+.match-detail-venue-dot.venue-w {
+  background: #0f6e5c;
+}
+
+.match-detail-venue-dot.venue-l {
+  background: #a03f26;
+}
+
+.match-detail-venue-dot.venue-d {
+  background: #8a6612;
+}
+
+.match-detail-venue-h2h {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.match-detail-venue-h2h-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.match-detail-venue-h2h-group > small:first-child {
+  color: #6b7a82;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.match-detail-venue-h2h-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.match-detail-venue-h2h-list span {
+  padding: 5px 7px;
+  border-radius: 6px;
+  background: rgba(15, 110, 92, 0.04);
+  font-size: 12px;
+}
+
+.match-detail-venue-h2h-empty {
+  color: #6b7a82;
+  font-size: 12px;
+}
+
 .match-detail-team-card {
   display: grid;
   gap: 5px;
