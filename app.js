@@ -6603,7 +6603,8 @@ function getVenueRankFromStandings(standings = [], teamName = "", venue = "home"
 }
 
 // 이번 경기 두 팀의 과거 맞대결을, 누구 홈에서 열렸는지로 나눈다.
-function splitHeadToHeadByVenue(homeTeam = "", awayTeam = "", matches = [], limit = 5) {
+// venue 로 "전체"를 주면 누가 홈이었든 합쳐서 최신순 limit 개를 돌려준다.
+function splitHeadToHeadByVenue(homeTeam = "", awayTeam = "", matches = [], limit = 10) {
   const meetings = (Array.isArray(matches) ? matches : [])
     .filter(isKnownResultMatch)
     .filter((match) => (
@@ -6612,9 +6613,13 @@ function splitHeadToHeadByVenue(homeTeam = "", awayTeam = "", matches = [], limi
     ))
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 
+  const hostedByHome = meetings.filter((match) => teamNameMatches(match.homeTeam, homeTeam));
+  const hostedByAway = meetings.filter((match) => teamNameMatches(match.homeTeam, awayTeam));
+
   return {
-    hostedByHome: meetings.filter((match) => teamNameMatches(match.homeTeam, homeTeam)).slice(0, limit),
-    hostedByAway: meetings.filter((match) => teamNameMatches(match.homeTeam, awayTeam)).slice(0, limit)
+    all: meetings.slice(0, limit),
+    hostedByHome: hostedByHome.slice(0, limit),
+    hostedByAway: hostedByAway.slice(0, limit)
   };
 }
 
@@ -6700,8 +6705,7 @@ function renderVenueTeamCard(container, label, teamName, matches, venue, standin
   card.append(
     createVenueStatRow("홈 기준 순위", homeRank ? (homeRank.rank + "위") : "-", homeRank ? (homeRank.of + "팀 중 · 추정치") : "표본 없음"),
     createVenueStatRow("원정 기준 순위", awayRank ? (awayRank.rank + "위") : "-", awayRank ? (awayRank.of + "팀 중 · 추정치") : "표본 없음"),
-    createVenueStatRow("전적", formatDetailRecord(snapshot.profile), snapshot.matches + "경기"),
-    createVenueStatRow("승률", snapshot.matches > 0 ? snapshot.profile.winRate.toFixed(1) + "%" : "-", ""),
+    createVenueStatRow("승률", snapshot.matches > 0 ? (formatDetailRecord(snapshot.profile) + " · " + snapshot.profile.winRate.toFixed(1) + "%") : "-", snapshot.matches + "경기"),
     createVenueStatRow("평균 득실", formatDetailGoalAverage(snapshot.profile), ""),
     createVenueStatRow(
       "오버/언더 2.5",
@@ -6761,9 +6765,21 @@ function createDetailVenueStatsPanel(match = {}, analysis = {}) {
   cards.className = "match-detail-venue-grid";
   cards.append(homeCard, awayCard);
 
+  const h2h = splitHeadToHeadByVenue(match.homeTeam, match.awayTeam, sourceMatches, 10);
+  const h2hSection = document.createElement("section");
+  h2hSection.className = "match-detail-section match-detail-venue-h2h";
+  const h2hTitle = document.createElement("strong");
+  h2hTitle.textContent = "맞대결";
+  const h2hList = document.createElement("div");
+  h2hSection.append(h2hTitle, h2hList);
+
+  const h2hGroupTitle = { all: "최근 맞대결", home: "홈팀 홈에서", away: "원정팀 홈에서" };
+  const h2hMeetings = { all: h2h.all, home: h2h.hostedByHome, away: h2h.hostedByAway };
+
   const renderForVenue = (venue) => {
     renderVenueTeamCard(homeCard, "홈팀", match.homeTeam, sourceMatches, venue, standings);
     renderVenueTeamCard(awayCard, "원정팀", match.awayTeam, sourceMatches, venue, standings);
+    h2hList.replaceChildren(createHeadToHeadVenueList(h2hGroupTitle[venue], h2hMeetings[venue]));
   };
 
   [["all", "전체"], ["home", "홈 경기"], ["away", "원정 경기"]].forEach(([value, label], index) => {
@@ -6778,17 +6794,6 @@ function createDetailVenueStatsPanel(match = {}, analysis = {}) {
     });
     toggleRow.appendChild(button);
   });
-
-  const h2h = splitHeadToHeadByVenue(match.homeTeam, match.awayTeam, sourceMatches);
-  const h2hSection = document.createElement("section");
-  h2hSection.className = "match-detail-section match-detail-venue-h2h";
-  const h2hTitle = document.createElement("strong");
-  h2hTitle.textContent = "홈/원정 맞대결";
-  h2hSection.append(
-    h2hTitle,
-    createHeadToHeadVenueList("홈팀 홈에서", h2h.hostedByHome),
-    createHeadToHeadVenueList("원정팀 홈에서", h2h.hostedByAway)
-  );
 
   panel.append(toggleRow, cards, h2hSection);
   renderForVenue("all");

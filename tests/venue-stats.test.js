@@ -118,4 +118,37 @@ test("head-to-head returns empty groups for teams that never met", () => {
   const h2h = app.splitHeadToHeadByVenue("Fulham", "Everton", matches);
   assert.strictEqual(h2h.hostedByHome.length, 0);
   assert.strictEqual(h2h.hostedByAway.length, 0);
+  assert.strictEqual(h2h.all.length, 0);
+});
+
+test("head-to-head 'all' combines both venues, newest first, regardless of who hosted", () => {
+  const h2h = app.splitHeadToHeadByVenue("Arsenal", "Chelsea", matches);
+  assert.strictEqual(h2h.all.length, 3);
+  const dates = h2h.all.map((m) => m.date);
+  assert.deepStrictEqual([...dates].sort().reverse(), dates);
+});
+
+test("defaults to a limit of ten meetings when none is given", () => {
+  const long = Array.from({ length: 15 }, (_, i) => ({
+    date: `2026-01-${String(i + 1).padStart(2, "0")}`,
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    result: "H",
+    score: "1-0"
+  }));
+  const h2h = app.splitHeadToHeadByVenue("Arsenal", "Chelsea", long);
+  assert.strictEqual(h2h.all.length, 10);
+  assert.strictEqual(h2h.hostedByHome.length, 10);
+});
+
+test("a custom limit is respected", () => {
+  const long = Array.from({ length: 15 }, (_, i) => ({
+    date: `2026-01-${String(i + 1).padStart(2, "0")}`,
+    homeTeam: "Arsenal",
+    awayTeam: "Chelsea",
+    result: "H",
+    score: "1-0"
+  }));
+  const h2h = app.splitHeadToHeadByVenue("Arsenal", "Chelsea", long, 3);
+  assert.strictEqual(h2h.all.length, 3);
 });
