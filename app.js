@@ -5566,14 +5566,28 @@ function createSearchResultCard(match) {
   const header = document.createElement("div");
   header.className = "result-card-header";
 
+  const leftGroup = document.createElement("span");
+  leftGroup.className = "result-card-header-left";
+
   const meta = document.createElement("span");
   meta.textContent = formatLeagueName(match.league);
+
+  const detailButton = document.createElement("button");
+  detailButton.type = "button";
+  detailButton.className = "result-card-detail-button";
+  detailButton.textContent = "상세분석 보기";
+  detailButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    openMatchDetail(match);
+  });
+
+  leftGroup.append(meta, detailButton);
 
   const resultPill = document.createElement("strong");
   resultPill.className = `result-pill ${getResultChipClass(match.result)}`;
   resultPill.textContent = formatResultLabel(match.result);
 
-  header.append(meta, resultPill);
+  header.append(leftGroup, resultPill);
 
   const title = document.createElement("strong");
   title.className = "result-match-title";
@@ -6698,6 +6712,13 @@ function createVenueStatRow(label, value, note = "") {
 }
 
 // 최근 10경기를 맞대결처럼 날짜·상대·스코어가 보이는 목록으로 보여준다.
+// 승/무/패 배지: 무슨 언어든 한 글자로 끝나야 20px 동그라미 안에 들어간다.
+// i18n 사전의 "무" → "Draw" 는 다른 화면용이라 여기서는 안 쓰고 따로 매핑한다.
+function formatVenueResultBadge(result) {
+  const labels = { W: { ko: "승", en: "W" }, D: { ko: "무", en: "D" }, L: { ko: "패", en: "L" } };
+  return labels[result]?.[getUiLanguage() === "en" ? "en" : "ko"] || result || "?";
+}
+
 function createVenueRecentList(recentTen = []) {
   const wrap = document.createElement("div");
   wrap.className = "match-detail-venue-h2h-list";
@@ -6713,7 +6734,7 @@ function createVenueRecentList(recentTen = []) {
     row.className = "match-detail-venue-recent-row";
     const dot = document.createElement("i");
     dot.className = "match-detail-venue-dot venue-" + String(entry.result || "").toLowerCase();
-    dot.textContent = entry.result || "?";
+    dot.textContent = formatVenueResultBadge(entry.result);
     const text = document.createElement("span");
     text.textContent = (entry.date || "") + " vs " + formatTeamName(entry.opponent || "") + " " + (entry.score || "");
     row.append(dot, text);
@@ -6794,12 +6815,16 @@ function renderVenueTeamCard(container, label, teamName, matches, standings) {
   const statHead = document.createElement("div");
   statHead.className = "match-detail-venue-section-head";
   const statLabel = document.createElement("small");
-  statLabel.textContent = "성적";
+  statLabel.textContent = "시즌 성적";
   const statRows = document.createElement("div");
   const renderStats = (venue) => {
     const snapshot = buildTeamVenueSnapshot(teamName, matches, venue);
     statRows.replaceChildren(
-      createVenueStatRow("승률", snapshot.matches > 0 ? (formatDetailRecord(snapshot.profile) + " · " + snapshot.profile.winRate.toFixed(1) + "%") : "-", snapshot.matches + "경기"),
+      createVenueStatRow(
+        "승률",
+        snapshot.matches > 0 ? (snapshot.profile.winRate.toFixed(1) + "%") : "-",
+        snapshot.matches > 0 ? (formatDetailRecord(snapshot.profile) + " · " + snapshot.matches + "경기") : snapshot.matches + "경기"
+      ),
       createVenueStatRow("평균 득실", formatDetailGoalAverage(snapshot.profile), ""),
       createVenueStatRow(
         "오버/언더 2.5",
@@ -8992,6 +9017,9 @@ function getTodayUserInsight(match = {}, analysis = null) {
   };
 }
 
+// 이변 후보로 인정하려면 최소 이 정도 과거 표본이 있어야 신뢰할 수 있다고 본다.
+const UPSET_CANDIDATE_MIN_SAMPLE = 15;
+
 function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = null) {
   const criteria = {
     homeOdds: match.homeOdds,
@@ -9052,11 +9080,11 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
   const isMajorBand = favoriteOdds >= 1.2 && favoriteOdds <= 1.65;
   const isUnstableBand = favoriteOdds > 1.65 && favoriteOdds <= 2;
   const majorCandidate = isMajorBand
-    && knownMatches >= 15
+    && knownMatches >= UPSET_CANDIDATE_MIN_SAMPLE
     && favoriteFailureLift >= 4
     && evidence.length >= 2;
   const unstableCandidate = isUnstableBand
-    && knownMatches >= 15
+    && knownMatches >= UPSET_CANDIDATE_MIN_SAMPLE
     && favoriteFailureLift >= 6
     && (evidence.length >= 3 || (favoriteFailureLift >= 12 && directionExcess >= 6));
   const isTopCandidate = majorCandidate || unstableCandidate;
@@ -9096,11 +9124,47 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
   };
 }
 
+// 이변 후보 심사 전용 표본 탐색: analyzeLiveMatchOdds 는 "같은 리그·오차 0.05"에서
+// 단 1경기만 걸려도 그걸로 확정하고 멈춰서, 배당이 흔치 않은 경기는 표본이 거의 항상
+// 1~2건에 머물렀다 (UPSET_CANDIDATE_MIN_SAMPLE 을 구조적으로 못 넘김). 여기서는 그
+// 판정 기준(15경기)을 채울 때까지 오차·리그 범위를 넓혀가며 다시 찾는다.
+// 오늘의 경기 카드 등 다른 화면이 쓰는 getTodayMatchAnalysis 자체는 건드리지 않는다.
+function getUpsetCandidateAnalysis(match = {}, searchableMatches = []) {
+  const criteria = {
+    homeTeam: match.homeTeam,
+    awayTeam: match.awayTeam,
+    homeOdds: match.homeOdds,
+    drawOdds: match.drawOdds,
+    awayOdds: match.awayOdds
+  };
+  const attempts = [
+    { tolerance: match.tolerance || "0.05", league: match.league || "ALL" },
+    { tolerance: "0.10", league: "ALL" },
+    { tolerance: "0.20", league: "ALL" }
+  ];
+
+  let widest = null;
+  for (const attempt of attempts) {
+    const analysis = analyzeTodayMatch(searchableMatches, { ...criteria, ...attempt });
+    if (!widest || analysis.breakdown.knownMatches > widest.breakdown.knownMatches) widest = analysis;
+    if (analysis.breakdown.knownMatches >= UPSET_CANDIDATE_MIN_SAMPLE) return analysis;
+  }
+
+  const closestMatches = getClosestOddsMatches(searchableMatches, criteria, 30);
+  if (closestMatches.length > 0) {
+    const breakdown = calculateResultBreakdown(closestMatches);
+    if (!widest || breakdown.knownMatches > widest.breakdown.knownMatches) {
+      return { error: "", matches: closestMatches, breakdown, label: `${criteria.homeTeam} vs ${criteria.awayTeam}` };
+    }
+  }
+  return widest || { error: "", matches: [], breakdown: calculateResultBreakdown([]) };
+}
+
 function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchableMatches()) {
   return (Array.isArray(matches) ? matches : [])
     .filter(hasCompleteOdds)
     .map((match) => {
-      const analysis = getTodayMatchAnalysis(match, searchableMatches);
+      const analysis = getUpsetCandidateAnalysis(match, searchableMatches);
       const contextProfile = getMatchContextProfile(match, searchableMatches);
       const assessment = assessTodayUpsetCandidate(
         match,
@@ -12259,7 +12323,9 @@ if (typeof module !== "undefined") {
     getTeamScheduleProfile,
     getTodayUserInsight,
     assessTodayUpsetCandidate,
+    getUpsetCandidateAnalysis,
     getTodayUpsetCandidates,
+    UPSET_CANDIDATE_MIN_SAMPLE,
     getLeagueBreakdownStats,
     getRecentKnownResults,
     buildMatchDetailAnalysis,

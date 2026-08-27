@@ -1060,6 +1060,33 @@ test("does not cap naturally qualified upset candidates", () => {
   assert.strictEqual(candidates.length, 4);
 });
 
+test("widens the sample for upset scoring when the same-league exact-odds sample is too thin", () => {
+  // 실제 프로덕션에서 재현된 상황: 특정 배당 조합이 그 리그 안에서는 표본이 1~2건뿐이라
+  // 심사 기준(15경기)을 못 채웠다. 다른 리그까지 넓혀 찾으면 표본이 충분한데도,
+  // getTodayUpsetCandidates 가 예전엔 "같은 리그·오차 0.05"에서 1건만 찾아도 거기서
+  // 멈춰버려서 이변 신호가 강해도 항상 탈락했다.
+  const todayMatch = { date: "2026-08-27", league: "LALIGA", homeTeam: "Real Madrid", awayTeam: "Real Sociedad", homeOdds: "1.20", drawOdds: "6.50", awayOdds: "12.50" };
+  const leagues = ["LALIGA", "LALIGA", "EPL", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "PRIMEIRA_LIGA", "UCL", "UEL", "EPL", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "UCL", "UEL"];
+  const results = [...Array(5).fill("H"), ...Array(8).fill("D"), ...Array(4).fill("A")];
+  const history = results.map((result, index) => ({
+    date: `2025-0${(index % 9) + 1}-10`,
+    league: leagues[index],
+    homeTeam: `Fav ${index}`,
+    awayTeam: `Dog ${index}`,
+    homeOdds: "1.20",
+    drawOdds: "6.50",
+    awayOdds: "12.50",
+    result
+  }));
+
+  const sameLeagueSample = history.filter((match) => match.league === "LALIGA");
+  assert.strictEqual(sameLeagueSample.length, 2); // 같은 리그 표본은 원래 이만큼밖에 없다.
+
+  const candidates = app.getTodayUpsetCandidates([todayMatch], history);
+  assert.strictEqual(candidates.length, 1);
+  assert.strictEqual(candidates[0].topLabel, "대형 이변 후보");
+});
+
 test("requires multiple signals for the 1.61 to 2.00 favorite band", () => {
   const match = { league: "EPL", homeTeam: "A", awayTeam: "B", homeOdds: "1.80", drawOdds: "3.40", awayOdds: "4.50" };
   const breakdown = { totalMatches: 40, knownMatches: 40, homeWins: 16, draws: 12, awayWins: 12 };

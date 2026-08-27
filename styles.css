@@ -2779,6 +2779,26 @@ tbody tr:last-child td {
   gap: 8px;
 }
 
+.result-card-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.result-card-detail-button {
+  flex: 0 0 auto;
+  min-height: 22px;
+  padding: 2px 8px;
+  border: 1px solid var(--accent-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent-strong);
+  font-size: 10.5px;
+  font-weight: 800;
+}
+
 .result-card-header span,
 .search-result-card small {
   color: var(--muted);
