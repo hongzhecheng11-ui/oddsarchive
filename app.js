@@ -6545,7 +6545,10 @@ function getTeamVenueMatches(teamName = "", matches = [], venue = "all") {
     .filter((match) => {
       if (venue === "home") return teamNameMatches(match.homeTeam, teamName);
       if (venue === "away") return teamNameMatches(match.awayTeam, teamName);
-      return teamAppearsInMatch(match, teamName);
+      // teamAppearsInMatch 는 원문 표기가 정확히 같아야만 인정하는 엄격 비교라,
+      // 같은 팀이 한글/영문 등 다른 표기로 섞여 저장된 경우 "전체"만 유독 다 빠뜨렸다.
+      // home/away 분기와 같은 느슨한 매칭으로 통일한다.
+      return teamNameMatches(match.homeTeam, teamName) || teamNameMatches(match.awayTeam, teamName);
     })
     .sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
 }
@@ -6560,10 +6563,35 @@ function getOverUnderRate(matchList = [], line = 2.5) {
   return { matches: totals.length, overCount, overRate: overCount / totals.length };
 }
 
+// list 는 이미 teamName 기준으로 걸러져 있으므로, getTeamRecentProfile 로 다시 걸러 세지 않는다.
+// (getTeamRecentProfile 내부는 원문 표기가 정확히 같아야만 인정하는 엄격 비교를 쓰기 때문에,
+// 같은 팀이 한글/영문 등 다른 표기로 섞여 저장된 경우 이중 필터링에서 다시 빠질 수 있다.)
+function summarizeTeamVenueProfile(teamName = "", list = []) {
+  const totals = list.reduce((profile, match) => {
+    const result = getTeamResultFromMatch(match, teamName);
+    const score = getTeamScoreFromMatch(match, teamName);
+    if (result === "W") profile.wins += 1;
+    if (result === "D") profile.draws += 1;
+    if (result === "L") profile.losses += 1;
+    if (score) {
+      profile.goalsFor += score.forGoals;
+      profile.goalsAgainst += score.againstGoals;
+    }
+    return profile;
+  }, { matches: list.length, wins: 0, draws: 0, losses: 0, goalsFor: 0, goalsAgainst: 0 });
+
+  return {
+    ...totals,
+    avgGoalsFor: totals.matches > 0 ? totals.goalsFor / totals.matches : 0,
+    avgGoalsAgainst: totals.matches > 0 ? totals.goalsAgainst / totals.matches : 0,
+    winRate: getRatePercent(totals.wins, totals.matches)
+  };
+}
+
 // 팀 하나의 홈/원정/전체 스냅샷: 전적, 언더오버, 최근 10경기 리본.
 function buildTeamVenueSnapshot(teamName = "", matches = [], venue = "all") {
   const list = getTeamVenueMatches(teamName, matches, venue);
-  const profile = getTeamRecentProfile(teamName, list, list.length || 1);
+  const profile = summarizeTeamVenueProfile(teamName, list);
   const overUnder = getOverUnderRate(list, 2.5);
   const recentTen = list.slice(0, 10).map((match) => ({
     date: match.date || "",
@@ -6669,30 +6697,86 @@ function createVenueStatRow(label, value, note = "") {
   return row;
 }
 
-function createVenueRecentRibbon(recentTen = []) {
-  const ribbon = document.createElement("div");
-  ribbon.className = "match-detail-venue-ribbon";
+// 최근 10경기를 맞대결처럼 날짜·상대·스코어가 보이는 목록으로 보여준다.
+function createVenueRecentList(recentTen = []) {
+  const wrap = document.createElement("div");
+  wrap.className = "match-detail-venue-h2h-list";
   if (recentTen.length === 0) {
     const empty = document.createElement("small");
+    empty.className = "match-detail-venue-h2h-empty";
     empty.textContent = "최근 경기 없음";
-    ribbon.appendChild(empty);
-    return ribbon;
+    wrap.appendChild(empty);
+    return wrap;
   }
   recentTen.forEach((entry) => {
-    const dot = document.createElement("span");
+    const row = document.createElement("span");
+    row.className = "match-detail-venue-recent-row";
+    const dot = document.createElement("i");
     dot.className = "match-detail-venue-dot venue-" + String(entry.result || "").toLowerCase();
     dot.textContent = entry.result || "?";
-    dot.title = (entry.date || "") + " vs " + formatTeamName(entry.opponent || "") + " " + (entry.score || "");
-    ribbon.appendChild(dot);
+    const text = document.createElement("span");
+    text.textContent = (entry.date || "") + " vs " + formatTeamName(entry.opponent || "") + " " + (entry.score || "");
+    row.append(dot, text);
+    wrap.appendChild(row);
   });
-  return ribbon;
+  return wrap;
 }
 
-function renderVenueTeamCard(container, label, teamName, matches, venue, standings) {
-  const snapshot = buildTeamVenueSnapshot(teamName, matches, venue);
+// 최근 10경기 목록(W/D/L 이 이미 붙어 있음)에서 승/무/패와 승률을 센다.
+function summarizeRecentRecord(recentTen = []) {
+  const totals = recentTen.reduce((acc, entry) => {
+    if (entry.result === "W") acc.wins += 1;
+    else if (entry.result === "D") acc.draws += 1;
+    else if (entry.result === "L") acc.losses += 1;
+    return acc;
+  }, { wins: 0, draws: 0, losses: 0 });
+  const matches = totals.wins + totals.draws + totals.losses;
+  return { ...totals, matches, winRate: getRatePercent(totals.wins, matches) };
+}
+
+// 맞대결 목록에서 teamName 기준으로 승/무/패와 승률을 센다.
+function summarizeHeadToHeadRecord(teamName = "", meetings = []) {
+  const totals = meetings.reduce((acc, match) => {
+    const result = getTeamResultFromMatch(match, teamName);
+    if (result === "W") acc.wins += 1;
+    else if (result === "D") acc.draws += 1;
+    else if (result === "L") acc.losses += 1;
+    return acc;
+  }, { wins: 0, draws: 0, losses: 0 });
+  const matches = totals.wins + totals.draws + totals.losses;
+  return { ...totals, matches, winRate: getRatePercent(totals.wins, matches) };
+}
+
+function formatVenueRecordSummary(summary) {
+  if (summary.matches <= 0) return "기록 없음";
+  return `${summary.wins}승 ${summary.draws}무 ${summary.losses}패 · 승률 ${summary.winRate.toFixed(1)}%`;
+}
+
+// 전체/홈/원정 버튼 한 벌. 섹션마다 따로 붙여서 서로 독립적으로 선택할 수 있게 한다.
+function createVenueInlineToggle(activeVenue, onSelect) {
+  const row = document.createElement("div");
+  row.className = "match-detail-venue-inline-toggle";
+  row.setAttribute("role", "tablist");
+  [["all", "전체"], ["home", "홈"], ["away", "원정"]].forEach(([value, label]) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.venue = value;
+    button.className = value === activeVenue ? "active" : "";
+    button.textContent = label;
+    button.addEventListener("click", () => {
+      row.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b === button));
+      onSelect(value);
+    });
+    row.appendChild(button);
+  });
+  return row;
+}
+
+// 팀 카드: 순위는 홈/원정 항상 같이 보여주고, 성적과 최근10경기는 각자 자기 옆의
+// 전체/홈/원정 버튼으로 따로 조절한다 (둘이 같은 선택을 공유하지 않는다).
+function renderVenueTeamCard(container, label, teamName, matches, standings) {
   const homeRank = getVenueRankFromStandings(standings, teamName, "home");
   const awayRank = getVenueRankFromStandings(standings, teamName, "away");
-  const overUnder = snapshot.overUnder;
 
   const card = document.createElement("article");
   card.className = "match-detail-venue-card";
@@ -6704,32 +6788,55 @@ function renderVenueTeamCard(container, label, teamName, matches, venue, standin
 
   card.append(
     createVenueStatRow("홈 기준 순위", homeRank ? (homeRank.rank + "위") : "-", homeRank ? (homeRank.of + "팀 중 · 추정치") : "표본 없음"),
-    createVenueStatRow("원정 기준 순위", awayRank ? (awayRank.rank + "위") : "-", awayRank ? (awayRank.of + "팀 중 · 추정치") : "표본 없음"),
-    createVenueStatRow("승률", snapshot.matches > 0 ? (formatDetailRecord(snapshot.profile) + " · " + snapshot.profile.winRate.toFixed(1) + "%") : "-", snapshot.matches + "경기"),
-    createVenueStatRow("평균 득실", formatDetailGoalAverage(snapshot.profile), ""),
-    createVenueStatRow(
-      "오버/언더 2.5",
-      overUnder.overRate === null ? "-" : ("오버 " + (overUnder.overRate * 100).toFixed(1) + "%"),
-      overUnder.matches > 0 ? (overUnder.matches + "경기 중 " + overUnder.overCount + "경기") : "표본 없음"
-    )
+    createVenueStatRow("원정 기준 순위", awayRank ? (awayRank.rank + "위") : "-", awayRank ? (awayRank.of + "팀 중 · 추정치") : "표본 없음")
   );
+
+  const statHead = document.createElement("div");
+  statHead.className = "match-detail-venue-section-head";
+  const statLabel = document.createElement("small");
+  statLabel.textContent = "성적";
+  const statRows = document.createElement("div");
+  const renderStats = (venue) => {
+    const snapshot = buildTeamVenueSnapshot(teamName, matches, venue);
+    statRows.replaceChildren(
+      createVenueStatRow("승률", snapshot.matches > 0 ? (formatDetailRecord(snapshot.profile) + " · " + snapshot.profile.winRate.toFixed(1) + "%") : "-", snapshot.matches + "경기"),
+      createVenueStatRow("평균 득실", formatDetailGoalAverage(snapshot.profile), ""),
+      createVenueStatRow(
+        "오버/언더 2.5",
+        snapshot.overUnder.overRate === null ? "-" : ("오버 " + (snapshot.overUnder.overRate * 100).toFixed(1) + "%"),
+        snapshot.overUnder.matches > 0 ? (snapshot.overUnder.matches + "경기 중 " + snapshot.overUnder.overCount + "경기") : "표본 없음"
+      )
+    );
+  };
+  statHead.append(statLabel, createVenueInlineToggle("all", renderStats));
+  card.append(statHead, statRows);
+  renderStats("all");
 
   const ribbonWrap = document.createElement("div");
   ribbonWrap.className = "match-detail-venue-recent";
+  const ribbonHead = document.createElement("div");
+  ribbonHead.className = "match-detail-venue-section-head";
   const ribbonLabel = document.createElement("small");
   ribbonLabel.textContent = "최근 10경기";
-  ribbonWrap.append(ribbonLabel, createVenueRecentRibbon(snapshot.recentTen));
+  const ribbonSummary = document.createElement("small");
+  ribbonSummary.className = "match-detail-venue-recent-summary";
+  const ribbonBody = document.createElement("div");
+  const renderRibbon = (venue) => {
+    const snapshot = buildTeamVenueSnapshot(teamName, matches, venue);
+    ribbonSummary.textContent = formatVenueRecordSummary(summarizeRecentRecord(snapshot.recentTen));
+    ribbonBody.replaceChildren(createVenueRecentList(snapshot.recentTen));
+  };
+  ribbonHead.append(ribbonLabel, createVenueInlineToggle("all", renderRibbon));
+  ribbonWrap.append(ribbonHead, ribbonSummary, ribbonBody);
+  renderRibbon("all");
   card.appendChild(ribbonWrap);
 
   container.replaceChildren(card);
 }
 
-function createHeadToHeadVenueList(title, meetings = []) {
+function createHeadToHeadVenueList(meetings = []) {
   const wrap = document.createElement("div");
   wrap.className = "match-detail-venue-h2h-group";
-  const label = document.createElement("small");
-  label.textContent = title;
-  wrap.appendChild(label);
 
   if (meetings.length === 0) {
     const empty = document.createElement("small");
@@ -6750,53 +6857,41 @@ function createHeadToHeadVenueList(title, meetings = []) {
   return wrap;
 }
 
-// 통계: 홈/원정/전체 토글로 두 팀의 전적·언더오버·최근10을 같은 기준으로 비교한다.
+// 통계: 팀 카드(성적/최근10)와 맞대결이 각자 자기 옆의 전체/홈/원정 버튼으로 따로 움직인다.
 function createDetailVenueStatsPanel(match = {}, analysis = {}) {
   const panel = createDetailTabPanel("venue");
   const sourceMatches = analysis.sourceMatches || [];
   const standings = getLeagueStandingsForMatch(match);
 
-  const toggleRow = document.createElement("div");
-  toggleRow.className = "match-detail-venue-toggle";
-  toggleRow.setAttribute("role", "tablist");
   const homeCard = document.createElement("div");
   const awayCard = document.createElement("div");
   const cards = document.createElement("section");
   cards.className = "match-detail-venue-grid";
   cards.append(homeCard, awayCard);
+  renderVenueTeamCard(homeCard, "홈팀", match.homeTeam, sourceMatches, standings);
+  renderVenueTeamCard(awayCard, "원정팀", match.awayTeam, sourceMatches, standings);
 
   const h2h = splitHeadToHeadByVenue(match.homeTeam, match.awayTeam, sourceMatches, 10);
-  const h2hSection = document.createElement("section");
-  h2hSection.className = "match-detail-section match-detail-venue-h2h";
-  const h2hTitle = document.createElement("strong");
-  h2hTitle.textContent = "맞대결";
-  const h2hList = document.createElement("div");
-  h2hSection.append(h2hTitle, h2hList);
-
-  const h2hGroupTitle = { all: "최근 맞대결", home: "홈팀 홈에서", away: "원정팀 홈에서" };
   const h2hMeetings = { all: h2h.all, home: h2h.hostedByHome, away: h2h.hostedByAway };
 
-  const renderForVenue = (venue) => {
-    renderVenueTeamCard(homeCard, "홈팀", match.homeTeam, sourceMatches, venue, standings);
-    renderVenueTeamCard(awayCard, "원정팀", match.awayTeam, sourceMatches, venue, standings);
-    h2hList.replaceChildren(createHeadToHeadVenueList(h2hGroupTitle[venue], h2hMeetings[venue]));
+  const h2hSection = document.createElement("section");
+  h2hSection.className = "match-detail-section match-detail-venue-h2h";
+  const h2hHead = document.createElement("div");
+  h2hHead.className = "match-detail-venue-section-head";
+  const h2hTitle = document.createElement("strong");
+  h2hTitle.textContent = "맞대결";
+  const h2hSummary = document.createElement("small");
+  h2hSummary.className = "match-detail-venue-recent-summary";
+  const h2hList = document.createElement("div");
+  const renderH2h = (venue) => {
+    h2hSummary.textContent = formatVenueRecordSummary(summarizeHeadToHeadRecord(match.homeTeam, h2hMeetings[venue]));
+    h2hList.replaceChildren(createHeadToHeadVenueList(h2hMeetings[venue]));
   };
+  h2hHead.append(h2hTitle, createVenueInlineToggle("all", renderH2h));
+  h2hSection.append(h2hHead, h2hSummary, h2hList);
+  renderH2h("all");
 
-  [["all", "전체"], ["home", "홈 경기"], ["away", "원정 경기"]].forEach(([value, label], index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.dataset.venue = value;
-    button.className = index === 0 ? "active" : "";
-    button.textContent = label;
-    button.addEventListener("click", () => {
-      toggleRow.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b === button));
-      renderForVenue(value);
-    });
-    toggleRow.appendChild(button);
-  });
-
-  panel.append(toggleRow, cards, h2hSection);
-  renderForVenue("all");
+  panel.append(cards, h2hSection);
   return panel;
 }
 
@@ -12048,6 +12143,9 @@ if (typeof module !== "undefined") {
     summarizeTeamProfile,
     getTeamVenueMatches,
     getOverUnderRate,
+    summarizeTeamVenueProfile,
+    summarizeRecentRecord,
+    summarizeHeadToHeadRecord,
     buildTeamVenueSnapshot,
     getLeagueStandingsForMatch,
     getVenueRankFromStandings,

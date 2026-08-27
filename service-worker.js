@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v133-h2h-toggle";
+const CACHE_NAME = "oddsarchive-v134-venue-toggle-split";
 const CORE_ASSETS = [
   "/",
   "/index.html",
@@ -12,7 +12,7 @@ const CORE_ASSETS = [
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/data/upset-candidate-audit.json",
-  "/src/lib/i18n.js?v=17",
+  "/src/lib/i18n.js?v=18",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js",
   "/src/lib/auth.js?v=4",

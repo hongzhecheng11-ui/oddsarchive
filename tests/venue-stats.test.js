@@ -141,6 +141,46 @@ test("defaults to a limit of ten meetings when none is given", () => {
   assert.strictEqual(h2h.hostedByHome.length, 10);
 });
 
+test("'all' venue uses the same loose name matching as home/away, not a stricter exact check", () => {
+  // "Real Madrid" 쿼리로 "Real Madrid CF"처럼 표기가 살짝 다른 경기도 home/away 와
+  // 동일하게 "전체"에서 잡혀야 한다 (예전엔 all 분기만 엄격 비교를 써서 이런 경기를 다 놓쳤다).
+  const variantMatches = [
+    { date: "2026-01-10", homeTeam: "Real Madrid CF", awayTeam: "Sevilla", result: "H", score: "2-0" },
+    { date: "2026-02-10", homeTeam: "Sevilla", awayTeam: "Real Madrid CF", result: "A", score: "0-1" }
+  ];
+  const home = app.getTeamVenueMatches("Real Madrid", variantMatches, "home");
+  const away = app.getTeamVenueMatches("Real Madrid", variantMatches, "away");
+  const all = app.getTeamVenueMatches("Real Madrid", variantMatches, "all");
+  assert.strictEqual(home.length, 1);
+  assert.strictEqual(away.length, 1);
+  assert.strictEqual(all.length, 2);
+});
+
+test("snapshot profile totals aren't lost to a stricter re-filter when the stored name differs slightly", () => {
+  const variantMatches = [
+    { date: "2026-01-10", homeTeam: "Real Madrid CF", awayTeam: "Sevilla", result: "H", score: "2-0" },
+    { date: "2026-02-10", homeTeam: "Sevilla", awayTeam: "Real Madrid CF", result: "A", score: "0-1" }
+  ];
+  const snapshot = app.buildTeamVenueSnapshot("Real Madrid", variantMatches, "all");
+  assert.strictEqual(snapshot.matches, 2);
+  assert.strictEqual(snapshot.profile.matches, 2);
+  assert.strictEqual(snapshot.profile.wins, 2);
+  assert.strictEqual(snapshot.profile.winRate, 100);
+});
+
+test("summarizes a recent-ten list's win/draw/loss and win rate", () => {
+  const recentTen = [{ result: "W" }, { result: "W" }, { result: "D" }, { result: "L" }];
+  const summary = app.summarizeRecentRecord(recentTen);
+  assert.deepStrictEqual(summary, { wins: 2, draws: 1, losses: 1, matches: 4, winRate: 50 });
+  assert.deepStrictEqual(app.summarizeRecentRecord([]), { wins: 0, draws: 0, losses: 0, matches: 0, winRate: 0 });
+});
+
+test("summarizes head-to-head meetings from one team's perspective", () => {
+  const summary = app.summarizeHeadToHeadRecord("Arsenal", matches.slice(0, 2));
+  // Arsenal-Chelsea 3-1 (W), Chelsea-Arsenal 1-1 (D)
+  assert.deepStrictEqual(summary, { wins: 1, draws: 1, losses: 0, matches: 2, winRate: 50 });
+});
+
 test("a custom limit is respected", () => {
   const long = Array.from({ length: 15 }, (_, i) => ({
     date: `2026-01-${String(i + 1).padStart(2, "0")}`,
