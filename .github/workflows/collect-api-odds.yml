@@ -2,9 +2,15 @@ name: Collect API odds
 
 on:
   schedule:
-    # 17:10 KST: upcoming three days; 03:10 KST: current-day closing odds and near-kickoff intel.
+    # 17:10 KST: upcoming three days (auto) + standings/team-context refresh.
     - cron: "10 8 * * *"
+    # 03:10 KST: current-day closing odds and near-kickoff intel + standings/team-context refresh.
     - cron: "10 18 * * *"
+    # 08:10, 12:10, 21:10 KST: extra same-day-only odds checks so genuinely moving odds get
+    # caught more than once; matches that don't move still collapse to one entry via dedup.
+    - cron: "10 23 * * *"
+    - cron: "10 3 * * *"
+    - cron: "10 12 * * *"
   workflow_dispatch:
 
 permissions:
