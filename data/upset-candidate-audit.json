@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-29T09:58:05.458Z",
+  "updatedAt": "2026-08-29T13:49:07.685Z",
   "summary": {
     "trackedDays": 42,
-    "trackedCandidates": 46,
-    "resolvedCandidates": 31,
-    "favoriteFailures": 12,
-    "directionHits": 8
+    "trackedCandidates": 48,
+    "resolvedCandidates": 32,
+    "favoriteFailures": 13,
+    "directionHits": 9
   },
   "days": [
     {
@@ -304,38 +304,36 @@
     {
       "date": "2026-08-29",
       "firstEvaluatedAt": "2026-08-25T18:52:21.647Z",
-      "lastEvaluatedAt": "2026-08-29T09:58:05.458Z",
-      "eligibleMatchCount": 31,
-      "candidateIds": [
-        "fixture:1557383"
-      ]
+      "lastEvaluatedAt": "2026-08-29T13:49:07.685Z",
+      "eligibleMatchCount": 17,
+      "candidateIds": []
     },
     {
       "date": "2026-08-30",
       "firstEvaluatedAt": "2026-08-26T19:59:00.101Z",
-      "lastEvaluatedAt": "2026-08-29T09:58:05.458Z",
+      "lastEvaluatedAt": "2026-08-29T13:49:07.685Z",
       "eligibleMatchCount": 44,
       "candidateIds": [
-        "fixture:1552150",
-        "fixture:1558611"
+        "fixture:1507051",
+        "fixture:1584392",
+        "fixture:1552150"
       ]
     },
     {
       "date": "2026-08-31",
       "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
-      "lastEvaluatedAt": "2026-08-29T09:58:05.458Z",
+      "lastEvaluatedAt": "2026-08-29T13:49:07.685Z",
       "eligibleMatchCount": 18,
       "candidateIds": [
         "fixture:1552152",
         "fixture:1552744",
-        "fixture:1550099",
-        "fixture:1584393"
+        "fixture:1550099"
       ]
     },
     {
       "date": "2026-09-01",
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastEvaluatedAt": "2026-08-29T09:58:05.458Z",
+      "lastEvaluatedAt": "2026-08-29T13:49:07.685Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1550103"
@@ -1247,11 +1245,11 @@
       "sampleSize": 62,
       "firstEvaluatedAt": "2026-08-29T01:43:13.103Z",
       "lastSeenAt": "2026-08-29T09:58:05.458Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "2-2",
+      "resolvedAt": "2026-08-29T13:49:07.685Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1575481",
@@ -1278,6 +1276,32 @@
       "resolvedAt": "2026-08-28T20:11:21.814Z",
       "favoriteFailed": false,
       "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1507051",
+      "fixtureId": "1507051",
+      "date": "2026-08-30",
+      "league": "KLEAGUE1",
+      "homeTeam": "Gangwon FC",
+      "awayTeam": "Pohang Steelers",
+      "homeOdds": "1.91",
+      "drawOdds": "3.10",
+      "awayOdds": "4.00",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 48,
+      "firstEvaluatedAt": "2026-08-29T13:49:07.685Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     },
     {
       "candidateId": "fixture:1550100",
@@ -1350,7 +1374,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-29T09:58:05.458Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1384,6 +1408,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1584392",
+      "fixtureId": "1584392",
+      "date": "2026-08-30",
+      "league": "SUPER_LIG",
+      "homeTeam": "Konyaspor",
+      "awayTeam": "Kocaelispor",
+      "homeOdds": "1.95",
+      "drawOdds": "3.10",
+      "awayOdds": "3.90",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 16,
+      "firstEvaluatedAt": "2026-08-29T13:49:07.685Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1550099",
       "fixtureId": "1550099",
       "date": "2026-08-31",
@@ -1402,7 +1452,7 @@
       ],
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-29T09:58:05.458Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1428,7 +1478,7 @@
       ],
       "sampleSize": 22,
       "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
-      "lastSeenAt": "2026-08-29T09:58:05.458Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1454,7 +1504,7 @@
       ],
       "sampleSize": 45,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-29T09:58:05.458Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1532,7 +1582,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-29T09:58:05.458Z",
+      "lastSeenAt": "2026-08-29T13:49:07.685Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
