@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v142-season-record-standings-wdl";
+const CACHE_NAME = "oddsarchive-v143-standings-wdl-split";
 const CORE_ASSETS = [
   "/",
   "/index.html",

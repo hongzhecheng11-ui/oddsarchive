@@ -3756,7 +3756,7 @@ body.match-detail-open {
 
 .match-detail-standings-row {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr) 28px 52px 36px 32px;
+  grid-template-columns: 20px minmax(0, 1fr) 24px 18px 18px 18px 32px 28px;
   align-items: center;
   gap: 5px;
   padding: 6px 4px;
@@ -3790,7 +3790,9 @@ body.match-detail-open {
 }
 
 .match-detail-standings-played,
-.match-detail-standings-record,
+.match-detail-standings-wins,
+.match-detail-standings-draws,
+.match-detail-standings-losses,
 .match-detail-standings-diff,
 .match-detail-standings-points {
   justify-content: flex-end;

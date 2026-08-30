@@ -6821,7 +6821,9 @@ function createLeagueStandingsSection(match = {}) {
     createStandingsCell("순위", "rank"),
     createStandingsCell("팀", "team"),
     createStandingsCell("경기", "played"),
-    createStandingsCell(translateUiText("승무패"), "record"),
+    createStandingsCell(formatVenueResultBadge("W"), "wins"),
+    createStandingsCell(formatVenueResultBadge("D"), "draws"),
+    createStandingsCell(formatVenueResultBadge("L"), "losses"),
     createStandingsCell("득실", "diff"),
     createStandingsCell("승점", "points")
   );
@@ -6851,7 +6853,9 @@ function createLeagueStandingsSection(match = {}) {
       rankCell,
       teamCell,
       createStandingsCell(`${row.all?.played ?? 0}`, "played"),
-      createStandingsCell(`${row.all?.wins ?? 0}-${row.all?.draws ?? 0}-${row.all?.losses ?? 0}`, "record"),
+      createStandingsCell(`${row.all?.wins ?? 0}`, "wins"),
+      createStandingsCell(`${row.all?.draws ?? 0}`, "draws"),
+      createStandingsCell(`${row.all?.losses ?? 0}`, "losses"),
       createStandingsCell(`${row.goalsDiff > 0 ? "+" : ""}${row.goalsDiff ?? 0}`, "diff"),
       createStandingsCell(`${row.points ?? 0}`, "points")
     );
