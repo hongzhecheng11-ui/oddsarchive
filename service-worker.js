@@ -1,4 +1,4 @@
-const CACHE_NAME = "oddsarchive-v139-team-match-fix";
+const CACHE_NAME = "oddsarchive-v140-auth-retry-loop-fix";
 const CORE_ASSETS = [
   "/",
   "/index.html",
