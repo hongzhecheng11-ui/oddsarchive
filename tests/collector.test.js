@@ -214,6 +214,38 @@ test("keeps unfinished fixtures as unknown results", () => {
   assert.strictEqual(match.score, "");
 });
 
+test("reads the real result once a fixture is actually finished (FT)", () => {
+  const match = collector.normalizeFixture({
+    fixture: { id: 2, date: "2026-08-30T01:30:00+09:00", status: { short: "FT" } },
+    teams: { home: { name: "Tottenham" }, away: { name: "Newcastle" } },
+    goals: { home: 2, away: 1 }
+  }, "EPL", "2026-08-30");
+
+  assert.strictEqual(match.result, "H");
+  assert.strictEqual(match.score, "2-1");
+});
+
+test("does not mistake a live in-progress snapshot for the final result", () => {
+  // 실제로 재현된 버그: API가 킥오프 직후 goals 를 0-0(null 아님)으로 주면서도
+  // 상태는 아직 "1H"(전반 진행 중)인 경우, 득점 유무만 보면 이걸 최종 0-0 무승부로
+  // 잘못 기록했었다. 상태가 FT/AET/PEN 이 아니면 goals 가 있어도 UNKNOWN 이어야 한다.
+  const midMatch = collector.normalizeFixture({
+    fixture: { id: 3, date: "2026-08-30T01:30:00+09:00", status: { short: "1H" } },
+    teams: { home: { name: "Tottenham" }, away: { name: "Newcastle" } },
+    goals: { home: 0, away: 0 }
+  }, "EPL", "2026-08-30");
+  assert.strictEqual(midMatch.result, "UNKNOWN");
+  assert.strictEqual(midMatch.score, "");
+
+  const notStarted = collector.normalizeFixture({
+    fixture: { id: 4, date: "2026-08-30T01:30:00+09:00", status: { short: "NS" } },
+    teams: { home: { name: "Tottenham" }, away: { name: "Newcastle" } },
+    goals: { home: 0, away: 0 }
+  }, "EPL", "2026-08-30");
+  assert.strictEqual(notStarted.result, "UNKNOWN");
+  assert.strictEqual(notStarted.score, "");
+});
+
 test("retries only temporary API response failures", () => {
   assert.strictEqual(collector.isRetryableApiStatus(429), true);
   assert.strictEqual(collector.isRetryableApiStatus(500), true);

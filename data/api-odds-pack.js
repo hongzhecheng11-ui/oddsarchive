@@ -18658,8 +18658,8 @@
       "homeOdds": "2.60",
       "drawOdds": "3.40",
       "awayOdds": "2.60",
-      "result": "D",
-      "score": "0-0",
+      "result": "UNKNOWN",
+      "score": "",
       "source": "API 과거 배당",
       "oddsUpdatedAt": "2026-08-29T16:40:38.552Z",
       "oddsHistory": [

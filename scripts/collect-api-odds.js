@@ -171,11 +171,18 @@ function getSeoulDate(dateText) {
   }).format(date);
 }
 
+// 완전히 끝난 경기만 "결과"로 인정한다. FT/AET/PEN 외 상태(NS, 1H, HT, 2H, ET,
+// SUSP, INT, PST 등)에서도 API가 goals 를 null 이 아닌 값(0-0 등)으로 줄 때가 있어서,
+// 득점 유무만으로는 "아직 진행 중인 경기"와 "끝난 경기"를 구분하지 못한다.
+const FINISHED_FIXTURE_STATUSES = new Set(["FT", "AET", "PEN"]);
+
 function normalizeFixture(item = {}, leagueKey, dateText) {
   const fixture = item.fixture || {};
   const teams = item.teams || {};
   const goals = item.goals || {};
-  const hasScore = goals.home !== null && goals.home !== undefined && goals.away !== null && goals.away !== undefined;
+  const statusShort = String(fixture.status?.short || "").trim().toUpperCase();
+  const isFinished = FINISHED_FIXTURE_STATUSES.has(statusShort);
+  const hasScore = isFinished && goals.home !== null && goals.home !== undefined && goals.away !== null && goals.away !== undefined;
   const homeGoals = hasScore ? Number(goals.home) : NaN;
   const awayGoals = hasScore ? Number(goals.away) : NaN;
   const hasValidScore = hasScore && Number.isFinite(homeGoals) && Number.isFinite(awayGoals);
