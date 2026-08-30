@@ -5701,6 +5701,13 @@ function getMatchIdentity(match = {}) {
   ].join("|");
 }
 
+// 공유 링크(?m=)로 들어왔을 때 그 식별자에 해당하는 경기를 원본 목록에서 찾는다.
+function findMatchByIdentity(identity = "", matches = []) {
+  const target = String(identity || "").trim();
+  if (!target) return null;
+  return (Array.isArray(matches) ? matches : []).find((match) => getMatchIdentity(match) === target) || null;
+}
+
 function isCurrentMatchRecord(match = {}, target = {}) {
   const matchMeta = getMatchDetailMeta(match);
   const targetMeta = getMatchDetailMeta(target);
@@ -8350,8 +8357,15 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   const league = document.createElement("span");
   league.textContent = formatLeagueName(match.league);
   const status = document.createElement("span");
+  status.className = "match-detail-status-pill";
   status.textContent = getMatchStatusLabel(match);
-  top.append(back, league, status);
+  const share = document.createElement("button");
+  share.type = "button";
+  share.className = "match-detail-share-button";
+  share.textContent = "공유";
+  share.setAttribute("aria-label", "이 경기 공유하기");
+  share.addEventListener("click", () => shareMatchDetail(match, share));
+  top.append(back, league, status, share);
 
   const title = document.createElement("strong");
   title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
@@ -8407,6 +8421,14 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   activateMatchDetailTab(shell, activeTab);
 }
 
+// 공유 링크(?m=)만 지우고 나머지 쿼리(?source=twa 등)는 그대로 둔다.
+function stripMatchShareParam(search = "") {
+  const params = new URLSearchParams(search);
+  params.delete("m");
+  const query = params.toString();
+  return query ? `?${query}` : "";
+}
+
 function closeMatchDetail() {
   if (typeof window === "undefined") return;
   if (window.history.state?.matchDetail) {
@@ -8414,8 +8436,41 @@ function closeMatchDetail() {
     return;
   }
   const targetHash = matchDetailReturnState?.hash || "#today";
-  window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${targetHash}`);
+  window.history.replaceState(null, "", `${window.location.pathname}${stripMatchShareParam(window.location.search)}${targetHash}`);
   showActiveView(targetHash);
+}
+
+function getMatchShareUrl(match = {}) {
+  if (typeof window === "undefined") return "";
+  const params = new URLSearchParams(stripMatchShareParam(window.location.search));
+  params.set("m", getMatchIdentity(match));
+  return `${window.location.origin}${window.location.pathname}?${params.toString()}#detail`;
+}
+
+async function shareMatchDetail(match = {}, button = null) {
+  const url = getMatchShareUrl(match);
+  if (!url) return;
+  const title = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)} · 오즈아카이브`;
+
+  if (typeof navigator !== "undefined" && navigator.share) {
+    try {
+      await navigator.share({ title, url });
+      return;
+    } catch (_error) {
+      // 공유 시트를 취소한 경우 등은 조용히 클립보드 복사로 넘어간다.
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(url);
+    if (button) {
+      const original = button.textContent;
+      button.textContent = "복사됨";
+      window.setTimeout(() => { button.textContent = original; }, 1500);
+    }
+  } catch (_error) {
+    // 클립보드 접근이 막힌 환경에서는 조용히 무시한다.
+  }
 }
 
 async function openMatchDetail(match = {}) {
@@ -8427,7 +8482,9 @@ async function openMatchDetail(match = {}) {
         scrollY: window.scrollY,
         fixtureDate: selectedFixtureDate
       };
-      window.history.pushState({ matchDetail: true }, "", `${window.location.pathname}${window.location.search}#detail`);
+      const params = new URLSearchParams(stripMatchShareParam(window.location.search));
+      params.set("m", getMatchIdentity(match));
+      window.history.pushState({ matchDetail: true }, "", `${window.location.pathname}?${params.toString()}#detail`);
     }
   }
   showActiveView("#detail");
@@ -12014,6 +12071,42 @@ function wireViewNavigation() {
   window.addEventListener("hashchange", () => {
     showActiveView(window.location.hash);
   });
+  // 공유 링크의 ?m= 처럼 뒤로가기가 해시와 쿼리스트링을 동시에 바꾸면, 일부
+  // 브라우저는 hashchange 를 안 쏜다 (popstate 만 옴). popstate 도 같이 들어서
+  // 그런 경우에도 화면이 갱신되게 한다. 평소 해시 링크 클릭은 두 이벤트가 같이
+  // 와도 showActiveView 가 같은 값으로 다시 불리는 것뿐이라 문제없다.
+  window.addEventListener("popstate", () => {
+    showActiveView(window.location.hash);
+  });
+}
+
+// 공유 링크(?m=...#detail)로 바로 들어왔을 때 그 경기를 찾아 상세 화면을 연다.
+// 최근 경기는 부팅 시 이미 있는 데이터로 바로 찾고, 옛날 경기는 과거 배당 데이터를
+// 추가로 불러온 뒤 다시 찾는다 (openMatchDetail 자체가 하는 것과 같은 방식).
+async function resolveSharedMatchLink() {
+  if (typeof window === "undefined") return;
+  if (getActiveViewId(window.location.hash) !== "detail") return;
+  const identity = new URLSearchParams(window.location.search).get("m");
+  if (!identity) return;
+
+  const found = findMatchByIdentity(identity, getSearchableMatches());
+  if (found) {
+    openMatchDetail(found);
+    return;
+  }
+
+  try {
+    await ensureFootballDataPackLoaded();
+  } catch (_error) {
+    // 옛날 데이터를 못 불러와도 아래에서 #today 로 조용히 돌아간다.
+  }
+  const foundAfterLoad = findMatchByIdentity(identity, getSearchableMatches());
+  if (foundAfterLoad) {
+    openMatchDetail(foundAfterLoad);
+    return;
+  }
+  window.history.replaceState(null, "", `${window.location.pathname}${stripMatchShareParam(window.location.search)}#today`);
+  showActiveView("#today");
 }
 
 function wireShareLinkCopy() {
@@ -12147,6 +12240,7 @@ if (typeof document !== "undefined") {
   guestAccessGateRequested = hasUsedGuestSearchTrial();
   wireAnonymousTelemetry();
   wireViewNavigation();
+  resolveSharedMatchLink();
   wireSampleCsvDownload();
   wireCsvPreview();
   wireDefaultDataImport();
@@ -12363,6 +12457,9 @@ if (typeof module !== "undefined") {
     getOddsPatternSuggestions,
     getSearchHistoryDisplayTitle,
     getSearchableMatches,
+    getMatchIdentity,
+    findMatchByIdentity,
+    stripMatchShareParam,
     getUniqueMatches,
     getStorageMatches,
     getStorageTodayMatches,

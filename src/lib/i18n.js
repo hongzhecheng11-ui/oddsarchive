@@ -9,6 +9,7 @@
     "배당 검색": "Odds Search", "빠른 동일배당 검색": "Quick Odds Search", "직접 배당 입력": "Enter Odds",
     "경기 분석": "Match Analysis", "상세 분석": "Detailed Analysis", "과거 결과 비율": "Historical Results",
     "상세분석 보기": "View Detailed Analysis",
+    "공유": "Share", "복사됨": "Copied", "이 경기 공유하기": "Share this match",
     "검색 결과 기준": "Result Basis", "과거 배당 조합": "Past Odds Combinations", "최근 결과": "Recent Results",
     "경기 카드가 없을 때 홈승/무/원정승 배당을 직접 넣어 검색합니다.": "Enter home, draw and away odds to search past matches.",
     "상세 필터": "More Filters", "리그": "League", "전체": "All", "팀명": "Team",

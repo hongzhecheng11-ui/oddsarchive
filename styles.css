@@ -2987,7 +2987,7 @@ body.match-detail-open {
 
 .match-detail-screen-top {
   display: grid;
-  grid-template-columns: 34px 1fr auto;
+  grid-template-columns: 34px 1fr auto auto;
   gap: 8px;
   align-items: center;
   color: var(--accent-strong);
@@ -3140,10 +3140,20 @@ body.match-detail-open {
   line-height: 1.45;
 }
 
-.match-detail-screen-top span:last-child {
+.match-detail-status-pill {
   padding: 3px 7px;
   border-radius: 999px;
   background: #e2f3ed;
+}
+
+.match-detail-share-button {
+  padding: 5px 10px;
+  border: 1px solid rgba(22, 115, 93, 0.2);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--accent-strong);
+  font-size: 11px;
+  font-weight: 900;
 }
 
 .match-detail-back-button {
