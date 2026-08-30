@@ -2057,7 +2057,14 @@ function teamNameMatches(matchTeamName, query) {
 
   const originalName = normalizeTeamSearchText(matchTeamName);
   const displayName = normalizeTeamSearchText(formatTeamName(matchTeamName));
-  return originalName.includes(normalizedQuery) || displayName.includes(normalizedQuery);
+  if (originalName.includes(normalizedQuery) || displayName.includes(normalizedQuery)) return true;
+
+  // 위 두 비교는 저장된 이름을 "지금 UI 언어" 기준으로만 바꿔서 대조한다. 그래서 UI가
+  // 영어인데 검색어나 데이터가 한글이면(또는 그 반대) 둘 다 못 잡고 지나칠 수 있다.
+  // 언어와 무관한 내부 표준 표기로 양쪽을 다시 맞춰서 한 번 더 대조한다.
+  const canonicalName = normalizeTeamSearchText(normalizeTeamNameForStorage(matchTeamName));
+  const canonicalQuery = normalizeTeamSearchText(normalizeTeamNameForStorage(query));
+  return Boolean(canonicalQuery) && canonicalName.includes(canonicalQuery);
 }
 
 function matchResultFitsFilter(match, team, result) {
@@ -12730,6 +12737,7 @@ if (typeof module !== "undefined") {
     normalizeOdds,
     normalizeSearchHistoryEntries,
     normalizeTeamSearchText,
+    teamNameMatches,
     parseCsvLine,
     parseCsvPreview,
     parseSearchNumber,
