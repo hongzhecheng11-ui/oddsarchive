@@ -1146,10 +1146,23 @@ function clearStoredMatches(storage) {
   };
 }
 
+// "오늘의 경기"는 열 때마다 실시간으로 다시 받아오는 별도 경로라서, 방금 끝난 경기의
+// 진짜 결과가 메인 화면엔 바로 보여도 배당팩(api-odds-pack)엔 다음 정기 수집 전까지
+// 반영이 안 된다. 배당팩에 아직 결과가 없는 경기는, 이 기기에 캐시된 실시간 결과로
+// 메워서 팀 성적·기저율 등에도 바로 반영되게 한다. 배당팩에 이미 결과가 있으면
+// (다음 정기 수집이 끝난 뒤) 그쪽을 그대로 쓴다 - 배당 이력 등 더 온전한 데이터라서다.
 function getSearchableMatches(storage) {
   if (!storage && cachedSearchableMatches) return cachedSearchableMatches;
 
-  const matches = getUniqueMatches([...getBaseMatches(), ...getStorageMatches(storage), ...currentValidRows]);
+  const base = getBaseMatches();
+  const baseKnownKeys = new Set(
+    base.filter(isKnownResultMatch).map(getCrossSourceMatchKey).filter(Boolean)
+  );
+  const liveTodayMatches = getStorageTodayMatches(storage)
+    .filter(isKnownResultMatch)
+    .filter((match) => !baseKnownKeys.has(getCrossSourceMatchKey(match)));
+
+  const matches = getUniqueMatches([...base, ...getStorageMatches(storage), ...liveTodayMatches, ...currentValidRows]);
   if (!storage) cachedSearchableMatches = matches;
   return matches;
 }
