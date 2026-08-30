@@ -1,11 +1,11 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-08-30T09:08:57.090Z",
+  "updatedAt": "2026-08-30T13:47:28.612Z",
   "summary": {
-    "trackedDays": 42,
-    "trackedCandidates": 49,
-    "resolvedCandidates": 36,
-    "favoriteFailures": 15,
+    "trackedDays": 43,
+    "trackedCandidates": 50,
+    "resolvedCandidates": 38,
+    "favoriteFailures": 16,
     "directionHits": 10
   },
   "days": [
@@ -311,27 +311,37 @@
     {
       "date": "2026-08-30",
       "firstEvaluatedAt": "2026-08-26T19:59:00.101Z",
-      "lastEvaluatedAt": "2026-08-30T09:08:57.090Z",
-      "eligibleMatchCount": 21,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-08-30T13:47:28.612Z",
+      "eligibleMatchCount": 13,
+      "candidateIds": [
+        "fixture:1557379"
+      ]
     },
     {
       "date": "2026-08-31",
       "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
-      "lastEvaluatedAt": "2026-08-30T09:08:57.090Z",
+      "lastEvaluatedAt": "2026-08-30T13:47:28.612Z",
       "eligibleMatchCount": 18,
       "candidateIds": [
+        "fixture:1552744",
         "fixture:1584393"
       ]
     },
     {
       "date": "2026-09-01",
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastEvaluatedAt": "2026-08-30T09:08:57.090Z",
+      "lastEvaluatedAt": "2026-08-30T13:47:28.612Z",
       "eligibleMatchCount": 9,
       "candidateIds": [
         "fixture:1550103"
       ]
+    },
+    {
+      "date": "2026-09-02",
+      "firstEvaluatedAt": "2026-08-30T13:47:28.612Z",
+      "lastEvaluatedAt": "2026-08-30T13:47:28.612Z",
+      "eligibleMatchCount": 8,
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -1291,11 +1301,11 @@
       "sampleSize": 44,
       "firstEvaluatedAt": "2026-08-30T01:13:50.751Z",
       "lastSeenAt": "2026-08-30T01:13:50.751Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "A",
+      "score": "2-5",
+      "resolvedAt": "2026-08-30T13:47:28.612Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1507051",
@@ -1317,10 +1327,10 @@
       "sampleSize": 48,
       "firstEvaluatedAt": "2026-08-29T13:49:07.685Z",
       "lastSeenAt": "2026-08-29T20:51:50.579Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "D",
+      "score": "0-0",
+      "resolvedAt": "2026-08-30T13:47:28.612Z",
+      "favoriteFailed": true,
       "directionHit": null
     },
     {
@@ -1395,6 +1405,32 @@
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
       "lastSeenAt": "2026-08-30T01:13:50.751Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1557379",
+      "fixtureId": "1557379",
+      "date": "2026-08-30",
+      "league": "EPL",
+      "homeTeam": "Chelsea",
+      "awayTeam": "Brighton",
+      "homeOdds": "1.91",
+      "drawOdds": "3.60",
+      "awayOdds": "3.75",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 20,
+      "firstEvaluatedAt": "2026-08-30T13:47:28.612Z",
+      "lastSeenAt": "2026-08-30T13:47:28.612Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1524,7 +1560,7 @@
       ],
       "sampleSize": 45,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-30T01:13:50.751Z",
+      "lastSeenAt": "2026-08-30T13:47:28.612Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1576,7 +1612,7 @@
       ],
       "sampleSize": 41,
       "firstEvaluatedAt": "2026-08-27T19:03:43.689Z",
-      "lastSeenAt": "2026-08-30T09:08:57.090Z",
+      "lastSeenAt": "2026-08-30T13:47:28.612Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1602,7 +1638,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-08-28T20:11:21.814Z",
-      "lastSeenAt": "2026-08-30T09:08:57.090Z",
+      "lastSeenAt": "2026-08-30T13:47:28.612Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
