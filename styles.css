@@ -648,6 +648,31 @@ body.auth-required.auth-locked .cloud-account-card {
   font-size: 12px;
 }
 
+.beta-feedback-card {
+  display: grid;
+  gap: 8px;
+}
+
+.beta-feedback-card textarea {
+  min-height: 70px;
+  padding: 8px 10px;
+  border: 1px solid #d3dbd8;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.beta-feedback-card button {
+  min-height: 40px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
 .tester-guide-en {
   overflow: hidden;
   border: 1px solid #c9ddd7;

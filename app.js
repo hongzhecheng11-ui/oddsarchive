@@ -12404,6 +12404,42 @@ function wireShareLinkCopy() {
   });
 }
 
+// 임시 피드백 통로: mailto 링크만 여는 거라 서버 저장·공개 노출이 없다 (댓글 기능과
+// 달리 신고/차단 같은 모더레이션 요건이 없는 이유). 계정 화면에서 눈에 띄게 둔다.
+const FEEDBACK_EMAIL = "ozakyb1112@gmail.com";
+
+function wireBetaFeedback() {
+  const textarea = document.getElementById("beta-feedback-text");
+  const button = document.getElementById("beta-feedback-send");
+  const status = document.getElementById("beta-feedback-status");
+  if (!textarea || !button) return;
+
+  button.addEventListener("click", () => {
+    const message = textarea.value.trim();
+    if (!message) {
+      if (status) {
+        status.hidden = false;
+        status.textContent = translateUiText("내용을 먼저 적어주세요.");
+      }
+      return;
+    }
+
+    const context = [
+      `날짜: ${new Date().toISOString().slice(0, 10)}`,
+      `언어: ${getUiLanguage()}`,
+      typeof navigator !== "undefined" ? `기기: ${navigator.userAgent}` : ""
+    ].filter(Boolean).join("\n");
+    const body = `${message}\n\n---\n${context}`;
+    const mailtoUrl = `mailto:${FEEDBACK_EMAIL}?subject=${encodeURIComponent("오즈아카이브 테스터 피드백")}&body=${encodeURIComponent(body)}`;
+
+    if (typeof window !== "undefined") window.location.href = mailtoUrl;
+    if (status) {
+      status.hidden = false;
+      status.textContent = `${translateUiText("메일 앱을 열었습니다. 안 열리면 이 주소로 직접 보내주세요")}: ${FEEDBACK_EMAIL}`;
+    }
+  });
+}
+
 let deferredInstallPrompt = null;
 
 function wirePwaInstall() {
@@ -12521,6 +12557,7 @@ if (typeof document !== "undefined") {
   wireLocalAccount();
   wireCloudAccount();
   wireShareLinkCopy();
+  wireBetaFeedback();
   wirePwaInstall();
   wireTodayCsvImport();
   wireHomeTodayMatches();

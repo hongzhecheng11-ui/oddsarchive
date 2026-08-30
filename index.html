@@ -17,7 +17,7 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="assets/app-icon-192.png">
     <link rel="stylesheet" href="styles.css">
-    <script src="src/lib/i18n.js?v=21"></script>
+    <script src="src/lib/i18n.js?v=22"></script>
     <script src="src/lib/telemetry.js?v=67"></script>
     <script src="src/lib/favorite-sync.js?v=1"></script>
     <script src="src/lib/translations/leagues.js"></script>
@@ -616,6 +616,15 @@
                     <a href="https://play.google.com/apps/testing/com.oddsarchive.football" target="_blank" rel="noopener noreferrer">테스트 참여</a>
                   </div>
                   <p>가입과 참여에는 같은 Google 계정을 사용해 주세요.</p>
+                  <div class="beta-feedback-card" aria-label="피드백 보내기">
+                    <div class="simple-card-heading">
+                      <strong>피드백 보내기</strong>
+                      <span>써보면서 불편했던 점이나 오류를 적어주시면 메일로 바로 보내드립니다.</span>
+                    </div>
+                    <textarea id="beta-feedback-text" rows="3" placeholder="예: 배당 검색에서 팀 이름이 안 나와요"></textarea>
+                    <button type="button" id="beta-feedback-send">메일로 보내기</button>
+                    <p class="match-count" id="beta-feedback-status" aria-live="polite" hidden></p>
+                  </div>
                   <details class="tester-guide-en">
                     <summary>English Tester Guide</summary>
                     <div>
@@ -753,6 +762,6 @@
     <script src="data/team-context-pack.js"></script>
     <script src="data/match-statistics-pack.js"></script>
     <script src="./src/lib/analysis-sentences.js"></script>
-    <script src="app.js?v=135"></script>
+    <script src="app.js?v=136"></script>
   </body>
 </html>
