@@ -133,7 +133,7 @@
     "상대팀 (선택, 맞대결 검색)": "Opponent (optional, head-to-head)",
     "상대팀 이름 입력 (선택)": "Enter opponent name (optional)",
     "최근 수집 시점 기준 · 추정치": "As of the latest collection · estimated",
-    "순위표": "Standings", "경기": "Played", "득실": "GD", "승점": "Pts", "팀": "Team", "시간": "Time",
+    "순위표": "Standings", "경기": "Played", "득실": "GD", "승점": "Pts", "팀": "Team", "시간": "Time", "승무패": "W-D-L",
     "그 이름으로 찾은 과거 경기가 없습니다.": "No past matches found for that name.",
     "전체 전적": "Overall",
     "정배일 때 승률": "Win rate as favorite",

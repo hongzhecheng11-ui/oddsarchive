@@ -4344,6 +4344,18 @@ function getSeasonLabel(leagueKey, seasonCode) {
   return `${startYear}-${String((startYear + 1) % 100).padStart(2, "0")}`;
 }
 
+// "이번 시즌"이 언제 시작했는지, 리그별 시즌제 기준으로 추정한다. 정확한 개막일 데이터가
+// 없어서, 달력 시즌 리그(K리그·J리그 등)는 1/1, 유럽식 시즌 리그는 7/1을 기준으로 삼는다.
+function getCurrentSeasonStartDate(leagueKey, referenceDate = new Date()) {
+  const ref = referenceDate instanceof Date ? referenceDate : new Date(`${String(referenceDate).slice(0, 10)}T00:00:00Z`);
+  const safeRef = Number.isNaN(ref.getTime()) ? new Date() : ref;
+  const year = safeRef.getUTCFullYear();
+  if (usesCalendarSeason(leagueKey)) return `${year}-01-01`;
+  const month = safeRef.getUTCMonth(); // 0 = 1월
+  const startYear = month >= 6 ? year : year - 1; // 7월부터 다음 시즌 시작으로 본다.
+  return `${startYear}-07-01`;
+}
+
 // ---- 팀 프로필 ----
 // 팀의 전적을 배당 구간 기저율과 나란히 놓는다.
 // "정배일 때 몇 번 이겼나" 만으로는 의미가 없고, 같은 배당대의 평균과 비교해야 한다.
@@ -6809,6 +6821,7 @@ function createLeagueStandingsSection(match = {}) {
     createStandingsCell("순위", "rank"),
     createStandingsCell("팀", "team"),
     createStandingsCell("경기", "played"),
+    createStandingsCell(translateUiText("승무패"), "record"),
     createStandingsCell("득실", "diff"),
     createStandingsCell("승점", "points")
   );
@@ -6838,6 +6851,7 @@ function createLeagueStandingsSection(match = {}) {
       rankCell,
       teamCell,
       createStandingsCell(`${row.all?.played ?? 0}`, "played"),
+      createStandingsCell(`${row.all?.wins ?? 0}-${row.all?.draws ?? 0}-${row.all?.losses ?? 0}`, "record"),
       createStandingsCell(`${row.goalsDiff > 0 ? "+" : ""}${row.goalsDiff ?? 0}`, "diff"),
       createStandingsCell(`${row.points ?? 0}`, "points")
     );
@@ -6988,7 +7002,7 @@ function createVenueInlineToggle(activeVenue, onSelect) {
 
 // 팀 카드: 순위는 홈/원정 항상 같이 보여주고, 성적과 최근10경기는 각자 자기 옆의
 // 전체/홈/원정 버튼으로 따로 조절한다 (둘이 같은 선택을 공유하지 않는다).
-function renderVenueTeamCard(container, label, teamName, matches, standings) {
+function renderVenueTeamCard(container, label, teamName, matches, standings, seasonMatches = matches) {
   const homeRank = getVenueRankFromStandings(standings, teamName, "home");
   const awayRank = getVenueRankFromStandings(standings, teamName, "away");
 
@@ -7011,7 +7025,7 @@ function renderVenueTeamCard(container, label, teamName, matches, standings) {
   statLabel.textContent = "시즌 성적";
   const statRows = document.createElement("div");
   const renderStats = (venue) => {
-    const snapshot = buildTeamVenueSnapshot(teamName, matches, venue);
+    const snapshot = buildTeamVenueSnapshot(teamName, seasonMatches, venue);
     statRows.replaceChildren(
       createVenueStatRow(
         "승률",
@@ -7080,14 +7094,16 @@ function createDetailVenueStatsPanel(match = {}, analysis = {}) {
   const panel = createDetailTabPanel("venue");
   const sourceMatches = analysis.sourceMatches || [];
   const standings = getLeagueStandingsForMatch(match);
+  const seasonStartDate = getCurrentSeasonStartDate(match.league, match.date || new Date());
+  const seasonMatches = sourceMatches.filter((item) => String(item.date || "").slice(0, 10) >= seasonStartDate);
 
   const homeCard = document.createElement("div");
   const awayCard = document.createElement("div");
   const cards = document.createElement("section");
   cards.className = "match-detail-venue-grid";
   cards.append(homeCard, awayCard);
-  renderVenueTeamCard(homeCard, "홈팀", match.homeTeam, sourceMatches, standings);
-  renderVenueTeamCard(awayCard, "원정팀", match.awayTeam, sourceMatches, standings);
+  renderVenueTeamCard(homeCard, "홈팀", match.homeTeam, sourceMatches, standings, seasonMatches);
+  renderVenueTeamCard(awayCard, "원정팀", match.awayTeam, sourceMatches, standings, seasonMatches);
 
   const h2h = splitHeadToHeadByVenue(match.homeTeam, match.awayTeam, sourceMatches, 10);
   const h2hMeetings = { all: h2h.all, home: h2h.hostedByHome, away: h2h.hostedByAway };
@@ -12616,6 +12632,7 @@ if (typeof module !== "undefined") {
     usesCalendarSeason,
     getSeasonStartYear,
     getSeasonLabel,
+    getCurrentSeasonStartDate,
     CLOSING_ODDS_LEAGUES,
     usesClosingOdds,
     getFavoriteOddsInfo,

@@ -12,6 +12,15 @@ function test(name, fn) {
   }
 }
 
+test("current season start date follows the league's season type", () => {
+  // 유럽식 리그: 7월부터 새 시즌. 6월 중 기준이면 아직 지난 시즌.
+  assert.strictEqual(app.getCurrentSeasonStartDate("EPL", "2026-08-15"), "2026-07-01");
+  assert.strictEqual(app.getCurrentSeasonStartDate("EPL", "2026-06-15"), "2025-07-01");
+  // 달력 시즌 리그: 그 해 1월 1일부터.
+  assert.strictEqual(app.getCurrentSeasonStartDate("KLEAGUE1", "2026-08-15"), "2026-01-01");
+  assert.strictEqual(app.getCurrentSeasonStartDate("J1LEAGUE", "2026-01-05"), "2026-01-01");
+});
+
 const matches = [
   { date: "2026-01-10", homeTeam: "Arsenal", awayTeam: "Chelsea", result: "H", score: "3-1" },
   { date: "2026-02-14", homeTeam: "Chelsea", awayTeam: "Arsenal", result: "D", score: "1-1" },
