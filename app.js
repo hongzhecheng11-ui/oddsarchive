@@ -3075,11 +3075,18 @@ function getFixtureTeamAvailability(fixture = null, teamName = "") {
     Number(item.teamId || 0) === teamId || teamNameMatches(item.team, teamName)
   )) || null;
   return {
+    teamId: Number.isFinite(teamId) && teamId > 0 ? teamId : null,
     injuries,
     injuriesChecked: Boolean(fixture.injuriesChecked),
     lineup,
     lineupsChecked: Boolean(fixture.lineupsChecked)
   };
+}
+
+// API-Football 이 제공하는 팀 엠블럼 CDN. teamId 가 없으면(과거 기록/미수집 팀) 빈 문자열.
+function getTeamLogoUrl(teamId) {
+  const id = Number(teamId);
+  return Number.isFinite(id) && id > 0 ? `https://media.api-sports.io/football/teams/${id}.png` : "";
 }
 
 function getLeagueTable(match = {}, matches = []) {
@@ -4418,7 +4425,34 @@ function createTeamProfileRow(label, value, note = "") {
   return row;
 }
 
-function renderTeamProfile(teamName) {
+function renderTeamHeadToHead(teamName, opponentName) {
+  if (typeof document === "undefined") return;
+  const container = document.getElementById("team-profile-h2h");
+  if (!container) return;
+
+  const opponent = String(opponentName || "").trim();
+  if (!opponent) {
+    container.hidden = true;
+    container.replaceChildren();
+    return;
+  }
+
+  // teamNameMatches 는 저장된 이름 쪽만 한/영을 오가며 비교하고 검색창에 입력된
+  // 이름은 그대로 두기 때문에, 입력값도 저장 형식(정규화된 이름)으로 먼저 바꿔야
+  // 언어가 섞인 데이터에서도 정확히 찾는다.
+  const resolvedTeam = normalizeTeamNameForStorage(teamName) || teamName;
+  const resolvedOpponent = normalizeTeamNameForStorage(opponent) || opponent;
+  const h2h = splitHeadToHeadByVenue(resolvedTeam, resolvedOpponent, getSearchableMatches(), 10);
+  const record = summarizeHeadToHeadRecord(resolvedTeam, h2h.all);
+  const heading = document.createElement("strong");
+  heading.textContent = `${translateUiText("맞대결")}: ${formatTeamName(resolvedTeam)} vs ${formatTeamName(resolvedOpponent)}`;
+  const summary = document.createElement("small");
+  summary.textContent = formatVenueRecordSummary(record);
+  container.replaceChildren(heading, summary, createHeadToHeadVenueList(h2h.all));
+  container.hidden = false;
+}
+
+function renderTeamProfile(teamName, opponentName = "") {
   if (typeof document === "undefined") return;
   const body = document.getElementById("team-profile-body");
   const status = document.getElementById("team-profile-status");
@@ -4427,9 +4461,12 @@ function renderTeamProfile(teamName) {
   const name = String(teamName || "").trim();
   if (!name) {
     body.hidden = true;
-    status.textContent = "팀 이름을 넣으면 과거 전적과 배당 대비 성적을 보여줍니다.";
+    status.textContent = "팀 이름을 넣으면 과거 전적과 배당 대비 성적을 보여줍니다. 상대팀도 넣으면 두 팀의 맞대결을 보여줍니다.";
+    renderTeamHeadToHead("", "");
     return;
   }
+
+  renderTeamHeadToHead(name, opponentName);
 
   const summary = summarizeTeamProfile(buildTeamProfile(name, getSearchableMatches()));
   if (summary.matches === 0) {
@@ -4466,12 +4503,18 @@ function renderTeamProfile(teamName) {
 function wireTeamProfile() {
   if (typeof document === "undefined") return;
   const input = document.getElementById("team-profile-input");
+  const opponentInput = document.getElementById("team-profile-opponent-input");
   const button = document.getElementById("team-profile-search");
   if (!input || !button) return;
 
-  const run = () => renderTeamProfile(input.value);
+  const run = () => renderTeamProfile(input.value, opponentInput?.value || "");
   button.addEventListener("click", run);
   input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    run();
+  });
+  opponentInput?.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
     event.preventDefault();
     run();
@@ -6427,14 +6470,14 @@ function createOddsMovementChart(movement = {}) {
 
   const figure = document.createElement("figure");
   figure.className = "match-detail-odds-chart";
-  figure.setAttribute("aria-label", "홈승 무승부 원정승 배당 변화 그래프");
+  figure.setAttribute("aria-label", translateUiText("홈승 무승부 원정승 배당 변화 그래프"));
 
   const legend = document.createElement("div");
   legend.className = "match-detail-odds-chart-legend";
   chartData.series.forEach((item) => {
     const entry = document.createElement("span");
     entry.style.setProperty("--series-color", item.color);
-    entry.textContent = `${item.label} ${item.values[item.values.length - 1].toFixed(2)}`;
+    entry.textContent = `${translateUiText(item.label)} ${item.values[item.values.length - 1].toFixed(2)}`;
     legend.appendChild(entry);
   });
 
@@ -6442,7 +6485,7 @@ function createOddsMovementChart(movement = {}) {
   const svg = document.createElementNS(svgNamespace, "svg");
   svg.setAttribute("viewBox", "0 0 360 150");
   svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "시간에 따른 배당 흐름");
+  svg.setAttribute("aria-label", translateUiText("시간에 따른 배당 흐름"));
 
   const left = 38;
   const right = 346;
@@ -6483,14 +6526,20 @@ function createOddsMovementChart(movement = {}) {
       point.setAttribute("r", index === item.values.length - 1 ? "4" : "2.5");
       point.setAttribute("fill", item.color);
       const title = document.createElementNS(svgNamespace, "title");
-      title.textContent = `${item.label} ${value.toFixed(2)} · ${formatOddsMovementTimestamp(chartData.snapshots[index].capturedAt)}`;
+      title.textContent = `${translateUiText(item.label)} ${value.toFixed(2)} · ${formatOddsMovementTimestamp(chartData.snapshots[index].capturedAt)}`;
       point.appendChild(title);
       svg.appendChild(point);
     });
   });
 
   const times = document.createElement("figcaption");
-  times.innerHTML = `<span>최초 ${formatOddsMovementTimestamp(chartData.firstCapturedAt)}</span><strong>아래로 갈수록 배당 하락</strong><span>최신 ${formatOddsMovementTimestamp(chartData.latestCapturedAt)}</span>`;
+  const firstCaption = document.createElement("span");
+  firstCaption.textContent = `${translateUiText("최초")} ${formatOddsMovementTimestamp(chartData.firstCapturedAt)}`;
+  const trendCaption = document.createElement("strong");
+  trendCaption.textContent = translateUiText("아래로 갈수록 배당 하락");
+  const latestCaption = document.createElement("span");
+  latestCaption.textContent = `${translateUiText("최신")} ${formatOddsMovementTimestamp(chartData.latestCapturedAt)}`;
+  times.append(firstCaption, trendCaption, latestCaption);
   figure.append(legend, svg, times);
   return figure;
 }
@@ -6537,6 +6586,8 @@ function createDetailOddsMovementSection(movement = {}) {
   });
   section.appendChild(heading);
   section.appendChild(grid);
+  const chart = createOddsMovementChart(movement);
+  if (chart) section.appendChild(chart);
   return section;
 }
 
@@ -6672,6 +6723,75 @@ function splitHeadToHeadByVenue(homeTeam = "", awayTeam = "", matches = [], limi
   };
 }
 
+// 이 경기가 속한 리그의 전체 순위표. 수집된 최신 스냅샷 기준이라 "추정치"임을 밝힌다.
+function createLeagueStandingsSection(match = {}) {
+  const standings = getLeagueStandingsForMatch(match);
+  if (!Array.isArray(standings) || standings.length === 0) return null;
+
+  const sorted = [...standings].sort((left, right) => Number(left.rank || 999) - Number(right.rank || 999));
+
+  const section = document.createElement("section");
+  section.className = "match-detail-section match-detail-standings";
+  const title = document.createElement("strong");
+  title.textContent = `${formatLeagueName(match.league)} ${translateUiText("순위표")}`;
+  const note = document.createElement("small");
+  note.textContent = "최근 수집 시점 기준 · 추정치";
+  section.append(title, note);
+
+  const table = document.createElement("div");
+  table.className = "match-detail-standings-table";
+  const header = document.createElement("div");
+  header.className = "match-detail-standings-row match-detail-standings-header";
+  header.append(
+    createStandingsCell("순위", "rank"),
+    createStandingsCell("팀", "team"),
+    createStandingsCell("경기", "played"),
+    createStandingsCell("득실", "diff"),
+    createStandingsCell("승점", "points")
+  );
+  table.appendChild(header);
+
+  sorted.forEach((row) => {
+    const isMatchTeam = teamNameMatches(row.team, match.homeTeam) || teamNameMatches(row.team, match.awayTeam);
+    const rowEl = document.createElement("div");
+    rowEl.className = isMatchTeam ? "match-detail-standings-row highlight" : "match-detail-standings-row";
+
+    const rankCell = createStandingsCell(`${row.rank || "-"}`, "rank");
+    const teamCell = createStandingsCell("", "team");
+    const logoUrl = getTeamLogoUrl(row.teamId);
+    if (logoUrl) {
+      const logo = document.createElement("img");
+      logo.className = "match-detail-standings-logo";
+      logo.src = logoUrl;
+      logo.alt = "";
+      logo.loading = "lazy";
+      teamCell.appendChild(logo);
+    }
+    const teamName = document.createElement("span");
+    teamName.textContent = formatTeamName(row.team);
+    teamCell.appendChild(teamName);
+
+    rowEl.append(
+      rankCell,
+      teamCell,
+      createStandingsCell(`${row.all?.played ?? 0}`, "played"),
+      createStandingsCell(`${row.goalsDiff > 0 ? "+" : ""}${row.goalsDiff ?? 0}`, "diff"),
+      createStandingsCell(`${row.points ?? 0}`, "points")
+    );
+    table.appendChild(rowEl);
+  });
+
+  section.appendChild(table);
+  return section;
+}
+
+function createStandingsCell(text, kind) {
+  const cell = document.createElement("span");
+  cell.className = `match-detail-standings-cell match-detail-standings-${kind}`;
+  if (text) cell.appendChild(document.createTextNode(text));
+  return cell;
+}
+
 // 팀 정보: 팀 전력 카드와 라인업·결장 정보를 한 탭에 담는다. 원래 두 탭이었다.
 function createDetailStrengthPanel(match = {}, analysis = {}) {
   const panel = createDetailTabPanel("strength");
@@ -6699,6 +6819,9 @@ function createDetailStrengthPanel(match = {}, analysis = {}) {
     empty.textContent = "선발 명단은 경기가 임박하면 공개됩니다.";
     panel.append(empty);
   }
+
+  const standingsSection = createLeagueStandingsSection(match);
+  if (standingsSection) panel.append(standingsSection);
   return panel;
 }
 
@@ -8367,8 +8490,35 @@ function renderMatchDetailScreen(match = {}, sourceMatches = getSearchableMatche
   share.addEventListener("click", () => shareMatchDetail(match, share));
   top.append(back, league, status, share);
 
+  const fixtureContext = getOfficialFixtureContext(match);
+  const homeLogoUrl = getTeamLogoUrl(getFixtureTeamAvailability(fixtureContext, match.homeTeam)?.teamId);
+  const awayLogoUrl = getTeamLogoUrl(getFixtureTeamAvailability(fixtureContext, match.awayTeam)?.teamId);
+
   const title = document.createElement("strong");
-  title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+  title.className = "match-detail-title";
+  if (homeLogoUrl || awayLogoUrl) {
+    const homeLogo = document.createElement("img");
+    homeLogo.className = "match-detail-team-logo";
+    homeLogo.alt = "";
+    homeLogo.loading = "lazy";
+    homeLogo.src = homeLogoUrl;
+    homeLogo.hidden = !homeLogoUrl;
+    const homeName = document.createElement("span");
+    homeName.textContent = formatTeamName(match.homeTeam);
+    const vs = document.createElement("span");
+    vs.textContent = "vs";
+    const awayLogo = document.createElement("img");
+    awayLogo.className = "match-detail-team-logo";
+    awayLogo.alt = "";
+    awayLogo.loading = "lazy";
+    awayLogo.src = awayLogoUrl;
+    awayLogo.hidden = !awayLogoUrl;
+    const awayName = document.createElement("span");
+    awayName.textContent = formatTeamName(match.awayTeam);
+    title.append(homeLogo, homeName, vs, awayLogo, awayName);
+  } else {
+    title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+  }
   const meta = document.createElement("small");
   meta.textContent = [match.date || "", match.startTime || "", getMatchStatusLabel(match)].filter(Boolean).join(" · ");
   const odds = document.createElement("p");
@@ -9479,7 +9629,18 @@ function createHomeTodayMatchCard(match, updatedAt = "", analysis = null) {
     event.stopPropagation();
     openOddsSearchForTodayMatch(match, getTodayMatchAnalysis(match, getSearchableMatches()));
   });
-  footer.append(updated, button);
+  const detailButton = document.createElement("button");
+  detailButton.type = "button";
+  detailButton.className = "home-today-detail-button";
+  detailButton.textContent = "상세분석 보기";
+  detailButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    openMatchDetail(match);
+  });
+  const actions = document.createElement("div");
+  actions.className = "home-today-card-actions";
+  actions.append(button, detailButton);
+  footer.append(updated, actions);
 
   card.append(top, title, odds, result, insight, footer);
   card.addEventListener("click", (event) => {
@@ -10144,14 +10305,22 @@ function createTodayCenterCard(match, analysis) {
 
   const actions = document.createElement("div");
   actions.className = "today-card-actions";
-  const detailButton = document.createElement("button");
-  detailButton.type = "button";
-  detailButton.textContent = hasOdds ? "유사 배당 검색" : "배당 직접 입력";
-  detailButton.addEventListener("click", (event) => {
+  const searchButton = document.createElement("button");
+  searchButton.type = "button";
+  searchButton.textContent = hasOdds ? "유사 배당 검색" : "배당 직접 입력";
+  searchButton.addEventListener("click", (event) => {
     event.stopImmediatePropagation();
     openOddsSearchForTodayMatch(match, analysis);
   });
-  actions.append(detailButton);
+  const viewDetailButton = document.createElement("button");
+  viewDetailButton.type = "button";
+  viewDetailButton.className = "today-card-detail-button";
+  viewDetailButton.textContent = "상세분석 보기";
+  viewDetailButton.addEventListener("click", (event) => {
+    event.stopImmediatePropagation();
+    openMatchDetail(match);
+  });
+  actions.append(searchButton, viewDetailButton);
 
   card.append(header, odds, matchResult, inlineRate, stats, actions);
   card.addEventListener("click", (event) => {
@@ -12411,6 +12580,7 @@ if (typeof module !== "undefined") {
     getOfficialFixtureContext,
     getOfficialTeamContext,
     getFixtureTeamAvailability,
+    getTeamLogoUrl,
     getStoredMatchStatisticsPack,
     getTeamPerformanceProfile,
     createOfficialRecordProfile,

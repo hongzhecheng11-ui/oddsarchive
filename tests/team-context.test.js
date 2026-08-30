@@ -206,7 +206,12 @@ test("matches fixture availability by fixture id and separates each team", () =>
   const away = app.getFixtureTeamAvailability(fixture, "Chelsea");
   assert.strictEqual(home.injuries.length, 1);
   assert.strictEqual(home.lineup.formation, "4-3-3");
+  assert.strictEqual(home.teamId, 1);
   assert.strictEqual(away.injuries.length, 0);
   assert.strictEqual(away.lineup, null);
+  assert.strictEqual(away.teamId, 2);
+  assert.strictEqual(app.getTeamLogoUrl(home.teamId), "https://media.api-sports.io/football/teams/1.png");
+  assert.strictEqual(app.getTeamLogoUrl(null), "");
+  assert.strictEqual(app.getTeamLogoUrl(undefined), "");
   delete globalThis.ODDS_ARCHIVE_TEAM_CONTEXT_PACK;
 });
