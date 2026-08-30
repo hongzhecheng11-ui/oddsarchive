@@ -20,6 +20,8 @@ const TOTO_ROUND_PACK_KEY = "oddsArchiveTotoRoundPack";
 const PROTO_MARKET_PACK_KEY = "oddsArchiveProtoMarketPack";
 const API_HISTORY_CACHE_KEY = "oddsArchiveApiHistoryCache";
 const GUEST_SEARCH_TRIAL_KEY = "oddsArchiveGuestSearchTrialUsed";
+const TEAM_PROFILE_RECENT_KEY = "oddsArchiveTeamProfileRecent";
+const TEAM_PROFILE_RECENT_LIMIT = 6;
 const MATCH_TABLE_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
@@ -4500,6 +4502,55 @@ function renderTeamProfile(teamName, opponentName = "") {
   status.textContent = `${formatTeamName(name)} 기록입니다.`;
 }
 
+function loadTeamProfileRecent(storage = getStorageTarget()) {
+  try {
+    const value = JSON.parse(storage?.getItem(TEAM_PROFILE_RECENT_KEY) || "[]");
+    return Array.isArray(value) ? value.filter((item) => item && item.team) : [];
+  } catch (_error) {
+    return [];
+  }
+}
+
+function saveTeamProfileRecent(teamName, opponentName, storage = getStorageTarget()) {
+  const team = String(teamName || "").trim();
+  if (!team) return loadTeamProfileRecent(storage);
+  const opponent = String(opponentName || "").trim();
+  const existing = loadTeamProfileRecent(storage).filter((item) => !(item.team === team && item.opponent === opponent));
+  const next = [{ team, opponent }, ...existing].slice(0, TEAM_PROFILE_RECENT_LIMIT);
+  try {
+    storage?.setItem(TEAM_PROFILE_RECENT_KEY, JSON.stringify(next));
+  } catch (_error) {
+    // 저장 공간이 막혀 있어도(시크릿 모드 등) 검색 자체는 계속 동작해야 한다.
+  }
+  return next;
+}
+
+function renderTeamProfileRecent(onSelect) {
+  if (typeof document === "undefined") return;
+  const container = document.getElementById("team-profile-recent");
+  if (!container) return;
+
+  const recent = loadTeamProfileRecent();
+  if (recent.length === 0) {
+    container.hidden = true;
+    container.replaceChildren();
+    return;
+  }
+
+  const chips = recent.map((item) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "team-profile-recent-chip";
+    chip.textContent = item.opponent
+      ? `${formatTeamName(item.team)} vs ${formatTeamName(item.opponent)}`
+      : formatTeamName(item.team);
+    chip.addEventListener("click", () => onSelect(item.team, item.opponent));
+    return chip;
+  });
+  container.replaceChildren(...chips);
+  container.hidden = false;
+}
+
 function wireTeamProfile() {
   if (typeof document === "undefined") return;
   const input = document.getElementById("team-profile-input");
@@ -4507,7 +4558,20 @@ function wireTeamProfile() {
   const button = document.getElementById("team-profile-search");
   if (!input || !button) return;
 
-  const run = () => renderTeamProfile(input.value, opponentInput?.value || "");
+  const run = () => {
+    const teamName = input.value;
+    const opponentName = opponentInput?.value || "";
+    renderTeamProfile(teamName, opponentName);
+    if (String(teamName || "").trim()) {
+      saveTeamProfileRecent(teamName, opponentName);
+      renderTeamProfileRecent(applyRecent);
+    }
+  };
+  const applyRecent = (teamName, opponentName) => {
+    input.value = teamName;
+    if (opponentInput) opponentInput.value = opponentName || "";
+    run();
+  };
   button.addEventListener("click", run);
   input.addEventListener("keydown", (event) => {
     if (event.key !== "Enter") return;
@@ -4519,6 +4583,7 @@ function wireTeamProfile() {
     event.preventDefault();
     run();
   });
+  renderTeamProfileRecent(applyRecent);
 }
 
 // ---- 홈 어드밴티지 추이 ----
@@ -6464,86 +6529,6 @@ function formatOddsMovementTimestamp(value) {
   }).format(date).replace(/\. /g, ".").replace(/\.$/, "");
 }
 
-function createOddsMovementChart(movement = {}) {
-  const chartData = buildOddsMovementChartData(movement.history || []);
-  if (!chartData) return null;
-
-  const figure = document.createElement("figure");
-  figure.className = "match-detail-odds-chart";
-  figure.setAttribute("aria-label", translateUiText("홈승 무승부 원정승 배당 변화 그래프"));
-
-  const legend = document.createElement("div");
-  legend.className = "match-detail-odds-chart-legend";
-  chartData.series.forEach((item) => {
-    const entry = document.createElement("span");
-    entry.style.setProperty("--series-color", item.color);
-    entry.textContent = `${translateUiText(item.label)} ${item.values[item.values.length - 1].toFixed(2)}`;
-    legend.appendChild(entry);
-  });
-
-  const svgNamespace = "http://www.w3.org/2000/svg";
-  const svg = document.createElementNS(svgNamespace, "svg");
-  svg.setAttribute("viewBox", "0 0 360 150");
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", translateUiText("시간에 따른 배당 흐름"));
-
-  const left = 38;
-  const right = 346;
-  const top = 14;
-  const bottom = 122;
-  const valueRange = Math.max(0.01, chartData.maxValue - chartData.minValue);
-  const xForIndex = (index) => left + ((right - left) * index / Math.max(1, chartData.snapshots.length - 1));
-  const yForValue = (value) => top + ((chartData.maxValue - value) / valueRange) * (bottom - top);
-
-  [chartData.maxValue, (chartData.maxValue + chartData.minValue) / 2, chartData.minValue].forEach((value) => {
-    const y = yForValue(value);
-    const line = document.createElementNS(svgNamespace, "line");
-    line.setAttribute("x1", String(left));
-    line.setAttribute("x2", String(right));
-    line.setAttribute("y1", y.toFixed(1));
-    line.setAttribute("y2", y.toFixed(1));
-    line.setAttribute("class", "odds-chart-grid-line");
-    const label = document.createElementNS(svgNamespace, "text");
-    label.setAttribute("x", "2");
-    label.setAttribute("y", String(y + 3));
-    label.setAttribute("class", "odds-chart-axis-label");
-    label.textContent = value.toFixed(2);
-    svg.append(line, label);
-  });
-
-  chartData.series.forEach((item) => {
-    const points = item.values.map((value, index) => `${xForIndex(index).toFixed(1)},${yForValue(value).toFixed(1)}`).join(" ");
-    const polyline = document.createElementNS(svgNamespace, "polyline");
-    polyline.setAttribute("points", points);
-    polyline.setAttribute("fill", "none");
-    polyline.setAttribute("stroke", item.color);
-    polyline.setAttribute("class", "odds-chart-series");
-    svg.appendChild(polyline);
-    item.values.forEach((value, index) => {
-      const point = document.createElementNS(svgNamespace, "circle");
-      point.setAttribute("cx", xForIndex(index).toFixed(1));
-      point.setAttribute("cy", yForValue(value).toFixed(1));
-      point.setAttribute("r", index === item.values.length - 1 ? "4" : "2.5");
-      point.setAttribute("fill", item.color);
-      const title = document.createElementNS(svgNamespace, "title");
-      title.textContent = `${translateUiText(item.label)} ${value.toFixed(2)} · ${formatOddsMovementTimestamp(chartData.snapshots[index].capturedAt)}`;
-      point.appendChild(title);
-      svg.appendChild(point);
-    });
-  });
-
-  const times = document.createElement("figcaption");
-  const firstCaption = document.createElement("span");
-  firstCaption.textContent = `${translateUiText("최초")} ${formatOddsMovementTimestamp(chartData.firstCapturedAt)}`;
-  const trendCaption = document.createElement("strong");
-  trendCaption.textContent = translateUiText("아래로 갈수록 배당 하락");
-  const latestCaption = document.createElement("span");
-  latestCaption.textContent = `${translateUiText("최신")} ${formatOddsMovementTimestamp(chartData.latestCapturedAt)}`;
-  times.append(firstCaption, trendCaption, latestCaption);
-  figure.append(legend, svg, times);
-  return figure;
-}
-
 function createDetailOddsMovementSection(movement = {}) {
   const section = document.createElement("section");
   section.className = "match-detail-section match-detail-odds-movement";
@@ -6586,9 +6571,67 @@ function createDetailOddsMovementSection(movement = {}) {
   });
   section.appendChild(heading);
   section.appendChild(grid);
-  const chart = createOddsMovementChart(movement);
-  if (chart) section.appendChild(chart);
+  const table = createOddsMovementHistoryTable(movement.history);
+  if (table) section.appendChild(table);
   return section;
+}
+
+// 배당 변화를 그래프 대신 시점별 숫자 표로 보여준다 (오래된 순 -> 최신 순).
+function createOddsMovementHistoryTable(history = []) {
+  const rows = (Array.isArray(history) ? history : []).filter((entry) => (
+    [entry?.homeOdds, entry?.drawOdds, entry?.awayOdds].every((value) => Number(value) >= 1)
+  ));
+  if (rows.length < 2) return null;
+
+  const table = document.createElement("div");
+  table.className = "match-detail-odds-history-table";
+
+  const header = document.createElement("div");
+  header.className = "match-detail-odds-history-row match-detail-odds-history-header";
+  header.append(
+    createOddsHistoryCell(translateUiText("시간"), "time"),
+    createOddsHistoryCell(translateUiText("홈승"), "value"),
+    createOddsHistoryCell(translateUiText("무승부"), "value"),
+    createOddsHistoryCell(translateUiText("원정승"), "value")
+  );
+  table.appendChild(header);
+
+  let previous = null;
+  rows.forEach((entry) => {
+    const row = document.createElement("div");
+    row.className = "match-detail-odds-history-row";
+    row.append(
+      createOddsHistoryCell(formatOddsMovementTimestamp(entry.capturedAt), "time"),
+      createOddsHistoryCell(Number(entry.homeOdds).toFixed(2), "value", getOddsTrend(entry.homeOdds, previous?.homeOdds)),
+      createOddsHistoryCell(Number(entry.drawOdds).toFixed(2), "value", getOddsTrend(entry.drawOdds, previous?.drawOdds)),
+      createOddsHistoryCell(Number(entry.awayOdds).toFixed(2), "value", getOddsTrend(entry.awayOdds, previous?.awayOdds))
+    );
+    table.appendChild(row);
+    previous = entry;
+  });
+
+  return table;
+}
+
+// 배당은 낮아질수록 그 결과 쪽으로 정배가 몰린다는 뜻이라, 숫자만 보면 오르내림이
+// 직관적이지 않다. 그래서 화살표·색은 "숫자가 커졌다/작아졌다"를 그대로 따른다.
+function getOddsTrend(current, previous) {
+  if (previous === undefined || previous === null) return "";
+  const currentValue = Number(current);
+  const previousValue = Number(previous);
+  if (!Number.isFinite(currentValue) || !Number.isFinite(previousValue)) return "";
+  if (currentValue > previousValue) return "up";
+  if (currentValue < previousValue) return "down";
+  return "same";
+}
+
+function createOddsHistoryCell(text, kind, trend = "") {
+  const cell = document.createElement("span");
+  cell.className = `match-detail-odds-history-cell match-detail-odds-history-${kind}`;
+  if (trend) cell.classList.add(`match-detail-odds-history-${trend}`);
+  const arrow = trend === "up" ? "↑ " : trend === "down" ? "↓ " : "";
+  cell.textContent = `${arrow}${text}`;
+  return cell;
 }
 
 function createDetailTabPanel(tabName, { active = false } = {}) {
@@ -11719,6 +11762,32 @@ function setSavedSearchStatus(message) {
   if (status) status.textContent = message;
 }
 
+// 즐겨찾기 카드에 그 경기 배당이 최근에 어느 방향으로 움직였는지 한 줄로 보여준다.
+// 특정 배당 조합 즐겨찾기(sourceMatch 없음)엔 안 붙는다 - 비교할 "그 경기"가 없어서다.
+function createFavoriteMovementNote(sourceMatch) {
+  const movement = getMatchOddsMovement(sourceMatch, getSearchableMatches());
+  if (!movement.hasMovement) return null;
+
+  const note = document.createElement("p");
+  note.className = "search-history-movement-note";
+  const label = document.createElement("span");
+  label.textContent = `${translateUiText("배당 변화")}: `;
+  note.appendChild(label);
+
+  movement.movements.forEach((item, index) => {
+    if (index > 0) note.appendChild(document.createTextNode(" · "));
+    const trend = getOddsTrend(item.to, item.from);
+    const value = document.createElement("span");
+    if (trend === "up") value.className = "match-detail-odds-history-up";
+    if (trend === "down") value.className = "match-detail-odds-history-down";
+    const arrow = trend === "up" ? "↑ " : trend === "down" ? "↓ " : "";
+    value.textContent = `${translateUiText(item.label)} ${arrow}${item.to.toFixed(2)}`;
+    note.appendChild(value);
+  });
+
+  return note;
+}
+
 function renderSearchHistory(history = loadSearchHistory()) {
   const list = document.getElementById("search-history-list");
   if (!list) return;
@@ -11749,6 +11818,8 @@ function renderSearchHistory(history = loadSearchHistory()) {
 
     const meta = document.createElement("small");
     meta.textContent = entry.favorite ? "즐겨찾기" : "최근 검색";
+
+    const movementNote = entry.favorite && entry.sourceMatch ? createFavoriteMovementNote(entry.sourceMatch) : null;
 
     const actions = document.createElement("div");
     actions.className = "search-history-actions";
@@ -11784,6 +11855,7 @@ function renderSearchHistory(history = loadSearchHistory()) {
 
     actions.append(loadButton, favoriteButton, deleteButton);
     card.append(title, detail, meta, actions);
+    if (movementNote) card.appendChild(movementNote);
     return card;
   });
 
