@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-08-31T19:07:03.494Z",
+  "updatedAt": "2026-08-31T22:45:31.333Z",
   "collection": {
-    "lastAttemptAt": "2026-08-31T19:06:50.137Z",
-    "lastSuccessAt": "2026-08-31T19:07:03.494Z",
+    "lastAttemptAt": "2026-08-31T22:45:17.686Z",
+    "lastSuccessAt": "2026-08-31T22:45:31.333Z",
     "requestSuccesses": 29,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 6,
-    "duplicateCount": 3,
+    "updatedCount": 8,
+    "duplicateCount": 1,
     "errors": []
   },
   "matches": [
@@ -20750,10 +20750,10 @@
       "homeOdds": "5.80",
       "drawOdds": "4.20",
       "awayOdds": "1.53",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:50.626Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:18.327Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-29T13:48:23.216Z",
@@ -20796,10 +20796,10 @@
       "homeOdds": "1.09",
       "drawOdds": "10.50",
       "awayOdds": "18.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "5-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:51.663Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:19.370Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-28T20:10:39.931Z",
@@ -20854,10 +20854,10 @@
       "homeOdds": "2.18",
       "drawOdds": "2.86",
       "awayOdds": "3.80",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:51.663Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:19.370Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-28T20:10:39.931Z",
@@ -20904,12 +20904,12 @@
       "homeTeam": "Benfica",
       "awayTeam": "Estoril",
       "homeOdds": "1.12",
-      "drawOdds": "7.90",
-      "awayOdds": "18.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "drawOdds": "8.25",
+      "awayOdds": "18.00",
+      "result": "H",
+      "score": "2-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:54.114Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:21.853Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-28T20:10:49.827Z",
@@ -20962,12 +20962,12 @@
       "homeTeam": "SC Braga",
       "awayTeam": "Vitória SC",
       "homeOdds": "1.83",
-      "drawOdds": "3.45",
-      "awayOdds": "4.30",
-      "result": "UNKNOWN",
-      "score": "",
+      "drawOdds": "3.40",
+      "awayOdds": "4.33",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:54.114Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:21.853Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-29T13:48:35.162Z",
@@ -21016,10 +21016,10 @@
       "homeOdds": "1.90",
       "drawOdds": "3.50",
       "awayOdds": "3.90",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:52.262Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:19.971Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-28T20:10:41.960Z",
@@ -21120,10 +21120,10 @@
       "homeOdds": "3.35",
       "drawOdds": "3.65",
       "awayOdds": "2.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "2-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:55.535Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:23.310Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-29T13:48:40.291Z",
@@ -21151,13 +21151,13 @@
       "fixtureId": "1584387",
       "homeTeam": "Beşiktaş",
       "awayTeam": "Çorum FK",
-      "homeOdds": "1.41",
-      "drawOdds": "4.40",
-      "awayOdds": "7.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.38",
+      "drawOdds": "4.65",
+      "awayOdds": "7.70",
+      "result": "H",
+      "score": "6-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-08-31T19:06:55.535Z",
+      "oddsUpdatedAt": "2026-08-31T22:45:23.310Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-08-29T13:48:40.291Z",
