@@ -67,6 +67,11 @@
     "공격력": "Attack", "수비력": "Defense", "최근 흐름": "Recent Form", "배당 신뢰도": "Odds Confidence",
     "이변 가능성": "Upset Indicator", "데이터가 더 필요합니다.": "More data is needed.",
     "Google 계정 연결": "Connect Google Account", "Google로 로그인": "Sign in with Google",
+    "Google 로그인": "Google Account", "Google 계정 · 동기화": "Google Account · Synced",
+    "Google 로그인 창을 여는 중입니다.": "Opening Google sign-in.",
+    "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.": "Sign-in preparation timed out. Check your connection and try again.",
+    "Google 계정 · 동기화 대기": "Google Account · Sync Pending",
+    "홈 역배 주의": "Home Underdog Caution", "원정 역배 주의": "Away Underdog Caution",
     "배당 검색 또는 경기 상세를 한 번 무료로 체험한 뒤 Google 로그인으로 계속 사용할 수 있습니다. 즐겨찾기는 계정별로 안전하게 동기화됩니다.": "Try one odds search or match detail for free, then sign in with Google to continue. Favorites sync securely by account.",
     "Google 로그인 기능을 준비하는 중입니다.": "Preparing Google sign-in.",
     "Google 계정 바꾸기": "Switch Google Account", "로그아웃": "Sign Out",
@@ -99,6 +104,8 @@
     "맞대결": "Head-to-Head", "홈팀 최근": "Home Team Form", "원정팀 최근": "Away Team Form",
     "부상·결장": "Injuries & Absences", "선발": "Lineup",
     "미공개": "Not Announced", "공개": "Announced", "포메이션 미정": "Formation TBD",
+    "최근 유효슈팅": "Recent Shots on Target", "최근 점유율": "Recent Possession",
+    "최근 기대득점": "Recent Expected Goals",
     "부상·결장 확인 전": "Injuries & Absences: Not checked",
     "부상·결장 등록 정보 없음": "Injuries & Absences: None reported",
     "선발 명단 미공개": "Lineup: Not announced",
@@ -371,6 +378,10 @@
     "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요.": "Google sign-in is unavailable. Please try again shortly."
   };
   const EN_PATTERNS = [
+    [/^([\d-]+|포메이션 미정)\s*·\s*공개$/, (_, formation) => `${formation === "포메이션 미정" ? "Formation TBD" : formation} · Announced`],
+    [/^([\d,]+(?:\.\d+)?)개$/, "$1"],
+    [/^([\d,]+)\/([\d,]+)경기$/, "$1/$2 matches"],
+    [/^더보기\s*\+(\d+)$/, "Show More +$1"],
     [/^표본\s*(\d+)\/(\d+)$/, "Sample $1/$2"], [/^표본\s*(\d+)경기$/, "Sample: $1 matches"],
     [/^(\d+)경기$/, "$1 matches"], [/^([\d,]+)경기$/, "$1 matches"], [/^더보기\s*\((\d+)개\)$/, "Show More ($1)"],
     [/^(\d+)경기\s*·\s*저장된 일정$/, "$1 matches · Saved fixtures"],

@@ -44,6 +44,9 @@ const fakeClient = {
       async select() { return { data: table === "app_admins" ? adminRows : selectedRows, error: null }; },
       async upsert(rows) {
         if (failWrites) return { error: new Error("offline") };
+        if (rows.some((row) => !/^\d{4}-\d{2}-\d{2}T.*Z$/.test(row.favorite_updated_at))) {
+          return { error: new Error("invalid input syntax for type timestamp with time zone") };
+        }
         upserts.push(rows);
         return { error: null };
       }
@@ -105,6 +108,13 @@ const service = createAccountService({
   failWrites = false;
   await service.synchronizeSession({ user: { id: "user-b" } });
   assert.equal(accountState.records.find((record) => record.favoriteId === "odds:local").name, "대기");
+
+  localRecord.updatedAt = "2026. 7. 30. 오후 1:30:36";
+  selectedRows = [];
+  await service.synchronizeSession({ user: { id: "user-c" } });
+  assert.equal(statuses.at(-1), "signed_in");
+  assert.equal(upserts.at(-1).find((row) => row.favorite_id === "odds:local").favorite_updated_at,
+    new Date(2026, 6, 30, 13, 30, 36).toISOString());
 
   await service.signOut();
   assert.equal(accountState.userId, "");

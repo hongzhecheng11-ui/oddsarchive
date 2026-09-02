@@ -1,6 +1,15 @@
 (function initializeAuth(globalScope) {
   const syncTools = globalScope?.ODDS_ARCHIVE_FAVORITE_SYNC
     || (typeof require !== "undefined" ? require("./favorite-sync.js") : null);
+  const LOGIN_TIMEOUT_MS = 15000;
+  const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
+
+  function waitForLoginStep(promise) {
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => reject(new Error(LOGIN_TIMEOUT_MESSAGE)), LOGIN_TIMEOUT_MS);
+      Promise.resolve(promise).then(resolve, reject).finally(() => clearTimeout(timer));
+    });
+  }
 
   function parseStoredArray(storage, key) {
     try {
@@ -27,8 +36,21 @@
     return new Promise((resolve, reject) => {
       const script = existing || document.createElement("script");
       script.dataset.supabaseSdk = url;
-      script.addEventListener("load", () => { script.dataset.loaded = "true"; resolve(); }, { once: true });
-      script.addEventListener("error", () => reject(new Error("Login library failed to load")), { once: true });
+      const cleanup = () => {
+        clearTimeout(timer);
+        script.removeEventListener("load", onLoad);
+        script.removeEventListener("error", onError);
+      };
+      const fail = (message) => {
+        cleanup();
+        script.remove();
+        reject(new Error(message));
+      };
+      const onLoad = () => { cleanup(); script.dataset.loaded = "true"; resolve(); };
+      const onError = () => fail("Login library failed to load");
+      const timer = setTimeout(() => fail(LOGIN_TIMEOUT_MESSAGE), LOGIN_TIMEOUT_MS);
+      script.addEventListener("load", onLoad, { once: true });
+      script.addEventListener("error", onError, { once: true });
       if (!existing) {
         script.src = url;
         script.defer = true;
@@ -177,10 +199,11 @@
       if (initializePromise) return initializePromise;
       initializePromise = (async () => {
         emit("loading");
-        config = await fetchConfig();
-        await sdkLoader(config.sdkUrl);
-        client = clientFactory(config);
-        const { data } = await client.auth.getSession();
+        config = await waitForLoginStep(fetchConfig());
+        await waitForLoginStep(sdkLoader(config.sdkUrl));
+        if (!client) client = clientFactory(config);
+        const { data, error } = await waitForLoginStep(client.auth.getSession());
+        if (error) throw error;
         await synchronizeSession(data?.session || null);
         const listener = client.auth.onAuthStateChange((_event, session) => {
           Promise.resolve().then(() => synchronizeSession(session)).catch(() => emit("offline"));

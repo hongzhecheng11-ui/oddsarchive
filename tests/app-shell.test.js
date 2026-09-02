@@ -469,6 +469,39 @@ test("summarizes stored odds movement without extra API calls", () => {
   assert.strictEqual(movement.isAlertCandidate, true);
 });
 
+test("displays the immediately previous odds without changing overall analysis movement", () => {
+  const movement = app.getMatchOddsMovement({ oddsHistory: [
+    { capturedAt: "2026-08-28T00:00:00Z", homeOdds: 2, drawOdds: 4, awayOdds: 5 },
+    { capturedAt: "2026-08-29T00:00:00Z", homeOdds: 2.8, drawOdds: 3, awayOdds: 4 },
+    { capturedAt: "2026-08-30T00:00:00Z", homeOdds: 2.6, drawOdds: 3.4, awayOdds: 4 }
+  ] });
+  const before = JSON.stringify(movement);
+  const previousDocument = global.document;
+  global.document = {
+    createElement() {
+      return {
+        children: [], classList: { values: [], add(value) { this.values.push(value); } },
+        append(...children) { this.children.push(...children); },
+        appendChild(child) { this.children.push(child); return child; }
+      };
+    }
+  };
+  try {
+    const section = app.createDetailOddsMovementSection(movement);
+    const cards = section.children[1].children;
+    assert.deepStrictEqual(cards.map((card) => card.children[1].children[0].textContent),
+      ["이전 2.80", "이전 3.00", "이전 4.00"]);
+    assert.deepStrictEqual(cards.map((card) => card.children[1].children[1].textContent),
+      ["↓ 2.60", "↑ 3.40", "4.00"]);
+    assert.deepStrictEqual(cards.map((card) => card.children[1].children[1].classList.values),
+      [["down"], ["up"], ["same"]]);
+    assert.strictEqual(JSON.stringify(movement), before);
+    assert.strictEqual(movement.movements[0].from, 2);
+  } finally {
+    global.document = previousDocument;
+  }
+});
+
 test("builds readable odds movement chart data from stored snapshots", () => {
   const chart = app.buildOddsMovementChartData([
     { capturedAt: "2026-07-13T00:00:00.000Z", homeOdds: "1.95", drawOdds: "3.40", awayOdds: "4.10" },

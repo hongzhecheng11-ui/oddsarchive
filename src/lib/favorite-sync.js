@@ -3,6 +3,26 @@
     return String(value || "").trim().slice(0, maxLength);
   }
 
+  function normalizeTimestamp(value) {
+    const text = cleanText(value, 80);
+    const legacy = text.match(/^(\d{4})\.\s*(\d{1,2})\.\s*(\d{1,2})\.\s*(\uC624\uC804|\uC624\uD6C4)\s*(\d{1,2}):(\d{2}):(\d{2})$/);
+    let parsed;
+    if (legacy) {
+      const [, year, month, day, period, hour, minute, second] = legacy;
+      const hours = Number(hour) % 12 + (period === "\uC624\uD6C4" ? 12 : 0);
+      // Old records used toLocaleString("ko-KR") in the device's local timezone.
+      const date = new Date(Number(year), Number(month) - 1, Number(day), hours, Number(minute), Number(second));
+      const valid = Number(hour) >= 1 && Number(hour) <= 12
+        && date.getFullYear() === Number(year) && date.getMonth() === Number(month) - 1
+        && date.getDate() === Number(day) && date.getHours() === hours
+        && date.getMinutes() === Number(minute) && date.getSeconds() === Number(second);
+      parsed = valid ? date.getTime() : NaN;
+    } else {
+      parsed = Date.parse(text);
+    }
+    return new Date(Number.isFinite(parsed) ? parsed : 0).toISOString();
+  }
+
   function normalizeCriteria(criteria = {}) {
     return {
       homeOdds: cleanText(criteria.homeOdds, 20),
@@ -41,7 +61,7 @@
       name: cleanText(record.name, 120),
       criteria: normalizeCriteria(record.criteria),
       match: normalizeMatchSnapshot(record.match || record.match_snapshot),
-      updatedAt: cleanText(record.updatedAt || record.favoriteUpdatedAt || record.favorite_updated_at || new Date(0).toISOString(), 40)
+      updatedAt: normalizeTimestamp(record.updatedAt || record.favoriteUpdatedAt || record.favorite_updated_at)
     };
   }
 

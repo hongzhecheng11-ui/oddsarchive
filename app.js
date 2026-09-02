@@ -3968,8 +3968,21 @@ function loadBrowserScript(source, marker) {
   return new Promise((resolve, reject) => {
     const script = existing || document.createElement("script");
     script.dataset.module = marker;
-    script.addEventListener("load", () => { script.dataset.loaded = "true"; resolve(); }, { once: true });
-    script.addEventListener("error", () => reject(new Error("로그인 모듈을 불러오지 못했습니다.")), { once: true });
+    const cleanup = () => {
+      clearTimeout(timer);
+      script.removeEventListener("load", onLoad);
+      script.removeEventListener("error", onError);
+    };
+    const fail = (message) => {
+      cleanup();
+      script.remove();
+      reject(new Error(message));
+    };
+    const onLoad = () => { cleanup(); script.dataset.loaded = "true"; resolve(); };
+    const onError = () => fail("로그인 모듈을 불러오지 못했습니다.");
+    const timer = setTimeout(() => fail("로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요."), 15000);
+    script.addEventListener("load", onLoad, { once: true });
+    script.addEventListener("error", onError, { once: true });
     if (!existing) {
       script.src = source;
       script.defer = true;
@@ -3990,9 +4003,9 @@ function ensureCloudAccountReady() {
   }
 
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=4", "account-auth");
+    await loadBrowserScript("/src/lib/auth.js?v=5", "account-auth");
     if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
-    cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
+    if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
       favorites: {
         getLocalRecords: () => getFavoriteSyncRecords(),
         setAccountRecords: setActiveAccountFavoriteRecords,
@@ -4031,6 +4044,8 @@ function wireCloudAccount() {
   const deleteButton = document.getElementById("google-delete-account");
   signInButton?.addEventListener("click", async () => {
     signInButton.disabled = true;
+    const status = document.getElementById("cloud-account-status");
+    if (status) status.textContent = translateUiText("Google 로그인 창을 여는 중입니다.");
     try {
       const service = await ensureCloudAccountReady();
       await service.signInWithGoogle();
@@ -6596,7 +6611,11 @@ function createDetailOddsMovementSection(movement = {}) {
   }
   const grid = document.createElement("div");
   grid.className = "match-detail-odds-movement-grid";
+  const previousSnapshot = movement.history?.[movement.history.length - 2];
   movement.movements.forEach((item) => {
+    const oddsKey = { H: "homeOdds", D: "drawOdds", A: "awayOdds" }[item.key];
+    const from = Number(previousSnapshot?.[oddsKey] ?? item.from);
+    const difference = item.to - from;
     const card = document.createElement("div");
     const label = document.createElement("span");
     label.textContent = item.label;
@@ -6604,12 +6623,12 @@ function createDetailOddsMovementSection(movement = {}) {
     values.className = "match-detail-odds-movement-values";
     const previous = document.createElement("span");
     previous.className = "match-detail-odds-movement-previous";
-    previous.textContent = `이전 ${item.from.toFixed(2)}`;
+    previous.textContent = `이전 ${from.toFixed(2)}`;
     const latest = document.createElement("strong");
     latest.className = "match-detail-odds-movement-latest";
-    const arrow = item.difference > 0 ? "↑" : item.difference < 0 ? "↓" : "";
+    const arrow = difference > 0 ? "↑" : difference < 0 ? "↓" : "";
     latest.textContent = `${arrow ? `${arrow} ` : ""}${item.to.toFixed(2)}`;
-    latest.classList.add(item.difference > 0 ? "up" : item.difference < 0 ? "down" : "same");
+    latest.classList.add(difference > 0 ? "up" : difference < 0 ? "down" : "same");
     values.append(previous, latest);
     card.append(label, values);
     grid.appendChild(card);
@@ -12763,6 +12782,8 @@ if (typeof module !== "undefined") {
     formatDetailGoalAverage,
     getOddsHistoryMatches,
     getMatchOddsMovement,
+    loadBrowserScript,
+    createDetailOddsMovementSection,
     buildOddsMovementChartData,
     getMissingTeamNames,
     getMajorTodayMatches,

@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v144-live-today-season-sync";
+const CACHE_NAME = "oddsarchive-v145-login-recovery";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css",
-  "/app.js",
+  "/app.js?v=140",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -12,10 +12,10 @@ const CORE_ASSETS = [
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/data/upset-candidate-audit.json",
-  "/src/lib/i18n.js?v=23",
+  "/src/lib/i18n.js?v=24",
   "/src/lib/telemetry.js",
-  "/src/lib/favorite-sync.js",
-  "/src/lib/auth.js?v=4",
+  "/src/lib/favorite-sync.js?v=2",
+  "/src/lib/auth.js?v=5",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",
