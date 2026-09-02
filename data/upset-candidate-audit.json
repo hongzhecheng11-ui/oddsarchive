@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-02T12:45:09.107Z",
+  "updatedAt": "2026-09-02T16:31:43.933Z",
   "summary": {
-    "trackedDays": 46,
-    "trackedCandidates": 55,
+    "trackedDays": 47,
+    "trackedCandidates": 57,
     "resolvedCandidates": 46,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -341,26 +341,36 @@
     {
       "date": "2026-09-03",
       "firstEvaluatedAt": "2026-08-30T16:38:05.722Z",
-      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastEvaluatedAt": "2026-09-02T16:31:43.933Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-09-04",
       "firstEvaluatedAt": "2026-08-31T16:08:10.003Z",
-      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastEvaluatedAt": "2026-09-02T16:31:43.933Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastEvaluatedAt": "2026-09-02T16:31:43.933Z",
       "eligibleMatchCount": 47,
       "candidateIds": [
         "fixture:1575149",
         "fixture:1575151",
         "fixture:1557388"
+      ]
+    },
+    {
+      "date": "2026-09-06",
+      "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
+      "lastEvaluatedAt": "2026-09-02T16:31:43.933Z",
+      "eligibleMatchCount": 21,
+      "candidateIds": [
+        "fixture:1584397",
+        "fixture:1575489"
       ]
     }
   ],
@@ -1710,7 +1720,7 @@
       ],
       "sampleSize": 17,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
-      "lastSeenAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T16:31:43.933Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1762,7 +1772,7 @@
       ],
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
-      "lastSeenAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T16:31:43.933Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1788,7 +1798,59 @@
       ],
       "sampleSize": 18,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
-      "lastSeenAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T16:31:43.933Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575489",
+      "fixtureId": "1575489",
+      "date": "2026-09-06",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeam": "Sporting CP",
+      "awayTeam": "Nacional",
+      "homeOdds": "1.20",
+      "drawOdds": "6.60",
+      "awayOdds": "12.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 69,
+      "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
+      "lastSeenAt": "2026-09-02T16:31:43.933Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1584397",
+      "fixtureId": "1584397",
+      "date": "2026-09-06",
+      "league": "SUPER_LIG",
+      "homeTeam": "Fenerbahçe",
+      "awayTeam": "Beşiktaş",
+      "homeOdds": "1.81",
+      "drawOdds": "3.85",
+      "awayOdds": "3.90",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 23,
+      "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
+      "lastSeenAt": "2026-09-02T16:31:43.933Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
