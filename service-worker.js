@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v146-login-diagnostics-navigation";
+const CACHE_NAME = "oddsarchive-v147-session-independent-login";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=146",
-  "/app.js?v=141",
+  "/app.js?v=142",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -15,7 +15,7 @@ const CORE_ASSETS = [
   "/src/lib/i18n.js?v=25",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js?v=2",
-  "/src/lib/auth.js?v=6",
+  "/src/lib/auth.js?v=7",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",

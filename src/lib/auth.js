@@ -84,6 +84,7 @@
     let userId = "";
     let isAdmin = false;
     let accessToken = "";
+    let preparePromise = null;
     let initializePromise = null;
     let authSubscription = null;
 
@@ -197,13 +198,25 @@
       }
     }
 
+    async function prepareClient() {
+      if (preparePromise) return preparePromise;
+      preparePromise = (async () => {
+        config = await waitForLoginStep(fetchConfig(), "로그인 설정 확인");
+        await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
+        if (!client) client = clientFactory(config);
+        return client;
+      })().catch((error) => {
+        preparePromise = null;
+        throw error;
+      });
+      return preparePromise;
+    }
+
     async function initialize() {
       if (initializePromise) return initializePromise;
       initializePromise = (async () => {
         emit("loading");
-        config = await waitForLoginStep(fetchConfig(), "로그인 설정 확인");
-        await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
-        if (!client) client = clientFactory(config);
+        await prepareClient();
         const { data, error } = await waitForLoginStep(client.auth.getSession(), "기존 로그인 확인");
         if (error) throw error;
         await synchronizeSession(data?.session || null);
@@ -221,7 +234,8 @@
     }
 
     async function signInWithGoogle(options = {}) {
-      await initialize();
+      // Starting OAuth must not wait on restoration of an old, possibly stalled session.
+      await prepareClient();
       const { error } = await client.auth.signInWithOAuth({
         provider: "google",
         options: {

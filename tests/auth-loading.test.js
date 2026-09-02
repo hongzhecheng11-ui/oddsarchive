@@ -131,5 +131,70 @@ async function checkLoader(load, document, timer) {
     assert.equal(subscriptions, 1);
     assert.equal(timer.size, 0);
   }
-  console.log("PASS login loaders recover after failure and timeout; stalled preparation is retryable without stale state");
+  const timer = clock();
+  const auth = authRuntime(timer);
+  let sessionCalls = 0;
+  let clientCount = 0;
+  let favoriteChanges = 0;
+  let oauthError = null;
+  const oauthRequests = [];
+  const config = { sdkUrl: "sdk", redirectTo: "https://app.test/index.html?auth=callback#account" };
+  const service = auth.createAccountService({
+    fetchConfig: async () => config,
+    sdkLoader: async () => {},
+    favorites: { clearAccountRecords() { favoriteChanges += 1; }, setAccountRecords() { favoriteChanges += 1; } },
+    clientFactory: () => {
+      clientCount += 1;
+      return { auth: {
+        getSession() { sessionCalls += 1; return new Promise(() => {}); },
+        async signInWithOAuth(request) { oauthRequests.push(request); return { error: oauthError }; }
+      } };
+    }
+  });
+  await service.signInWithGoogle();
+  assert.equal(sessionCalls, 0);
+  assert.equal(oauthRequests.length, 1);
+  const restoration = assert.rejects(service.initialize(), /기존 로그인 확인/);
+  await drain();
+  await service.signInWithGoogle();
+  assert.equal(oauthRequests.length, 2);
+  timer.expire();
+  await restoration;
+  await service.signInWithGoogle();
+  assert.equal(oauthRequests.length, 3);
+  assert.equal(sessionCalls, 1);
+  assert.equal(clientCount, 1);
+  assert.equal(favoriteChanges, 0);
+  assert.equal(service.getUserId(), "");
+  for (const request of oauthRequests) {
+    assert.equal(request.provider, "google");
+    assert.equal(request.options.redirectTo, config.redirectTo);
+  }
+  oauthError = new Error("OAuth failed");
+  await assert.rejects(service.signInWithGoogle(), /OAuth failed/);
+
+  const savedDocument = global.document;
+  const savedWindow = global.window;
+  const status = {};
+  let click;
+  let signIns = 0;
+  const button = { disabled: false, addEventListener(_event, handler) { click = handler; } };
+  global.document = {
+    getElementById: (id) => id === "google-sign-in" ? button : id === "cloud-account-status" ? status : null,
+    querySelector: () => ({ dataset: { loaded: "true" } })
+  };
+  global.window = { ODDS_ARCHIVE_AUTH: { createAccountService: () => ({
+    initialize() { throw new Error("The sign-in button must not restore the old session"); },
+    async signInWithGoogle() { signIns += 1; }
+  }) } };
+  try {
+    app.wireCloudAccount();
+    await click();
+    assert.equal(signIns, 1);
+    assert.equal(button.disabled, false);
+  } finally {
+    global.document = savedDocument;
+    global.window = savedWindow;
+  }
+  console.log("PASS login loaders recover, and the login button starts OAuth despite a stalled or timed-out old session");
 })().catch((error) => { console.error(error); process.exitCode = 1; });

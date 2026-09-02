@@ -1,5 +1,18 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Session-independent sign-in deployment approved
+- User approved deploying the saved-session-blocking fix described below. Earlier local-only statements refer to the pre-approval state.
+- Runtime versions: app v142, auth v7 and service-worker v147-session-independent-login. Existing navigation restoration and diagnostic messages remain included.
+- Deploy via origin/main; no app data reset, signing changes or Play Console changes. Phone OAuth return still requires user verification.
+
+## Phone evidence: saved-session check timeout (local fix, not deployed)
+- Latest phone screenshot explicitly reports "기존 로그인 확인" timeout. Configuration and SDK loading completed; the app's getSession wait is the blocked step. The underlying device/network/SDK-lock cause remains unconfirmed.
+- src/lib/auth.js: separate shared client preparation from session restoration. signInWithGoogle prepares the client and invokes normal SDK OAuth without waiting for initialize/getSession. Existing session restoration, PKCE, persistence, refresh and account synchronization remain unchanged.
+- app.js: share module/service loading; the sign-in button uses it directly rather than waiting for full account restoration. Other account flows retain ensureCloudAccountReady.
+- tests/auth-loading.test.js: verify OAuth starts before restoration, while getSession is indefinitely pending and after its timeout; verify the click handler uses this path, client reuse, unchanged provider/redirect, error propagation and no favorite writes.
+- All 36 npm test scripts pass. No phone sign-in success claimed. No commit, version bump, push or deployment for this fix yet.
+- Reviewed pinned SDK source: supabase-js 2.49.8 uses auth-js 2.69.1. Its signInWithOAuth builds the standard PKCE authorize URL without getSession's initialization/lock wait: https://github.com/supabase/auth-js/blob/v2.69.1/src/GoTrueClient.ts . No lock disabling or credential deletion introduced.
+
 ## Follow-up deployment approved
 - User approved deploying the pending stage-specific login diagnostics and visible navigation changes. Earlier local-only notes below describe the state before this approval.
 - Cache versions: app v141, auth v6, i18n v25, styles v146 and service-worker v146-login-diagnostics-navigation.

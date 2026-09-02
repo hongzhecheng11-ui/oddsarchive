@@ -3992,6 +3992,21 @@ function loadBrowserScript(source, marker) {
   });
 }
 
+async function loadCloudAccountService() {
+  if (cloudAccountService) return cloudAccountService;
+  await loadBrowserScript("/src/lib/auth.js?v=7", "account-auth");
+  if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
+  if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
+    favorites: {
+      getLocalRecords: () => getFavoriteSyncRecords(),
+      setAccountRecords: setActiveAccountFavoriteRecords,
+      clearAccountRecords: clearActiveAccountFavoriteRecords
+    },
+    onStateChange: setCloudAccountUi
+  });
+  return cloudAccountService;
+}
+
 function ensureCloudAccountReady() {
   if (cloudAccountLoadPromise) return cloudAccountLoadPromise;
 
@@ -4004,16 +4019,7 @@ function ensureCloudAccountReady() {
   }
 
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=6", "account-auth");
-    if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
-    if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
-      favorites: {
-        getLocalRecords: () => getFavoriteSyncRecords(),
-        setAccountRecords: setActiveAccountFavoriteRecords,
-        clearAccountRecords: clearActiveAccountFavoriteRecords
-      },
-      onStateChange: setCloudAccountUi
-    });
+    await loadCloudAccountService();
     await cloudAccountService.initialize();
     cloudAccountLastFailureAt = 0;
     cloudAccountLastError = null;
@@ -4050,7 +4056,7 @@ function wireCloudAccount() {
     const status = document.getElementById("cloud-account-status");
     if (status) status.textContent = translateUiText("Google 로그인 창을 여는 중입니다.");
     try {
-      const service = await ensureCloudAccountReady();
+      const service = await loadCloudAccountService();
       await service.signInWithGoogle();
     } catch (error) {
       setCloudAccountUi({ status: "unavailable", message: error.message });
@@ -12926,6 +12932,7 @@ if (typeof module !== "undefined") {
     wireDefaultDataImport,
     wireFiveLeagueUpdate,
     wireLocalAccount,
+    wireCloudAccount,
     wireTodayCsvImport,
     wireEmptyDataActions,
     wireMatchFilters,
