@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-02T07:50:57.844Z",
+  "updatedAt": "2026-09-02T12:45:09.107Z",
   "summary": {
     "trackedDays": 46,
-    "trackedCandidates": 52,
+    "trackedCandidates": 55,
     "resolvedCandidates": 46,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -341,26 +341,26 @@
     {
       "date": "2026-09-03",
       "firstEvaluatedAt": "2026-08-30T16:38:05.722Z",
-      "lastEvaluatedAt": "2026-09-02T07:50:57.844Z",
+      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
       "eligibleMatchCount": 10,
-      "candidateIds": [
-        "fixture:1556654"
-      ]
+      "candidateIds": []
     },
     {
       "date": "2026-09-04",
       "firstEvaluatedAt": "2026-08-31T16:08:10.003Z",
-      "lastEvaluatedAt": "2026-09-02T07:50:57.844Z",
-      "eligibleMatchCount": 4,
+      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-02T07:50:57.844Z",
-      "eligibleMatchCount": 10,
+      "lastEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "eligibleMatchCount": 47,
       "candidateIds": [
-        "fixture:1557393"
+        "fixture:1575149",
+        "fixture:1575151",
+        "fixture:1557388"
       ]
     }
   ],
@@ -1692,6 +1692,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1557388",
+      "fixtureId": "1557388",
+      "date": "2026-09-05",
+      "league": "EPL",
+      "homeTeam": "Brentford",
+      "awayTeam": "Sunderland",
+      "homeOdds": "1.55",
+      "drawOdds": "3.90",
+      "awayOdds": "5.90",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T12:45:09.107Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1557393",
       "fixtureId": "1557393",
       "date": "2026-09-05",
@@ -1711,6 +1737,58 @@
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
       "lastSeenAt": "2026-09-02T07:50:57.844Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575149",
+      "fixtureId": "1575149",
+      "date": "2026-09-05",
+      "league": "BUNDESLIGA",
+      "homeTeam": "VfB Stuttgart",
+      "awayTeam": "1. FC Köln",
+      "homeOdds": "1.48",
+      "drawOdds": "4.75",
+      "awayOdds": "5.40",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 27,
+      "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T12:45:09.107Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575151",
+      "fixtureId": "1575151",
+      "date": "2026-09-05",
+      "league": "BUNDESLIGA",
+      "homeTeam": "Bayer Leverkusen",
+      "awayTeam": "Union Berlin",
+      "homeOdds": "1.42",
+      "drawOdds": "4.70",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 18,
+      "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
+      "lastSeenAt": "2026-09-02T12:45:09.107Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
