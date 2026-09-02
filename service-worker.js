@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v147-session-independent-login";
+const CACHE_NAME = "oddsarchive-v148-nav-scroll-preserve";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=146",
-  "/app.js?v=142",
+  "/app.js?v=143",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",

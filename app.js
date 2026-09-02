@@ -12390,6 +12390,21 @@ function wireViewNavigation() {
   if (typeof window === "undefined") return;
 
   showActiveView(window.location.hash);
+  // 네비게이션 탭은 <a href="#today"> 형태라, 클릭하면 브라우저가 기본 동작으로
+  // 해당 id 요소(패널 상단)까지 스크롤을 확 점프시킨다. 탭 전환은 화면을 바꾸는
+  // 것뿐 특정 위치로 스크롤하려는 의도가 아니므로, 기본 동작을 막고 히스토리만
+  // 갱신해서 지금 스크롤 위치를 그대로 유지한다.
+  document.querySelectorAll(".nav-item").forEach((item) => {
+    item.addEventListener("click", (event) => {
+      const targetHash = item.getAttribute("href");
+      if (!targetHash || !targetHash.startsWith("#")) return;
+      event.preventDefault();
+      if (window.location.hash !== targetHash) {
+        window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${targetHash}`);
+      }
+      showActiveView(targetHash);
+    });
+  });
   window.addEventListener("hashchange", () => {
     showActiveView(window.location.hash);
   });
