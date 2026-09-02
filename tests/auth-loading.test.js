@@ -116,7 +116,8 @@ async function checkLoader(load, document, timer) {
       },
       onStateChange: ({ status }) => statuses.push(status)
     });
-    const failed = assert.rejects(service.initialize(), /초과/);
+    const expectedStage = { config: "로그인 설정 확인", sdk: "로그인 필수 파일 로딩", session: "기존 로그인 확인" }[stalledStep];
+    const failed = assert.rejects(service.initialize(), (error) => error.message.startsWith(`${expectedStage}:`) && /초과/.test(error.message));
     await drain();
     timer.expire();
     await failed;

@@ -183,11 +183,6 @@ button {
   min-height: calc(100vh - 94px);
 }
 
-body.auth-required.auth-locked .app-shell {
-  grid-template-columns: minmax(0, 1fr);
-}
-
-body.auth-required.auth-locked .side-nav,
 body.auth-required.auth-locked .flow-panel:not(#account),
 body.auth-required.auth-locked #account > summary,
 body.auth-required.auth-locked #account .panel-body > :not(.cloud-account-card) {

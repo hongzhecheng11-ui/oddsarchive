@@ -19,6 +19,8 @@ assert.strictEqual(i18n.translateText("배당검색", "ko"), "배당검색");
 for (const [ko, en] of [
   ["Google 로그인", "Google Account"],
   ["Google 로그인 창을 여는 중입니다.", "Opening Google sign-in."],
+  ["기존 로그인 확인: 로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.", "Saved sign-in check: Sign-in preparation timed out. Check your connection and try again."],
+  ["로그인 필수 파일 로딩: Login library failed to load", "Sign-in library: Login library failed to load"],
   ["로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.", "Sign-in preparation timed out. Check your connection and try again."],
   ["Google 계정 · 동기화", "Google Account · Synced"],
   ["Google 계정 · 동기화 대기", "Google Account · Sync Pending"],

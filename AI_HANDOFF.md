@@ -1,6 +1,28 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Follow-up deployment approved
+- User approved deploying the pending stage-specific login diagnostics and visible navigation changes. Earlier local-only notes below describe the state before this approval.
+- Cache versions: app v141, auth v6, i18n v25, styles v146 and service-worker v146-login-diagnostics-navigation.
+- Phone login root cause remains unconfirmed; preserve the phone's exact stage-specific error for the next investigation. Do not describe this as confirmed login recovery.
+- No change to authentication requirements, account data, Play tracks, package name or signing keys. preview-server.js remains excluded.
+
+## Missing navigation during phone login failure (local only)
+- styles.css: removed the auth-locked navigation hiding and single-column override; the normal desktop/mobile navigation layout remains visible. Protected panels and login gating are unchanged.
+- tests/app-shell.test.js: verifies navigation is not hidden by auth-locked CSS and all four destinations still route to account when access is locked.
+- Verified in the real local browser at 375px: navigation rendered, no horizontal overflow, selecting Fixtures retained the account gate. Local auth-config remains unavailable by preview-server design.
+- All 36 npm test scripts pass. No new commit or deployment; pending login diagnostics above remain local as well.
+
+## Phone still fails after deployment: diagnostic follow-up (local only)
+- New phone screenshot shows the generic preparation-failed message, not successful login. Root cause on the phone remains unknown.
+- app.js now preserves the original preparation error during the retry cooldown instead of replacing it with a generic message.
+- src/lib/auth.js labels configuration, SDK and saved-session failures/timeouts; corresponding English translations and tests added.
+- All 36 npm test scripts pass. These diagnostic changes have not been committed or deployed, and do not establish successful phone login.
+- Asked the user to compare the same site's sign-in via the phone menu's Chrome/browser opening option. Do not delete app data or reset account credentials.
+
 ## Deployment approved
+- Deployment outcome: pushed commit 8cafb8a to origin/main. Vercel oddsarchive-football reports success; all six changed runtime files on the production URL match local contents. Browser loaded app v140 / auth v5 / favorites v2 / i18n v24 and restored the existing login without console errors.
+- IMPORTANT: production account still reports Sync Pending. Do not claim favorite synchronization is fully fixed. Phone sign-in recovery remains to be checked on the user's phone. No further production changes were made during deployment verification.
+- Final validation: 36 npm test scripts and both additional AI analysis scripts passed. This outcome note was added locally after the deployment commit.
 - User approved deploying the accumulated verified fixes. Earlier "not deployed" entries below describe the pre-deployment state.
 - Fast-forwarded to 82455582a9db9dd1485d6b12aa95695e61b32f59; incoming changes were automated collection data only.
 - Cache references: app.js v140, auth.js v5, favorite-sync.js v2, i18n.js v24, service-worker cache v145-login-recovery.

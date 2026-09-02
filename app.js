@@ -166,6 +166,7 @@ let activeAccountFavoriteRecords = [];
 let cloudAccountService = null;
 let cloudAccountLoadPromise = null;
 let cloudAccountLastFailureAt = 0;
+let cloudAccountLastError = null;
 const CLOUD_ACCOUNT_RETRY_COOLDOWN_MS = 5000;
 let cloudAccountState = "local";
 let cloudAccountIsAdmin = false;
@@ -3999,11 +4000,11 @@ function ensureCloudAccountReady() {
   // 실패할 때마다 즉시 재시도가 반복돼서 초당 수백 번씩 요청을 쏘는 무한 루프가 된다.
   // 실패 직후 얼마간은 새로 fetch 하지 않고 바로 거절해서 그 연쇄를 끊는다.
   if (cloudAccountLastFailureAt && Date.now() - cloudAccountLastFailureAt < CLOUD_ACCOUNT_RETRY_COOLDOWN_MS) {
-    return Promise.reject(new Error("Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."));
+    return Promise.reject(cloudAccountLastError || new Error("Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."));
   }
 
   cloudAccountLoadPromise = (async () => {
-    await loadBrowserScript("/src/lib/auth.js?v=5", "account-auth");
+    await loadBrowserScript("/src/lib/auth.js?v=6", "account-auth");
     if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
     if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
       favorites: {
@@ -4015,10 +4016,12 @@ function ensureCloudAccountReady() {
     });
     await cloudAccountService.initialize();
     cloudAccountLastFailureAt = 0;
+    cloudAccountLastError = null;
     return cloudAccountService;
   })().catch((error) => {
     cloudAccountLoadPromise = null;
     cloudAccountLastFailureAt = Date.now();
+    cloudAccountLastError = error;
     setCloudAccountUi({ status: "unavailable", message: error.message || "Google 로그인을 준비하지 못했습니다." });
     throw error;
   });

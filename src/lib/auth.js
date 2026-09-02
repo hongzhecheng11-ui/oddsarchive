@@ -4,10 +4,12 @@
   const LOGIN_TIMEOUT_MS = 15000;
   const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
 
-  function waitForLoginStep(promise) {
+  function waitForLoginStep(promise, stage) {
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error(LOGIN_TIMEOUT_MESSAGE)), LOGIN_TIMEOUT_MS);
-      Promise.resolve(promise).then(resolve, reject).finally(() => clearTimeout(timer));
+      const timer = setTimeout(() => reject(new Error(`${stage}: ${LOGIN_TIMEOUT_MESSAGE}`)), LOGIN_TIMEOUT_MS);
+      Promise.resolve(promise).then(resolve, (error) => {
+        reject(new Error(`${stage}: ${error?.message || String(error)}`));
+      }).finally(() => clearTimeout(timer));
     });
   }
 
@@ -199,10 +201,10 @@
       if (initializePromise) return initializePromise;
       initializePromise = (async () => {
         emit("loading");
-        config = await waitForLoginStep(fetchConfig());
-        await waitForLoginStep(sdkLoader(config.sdkUrl));
+        config = await waitForLoginStep(fetchConfig(), "로그인 설정 확인");
+        await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
         if (!client) client = clientFactory(config);
-        const { data, error } = await waitForLoginStep(client.auth.getSession());
+        const { data, error } = await waitForLoginStep(client.auth.getSession(), "기존 로그인 확인");
         if (error) throw error;
         await synchronizeSession(data?.session || null);
         const listener = client.auth.onAuthStateChange((_event, session) => {

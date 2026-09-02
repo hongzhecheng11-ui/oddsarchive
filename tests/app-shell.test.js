@@ -502,6 +502,15 @@ test("displays the immediately previous odds without changing overall analysis m
   }
 });
 
+test("keeps navigation visible without bypassing the login gate", () => {
+  const css = require("node:fs").readFileSync(require.resolve("../styles.css"), "utf8");
+  assert.doesNotMatch(css, /body\.auth-required\.auth-locked\s+\.side-nav/);
+  assert.doesNotMatch(css, /body\.auth-required\.auth-locked\s+\.app-shell/);
+  for (const view of ["search", "today", "saved", "account"]) {
+    assert.strictEqual(app.getAuthenticatedViewId(`#${view}`, false, false, true), "account");
+  }
+});
+
 test("builds readable odds movement chart data from stored snapshots", () => {
   const chart = app.buildOddsMovementChartData([
     { capturedAt: "2026-07-13T00:00:00.000Z", homeOdds: "1.95", drawOdds: "3.40", awayOdds: "4.10" },
