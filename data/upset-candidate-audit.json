@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-03T07:58:41.169Z",
+  "updatedAt": "2026-09-03T12:48:20.118Z",
   "summary": {
     "trackedDays": 47,
-    "trackedCandidates": 57,
+    "trackedCandidates": 63,
     "resolvedCandidates": 47,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -348,29 +348,34 @@
     {
       "date": "2026-09-04",
       "firstEvaluatedAt": "2026-08-31T16:08:10.003Z",
-      "lastEvaluatedAt": "2026-09-03T07:58:41.169Z",
+      "lastEvaluatedAt": "2026-09-03T12:48:20.118Z",
       "eligibleMatchCount": 7,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1558604"
+      ]
     },
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-03T07:58:41.169Z",
+      "lastEvaluatedAt": "2026-09-03T12:48:20.118Z",
       "eligibleMatchCount": 47,
       "candidateIds": [
         "fixture:1575149",
-        "fixture:1575151",
-        "fixture:1557388"
+        "fixture:1557393",
+        "fixture:1552750"
       ]
     },
     {
       "date": "2026-09-06",
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastEvaluatedAt": "2026-09-03T07:58:41.169Z",
-      "eligibleMatchCount": 21,
+      "lastEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "eligibleMatchCount": 43,
       "candidateIds": [
         "fixture:1584397",
-        "fixture:1575489"
+        "fixture:1552160",
+        "fixture:1507057",
+        "fixture:1556663",
+        "fixture:1556660"
       ]
     }
   ],
@@ -1702,6 +1707,58 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1558604",
+      "fixtureId": "1558604",
+      "date": "2026-09-04",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeam": "Anderlecht",
+      "awayTeam": "Kortrijk",
+      "homeOdds": "1.44",
+      "drawOdds": "4.60",
+      "awayOdds": "6.40",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 90,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552750",
+      "fixtureId": "1552750",
+      "date": "2026-09-05",
+      "league": "LIGUE1",
+      "homeTeam": "Lyon",
+      "awayTeam": "Auxerre",
+      "homeOdds": "1.51",
+      "drawOdds": "4.20",
+      "awayOdds": "5.90",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 73,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1557388",
       "fixtureId": "1557388",
       "date": "2026-09-05",
@@ -1746,7 +1803,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastSeenAt": "2026-09-02T07:50:57.844Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1772,7 +1829,7 @@
       ],
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
-      "lastSeenAt": "2026-09-03T07:58:41.169Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1799,6 +1856,110 @@
       "sampleSize": 18,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
       "lastSeenAt": "2026-09-03T07:58:41.169Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1507057",
+      "fixtureId": "1507057",
+      "date": "2026-09-06",
+      "league": "KLEAGUE1",
+      "homeTeam": "Gimcheon Sangmu FC",
+      "awayTeam": "Gwangju FC",
+      "homeOdds": "1.55",
+      "drawOdds": "3.90",
+      "awayOdds": "6.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552160",
+      "fixtureId": "1552160",
+      "date": "2026-09-06",
+      "league": "EREDIVISIE",
+      "homeTeam": "Telstar",
+      "awayTeam": "Cambuur",
+      "homeOdds": "1.49",
+      "drawOdds": "4.70",
+      "awayOdds": "5.40",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 27,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1556660",
+      "fixtureId": "1556660",
+      "date": "2026-09-06",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeam": "Heart Of Midlothian",
+      "awayTeam": "Dundee",
+      "homeOdds": "1.51",
+      "drawOdds": "4.33",
+      "awayOdds": "5.60",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 60,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1556663",
+      "fixtureId": "1556663",
+      "date": "2026-09-06",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeam": "ST Mirren",
+      "awayTeam": "Celtic",
+      "homeOdds": "6.00",
+      "drawOdds": "4.65",
+      "awayOdds": "1.45",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 21,
+      "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1850,7 +2011,7 @@
       ],
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastSeenAt": "2026-09-03T07:58:41.169Z",
+      "lastSeenAt": "2026-09-03T12:48:20.118Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
