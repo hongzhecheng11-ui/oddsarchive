@@ -5,22 +5,1064 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-03T12:50:39.108Z",
+  "updatedAt": "2026-09-04T12:44:27.359Z",
   "collection": {
     "dates": [
+      "2026-09-03",
       "2026-09-02",
-      "2026-09-01",
-      "2026-08-31"
+      "2026-09-01"
     ],
-    "requestGroups": 15,
-    "skippedGroups": 63,
-    "finishedFixtures": 35,
-    "skippedComplete": 27,
-    "saved": 8,
+    "requestGroups": 9,
+    "skippedGroups": 69,
+    "finishedFixtures": 27,
+    "skippedComplete": 17,
+    "saved": 10,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1563128,
+      "date": "2026-09-03",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 58,
+      "homeTeam": "Millwall",
+      "awayTeamId": 1837,
+      "awayTeam": "Wrexham",
+      "home": {
+        "teamId": 58,
+        "team": "Millwall",
+        "shots": 4,
+        "shotsOnGoal": 0,
+        "possession": 39,
+        "corners": 1,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.23
+      },
+      "away": {
+        "teamId": 1837,
+        "team": "Wrexham",
+        "shots": 9,
+        "shotsOnGoal": 3,
+        "possession": 61,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 0.88
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 58,
+          "team": "Millwall",
+          "formation": "3-1-4-2",
+          "coach": "Alex Neil",
+          "starters": [
+            "M. Crocombe",
+            "C. Taylor",
+            "J. Cooper",
+            "E. Baggott",
+            "C. De Norre",
+            "M. Sykes",
+            "D. Kelly",
+            "J. Metcalfe",
+            "Z. Sturge",
+            "J. Coburn",
+            "L. Dykes"
+          ]
+        },
+        {
+          "teamId": 1837,
+          "team": "Wrexham",
+          "formation": "3-4-2-1",
+          "coach": "Phil Parkinson",
+          "starters": [
+            "A. Patterson",
+            "M. Cleworth",
+            "D. Hyam",
+            "C. Doyle",
+            "I. Kabore",
+            "M. James",
+            "B. Whiteman",
+            "J. Ekomie",
+            "J. Windass",
+            "L. O'Brien",
+            "K. Moore"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 191337,
+          "player": "T. Crama",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 149564,
+          "player": "L. Cundle",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 19829,
+          "player": "A. Doughty",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 368659,
+          "player": "M. Ivanovic",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 190595,
+          "player": "L. Jensen",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 19639,
+          "player": "R. Leonard",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 2752,
+          "player": "M. Luongo",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 58,
+          "playerId": 295233,
+          "player": "M. Servais",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 1837,
+          "playerId": 6931,
+          "player": "L. Cacace",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 1837,
+          "playerId": 278123,
+          "player": "S. Revan",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 1837,
+          "playerId": 88457,
+          "player": "B. Sheaf",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563128,
+          "teamId": 1837,
+          "playerId": 194461,
+          "player": "G. Thomason",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563130,
+      "date": "2026-09-03",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 60,
+      "homeTeam": "West Brom",
+      "awayTeamId": 1335,
+      "awayTeam": "Charlton",
+      "home": {
+        "teamId": 60,
+        "team": "West Brom",
+        "shots": 15,
+        "shotsOnGoal": 3,
+        "possession": 71,
+        "corners": 8,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1335,
+        "team": "Charlton",
+        "shots": 4,
+        "shotsOnGoal": 1,
+        "possession": 29,
+        "corners": 3,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1335,
+          "team": "Charlton",
+          "formation": "4-2-3-1",
+          "coach": "Nathan Jones",
+          "starters": [
+            "A. Okonkwo",
+            "D. McNamara",
+            "L. Jones",
+            "T. Bindon",
+            "A. Bell",
+            "A. Mwamba",
+            "C. Coventry",
+            "M. Alli",
+            "K. Grant",
+            "T. Campbell",
+            "M. Leaburn"
+          ]
+        },
+        {
+          "teamId": 60,
+          "team": "West Brom",
+          "formation": "",
+          "coach": "",
+          "starters": [
+            "M. O'Leary",
+            "N. Galves",
+            "N. Phillips",
+            "G. Campbell",
+            "C. Styles",
+            "K. Tunde",
+            "J. Molumby",
+            "O. Diakite",
+            "I. Price",
+            "F. Myhre",
+            "J. Morgan"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563130,
+          "teamId": 60,
+          "playerId": 1137,
+          "player": "M. Johnston",
+          "type": "Missing Fixture",
+          "reason": "Broken Leg"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 18803,
+          "player": "N. Chalobah",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 125543,
+          "player": "J. Edwards",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 19970,
+          "player": "M. Godden",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 20352,
+          "player": "C. Kelman",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 152974,
+          "player": "B. Koumetio",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 18603,
+          "player": "W. Mannion",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 18939,
+          "player": "K. Ramsay",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563130,
+          "teamId": 1335,
+          "playerId": 283144,
+          "player": "C. Sichenje",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563129,
+      "date": "2026-09-03",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 72,
+      "homeTeam": "QPR",
+      "awayTeamId": 43,
+      "awayTeam": "Cardiff",
+      "home": {
+        "teamId": 72,
+        "team": "QPR",
+        "shots": 20,
+        "shotsOnGoal": 4,
+        "possession": 37,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": 2.09
+      },
+      "away": {
+        "teamId": 43,
+        "team": "Cardiff",
+        "shots": 9,
+        "shotsOnGoal": 3,
+        "possession": 63,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.6
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 72,
+          "team": "QPR",
+          "formation": "4-4-2",
+          "coach": "Julien Stephan",
+          "starters": [
+            "P. Charles",
+            "A. S. Mbengue",
+            "J. Dunne",
+            "R. Edwards",
+            "T. Lamptey",
+            "H. Vale",
+            "G. Kamara",
+            "N. Madsen",
+            "K. Saito",
+            "A. Lloyd",
+            "R. Burrell"
+          ]
+        },
+        {
+          "teamId": 43,
+          "team": "Cardiff",
+          "formation": "4-2-3-1",
+          "coach": "Brian Barry-Murphy",
+          "starters": [
+            "N. Trott",
+            "P. Ng",
+            "G. Osho",
+            "J. Bagan",
+            "C. Scanlon",
+            "A. Robertson",
+            "C. Ashford",
+            "O. Tanner",
+            "R. Colwill",
+            "J. Moylan",
+            "Y. Salech"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563129,
+          "teamId": 72,
+          "playerId": 67959,
+          "player": "K. Dembele",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563129,
+          "teamId": 72,
+          "playerId": 38737,
+          "player": "B. Kemper",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563129,
+          "teamId": 43,
+          "playerId": 19016,
+          "player": "C. Chambers",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563129,
+          "teamId": 43,
+          "playerId": 153434,
+          "player": "W. Fish",
+          "type": "Missing Fixture",
+          "reason": "Hernia"
+        },
+        {
+          "fixtureId": 1563129,
+          "teamId": 43,
+          "playerId": 394973,
+          "player": "D. Lawlor",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563127,
+      "date": "2026-09-03",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 44,
+      "homeTeam": "Burnley",
+      "awayTeamId": 70,
+      "awayTeam": "Middlesbrough",
+      "home": {
+        "teamId": 44,
+        "team": "Burnley",
+        "shots": 11,
+        "shotsOnGoal": 3,
+        "possession": 43,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.64
+      },
+      "away": {
+        "teamId": 70,
+        "team": "Middlesbrough",
+        "shots": 10,
+        "shotsOnGoal": 2,
+        "possession": 57,
+        "corners": 1,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.22
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 44,
+          "team": "Burnley",
+          "formation": "4-3-2-1",
+          "coach": "Nicky Hayen",
+          "starters": [
+            "M. Weiss",
+            "O. Sonne",
+            "A. Ahmedhodzic",
+            "H. Ekdal",
+            "C. Roberts",
+            "H. Mejbri",
+            "U. Raghouber",
+            "J. Bruun Larsen",
+            "A. Hountondji",
+            "D. Satpaev",
+            "Z. Amdouni"
+          ]
+        },
+        {
+          "teamId": 70,
+          "team": "Middlesbrough",
+          "formation": "4-3-3",
+          "coach": "Kim Hellberg",
+          "starters": [
+            "R. Vitek",
+            "C. Brittain",
+            "L. Ayling",
+            "A. Jones",
+            "Neto Borges",
+            "A. Morris",
+            "A. Malanda",
+            "S. Berhalter",
+            "R. McGree",
+            "W. Lankshear",
+            "K. Joseph"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 361388,
+          "player": "E. Agyei",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 336578,
+          "player": "J. Banel",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 18927,
+          "player": "A. Barnes",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 25628,
+          "player": "J. Beyer",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 19827,
+          "player": "J. Cullen",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 181797,
+          "player": "B. Humphreys",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 20303,
+          "player": "J. Laurent",
+          "type": "Missing Fixture",
+          "reason": "Red Card"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 44,
+          "playerId": 330238,
+          "player": "Lucas Pires",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 70,
+          "playerId": 37049,
+          "player": "A. Bangura",
+          "type": "Missing Fixture",
+          "reason": "Coach's decision"
+        },
+        {
+          "fixtureId": 1563127,
+          "teamId": 70,
+          "playerId": 202086,
+          "player": "J. Sarmiento",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1556652,
+      "date": "2026-09-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 247,
+      "homeTeam": "Celtic",
+      "awayTeamId": 252,
+      "awayTeam": "Aberdeen",
+      "home": {
+        "teamId": 247,
+        "team": "Celtic",
+        "shots": 27,
+        "shotsOnGoal": 12,
+        "possession": 61,
+        "corners": 15,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 252,
+        "team": "Aberdeen",
+        "shots": 9,
+        "shotsOnGoal": 2,
+        "possession": 39,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 247,
+          "team": "Celtic",
+          "formation": "4-1-4-1",
+          "coach": "Martin O'Neill",
+          "starters": [
+            "V. Sinisalo",
+            "C. Donovan",
+            "C. Carter-Vickers",
+            "A. Trusty",
+            "L. Scales",
+            "C. McGregor",
+            "H. Hassan",
+            "B. Nygren",
+            "A. Oxlade-Chamberlain",
+            "Yang Hyun-Jun",
+            "C. Duran"
+          ]
+        },
+        {
+          "teamId": 252,
+          "team": "Aberdeen",
+          "formation": "5-3-2",
+          "coach": "Stephen Robinson",
+          "starters": [
+            "M. Muller",
+            "C. Cadden",
+            "L. Mayo",
+            "M. Knoester",
+            "G. Molloy",
+            "N. Guinness-Walker",
+            "S. Armstrong",
+            "A. Aremu",
+            "A. Briedl",
+            "K. Nisbet",
+            "A. Mouloua"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556656,
+      "date": "2026-09-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 250,
+      "homeTeam": "Kilmarnock",
+      "awayTeamId": 251,
+      "awayTeam": "ST Mirren",
+      "home": {
+        "teamId": 250,
+        "team": "Kilmarnock",
+        "shots": 9,
+        "shotsOnGoal": 2,
+        "possession": 47,
+        "corners": 7,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.43
+      },
+      "away": {
+        "teamId": 251,
+        "team": "ST Mirren",
+        "shots": 10,
+        "shotsOnGoal": 1,
+        "possession": 53,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.09
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 250,
+          "team": "Kilmarnock",
+          "formation": "3-4-1-2",
+          "coach": "Neil McCann",
+          "starters": [
+            "M. Stryjek",
+            "C. McCarthy",
+            "G. Stanger",
+            "J. Yfeko",
+            "E. Ring",
+            "M. O'Hara",
+            "T. Lowery",
+            "M. Schjonning-Larsen",
+            "G. Kiltie",
+            "T. John-Jules",
+            "J. Hugill"
+          ]
+        },
+        {
+          "teamId": 251,
+          "team": "ST Mirren",
+          "formation": "4-2-3-1",
+          "coach": "Craig McLeish",
+          "starters": [
+            "J. Chapman",
+            "C. Ramsay",
+            "A. Gogic",
+            "H. Fieldson",
+            "D. John",
+            "P. Nsio",
+            "R. Carr",
+            "C. R. Mochrie",
+            "F. Taylor",
+            "I. Kabia",
+            "N. Agrafiotis"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556653,
+      "date": "2026-09-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 253,
+      "homeTeam": "Dundee",
+      "awayTeamId": 258,
+      "awayTeam": "ST Johnstone",
+      "home": {
+        "teamId": 253,
+        "team": "Dundee",
+        "shots": 10,
+        "shotsOnGoal": 2,
+        "possession": 48,
+        "corners": 2,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 258,
+        "team": "ST Johnstone",
+        "shots": 15,
+        "shotsOnGoal": 3,
+        "possession": 52,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 253,
+          "team": "Dundee",
+          "formation": "4-4-2",
+          "coach": "Steven Pressley",
+          "starters": [
+            "O. Goodman",
+            "B. Halliday",
+            "R. Astley",
+            "O. Bevan",
+            "I. Odutayo",
+            "J. Bevan",
+            "R. Finnigan",
+            "E. Hamilton",
+            "A. Forrest",
+            "B. Wales",
+            "J. Westley"
+          ]
+        },
+        {
+          "teamId": 258,
+          "team": "ST Johnstone",
+          "formation": "4-4-2",
+          "coach": "Simo Valakari",
+          "starters": [
+            "T. Steward",
+            "M. Todd",
+            "Z. Mitchell",
+            "C. Diabate",
+            "E. Alic",
+            "S. Stanton",
+            "J. Holt",
+            "R. McAlear",
+            "T. Steven",
+            "R. Paton",
+            "J. Gullan"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556657,
+      "date": "2026-09-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 256,
+      "homeTeam": "Motherwell",
+      "awayTeamId": 1386,
+      "awayTeam": "Dundee Utd",
+      "home": {
+        "teamId": 256,
+        "team": "Motherwell",
+        "shots": 25,
+        "shotsOnGoal": 8,
+        "possession": 71,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": 2.15
+      },
+      "away": {
+        "teamId": 1386,
+        "team": "Dundee Utd",
+        "shots": 5,
+        "shotsOnGoal": 1,
+        "possession": 29,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": 1,
+        "expectedGoals": 0.19
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 256,
+          "team": "Motherwell",
+          "formation": "4-2-2-2",
+          "coach": "Alfred Johansson",
+          "starters": [
+            "A. Paulsen",
+            "T. Sparrow",
+            "J. Knight-Lebel",
+            "M. Moormann",
+            "E. Longelo",
+            "L. Fadinger",
+            "J. Hodge",
+            "T. Maswanhise",
+            "A. Lowry",
+            "J. Kanga",
+            "S. Palmer-Houlden"
+          ]
+        },
+        {
+          "teamId": 1386,
+          "team": "Dundee Utd",
+          "formation": "4-3-3",
+          "coach": "Jim Goodwin",
+          "starters": [
+            "J. Walton",
+            "J. Rawlins",
+            "B. Esselink",
+            "M. Forbes",
+            "W. Ferry",
+            "P. Camara",
+            "E. Agyei",
+            "A. Yoro",
+            "M. Merghem",
+            "Z. Sapsford",
+            "D. Bennie"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556654,
+      "date": "2026-09-03",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 1389,
+      "homeTeam": "Falkirk",
+      "awayTeamId": 257,
+      "awayTeam": "Rangers",
+      "home": {
+        "teamId": 1389,
+        "team": "Falkirk",
+        "shots": 12,
+        "shotsOnGoal": 5,
+        "possession": 43,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 257,
+        "team": "Rangers",
+        "shots": 16,
+        "shotsOnGoal": 6,
+        "possession": 57,
+        "corners": 6,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1389,
+          "team": "Falkirk",
+          "formation": "4-2-3-1",
+          "coach": "John McGlynn",
+          "starters": [
+            "S. Bain",
+            "R. Strain",
+            "L. Neilson",
+            "L. Henderson",
+            "L. McCann",
+            "F. Barbrook",
+            "B. Spencer",
+            "E. Ross",
+            "B. Krauhaus",
+            "C. Fodrey",
+            "J. Murrell"
+          ]
+        },
+        {
+          "teamId": 257,
+          "team": "Rangers",
+          "formation": "4-2-3-1",
+          "coach": "Derek McInnes",
+          "starters": [
+            "I. Pandur",
+            "K. Nedeljkovic",
+            "E. Fernandez",
+            "O. Makhanya",
+            "J. Penrice",
+            "N. Raskin",
+            "C. Devlin",
+            "F. Curtis",
+            "M. Kim",
+            "D. Gassama",
+            "L. Shankland"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1558607,
+      "date": "2026-09-03",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeamId": 735,
+      "homeTeam": "St. Truiden",
+      "awayTeamId": 1393,
+      "awayTeam": "Union St. Gilloise",
+      "home": {
+        "teamId": 735,
+        "team": "St. Truiden",
+        "shots": 6,
+        "shotsOnGoal": 2,
+        "possession": 50,
+        "corners": 3,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 0.85
+      },
+      "away": {
+        "teamId": 1393,
+        "team": "Union St. Gilloise",
+        "shots": 12,
+        "shotsOnGoal": 6,
+        "possession": 50,
+        "corners": 1,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 2.49
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1393,
+          "team": "Union St. Gilloise",
+          "formation": "3-4-3",
+          "coach": "David Hubert",
+          "starters": [
+            "H. Koffi",
+            "K. Mac Allister",
+            "M. Sylla",
+            "O. Kricfalusi",
+            "L. Patris",
+            "K. Van De Perre",
+            "A. Zorgane",
+            "Guilherme Smith",
+            "B. Zeneli",
+            "M. Biondic",
+            "R. Mofokeng"
+          ]
+        },
+        {
+          "teamId": 735,
+          "team": "St. Truiden",
+          "formation": "",
+          "coach": "",
+          "starters": [
+            "L. Kokubo",
+            "R. Vanwesemael",
+            "W. Janssens",
+            "V. Musliu",
+            "J. Pupe",
+            "N. Ishiwatari",
+            "A. Sissako",
+            "A. Muja",
+            "R. Araki",
+            "I. Sebaoui",
+            "O. Diouf"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1563126,
       "date": "2026-09-02",
