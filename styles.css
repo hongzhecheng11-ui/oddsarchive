@@ -2175,6 +2175,88 @@ tbody tr:last-child td {
   background: #f1f5f9;
 }
 
+.home-strong-signal-section {
+  display: grid;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid rgba(21, 128, 61, 0.18);
+  border-radius: 8px;
+  background: #f4fbf6;
+}
+
+.home-strong-signal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.home-strong-signal-heading strong {
+  color: #15803d;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.home-strong-signal-heading span {
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.home-strong-signal-list {
+  display: grid;
+  gap: 4px;
+}
+
+.home-strong-signal-card {
+  display: grid;
+  gap: 3px;
+  padding: 6px 7px;
+  border: 1px solid rgba(21, 128, 61, 0.2);
+  border-radius: 7px;
+  background: #ffffff;
+}
+
+.home-strong-signal-card strong {
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.home-strong-signal-card span,
+.home-strong-signal-card b {
+  color: #15803d;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.home-strong-signal-league,
+.home-strong-signal-odds {
+  color: #64748b !important;
+}
+
+.home-strong-signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.home-strong-signal-meta b,
+.home-strong-signal-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #dcfce7;
+}
+
+.home-strong-signal-meta span {
+  color: #64748b;
+  background: #f1f5f9;
+}
+
 .home-today-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

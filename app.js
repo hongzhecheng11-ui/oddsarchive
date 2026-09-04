@@ -9451,8 +9451,55 @@ function assessTodayUpsetCandidate(match = {}, breakdown = {}, contextProfile = 
     directionExcess,
     strongestDirection,
     evidence,
-    scheduleSignals
+    scheduleSignals,
+    knownMatches
   };
+}
+
+// "오늘의 강한 신호": 이변 후보(정배가 위험하다는 쪽)의 반대 방향 — 시장이 예상한 것보다
+// 정배가 실제로 훨씬 더 잘 맞아떨어진 경기를 하루 최대 1건만 골라 보여준다. 예측이나
+// 승부 단정이 아니라 "이 조건에서 실제 적중률이 시장 예상보다 이만큼 높았다"는 과거
+// 근거만 보여주는 것이라, 표본이 충분치 않으면(하루에 그런 경기가 없으면) 억지로
+// 채우지 않고 그냥 비워둔다.
+const STRONG_SIGNAL_MIN_SAMPLE = 25;
+const STRONG_SIGNAL_MIN_LIFT = 10;
+const STRONG_SIGNAL_MIN_HIT_RATE = 65;
+
+function getTodayStrongSignal(matches = [], searchableMatches = getSearchableMatches()) {
+  const candidates = (Array.isArray(matches) ? matches : [])
+    .filter(hasCompleteOdds)
+    .map((match) => {
+      const analysis = getUpsetCandidateAnalysis(match, searchableMatches);
+      const contextProfile = getMatchContextProfile(match, searchableMatches);
+      const assessment = assessTodayUpsetCandidate(
+        match,
+        analysis?.breakdown || calculateResultBreakdown([]),
+        contextProfile
+      );
+      return { match, assessment };
+    })
+    .filter(({ assessment }) => (
+      assessment.knownMatches >= STRONG_SIGNAL_MIN_SAMPLE
+      && assessment.judgement.confidence !== "낮음"
+      && assessment.judgement.favoriteOdds !== null
+      && assessment.judgement.favoriteOdds <= 2.1
+      && Number(assessment.judgement.favoriteHitRate || 0) >= STRONG_SIGNAL_MIN_HIT_RATE
+      && (Number(assessment.judgement.favoriteHitRate || 0) - Number(assessment.marketFavoriteRate || 0)) >= STRONG_SIGNAL_MIN_LIFT
+    ))
+    .map(({ match, assessment }) => {
+      const hitRateLift = Number(assessment.judgement.favoriteHitRate || 0) - Number(assessment.marketFavoriteRate || 0);
+      return {
+        match,
+        judgement: assessment.judgement,
+        knownMatches: assessment.knownMatches,
+        marketFavoriteRate: assessment.marketFavoriteRate,
+        hitRateLift,
+        strongScore: hitRateLift * 1.2 + Math.min(5, assessment.knownMatches / 20)
+      };
+    })
+    .sort((left, right) => right.strongScore - left.strongScore);
+
+  return candidates[0] || null;
 }
 
 // 이변 후보 심사 전용 표본 탐색: analyzeLiveMatchOdds 는 "같은 리그·오차 0.05"에서
@@ -9713,6 +9760,66 @@ function renderHomeUpsetCandidates(matches = []) {
   list.replaceChildren(...candidates.map(createHomeUpsetCandidateCard));
 }
 
+function createHomeStrongSignalCard(item = {}) {
+  const match = item.match || {};
+  const judgement = item.judgement || {};
+  const card = document.createElement("article");
+  card.className = "home-strong-signal-card";
+  card.tabIndex = 0;
+  card.setAttribute?.("role", "button");
+
+  const league = document.createElement("span");
+  league.className = "home-strong-signal-league";
+  league.textContent = `${formatLeagueName(match.league)} · ${formatMatchStartTime(match)}`;
+
+  const title = document.createElement("strong");
+  title.textContent = `${formatTeamName(match.homeTeam)} vs ${formatTeamName(match.awayTeam)}`;
+
+  const odds = document.createElement("span");
+  odds.className = "home-strong-signal-odds";
+  odds.textContent = `배당 ${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}`;
+
+  const meta = document.createElement("div");
+  meta.className = "home-strong-signal-meta";
+  const evidence = document.createElement("b");
+  evidence.textContent = `이 조건 실제 적중률 ${Math.round(Number(judgement.favoriteHitRate || 0))}% · 시장 예상보다 ${Math.round(Number(item.hitRateLift || 0))}%p 높음`;
+  meta.appendChild(evidence);
+  const sampleBadge = document.createElement("span");
+  sampleBadge.textContent = `표본 ${Number(item.knownMatches || 0)}`;
+  meta.appendChild(sampleBadge);
+
+  card.append(league, title, odds, meta);
+  card.addEventListener("click", () => openMatchDetail(match));
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openMatchDetail(match);
+  });
+  return card;
+}
+
+function renderHomeStrongSignal(matches = []) {
+  if (typeof document === "undefined") return;
+  const section = document.getElementById("home-strong-signal-section");
+  const list = document.getElementById("home-strong-signal-list");
+  if (!section || !list) return;
+
+  if (!cachedSearchableMatches) {
+    section.hidden = true;
+    return;
+  }
+
+  const signal = getTodayStrongSignal(matches, cachedSearchableMatches);
+  if (!signal) {
+    section.hidden = true;
+    list.replaceChildren();
+    return;
+  }
+
+  section.hidden = false;
+  list.replaceChildren(createHomeStrongSignalCard(signal));
+}
+
 function createHomeTodayMatchCard(match, updatedAt = "", analysis = null) {
   const view = getHomeTodayCardViewModel(match, updatedAt, analysis);
   const card = document.createElement("article");
@@ -9791,6 +9898,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 
   if (majorMatches.length === 0) {
     renderHomeUpsetCandidates([]);
+    renderHomeStrongSignal([]);
     if (!list) return;
     const empty = document.createElement("div");
     empty.className = "empty-state compact-empty";
@@ -9812,6 +9920,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 
   if (!cachedSearchableMatches || typeof window === "undefined") {
     renderHomeUpsetCandidates(majorMatches);
+    renderHomeStrongSignal(majorMatches);
     return;
   }
 
@@ -9834,7 +9943,10 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
       )));
     }
     runWhenBrowserIsIdle(() => {
-      if (renderVersion === homeTodayAnalysisRenderVersion) renderHomeUpsetCandidates(majorMatches);
+      if (renderVersion === homeTodayAnalysisRenderVersion) {
+        renderHomeUpsetCandidates(majorMatches);
+        renderHomeStrongSignal(majorMatches);
+      }
     });
   };
   window.setTimeout(analyzeNextMatch, 0);
@@ -12796,6 +12908,8 @@ if (typeof module !== "undefined") {
     getUpsetCandidateAnalysis,
     getTodayUpsetCandidates,
     UPSET_CANDIDATE_MIN_SAMPLE,
+    getTodayStrongSignal,
+    STRONG_SIGNAL_MIN_SAMPLE,
     getLeagueBreakdownStats,
     getRecentKnownResults,
     buildMatchDetailAnalysis,
