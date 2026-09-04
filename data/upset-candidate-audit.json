@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-03T20:55:57.913Z",
+  "updatedAt": "2026-09-04T00:57:29.501Z",
   "summary": {
     "trackedDays": 48,
-    "trackedCandidates": 63,
+    "trackedCandidates": 64,
     "resolvedCandidates": 48,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -348,25 +348,25 @@
     {
       "date": "2026-09-04",
       "firstEvaluatedAt": "2026-08-31T16:08:10.003Z",
-      "lastEvaluatedAt": "2026-09-03T20:55:57.913Z",
+      "lastEvaluatedAt": "2026-09-04T00:57:29.501Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-03T20:55:57.913Z",
+      "lastEvaluatedAt": "2026-09-04T00:57:29.501Z",
       "eligibleMatchCount": 47,
       "candidateIds": [
         "fixture:1575149",
         "fixture:1557393",
-        "fixture:1552750"
+        "fixture:1552753"
       ]
     },
     {
       "date": "2026-09-06",
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastEvaluatedAt": "2026-09-03T20:55:57.913Z",
+      "lastEvaluatedAt": "2026-09-04T00:57:29.501Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
         "fixture:1584397",
@@ -379,7 +379,7 @@
     {
       "date": "2026-09-07",
       "firstEvaluatedAt": "2026-09-03T16:22:25.895Z",
-      "lastEvaluatedAt": "2026-09-03T20:55:57.913Z",
+      "lastEvaluatedAt": "2026-09-04T00:57:29.501Z",
       "eligibleMatchCount": 15,
       "candidateIds": []
     }
@@ -1764,6 +1764,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1552753",
+      "fixtureId": "1552753",
+      "date": "2026-09-05",
+      "league": "LIGUE1",
+      "homeTeam": "Paris Saint Germain",
+      "awayTeam": "Monaco",
+      "homeOdds": "1.40",
+      "drawOdds": "5.40",
+      "awayOdds": "5.90",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-09-04T00:57:29.501Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1557388",
       "fixtureId": "1557388",
       "date": "2026-09-05",
@@ -1808,7 +1834,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1834,7 +1860,7 @@
       ],
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1886,7 +1912,7 @@
       ],
       "sampleSize": 17,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1912,7 +1938,7 @@
       ],
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1938,7 +1964,7 @@
       ],
       "sampleSize": 60,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1964,7 +1990,7 @@
       ],
       "sampleSize": 21,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2016,7 +2042,7 @@
       ],
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastSeenAt": "2026-09-03T20:55:57.913Z",
+      "lastSeenAt": "2026-09-04T00:57:29.501Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
