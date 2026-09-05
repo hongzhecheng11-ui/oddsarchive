@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-05T15:09:07.153Z",
+  "updatedAt": "2026-09-05T20:15:55.335Z",
   "summary": {
     "trackedDays": 50,
-    "trackedCandidates": 73,
-    "resolvedCandidates": 51,
-    "favoriteFailures": 18,
-    "directionHits": 10
+    "trackedCandidates": 74,
+    "resolvedCandidates": 56,
+    "favoriteFailures": 21,
+    "directionHits": 11
   },
   "days": [
     {
@@ -365,17 +365,16 @@
     {
       "date": "2026-09-06",
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "eligibleMatchCount": 43,
+      "lastEvaluatedAt": "2026-09-05T20:15:55.335Z",
+      "eligibleMatchCount": 33,
       "candidateIds": [
-        "fixture:1558619",
-        "fixture:1556663"
+        "fixture:1570372"
       ]
     },
     {
       "date": "2026-09-07",
       "firstEvaluatedAt": "2026-09-03T16:22:25.895Z",
-      "lastEvaluatedAt": "2026-09-05T15:09:07.153Z",
+      "lastEvaluatedAt": "2026-09-05T20:15:55.335Z",
       "eligibleMatchCount": 15,
       "candidateIds": [
         "fixture:1575490"
@@ -384,14 +383,14 @@
     {
       "date": "2026-09-08",
       "firstEvaluatedAt": "2026-09-04T16:18:34.282Z",
-      "lastEvaluatedAt": "2026-09-05T15:09:07.153Z",
+      "lastEvaluatedAt": "2026-09-05T20:15:55.335Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-09-09",
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastEvaluatedAt": "2026-09-05T15:09:07.153Z",
+      "lastEvaluatedAt": "2026-09-05T20:15:55.335Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1635714",
@@ -1850,11 +1849,11 @@
       "sampleSize": 17,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
       "lastSeenAt": "2026-09-03T07:58:41.169Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "1-1",
+      "resolvedAt": "2026-09-05T20:15:55.335Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1557393",
@@ -1954,11 +1953,11 @@
       "sampleSize": 18,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
       "lastSeenAt": "2026-09-03T07:58:41.169Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "4-0",
+      "resolvedAt": "2026-09-05T20:15:55.335Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1575157",
@@ -1980,10 +1979,10 @@
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-05T00:54:48.525Z",
       "lastSeenAt": "2026-09-05T07:36:21.214Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "A",
+      "score": "0-1",
+      "resolvedAt": "2026-09-05T20:15:55.335Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -2110,10 +2109,10 @@
       "sampleSize": 40,
       "firstEvaluatedAt": "2026-09-05T11:49:29.507Z",
       "lastSeenAt": "2026-09-05T15:09:07.153Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "A",
+      "score": "0-4",
+      "resolvedAt": "2026-09-05T20:15:55.335Z",
+      "favoriteFailed": true,
       "directionHit": null
     },
     {
@@ -2169,6 +2168,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1570372",
+      "fixtureId": "1570372",
+      "date": "2026-09-06",
+      "league": "LALIGA",
+      "homeTeam": "Villarreal",
+      "awayTeam": "Deportivo La Coruna",
+      "homeOdds": "1.44",
+      "drawOdds": "4.60",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 91,
+      "firstEvaluatedAt": "2026-09-05T20:15:55.335Z",
+      "lastSeenAt": "2026-09-05T20:15:55.335Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1575489",
       "fixtureId": "1575489",
       "date": "2026-09-06",
@@ -2214,10 +2239,10 @@
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
       "lastSeenAt": "2026-09-04T07:55:03.810Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "A",
+      "score": "1-2",
+      "resolvedAt": "2026-09-05T20:15:55.335Z",
+      "favoriteFailed": true,
       "directionHit": null
     },
     {
@@ -2239,7 +2264,7 @@
       ],
       "sampleSize": 22,
       "firstEvaluatedAt": "2026-09-04T12:42:16.399Z",
-      "lastSeenAt": "2026-09-05T15:09:07.153Z",
+      "lastSeenAt": "2026-09-05T20:15:55.335Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2265,7 +2290,7 @@
       ],
       "sampleSize": 70,
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastSeenAt": "2026-09-05T15:09:07.153Z",
+      "lastSeenAt": "2026-09-05T20:15:55.335Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2291,7 +2316,7 @@
       ],
       "sampleSize": 161,
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastSeenAt": "2026-09-05T15:09:07.153Z",
+      "lastSeenAt": "2026-09-05T20:15:55.335Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
