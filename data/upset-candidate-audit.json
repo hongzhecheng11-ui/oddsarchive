@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-04T20:42:00.068Z",
+  "updatedAt": "2026-09-05T00:54:48.525Z",
   "summary": {
     "trackedDays": 49,
-    "trackedCandidates": 67,
+    "trackedCandidates": 68,
     "resolvedCandidates": 50,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -355,16 +355,17 @@
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-04T20:42:00.068Z",
+      "lastEvaluatedAt": "2026-09-05T00:54:48.525Z",
       "eligibleMatchCount": 41,
       "candidateIds": [
-        "fixture:1557393"
+        "fixture:1557393",
+        "fixture:1575157"
       ]
     },
     {
       "date": "2026-09-06",
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastEvaluatedAt": "2026-09-04T20:42:00.068Z",
+      "lastEvaluatedAt": "2026-09-05T00:54:48.525Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
         "fixture:1570371",
@@ -374,7 +375,7 @@
     {
       "date": "2026-09-07",
       "firstEvaluatedAt": "2026-09-03T16:22:25.895Z",
-      "lastEvaluatedAt": "2026-09-04T20:42:00.068Z",
+      "lastEvaluatedAt": "2026-09-05T00:54:48.525Z",
       "eligibleMatchCount": 15,
       "candidateIds": [
         "fixture:1575490"
@@ -383,7 +384,7 @@
     {
       "date": "2026-09-08",
       "firstEvaluatedAt": "2026-09-04T16:18:34.282Z",
-      "lastEvaluatedAt": "2026-09-04T20:42:00.068Z",
+      "lastEvaluatedAt": "2026-09-05T00:54:48.525Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     }
@@ -1838,7 +1839,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastSeenAt": "2026-09-04T20:42:00.068Z",
+      "lastSeenAt": "2026-09-05T00:54:48.525Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1917,6 +1918,32 @@
       "sampleSize": 18,
       "firstEvaluatedAt": "2026-09-02T12:45:09.107Z",
       "lastSeenAt": "2026-09-03T07:58:41.169Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575157",
+      "fixtureId": "1575157",
+      "date": "2026-09-05",
+      "league": "BUNDESLIGA",
+      "homeTeam": "SC Paderborn 07",
+      "awayTeam": "SC Freiburg",
+      "homeOdds": "3.40",
+      "drawOdds": "3.50",
+      "awayOdds": "1.95",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 27,
+      "firstEvaluatedAt": "2026-09-05T00:54:48.525Z",
+      "lastSeenAt": "2026-09-05T00:54:48.525Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2020,7 +2047,7 @@
       ],
       "sampleSize": 21,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-04T20:42:00.068Z",
+      "lastSeenAt": "2026-09-05T00:54:48.525Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2046,7 +2073,7 @@
       ],
       "sampleSize": 34,
       "firstEvaluatedAt": "2026-09-04T12:42:16.399Z",
-      "lastSeenAt": "2026-09-04T20:42:00.068Z",
+      "lastSeenAt": "2026-09-05T00:54:48.525Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2124,7 +2151,7 @@
       ],
       "sampleSize": 22,
       "firstEvaluatedAt": "2026-09-04T12:42:16.399Z",
-      "lastSeenAt": "2026-09-04T20:42:00.068Z",
+      "lastSeenAt": "2026-09-05T00:54:48.525Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
