@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-05T07:36:21.214Z",
+  "updatedAt": "2026-09-05T11:49:29.507Z",
   "summary": {
     "trackedDays": 49,
-    "trackedCandidates": 70,
+    "trackedCandidates": 71,
     "resolvedCandidates": 50,
     "favoriteFailures": 17,
     "directionHits": 10
@@ -355,29 +355,27 @@
     {
       "date": "2026-09-05",
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastEvaluatedAt": "2026-09-05T07:36:21.214Z",
+      "lastEvaluatedAt": "2026-09-05T11:49:29.507Z",
       "eligibleMatchCount": 41,
       "candidateIds": [
         "fixture:1557393",
-        "fixture:1575157",
         "fixture:1510437"
       ]
     },
     {
       "date": "2026-09-06",
       "firstEvaluatedAt": "2026-09-02T16:31:43.933Z",
-      "lastEvaluatedAt": "2026-09-05T07:36:21.214Z",
+      "lastEvaluatedAt": "2026-09-05T11:49:29.507Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
-        "fixture:1558621",
-        "fixture:1570371",
+        "fixture:1558619",
         "fixture:1556663"
       ]
     },
     {
       "date": "2026-09-07",
       "firstEvaluatedAt": "2026-09-03T16:22:25.895Z",
-      "lastEvaluatedAt": "2026-09-05T07:36:21.214Z",
+      "lastEvaluatedAt": "2026-09-05T11:49:29.507Z",
       "eligibleMatchCount": 15,
       "candidateIds": [
         "fixture:1575490"
@@ -386,7 +384,7 @@
     {
       "date": "2026-09-08",
       "firstEvaluatedAt": "2026-09-04T16:18:34.282Z",
-      "lastEvaluatedAt": "2026-09-05T07:36:21.214Z",
+      "lastEvaluatedAt": "2026-09-05T11:49:29.507Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     }
@@ -1763,7 +1761,7 @@
       ],
       "sampleSize": 18,
       "firstEvaluatedAt": "2026-09-05T07:36:21.214Z",
-      "lastSeenAt": "2026-09-05T07:36:21.214Z",
+      "lastSeenAt": "2026-09-05T11:49:29.507Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -1867,7 +1865,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-01T16:35:18.736Z",
-      "lastSeenAt": "2026-09-05T07:36:21.214Z",
+      "lastSeenAt": "2026-09-05T11:49:29.507Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2075,7 +2073,33 @@
       ],
       "sampleSize": 21,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
-      "lastSeenAt": "2026-09-05T07:36:21.214Z",
+      "lastSeenAt": "2026-09-05T11:49:29.507Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1558619",
+      "fixtureId": "1558619",
+      "date": "2026-09-06",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeam": "KV Mechelen",
+      "awayTeam": "KVC Westerlo",
+      "homeOdds": "2.00",
+      "drawOdds": "3.30",
+      "awayOdds": "3.40",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 40,
+      "firstEvaluatedAt": "2026-09-05T11:49:29.507Z",
+      "lastSeenAt": "2026-09-05T11:49:29.507Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2205,7 +2229,7 @@
       ],
       "sampleSize": 22,
       "firstEvaluatedAt": "2026-09-04T12:42:16.399Z",
-      "lastSeenAt": "2026-09-05T07:36:21.214Z",
+      "lastSeenAt": "2026-09-05T11:49:29.507Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
