@@ -67,10 +67,14 @@ async function run() {
       "sb-testproject-auth-token": "{\"broken\":true}",
       "oddsArchiveFavorites": "[]"
     });
+    const brokenToken = Object.assign(new Error("Invalid Refresh Token: Already Used"), {
+      name: "AuthApiError",
+      __isAuthError: true
+    });
     const { service, getClientsCreated } = createService(auth, {
       storage,
       onSession: (attempt) => (attempt === 1
-        ? Promise.reject(new Error("stuck refreshing"))
+        ? Promise.reject(brokenToken)
         : Promise.resolve({ data: { session: null } }))
     });
 
@@ -84,13 +88,28 @@ async function run() {
   await test("gives up with the original error when there is no stored token to clear", async () => {
     const auth = authRuntime();
     const storage = createStorage({ "oddsArchiveFavorites": "[]" });
+    const authError = Object.assign(new Error("Invalid Refresh Token"), { name: "AuthApiError", __isAuthError: true });
     const { service, getClientsCreated } = createService(auth, {
       storage,
-      onSession: () => Promise.reject(new Error("session lookup failed"))
+      onSession: () => Promise.reject(authError)
     });
 
-    await assert.rejects(() => service.initialize(), /기존 로그인 확인: session lookup failed/);
+    await assert.rejects(() => service.initialize(), /기존 로그인 확인: Invalid Refresh Token/);
     assert.strictEqual(getClientsCreated(), 1, "no pointless retry when nothing was cleared");
+  });
+
+  // 이걸 안 지키면 느린 네트워크에서 멀쩡한 로그인이 매번 날아가 자동 로그인이 풀린다.
+  await test("keeps the stored token when the check merely failed or timed out", async () => {
+    const auth = authRuntime();
+    const storage = createStorage({ "sb-testproject-auth-token": "{\"valid\":true}" });
+    const { service, getClientsCreated } = createService(auth, {
+      storage,
+      onSession: () => Promise.reject(new Error("network hiccup"))
+    });
+
+    await assert.rejects(() => service.initialize(), /network hiccup/);
+    assert.strictEqual(storage.has("sb-testproject-auth-token"), true, "a slow or flaky check must not log the user out");
+    assert.strictEqual(getClientsCreated(), 1);
   });
 
   await test("does not touch storage when the stored session loads fine", async () => {

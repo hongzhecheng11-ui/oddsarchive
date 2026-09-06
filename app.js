@@ -3927,6 +3927,15 @@ function getBundledFootballDataSearchPack() {
   return null;
 }
 
+// 로그인이 느리다는 신고를 어림짐작으로 쫓지 않으려고, 오래 걸린 단계를 화면에 같이 적는다.
+// 1초 넘게 걸린 단계만 보여줘서 평소에는 눈에 띄지 않는다.
+function formatLoginTimingNote() {
+  const timings = cloudAccountService?.getLoginTimings?.() || [];
+  const slow = timings.filter((entry) => Number(entry.ms) >= 1000);
+  if (slow.length === 0) return "";
+  return ` (${slow.map((entry) => `${entry.stage} ${(entry.ms / 1000).toFixed(1)}초`).join(" · ")})`;
+}
+
 function setCloudAccountUi(state = {}) {
   cloudAccountState = state.status || cloudAccountState;
   cloudAccountIsAdmin = Boolean(state.isAdmin);
@@ -3948,7 +3957,7 @@ function setCloudAccountUi(state = {}) {
     offline: "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.",
     unavailable: "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."
   };
-  if (status) status.textContent = state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다.";
+  if (status) status.textContent = `${state.message || messages[state.status] || "Google 로그인은 이 화면에서만 불러옵니다."}${formatLoginTimingNote()}`;
   if (signInButton) signInButton.hidden = signedIn;
   if (switchAccountButton) switchAccountButton.hidden = !signedIn;
   if (signOutButton) signOutButton.hidden = !signedIn;
@@ -3996,7 +4005,7 @@ function loadBrowserScript(source, marker) {
 
 async function loadCloudAccountService() {
   if (cloudAccountService) return cloudAccountService;
-  await loadBrowserScript("/src/lib/auth.js?v=10", "account-auth");
+  await loadBrowserScript("/src/lib/auth.js?v=11", "account-auth");
   if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
   if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
     favorites: {

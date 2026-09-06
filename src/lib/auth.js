@@ -32,12 +32,33 @@
     };
   }
 
+  // 어느 단계가 얼마나 걸렸는지 남긴다. 로그인이 느리다는 신고가 들어왔을 때
+  // 화면에서 바로 확인할 수 있어야 어림짐작으로 고치지 않는다.
+  const loginTimings = [];
+
+  function recordLoginTiming(stage, startedAt, outcome) {
+    loginTimings.push({ stage, ms: Math.round(Date.now() - startedAt), outcome });
+    if (loginTimings.length > 12) loginTimings.shift();
+  }
+
   function waitForLoginStep(promise, stage) {
+    const startedAt = Date.now();
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error(`${stage}: ${LOGIN_TIMEOUT_MESSAGE}`)), LOGIN_TIMEOUT_MS);
-      Promise.resolve(promise).then(resolve, (error) => {
-        reject(new Error(`${stage}: ${error?.message || String(error)}`));
-      }).finally(() => clearTimeout(timer));
+      const timer = setTimeout(() => {
+        recordLoginTiming(stage, startedAt, "timeout");
+        const timeoutError = new Error(`${stage}: ${LOGIN_TIMEOUT_MESSAGE}`);
+        timeoutError.isLoginTimeout = true;
+        reject(timeoutError);
+      }, LOGIN_TIMEOUT_MS);
+      Promise.resolve(promise).then(
+        (value) => { recordLoginTiming(stage, startedAt, "ok"); resolve(value); },
+        (error) => {
+          recordLoginTiming(stage, startedAt, "error");
+          const wrapped = new Error(`${stage}: ${error?.message || String(error)}`);
+          wrapped.cause = error;
+          reject(wrapped);
+        }
+      ).finally(() => clearTimeout(timer));
     });
   }
 
@@ -280,11 +301,22 @@
     // 기기에 남은 토큰이 원인이면 사용자가 브라우저 사이트 데이터를 직접 지우는 것 말고는
     // 빠져나올 방법이 없다. 한 번은 우리가 대신 지우고 다시 시도한다. 클라이언트도 새로
     // 만드는데, 이미 메모리에 올라간 세션까지 버려야 지운 효과가 나기 때문이다.
+    // 저장된 토큰이 진짜로 못 쓰게 됐을 때만 지운다. 느려서 시간이 초과된 것뿐인데
+    // 지워버리면 멀쩡한 로그인이 날아가고 자동 로그인이 매번 풀린다.
+    function isBrokenSessionError(error) {
+      if (error?.isLoginTimeout) return false;
+      const cause = error?.cause;
+      if (cause?.__isAuthError) return true;
+      return /AuthApiError|AuthSessionMissingError|invalid[ _]?grant|refresh[ _]?token/i.test(
+        `${cause?.name || ""} ${cause?.message || error?.message || ""}`
+      );
+    }
+
     async function readStoredSessionWithRecovery() {
       try {
         return await readStoredSession("기존 로그인 확인");
       } catch (error) {
-        if (!clearStoredAuthTokens()) throw error;
+        if (!isBrokenSessionError(error) || !clearStoredAuthTokens()) throw error;
         client = clientFactory(config);
         return readStoredSession("기존 로그인 다시 확인");
       }
@@ -392,7 +424,8 @@
       synchronizeSession,
       getUserId: () => userId,
       getIsAdmin: () => isAdmin,
-      getAccessToken: () => accessToken
+      getAccessToken: () => accessToken,
+      getLoginTimings: () => loginTimings.map((entry) => ({ ...entry }))
     };
   }
 
