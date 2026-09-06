@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v152-auth-token-recovery";
+const CACHE_NAME = "oddsarchive-v153-today-analysis-cache";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=147",
-  "/app.js?v=147",
+  "/app.js?v=148",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",

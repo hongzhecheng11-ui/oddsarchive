@@ -197,6 +197,7 @@ let cachedSearchableMatches = null;
 let footballDataPackLoadPromise = null;
 const matchContextProfileCache = new Map();
 const todayMatchAnalysisCache = new Map();
+const upsetCandidateAnalysisCache = new Map();
 let homeTodayAnalysisRenderVersion = 0;
 
 const CSV_HEADER_ALIASES = {
@@ -583,6 +584,7 @@ function invalidateSearchableMatchesCache() {
   cachedSearchableMatches = null;
   matchContextProfileCache.clear();
   todayMatchAnalysisCache.clear();
+  upsetCandidateAnalysisCache.clear();
 }
 
 function setPendingValidRows(rows) {
@@ -9520,19 +9522,8 @@ const STRONG_SIGNAL_MIN_SAMPLE = 25;
 const STRONG_SIGNAL_MIN_LIFT = 10;
 const STRONG_SIGNAL_MIN_HIT_RATE = 65;
 
-function getTodayStrongSignal(matches = [], searchableMatches = getSearchableMatches()) {
-  const candidates = (Array.isArray(matches) ? matches : [])
-    .filter(hasCompleteOdds)
-    .map((match) => {
-      const analysis = getUpsetCandidateAnalysis(match, searchableMatches);
-      const contextProfile = getMatchContextProfile(match, searchableMatches);
-      const assessment = assessTodayUpsetCandidate(
-        match,
-        analysis?.breakdown || calculateResultBreakdown([]),
-        contextProfile
-      );
-      return { match, assessment };
-    })
+function getTodayStrongSignal(matches = [], searchableMatches = getSearchableMatches(), assessed = null) {
+  const candidates = (assessed || assessTodayMatches(matches, searchableMatches))
     .filter(({ assessment }) => (
       assessment.knownMatches >= STRONG_SIGNAL_MIN_SAMPLE
       && assessment.judgement.confidence !== "낮음"
@@ -9562,7 +9553,18 @@ function getTodayStrongSignal(matches = [], searchableMatches = getSearchableMat
 // 1~2건에 머물렀다 (UPSET_CANDIDATE_MIN_SAMPLE 을 구조적으로 못 넘김). 여기서는 그
 // 판정 기준(15경기)을 채울 때까지 오차·리그 범위를 넓혀가며 다시 찾는다.
 // 오늘의 경기 카드 등 다른 화면이 쓰는 getTodayMatchAnalysis 자체는 건드리지 않는다.
+// 이 함수는 전체 배당 데이터를 최대 네 번까지 훑기 때문에 오늘 경기 화면에서 가장 무겁다.
+// 같은 렌더 안에서도 여러 곳이 같은 경기를 물어보므로 결과를 캐시한다. 데이터가 바뀌면
+// invalidateSearchableMatchesCache 에서 같이 비운다.
 function getUpsetCandidateAnalysis(match = {}, searchableMatches = []) {
+  const cacheKey = `${getMatchIdentity(match)}|${formatOdds(match.homeOdds)}|${formatOdds(match.drawOdds)}|${formatOdds(match.awayOdds)}|${match.tolerance || "0.05"}|${Array.isArray(searchableMatches) ? searchableMatches.length : 0}`;
+  if (upsetCandidateAnalysisCache.has(cacheKey)) return upsetCandidateAnalysisCache.get(cacheKey);
+  const analysis = computeUpsetCandidateAnalysis(match, searchableMatches);
+  upsetCandidateAnalysisCache.set(cacheKey, analysis);
+  return analysis;
+}
+
+function computeUpsetCandidateAnalysis(match = {}, searchableMatches = []) {
   const criteria = {
     homeTeam: match.homeTeam,
     awayTeam: match.awayTeam,
@@ -9593,7 +9595,9 @@ function getUpsetCandidateAnalysis(match = {}, searchableMatches = []) {
   return widest || { error: "", matches: [], breakdown: calculateResultBreakdown([]) };
 }
 
-function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchableMatches()) {
+// 이변 후보와 강한 신호는 같은 심사 결과를 서로 다른 기준으로 걸러 쓴다. 경기당 심사가
+// 전체 데이터 스캔을 동반할 만큼 비싸서, 한 번만 돌려 두 곳이 나눠 쓰도록 한다.
+function assessTodayMatches(matches = [], searchableMatches = getSearchableMatches()) {
   return (Array.isArray(matches) ? matches : [])
     .filter(hasCompleteOdds)
     .map((match) => {
@@ -9604,17 +9608,22 @@ function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchable
         analysis?.breakdown || calculateResultBreakdown([]),
         contextProfile
       );
-      return {
-        match,
-        analysis,
-        judgement: assessment.judgement,
-        contextProfile,
-        topLabel: assessment.topLabel,
-        topScore: assessment.topScore,
-        evidence: assessment.evidence.slice(0, 2),
-        isTopCandidate: assessment.isTopCandidate
-      };
-    })
+      return { match, analysis, contextProfile, assessment };
+    });
+}
+
+function getTodayUpsetCandidates(matches = [], searchableMatches = getSearchableMatches(), assessed = null) {
+  return (assessed || assessTodayMatches(matches, searchableMatches))
+    .map(({ match, analysis, contextProfile, assessment }) => ({
+      match,
+      analysis,
+      judgement: assessment.judgement,
+      contextProfile,
+      topLabel: assessment.topLabel,
+      topScore: assessment.topScore,
+      evidence: assessment.evidence.slice(0, 2),
+      isTopCandidate: assessment.isTopCandidate
+    }))
     .filter((item) => item.isTopCandidate)
     .sort((left, right) => Number(right.topScore || 0) - Number(left.topScore || 0));
 }
@@ -9787,7 +9796,7 @@ function createHomeUpsetCandidateCard(item = {}) {
   return card;
 }
 
-function renderHomeUpsetCandidates(matches = []) {
+function renderHomeUpsetCandidates(matches = [], assessed = null) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("home-upset-list");
   if (!list) return;
@@ -9803,7 +9812,7 @@ function renderHomeUpsetCandidates(matches = []) {
     return;
   }
 
-  const candidates = getTodayUpsetCandidates(matches, cachedSearchableMatches);
+  const candidates = getTodayUpsetCandidates(matches, cachedSearchableMatches, assessed);
   if (candidates.length === 0) {
     const empty = document.createElement("div");
     empty.className = "home-upset-empty";
@@ -9853,7 +9862,7 @@ function createHomeStrongSignalCard(item = {}) {
   return card;
 }
 
-function renderHomeStrongSignal(matches = []) {
+function renderHomeStrongSignal(matches = [], assessed = null) {
   if (typeof document === "undefined") return;
   const section = document.getElementById("home-strong-signal-section");
   const list = document.getElementById("home-strong-signal-list");
@@ -9864,7 +9873,7 @@ function renderHomeStrongSignal(matches = []) {
     return;
   }
 
-  const signal = getTodayStrongSignal(matches, cachedSearchableMatches);
+  const signal = getTodayStrongSignal(matches, cachedSearchableMatches, assessed);
   if (!signal) {
     section.hidden = true;
     list.replaceChildren();
@@ -9974,6 +9983,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
   }
 
   if (!cachedSearchableMatches || typeof window === "undefined") {
+    // 아직 과거 데이터가 없으면 심사할 것도 없다. 두 렌더러가 알아서 빈 상태를 그린다.
     renderHomeUpsetCandidates(majorMatches);
     renderHomeStrongSignal(majorMatches);
     return;
@@ -9999,8 +10009,12 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     }
     runWhenBrowserIsIdle(() => {
       if (renderVersion === homeTodayAnalysisRenderVersion) {
-        renderHomeUpsetCandidates(majorMatches);
-        renderHomeStrongSignal(majorMatches);
+        // 이 콜백은 나중에 실행돼서 그 사이 데이터 캐시가 비워졌을 수 있다.
+        const assessed = cachedSearchableMatches
+          ? assessTodayMatches(majorMatches, cachedSearchableMatches)
+          : null;
+        renderHomeUpsetCandidates(majorMatches, assessed);
+        renderHomeStrongSignal(majorMatches, assessed);
       }
     });
   };
@@ -12962,6 +12976,7 @@ if (typeof module !== "undefined") {
     assessTodayUpsetCandidate,
     getUpsetCandidateAnalysis,
     getTodayUpsetCandidates,
+    assessTodayMatches,
     UPSET_CANDIDATE_MIN_SAMPLE,
     getTodayStrongSignal,
     STRONG_SIGNAL_MIN_SAMPLE,
