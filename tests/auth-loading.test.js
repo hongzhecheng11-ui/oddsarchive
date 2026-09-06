@@ -197,4 +197,44 @@ async function checkLoader(load, document, timer) {
     global.window = savedWindow;
   }
   console.log("PASS login loaders recover, and the login button starts OAuth despite a stalled or timed-out old session");
+  let authCallback;
+  let authLockHeld = false;
+  let databaseCalls = 0;
+  const eventService = runtime.createAccountService({
+    fetchConfig: async () => ({ sdkUrl: "sdk" }),
+    sdkLoader: async () => {},
+    clientFactory: () => ({
+      auth: {
+        getSession: async () => ({ data: { session: null } }),
+        onAuthStateChange(callback) { authCallback = callback; return {}; }
+      },
+      from() {
+        assert.equal(authLockHeld, false, "database access must wait for the auth lock to release");
+        databaseCalls += 1;
+        return { select: async () => ({ data: [] }) };
+      }
+    })
+  });
+  await eventService.initialize();
+  authLockHeld = true;
+  authCallback("SIGNED_IN", { user: { id: "event-user" } });
+  await drain();
+  assert.equal(databaseCalls, 0);
+  authLockHeld = false;
+  // This runtime uses a fake clock; the event task is the only remaining timer.
+  // Dispatch separately below with a real-clock runtime to check eventual synchronization.
+  const realRuntime = authRuntime({ setTimeout, clearTimeout });
+  let realCallback;
+  const realService = realRuntime.createAccountService({
+    fetchConfig: async () => ({ sdkUrl: "sdk" }), sdkLoader: async () => {},
+    clientFactory: () => ({ auth: {
+      getSession: async () => ({ data: { session: null } }),
+      onAuthStateChange(callback) { realCallback = callback; return {}; }
+    }, from() { return { select: async () => ({ data: [] }) }; } })
+  });
+  await realService.initialize();
+  realCallback("SIGNED_IN", { user: { id: "event-user" } });
+  await new Promise((resolve) => setTimeout(resolve, 10));
+  assert.equal(realService.getUserId(), "event-user");
+  console.log("PASS auth-event database calls run after session lock release");
 })().catch((error) => { console.error(error); process.exitCode = 1; });

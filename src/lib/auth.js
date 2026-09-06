@@ -221,7 +221,10 @@
         if (error) throw error;
         await synchronizeSession(data?.session || null);
         const listener = client.auth.onAuthStateChange((_event, session) => {
-          Promise.resolve().then(() => synchronizeSession(session)).catch(() => emit("offline"));
+          // Run database calls after the auth event has released its session lock.
+          setTimeout(() => {
+            synchronizeSession(session).catch(() => emit("offline"));
+          }, 0);
         });
         authSubscription = listener?.data?.subscription || null;
         return { client, userId };

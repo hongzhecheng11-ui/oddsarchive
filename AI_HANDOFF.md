@@ -1,5 +1,11 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Auth-event scheduling fix: deployment approved
+- Phone screenshot: saved-session lookup exceeds 15 seconds; user confirms normal phone Chrome also fails but Incognito succeeds. Device root cause is not confirmed.
+- src/lib/auth.js: defer auth-event favorite synchronization with setTimeout(0), rather than a microtask, so database calls start after the SDK auth-event lock can release. No session, favorite, or account deletion and no lock bypass.
+- tests/auth-loading.test.js verifies no database call during the simulated auth lock and eventual session synchronization. Full npm test passes.
+- User approved deployment. Asset references: app v145, auth v8, service-worker v150-auth-event-scheduling. Phone recovery still requires verification after deployment.
+
 ## Deployed: match-detail at-a-glance card
 - `app.js`: the first section of the Match Summary tab now brings together comparison basis, completed sample count, home/draw/away results, the dominant historical result and a low-sample caution. It uses similar odds first and falls back to exact odds only when no similar-odds results exist.
 - `src/lib/i18n.js`: added English labels and English summary copy.
