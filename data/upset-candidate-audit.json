@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-06T12:07:40.266Z",
+  "updatedAt": "2026-09-06T15:25:09.349Z",
   "summary": {
-    "trackedDays": 50,
-    "trackedCandidates": 74,
-    "resolvedCandidates": 57,
-    "favoriteFailures": 22,
-    "directionHits": 12
+    "trackedDays": 51,
+    "trackedCandidates": 75,
+    "resolvedCandidates": 58,
+    "favoriteFailures": 23,
+    "directionHits": 13
   },
   "days": [
     {
@@ -374,28 +374,36 @@
     {
       "date": "2026-09-07",
       "firstEvaluatedAt": "2026-09-03T16:22:25.895Z",
-      "lastEvaluatedAt": "2026-09-06T12:07:40.266Z",
+      "lastEvaluatedAt": "2026-09-06T15:25:09.349Z",
       "eligibleMatchCount": 15,
       "candidateIds": [
+        "fixture:1550108",
         "fixture:1575490"
       ]
     },
     {
       "date": "2026-09-08",
       "firstEvaluatedAt": "2026-09-04T16:18:34.282Z",
-      "lastEvaluatedAt": "2026-09-06T12:07:40.266Z",
+      "lastEvaluatedAt": "2026-09-06T15:25:09.349Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     },
     {
       "date": "2026-09-09",
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastEvaluatedAt": "2026-09-06T12:07:40.266Z",
+      "lastEvaluatedAt": "2026-09-06T15:25:09.349Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1552136",
         "fixture:1635714"
       ]
+    },
+    {
+      "date": "2026-09-10",
+      "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
+      "lastEvaluatedAt": "2026-09-06T15:25:09.349Z",
+      "eligibleMatchCount": 13,
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -2031,11 +2039,11 @@
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-03T12:48:20.118Z",
       "lastSeenAt": "2026-09-04T07:55:03.810Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "2-2",
+      "resolvedAt": "2026-09-06T15:25:09.349Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1556660",
@@ -2246,6 +2254,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1550108",
+      "fixtureId": "1550108",
+      "date": "2026-09-07",
+      "league": "SERIEA",
+      "homeTeam": "Bologna",
+      "awayTeam": "Sassuolo",
+      "homeOdds": "1.91",
+      "drawOdds": "3.40",
+      "awayOdds": "3.60",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 26,
+      "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
+      "lastSeenAt": "2026-09-06T15:25:09.349Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1575490",
       "fixtureId": "1575490",
       "date": "2026-09-07",
@@ -2264,7 +2298,7 @@
       ],
       "sampleSize": 22,
       "firstEvaluatedAt": "2026-09-04T12:42:16.399Z",
-      "lastSeenAt": "2026-09-06T12:07:40.266Z",
+      "lastSeenAt": "2026-09-06T15:25:09.349Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2290,7 +2324,7 @@
       ],
       "sampleSize": 70,
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastSeenAt": "2026-09-06T12:07:40.266Z",
+      "lastSeenAt": "2026-09-06T15:25:09.349Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2316,7 +2350,7 @@
       ],
       "sampleSize": 161,
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastSeenAt": "2026-09-06T12:07:40.266Z",
+      "lastSeenAt": "2026-09-06T15:25:09.349Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
