@@ -174,7 +174,7 @@ let adminMemberStatistics = null;
 let adminMemberStatisticsOwnerId = "";
 let adminMemberStatisticsLoadPromise = null;
 let guestAccessGateRequested = false;
-let memoryGuestSearchTrialUsed = false;
+let memoryGuestSearchTrialCount = 0;
 let memoryAutoUpdateState = null;
 let memoryLocalAccount = null;
 let memoryTodayMatches = [];
@@ -3838,22 +3838,40 @@ function setAccountStatus(message) {
   if (element) element.textContent = message;
 }
 
-function hasUsedGuestSearchTrial(storage) {
+// 예전에는 무료 체험이 1회였는데, 처음 온 사람이 앱을 제대로 보기도 전에 로그인 벽에
+// 막혔다. 구글 플레이가 지적한 "테스터가 실제로 앱을 쓰지 않았다"의 원인이기도 해서
+// 로그인 전에 충분히 둘러볼 수 있게 횟수를 늘렸다.
+const GUEST_SEARCH_TRIAL_LIMIT = 10;
+
+function readGuestSearchTrialCount(storage) {
   const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
   try {
-    return target?.getItem(GUEST_SEARCH_TRIAL_KEY) === "true" || memoryGuestSearchTrialUsed;
+    const raw = target?.getItem(GUEST_SEARCH_TRIAL_KEY);
+    // 1회 제한이던 시절에는 "true" 로 저장했다. 그 사용자는 1회 쓴 것으로 보고 나머지를 준다.
+    const stored = raw === "true" ? 1 : Number(raw);
+    const used = Number.isFinite(stored) && stored > 0 ? Math.floor(stored) : 0;
+    return Math.max(used, memoryGuestSearchTrialCount);
   } catch (_error) {
-    return memoryGuestSearchTrialUsed;
+    return memoryGuestSearchTrialCount;
   }
 }
 
+function getGuestSearchTrialsLeft(storage) {
+  return Math.max(0, GUEST_SEARCH_TRIAL_LIMIT - readGuestSearchTrialCount(storage));
+}
+
+function hasUsedGuestSearchTrial(storage) {
+  return getGuestSearchTrialsLeft(storage) <= 0;
+}
+
 function markGuestSearchTrialUsed(storage) {
-  memoryGuestSearchTrialUsed = true;
+  const used = readGuestSearchTrialCount(storage) + 1;
+  memoryGuestSearchTrialCount = used;
   const target = storage || (typeof window !== "undefined" ? window.localStorage : null);
   try {
-    target?.setItem(GUEST_SEARCH_TRIAL_KEY, "true");
+    target?.setItem(GUEST_SEARCH_TRIAL_KEY, String(used));
   } catch (_error) {
-    // Memory state still prevents repeated guest searches in this session.
+    // Memory state still counts guest usage for this session.
   }
 }
 
@@ -4130,7 +4148,7 @@ function setCloudAccountUi(state = {}) {
     signed_in: "Google 계정과 즐겨찾기가 동기화되었습니다.",
     signed_out: hasUsedGuestSearchTrial()
       ? "무료 체험을 사용했습니다. Google 로그인 후 계속 이용할 수 있습니다."
-      : "배당 검색 또는 경기 상세를 한 번 무료로 체험할 수 있습니다.",
+      : translateUiText(`로그인 없이 ${getGuestSearchTrialsLeft()}번 더 둘러볼 수 있습니다.`),
     offline: "서버 연결이 원활하지 않아 로컬·계정 캐시에 저장했습니다. 연결되면 다시 동기화합니다.",
     unavailable: "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요."
   };
@@ -12075,7 +12093,10 @@ async function runOddsSearchFromCurrentCriteria() {
     if (isGuestTrialSearch && result.matches.length > 0) {
       markGuestSearchTrialUsed();
       const currentStatus = document.getElementById("odds-search-status")?.textContent || "검색 결과가 표시됩니다.";
-      setOddsSearchStatus(`${currentStatus} 다음 검색부터 Google 로그인이 필요합니다.`);
+      const trialsLeft = getGuestSearchTrialsLeft();
+      setOddsSearchStatus(trialsLeft > 0
+        ? `${currentStatus} ${translateUiText(`로그인 없이 ${trialsLeft}번 더 둘러볼 수 있습니다.`)}`
+        : `${currentStatus} 다음 검색부터 Google 로그인이 필요합니다.`);
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : "알 수 없는 오류";
@@ -13229,6 +13250,8 @@ if (typeof module !== "undefined") {
     getLocalAccountLabel,
     hasStoredCloudSession,
     hasUsedGuestSearchTrial,
+    getGuestSearchTrialsLeft,
+    GUEST_SEARCH_TRIAL_LIMIT,
     markGuestSearchTrialUsed,
     canRunOddsSearch,
     canOpenMatchDetail,

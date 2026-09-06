@@ -79,19 +79,26 @@ test("requires authentication before opening user features", () => {
   assert.strictEqual(app.getAuthenticatedViewId("#matches", true, true), "matches");
 });
 
-test("recognizes whether the one-time guest search trial was used", () => {
-  assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => "true" }), true);
+// 무료 체험은 1회에서 여러 번으로 늘렸다. 자세한 경계값은 tests/guest-trial.test.js 참고.
+test("recognizes whether the guest search allowance is used up", () => {
+  assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => String(app.GUEST_SEARCH_TRIAL_LIMIT) }), true);
   assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => null }), false);
+  // 예전 1회 제한 시절의 저장값이 남아 있어도 잠기면 안 된다.
+  assert.strictEqual(app.hasUsedGuestSearchTrial({ getItem: () => "true" }), false);
 });
 
-test("uses the same one-time guest trial for match detail access", () => {
+test("match detail draws from the same guest allowance as search", () => {
   const values = new Map();
   const storage = {
     getItem: (key) => values.get(key) || null,
     setItem: (key, value) => values.set(key, value)
   };
   assert.strictEqual(app.canOpenMatchDetail(storage, false), true);
-  assert.strictEqual(app.hasUsedGuestSearchTrial(storage), true);
+  assert.strictEqual(app.getGuestSearchTrialsLeft(storage), app.GUEST_SEARCH_TRIAL_LIMIT - 1);
+
+  for (let index = 1; index < app.GUEST_SEARCH_TRIAL_LIMIT; index += 1) {
+    assert.strictEqual(app.canOpenMatchDetail(storage, false), true);
+  }
   assert.strictEqual(app.canOpenMatchDetail(storage, false), false);
 });
 
