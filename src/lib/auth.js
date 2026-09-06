@@ -2,7 +2,9 @@
   const syncTools = globalScope?.ODDS_ARCHIVE_FAVORITE_SYNC
     || (typeof require !== "undefined" ? require("./favorite-sync.js") : null);
   const LOGIN_TIMEOUT_MS = 15000;
-  const LOCK_ACQUIRE_TIMEOUT_MS = 3000;
+  // 잠금이 살아있는 다른 탭에 잡혀 있으면 곧 풀리고, 죽은 컨텍스트에 잡혀 있으면 아무리
+  // 기다려도 안 풀린다. 어느 쪽이든 오래 기다릴 이유가 없어서 짧게 끊는다.
+  const LOCK_ACQUIRE_TIMEOUT_MS = 400;
   const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
 
   // supabase-js 는 인증 호출이 탭 간에 겹치지 않게 Web Locks(navigator.locks)로 직렬화한다.
@@ -20,11 +22,16 @@
       if (typeof locks?.request !== "function" || typeof AbortControllerRef !== "function") return fn();
 
       const controller = new AbortControllerRef();
+      const startedAt = Date.now();
       const timer = setTimer(() => controller.abort(), LOCK_ACQUIRE_TIMEOUT_MS);
       try {
-        return await locks.request(name, { signal: controller.signal }, () => fn());
+        return await locks.request(name, { signal: controller.signal }, () => {
+          recordLoginTiming("잠금 대기", startedAt, "ok");
+          return fn();
+        });
       } catch (error) {
         if (error?.name !== "AbortError") throw error;
+        recordLoginTiming("잠금 대기", startedAt, "timeout");
         return fn();
       } finally {
         clearTimer(timer);
