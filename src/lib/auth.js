@@ -278,16 +278,30 @@
     // 무효해지면 getSession() 이 갱신 시도에서 매달려 로그인 화면이 "로그인 확인"에서
     // 영영 안 넘어간다. 실제로 지운 게 있을 때만 true 를 돌려줘서, 지울 게 없으면
     // 괜히 재시도하지 않게 한다.
+    //
+    // 끝을 반드시 잠글 것: 같은 접두사로 "sb-<프로젝트>-auth-token-code-verifier" 도
+    // 저장되는데, 이건 PKCE 로그인이 구글에서 돌아온 뒤 인증 코드를 세션으로 바꿀 때
+    // 쓰는 값이다. 이걸 같이 지우면 교환이 불가능해져 로그인 화면으로 되돌아간다.
     function clearStoredAuthTokens() {
       try {
         if (typeof storage?.key !== "function") return false;
         const staleKeys = [];
         for (let index = 0; index < Number(storage.length || 0); index += 1) {
           const key = String(storage.key(index) || "");
-          if (/^sb-.+-auth-token/.test(key)) staleKeys.push(key);
+          if (/^sb-.+-auth-token(?:\.\d+)?$/.test(key)) staleKeys.push(key);
         }
         staleKeys.forEach((key) => storage.removeItem(key));
         return staleKeys.length > 0;
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    // 구글에서 막 돌아온 상태(주소에 ?code= 가 있음)면 로그인이 진행 중이다.
+    // 이때는 저장값을 건드리면 안 된다 - 교환에 필요한 값을 지워버릴 수 있다.
+    function isOAuthCallbackInProgress() {
+      try {
+        return new URLSearchParams(globalScope?.location?.search || "").has("code");
       } catch (_error) {
         return false;
       }
@@ -323,6 +337,7 @@
       try {
         return await readStoredSession("기존 로그인 확인");
       } catch (error) {
+        if (isOAuthCallbackInProgress()) throw error;
         if (!isBrokenSessionError(error) || !clearStoredAuthTokens()) throw error;
         client = clientFactory(config);
         return readStoredSession("기존 로그인 다시 확인");
