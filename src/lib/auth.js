@@ -2,42 +2,7 @@
   const syncTools = globalScope?.ODDS_ARCHIVE_FAVORITE_SYNC
     || (typeof require !== "undefined" ? require("./favorite-sync.js") : null);
   const LOGIN_TIMEOUT_MS = 15000;
-  // 잠금이 살아있는 다른 탭에 잡혀 있으면 곧 풀리고, 죽은 컨텍스트에 잡혀 있으면 아무리
-  // 기다려도 안 풀린다. 어느 쪽이든 오래 기다릴 이유가 없어서 짧게 끊는다.
-  const LOCK_ACQUIRE_TIMEOUT_MS = 400;
   const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
-
-  // supabase-js 는 인증 호출이 탭 간에 겹치지 않게 Web Locks(navigator.locks)로 직렬화한다.
-  // 문제는 잠금을 쥔 컨텍스트가 비정상 종료되면 그 잠금이 영영 안 풀린다는 것이다. 그러면
-  // getSession() 이 무한정 대기해서 로그인 화면이 "로그인 확인"에서 멈춘다. TWA 앱은 크롬
-  // 프로필을 공유하기 때문에 앱을 지웠다 다시 깔아도 이 상태가 남아 계속 재현된다.
-  // 잠금은 잠깐만 기다리고, 못 얻으면 잠금 없이 진행해서 교착을 끊는다.
-  function createAuthLock(scope) {
-    const setTimer = (fn, ms) => (scope?.setTimeout ? scope.setTimeout(fn, ms) : setTimeout(fn, ms));
-    const clearTimer = (id) => (scope?.clearTimeout ? scope.clearTimeout(id) : clearTimeout(id));
-
-    return async function authLock(name, _acquireTimeout, fn) {
-      const locks = scope?.navigator?.locks;
-      const AbortControllerRef = scope?.AbortController;
-      if (typeof locks?.request !== "function" || typeof AbortControllerRef !== "function") return fn();
-
-      const controller = new AbortControllerRef();
-      const startedAt = Date.now();
-      const timer = setTimer(() => controller.abort(), LOCK_ACQUIRE_TIMEOUT_MS);
-      try {
-        return await locks.request(name, { signal: controller.signal }, () => {
-          recordLoginTiming("잠금 대기", startedAt, "ok");
-          return fn();
-        });
-      } catch (error) {
-        if (error?.name !== "AbortError") throw error;
-        recordLoginTiming("잠금 대기", startedAt, "timeout");
-        return fn();
-      } finally {
-        clearTimer(timer);
-      }
-    };
-  }
 
   // 어느 단계가 얼마나 걸렸는지 남긴다. 로그인이 느리다는 신고가 들어왔을 때
   // 화면에서 바로 확인할 수 있어야 어림짐작으로 고치지 않는다.
@@ -133,15 +98,11 @@
     const clientFactory = options.clientFactory || ((config) => globalScope.supabase.createClient(
       config.supabaseUrl,
       config.publishableKey,
-      {
-        auth: {
-          flowType: "pkce",
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true,
-          lock: createAuthLock(globalScope)
-        }
-      }
+      // 잠금(navigator.locks)은 supabase 기본값을 그대로 쓴다. 직접 만든 잠금으로
+      // "못 얻으면 그냥 진행"하게 했더니, 갱신 때마다 교체되는 refresh token 이 동시에
+      // 두 번 쓰여 세션이 통째로 무효화됐다 (앱을 다시 열면 로그인이 풀렸다).
+      // 예전의 멈춤 증상은 인증 콜백 안에서 DB를 호출하던 재진입 문제였고 dcc14fd 에서 고쳤다.
+      { auth: { flowType: "pkce", persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
     ));
     let client = null;
     let config = null;
@@ -436,7 +397,7 @@
     };
   }
 
-  const exportsObject = { createAccountService, loadScriptOnce, createAuthLock };
+  const exportsObject = { createAccountService, loadScriptOnce };
   if (typeof module !== "undefined" && module.exports) module.exports = exportsObject;
   if (globalScope) globalScope.ODDS_ARCHIVE_AUTH = exportsObject;
 })(typeof window !== "undefined" ? window : globalThis);

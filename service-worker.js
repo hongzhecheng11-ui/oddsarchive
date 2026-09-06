@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v156-shorter-lock-wait";
+const CACHE_NAME = "oddsarchive-v157-default-auth-lock";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=147",
-  "/app.js?v=151",
+  "/app.js?v=152",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -15,7 +15,7 @@ const CORE_ASSETS = [
   "/src/lib/i18n.js?v=27",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js?v=2",
-  "/src/lib/auth.js?v=12",
+  "/src/lib/auth.js?v=13",
   "/vendor/supabase-js-2.49.8.min.js",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
