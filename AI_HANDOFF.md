@@ -1,5 +1,10 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Android PKCE diagnostic deployment approved
+- Supabase logs show Android `authorize` with the exact production redirect and PKCE challenge, then Google callback 302, then `POST /auth/v1/token?grant_type=pkce` 422. Redirect configuration matches the deployed callback URL.
+- This diagnostic records only callback/code presence, verifier/session-key presence, Android/standalone mode, session-check outcome and safe auth event names. It never records OAuth codes, access tokens, refresh tokens, user IDs, URLs or user agents.
+- User approved deployment to reproduce once in Android Chrome and once in the installed TWA, then compare server log entries before choosing a fix.
+
 ## Auth-event scheduling fix: deployment approved
 - Phone screenshot: saved-session lookup exceeds 15 seconds; user confirms normal phone Chrome also fails but Incognito succeeds. Device root cause is not confirmed.
 - src/lib/auth.js: defer auth-event favorite synchronization with setTimeout(0), rather than a microtask, so database calls start after the SDK auth-event lock can release. No session, favorite, or account deletion and no lock bypass.

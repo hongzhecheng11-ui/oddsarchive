@@ -87,6 +87,7 @@
     const storage = options.storage || (typeof localStorage !== "undefined" ? localStorage : null);
     const favorites = options.favorites;
     const onStateChange = options.onStateChange || (() => {});
+    const onDiagnostic = options.onDiagnostic || (() => {});
     const request = options.request || ((...args) => fetch(...args));
     const fetchConfig = options.fetchConfig || (async () => {
       const response = await request("/api/auth-config", { headers: { Accept: "application/json" }, credentials: "same-origin" });
@@ -112,6 +113,35 @@
     let preparePromise = null;
     let initializePromise = null;
     let authSubscription = null;
+
+    function hasStoredKey(pattern) {
+      try {
+        for (let index = 0; index < Number(storage?.length || 0); index += 1) {
+          if (pattern.test(String(storage.key(index) || ""))) return true;
+        }
+      } catch (_error) {
+        // Diagnostics must never affect login.
+      }
+      return false;
+    }
+
+    function recordAuthDiagnostic(stage, details = {}) {
+      try {
+        const query = new URLSearchParams(globalScope?.location?.search || "");
+        onDiagnostic({
+          stage,
+          callbackCode: query.has("code"),
+          callbackError: query.has("error") || query.has("error_description"),
+          verifierPresent: hasStoredKey(/-auth-token-code-verifier$/),
+          sessionStored: hasStoredKey(/-auth-token(?:\.\d+)?$/),
+          android: /Android/i.test(String(globalScope?.navigator?.userAgent || "")),
+          standalone: Boolean(globalScope?.matchMedia?.("(display-mode: standalone)")?.matches),
+          ...details
+        });
+      } catch (_error) {
+        // Diagnostics must never affect login.
+      }
+    }
 
     function emit(status, extra = {}) {
       onStateChange({ status, userId, isAdmin, ...extra });
@@ -232,7 +262,10 @@
         if (typeof globalScope?.supabase?.createClient !== "function") {
           await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
         }
-        if (!client) client = clientFactory(config);
+        if (!client) {
+          client = clientFactory(config);
+          recordAuthDiagnostic("client_created");
+        }
         return client;
       })().catch((error) => {
         preparePromise = null;
@@ -261,9 +294,15 @@
     }
 
     async function readStoredSession(stage) {
-      const { data, error } = await waitForLoginStep(client.auth.getSession(), stage);
-      if (error) throw error;
-      return data;
+      try {
+        const { data, error } = await waitForLoginStep(client.auth.getSession(), stage);
+        recordAuthDiagnostic("session_checked", { result: error ? "error" : (data?.session ? "session" : "empty") });
+        if (error) throw error;
+        return data;
+      } catch (error) {
+        recordAuthDiagnostic("session_error", { result: error?.isLoginTimeout ? "timeout" : "error" });
+        throw error;
+      }
     }
 
     // 기기에 남은 토큰이 원인이면 사용자가 브라우저 사이트 데이터를 직접 지우는 것 말고는
@@ -298,6 +337,10 @@
         const data = await readStoredSessionWithRecovery();
         await synchronizeSession(data?.session || null);
         const listener = client.auth.onAuthStateChange((_event, session) => {
+          recordAuthDiagnostic("auth_event", {
+            event: _event,
+            result: session ? "session" : "empty"
+          });
           // Run database calls after the auth event has released its session lock.
           setTimeout(() => {
             synchronizeSession(session).catch(() => emit("offline"));
@@ -316,6 +359,7 @@
     async function signInWithGoogle(options = {}) {
       // Starting OAuth must not wait on restoration of an old, possibly stalled session.
       await prepareClient();
+      recordAuthDiagnostic("oauth_start");
       const { error } = await client.auth.signInWithOAuth({
         provider: "google",
         options: {
@@ -324,6 +368,7 @@
         }
       });
       if (error) throw error;
+      recordAuthDiagnostic("oauth_requested", { result: "requested" });
     }
 
     async function switchGoogleAccount() {

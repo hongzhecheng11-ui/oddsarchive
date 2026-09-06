@@ -1,5 +1,8 @@
 (function initializeTelemetry(globalScope) {
   const ALLOWED_VIEWS = new Set(["search", "today", "detail", "saved", "account"]);
+  const AUTH_STAGES = new Set(["client_created", "oauth_start", "oauth_requested", "session_checked", "session_error", "auth_event"]);
+  const AUTH_RESULTS = new Set(["session", "empty", "error", "timeout", "requested"]);
+  const AUTH_EVENTS = new Set(["INITIAL_SESSION", "SIGNED_IN", "SIGNED_OUT", "TOKEN_REFRESHED"]);
   const MAX_BATCH_SIZE = 20;
   const FLUSH_DELAY_MS = 10000;
 
@@ -49,6 +52,21 @@
       });
     }
 
+    function recordAuthDiagnostic(details = {}) {
+      enqueue({
+        type: "auth_diagnostic",
+        stage: AUTH_STAGES.has(details.stage) ? details.stage : "",
+        result: AUTH_RESULTS.has(details.result) ? details.result : "",
+        event: AUTH_EVENTS.has(details.event) ? details.event : "",
+        callbackCode: Boolean(details.callbackCode),
+        callbackError: Boolean(details.callbackError),
+        verifierPresent: Boolean(details.verifierPresent),
+        sessionStored: Boolean(details.sessionStored),
+        android: Boolean(details.android),
+        standalone: Boolean(details.standalone)
+      });
+    }
+
     function flush({ useBeacon = false } = {}) {
       flushTimer = null;
       if (!enabled || queue.length === 0) return Promise.resolve(false);
@@ -56,7 +74,7 @@
       return Promise.resolve(sender(endpoint, { events }, { useBeacon })).catch(() => false);
     }
 
-    return { recordView, recordApiFailure, recordBrowserError, flush, getPendingCount: () => queue.length };
+    return { recordView, recordApiFailure, recordBrowserError, recordAuthDiagnostic, flush, getPendingCount: () => queue.length };
   }
 
   function defaultSender(endpoint, payload, { useBeacon = false } = {}) {
