@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-06",
-  "updatedAt": "2026-09-05T20:16:51.021Z",
+  "updatedAt": "2026-09-06T12:09:13.215Z",
   "collection": {
     "dates": [
-      "2026-09-06"
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-09"
     ],
-    "requestGroups": 13,
-    "skippedGroups": 13,
+    "requestGroups": 29,
+    "skippedGroups": 75,
     "failures": 0,
     "errors": []
   },
@@ -795,10 +798,26 @@
             {
               "fixtureId": 1557392,
               "teamId": 64,
+              "playerId": 380873,
+              "player": "I. Ansah",
+              "type": "Missing Fixture",
+              "reason": "Back Injury"
+            },
+            {
+              "fixtureId": 1557392,
+              "teamId": 64,
               "playerId": 2930,
               "player": "J. Butland",
               "type": "Missing Fixture",
               "reason": "Arm Injury"
+            },
+            {
+              "fixtureId": 1557392,
+              "teamId": 64,
+              "playerId": 19666,
+              "player": "M. Crooks",
+              "type": "Missing Fixture",
+              "reason": "Muscle Injury"
             },
             {
               "fixtureId": 1557392,
@@ -827,26 +846,26 @@
             {
               "fixtureId": 1557392,
               "teamId": 64,
+              "playerId": 19242,
+              "player": "P. McNair",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1557392,
+              "teamId": 64,
+              "playerId": 32960,
+              "player": "H. Morita",
+              "type": "Missing Fixture",
+              "reason": "Calf Injury"
+            },
+            {
+              "fixtureId": 1557392,
+              "teamId": 64,
               "playerId": 338046,
               "player": "O. Zambrano",
               "type": "Missing Fixture",
               "reason": "Hamstring Injury"
-            },
-            {
-              "fixtureId": 1557392,
-              "teamId": 64,
-              "playerId": 380873,
-              "player": "I. Ansah",
-              "type": "Questionable",
-              "reason": "Back Injury"
-            },
-            {
-              "fixtureId": 1557392,
-              "teamId": 64,
-              "playerId": 19666,
-              "player": "M. Crooks",
-              "type": "Questionable",
-              "reason": "Muscle Injury"
             },
             {
               "fixtureId": 1557392,
@@ -855,6 +874,14 @@
               "player": "Joao Gomes",
               "type": "Missing Fixture",
               "reason": "Red Card"
+            },
+            {
+              "fixtureId": 1557392,
+              "teamId": 66,
+              "playerId": 514519,
+              "player": "B. Madjo",
+              "type": "Missing Fixture",
+              "reason": "Ankle Injury"
             },
             {
               "fixtureId": 1557392,
@@ -871,57 +898,10 @@
               "player": "A. Onana",
               "type": "Missing Fixture",
               "reason": "Knee Injury"
-            },
-            {
-              "fixtureId": 1557392,
-              "teamId": 66,
-              "playerId": 514519,
-              "player": "B. Madjo",
-              "type": "Questionable",
-              "reason": "Ankle Injury"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 64,
-              "team": "Hull City",
-              "formation": "5-4-1",
-              "coach": "S. Jakirović",
-              "starters": [
-                "K. Tzolakis",
-                "L. Coyle",
-                "S. Ajayi",
-                "J. Egan",
-                "N. Mendy",
-                "R. Giles",
-                "M. Belloumi",
-                "R. Slater",
-                "L. Gourna-Douath",
-                "E. Stroud",
-                "O. McBurnie"
-              ]
-            },
-            {
-              "teamId": 66,
-              "team": "Aston Villa",
-              "formation": "4-2-3-1",
-              "coach": "Unai Emery",
-              "starters": [
-                "Z. Suzuki",
-                "M. Cash",
-                "V. Lindelöf",
-                "T. Mings",
-                "I. Maatsen",
-                "B. Kamara",
-                "R. Barkley",
-                "J.  McGinn",
-                "E. Buendía",
-                "George Hemmings",
-                "N. Jackson"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1557390,
@@ -980,17 +960,9 @@
               "player": "T. Heaton",
               "type": "Questionable",
               "reason": "Injury"
-            },
-            {
-              "fixtureId": 1557390,
-              "teamId": 33,
-              "playerId": 19220,
-              "player": "M. Mount",
-              "type": "Questionable",
-              "reason": "Foot Injury"
             }
           ],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1004,21 +976,21 @@
           "teamId": 76,
           "team": "Swansea",
           "rank": 1,
-          "points": 10,
+          "points": 11,
           "goalsDiff": 6,
-          "form": "WWDW",
+          "form": "DWWDW",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 3,
-            "draws": 1,
+            "draws": 2,
             "losses": 0,
             "goalsFor": 7,
             "goalsAgainst": 1
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 1,
-            "draws": 1,
+            "draws": 2,
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 0
@@ -1289,9 +1261,41 @@
           }
         },
         {
+          "teamId": 1837,
+          "team": "Wrexham",
+          "rank": 10,
+          "points": 6,
+          "goalsDiff": 2,
+          "form": "DWLDD",
+          "all": {
+            "played": 5,
+            "wins": 1,
+            "draws": 3,
+            "losses": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 4
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 3,
+            "wins": 1,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 1
+          }
+        },
+        {
           "teamId": 54,
           "team": "Birmingham",
-          "rank": 10,
+          "rank": 11,
           "points": 6,
           "goalsDiff": 1,
           "form": "DWDD",
@@ -1323,7 +1327,7 @@
         {
           "teamId": 71,
           "team": "Norwich",
-          "rank": 11,
+          "rank": 12,
           "points": 6,
           "goalsDiff": 0,
           "form": "WLWLL",
@@ -1355,7 +1359,7 @@
         {
           "teamId": 75,
           "team": "Stoke City",
-          "rank": 12,
+          "rank": 13,
           "points": 6,
           "goalsDiff": -1,
           "form": "WWLLL",
@@ -1387,7 +1391,7 @@
         {
           "teamId": 1355,
           "team": "Portsmouth",
-          "rank": 13,
+          "rank": 14,
           "points": 6,
           "goalsDiff": -1,
           "form": "WLLWL",
@@ -1419,7 +1423,7 @@
         {
           "teamId": 62,
           "team": "Sheffield Utd",
-          "rank": 14,
+          "rank": 15,
           "points": 6,
           "goalsDiff": -1,
           "form": "LWDDD",
@@ -1446,38 +1450,6 @@
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 1837,
-          "team": "Wrexham",
-          "rank": 15,
-          "points": 5,
-          "goalsDiff": 2,
-          "form": "WLDD",
-          "all": {
-            "played": 4,
-            "wins": 1,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 1
           }
         },
         {
@@ -1831,19 +1803,19 @@
         {
           "teamId": 76,
           "team": "Swansea",
-          "form": "WDWW",
+          "form": "WDWWD",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 3,
-            "draws": 1,
+            "draws": 2,
             "losses": 0,
             "goalsFor": 7,
             "goalsAgainst": 1
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 1,
-            "draws": 1,
+            "draws": 2,
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 0
@@ -1860,11 +1832,11 @@
         {
           "teamId": 1837,
           "team": "Wrexham",
-          "form": "DDLW",
+          "form": "DDLWD",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 1,
-            "draws": 2,
+            "draws": 3,
             "losses": 1,
             "goalsFor": 6,
             "goalsAgainst": 4
@@ -1878,9 +1850,9 @@
             "goalsAgainst": 3
           },
           "away": {
-            "played": 2,
+            "played": 3,
             "wins": 1,
-            "draws": 1,
+            "draws": 2,
             "losses": 0,
             "goalsFor": 4,
             "goalsAgainst": 1
@@ -1891,7 +1863,7 @@
         {
           "fixtureId": 1563131,
           "kickoff": "2026-09-06T20:00:00+09:00",
-          "status": "NS",
+          "status": "HT",
           "homeTeamId": 54,
           "homeTeam": "Birmingham",
           "awayTeamId": 39,
@@ -1971,13 +1943,52 @@
               "reason": "Injury"
             }
           ],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 54,
+              "team": "Birmingham",
+              "formation": "4-2-3-1",
+              "coach": "C. Davies",
+              "starters": [
+                "J. Beadle",
+                "B. Osayi-Samuel",
+                "P. Neumann",
+                "C. Klarer",
+                "A. Cochrane",
+                "Paik Seung-Ho",
+                "T. Iwata",
+                "P. Roberts",
+                "J. Stansfield",
+                "L. Millar",
+                "A. Priske"
+              ]
+            },
+            {
+              "teamId": 39,
+              "team": "Wolves",
+              "formation": "4-2-3-1",
+              "coach": "César Peixoto",
+              "starters": [
+                "José Sá",
+                "J. Tchatchoua",
+                "N. Djiga",
+                "L. Krejčí",
+                "Hugo Bueno",
+                "André",
+                "M. Munetsi",
+                "Rodrigo Gomes",
+                "Fer López",
+                "A. Armstrong",
+                "R. Jiménez"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1563140,
           "kickoff": "2026-09-06T04:00:00+09:00",
-          "status": "2H",
+          "status": "FT",
           "homeTeamId": 76,
           "homeTeam": "Swansea",
           "awayTeamId": 1837,
@@ -2010,11 +2021,19 @@
             },
             {
               "fixtureId": 1563140,
-              "teamId": 76,
-              "playerId": 104041,
-              "player": "B. Cabango",
-              "type": "Questionable",
+              "teamId": 1837,
+              "playerId": 126791,
+              "player": "N. Broadhead",
+              "type": "Missing Fixture",
               "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1563140,
+              "teamId": 1837,
+              "playerId": 6931,
+              "player": "L. Cacace",
+              "type": "Missing Fixture",
+              "reason": "Calf Injury"
             },
             {
               "fixtureId": 1563140,
@@ -2027,77 +2046,22 @@
             {
               "fixtureId": 1563140,
               "teamId": 1837,
+              "playerId": 88457,
+              "player": "B. Sheaf",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1563140,
+              "teamId": 1837,
               "playerId": 194461,
               "player": "G. Thomason",
               "type": "Missing Fixture",
               "reason": "Thigh Injury"
-            },
-            {
-              "fixtureId": 1563140,
-              "teamId": 1837,
-              "playerId": 126791,
-              "player": "N. Broadhead",
-              "type": "Questionable",
-              "reason": "Inactive"
-            },
-            {
-              "fixtureId": 1563140,
-              "teamId": 1837,
-              "playerId": 6931,
-              "player": "L. Cacace",
-              "type": "Questionable",
-              "reason": "Calf Injury"
-            },
-            {
-              "fixtureId": 1563140,
-              "teamId": 1837,
-              "playerId": 88457,
-              "player": "B. Sheaf",
-              "type": "Questionable",
-              "reason": "Inactive"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 76,
-              "team": "Swansea",
-              "formation": "4-3-3",
-              "coach": "Vítor Matos",
-              "starters": [
-                "L. Vigouroux",
-                "J. Key",
-                "F. Lissah",
-                "S. Welsh",
-                "J. Tymon",
-                "M. Widell",
-                "J. Fulton",
-                "S. Eustáquio",
-                "M. Yeo",
-                "A. Idah",
-                "Eom Ji-Sung"
-              ]
-            },
-            {
-              "teamId": 1837,
-              "team": "Wrexham",
-              "formation": "3-4-2-1",
-              "coach": "P. Parkinson",
-              "starters": [
-                "A. Patterson",
-                "M. Cleworth",
-                "D. Hyam",
-                "C. Doyle",
-                "Daniel Edward Peter Imray",
-                "M. James",
-                "B. Whiteman",
-                "R. Longman",
-                "O. Rathbone",
-                "C. O&apos;Hare",
-                "S. Smith"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         }
       ]
     },
@@ -2203,9 +2167,41 @@
           }
         },
         {
+          "teamId": 544,
+          "team": "Deportivo La Coruna",
+          "rank": 4,
+          "points": 8,
+          "goalsDiff": 3,
+          "form": "WWDD",
+          "all": {
+            "played": 4,
+            "wins": 2,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          }
+        },
+        {
           "teamId": 542,
           "team": "Alaves",
-          "rank": 4,
+          "rank": 5,
           "points": 7,
           "goalsDiff": 4,
           "form": "WDW",
@@ -2237,7 +2233,7 @@
         {
           "teamId": 727,
           "team": "Osasuna",
-          "rank": 5,
+          "rank": 6,
           "points": 7,
           "goalsDiff": 2,
           "form": "WWD",
@@ -2269,7 +2265,7 @@
         {
           "teamId": 530,
           "team": "Atletico Madrid",
-          "rank": 6,
+          "rank": 7,
           "points": 7,
           "goalsDiff": 1,
           "form": "LWDW",
@@ -2296,38 +2292,6 @@
             "losses": 1,
             "goalsFor": 3,
             "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 531,
-          "team": "Athletic Club",
-          "rank": 7,
-          "points": 6,
-          "goalsDiff": 1,
-          "form": "WWLL",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 6,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 2
           }
         },
         {
@@ -2363,35 +2327,35 @@
           }
         },
         {
-          "teamId": 544,
-          "team": "Deportivo La Coruna",
+          "teamId": 531,
+          "team": "Athletic Club",
           "rank": 9,
-          "points": 5,
-          "goalsDiff": 2,
-          "form": "WDD",
+          "points": 6,
+          "goalsDiff": 1,
+          "form": "WWLL",
           "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 3
+            "played": 4,
+            "wins": 2,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 5
           },
           "home": {
             "played": 2,
             "wins": 1,
-            "draws": 1,
-            "losses": 0,
+            "draws": 0,
+            "losses": 1,
             "goalsFor": 4,
-            "goalsAgainst": 2
+            "goalsAgainst": 3
           },
           "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 2
           }
         },
         {
@@ -2591,23 +2555,23 @@
           "team": "Villarreal",
           "rank": 16,
           "points": 2,
-          "goalsDiff": -1,
-          "form": "LDD",
+          "goalsDiff": -2,
+          "form": "LLDD",
           "all": {
-            "played": 3,
+            "played": 4,
             "wins": 0,
             "draws": 2,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 5
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 8
           },
           "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3
           },
           "away": {
             "played": 3,
@@ -2807,6 +2771,64 @@
           }
         },
         {
+          "teamId": 533,
+          "team": "Villarreal",
+          "form": "DDLL",
+          "all": {
+            "played": 4,
+            "wins": 0,
+            "draws": 2,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 8
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 3,
+            "wins": 0,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 5
+          }
+        },
+        {
+          "teamId": 544,
+          "team": "Deportivo La Coruna",
+          "form": "DDWW",
+          "all": {
+            "played": 4,
+            "wins": 2,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          }
+        },
+        {
           "teamId": 532,
           "team": "Valencia",
           "form": "DLL",
@@ -2862,64 +2884,6 @@
             "losses": 0,
             "goalsFor": 5,
             "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 533,
-          "team": "Villarreal",
-          "form": "DDL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 3,
-            "wins": 0,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 5
-          }
-        },
-        {
-          "teamId": 544,
-          "team": "Deportivo La Coruna",
-          "form": "DDW",
-          "all": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
           }
         }
       ],
@@ -2991,47 +2955,46 @@
               "reason": "Knee Injury"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1570372,
+          "kickoff": "2026-09-06T04:00:00+09:00",
+          "status": "FT",
+          "homeTeamId": 533,
+          "homeTeam": "Villarreal",
+          "awayTeamId": 544,
+          "awayTeam": "Deportivo La Coruna",
+          "injuriesChecked": true,
+          "injuries": [
             {
-              "teamId": 728,
-              "team": "Rayo Vallecano",
-              "formation": "4-3-3",
-              "coach": "Beñat San José",
-              "starters": [
-                "Dani Cárdenas",
-                "A. Rațiu",
-                "F. Lejeune",
-                "P. Ciss",
-                "Adrià Pedrosa",
-                "Unai López",
-                "Óscar Valentín",
-                "Pedro Díaz",
-                "Jorge de Frutos",
-                "Sergio Camello",
-                "Álvaro García"
-              ]
+              "fixtureId": 1570372,
+              "teamId": 533,
+              "playerId": 166,
+              "player": "J. Foyth",
+              "type": "Missing Fixture",
+              "reason": "Injury"
             },
             {
-              "teamId": 4665,
-              "team": "Racing Santander",
-              "formation": "4-2-3-1",
-              "coach": "José Alberto López",
-              "starters": [
-                "Julen Agirrezabala",
-                "Álvaro Mantilla",
-                "Manu Hernando",
-                "Facundo González",
-                "Jorge Salinas",
-                "Iván Martín",
-                "M. Prati",
-                "Pablo García",
-                "Sergio Canales",
-                "Iñigo Vicente",
-                "M. Zabiri"
-              ]
+              "fixtureId": 1570372,
+              "teamId": 544,
+              "playerId": 162122,
+              "player": "A. Altimira",
+              "type": "Missing Fixture",
+              "reason": "Red Card"
+            },
+            {
+              "fixtureId": 1570372,
+              "teamId": 544,
+              "playerId": 628615,
+              "player": "N. Carrillo",
+              "type": "Missing Fixture",
+              "reason": "Injury"
             }
-          ]
+          ],
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1570371,
@@ -3066,6 +3029,14 @@
               "player": "J. De Haas",
               "type": "Missing Fixture",
               "reason": "Ankle Injury"
+            },
+            {
+              "fixtureId": 1570371,
+              "teamId": 532,
+              "playerId": 47251,
+              "player": "D. Foulquier",
+              "type": "Missing Fixture",
+              "reason": "Injury"
             },
             {
               "fixtureId": 1570371,
@@ -3122,111 +3093,10 @@
               "player": "F. de Jong",
               "type": "Missing Fixture",
               "reason": "Knee Injury"
-            },
-            {
-              "fixtureId": 1570371,
-              "teamId": 529,
-              "playerId": 1305,
-              "player": "D. Livakovic",
-              "type": "Questionable",
-              "reason": "Inactive"
-            }
-          ],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1570372,
-          "kickoff": "2026-09-06T04:00:00+09:00",
-          "status": "2H",
-          "homeTeamId": 533,
-          "homeTeam": "Villarreal",
-          "awayTeamId": 544,
-          "awayTeam": "Deportivo La Coruna",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1570372,
-              "teamId": 533,
-              "playerId": 166,
-              "player": "J. Foyth",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1570372,
-              "teamId": 544,
-              "playerId": 162122,
-              "player": "A. Altimira",
-              "type": "Missing Fixture",
-              "reason": "Red Card"
-            },
-            {
-              "fixtureId": 1570372,
-              "teamId": 544,
-              "playerId": 628615,
-              "player": "N. Carrillo",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1570372,
-              "teamId": 544,
-              "playerId": 329728,
-              "player": "M. Casado",
-              "type": "Missing Fixture",
-              "reason": "Coach's decision"
-            },
-            {
-              "fixtureId": 1570372,
-              "teamId": 544,
-              "playerId": 18753,
-              "player": "A. Traore",
-              "type": "Missing Fixture",
-              "reason": "Muscle Injury"
             }
           ],
           "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 533,
-              "team": "Villarreal",
-              "formation": "4-4-2",
-              "coach": "Iñigo Pérez",
-              "starters": [
-                "Luíz Júnior",
-                "A. Freeman",
-                "Logan Costa",
-                "Renato Veiga",
-                "Sergi Cardona",
-                "N. Pépé",
-                "N. Saliba",
-                "P. Gueye",
-                "Alberto Moleiro",
-                "Gerard Moreno",
-                "Ayoze Pérez"
-              ]
-            },
-            {
-              "teamId": 544,
-              "team": "Deportivo La Coruna",
-              "formation": "4-4-2",
-              "coach": "Antonio Hidalgo",
-              "starters": [
-                "Leo Román",
-                "Ximo Navarro",
-                "L. Noubi",
-                "J. Giménez",
-                "G. Quagliata",
-                "Luismi Cruz",
-                "Mario Soriano",
-                "L. Amatucci",
-                "Riki Rodríguez",
-                "B. Nsongo",
-                "P. Aubameyang"
-              ]
-            }
-          ]
+          "lineups": []
         }
       ]
     },
@@ -3236,9 +3106,41 @@
       "season": "2026",
       "standings": [
         {
+          "teamId": 497,
+          "team": "AS Roma",
+          "rank": 1,
+          "points": 9,
+          "goalsDiff": 9,
+          "form": "WWW",
+          "all": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 1
+          },
+          "home": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 0
+          }
+        },
+        {
           "teamId": 505,
           "team": "Inter",
-          "rank": 1,
+          "rank": 2,
           "points": 9,
           "goalsDiff": 5,
           "form": "WWW",
@@ -3270,7 +3172,7 @@
         {
           "teamId": 895,
           "team": "Como",
-          "rank": 2,
+          "rank": 3,
           "points": 7,
           "goalsDiff": 4,
           "form": "WWD",
@@ -3297,38 +3199,6 @@
             "losses": 0,
             "goalsFor": 7,
             "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 497,
-          "team": "AS Roma",
-          "rank": 3,
-          "points": 6,
-          "goalsDiff": 8,
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 0
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
           }
         },
         {
@@ -3396,41 +3266,9 @@
           }
         },
         {
-          "teamId": 499,
-          "team": "Atalanta",
-          "rank": 6,
-          "points": 6,
-          "goalsDiff": 2,
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
-        },
-        {
           "teamId": 487,
           "team": "Lazio",
-          "rank": 7,
+          "rank": 6,
           "points": 6,
           "goalsDiff": 2,
           "form": "WW",
@@ -3457,6 +3295,38 @@
             "losses": 0,
             "goalsFor": 1,
             "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 499,
+          "team": "Atalanta",
+          "rank": 7,
+          "points": 6,
+          "goalsDiff": 1,
+          "form": "LWW",
+          "all": {
+            "played": 3,
+            "wins": 2,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2
           }
         },
         {
@@ -3936,6 +3806,64 @@
           }
         },
         {
+          "teamId": 497,
+          "team": "AS Roma",
+          "form": "WWW",
+          "all": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 1
+          },
+          "home": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 499,
+          "team": "Atalanta",
+          "form": "WWL",
+          "all": {
+            "played": 3,
+            "wins": 2,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 2
+          }
+        },
+        {
           "teamId": 512,
           "team": "Frosinone",
           "form": "LW",
@@ -4050,64 +3978,6 @@
             "goalsFor": 1,
             "goalsAgainst": 4
           }
-        },
-        {
-          "teamId": 497,
-          "team": "AS Roma",
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 0
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 499,
-          "team": "Atalanta",
-          "form": "WW",
-          "all": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 0,
-            "wins": 0,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          }
         }
       ],
       "fixtures": [
@@ -4162,160 +4032,13 @@
               "reason": "Heart Problems"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 505,
-              "team": "Inter",
-              "formation": "3-5-2",
-              "coach": "C. Chivu",
-              "starters": [
-                "Josep Martínez",
-                "Y. Bisseck",
-                "M. Akanji",
-                "A. Bastoni",
-                "A. Diouf",
-                "N. Barella",
-                "P. Zieliński",
-                "P. Sučić",
-                "F. Dimarco",
-                "F. Esposito",
-                "Lautaro Martínez"
-              ]
-            },
-            {
-              "teamId": 492,
-              "team": "Napoli",
-              "formation": "4-3-3",
-              "coach": "M. Allegri",
-              "starters": [
-                "A. Meret",
-                "G. Di Lorenzo",
-                "Amir Rrahmani",
-                "Rafa Marín",
-                "L. Spinazzola",
-                "A. Zambo Anguissa",
-                "S. Lobotka",
-                "A. Vergara",
-                "M. Politano",
-                "R. Højlund",
-                "Alisson Santos"
-              ]
-            }
-          ]
-        },
-        {
-          "fixtureId": 1550111,
-          "kickoff": "2026-09-06T22:00:00+09:00",
-          "status": "NS",
-          "homeTeamId": 512,
-          "homeTeam": "Frosinone",
-          "awayTeamId": 517,
-          "awayTeam": "Venezia",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1550111,
-              "teamId": 512,
-              "playerId": 334915,
-              "player": "F. Ghedjemis",
-              "type": "Questionable",
-              "reason": "Calf Injury"
-            },
-            {
-              "fixtureId": 1550111,
-              "teamId": 517,
-              "playerId": 212,
-              "player": "A. Adorante",
-              "type": "Missing Fixture",
-              "reason": "Hernia"
-            },
-            {
-              "fixtureId": 1550111,
-              "teamId": 517,
-              "playerId": 14704,
-              "player": "B. Franjic",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1550111,
-              "teamId": 517,
-              "playerId": 26095,
-              "player": "M. Sverko",
-              "type": "Missing Fixture",
-              "reason": "Hip Injury"
-            },
-            {
-              "fixtureId": 1550111,
-              "teamId": 517,
-              "playerId": 421807,
-              "player": "M. Moreno",
-              "type": "Questionable",
-              "reason": "Health problems"
-            }
-          ],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1550115,
-          "kickoff": "2026-09-06T22:00:00+09:00",
-          "status": "NS",
-          "homeTeamId": 523,
-          "homeTeam": "Parma",
-          "awayTeamId": 1579,
-          "awayTeam": "Monza",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1550115,
-              "teamId": 523,
-              "playerId": 881,
-              "player": "H. Nicolussi Caviglia",
-              "type": "Missing Fixture",
-              "reason": "Groin Injury"
-            },
-            {
-              "fixtureId": 1550115,
-              "teamId": 523,
-              "playerId": 432610,
-              "player": "O. Diallo",
-              "type": "Questionable",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1550115,
-              "teamId": 1579,
-              "playerId": 30436,
-              "player": "M. Pessina",
-              "type": "Missing Fixture",
-              "reason": "Knee Injury"
-            },
-            {
-              "fixtureId": 1550115,
-              "teamId": 1579,
-              "playerId": 340547,
-              "player": "G. Varela",
-              "type": "Missing Fixture",
-              "reason": "Thigh Injury"
-            },
-            {
-              "fixtureId": 1550115,
-              "teamId": 1579,
-              "playerId": 31532,
-              "player": "P. Ciurria",
-              "type": "Questionable",
-              "reason": "Inactive"
-            }
-          ],
           "lineupsChecked": false,
           "lineups": []
         },
         {
           "fixtureId": 1550107,
           "kickoff": "2026-09-06T03:45:00+09:00",
-          "status": "2H",
+          "status": "FT",
           "homeTeamId": 497,
           "homeTeam": "AS Roma",
           "awayTeamId": 499,
@@ -4355,47 +4078,132 @@
               "reason": "Knee Injury"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1550111,
+          "kickoff": "2026-09-06T22:00:00+09:00",
+          "status": "NS",
+          "homeTeamId": 512,
+          "homeTeam": "Frosinone",
+          "awayTeamId": 517,
+          "awayTeam": "Venezia",
+          "injuriesChecked": true,
+          "injuries": [
             {
-              "teamId": 497,
-              "team": "AS Roma",
-              "formation": "3-4-1-2",
-              "coach": "G. Gasperini",
-              "starters": [
-                "M. Svilar",
-                "G. Mancini",
-                "E. Ndicka",
-                "Hermoso",
-                "E. Lulli",
-                "B. Cristante",
-                "M. Koné",
-                "Wesley",
-                "Rodrigo Mora",
-                "P. Dybala",
-                "D. Malen"
-              ]
+              "fixtureId": 1550111,
+              "teamId": 517,
+              "playerId": 212,
+              "player": "A. Adorante",
+              "type": "Missing Fixture",
+              "reason": "Hernia"
             },
             {
-              "teamId": 499,
-              "team": "Atalanta",
-              "formation": "4-3-3",
-              "coach": "M. Sarri",
-              "starters": [
-                "M. Carnesecchi",
-                "R. Bellanova",
-                "O. Kossounou",
-                "G. Scalvini",
-                "S. Kolašinac",
-                "L. Samardžić",
-                "G. Gaetano",
-                "Éderson",
-                "C. De Ketelaere",
-                "G. Scamacca",
-                "E. Elmas"
-              ]
+              "fixtureId": 1550111,
+              "teamId": 517,
+              "playerId": 1266,
+              "player": "T. Basic",
+              "type": "Missing Fixture",
+              "reason": "Foot Injury"
+            },
+            {
+              "fixtureId": 1550111,
+              "teamId": 517,
+              "playerId": 14704,
+              "player": "B. Franjic",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1550111,
+              "teamId": 517,
+              "playerId": 26095,
+              "player": "M. Sverko",
+              "type": "Missing Fixture",
+              "reason": "Hip Injury"
             }
-          ]
+          ],
+          "lineupsChecked": true,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1550115,
+          "kickoff": "2026-09-06T22:00:00+09:00",
+          "status": "NS",
+          "homeTeamId": 523,
+          "homeTeam": "Parma",
+          "awayTeamId": 1579,
+          "awayTeam": "Monza",
+          "injuriesChecked": true,
+          "injuries": [
+            {
+              "fixtureId": 1550115,
+              "teamId": 523,
+              "playerId": 628,
+              "player": "A. Bernabe",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 523,
+              "playerId": 432610,
+              "player": "O. Diallo",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 523,
+              "playerId": 881,
+              "player": "H. Nicolussi Caviglia",
+              "type": "Missing Fixture",
+              "reason": "Groin Injury"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 1579,
+              "playerId": 31532,
+              "player": "P. Ciurria",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 1579,
+              "playerId": 30436,
+              "player": "M. Pessina",
+              "type": "Missing Fixture",
+              "reason": "Knee Injury"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 1579,
+              "playerId": 56293,
+              "player": "I. Toure",
+              "type": "Missing Fixture",
+              "reason": "Contusion"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 1579,
+              "playerId": 340547,
+              "player": "G. Varela",
+              "type": "Missing Fixture",
+              "reason": "Thigh Injury"
+            },
+            {
+              "fixtureId": 1550115,
+              "teamId": 1579,
+              "playerId": 384543,
+              "player": "J. Ziolkowski",
+              "type": "Missing Fixture",
+              "reason": "Foot Injury"
+            }
+          ],
+          "lineupsChecked": true,
+          "lineups": []
         }
       ]
     },
@@ -5113,6 +4921,14 @@
             {
               "fixtureId": 1575156,
               "teamId": 174,
+              "playerId": 266192,
+              "player": "A. Gantenbein",
+              "type": "Missing Fixture",
+              "reason": "Ankle Injury"
+            },
+            {
+              "fixtureId": 1575156,
+              "teamId": 174,
               "playerId": 339875,
               "player": "E. Hojlund",
               "type": "Missing Fixture",
@@ -5129,34 +4945,18 @@
             {
               "fixtureId": 1575156,
               "teamId": 174,
+              "playerId": 24228,
+              "player": "B. Lasme",
+              "type": "Missing Fixture",
+              "reason": "Calf Injury"
+            },
+            {
+              "fixtureId": 1575156,
+              "teamId": 174,
               "playerId": 88140,
               "player": "R. Schallenberg",
               "type": "Missing Fixture",
               "reason": "Red Card"
-            },
-            {
-              "fixtureId": 1575156,
-              "teamId": 174,
-              "playerId": 266192,
-              "player": "A. Gantenbein",
-              "type": "Questionable",
-              "reason": "Ankle Injury"
-            },
-            {
-              "fixtureId": 1575156,
-              "teamId": 174,
-              "playerId": 25466,
-              "player": "K. Karaman",
-              "type": "Questionable",
-              "reason": "Hip Injury"
-            },
-            {
-              "fixtureId": 1575156,
-              "teamId": 174,
-              "playerId": 24228,
-              "player": "B. Lasme",
-              "type": "Questionable",
-              "reason": "Calf Injury"
             },
             {
               "fixtureId": 1575156,
@@ -5173,57 +4973,10 @@
               "player": "S. Gnabry",
               "type": "Missing Fixture",
               "reason": "Muscle Injury"
-            },
-            {
-              "fixtureId": 1575156,
-              "teamId": 157,
-              "playerId": 181812,
-              "player": "J. Musiala",
-              "type": "Questionable",
-              "reason": "Health problems"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 174,
-              "team": "FC Schalke 04",
-              "formation": "3-4-2-1",
-              "coach": "M. Muslić",
-              "starters": [
-                "L. Karius",
-                "T. Becker",
-                "N. Katić",
-                "H. Kuruçay",
-                "J. Dina Ebimbe",
-                "S. El-Faouzi",
-                "S. Tanaka",
-                "R. Gosens",
-                "D. Ljubičić",
-                "A. Aouchiche",
-                "M. Sylla"
-              ]
-            },
-            {
-              "teamId": 157,
-              "team": "Bayern München",
-              "formation": "4-2-3-1",
-              "coach": "V. Kompany",
-              "starters": [
-                "M. Neuer",
-                "K. Laimer",
-                "D. Upamecano",
-                "J. Tah",
-                "A. Davies",
-                "J. Kimmich",
-                "A. Pavlović",
-                "L. Karl",
-                "N. Brown",
-                "L. Díaz",
-                "I. Saibari"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1575154,
@@ -5300,7 +5053,7 @@
               "reason": "Lacking Match Fitness"
             }
           ],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -5407,9 +5160,41 @@
           }
         },
         {
+          "teamId": 106,
+          "team": "Stade Brestois 29",
+          "rank": 4,
+          "points": 5,
+          "goalsDiff": 1,
+          "form": "WDD",
+          "all": {
+            "played": 3,
+            "wins": 1,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          }
+        },
+        {
           "teamId": 114,
           "team": "Paris FC",
-          "rank": 4,
+          "rank": 5,
           "points": 4,
           "goalsDiff": 3,
           "form": "WD",
@@ -5441,7 +5226,7 @@
         {
           "teamId": 94,
           "team": "Rennes",
-          "rank": 5,
+          "rank": 6,
           "points": 4,
           "goalsDiff": 1,
           "form": "WD",
@@ -5473,7 +5258,7 @@
         {
           "teamId": 110,
           "team": "Estac Troyes",
-          "rank": 6,
+          "rank": 7,
           "points": 4,
           "goalsDiff": 1,
           "form": "WD",
@@ -5505,7 +5290,7 @@
         {
           "teamId": 97,
           "team": "Lorient",
-          "rank": 7,
+          "rank": 8,
           "points": 4,
           "goalsDiff": 0,
           "form": "WLD",
@@ -5537,7 +5322,7 @@
         {
           "teamId": 81,
           "team": "Marseille",
-          "rank": 8,
+          "rank": 9,
           "points": 3,
           "goalsDiff": 2,
           "form": "LW",
@@ -5569,7 +5354,7 @@
         {
           "teamId": 116,
           "team": "Lens",
-          "rank": 9,
+          "rank": 10,
           "points": 3,
           "goalsDiff": 1,
           "form": "LLW",
@@ -5601,7 +5386,7 @@
         {
           "teamId": 77,
           "team": "Angers",
-          "rank": 10,
+          "rank": 11,
           "points": 3,
           "goalsDiff": 0,
           "form": "WL",
@@ -5633,7 +5418,7 @@
         {
           "teamId": 95,
           "team": "Strasbourg",
-          "rank": 11,
+          "rank": 12,
           "points": 3,
           "goalsDiff": -3,
           "form": "WL",
@@ -5660,38 +5445,6 @@
             "losses": 1,
             "goalsFor": 0,
             "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 106,
-          "team": "Stade Brestois 29",
-          "rank": 12,
-          "points": 2,
-          "goalsDiff": 0,
-          "form": "DD",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
           }
         },
         {
@@ -5730,16 +5483,16 @@
           "teamId": 1298,
           "team": "Le Mans",
           "rank": 14,
-          "points": 1,
+          "points": 2,
           "goalsDiff": -1,
-          "form": "LD",
+          "form": "DLD",
           "all": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
-            "draws": 1,
+            "draws": 2,
             "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 5
+            "goalsFor": 5,
+            "goalsAgainst": 6
           },
           "home": {
             "played": 1,
@@ -5750,36 +5503,68 @@
             "goalsAgainst": 2
           },
           "away": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 84,
+          "team": "Nice",
+          "rank": 15,
+          "points": 2,
+          "goalsDiff": -3,
+          "form": "DLD",
+          "all": {
+            "played": 3,
+            "wins": 0,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 4
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "away": {
             "played": 1,
             "wins": 0,
             "draws": 0,
             "losses": 1,
-            "goalsFor": 2,
+            "goalsFor": 0,
             "goalsAgainst": 3
           }
         },
         {
           "teamId": 111,
           "team": "Le Havre",
-          "rank": 15,
+          "rank": 16,
           "points": 1,
-          "goalsDiff": -1,
-          "form": "DL",
+          "goalsDiff": -2,
+          "form": "LDL",
           "all": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
             "draws": 1,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
+            "losses": 2,
+            "goalsFor": 2,
+            "goalsAgainst": 4
           },
           "home": {
-            "played": 1,
+            "played": 2,
             "wins": 0,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 1
+            "losses": 2,
+            "goalsFor": 1,
+            "goalsAgainst": 3
           },
           "away": {
             "played": 1,
@@ -5793,7 +5578,7 @@
         {
           "teamId": 96,
           "team": "Toulouse",
-          "rank": 16,
+          "rank": 17,
           "points": 1,
           "goalsDiff": -3,
           "form": "LDL",
@@ -5820,38 +5605,6 @@
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 84,
-          "team": "Nice",
-          "rank": 17,
-          "points": 1,
-          "goalsDiff": -3,
-          "form": "LD",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 3
           }
         },
         {
@@ -5947,6 +5700,122 @@
           }
         },
         {
+          "teamId": 84,
+          "team": "Nice",
+          "form": "DLD",
+          "all": {
+            "played": 3,
+            "wins": 0,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 4
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 0,
+            "goalsAgainst": 3
+          }
+        },
+        {
+          "teamId": 1298,
+          "team": "Le Mans",
+          "form": "DLD",
+          "all": {
+            "played": 3,
+            "wins": 0,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 111,
+          "team": "Le Havre",
+          "form": "LDL",
+          "all": {
+            "played": 3,
+            "wins": 0,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 2,
+            "goalsAgainst": 4
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 1,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 106,
+          "team": "Stade Brestois 29",
+          "form": "DDW",
+          "all": {
+            "played": 3,
+            "wins": 1,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 1,
+            "wins": 0,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          }
+        },
+        {
           "teamId": 110,
           "team": "Estac Troyes",
           "form": "DW",
@@ -6003,122 +5872,6 @@
             "goalsFor": 0,
             "goalsAgainst": 4
           }
-        },
-        {
-          "teamId": 84,
-          "team": "Nice",
-          "form": "DL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 1298,
-          "team": "Le Mans",
-          "form": "DL",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 111,
-          "team": "Le Havre",
-          "form": "LD",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 106,
-          "team": "Stade Brestois 29",
-          "form": "DD",
-          "all": {
-            "played": 2,
-            "wins": 0,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 4
-          },
-          "home": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          }
         }
       ],
       "fixtures": [
@@ -6173,130 +5926,13 @@
               "reason": "Injury"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 116,
-              "team": "Lens",
-              "formation": "3-4-2-1",
-              "coach": "D. Toppmöller",
-              "starters": [
-                "R. Risser",
-                "K. Antonio",
-                "I. Ganiou",
-                "M. Udol",
-                "R. Aguilar",
-                "A. Haidara",
-                "Y. Titraoui",
-                "M. Skóraś",
-                "F. Thauvin",
-                "T. Hazard",
-                "A. Sima"
-              ]
-            },
-            {
-              "teamId": 97,
-              "team": "Lorient",
-              "formation": "3-4-2-1",
-              "coach": "A. Dujeux",
-              "starters": [
-                "Y. Mvogo",
-                "D. Sylla",
-                "M. Talbi",
-                "N. Adjei",
-                "P. Katseris",
-                "N. Mbamba",
-                "N. Cadiou",
-                "K. Kouassi",
-                "G. Bernardeau",
-                "J. Makengo",
-                "Mamadou Kone"
-              ]
-            }
-          ]
-        },
-        {
-          "fixtureId": 1552755,
-          "kickoff": "2026-09-06T22:00:00+09:00",
-          "status": "NS",
-          "homeTeamId": 110,
-          "homeTeam": "Estac Troyes",
-          "awayTeamId": 95,
-          "awayTeam": "Strasbourg",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1552755,
-              "teamId": 110,
-              "playerId": 174596,
-              "player": "I. Boura",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 110,
-              "playerId": 859,
-              "player": "P. Gozzi",
-              "type": "Missing Fixture",
-              "reason": "Muscle Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 110,
-              "playerId": 395810,
-              "player": "Y. Titi",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 95,
-              "playerId": 415431,
-              "player": "S. El Mourabet",
-              "type": "Missing Fixture",
-              "reason": "Red Card"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 95,
-              "playerId": 359386,
-              "player": "M. Godo",
-              "type": "Missing Fixture",
-              "reason": "Muscle Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 95,
-              "playerId": 303016,
-              "player": "M. Oyedele",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 95,
-              "playerId": 390742,
-              "player": "J. Panichelli",
-              "type": "Missing Fixture",
-              "reason": "Knee Injury"
-            },
-            {
-              "fixtureId": 1552755,
-              "teamId": 95,
-              "playerId": 271542,
-              "player": "I. Doukoure",
-              "type": "Questionable",
-              "reason": "Injury"
-            }
-          ],
           "lineupsChecked": false,
           "lineups": []
         },
         {
           "fixtureId": 1552752,
           "kickoff": "2026-09-06T03:45:00+09:00",
-          "status": "2H",
+          "status": "FT",
           "homeTeamId": 84,
           "homeTeam": "Nice",
           "awayTeamId": 1298,
@@ -6376,52 +6012,13 @@
               "reason": "Red Card"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 84,
-              "team": "Nice",
-              "formation": "3-4-2-1",
-              "coach": "O. Pantaloni",
-              "starters": [
-                "Y. Diouf",
-                "Mohamed Abdelmonem",
-                "Y. Ndayishimiye",
-                "X. Mandza Tsiendi",
-                "J. Clauss",
-                "D. Coulibaly",
-                "A. Witsel",
-                "N. Nkounkou",
-                "N. Ngoumou",
-                "S. Diop",
-                "E. Wahi"
-              ]
-            },
-            {
-              "teamId": 1298,
-              "team": "Le Mans",
-              "formation": "3-1-4-2",
-              "coach": "P. Videira",
-              "starters": [
-                "E. Hatfout",
-                "N. Boissé",
-                "Raúl Torrente",
-                "H. Voyer",
-                "A. Lauray",
-                "R. Bamba",
-                "A. Bourabaa",
-                "J. Vercruysse",
-                "L. Calodat",
-                "L. Mafouta",
-                "D. Guèye"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1552748,
           "kickoff": "2026-09-06T03:45:00+09:00",
-          "status": "2H",
+          "status": "FT",
           "homeTeamId": 111,
           "homeTeam": "Le Havre",
           "awayTeamId": 106,
@@ -6485,47 +6082,86 @@
               "reason": "Ankle Injury"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1552755,
+          "kickoff": "2026-09-06T22:00:00+09:00",
+          "status": "NS",
+          "homeTeamId": 110,
+          "homeTeam": "Estac Troyes",
+          "awayTeamId": 95,
+          "awayTeam": "Strasbourg",
+          "injuriesChecked": true,
+          "injuries": [
             {
-              "teamId": 111,
-              "team": "Le Havre",
-              "formation": "3-4-2-1",
-              "coach": "D. Digard",
-              "starters": [
-                "L. Mpasi",
-                "A. Seko",
-                "J. Mwanga",
-                "A. Touba",
-                "E. Jelert",
-                "S. Ebonog",
-                "A. Richardson",
-                "T. Pembélé",
-                "R. Ndiaye",
-                "M. Samatta",
-                "J. Maja"
-              ]
+              "fixtureId": 1552755,
+              "teamId": 110,
+              "playerId": 174596,
+              "player": "I. Boura",
+              "type": "Missing Fixture",
+              "reason": "Injury"
             },
             {
-              "teamId": 106,
-              "team": "Stade Brestois 29",
-              "formation": "4-2-3-1",
-              "coach": "Julien Lachuer",
-              "starters": [
-                "E. Selvik",
-                "K. Lala",
-                "R. Le Guen",
-                "G. Lloris",
-                "B. Locko",
-                "J. Chotard",
-                "H. Magnetti",
-                "Mama Baldé",
-                "K. Doumbia",
-                "P. Mboup",
-                "L. Ajorque"
-              ]
+              "fixtureId": 1552755,
+              "teamId": 110,
+              "playerId": 859,
+              "player": "P. Gozzi",
+              "type": "Missing Fixture",
+              "reason": "Muscle Injury"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 110,
+              "playerId": 395810,
+              "player": "Y. Titi",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 95,
+              "playerId": 415431,
+              "player": "S. El Mourabet",
+              "type": "Missing Fixture",
+              "reason": "Red Card"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 95,
+              "playerId": 359386,
+              "player": "M. Godo",
+              "type": "Missing Fixture",
+              "reason": "Muscle Injury"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 95,
+              "playerId": 303016,
+              "player": "M. Oyedele",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 95,
+              "playerId": 390742,
+              "player": "J. Panichelli",
+              "type": "Missing Fixture",
+              "reason": "Knee Injury"
+            },
+            {
+              "fixtureId": 1552755,
+              "teamId": 95,
+              "playerId": 271542,
+              "player": "I. Doukoure",
+              "type": "Questionable",
+              "reason": "Injury"
             }
-          ]
+          ],
+          "lineupsChecked": true,
+          "lineups": []
         }
       ]
     },
@@ -6535,9 +6171,41 @@
       "season": "2026",
       "standings": [
         {
+          "teamId": 197,
+          "team": "PSV Eindhoven",
+          "rank": 1,
+          "points": 13,
+          "goalsDiff": 12,
+          "form": "WWWWD",
+          "all": {
+            "played": 5,
+            "wins": 4,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 18,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 11,
+            "goalsAgainst": 3
+          }
+        },
+        {
           "teamId": 201,
           "team": "AZ Alkmaar",
-          "rank": 1,
+          "rank": 2,
           "points": 12,
           "goalsDiff": 10,
           "form": "WWWW",
@@ -6569,7 +6237,7 @@
         {
           "teamId": 209,
           "team": "Feyenoord",
-          "rank": 2,
+          "rank": 3,
           "points": 11,
           "goalsDiff": 6,
           "form": "WDWDW",
@@ -6599,26 +6267,26 @@
           }
         },
         {
-          "teamId": 197,
-          "team": "PSV Eindhoven",
-          "rank": 3,
-          "points": 10,
-          "goalsDiff": 10,
-          "form": "WWWD",
+          "teamId": 196,
+          "team": "Excelsior",
+          "rank": 4,
+          "points": 9,
+          "goalsDiff": 7,
+          "form": "WWLW",
           "all": {
             "played": 4,
             "wins": 3,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 15,
-            "goalsAgainst": 5
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 10,
+            "goalsAgainst": 3
           },
           "home": {
             "played": 2,
             "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 3,
             "goalsAgainst": 3
           },
           "away": {
@@ -6626,32 +6294,32 @@
             "wins": 2,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 2
+            "goalsFor": 7,
+            "goalsAgainst": 0
           }
         },
         {
           "teamId": 194,
           "team": "Ajax",
-          "rank": 4,
+          "rank": 5,
           "points": 7,
-          "goalsDiff": 6,
-          "form": "WDW",
+          "goalsDiff": 4,
+          "form": "LWDW",
           "all": {
-            "played": 3,
+            "played": 4,
             "wins": 2,
             "draws": 1,
-            "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 2
+            "losses": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 5
           },
           "home": {
-            "played": 1,
+            "played": 2,
             "wins": 0,
             "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 2,
@@ -6665,7 +6333,7 @@
         {
           "teamId": 410,
           "team": "GO Ahead Eagles",
-          "rank": 5,
+          "rank": 6,
           "points": 7,
           "goalsDiff": 2,
           "form": "LWDW",
@@ -6697,7 +6365,7 @@
         {
           "teamId": 205,
           "team": "Fortuna Sittard",
-          "rank": 6,
+          "rank": 7,
           "points": 7,
           "goalsDiff": 1,
           "form": "WLWD",
@@ -6729,7 +6397,7 @@
         {
           "teamId": 415,
           "team": "Twente",
-          "rank": 7,
+          "rank": 8,
           "points": 6,
           "goalsDiff": 4,
           "form": "WWL",
@@ -6756,38 +6424,6 @@
             "losses": 1,
             "goalsFor": 4,
             "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 196,
-          "team": "Excelsior",
-          "rank": 8,
-          "points": 6,
-          "goalsDiff": 4,
-          "form": "WLW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
           }
         },
         {
@@ -6983,41 +6619,9 @@
           }
         },
         {
-          "teamId": 195,
-          "team": "Willem II",
-          "rank": 15,
-          "points": 1,
-          "goalsDiff": -6,
-          "form": "DLL",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 4,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 6
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          }
-        },
-        {
           "teamId": 198,
           "team": "ADO Den Haag",
-          "rank": 16,
+          "rank": 15,
           "points": 1,
           "goalsDiff": -7,
           "form": "DLLL",
@@ -7049,7 +6653,7 @@
         {
           "teamId": 207,
           "team": "Utrecht",
-          "rank": 17,
+          "rank": 16,
           "points": 1,
           "goalsDiff": -9,
           "form": "LDLL",
@@ -7076,6 +6680,38 @@
             "losses": 1,
             "goalsFor": 4,
             "goalsAgainst": 5
+          }
+        },
+        {
+          "teamId": 195,
+          "team": "Willem II",
+          "rank": 17,
+          "points": 1,
+          "goalsDiff": -9,
+          "form": "LDLL",
+          "all": {
+            "played": 4,
+            "wins": 0,
+            "draws": 1,
+            "losses": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 13
+          },
+          "home": {
+            "played": 3,
+            "wins": 0,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 9
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 4
           }
         },
         {
@@ -7171,6 +6807,122 @@
           }
         },
         {
+          "teamId": 195,
+          "team": "Willem II",
+          "form": "LLDL",
+          "all": {
+            "played": 4,
+            "wins": 0,
+            "draws": 1,
+            "losses": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 13
+          },
+          "home": {
+            "played": 3,
+            "wins": 0,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 9
+          },
+          "away": {
+            "played": 1,
+            "wins": 0,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 1,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 196,
+          "team": "Excelsior",
+          "form": "WLWW",
+          "all": {
+            "played": 4,
+            "wins": 3,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 10,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 202,
+          "team": "Groningen",
+          "form": "WWLLD",
+          "all": {
+            "played": 5,
+            "wins": 2,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 11,
+            "goalsAgainst": 12
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 6
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 6
+          }
+        },
+        {
+          "teamId": 415,
+          "team": "Twente",
+          "form": "LWW",
+          "all": {
+            "played": 3,
+            "wins": 2,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 2
+          }
+        },
+        {
           "teamId": 207,
           "team": "Utrecht",
           "form": "LLDL",
@@ -7226,64 +6978,6 @@
             "losses": 1,
             "goalsFor": 4,
             "goalsAgainst": 7
-          }
-        },
-        {
-          "teamId": 202,
-          "team": "Groningen",
-          "form": "WWLL",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 9,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 6
-          }
-        },
-        {
-          "teamId": 415,
-          "team": "Twente",
-          "form": "LWW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 2
           }
         },
         {
@@ -7459,64 +7153,6 @@
             "goalsFor": 5,
             "goalsAgainst": 4
           }
-        },
-        {
-          "teamId": 195,
-          "team": "Willem II",
-          "form": "LLD",
-          "all": {
-            "played": 3,
-            "wins": 0,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 4,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 6
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 196,
-          "team": "Excelsior",
-          "form": "WLW",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 0
-          }
         }
       ],
       "fixtures": [
@@ -7603,44 +7239,176 @@
               "reason": "Inactive"
             }
           ],
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1552157,
+          "kickoff": "2026-09-06T04:00:00+09:00",
+          "status": "FT",
+          "homeTeamId": 195,
+          "homeTeam": "Willem II",
+          "awayTeamId": 196,
+          "awayTeam": "Excelsior",
+          "injuriesChecked": true,
+          "injuries": [
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 444433,
+              "player": "L. Abildgaard",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 411824,
+              "player": "A. Culum",
+              "type": "Missing Fixture",
+              "reason": "Foot Injury"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 1405,
+              "player": "T. Didillon Hodl",
+              "type": "Missing Fixture",
+              "reason": "Hamstring Injury"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 393871,
+              "player": "A. Lachkar",
+              "type": "Missing Fixture",
+              "reason": "Groin Injury"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 37712,
+              "player": "J. Schuurman",
+              "type": "Missing Fixture",
+              "reason": "Knock"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 195,
+              "playerId": 480309,
+              "player": "A. Zarrouk",
+              "type": "Missing Fixture",
+              "reason": "Surgery"
+            },
+            {
+              "fixtureId": 1552157,
+              "teamId": 196,
+              "playerId": 321632,
+              "player": "N. Naujoks",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            }
+          ],
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1552158,
+          "kickoff": "2026-09-06T19:15:00+09:00",
+          "status": "FT",
+          "homeTeamId": 202,
+          "homeTeam": "Groningen",
+          "awayTeamId": 415,
+          "awayTeam": "Twente",
+          "injuriesChecked": true,
+          "injuries": [
+            {
+              "fixtureId": 1552158,
+              "teamId": 202,
+              "playerId": 414188,
+              "player": "M. Jeng",
+              "type": "Missing Fixture",
+              "reason": "Leg Injury"
+            },
+            {
+              "fixtureId": 1552158,
+              "teamId": 202,
+              "playerId": 446871,
+              "player": "T. Mercera",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1552158,
+              "teamId": 202,
+              "playerId": 631615,
+              "player": "R. Metu",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1552158,
+              "teamId": 202,
+              "playerId": 90957,
+              "player": "M. Rente",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            },
+            {
+              "fixtureId": 1552158,
+              "teamId": 415,
+              "playerId": 191879,
+              "player": "K. Hlynsson",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1552158,
+              "teamId": 415,
+              "playerId": 292553,
+              "player": "S. Lemkin",
+              "type": "Missing Fixture",
+              "reason": "Injury"
+            }
+          ],
           "lineupsChecked": true,
           "lineups": [
             {
-              "teamId": 194,
-              "team": "Ajax",
-              "formation": "4-3-3",
-              "coach": "Míchel",
+              "teamId": 202,
+              "team": "Groningen",
+              "formation": "4-2-3-1",
+              "coach": "D. Lukkien",
               "starters": [
-                "M. ter Stegen",
-                "A. Gaaei",
-                "A. Bouwman",
-                "Y. Baas",
-                "Caio Henrique",
-                "D. Klaassen",
-                "J. Mokio",
-                "J. Brandt",
-                "S. Berghuis",
-                "T. Arokodare",
-                "O. Gloukh"
+                "E. Vaessen",
+                "J. Schreuders",
+                "M. Csinger",
+                "T. Blokzijl",
+                "Wouter Prins",
+                "T. de Jonge",
+                "T. Land",
+                "D. van der Werff",
+                "T. van Bergen",
+                "P. Clement",
+                "B. Willumsson"
               ]
             },
             {
-              "teamId": 197,
-              "team": "PSV Eindhoven",
+              "teamId": 415,
+              "team": "Twente",
               "formation": "4-2-3-1",
-              "coach": "P. Bosz",
+              "coach": "J. van den Brom",
               "starters": [
-                "M. Kovář",
-                "S. Dest",
-                "L. Geertruida",
-                "A. Obispo",
-                "Mauro Júnior",
-                "K. Sano",
-                "N. Fernandez",
-                "I. Perišić",
-                "G. Til",
-                "R. van Bommel",
-                "R. Pepi"
+                "L. Unnerstall",
+                "B. van Rooij",
+                "M. Bruns",
+                "R. Pröpper",
+                "R. Nijstad",
+                "R. Zerrouki",
+                "D. Weidmann",
+                "S. Ørjasæter",
+                "Y. Taha",
+                "M. Pjaca",
+                "W. Weghorst"
               ]
             }
           ]
@@ -7768,107 +7536,6 @@
               "reason": "Inactive"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 207,
-              "team": "Utrecht",
-              "formation": "3-4-3",
-              "coach": "A. Correia",
-              "starters": [
-                "V. Barkas",
-                "S. Horemans",
-                "M. Didden",
-                "N. Panagiotou",
-                "G. Offerhaus",
-                "D. de Wit",
-                "D. van den Berg",
-                "A. Zagré",
-                "Ángel Alarcón",
-                "Artem Stepanov",
-                "Y. Cathline"
-              ]
-            },
-            {
-              "teamId": 410,
-              "team": "GO Ahead Eagles",
-              "formation": "4-2-3-1",
-              "coach": "J. Oosting",
-              "starters": [
-                "K. Haug",
-                "A. Sampsted",
-                "J. Dirksen",
-                "J. Kramer",
-                "D. James",
-                "E. Linthorst",
-                "M. Meulensteen",
-                "S. Tengstedt",
-                "V. Edvardsen",
-                "M. Suray",
-                "S. Sigurðarson"
-              ]
-            }
-          ]
-        },
-        {
-          "fixtureId": 1552158,
-          "kickoff": "2026-09-06T19:15:00+09:00",
-          "status": "NS",
-          "homeTeamId": 202,
-          "homeTeam": "Groningen",
-          "awayTeamId": 415,
-          "awayTeam": "Twente",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1552158,
-              "teamId": 202,
-              "playerId": 414188,
-              "player": "M. Jeng",
-              "type": "Missing Fixture",
-              "reason": "Leg Injury"
-            },
-            {
-              "fixtureId": 1552158,
-              "teamId": 202,
-              "playerId": 446871,
-              "player": "T. Mercera",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552158,
-              "teamId": 202,
-              "playerId": 631615,
-              "player": "R. Metu",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552158,
-              "teamId": 202,
-              "playerId": 90957,
-              "player": "M. Rente",
-              "type": "Missing Fixture",
-              "reason": "Injury"
-            },
-            {
-              "fixtureId": 1552158,
-              "teamId": 415,
-              "playerId": 191879,
-              "player": "K. Hlynsson",
-              "type": "Questionable",
-              "reason": "Inactive"
-            },
-            {
-              "fixtureId": 1552158,
-              "teamId": 415,
-              "playerId": 292553,
-              "player": "S. Lemkin",
-              "type": "Questionable",
-              "reason": "Injury"
-            }
-          ],
           "lineupsChecked": false,
           "lineups": []
         },
@@ -7923,8 +7590,47 @@
               "reason": "Knee Injury"
             }
           ],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 210,
+              "team": "Heerenveen",
+              "formation": "4-2-3-1",
+              "coach": "R. Veldeman",
+              "starters": [
+                "B. Klaverboer",
+                "O. Braude",
+                "S. Kersten",
+                "M. Willemsen",
+                "V. Zagaritis",
+                "N. Courtens",
+                "D. Proper",
+                "J. Trenskow",
+                "R. Meerveld",
+                "M. Rivera",
+                "D. Vente"
+              ]
+            },
+            {
+              "teamId": 201,
+              "team": "AZ Alkmaar",
+              "formation": "4-2-3-1",
+              "coach": "L. Echteld",
+              "starters": [
+                "J. De Busser",
+                "E. Dijkstra",
+                "W. Goes",
+                "L. Schouten",
+                "M. Chávez",
+                "J. Clasie",
+                "P. Koopmeiners",
+                "Weslley Patati",
+                "D. Kwakman",
+                "R. Daal",
+                "M. Meerdink"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1552160,
@@ -7947,6 +7653,14 @@
             {
               "fixtureId": 1552160,
               "teamId": 420,
+              "playerId": 383068,
+              "player": "W. Asselman",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1552160,
+              "teamId": 420,
               "playerId": 516834,
               "player": "D. Visser",
               "type": "Missing Fixture",
@@ -7961,8 +7675,47 @@
               "reason": "Injury"
             }
           ],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 427,
+              "team": "Telstar",
+              "formation": "3-4-2-1",
+              "coach": "H. Brugge",
+              "starters": [
+                "R. Koeman",
+                "S. Valk",
+                "A. Soualhia",
+                "M. Peersman",
+                "Gerald Alders",
+                "N. Rossen",
+                "T. Owusu",
+                "J. Hardeveld",
+                "Rui Mendes",
+                "P. Brouwer",
+                "N. Þórisson"
+              ]
+            },
+            {
+              "teamId": 420,
+              "team": "Cambuur",
+              "formation": "3-4-2-1",
+              "coach": "J. Plat",
+              "starters": [
+                "T. Jansen",
+                "J. Amofa",
+                "I. Baouf",
+                "B. van Duijl",
+                "D. Bouah",
+                "N. Souren",
+                "R. El Arguioui",
+                "M. Costarelli",
+                "I. Hamache",
+                "F. Kvam",
+                "N. Binder"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1552161,
@@ -7992,14 +7745,6 @@
             },
             {
               "fixtureId": 1552161,
-              "teamId": 198,
-              "playerId": 353898,
-              "player": "M. Sin",
-              "type": "Missing Fixture",
-              "reason": "Inactive"
-            },
-            {
-              "fixtureId": 1552161,
               "teamId": 205,
               "playerId": 467814,
               "player": "R. Bayram",
@@ -8025,10 +7770,10 @@
             {
               "fixtureId": 1552161,
               "teamId": 205,
-              "playerId": 162520,
-              "player": "R. Guth",
-              "type": "Questionable",
-              "reason": "Injury"
+              "playerId": 339169,
+              "player": "S. Wylin",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
             },
             {
               "fixtureId": 1552161,
@@ -8037,127 +7782,18 @@
               "player": "I. Marquez",
               "type": "Questionable",
               "reason": "Injury"
-            }
-          ],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1552157,
-          "kickoff": "2026-09-06T04:00:00+09:00",
-          "status": "2H",
-          "homeTeamId": 195,
-          "homeTeam": "Willem II",
-          "awayTeamId": 196,
-          "awayTeam": "Excelsior",
-          "injuriesChecked": true,
-          "injuries": [
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 411824,
-              "player": "A. Culum",
-              "type": "Missing Fixture",
-              "reason": "Foot Injury"
             },
             {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 1405,
-              "player": "T. Didillon Hodl",
-              "type": "Missing Fixture",
-              "reason": "Hamstring Injury"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 393871,
-              "player": "A. Lachkar",
-              "type": "Missing Fixture",
-              "reason": "Groin Injury"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 37712,
-              "player": "J. Schuurman",
-              "type": "Missing Fixture",
-              "reason": "Knock"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 480309,
-              "player": "A. Zarrouk",
-              "type": "Missing Fixture",
-              "reason": "Surgery"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 444433,
-              "player": "L. Abildgaard",
-              "type": "Questionable",
-              "reason": "Inactive"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 195,
-              "playerId": 37157,
-              "player": "T. Vilhena",
-              "type": "Questionable",
-              "reason": "Inactive"
-            },
-            {
-              "fixtureId": 1552157,
-              "teamId": 196,
-              "playerId": 321632,
-              "player": "N. Naujoks",
+              "fixtureId": 1552161,
+              "teamId": 205,
+              "playerId": 37383,
+              "player": "O. Romeny",
               "type": "Questionable",
               "reason": "Inactive"
             }
           ],
           "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 195,
-              "team": "Willem II",
-              "formation": "4-2-3-1",
-              "coach": "J. Stegeman",
-              "starters": [
-                "M. Delanghe",
-                "H. ter Avest",
-                "F. Stam",
-                "M. Lemmens",
-                "N. Tjoe-A-On",
-                "K. Boogaard",
-                "C. Twigt",
-                "E. Gürbüz",
-                "Uriel van Aalst",
-                "J. Slory",
-                "D. Haen"
-              ]
-            },
-            {
-              "teamId": 196,
-              "team": "Excelsior",
-              "formation": "5-4-1",
-              "coach": "R. den Uil",
-              "starters": [
-                "S. van Gassel",
-                "Eric Emanuel da Silva Moreira",
-                "R. Meissen",
-                "C. Widell",
-                "J. Plug",
-                "S. Janssen",
-                "A. Sliti",
-                "I. Yegoian",
-                "L. Hartjes",
-                "Á. Þorsteinsson",
-                "D. Garden"
-              ]
-            }
-          ]
+          "lineups": []
         }
       ]
     },
@@ -8202,23 +7838,23 @@
           "teamId": 228,
           "team": "Sporting CP",
           "rank": 2,
-          "points": 10,
-          "goalsDiff": 7,
-          "form": "WWWD",
+          "points": 13,
+          "goalsDiff": 9,
+          "form": "WWWWD",
           "all": {
-            "played": 4,
-            "wins": 3,
+            "played": 5,
+            "wins": 4,
             "draws": 1,
             "losses": 0,
-            "goalsFor": 12,
+            "goalsFor": 14,
             "goalsAgainst": 5
           },
           "home": {
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 6,
+            "goalsFor": 8,
             "goalsAgainst": 3
           },
           "away": {
@@ -8231,9 +7867,41 @@
           }
         },
         {
+          "teamId": 211,
+          "team": "Benfica",
+          "rank": 3,
+          "points": 10,
+          "goalsDiff": 11,
+          "form": "WWWD",
+          "all": {
+            "played": 4,
+            "wins": 3,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 14,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 0
+          }
+        },
+        {
           "teamId": 240,
           "team": "Arouca",
-          "rank": 3,
+          "rank": 4,
           "points": 9,
           "goalsDiff": 4,
           "form": "WLWW",
@@ -8265,7 +7933,7 @@
         {
           "teamId": 227,
           "team": "Santa Clara",
-          "rank": 4,
+          "rank": 5,
           "points": 8,
           "goalsDiff": 2,
           "form": "DWWD",
@@ -8292,38 +7960,6 @@
             "losses": 0,
             "goalsFor": 2,
             "goalsAgainst": 1
-          }
-        },
-        {
-          "teamId": 211,
-          "team": "Benfica",
-          "rank": 5,
-          "points": 7,
-          "goalsDiff": 8,
-          "form": "WWD",
-          "all": {
-            "played": 3,
-            "wins": 2,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 0
           }
         },
         {
@@ -8359,27 +7995,59 @@
           }
         },
         {
-          "teamId": 214,
-          "team": "Maritimo",
+          "teamId": 217,
+          "team": "SC Braga",
           "rank": 7,
           "points": 7,
-          "goalsDiff": 1,
-          "form": "LDWW",
+          "goalsDiff": 2,
+          "form": "WWD",
           "all": {
-            "played": 4,
+            "played": 3,
             "wins": 2,
             "draws": 1,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 5
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 3
           },
           "home": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 1,
+            "goalsAgainst": 0
+          },
+          "away": {
             "played": 2,
             "wins": 1,
             "draws": 1,
             "losses": 0,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          }
+        },
+        {
+          "teamId": 214,
+          "team": "Maritimo",
+          "rank": 8,
+          "points": 7,
+          "goalsDiff": -2,
+          "form": "LLDWW",
+          "all": {
+            "played": 5,
+            "wins": 2,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 8
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 1,
+            "losses": 1,
             "goalsFor": 3,
-            "goalsAgainst": 2
+            "goalsAgainst": 5
           },
           "away": {
             "played": 2,
@@ -8393,7 +8061,7 @@
         {
           "teamId": 15130,
           "team": "Estrela",
-          "rank": 8,
+          "rank": 9,
           "points": 6,
           "goalsDiff": 1,
           "form": "DWDD",
@@ -8423,51 +8091,19 @@
           }
         },
         {
-          "teamId": 217,
-          "team": "SC Braga",
-          "rank": 9,
-          "points": 4,
-          "goalsDiff": 1,
-          "form": "WD",
-          "all": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 1,
-            "goalsAgainst": 0
-          },
-          "away": {
-            "played": 1,
-            "wins": 0,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 2
-          }
-        },
-        {
           "teamId": 225,
           "team": "Nacional",
           "rank": 10,
           "points": 4,
-          "goalsDiff": 0,
-          "form": "LLWD",
+          "goalsDiff": -2,
+          "form": "LLLWD",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 1,
             "draws": 1,
-            "losses": 2,
+            "losses": 3,
             "goalsFor": 6,
-            "goalsAgainst": 6
+            "goalsAgainst": 8
           },
           "home": {
             "played": 2,
@@ -8478,12 +8114,12 @@
             "goalsAgainst": 3
           },
           "away": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
             "draws": 1,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 2,
-            "goalsAgainst": 3
+            "goalsAgainst": 5
           }
         },
         {
@@ -8651,23 +8287,23 @@
           "team": "Alverca",
           "rank": 16,
           "points": 2,
-          "goalsDiff": -4,
-          "form": "DLDL",
+          "goalsDiff": -5,
+          "form": "LDLDL",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 0,
             "draws": 2,
-            "losses": 2,
-            "goalsFor": 4,
-            "goalsAgainst": 8
+            "losses": 3,
+            "goalsFor": 5,
+            "goalsAgainst": 10
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
             "draws": 2,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 3
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 2,
@@ -8744,64 +8380,6 @@
         }
       ],
       "teams": [
-        {
-          "teamId": 228,
-          "team": "Sporting CP",
-          "form": "DWWW",
-          "all": {
-            "played": 4,
-            "wins": 3,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 12,
-            "goalsAgainst": 5
-          },
-          "home": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 225,
-          "team": "Nacional",
-          "form": "DWLL",
-          "all": {
-            "played": 4,
-            "wins": 1,
-            "draws": 1,
-            "losses": 2,
-            "goalsFor": 6,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          }
-        },
         {
           "teamId": 214,
           "team": "Maritimo",
@@ -8919,6 +8497,64 @@
           }
         },
         {
+          "teamId": 228,
+          "team": "Sporting CP",
+          "form": "DWWWW",
+          "all": {
+            "played": 5,
+            "wins": 4,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 14,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 2
+          }
+        },
+        {
+          "teamId": 225,
+          "team": "Nacional",
+          "form": "DWLLL",
+          "all": {
+            "played": 5,
+            "wins": 1,
+            "draws": 1,
+            "losses": 3,
+            "goalsFor": 6,
+            "goalsAgainst": 8
+          },
+          "home": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 4,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 3,
+            "wins": 0,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 2,
+            "goalsAgainst": 5
+          }
+        },
+        {
           "teamId": 227,
           "team": "Santa Clara",
           "form": "DWWD",
@@ -8979,58 +8615,6 @@
       ],
       "fixtures": [
         {
-          "fixtureId": 1575489,
-          "kickoff": "2026-09-06T04:30:00+09:00",
-          "status": "1H",
-          "homeTeamId": 228,
-          "homeTeam": "Sporting CP",
-          "awayTeamId": 225,
-          "awayTeam": "Nacional",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 228,
-              "team": "Sporting CP",
-              "formation": "4-2-3-1",
-              "coach": "Rui Borges",
-              "starters": [
-                "Rui Silva",
-                "Iván Fresneda",
-                "Z. Debast",
-                "Gonçalo Inácio",
-                "M. Araújo",
-                "Sergi Altimira",
-                "I. Doumbia",
-                "Geny Catamo",
-                "R. Zalazar",
-                "Flávio Gonçalves",
-                "L. Suárez"
-              ]
-            },
-            {
-              "teamId": 225,
-              "team": "Nacional",
-              "formation": "3-4-2-1",
-              "coach": "Pedro Figueiredo",
-              "starters": [
-                "Renato Bellucci",
-                "Léo Santos",
-                "Francisco Gonçalves",
-                "Zé Vitor",
-                "Wesley Gasolina",
-                "Matheus Dias",
-                "Miguel Baeza",
-                "W. Kokolo",
-                "S. Gavriel",
-                "M. Jensen",
-                "Pablo Ruan"
-              ]
-            }
-          ]
-        },
-        {
           "fixtureId": 1575487,
           "kickoff": "2026-09-06T02:00:00+09:00",
           "status": "FT",
@@ -9040,47 +8624,8 @@
           "awayTeam": "Benfica",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 214,
-              "team": "Maritimo",
-              "formation": "4-3-3",
-              "coach": "M. van der Gaag",
-              "starters": [
-                "Alfonso Pastor",
-                "Igor Julião",
-                "Rafael Fernandes",
-                "Romain Correia",
-                "Paulo Henrique",
-                "Raphael Guzzo",
-                "Rodrigo Andrade",
-                "V. Danilović",
-                "B. Limbombe",
-                "Adrián Butzke",
-                "Martín Tejón"
-              ]
-            },
-            {
-              "teamId": 211,
-              "team": "Benfica",
-              "formation": "4-2-3-1",
-              "coach": "Marco Silva",
-              "starters": [
-                "Samuel Soares",
-                "A. Bah",
-                "Tomás Araújo",
-                "C. Lenglet",
-                "S. Dahl",
-                "L. Barreiro",
-                "João Palhinha",
-                "Rafa",
-                "H. Sudakov",
-                "G. Prestianni",
-                "V. Pavlidis"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1575482,
@@ -9092,47 +8637,21 @@
           "awayTeam": "SC Braga",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 4724,
-              "team": "Alverca",
-              "formation": "3-4-3",
-              "coach": "Sérgio Ferreira",
-              "starters": [
-                "Matheus Mendes",
-                "S. Baseya",
-                "Sergi Gómez",
-                "Y. Bojang",
-                "Toni Tamarit",
-                "Ian Luccas",
-                "Rayan",
-                "I. James",
-                "Chiquinho",
-                "Vivaldo Semedo",
-                "Figueiredo"
-              ]
-            },
-            {
-              "teamId": 217,
-              "team": "SC Braga",
-              "formation": "3-4-3",
-              "coach": "Carlos Vicens",
-              "starters": [
-                "Bernardo Fontes",
-                "G. Lagerbielke",
-                "Vitor Carvalho",
-                "A. Bajrami",
-                "Víctor Gómez",
-                "João Moutinho",
-                "E. Tıknaz",
-                "Diogo Travassos",
-                "M. Dorgeles",
-                "Pau Victor",
-                "Diego Rodrigues"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1575489,
+          "kickoff": "2026-09-06T04:30:00+09:00",
+          "status": "FT",
+          "homeTeamId": 228,
+          "homeTeam": "Sporting CP",
+          "awayTeamId": 225,
+          "awayTeam": "Nacional",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1575488,
@@ -9144,7 +8663,7 @@
           "awayTeam": "Rio Ave",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -9158,16 +8677,16 @@
           "teamId": 247,
           "team": "Celtic",
           "rank": 1,
-          "points": 12,
-          "goalsDiff": 9,
-          "form": "WWWW",
+          "points": 15,
+          "goalsDiff": 10,
+          "form": "WWWWW",
           "all": {
-            "played": 4,
-            "wins": 4,
+            "played": 5,
+            "wins": 5,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 2
+            "goalsFor": 13,
+            "goalsAgainst": 3
           },
           "home": {
             "played": 3,
@@ -9178,12 +8697,12 @@
             "goalsAgainst": 1
           },
           "away": {
-            "played": 1,
-            "wins": 1,
+            "played": 2,
+            "wins": 2,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 1
+            "goalsFor": 7,
+            "goalsAgainst": 2
           }
         },
         {
@@ -9191,23 +8710,23 @@
           "team": "ST Mirren",
           "rank": 2,
           "points": 10,
-          "goalsDiff": 4,
-          "form": "WDWW",
+          "goalsDiff": 3,
+          "form": "LWDWW",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 3,
             "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 3
+            "losses": 1,
+            "goalsFor": 8,
+            "goalsAgainst": 5
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 1,
             "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 2,
@@ -9541,6 +9060,64 @@
       ],
       "teams": [
         {
+          "teamId": 251,
+          "team": "ST Mirren",
+          "form": "WWDWL",
+          "all": {
+            "played": 5,
+            "wins": 3,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 8,
+            "goalsAgainst": 5
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 5
+          },
+          "away": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 3,
+            "goalsAgainst": 0
+          }
+        },
+        {
+          "teamId": 247,
+          "team": "Celtic",
+          "form": "WWWWW",
+          "all": {
+            "played": 5,
+            "wins": 5,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 13,
+            "goalsAgainst": 3
+          },
+          "home": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 2,
+            "wins": 2,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 2
+          }
+        },
+        {
           "teamId": 254,
           "team": "Heart Of Midlothian",
           "form": "LWWW",
@@ -9655,67 +9232,22 @@
             "goalsFor": 4,
             "goalsAgainst": 2
           }
-        },
-        {
-          "teamId": 251,
-          "team": "ST Mirren",
-          "form": "WWDW",
-          "all": {
-            "played": 4,
-            "wins": 3,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 3
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 2,
-            "wins": 2,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 247,
-          "team": "Celtic",
-          "form": "WWWW",
-          "all": {
-            "played": 4,
-            "wins": 4,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 3,
-            "wins": 3,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 1
-          }
         }
       ],
       "fixtures": [
+        {
+          "fixtureId": 1556663,
+          "kickoff": "2026-09-06T04:00:00+09:00",
+          "status": "FT",
+          "homeTeamId": 251,
+          "homeTeam": "ST Mirren",
+          "awayTeamId": 247,
+          "awayTeam": "Celtic",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": false,
+          "lineups": []
+        },
         {
           "fixtureId": 1556660,
           "kickoff": "2026-09-06T23:00:00+09:00",
@@ -9726,7 +9258,7 @@
           "awayTeam": "Dundee",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -9739,60 +9271,8 @@
           "awayTeam": "Hibernian",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
-        },
-        {
-          "fixtureId": 1556663,
-          "kickoff": "2026-09-06T04:00:00+09:00",
-          "status": "2H",
-          "homeTeamId": 251,
-          "homeTeam": "ST Mirren",
-          "awayTeamId": 247,
-          "awayTeam": "Celtic",
-          "injuriesChecked": true,
-          "injuries": [],
           "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 251,
-              "team": "ST Mirren",
-              "formation": "4-2-3-1",
-              "coach": "Craig McLeish",
-              "starters": [
-                "J. Chapman",
-                "C. Ramsay",
-                "A. Gogić",
-                "Henry Fieldson",
-                "D. John",
-                "R. Carr",
-                "P. Nsio",
-                "C. Mochrie",
-                "F. Taylor",
-                "Ismeal Kabia",
-                "N. Agrafiotis"
-              ]
-            },
-            {
-              "teamId": 247,
-              "team": "Celtic",
-              "formation": "4-2-3-1",
-              "coach": "M. O'Neill",
-              "starters": [
-                "V. Sinisalo",
-                "Colby Donovan",
-                "C. Carter-Vickers",
-                "A. Trusty",
-                "L. Scales",
-                "C. McGregor",
-                "M. Baur",
-                "H. Hassan",
-                "B. Nygren",
-                "Yang Hyun-Jun",
-                "C. Durán"
-              ]
-            }
-          ]
+          "lineups": []
         }
       ]
     },
@@ -9930,9 +9410,41 @@
           }
         },
         {
+          "teamId": 733,
+          "team": "Standard Liege",
+          "rank": 5,
+          "points": 11,
+          "goalsDiff": 4,
+          "form": "WWWDD",
+          "all": {
+            "played": 5,
+            "wins": 3,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 3,
+            "wins": 2,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 4
+          }
+        },
+        {
           "teamId": 600,
           "team": "Zulte Waregem",
-          "rank": 5,
+          "rank": 6,
           "points": 8,
           "goalsDiff": 5,
           "form": "DWDW",
@@ -9962,41 +9474,41 @@
           }
         },
         {
-          "teamId": 733,
-          "team": "Standard Liege",
-          "rank": 6,
+          "teamId": 735,
+          "team": "St. Truiden",
+          "rank": 7,
           "points": 8,
-          "goalsDiff": 3,
-          "form": "WWDD",
+          "goalsDiff": 4,
+          "form": "WLWDD",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 2,
             "draws": 2,
-            "losses": 0,
-            "goalsFor": 9,
-            "goalsAgainst": 6
+            "losses": 1,
+            "goalsFor": 12,
+            "goalsAgainst": 8
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 1,
             "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 2
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 4
           },
           "away": {
             "played": 2,
             "wins": 1,
             "draws": 1,
             "losses": 0,
-            "goalsFor": 5,
+            "goalsFor": 7,
             "goalsAgainst": 4
           }
         },
         {
           "teamId": 742,
           "team": "Genk",
-          "rank": 7,
+          "rank": 8,
           "points": 7,
           "goalsDiff": 4,
           "form": "WDWL",
@@ -10028,7 +9540,7 @@
         {
           "teamId": 259,
           "team": "Lommel United",
-          "rank": 8,
+          "rank": 9,
           "points": 7,
           "goalsDiff": 3,
           "form": "LWWLD",
@@ -10060,17 +9572,17 @@
         {
           "teamId": 740,
           "team": "Antwerp",
-          "rank": 9,
+          "rank": 10,
           "points": 7,
-          "goalsDiff": 1,
-          "form": "LDWW",
+          "goalsDiff": 0,
+          "form": "LLDWW",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 2,
             "draws": 1,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 10,
-            "goalsAgainst": 9
+            "goalsAgainst": 10
           },
           "home": {
             "played": 3,
@@ -10081,18 +9593,18 @@
             "goalsAgainst": 9
           },
           "away": {
-            "played": 1,
+            "played": 2,
             "wins": 1,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 3,
-            "goalsAgainst": 0
+            "goalsAgainst": 1
           }
         },
         {
           "teamId": 554,
           "team": "Anderlecht",
-          "rank": 10,
+          "rank": 11,
           "points": 6,
           "goalsDiff": -2,
           "form": "WLLW",
@@ -10118,38 +9630,6 @@
             "draws": 0,
             "losses": 2,
             "goalsFor": 0,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 735,
-          "team": "St. Truiden",
-          "rank": 11,
-          "points": 5,
-          "goalsDiff": 0,
-          "form": "LWDD",
-          "all": {
-            "played": 4,
-            "wins": 1,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 8,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
             "goalsAgainst": 4
           }
         },
@@ -10286,15 +9766,15 @@
           "team": "RAAL La Louvière",
           "rank": 16,
           "points": 1,
-          "goalsDiff": -4,
-          "form": "DLLL",
+          "goalsDiff": -8,
+          "form": "LDLLL",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 0,
             "draws": 1,
-            "losses": 3,
+            "losses": 4,
             "goalsFor": 4,
-            "goalsAgainst": 8
+            "goalsAgainst": 12
           },
           "home": {
             "played": 2,
@@ -10305,12 +9785,12 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
             "draws": 0,
-            "losses": 2,
+            "losses": 3,
             "goalsFor": 1,
-            "goalsAgainst": 4
+            "goalsAgainst": 8
           }
         },
         {
@@ -10380,6 +9860,64 @@
       ],
       "teams": [
         {
+          "teamId": 741,
+          "team": "Cercle Brugge",
+          "form": "DDLL",
+          "all": {
+            "played": 4,
+            "wins": 0,
+            "draws": 2,
+            "losses": 2,
+            "goalsFor": 5,
+            "goalsAgainst": 7
+          },
+          "home": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 4
+          },
+          "away": {
+            "played": 2,
+            "wins": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 3
+          }
+        },
+        {
+          "teamId": 631,
+          "team": "Gent",
+          "form": "WWWW",
+          "all": {
+            "played": 4,
+            "wins": 4,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 2
+          },
+          "home": {
+            "played": 3,
+            "wins": 3,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 1
+          },
+          "away": {
+            "played": 1,
+            "wins": 1,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 2,
+            "goalsAgainst": 1
+          }
+        },
+        {
           "teamId": 266,
           "team": "KV Mechelen",
           "form": "LDLDL",
@@ -10438,16 +9976,103 @@
           }
         },
         {
-          "teamId": 741,
-          "team": "Cercle Brugge",
-          "form": "DDLL",
+          "teamId": 733,
+          "team": "Standard Liege",
+          "form": "DDWWW",
           "all": {
-            "played": 4,
-            "wins": 0,
+            "played": 5,
+            "wins": 3,
             "draws": 2,
-            "losses": 2,
+            "losses": 0,
+            "goalsFor": 10,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 3,
+            "wins": 2,
+            "draws": 1,
+            "losses": 0,
             "goalsFor": 5,
-            "goalsAgainst": 7
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 5,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 740,
+          "team": "Antwerp",
+          "form": "WWDLL",
+          "all": {
+            "played": 5,
+            "wins": 2,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 10,
+            "goalsAgainst": 10
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 7,
+            "goalsAgainst": 9
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 0,
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 1
+          }
+        },
+        {
+          "teamId": 735,
+          "team": "St. Truiden",
+          "form": "DDWLW",
+          "all": {
+            "played": 5,
+            "wins": 2,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 12,
+            "goalsAgainst": 8
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 5,
+            "goalsAgainst": 4
+          },
+          "away": {
+            "played": 2,
+            "wins": 1,
+            "draws": 1,
+            "losses": 0,
+            "goalsFor": 7,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 5902,
+          "team": "RAAL La Louvière",
+          "form": "LLLDL",
+          "all": {
+            "played": 5,
+            "wins": 0,
+            "draws": 1,
+            "losses": 4,
+            "goalsFor": 4,
+            "goalsAgainst": 12
           },
           "home": {
             "played": 2,
@@ -10458,41 +10083,12 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 631,
-          "team": "Gent",
-          "form": "WWWW",
-          "all": {
-            "played": 4,
-            "wins": 4,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 2
-          },
-          "home": {
             "played": 3,
-            "wins": 3,
+            "wins": 0,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 1
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
+            "losses": 3,
+            "goalsFor": 1,
+            "goalsAgainst": 8
           }
         },
         {
@@ -10552,125 +10148,61 @@
             "goalsFor": 2,
             "goalsAgainst": 2
           }
-        },
-        {
-          "teamId": 733,
-          "team": "Standard Liege",
-          "form": "DDWW",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 9,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 5,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 740,
-          "team": "Antwerp",
-          "form": "WWDL",
-          "all": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 10,
-            "goalsAgainst": 9
-          },
-          "home": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 9
-          },
-          "away": {
-            "played": 1,
-            "wins": 1,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 0
-          }
-        },
-        {
-          "teamId": 735,
-          "team": "St. Truiden",
-          "form": "DDWL",
-          "all": {
-            "played": 4,
-            "wins": 1,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 8,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 2,
-            "wins": 1,
-            "draws": 1,
-            "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 5902,
-          "team": "RAAL La Louvière",
-          "form": "LLLD",
-          "all": {
-            "played": 4,
-            "wins": 0,
-            "draws": 1,
-            "losses": 3,
-            "goalsFor": 4,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          }
         }
       ],
       "fixtures": [
+        {
+          "fixtureId": 1558622,
+          "kickoff": "2026-09-06T20:30:00+09:00",
+          "status": "1H",
+          "homeTeamId": 741,
+          "homeTeam": "Cercle Brugge",
+          "awayTeamId": 631,
+          "awayTeam": "Gent",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 741,
+              "team": "Cercle Brugge",
+              "formation": "3-4-3",
+              "coach": "L. Friis",
+              "starters": [
+                "G. Coucke",
+                "I. Diakité",
+                "Emmanuel Kakou",
+                "G. Kondo",
+                "G. Magnée",
+                "L. Amani",
+                "L. Mondele",
+                "V. Konaté",
+                "V. Martens",
+                "S. Ngoura",
+                "L. Michal"
+              ]
+            },
+            {
+              "teamId": 631,
+              "team": "Gent",
+              "formation": "3-4-2-1",
+              "coach": "R. Demil",
+              "starters": [
+                "D. Roef",
+                "M. Ngom",
+                "C. Burgess",
+                "S. Van der Heyden",
+                "M. Volckaert",
+                "T. De Vlieger",
+                "M. Delorge-Knieper",
+                "Tiago Araújo",
+                "M. Balikwisha",
+                "M. Sonko",
+                "J. Y. Vergara Ortega"
+              ]
+            }
+          ]
+        },
         {
           "fixtureId": 1558619,
           "kickoff": "2026-09-06T01:15:00+09:00",
@@ -10681,56 +10213,30 @@
           "awayTeam": "KVC Westerlo",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 266,
-              "team": "KV Mechelen",
-              "formation": "3-4-2-1",
-              "coach": "Frédéric Vanderbiest",
-              "starters": [
-                "Nacho Mirás",
-                "L. Marijnissen",
-                "José Marsà",
-                "M. Eerdhuijzen",
-                "T. Koudou",
-                "D. Praet",
-                "F. Hammar",
-                "C. Van Meirvenne",
-                "K. Van Rafelghem",
-                "M. van Brederode",
-                "Shina Ayodele"
-              ]
-            },
-            {
-              "teamId": 261,
-              "team": "KVC Westerlo",
-              "formation": "4-2-3-1",
-              "coach": "I. Charaï",
-              "starters": [
-                "A. Jungdal",
-                "L. Flø",
-                "S. Kimura",
-                "A. Lapage",
-                "D. Ourega",
-                "I. Fofana",
-                "C. Sandra",
-                "C. Congreve",
-                "I. Sakamoto",
-                "S. Saito",
-                "N. Bassette"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
-          "fixtureId": 1558622,
-          "kickoff": "2026-09-06T20:30:00+09:00",
-          "status": "NS",
-          "homeTeamId": 741,
-          "homeTeam": "Cercle Brugge",
-          "awayTeamId": 631,
-          "awayTeam": "Gent",
+          "fixtureId": 1558620,
+          "kickoff": "2026-09-06T03:45:00+09:00",
+          "status": "FT",
+          "homeTeamId": 733,
+          "homeTeam": "Standard Liege",
+          "awayTeamId": 740,
+          "awayTeam": "Antwerp",
+          "injuriesChecked": true,
+          "injuries": [],
+          "lineupsChecked": false,
+          "lineups": []
+        },
+        {
+          "fixtureId": 1558621,
+          "kickoff": "2026-09-06T03:45:00+09:00",
+          "status": "FT",
+          "homeTeamId": 735,
+          "homeTeam": "St. Truiden",
+          "awayTeamId": 5902,
+          "awayTeam": "RAAL La Louvière",
           "injuriesChecked": true,
           "injuries": [],
           "lineupsChecked": false,
@@ -10746,112 +10252,8 @@
           "awayTeam": "Zulte Waregem",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
-        },
-        {
-          "fixtureId": 1558620,
-          "kickoff": "2026-09-06T03:45:00+09:00",
-          "status": "2H",
-          "homeTeamId": 733,
-          "homeTeam": "Standard Liege",
-          "awayTeamId": 740,
-          "awayTeam": "Antwerp",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 733,
-              "team": "Standard Liege",
-              "formation": "4-3-3",
-              "coach": "V. Euvrard",
-              "starters": [
-                "M. Epolo",
-                "M. Fossey",
-                "I. Karamoko",
-                "I. Hautekiet",
-                "G. Mortensen",
-                "C. Nielsen",
-                "A. Trouillet",
-                "R. Touzghar",
-                "Bernard Nguene",
-                "D. Eckert Ayensa",
-                "A. Abid"
-              ]
-            },
-            {
-              "teamId": 740,
-              "team": "Antwerp",
-              "formation": "4-4-2",
-              "coach": "Marvin Compper",
-              "starters": [
-                "T. Nozawa",
-                "M. Busi",
-                "Y. Tsunashima",
-                "Álvaro Cortés Moyano",
-                "S. Renders",
-                "T. Somers",
-                "X. Dierckx",
-                "A. Vermeeren",
-                "C. Scott",
-                "I. Salah",
-                "M. Frey"
-              ]
-            }
-          ]
-        },
-        {
-          "fixtureId": 1558621,
-          "kickoff": "2026-09-06T03:45:00+09:00",
-          "status": "2H",
-          "homeTeamId": 735,
-          "homeTeam": "St. Truiden",
-          "awayTeamId": 5902,
-          "awayTeam": "RAAL La Louvière",
-          "injuriesChecked": true,
-          "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 735,
-              "team": "St. Truiden",
-              "formation": "4-2-3-1",
-              "coach": "F. De Meyer",
-              "starters": [
-                "L. Kokubo",
-                "R. Vanwesemael",
-                "S. Taniguchi",
-                "V. Musliu",
-                "T. Hata",
-                "A. Sissako",
-                "R. Merlen",
-                "K. Matsuzawa",
-                "R. Araki",
-                "I. Sebaoui",
-                "S. Baždar"
-              ]
-            },
-            {
-              "teamId": 5902,
-              "team": "RAAL La Louvière",
-              "formation": "3-4-3",
-              "coach": "Edward Still",
-              "starters": [
-                "M. Peano",
-                "M. Boukamir",
-                "P. Nkoa",
-                "Y. Okou",
-                "S. Delos",
-                "M. Courcoul",
-                "I. Coulibaly",
-                "T. Lutonda",
-                "Z. Gruber",
-                "E. Filet",
-                "M. Ubandoma"
-              ]
-            }
-          ]
         }
       ]
     },
@@ -11647,57 +11049,10 @@
               "player": "C. Soyuncu",
               "type": "Missing Fixture",
               "reason": "Injury"
-            },
-            {
-              "fixtureId": 1584397,
-              "teamId": 611,
-              "playerId": 142959,
-              "player": "K. Akturkoglu",
-              "type": "Questionable",
-              "reason": "Concussion"
             }
           ],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 611,
-              "team": "Fenerbahçe",
-              "formation": "4-2-3-1",
-              "coach": "İ. Kartal",
-              "starters": [
-                "Ederson",
-                "Nélson Semedo",
-                "M. Škriniar",
-                "N. Aké",
-                "A. Brown",
-                "M. Guendouzi",
-                "N. Kanté",
-                "M. Greenwood",
-                "İ. Kahveci",
-                "O. Aydın",
-                "V. Muriqi"
-              ]
-            },
-            {
-              "teamId": 549,
-              "team": "Beşiktaş",
-              "formation": "4-1-4-1",
-              "coach": "V. Italiano",
-              "starters": [
-                "A. Nübel",
-                "A. Murillo",
-                "E. Agbadou",
-                "E. Topçu",
-                "R. Yılmaz",
-                "S. Özcan",
-                "V. Černý",
-                "J. Olaitan",
-                "O. Kökçü",
-                "L. Trossard",
-                "D. Vlahović"
-              ]
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         },
         {
           "fixtureId": 1584399,
@@ -11716,6 +11071,38 @@
               "player": "K. Corekci",
               "type": "Missing Fixture",
               "reason": "Achilles Tendon Injury"
+            },
+            {
+              "fixtureId": 1584399,
+              "teamId": 1004,
+              "playerId": 329642,
+              "player": "T. Diarra",
+              "type": "Missing Fixture",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1584399,
+              "teamId": 1004,
+              "playerId": 50067,
+              "player": "H. Hajradinovic",
+              "type": "Questionable",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1584399,
+              "teamId": 1004,
+              "playerId": 428299,
+              "player": "J. Jessen",
+              "type": "Questionable",
+              "reason": "Inactive"
+            },
+            {
+              "fixtureId": 1584399,
+              "teamId": 1004,
+              "playerId": 49469,
+              "player": "M. Ouanes",
+              "type": "Questionable",
+              "reason": "Inactive"
             },
             {
               "fixtureId": 1584399,
@@ -11742,7 +11129,7 @@
               "reason": "Inactive"
             }
           ],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -11764,7 +11151,7 @@
               "reason": "Injury"
             }
           ],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -12163,22 +11550,22 @@
         {
           "teamId": 2748,
           "team": "FC Anyang",
-          "form": "DWDLLDDWDWLDDDWLWDWWLLLLWD",
+          "form": "DWDLLDDWDWLDDDWLWDWWLLLLWDL",
           "all": {
-            "played": 26,
+            "played": 27,
             "wins": 8,
             "draws": 10,
-            "losses": 8,
+            "losses": 9,
             "goalsFor": 33,
-            "goalsAgainst": 39
+            "goalsAgainst": 42
           },
           "home": {
-            "played": 13,
+            "played": 14,
             "wins": 3,
             "draws": 5,
-            "losses": 5,
+            "losses": 6,
             "goalsFor": 15,
-            "goalsAgainst": 23
+            "goalsAgainst": 26
           },
           "away": {
             "played": 13,
@@ -12192,13 +11579,13 @@
         {
           "teamId": 2746,
           "team": "Gangwon FC",
-          "form": "LDDDLWWDWLWDDWWWDWDLLWLDD",
+          "form": "LDDDLWWDWLWDDWWWDWDLLWLDDW",
           "all": {
-            "played": 25,
-            "wins": 9,
+            "played": 26,
+            "wins": 10,
             "draws": 10,
             "losses": 6,
-            "goalsFor": 30,
+            "goalsFor": 33,
             "goalsAgainst": 24
           },
           "home": {
@@ -12210,33 +11597,33 @@
             "goalsAgainst": 11
           },
           "away": {
-            "played": 13,
-            "wins": 5,
+            "played": 14,
+            "wins": 6,
             "draws": 4,
             "losses": 4,
-            "goalsFor": 14,
+            "goalsFor": 17,
             "goalsAgainst": 13
           }
         },
         {
           "teamId": 2768,
           "team": "Gimcheon Sangmu FC",
-          "form": "DDDDDLDDLWWLLDLDDLDWWDDDDL",
+          "form": "DDDDDLDDLWWLLDLDDLDWWDDDDLD",
           "all": {
-            "played": 26,
+            "played": 27,
             "wins": 4,
-            "draws": 15,
+            "draws": 16,
             "losses": 7,
-            "goalsFor": 24,
-            "goalsAgainst": 32
+            "goalsFor": 26,
+            "goalsAgainst": 34
           },
           "home": {
-            "played": 12,
+            "played": 13,
             "wins": 1,
-            "draws": 8,
+            "draws": 9,
             "losses": 3,
-            "goalsFor": 10,
-            "goalsAgainst": 16
+            "goalsFor": 12,
+            "goalsAgainst": 18
           },
           "away": {
             "played": 14,
@@ -12250,14 +11637,14 @@
         {
           "teamId": 2759,
           "team": "Gwangju FC",
-          "form": "DWDDLLLLLLLLDLLDLDDLLDLLDL",
+          "form": "DWDDLLLLLLLLDLLDLDDLLDLLDLD",
           "all": {
-            "played": 26,
+            "played": 27,
             "wins": 1,
-            "draws": 9,
+            "draws": 10,
             "losses": 16,
-            "goalsFor": 16,
-            "goalsAgainst": 57
+            "goalsFor": 18,
+            "goalsAgainst": 59
           },
           "home": {
             "played": 14,
@@ -12268,12 +11655,12 @@
             "goalsAgainst": 29
           },
           "away": {
-            "played": 12,
+            "played": 13,
             "wins": 0,
-            "draws": 5,
+            "draws": 6,
             "losses": 7,
-            "goalsFor": 5,
-            "goalsAgainst": 28
+            "goalsFor": 7,
+            "goalsAgainst": 30
           }
         }
       ],
@@ -12281,28 +11668,106 @@
         {
           "fixtureId": 1507056,
           "kickoff": "2026-09-06T19:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 2748,
           "homeTeam": "FC Anyang",
           "awayTeamId": 2746,
           "awayTeam": "Gangwon FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2748,
+              "team": "FC Anyang",
+              "formation": "4-3-3",
+              "coach": "Ryu Byeong-Hoon",
+              "starters": [
+                "Kim Jeong-Hoon",
+                "Ju Hyun-Woo",
+                "Lee Chang-Yong",
+                "Kwon Kyung-Won",
+                "Kim Dong-Jin",
+                "Matheus Oliveira",
+                "Kim Jung-Hyun",
+                "D. Bakker",
+                "Chae Hyun-Woo",
+                "Woon Kim",
+                "Airton"
+              ]
+            },
+            {
+              "teamId": 2746,
+              "team": "Gangwon FC",
+              "formation": "4-4-2",
+              "coach": "Chung Kyung-Ho",
+              "starters": [
+                "Park Cheong-Hyo",
+                "Park Ho-Young",
+                "Seo Min-Woo",
+                "K. Mammar",
+                "Kang Joon-Hyuck",
+                "Mo Jae-Hyeon",
+                "Kim Dong-Hyun",
+                "Lee You-Hyeon",
+                "Kim Do-Hyun",
+                "Kim Gun-Hee",
+                "J. Sekidika"
+              ]
+            }
+          ]
         },
         {
           "fixtureId": 1507057,
           "kickoff": "2026-09-06T19:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 2768,
           "homeTeam": "Gimcheon Sangmu FC",
           "awayTeamId": 2759,
           "awayTeam": "Gwangju FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 2768,
+              "team": "Gimcheon Sangmu FC",
+              "formation": "4-4-2",
+              "coach": "Seung-jin Joo",
+              "starters": [
+                "Park Man-Ho",
+                "Kim Tae-Hwan",
+                "Byeon Jun-Soo",
+                "Lee Jung-Taek",
+                "Park Cheol-Woo",
+                "Go Jae-Hyeon",
+                "Kim Yi-Seok",
+                "Lee Kang-Hyun",
+                "Hong Yun-Sang",
+                "Lee Sang-Heon",
+                "Lee Kun-Hee"
+              ]
+            },
+            {
+              "teamId": 2759,
+              "team": "Gwangju FC",
+              "formation": "4-4-2",
+              "coach": "Jeong-kyu Lee",
+              "starters": [
+                "Kim Dong-Hwa",
+                "Kwon Sung-Yun",
+                "Min Sang-Gi",
+                "Jang Suk-Hwan",
+                "João Pedro",
+                "Shin Chang-Moo",
+                "Choi Kyoung-Rok",
+                "Yu Je-Ho",
+                "Ju Se-Jong",
+                "A. Ba Loua",
+                "J. Iredale"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -12860,21 +12325,21 @@
         {
           "teamId": 2765,
           "team": "Suwon Bluewings",
-          "form": "WWWWWDLWWLDWLWWLDWDWDWW",
+          "form": "WWWWWDLWWLDWLWWLDWDWDWWW",
           "all": {
-            "played": 23,
-            "wins": 14,
+            "played": 24,
+            "wins": 15,
             "draws": 5,
             "losses": 4,
-            "goalsFor": 36,
+            "goalsFor": 38,
             "goalsAgainst": 20
           },
           "home": {
-            "played": 11,
-            "wins": 6,
+            "played": 12,
+            "wins": 7,
             "draws": 4,
             "losses": 1,
-            "goalsFor": 14,
+            "goalsFor": 16,
             "goalsAgainst": 8
           },
           "away": {
@@ -12889,14 +12354,14 @@
         {
           "teamId": 2753,
           "team": "Asan Mugunghwa",
-          "form": "WLLWWDDDLWLDWDWDLLWDLW",
+          "form": "WLLWWDDDLWLDWDWDLLWDLWL",
           "all": {
-            "played": 22,
+            "played": 23,
             "wins": 8,
             "draws": 7,
-            "losses": 7,
+            "losses": 8,
             "goalsFor": 31,
-            "goalsAgainst": 27
+            "goalsAgainst": 29
           },
           "home": {
             "played": 12,
@@ -12907,33 +12372,33 @@
             "goalsAgainst": 15
           },
           "away": {
-            "played": 10,
+            "played": 11,
             "wins": 2,
             "draws": 3,
-            "losses": 5,
+            "losses": 6,
             "goalsFor": 10,
-            "goalsAgainst": 12
+            "goalsAgainst": 14
           }
         },
         {
           "teamId": 7078,
           "team": "Gimpo Citizen",
-          "form": "WWLDDWDDLDWWWDLLDDDWDL",
+          "form": "WWLDDWDDLDWWWDLLDDDWDLL",
           "all": {
-            "played": 22,
+            "played": 23,
             "wins": 7,
             "draws": 10,
-            "losses": 5,
-            "goalsFor": 27,
-            "goalsAgainst": 26
+            "losses": 6,
+            "goalsFor": 28,
+            "goalsAgainst": 28
           },
           "home": {
-            "played": 8,
+            "played": 9,
             "wins": 1,
             "draws": 5,
-            "losses": 2,
-            "goalsFor": 10,
-            "goalsAgainst": 12
+            "losses": 3,
+            "goalsFor": 11,
+            "goalsAgainst": 14
           },
           "away": {
             "played": 14,
@@ -12947,14 +12412,14 @@
         {
           "teamId": 2757,
           "team": "Seongnam FC",
-          "form": "DDWDWLLDWDDLDDLLWLWLWD",
+          "form": "DDWDWLLDWDDLDDLLWLWLWDW",
           "all": {
-            "played": 22,
-            "wins": 6,
+            "played": 23,
+            "wins": 7,
             "draws": 9,
             "losses": 7,
-            "goalsFor": 24,
-            "goalsAgainst": 26
+            "goalsFor": 26,
+            "goalsAgainst": 27
           },
           "home": {
             "played": 11,
@@ -12965,12 +12430,12 @@
             "goalsAgainst": 10
           },
           "away": {
-            "played": 11,
-            "wins": 3,
+            "played": 12,
+            "wins": 4,
             "draws": 3,
             "losses": 5,
-            "goalsFor": 13,
-            "goalsAgainst": 16
+            "goalsFor": 15,
+            "goalsAgainst": 17
           }
         }
       ],
@@ -12978,27 +12443,27 @@
         {
           "fixtureId": 1510442,
           "kickoff": "2026-09-06T19:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 2765,
           "homeTeam": "Suwon Bluewings",
           "awayTeamId": 2753,
           "awayTeam": "Asan Mugunghwa",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1510441,
           "kickoff": "2026-09-06T19:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 7078,
           "homeTeam": "Gimpo Citizen",
           "awayTeamId": 2757,
           "awayTeam": "Seongnam FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -26485,7 +25950,7 @@
     },
     {
       "date": "2026-09-06",
-      "updatedAt": "2026-09-05T20:16:50.993Z",
+      "updatedAt": "2026-09-06T12:08:38.992Z",
       "leagues": [
         {
           "key": "EPL",
@@ -27265,10 +26730,26 @@
                 {
                   "fixtureId": 1557392,
                   "teamId": 64,
+                  "playerId": 380873,
+                  "player": "I. Ansah",
+                  "type": "Missing Fixture",
+                  "reason": "Back Injury"
+                },
+                {
+                  "fixtureId": 1557392,
+                  "teamId": 64,
                   "playerId": 2930,
                   "player": "J. Butland",
                   "type": "Missing Fixture",
                   "reason": "Arm Injury"
+                },
+                {
+                  "fixtureId": 1557392,
+                  "teamId": 64,
+                  "playerId": 19666,
+                  "player": "M. Crooks",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
                 },
                 {
                   "fixtureId": 1557392,
@@ -27297,26 +26778,26 @@
                 {
                   "fixtureId": 1557392,
                   "teamId": 64,
+                  "playerId": 19242,
+                  "player": "P. McNair",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1557392,
+                  "teamId": 64,
+                  "playerId": 32960,
+                  "player": "H. Morita",
+                  "type": "Missing Fixture",
+                  "reason": "Calf Injury"
+                },
+                {
+                  "fixtureId": 1557392,
+                  "teamId": 64,
                   "playerId": 338046,
                   "player": "O. Zambrano",
                   "type": "Missing Fixture",
                   "reason": "Hamstring Injury"
-                },
-                {
-                  "fixtureId": 1557392,
-                  "teamId": 64,
-                  "playerId": 380873,
-                  "player": "I. Ansah",
-                  "type": "Questionable",
-                  "reason": "Back Injury"
-                },
-                {
-                  "fixtureId": 1557392,
-                  "teamId": 64,
-                  "playerId": 19666,
-                  "player": "M. Crooks",
-                  "type": "Questionable",
-                  "reason": "Muscle Injury"
                 },
                 {
                   "fixtureId": 1557392,
@@ -27325,6 +26806,14 @@
                   "player": "Joao Gomes",
                   "type": "Missing Fixture",
                   "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1557392,
+                  "teamId": 66,
+                  "playerId": 514519,
+                  "player": "B. Madjo",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
                 },
                 {
                   "fixtureId": 1557392,
@@ -27341,57 +26830,10 @@
                   "player": "A. Onana",
                   "type": "Missing Fixture",
                   "reason": "Knee Injury"
-                },
-                {
-                  "fixtureId": 1557392,
-                  "teamId": 66,
-                  "playerId": 514519,
-                  "player": "B. Madjo",
-                  "type": "Questionable",
-                  "reason": "Ankle Injury"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 64,
-                  "team": "Hull City",
-                  "formation": "5-4-1",
-                  "coach": "S. Jakirović",
-                  "starters": [
-                    "K. Tzolakis",
-                    "L. Coyle",
-                    "S. Ajayi",
-                    "J. Egan",
-                    "N. Mendy",
-                    "R. Giles",
-                    "M. Belloumi",
-                    "R. Slater",
-                    "L. Gourna-Douath",
-                    "E. Stroud",
-                    "O. McBurnie"
-                  ]
-                },
-                {
-                  "teamId": 66,
-                  "team": "Aston Villa",
-                  "formation": "4-2-3-1",
-                  "coach": "Unai Emery",
-                  "starters": [
-                    "Z. Suzuki",
-                    "M. Cash",
-                    "V. Lindelöf",
-                    "T. Mings",
-                    "I. Maatsen",
-                    "B. Kamara",
-                    "R. Barkley",
-                    "J.  McGinn",
-                    "E. Buendía",
-                    "George Hemmings",
-                    "N. Jackson"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1557390,
@@ -27450,17 +26892,9 @@
                   "player": "T. Heaton",
                   "type": "Questionable",
                   "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1557390,
-                  "teamId": 33,
-                  "playerId": 19220,
-                  "player": "M. Mount",
-                  "type": "Questionable",
-                  "reason": "Foot Injury"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -27474,21 +26908,21 @@
               "teamId": 76,
               "team": "Swansea",
               "rank": 1,
-              "points": 10,
+              "points": 11,
               "goalsDiff": 6,
-              "form": "WWDW",
+              "form": "DWWDW",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 3,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 7,
                 "goalsAgainst": 1
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 0
@@ -27759,9 +27193,41 @@
               }
             },
             {
+              "teamId": 1837,
+              "team": "Wrexham",
+              "rank": 10,
+              "points": 6,
+              "goalsDiff": 2,
+              "form": "DWLDD",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 54,
               "team": "Birmingham",
-              "rank": 10,
+              "rank": 11,
               "points": 6,
               "goalsDiff": 1,
               "form": "DWDD",
@@ -27793,7 +27259,7 @@
             {
               "teamId": 71,
               "team": "Norwich",
-              "rank": 11,
+              "rank": 12,
               "points": 6,
               "goalsDiff": 0,
               "form": "WLWLL",
@@ -27825,7 +27291,7 @@
             {
               "teamId": 75,
               "team": "Stoke City",
-              "rank": 12,
+              "rank": 13,
               "points": 6,
               "goalsDiff": -1,
               "form": "WWLLL",
@@ -27857,7 +27323,7 @@
             {
               "teamId": 1355,
               "team": "Portsmouth",
-              "rank": 13,
+              "rank": 14,
               "points": 6,
               "goalsDiff": -1,
               "form": "WLLWL",
@@ -27889,7 +27355,7 @@
             {
               "teamId": 62,
               "team": "Sheffield Utd",
-              "rank": 14,
+              "rank": 15,
               "points": 6,
               "goalsDiff": -1,
               "form": "LWDDD",
@@ -27916,38 +27382,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 1837,
-              "team": "Wrexham",
-              "rank": 15,
-              "points": 5,
-              "goalsDiff": 2,
-              "form": "WLDD",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
               }
             },
             {
@@ -28301,19 +27735,19 @@
             {
               "teamId": 76,
               "team": "Swansea",
-              "form": "WDWW",
+              "form": "WDWWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 3,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 7,
                 "goalsAgainst": 1
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 0
@@ -28330,11 +27764,11 @@
             {
               "teamId": 1837,
               "team": "Wrexham",
-              "form": "DDLW",
+              "form": "DDLWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 1,
-                "draws": 2,
+                "draws": 3,
                 "losses": 1,
                 "goalsFor": 6,
                 "goalsAgainst": 4
@@ -28348,9 +27782,9 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 4,
                 "goalsAgainst": 1
@@ -28361,7 +27795,7 @@
             {
               "fixtureId": 1563131,
               "kickoff": "2026-09-06T20:00:00+09:00",
-              "status": "NS",
+              "status": "HT",
               "homeTeamId": 54,
               "homeTeam": "Birmingham",
               "awayTeamId": 39,
@@ -28441,13 +27875,52 @@
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 54,
+                  "team": "Birmingham",
+                  "formation": "4-2-3-1",
+                  "coach": "C. Davies",
+                  "starters": [
+                    "J. Beadle",
+                    "B. Osayi-Samuel",
+                    "P. Neumann",
+                    "C. Klarer",
+                    "A. Cochrane",
+                    "Paik Seung-Ho",
+                    "T. Iwata",
+                    "P. Roberts",
+                    "J. Stansfield",
+                    "L. Millar",
+                    "A. Priske"
+                  ]
+                },
+                {
+                  "teamId": 39,
+                  "team": "Wolves",
+                  "formation": "4-2-3-1",
+                  "coach": "César Peixoto",
+                  "starters": [
+                    "José Sá",
+                    "J. Tchatchoua",
+                    "N. Djiga",
+                    "L. Krejčí",
+                    "Hugo Bueno",
+                    "André",
+                    "M. Munetsi",
+                    "Rodrigo Gomes",
+                    "Fer López",
+                    "A. Armstrong",
+                    "R. Jiménez"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1563140,
               "kickoff": "2026-09-06T04:00:00+09:00",
-              "status": "2H",
+              "status": "FT",
               "homeTeamId": 76,
               "homeTeam": "Swansea",
               "awayTeamId": 1837,
@@ -28480,11 +27953,19 @@
                 },
                 {
                   "fixtureId": 1563140,
-                  "teamId": 76,
-                  "playerId": 104041,
-                  "player": "B. Cabango",
-                  "type": "Questionable",
+                  "teamId": 1837,
+                  "playerId": 126791,
+                  "player": "N. Broadhead",
+                  "type": "Missing Fixture",
                   "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563140,
+                  "teamId": 1837,
+                  "playerId": 6931,
+                  "player": "L. Cacace",
+                  "type": "Missing Fixture",
+                  "reason": "Calf Injury"
                 },
                 {
                   "fixtureId": 1563140,
@@ -28497,77 +27978,22 @@
                 {
                   "fixtureId": 1563140,
                   "teamId": 1837,
+                  "playerId": 88457,
+                  "player": "B. Sheaf",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563140,
+                  "teamId": 1837,
                   "playerId": 194461,
                   "player": "G. Thomason",
                   "type": "Missing Fixture",
                   "reason": "Thigh Injury"
-                },
-                {
-                  "fixtureId": 1563140,
-                  "teamId": 1837,
-                  "playerId": 126791,
-                  "player": "N. Broadhead",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1563140,
-                  "teamId": 1837,
-                  "playerId": 6931,
-                  "player": "L. Cacace",
-                  "type": "Questionable",
-                  "reason": "Calf Injury"
-                },
-                {
-                  "fixtureId": 1563140,
-                  "teamId": 1837,
-                  "playerId": 88457,
-                  "player": "B. Sheaf",
-                  "type": "Questionable",
-                  "reason": "Inactive"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 76,
-                  "team": "Swansea",
-                  "formation": "4-3-3",
-                  "coach": "Vítor Matos",
-                  "starters": [
-                    "L. Vigouroux",
-                    "J. Key",
-                    "F. Lissah",
-                    "S. Welsh",
-                    "J. Tymon",
-                    "M. Widell",
-                    "J. Fulton",
-                    "S. Eustáquio",
-                    "M. Yeo",
-                    "A. Idah",
-                    "Eom Ji-Sung"
-                  ]
-                },
-                {
-                  "teamId": 1837,
-                  "team": "Wrexham",
-                  "formation": "3-4-2-1",
-                  "coach": "P. Parkinson",
-                  "starters": [
-                    "A. Patterson",
-                    "M. Cleworth",
-                    "D. Hyam",
-                    "C. Doyle",
-                    "Daniel Edward Peter Imray",
-                    "M. James",
-                    "B. Whiteman",
-                    "R. Longman",
-                    "O. Rathbone",
-                    "C. O&apos;Hare",
-                    "S. Smith"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             }
           ]
         },
@@ -28673,9 +28099,41 @@
               }
             },
             {
+              "teamId": 544,
+              "team": "Deportivo La Coruna",
+              "rank": 4,
+              "points": 8,
+              "goalsDiff": 3,
+              "form": "WWDD",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 542,
               "team": "Alaves",
-              "rank": 4,
+              "rank": 5,
               "points": 7,
               "goalsDiff": 4,
               "form": "WDW",
@@ -28707,7 +28165,7 @@
             {
               "teamId": 727,
               "team": "Osasuna",
-              "rank": 5,
+              "rank": 6,
               "points": 7,
               "goalsDiff": 2,
               "form": "WWD",
@@ -28739,7 +28197,7 @@
             {
               "teamId": 530,
               "team": "Atletico Madrid",
-              "rank": 6,
+              "rank": 7,
               "points": 7,
               "goalsDiff": 1,
               "form": "LWDW",
@@ -28766,38 +28224,6 @@
                 "losses": 1,
                 "goalsFor": 3,
                 "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 531,
-              "team": "Athletic Club",
-              "rank": 7,
-              "points": 6,
-              "goalsDiff": 1,
-              "form": "WWLL",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 6,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 2
               }
             },
             {
@@ -28833,35 +28259,35 @@
               }
             },
             {
-              "teamId": 544,
-              "team": "Deportivo La Coruna",
+              "teamId": 531,
+              "team": "Athletic Club",
               "rank": 9,
-              "points": 5,
-              "goalsDiff": 2,
-              "form": "WDD",
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "WWLL",
               "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 3
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 2,
                 "wins": 1,
-                "draws": 1,
-                "losses": 0,
+                "draws": 0,
+                "losses": 1,
                 "goalsFor": 4,
-                "goalsAgainst": 2
+                "goalsAgainst": 3
               },
               "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
               }
             },
             {
@@ -29061,23 +28487,23 @@
               "team": "Villarreal",
               "rank": 16,
               "points": 2,
-              "goalsDiff": -1,
-              "form": "LDD",
+              "goalsDiff": -2,
+              "form": "LLDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 3,
@@ -29277,6 +28703,64 @@
               }
             },
             {
+              "teamId": 533,
+              "team": "Villarreal",
+              "form": "DDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 544,
+              "team": "Deportivo La Coruna",
+              "form": "DDWW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 532,
               "team": "Valencia",
               "form": "DLL",
@@ -29332,64 +28816,6 @@
                 "losses": 0,
                 "goalsFor": 5,
                 "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 533,
-              "team": "Villarreal",
-              "form": "DDL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 3,
-                "wins": 0,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
-              }
-            },
-            {
-              "teamId": 544,
-              "team": "Deportivo La Coruna",
-              "form": "DDW",
-              "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
               }
             }
           ],
@@ -29461,47 +28887,46 @@
                   "reason": "Knee Injury"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1570372,
+              "kickoff": "2026-09-06T04:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 533,
+              "homeTeam": "Villarreal",
+              "awayTeamId": 544,
+              "awayTeam": "Deportivo La Coruna",
+              "injuriesChecked": true,
+              "injuries": [
                 {
-                  "teamId": 728,
-                  "team": "Rayo Vallecano",
-                  "formation": "4-3-3",
-                  "coach": "Beñat San José",
-                  "starters": [
-                    "Dani Cárdenas",
-                    "A. Rațiu",
-                    "F. Lejeune",
-                    "P. Ciss",
-                    "Adrià Pedrosa",
-                    "Unai López",
-                    "Óscar Valentín",
-                    "Pedro Díaz",
-                    "Jorge de Frutos",
-                    "Sergio Camello",
-                    "Álvaro García"
-                  ]
+                  "fixtureId": 1570372,
+                  "teamId": 533,
+                  "playerId": 166,
+                  "player": "J. Foyth",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
                 },
                 {
-                  "teamId": 4665,
-                  "team": "Racing Santander",
-                  "formation": "4-2-3-1",
-                  "coach": "José Alberto López",
-                  "starters": [
-                    "Julen Agirrezabala",
-                    "Álvaro Mantilla",
-                    "Manu Hernando",
-                    "Facundo González",
-                    "Jorge Salinas",
-                    "Iván Martín",
-                    "M. Prati",
-                    "Pablo García",
-                    "Sergio Canales",
-                    "Iñigo Vicente",
-                    "M. Zabiri"
-                  ]
+                  "fixtureId": 1570372,
+                  "teamId": 544,
+                  "playerId": 162122,
+                  "player": "A. Altimira",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1570372,
+                  "teamId": 544,
+                  "playerId": 628615,
+                  "player": "N. Carrillo",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
                 }
-              ]
+              ],
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1570371,
@@ -29536,6 +28961,14 @@
                   "player": "J. De Haas",
                   "type": "Missing Fixture",
                   "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1570371,
+                  "teamId": 532,
+                  "playerId": 47251,
+                  "player": "D. Foulquier",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
                 },
                 {
                   "fixtureId": 1570371,
@@ -29592,111 +29025,10 @@
                   "player": "F. de Jong",
                   "type": "Missing Fixture",
                   "reason": "Knee Injury"
-                },
-                {
-                  "fixtureId": 1570371,
-                  "teamId": 529,
-                  "playerId": 1305,
-                  "player": "D. Livakovic",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                }
-              ],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1570372,
-              "kickoff": "2026-09-06T04:00:00+09:00",
-              "status": "2H",
-              "homeTeamId": 533,
-              "homeTeam": "Villarreal",
-              "awayTeamId": 544,
-              "awayTeam": "Deportivo La Coruna",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1570372,
-                  "teamId": 533,
-                  "playerId": 166,
-                  "player": "J. Foyth",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1570372,
-                  "teamId": 544,
-                  "playerId": 162122,
-                  "player": "A. Altimira",
-                  "type": "Missing Fixture",
-                  "reason": "Red Card"
-                },
-                {
-                  "fixtureId": 1570372,
-                  "teamId": 544,
-                  "playerId": 628615,
-                  "player": "N. Carrillo",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1570372,
-                  "teamId": 544,
-                  "playerId": 329728,
-                  "player": "M. Casado",
-                  "type": "Missing Fixture",
-                  "reason": "Coach's decision"
-                },
-                {
-                  "fixtureId": 1570372,
-                  "teamId": 544,
-                  "playerId": 18753,
-                  "player": "A. Traore",
-                  "type": "Missing Fixture",
-                  "reason": "Muscle Injury"
                 }
               ],
               "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 533,
-                  "team": "Villarreal",
-                  "formation": "4-4-2",
-                  "coach": "Iñigo Pérez",
-                  "starters": [
-                    "Luíz Júnior",
-                    "A. Freeman",
-                    "Logan Costa",
-                    "Renato Veiga",
-                    "Sergi Cardona",
-                    "N. Pépé",
-                    "N. Saliba",
-                    "P. Gueye",
-                    "Alberto Moleiro",
-                    "Gerard Moreno",
-                    "Ayoze Pérez"
-                  ]
-                },
-                {
-                  "teamId": 544,
-                  "team": "Deportivo La Coruna",
-                  "formation": "4-4-2",
-                  "coach": "Antonio Hidalgo",
-                  "starters": [
-                    "Leo Román",
-                    "Ximo Navarro",
-                    "L. Noubi",
-                    "J. Giménez",
-                    "G. Quagliata",
-                    "Luismi Cruz",
-                    "Mario Soriano",
-                    "L. Amatucci",
-                    "Riki Rodríguez",
-                    "B. Nsongo",
-                    "P. Aubameyang"
-                  ]
-                }
-              ]
+              "lineups": []
             }
           ]
         },
@@ -29706,9 +29038,41 @@
           "season": "2026",
           "standings": [
             {
+              "teamId": 497,
+              "team": "AS Roma",
+              "rank": 1,
+              "points": 9,
+              "goalsDiff": 9,
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 505,
               "team": "Inter",
-              "rank": 1,
+              "rank": 2,
               "points": 9,
               "goalsDiff": 5,
               "form": "WWW",
@@ -29740,7 +29104,7 @@
             {
               "teamId": 895,
               "team": "Como",
-              "rank": 2,
+              "rank": 3,
               "points": 7,
               "goalsDiff": 4,
               "form": "WWD",
@@ -29767,38 +29131,6 @@
                 "losses": 0,
                 "goalsFor": 7,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 497,
-              "team": "AS Roma",
-              "rank": 3,
-              "points": 6,
-              "goalsDiff": 8,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
               }
             },
             {
@@ -29866,41 +29198,9 @@
               }
             },
             {
-              "teamId": 499,
-              "team": "Atalanta",
-              "rank": 6,
-              "points": 6,
-              "goalsDiff": 2,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
               "teamId": 487,
               "team": "Lazio",
-              "rank": 7,
+              "rank": 6,
               "points": 6,
               "goalsDiff": 2,
               "form": "WW",
@@ -29927,6 +29227,38 @@
                 "losses": 0,
                 "goalsFor": 1,
                 "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 499,
+              "team": "Atalanta",
+              "rank": 7,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "LWW",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
               }
             },
             {
@@ -30406,6 +29738,64 @@
               }
             },
             {
+              "teamId": 497,
+              "team": "AS Roma",
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 499,
+              "team": "Atalanta",
+              "form": "WWL",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 512,
               "team": "Frosinone",
               "form": "LW",
@@ -30520,64 +29910,6 @@
                 "goalsFor": 1,
                 "goalsAgainst": 4
               }
-            },
-            {
-              "teamId": 497,
-              "team": "AS Roma",
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 499,
-              "team": "Atalanta",
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
             }
           ],
           "fixtures": [
@@ -30632,160 +29964,13 @@
                   "reason": "Heart Problems"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 505,
-                  "team": "Inter",
-                  "formation": "3-5-2",
-                  "coach": "C. Chivu",
-                  "starters": [
-                    "Josep Martínez",
-                    "Y. Bisseck",
-                    "M. Akanji",
-                    "A. Bastoni",
-                    "A. Diouf",
-                    "N. Barella",
-                    "P. Zieliński",
-                    "P. Sučić",
-                    "F. Dimarco",
-                    "F. Esposito",
-                    "Lautaro Martínez"
-                  ]
-                },
-                {
-                  "teamId": 492,
-                  "team": "Napoli",
-                  "formation": "4-3-3",
-                  "coach": "M. Allegri",
-                  "starters": [
-                    "A. Meret",
-                    "G. Di Lorenzo",
-                    "Amir Rrahmani",
-                    "Rafa Marín",
-                    "L. Spinazzola",
-                    "A. Zambo Anguissa",
-                    "S. Lobotka",
-                    "A. Vergara",
-                    "M. Politano",
-                    "R. Højlund",
-                    "Alisson Santos"
-                  ]
-                }
-              ]
-            },
-            {
-              "fixtureId": 1550111,
-              "kickoff": "2026-09-06T22:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 512,
-              "homeTeam": "Frosinone",
-              "awayTeamId": 517,
-              "awayTeam": "Venezia",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1550111,
-                  "teamId": 512,
-                  "playerId": 334915,
-                  "player": "F. Ghedjemis",
-                  "type": "Questionable",
-                  "reason": "Calf Injury"
-                },
-                {
-                  "fixtureId": 1550111,
-                  "teamId": 517,
-                  "playerId": 212,
-                  "player": "A. Adorante",
-                  "type": "Missing Fixture",
-                  "reason": "Hernia"
-                },
-                {
-                  "fixtureId": 1550111,
-                  "teamId": 517,
-                  "playerId": 14704,
-                  "player": "B. Franjic",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1550111,
-                  "teamId": 517,
-                  "playerId": 26095,
-                  "player": "M. Sverko",
-                  "type": "Missing Fixture",
-                  "reason": "Hip Injury"
-                },
-                {
-                  "fixtureId": 1550111,
-                  "teamId": 517,
-                  "playerId": 421807,
-                  "player": "M. Moreno",
-                  "type": "Questionable",
-                  "reason": "Health problems"
-                }
-              ],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1550115,
-              "kickoff": "2026-09-06T22:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 523,
-              "homeTeam": "Parma",
-              "awayTeamId": 1579,
-              "awayTeam": "Monza",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1550115,
-                  "teamId": 523,
-                  "playerId": 881,
-                  "player": "H. Nicolussi Caviglia",
-                  "type": "Missing Fixture",
-                  "reason": "Groin Injury"
-                },
-                {
-                  "fixtureId": 1550115,
-                  "teamId": 523,
-                  "playerId": 432610,
-                  "player": "O. Diallo",
-                  "type": "Questionable",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1550115,
-                  "teamId": 1579,
-                  "playerId": 30436,
-                  "player": "M. Pessina",
-                  "type": "Missing Fixture",
-                  "reason": "Knee Injury"
-                },
-                {
-                  "fixtureId": 1550115,
-                  "teamId": 1579,
-                  "playerId": 340547,
-                  "player": "G. Varela",
-                  "type": "Missing Fixture",
-                  "reason": "Thigh Injury"
-                },
-                {
-                  "fixtureId": 1550115,
-                  "teamId": 1579,
-                  "playerId": 31532,
-                  "player": "P. Ciurria",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                }
-              ],
               "lineupsChecked": false,
               "lineups": []
             },
             {
               "fixtureId": 1550107,
               "kickoff": "2026-09-06T03:45:00+09:00",
-              "status": "2H",
+              "status": "FT",
               "homeTeamId": 497,
               "homeTeam": "AS Roma",
               "awayTeamId": 499,
@@ -30825,47 +30010,132 @@
                   "reason": "Knee Injury"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1550111,
+              "kickoff": "2026-09-06T22:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 512,
+              "homeTeam": "Frosinone",
+              "awayTeamId": 517,
+              "awayTeam": "Venezia",
+              "injuriesChecked": true,
+              "injuries": [
                 {
-                  "teamId": 497,
-                  "team": "AS Roma",
-                  "formation": "3-4-1-2",
-                  "coach": "G. Gasperini",
-                  "starters": [
-                    "M. Svilar",
-                    "G. Mancini",
-                    "E. Ndicka",
-                    "Hermoso",
-                    "E. Lulli",
-                    "B. Cristante",
-                    "M. Koné",
-                    "Wesley",
-                    "Rodrigo Mora",
-                    "P. Dybala",
-                    "D. Malen"
-                  ]
+                  "fixtureId": 1550111,
+                  "teamId": 517,
+                  "playerId": 212,
+                  "player": "A. Adorante",
+                  "type": "Missing Fixture",
+                  "reason": "Hernia"
                 },
                 {
-                  "teamId": 499,
-                  "team": "Atalanta",
-                  "formation": "4-3-3",
-                  "coach": "M. Sarri",
-                  "starters": [
-                    "M. Carnesecchi",
-                    "R. Bellanova",
-                    "O. Kossounou",
-                    "G. Scalvini",
-                    "S. Kolašinac",
-                    "L. Samardžić",
-                    "G. Gaetano",
-                    "Éderson",
-                    "C. De Ketelaere",
-                    "G. Scamacca",
-                    "E. Elmas"
-                  ]
+                  "fixtureId": 1550111,
+                  "teamId": 517,
+                  "playerId": 1266,
+                  "player": "T. Basic",
+                  "type": "Missing Fixture",
+                  "reason": "Foot Injury"
+                },
+                {
+                  "fixtureId": 1550111,
+                  "teamId": 517,
+                  "playerId": 14704,
+                  "player": "B. Franjic",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1550111,
+                  "teamId": 517,
+                  "playerId": 26095,
+                  "player": "M. Sverko",
+                  "type": "Missing Fixture",
+                  "reason": "Hip Injury"
                 }
-              ]
+              ],
+              "lineupsChecked": true,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1550115,
+              "kickoff": "2026-09-06T22:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 523,
+              "homeTeam": "Parma",
+              "awayTeamId": 1579,
+              "awayTeam": "Monza",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 523,
+                  "playerId": 628,
+                  "player": "A. Bernabe",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 523,
+                  "playerId": 432610,
+                  "player": "O. Diallo",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 523,
+                  "playerId": 881,
+                  "player": "H. Nicolussi Caviglia",
+                  "type": "Missing Fixture",
+                  "reason": "Groin Injury"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 1579,
+                  "playerId": 31532,
+                  "player": "P. Ciurria",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 1579,
+                  "playerId": 30436,
+                  "player": "M. Pessina",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 1579,
+                  "playerId": 56293,
+                  "player": "I. Toure",
+                  "type": "Missing Fixture",
+                  "reason": "Contusion"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 1579,
+                  "playerId": 340547,
+                  "player": "G. Varela",
+                  "type": "Missing Fixture",
+                  "reason": "Thigh Injury"
+                },
+                {
+                  "fixtureId": 1550115,
+                  "teamId": 1579,
+                  "playerId": 384543,
+                  "player": "J. Ziolkowski",
+                  "type": "Missing Fixture",
+                  "reason": "Foot Injury"
+                }
+              ],
+              "lineupsChecked": true,
+              "lineups": []
             }
           ]
         },
@@ -31583,6 +30853,14 @@
                 {
                   "fixtureId": 1575156,
                   "teamId": 174,
+                  "playerId": 266192,
+                  "player": "A. Gantenbein",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1575156,
+                  "teamId": 174,
                   "playerId": 339875,
                   "player": "E. Hojlund",
                   "type": "Missing Fixture",
@@ -31599,34 +30877,18 @@
                 {
                   "fixtureId": 1575156,
                   "teamId": 174,
+                  "playerId": 24228,
+                  "player": "B. Lasme",
+                  "type": "Missing Fixture",
+                  "reason": "Calf Injury"
+                },
+                {
+                  "fixtureId": 1575156,
+                  "teamId": 174,
                   "playerId": 88140,
                   "player": "R. Schallenberg",
                   "type": "Missing Fixture",
                   "reason": "Red Card"
-                },
-                {
-                  "fixtureId": 1575156,
-                  "teamId": 174,
-                  "playerId": 266192,
-                  "player": "A. Gantenbein",
-                  "type": "Questionable",
-                  "reason": "Ankle Injury"
-                },
-                {
-                  "fixtureId": 1575156,
-                  "teamId": 174,
-                  "playerId": 25466,
-                  "player": "K. Karaman",
-                  "type": "Questionable",
-                  "reason": "Hip Injury"
-                },
-                {
-                  "fixtureId": 1575156,
-                  "teamId": 174,
-                  "playerId": 24228,
-                  "player": "B. Lasme",
-                  "type": "Questionable",
-                  "reason": "Calf Injury"
                 },
                 {
                   "fixtureId": 1575156,
@@ -31643,57 +30905,10 @@
                   "player": "S. Gnabry",
                   "type": "Missing Fixture",
                   "reason": "Muscle Injury"
-                },
-                {
-                  "fixtureId": 1575156,
-                  "teamId": 157,
-                  "playerId": 181812,
-                  "player": "J. Musiala",
-                  "type": "Questionable",
-                  "reason": "Health problems"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 174,
-                  "team": "FC Schalke 04",
-                  "formation": "3-4-2-1",
-                  "coach": "M. Muslić",
-                  "starters": [
-                    "L. Karius",
-                    "T. Becker",
-                    "N. Katić",
-                    "H. Kuruçay",
-                    "J. Dina Ebimbe",
-                    "S. El-Faouzi",
-                    "S. Tanaka",
-                    "R. Gosens",
-                    "D. Ljubičić",
-                    "A. Aouchiche",
-                    "M. Sylla"
-                  ]
-                },
-                {
-                  "teamId": 157,
-                  "team": "Bayern München",
-                  "formation": "4-2-3-1",
-                  "coach": "V. Kompany",
-                  "starters": [
-                    "M. Neuer",
-                    "K. Laimer",
-                    "D. Upamecano",
-                    "J. Tah",
-                    "A. Davies",
-                    "J. Kimmich",
-                    "A. Pavlović",
-                    "L. Karl",
-                    "N. Brown",
-                    "L. Díaz",
-                    "I. Saibari"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1575154,
@@ -31770,7 +30985,7 @@
                   "reason": "Lacking Match Fitness"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -31877,9 +31092,41 @@
               }
             },
             {
+              "teamId": 106,
+              "team": "Stade Brestois 29",
+              "rank": 4,
+              "points": 5,
+              "goalsDiff": 1,
+              "form": "WDD",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 114,
               "team": "Paris FC",
-              "rank": 4,
+              "rank": 5,
               "points": 4,
               "goalsDiff": 3,
               "form": "WD",
@@ -31911,7 +31158,7 @@
             {
               "teamId": 94,
               "team": "Rennes",
-              "rank": 5,
+              "rank": 6,
               "points": 4,
               "goalsDiff": 1,
               "form": "WD",
@@ -31943,7 +31190,7 @@
             {
               "teamId": 110,
               "team": "Estac Troyes",
-              "rank": 6,
+              "rank": 7,
               "points": 4,
               "goalsDiff": 1,
               "form": "WD",
@@ -31975,7 +31222,7 @@
             {
               "teamId": 97,
               "team": "Lorient",
-              "rank": 7,
+              "rank": 8,
               "points": 4,
               "goalsDiff": 0,
               "form": "WLD",
@@ -32007,7 +31254,7 @@
             {
               "teamId": 81,
               "team": "Marseille",
-              "rank": 8,
+              "rank": 9,
               "points": 3,
               "goalsDiff": 2,
               "form": "LW",
@@ -32039,7 +31286,7 @@
             {
               "teamId": 116,
               "team": "Lens",
-              "rank": 9,
+              "rank": 10,
               "points": 3,
               "goalsDiff": 1,
               "form": "LLW",
@@ -32071,7 +31318,7 @@
             {
               "teamId": 77,
               "team": "Angers",
-              "rank": 10,
+              "rank": 11,
               "points": 3,
               "goalsDiff": 0,
               "form": "WL",
@@ -32103,7 +31350,7 @@
             {
               "teamId": 95,
               "team": "Strasbourg",
-              "rank": 11,
+              "rank": 12,
               "points": 3,
               "goalsDiff": -3,
               "form": "WL",
@@ -32130,38 +31377,6 @@
                 "losses": 1,
                 "goalsFor": 0,
                 "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 106,
-              "team": "Stade Brestois 29",
-              "rank": 12,
-              "points": 2,
-              "goalsDiff": 0,
-              "form": "DD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
               }
             },
             {
@@ -32200,16 +31415,16 @@
               "teamId": 1298,
               "team": "Le Mans",
               "rank": 14,
-              "points": 1,
+              "points": 2,
               "goalsDiff": -1,
-              "form": "LD",
+              "form": "DLD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
+                "goalsFor": 5,
+                "goalsAgainst": 6
               },
               "home": {
                 "played": 1,
@@ -32220,36 +31435,68 @@
                 "goalsAgainst": 2
               },
               "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 84,
+              "team": "Nice",
+              "rank": 15,
+              "points": 2,
+              "goalsDiff": -3,
+              "form": "DLD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "away": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
-                "goalsFor": 2,
+                "goalsFor": 0,
                 "goalsAgainst": 3
               }
             },
             {
               "teamId": 111,
               "team": "Le Havre",
-              "rank": 15,
+              "rank": 16,
               "points": 1,
-              "goalsDiff": -1,
-              "form": "DL",
+              "goalsDiff": -2,
+              "form": "LDL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 1,
@@ -32263,7 +31510,7 @@
             {
               "teamId": 96,
               "team": "Toulouse",
-              "rank": 16,
+              "rank": 17,
               "points": 1,
               "goalsDiff": -3,
               "form": "LDL",
@@ -32290,38 +31537,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 84,
-              "team": "Nice",
-              "rank": 17,
-              "points": 1,
-              "goalsDiff": -3,
-              "form": "LD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
               }
             },
             {
@@ -32417,6 +31632,122 @@
               }
             },
             {
+              "teamId": 84,
+              "team": "Nice",
+              "form": "DLD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 1298,
+              "team": "Le Mans",
+              "form": "DLD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 111,
+              "team": "Le Havre",
+              "form": "LDL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 106,
+              "team": "Stade Brestois 29",
+              "form": "DDW",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 110,
               "team": "Estac Troyes",
               "form": "DW",
@@ -32473,122 +31804,6 @@
                 "goalsFor": 0,
                 "goalsAgainst": 4
               }
-            },
-            {
-              "teamId": 84,
-              "team": "Nice",
-              "form": "DL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 1298,
-              "team": "Le Mans",
-              "form": "DL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 111,
-              "team": "Le Havre",
-              "form": "LD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 106,
-              "team": "Stade Brestois 29",
-              "form": "DD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
             }
           ],
           "fixtures": [
@@ -32643,130 +31858,13 @@
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 116,
-                  "team": "Lens",
-                  "formation": "3-4-2-1",
-                  "coach": "D. Toppmöller",
-                  "starters": [
-                    "R. Risser",
-                    "K. Antonio",
-                    "I. Ganiou",
-                    "M. Udol",
-                    "R. Aguilar",
-                    "A. Haidara",
-                    "Y. Titraoui",
-                    "M. Skóraś",
-                    "F. Thauvin",
-                    "T. Hazard",
-                    "A. Sima"
-                  ]
-                },
-                {
-                  "teamId": 97,
-                  "team": "Lorient",
-                  "formation": "3-4-2-1",
-                  "coach": "A. Dujeux",
-                  "starters": [
-                    "Y. Mvogo",
-                    "D. Sylla",
-                    "M. Talbi",
-                    "N. Adjei",
-                    "P. Katseris",
-                    "N. Mbamba",
-                    "N. Cadiou",
-                    "K. Kouassi",
-                    "G. Bernardeau",
-                    "J. Makengo",
-                    "Mamadou Kone"
-                  ]
-                }
-              ]
-            },
-            {
-              "fixtureId": 1552755,
-              "kickoff": "2026-09-06T22:00:00+09:00",
-              "status": "NS",
-              "homeTeamId": 110,
-              "homeTeam": "Estac Troyes",
-              "awayTeamId": 95,
-              "awayTeam": "Strasbourg",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 110,
-                  "playerId": 174596,
-                  "player": "I. Boura",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 110,
-                  "playerId": 859,
-                  "player": "P. Gozzi",
-                  "type": "Missing Fixture",
-                  "reason": "Muscle Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 110,
-                  "playerId": 395810,
-                  "player": "Y. Titi",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 95,
-                  "playerId": 415431,
-                  "player": "S. El Mourabet",
-                  "type": "Missing Fixture",
-                  "reason": "Red Card"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 95,
-                  "playerId": 359386,
-                  "player": "M. Godo",
-                  "type": "Missing Fixture",
-                  "reason": "Muscle Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 95,
-                  "playerId": 303016,
-                  "player": "M. Oyedele",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 95,
-                  "playerId": 390742,
-                  "player": "J. Panichelli",
-                  "type": "Missing Fixture",
-                  "reason": "Knee Injury"
-                },
-                {
-                  "fixtureId": 1552755,
-                  "teamId": 95,
-                  "playerId": 271542,
-                  "player": "I. Doukoure",
-                  "type": "Questionable",
-                  "reason": "Injury"
-                }
-              ],
               "lineupsChecked": false,
               "lineups": []
             },
             {
               "fixtureId": 1552752,
               "kickoff": "2026-09-06T03:45:00+09:00",
-              "status": "2H",
+              "status": "FT",
               "homeTeamId": 84,
               "homeTeam": "Nice",
               "awayTeamId": 1298,
@@ -32846,52 +31944,13 @@
                   "reason": "Red Card"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 84,
-                  "team": "Nice",
-                  "formation": "3-4-2-1",
-                  "coach": "O. Pantaloni",
-                  "starters": [
-                    "Y. Diouf",
-                    "Mohamed Abdelmonem",
-                    "Y. Ndayishimiye",
-                    "X. Mandza Tsiendi",
-                    "J. Clauss",
-                    "D. Coulibaly",
-                    "A. Witsel",
-                    "N. Nkounkou",
-                    "N. Ngoumou",
-                    "S. Diop",
-                    "E. Wahi"
-                  ]
-                },
-                {
-                  "teamId": 1298,
-                  "team": "Le Mans",
-                  "formation": "3-1-4-2",
-                  "coach": "P. Videira",
-                  "starters": [
-                    "E. Hatfout",
-                    "N. Boissé",
-                    "Raúl Torrente",
-                    "H. Voyer",
-                    "A. Lauray",
-                    "R. Bamba",
-                    "A. Bourabaa",
-                    "J. Vercruysse",
-                    "L. Calodat",
-                    "L. Mafouta",
-                    "D. Guèye"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1552748,
               "kickoff": "2026-09-06T03:45:00+09:00",
-              "status": "2H",
+              "status": "FT",
               "homeTeamId": 111,
               "homeTeam": "Le Havre",
               "awayTeamId": 106,
@@ -32955,47 +32014,86 @@
                   "reason": "Ankle Injury"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1552755,
+              "kickoff": "2026-09-06T22:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 110,
+              "homeTeam": "Estac Troyes",
+              "awayTeamId": 95,
+              "awayTeam": "Strasbourg",
+              "injuriesChecked": true,
+              "injuries": [
                 {
-                  "teamId": 111,
-                  "team": "Le Havre",
-                  "formation": "3-4-2-1",
-                  "coach": "D. Digard",
-                  "starters": [
-                    "L. Mpasi",
-                    "A. Seko",
-                    "J. Mwanga",
-                    "A. Touba",
-                    "E. Jelert",
-                    "S. Ebonog",
-                    "A. Richardson",
-                    "T. Pembélé",
-                    "R. Ndiaye",
-                    "M. Samatta",
-                    "J. Maja"
-                  ]
+                  "fixtureId": 1552755,
+                  "teamId": 110,
+                  "playerId": 174596,
+                  "player": "I. Boura",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
                 },
                 {
-                  "teamId": 106,
-                  "team": "Stade Brestois 29",
-                  "formation": "4-2-3-1",
-                  "coach": "Julien Lachuer",
-                  "starters": [
-                    "E. Selvik",
-                    "K. Lala",
-                    "R. Le Guen",
-                    "G. Lloris",
-                    "B. Locko",
-                    "J. Chotard",
-                    "H. Magnetti",
-                    "Mama Baldé",
-                    "K. Doumbia",
-                    "P. Mboup",
-                    "L. Ajorque"
-                  ]
+                  "fixtureId": 1552755,
+                  "teamId": 110,
+                  "playerId": 859,
+                  "player": "P. Gozzi",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 110,
+                  "playerId": 395810,
+                  "player": "Y. Titi",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 95,
+                  "playerId": 415431,
+                  "player": "S. El Mourabet",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 95,
+                  "playerId": 359386,
+                  "player": "M. Godo",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 95,
+                  "playerId": 303016,
+                  "player": "M. Oyedele",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 95,
+                  "playerId": 390742,
+                  "player": "J. Panichelli",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1552755,
+                  "teamId": 95,
+                  "playerId": 271542,
+                  "player": "I. Doukoure",
+                  "type": "Questionable",
+                  "reason": "Injury"
                 }
-              ]
+              ],
+              "lineupsChecked": true,
+              "lineups": []
             }
           ]
         },
@@ -33005,9 +32103,41 @@
           "season": "2026",
           "standings": [
             {
+              "teamId": 197,
+              "team": "PSV Eindhoven",
+              "rank": 1,
+              "points": 13,
+              "goalsDiff": 12,
+              "form": "WWWWD",
+              "all": {
+                "played": 5,
+                "wins": 4,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 18,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 11,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 201,
               "team": "AZ Alkmaar",
-              "rank": 1,
+              "rank": 2,
               "points": 12,
               "goalsDiff": 10,
               "form": "WWWW",
@@ -33039,7 +32169,7 @@
             {
               "teamId": 209,
               "team": "Feyenoord",
-              "rank": 2,
+              "rank": 3,
               "points": 11,
               "goalsDiff": 6,
               "form": "WDWDW",
@@ -33069,26 +32199,26 @@
               }
             },
             {
-              "teamId": 197,
-              "team": "PSV Eindhoven",
-              "rank": 3,
-              "points": 10,
-              "goalsDiff": 10,
-              "form": "WWWD",
+              "teamId": 196,
+              "team": "Excelsior",
+              "rank": 4,
+              "points": 9,
+              "goalsDiff": 7,
+              "form": "WWLW",
               "all": {
                 "played": 4,
                 "wins": 3,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 15,
-                "goalsAgainst": 5
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 3
               },
               "home": {
                 "played": 2,
                 "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
                 "goalsAgainst": 3
               },
               "away": {
@@ -33096,32 +32226,32 @@
                 "wins": 2,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 2
+                "goalsFor": 7,
+                "goalsAgainst": 0
               }
             },
             {
               "teamId": 194,
               "team": "Ajax",
-              "rank": 4,
+              "rank": 5,
               "points": 7,
-              "goalsDiff": 6,
-              "form": "WDW",
+              "goalsDiff": 4,
+              "form": "LWDW",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 5
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -33135,7 +32265,7 @@
             {
               "teamId": 410,
               "team": "GO Ahead Eagles",
-              "rank": 5,
+              "rank": 6,
               "points": 7,
               "goalsDiff": 2,
               "form": "LWDW",
@@ -33167,7 +32297,7 @@
             {
               "teamId": 205,
               "team": "Fortuna Sittard",
-              "rank": 6,
+              "rank": 7,
               "points": 7,
               "goalsDiff": 1,
               "form": "WLWD",
@@ -33199,7 +32329,7 @@
             {
               "teamId": 415,
               "team": "Twente",
-              "rank": 7,
+              "rank": 8,
               "points": 6,
               "goalsDiff": 4,
               "form": "WWL",
@@ -33226,38 +32356,6 @@
                 "losses": 1,
                 "goalsFor": 4,
                 "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 196,
-              "team": "Excelsior",
-              "rank": 8,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WLW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
               }
             },
             {
@@ -33453,41 +32551,9 @@
               }
             },
             {
-              "teamId": 195,
-              "team": "Willem II",
-              "rank": 15,
-              "points": 1,
-              "goalsDiff": -6,
-              "form": "DLL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 10
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 6
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 198,
               "team": "ADO Den Haag",
-              "rank": 16,
+              "rank": 15,
               "points": 1,
               "goalsDiff": -7,
               "form": "DLLL",
@@ -33519,7 +32585,7 @@
             {
               "teamId": 207,
               "team": "Utrecht",
-              "rank": 17,
+              "rank": 16,
               "points": 1,
               "goalsDiff": -9,
               "form": "LDLL",
@@ -33546,6 +32612,38 @@
                 "losses": 1,
                 "goalsFor": 4,
                 "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 195,
+              "team": "Willem II",
+              "rank": 17,
+              "points": 1,
+              "goalsDiff": -9,
+              "form": "LDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 13
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 9
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
               }
             },
             {
@@ -33641,6 +32739,122 @@
               }
             },
             {
+              "teamId": 195,
+              "team": "Willem II",
+              "form": "LLDL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 13
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 9
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 196,
+              "team": "Excelsior",
+              "form": "WLWW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 202,
+              "team": "Groningen",
+              "form": "WWLLD",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 11,
+                "goalsAgainst": 12
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 415,
+              "team": "Twente",
+              "form": "LWW",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 207,
               "team": "Utrecht",
               "form": "LLDL",
@@ -33696,64 +32910,6 @@
                 "losses": 1,
                 "goalsFor": 4,
                 "goalsAgainst": 7
-              }
-            },
-            {
-              "teamId": 202,
-              "team": "Groningen",
-              "form": "WWLL",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 9,
-                "goalsAgainst": 10
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 5,
-                "goalsAgainst": 6
-              }
-            },
-            {
-              "teamId": 415,
-              "team": "Twente",
-              "form": "LWW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 2
               }
             },
             {
@@ -33929,64 +33085,6 @@
                 "goalsFor": 5,
                 "goalsAgainst": 4
               }
-            },
-            {
-              "teamId": 195,
-              "team": "Willem II",
-              "form": "LLD",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 10
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 6
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 196,
-              "team": "Excelsior",
-              "form": "WLW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              }
             }
           ],
           "fixtures": [
@@ -34073,44 +33171,176 @@
                   "reason": "Inactive"
                 }
               ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1552157,
+              "kickoff": "2026-09-06T04:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 195,
+              "homeTeam": "Willem II",
+              "awayTeamId": 196,
+              "awayTeam": "Excelsior",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 444433,
+                  "player": "L. Abildgaard",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 411824,
+                  "player": "A. Culum",
+                  "type": "Missing Fixture",
+                  "reason": "Foot Injury"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 1405,
+                  "player": "T. Didillon Hodl",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 393871,
+                  "player": "A. Lachkar",
+                  "type": "Missing Fixture",
+                  "reason": "Groin Injury"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 37712,
+                  "player": "J. Schuurman",
+                  "type": "Missing Fixture",
+                  "reason": "Knock"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 195,
+                  "playerId": 480309,
+                  "player": "A. Zarrouk",
+                  "type": "Missing Fixture",
+                  "reason": "Surgery"
+                },
+                {
+                  "fixtureId": 1552157,
+                  "teamId": 196,
+                  "playerId": 321632,
+                  "player": "N. Naujoks",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1552158,
+              "kickoff": "2026-09-06T19:15:00+09:00",
+              "status": "FT",
+              "homeTeamId": 202,
+              "homeTeam": "Groningen",
+              "awayTeamId": 415,
+              "awayTeam": "Twente",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 202,
+                  "playerId": 414188,
+                  "player": "M. Jeng",
+                  "type": "Missing Fixture",
+                  "reason": "Leg Injury"
+                },
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 202,
+                  "playerId": 446871,
+                  "player": "T. Mercera",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 202,
+                  "playerId": 631615,
+                  "player": "R. Metu",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 202,
+                  "playerId": 90957,
+                  "player": "M. Rente",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 415,
+                  "playerId": 191879,
+                  "player": "K. Hlynsson",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552158,
+                  "teamId": 415,
+                  "playerId": 292553,
+                  "player": "S. Lemkin",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                }
+              ],
               "lineupsChecked": true,
               "lineups": [
                 {
-                  "teamId": 194,
-                  "team": "Ajax",
-                  "formation": "4-3-3",
-                  "coach": "Míchel",
+                  "teamId": 202,
+                  "team": "Groningen",
+                  "formation": "4-2-3-1",
+                  "coach": "D. Lukkien",
                   "starters": [
-                    "M. ter Stegen",
-                    "A. Gaaei",
-                    "A. Bouwman",
-                    "Y. Baas",
-                    "Caio Henrique",
-                    "D. Klaassen",
-                    "J. Mokio",
-                    "J. Brandt",
-                    "S. Berghuis",
-                    "T. Arokodare",
-                    "O. Gloukh"
+                    "E. Vaessen",
+                    "J. Schreuders",
+                    "M. Csinger",
+                    "T. Blokzijl",
+                    "Wouter Prins",
+                    "T. de Jonge",
+                    "T. Land",
+                    "D. van der Werff",
+                    "T. van Bergen",
+                    "P. Clement",
+                    "B. Willumsson"
                   ]
                 },
                 {
-                  "teamId": 197,
-                  "team": "PSV Eindhoven",
+                  "teamId": 415,
+                  "team": "Twente",
                   "formation": "4-2-3-1",
-                  "coach": "P. Bosz",
+                  "coach": "J. van den Brom",
                   "starters": [
-                    "M. Kovář",
-                    "S. Dest",
-                    "L. Geertruida",
-                    "A. Obispo",
-                    "Mauro Júnior",
-                    "K. Sano",
-                    "N. Fernandez",
-                    "I. Perišić",
-                    "G. Til",
-                    "R. van Bommel",
-                    "R. Pepi"
+                    "L. Unnerstall",
+                    "B. van Rooij",
+                    "M. Bruns",
+                    "R. Pröpper",
+                    "R. Nijstad",
+                    "R. Zerrouki",
+                    "D. Weidmann",
+                    "S. Ørjasæter",
+                    "Y. Taha",
+                    "M. Pjaca",
+                    "W. Weghorst"
                   ]
                 }
               ]
@@ -34238,107 +33468,6 @@
                   "reason": "Inactive"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 207,
-                  "team": "Utrecht",
-                  "formation": "3-4-3",
-                  "coach": "A. Correia",
-                  "starters": [
-                    "V. Barkas",
-                    "S. Horemans",
-                    "M. Didden",
-                    "N. Panagiotou",
-                    "G. Offerhaus",
-                    "D. de Wit",
-                    "D. van den Berg",
-                    "A. Zagré",
-                    "Ángel Alarcón",
-                    "Artem Stepanov",
-                    "Y. Cathline"
-                  ]
-                },
-                {
-                  "teamId": 410,
-                  "team": "GO Ahead Eagles",
-                  "formation": "4-2-3-1",
-                  "coach": "J. Oosting",
-                  "starters": [
-                    "K. Haug",
-                    "A. Sampsted",
-                    "J. Dirksen",
-                    "J. Kramer",
-                    "D. James",
-                    "E. Linthorst",
-                    "M. Meulensteen",
-                    "S. Tengstedt",
-                    "V. Edvardsen",
-                    "M. Suray",
-                    "S. Sigurðarson"
-                  ]
-                }
-              ]
-            },
-            {
-              "fixtureId": 1552158,
-              "kickoff": "2026-09-06T19:15:00+09:00",
-              "status": "NS",
-              "homeTeamId": 202,
-              "homeTeam": "Groningen",
-              "awayTeamId": 415,
-              "awayTeam": "Twente",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 202,
-                  "playerId": 414188,
-                  "player": "M. Jeng",
-                  "type": "Missing Fixture",
-                  "reason": "Leg Injury"
-                },
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 202,
-                  "playerId": 446871,
-                  "player": "T. Mercera",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 202,
-                  "playerId": 631615,
-                  "player": "R. Metu",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 202,
-                  "playerId": 90957,
-                  "player": "M. Rente",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 415,
-                  "playerId": 191879,
-                  "player": "K. Hlynsson",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1552158,
-                  "teamId": 415,
-                  "playerId": 292553,
-                  "player": "S. Lemkin",
-                  "type": "Questionable",
-                  "reason": "Injury"
-                }
-              ],
               "lineupsChecked": false,
               "lineups": []
             },
@@ -34393,8 +33522,47 @@
                   "reason": "Knee Injury"
                 }
               ],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 210,
+                  "team": "Heerenveen",
+                  "formation": "4-2-3-1",
+                  "coach": "R. Veldeman",
+                  "starters": [
+                    "B. Klaverboer",
+                    "O. Braude",
+                    "S. Kersten",
+                    "M. Willemsen",
+                    "V. Zagaritis",
+                    "N. Courtens",
+                    "D. Proper",
+                    "J. Trenskow",
+                    "R. Meerveld",
+                    "M. Rivera",
+                    "D. Vente"
+                  ]
+                },
+                {
+                  "teamId": 201,
+                  "team": "AZ Alkmaar",
+                  "formation": "4-2-3-1",
+                  "coach": "L. Echteld",
+                  "starters": [
+                    "J. De Busser",
+                    "E. Dijkstra",
+                    "W. Goes",
+                    "L. Schouten",
+                    "M. Chávez",
+                    "J. Clasie",
+                    "P. Koopmeiners",
+                    "Weslley Patati",
+                    "D. Kwakman",
+                    "R. Daal",
+                    "M. Meerdink"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1552160,
@@ -34417,6 +33585,14 @@
                 {
                   "fixtureId": 1552160,
                   "teamId": 420,
+                  "playerId": 383068,
+                  "player": "W. Asselman",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552160,
+                  "teamId": 420,
                   "playerId": 516834,
                   "player": "D. Visser",
                   "type": "Missing Fixture",
@@ -34431,8 +33607,47 @@
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 427,
+                  "team": "Telstar",
+                  "formation": "3-4-2-1",
+                  "coach": "H. Brugge",
+                  "starters": [
+                    "R. Koeman",
+                    "S. Valk",
+                    "A. Soualhia",
+                    "M. Peersman",
+                    "Gerald Alders",
+                    "N. Rossen",
+                    "T. Owusu",
+                    "J. Hardeveld",
+                    "Rui Mendes",
+                    "P. Brouwer",
+                    "N. Þórisson"
+                  ]
+                },
+                {
+                  "teamId": 420,
+                  "team": "Cambuur",
+                  "formation": "3-4-2-1",
+                  "coach": "J. Plat",
+                  "starters": [
+                    "T. Jansen",
+                    "J. Amofa",
+                    "I. Baouf",
+                    "B. van Duijl",
+                    "D. Bouah",
+                    "N. Souren",
+                    "R. El Arguioui",
+                    "M. Costarelli",
+                    "I. Hamache",
+                    "F. Kvam",
+                    "N. Binder"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1552161,
@@ -34462,14 +33677,6 @@
                 },
                 {
                   "fixtureId": 1552161,
-                  "teamId": 198,
-                  "playerId": 353898,
-                  "player": "M. Sin",
-                  "type": "Missing Fixture",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1552161,
                   "teamId": 205,
                   "playerId": 467814,
                   "player": "R. Bayram",
@@ -34495,10 +33702,10 @@
                 {
                   "fixtureId": 1552161,
                   "teamId": 205,
-                  "playerId": 162520,
-                  "player": "R. Guth",
-                  "type": "Questionable",
-                  "reason": "Injury"
+                  "playerId": 339169,
+                  "player": "S. Wylin",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
                 },
                 {
                   "fixtureId": 1552161,
@@ -34507,127 +33714,18 @@
                   "player": "I. Marquez",
                   "type": "Questionable",
                   "reason": "Injury"
-                }
-              ],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1552157,
-              "kickoff": "2026-09-06T04:00:00+09:00",
-              "status": "2H",
-              "homeTeamId": 195,
-              "homeTeam": "Willem II",
-              "awayTeamId": 196,
-              "awayTeam": "Excelsior",
-              "injuriesChecked": true,
-              "injuries": [
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 411824,
-                  "player": "A. Culum",
-                  "type": "Missing Fixture",
-                  "reason": "Foot Injury"
                 },
                 {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 1405,
-                  "player": "T. Didillon Hodl",
-                  "type": "Missing Fixture",
-                  "reason": "Hamstring Injury"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 393871,
-                  "player": "A. Lachkar",
-                  "type": "Missing Fixture",
-                  "reason": "Groin Injury"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 37712,
-                  "player": "J. Schuurman",
-                  "type": "Missing Fixture",
-                  "reason": "Knock"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 480309,
-                  "player": "A. Zarrouk",
-                  "type": "Missing Fixture",
-                  "reason": "Surgery"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 444433,
-                  "player": "L. Abildgaard",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 195,
-                  "playerId": 37157,
-                  "player": "T. Vilhena",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1552157,
-                  "teamId": 196,
-                  "playerId": 321632,
-                  "player": "N. Naujoks",
+                  "fixtureId": 1552161,
+                  "teamId": 205,
+                  "playerId": 37383,
+                  "player": "O. Romeny",
                   "type": "Questionable",
                   "reason": "Inactive"
                 }
               ],
               "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 195,
-                  "team": "Willem II",
-                  "formation": "4-2-3-1",
-                  "coach": "J. Stegeman",
-                  "starters": [
-                    "M. Delanghe",
-                    "H. ter Avest",
-                    "F. Stam",
-                    "M. Lemmens",
-                    "N. Tjoe-A-On",
-                    "K. Boogaard",
-                    "C. Twigt",
-                    "E. Gürbüz",
-                    "Uriel van Aalst",
-                    "J. Slory",
-                    "D. Haen"
-                  ]
-                },
-                {
-                  "teamId": 196,
-                  "team": "Excelsior",
-                  "formation": "5-4-1",
-                  "coach": "R. den Uil",
-                  "starters": [
-                    "S. van Gassel",
-                    "Eric Emanuel da Silva Moreira",
-                    "R. Meissen",
-                    "C. Widell",
-                    "J. Plug",
-                    "S. Janssen",
-                    "A. Sliti",
-                    "I. Yegoian",
-                    "L. Hartjes",
-                    "Á. Þorsteinsson",
-                    "D. Garden"
-                  ]
-                }
-              ]
+              "lineups": []
             }
           ]
         },
@@ -34672,23 +33770,23 @@
               "teamId": 228,
               "team": "Sporting CP",
               "rank": 2,
-              "points": 10,
-              "goalsDiff": 7,
-              "form": "WWWD",
+              "points": 13,
+              "goalsDiff": 9,
+              "form": "WWWWD",
               "all": {
-                "played": 4,
-                "wins": 3,
+                "played": 5,
+                "wins": 4,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 12,
+                "goalsFor": 14,
                 "goalsAgainst": 5
               },
               "home": {
-                "played": 2,
-                "wins": 2,
+                "played": 3,
+                "wins": 3,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 6,
+                "goalsFor": 8,
                 "goalsAgainst": 3
               },
               "away": {
@@ -34701,9 +33799,41 @@
               }
             },
             {
+              "teamId": 211,
+              "team": "Benfica",
+              "rank": 3,
+              "points": 10,
+              "goalsDiff": 11,
+              "form": "WWWD",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 14,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 240,
               "team": "Arouca",
-              "rank": 3,
+              "rank": 4,
               "points": 9,
               "goalsDiff": 4,
               "form": "WLWW",
@@ -34735,7 +33865,7 @@
             {
               "teamId": 227,
               "team": "Santa Clara",
-              "rank": 4,
+              "rank": 5,
               "points": 8,
               "goalsDiff": 2,
               "form": "DWWD",
@@ -34762,38 +33892,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 211,
-              "team": "Benfica",
-              "rank": 5,
-              "points": 7,
-              "goalsDiff": 8,
-              "form": "WWD",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 0
               }
             },
             {
@@ -34829,27 +33927,59 @@
               }
             },
             {
-              "teamId": 214,
-              "team": "Maritimo",
+              "teamId": 217,
+              "team": "SC Braga",
               "rank": 7,
               "points": 7,
-              "goalsDiff": 1,
-              "form": "LDWW",
+              "goalsDiff": 2,
+              "form": "WWD",
               "all": {
-                "played": 4,
+                "played": 3,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 5
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 3
               },
               "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 214,
+              "team": "Maritimo",
+              "rank": 8,
+              "points": 7,
+              "goalsDiff": -2,
+              "form": "LLDWW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 2
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -34863,7 +33993,7 @@
             {
               "teamId": 15130,
               "team": "Estrela",
-              "rank": 8,
+              "rank": 9,
               "points": 6,
               "goalsDiff": 1,
               "form": "DWDD",
@@ -34893,51 +34023,19 @@
               }
             },
             {
-              "teamId": 217,
-              "team": "SC Braga",
-              "rank": 9,
-              "points": 4,
-              "goalsDiff": 1,
-              "form": "WD",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 225,
               "team": "Nacional",
               "rank": 10,
               "points": 4,
-              "goalsDiff": 0,
-              "form": "LLWD",
+              "goalsDiff": -2,
+              "form": "LLLWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 1,
                 "draws": 1,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 6,
-                "goalsAgainst": 6
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -34948,12 +34046,12 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsAgainst": 5
               }
             },
             {
@@ -35121,23 +34219,23 @@
               "team": "Alverca",
               "rank": 16,
               "points": 2,
-              "goalsDiff": -4,
-              "form": "DLDL",
+              "goalsDiff": -5,
+              "form": "LDLDL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 2,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 8
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 10
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 2,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -35214,64 +34312,6 @@
             }
           ],
           "teams": [
-            {
-              "teamId": 228,
-              "team": "Sporting CP",
-              "form": "DWWW",
-              "all": {
-                "played": 4,
-                "wins": 3,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 12,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 225,
-              "team": "Nacional",
-              "form": "DWLL",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 6,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              }
-            },
             {
               "teamId": 214,
               "team": "Maritimo",
@@ -35389,6 +34429,64 @@
               }
             },
             {
+              "teamId": 228,
+              "team": "Sporting CP",
+              "form": "DWWWW",
+              "all": {
+                "played": 5,
+                "wins": 4,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 14,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 225,
+              "team": "Nacional",
+              "form": "DWLLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 5
+              }
+            },
+            {
               "teamId": 227,
               "team": "Santa Clara",
               "form": "DWWD",
@@ -35449,58 +34547,6 @@
           ],
           "fixtures": [
             {
-              "fixtureId": 1575489,
-              "kickoff": "2026-09-06T04:30:00+09:00",
-              "status": "1H",
-              "homeTeamId": 228,
-              "homeTeam": "Sporting CP",
-              "awayTeamId": 225,
-              "awayTeam": "Nacional",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 228,
-                  "team": "Sporting CP",
-                  "formation": "4-2-3-1",
-                  "coach": "Rui Borges",
-                  "starters": [
-                    "Rui Silva",
-                    "Iván Fresneda",
-                    "Z. Debast",
-                    "Gonçalo Inácio",
-                    "M. Araújo",
-                    "Sergi Altimira",
-                    "I. Doumbia",
-                    "Geny Catamo",
-                    "R. Zalazar",
-                    "Flávio Gonçalves",
-                    "L. Suárez"
-                  ]
-                },
-                {
-                  "teamId": 225,
-                  "team": "Nacional",
-                  "formation": "3-4-2-1",
-                  "coach": "Pedro Figueiredo",
-                  "starters": [
-                    "Renato Bellucci",
-                    "Léo Santos",
-                    "Francisco Gonçalves",
-                    "Zé Vitor",
-                    "Wesley Gasolina",
-                    "Matheus Dias",
-                    "Miguel Baeza",
-                    "W. Kokolo",
-                    "S. Gavriel",
-                    "M. Jensen",
-                    "Pablo Ruan"
-                  ]
-                }
-              ]
-            },
-            {
               "fixtureId": 1575487,
               "kickoff": "2026-09-06T02:00:00+09:00",
               "status": "FT",
@@ -35510,47 +34556,8 @@
               "awayTeam": "Benfica",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 214,
-                  "team": "Maritimo",
-                  "formation": "4-3-3",
-                  "coach": "M. van der Gaag",
-                  "starters": [
-                    "Alfonso Pastor",
-                    "Igor Julião",
-                    "Rafael Fernandes",
-                    "Romain Correia",
-                    "Paulo Henrique",
-                    "Raphael Guzzo",
-                    "Rodrigo Andrade",
-                    "V. Danilović",
-                    "B. Limbombe",
-                    "Adrián Butzke",
-                    "Martín Tejón"
-                  ]
-                },
-                {
-                  "teamId": 211,
-                  "team": "Benfica",
-                  "formation": "4-2-3-1",
-                  "coach": "Marco Silva",
-                  "starters": [
-                    "Samuel Soares",
-                    "A. Bah",
-                    "Tomás Araújo",
-                    "C. Lenglet",
-                    "S. Dahl",
-                    "L. Barreiro",
-                    "João Palhinha",
-                    "Rafa",
-                    "H. Sudakov",
-                    "G. Prestianni",
-                    "V. Pavlidis"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1575482,
@@ -35562,47 +34569,21 @@
               "awayTeam": "SC Braga",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 4724,
-                  "team": "Alverca",
-                  "formation": "3-4-3",
-                  "coach": "Sérgio Ferreira",
-                  "starters": [
-                    "Matheus Mendes",
-                    "S. Baseya",
-                    "Sergi Gómez",
-                    "Y. Bojang",
-                    "Toni Tamarit",
-                    "Ian Luccas",
-                    "Rayan",
-                    "I. James",
-                    "Chiquinho",
-                    "Vivaldo Semedo",
-                    "Figueiredo"
-                  ]
-                },
-                {
-                  "teamId": 217,
-                  "team": "SC Braga",
-                  "formation": "3-4-3",
-                  "coach": "Carlos Vicens",
-                  "starters": [
-                    "Bernardo Fontes",
-                    "G. Lagerbielke",
-                    "Vitor Carvalho",
-                    "A. Bajrami",
-                    "Víctor Gómez",
-                    "João Moutinho",
-                    "E. Tıknaz",
-                    "Diogo Travassos",
-                    "M. Dorgeles",
-                    "Pau Victor",
-                    "Diego Rodrigues"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1575489,
+              "kickoff": "2026-09-06T04:30:00+09:00",
+              "status": "FT",
+              "homeTeamId": 228,
+              "homeTeam": "Sporting CP",
+              "awayTeamId": 225,
+              "awayTeam": "Nacional",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1575488,
@@ -35614,7 +34595,7 @@
               "awayTeam": "Rio Ave",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -35628,16 +34609,16 @@
               "teamId": 247,
               "team": "Celtic",
               "rank": 1,
-              "points": 12,
-              "goalsDiff": 9,
-              "form": "WWWW",
+              "points": 15,
+              "goalsDiff": 10,
+              "form": "WWWWW",
               "all": {
-                "played": 4,
-                "wins": 4,
+                "played": 5,
+                "wins": 5,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 2
+                "goalsFor": 13,
+                "goalsAgainst": 3
               },
               "home": {
                 "played": 3,
@@ -35648,12 +34629,12 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 1,
-                "wins": 1,
+                "played": 2,
+                "wins": 2,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
+                "goalsFor": 7,
+                "goalsAgainst": 2
               }
             },
             {
@@ -35661,23 +34642,23 @@
               "team": "ST Mirren",
               "rank": 2,
               "points": 10,
-              "goalsDiff": 4,
-              "form": "WDWW",
+              "goalsDiff": 3,
+              "form": "LWDWW",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 3,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 5
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -36011,6 +34992,64 @@
           ],
           "teams": [
             {
+              "teamId": 251,
+              "team": "ST Mirren",
+              "form": "WWDWL",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 247,
+              "team": "Celtic",
+              "form": "WWWWW",
+              "all": {
+                "played": 5,
+                "wins": 5,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 254,
               "team": "Heart Of Midlothian",
               "form": "LWWW",
@@ -36125,67 +35164,22 @@
                 "goalsFor": 4,
                 "goalsAgainst": 2
               }
-            },
-            {
-              "teamId": 251,
-              "team": "ST Mirren",
-              "form": "WWDW",
-              "all": {
-                "played": 4,
-                "wins": 3,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 247,
-              "team": "Celtic",
-              "form": "WWWW",
-              "all": {
-                "played": 4,
-                "wins": 4,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 3,
-                "wins": 3,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
-              }
             }
           ],
           "fixtures": [
+            {
+              "fixtureId": 1556663,
+              "kickoff": "2026-09-06T04:00:00+09:00",
+              "status": "FT",
+              "homeTeamId": 251,
+              "homeTeam": "ST Mirren",
+              "awayTeamId": 247,
+              "awayTeam": "Celtic",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
             {
               "fixtureId": 1556660,
               "kickoff": "2026-09-06T23:00:00+09:00",
@@ -36196,7 +35190,7 @@
               "awayTeam": "Dundee",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -36209,60 +35203,8 @@
               "awayTeam": "Hibernian",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
-            },
-            {
-              "fixtureId": 1556663,
-              "kickoff": "2026-09-06T04:00:00+09:00",
-              "status": "2H",
-              "homeTeamId": 251,
-              "homeTeam": "ST Mirren",
-              "awayTeamId": 247,
-              "awayTeam": "Celtic",
-              "injuriesChecked": true,
-              "injuries": [],
               "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 251,
-                  "team": "ST Mirren",
-                  "formation": "4-2-3-1",
-                  "coach": "Craig McLeish",
-                  "starters": [
-                    "J. Chapman",
-                    "C. Ramsay",
-                    "A. Gogić",
-                    "Henry Fieldson",
-                    "D. John",
-                    "R. Carr",
-                    "P. Nsio",
-                    "C. Mochrie",
-                    "F. Taylor",
-                    "Ismeal Kabia",
-                    "N. Agrafiotis"
-                  ]
-                },
-                {
-                  "teamId": 247,
-                  "team": "Celtic",
-                  "formation": "4-2-3-1",
-                  "coach": "M. O'Neill",
-                  "starters": [
-                    "V. Sinisalo",
-                    "Colby Donovan",
-                    "C. Carter-Vickers",
-                    "A. Trusty",
-                    "L. Scales",
-                    "C. McGregor",
-                    "M. Baur",
-                    "H. Hassan",
-                    "B. Nygren",
-                    "Yang Hyun-Jun",
-                    "C. Durán"
-                  ]
-                }
-              ]
+              "lineups": []
             }
           ]
         },
@@ -36400,9 +35342,41 @@
               }
             },
             {
+              "teamId": 733,
+              "team": "Standard Liege",
+              "rank": 5,
+              "points": 11,
+              "goalsDiff": 4,
+              "form": "WWWDD",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 600,
               "team": "Zulte Waregem",
-              "rank": 5,
+              "rank": 6,
               "points": 8,
               "goalsDiff": 5,
               "form": "DWDW",
@@ -36432,41 +35406,41 @@
               }
             },
             {
-              "teamId": 733,
-              "team": "Standard Liege",
-              "rank": 6,
+              "teamId": 735,
+              "team": "St. Truiden",
+              "rank": 7,
               "points": 8,
-              "goalsDiff": 3,
-              "form": "WWDD",
+              "goalsDiff": 4,
+              "form": "WLWDD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 2,
-                "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 6
+                "losses": 1,
+                "goalsFor": 12,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 5,
+                "goalsFor": 7,
                 "goalsAgainst": 4
               }
             },
             {
               "teamId": 742,
               "team": "Genk",
-              "rank": 7,
+              "rank": 8,
               "points": 7,
               "goalsDiff": 4,
               "form": "WDWL",
@@ -36498,7 +35472,7 @@
             {
               "teamId": 259,
               "team": "Lommel United",
-              "rank": 8,
+              "rank": 9,
               "points": 7,
               "goalsDiff": 3,
               "form": "LWWLD",
@@ -36530,17 +35504,17 @@
             {
               "teamId": 740,
               "team": "Antwerp",
-              "rank": 9,
+              "rank": 10,
               "points": 7,
-              "goalsDiff": 1,
-              "form": "LDWW",
+              "goalsDiff": 0,
+              "form": "LLDWW",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 10,
-                "goalsAgainst": 9
+                "goalsAgainst": 10
               },
               "home": {
                 "played": 3,
@@ -36551,18 +35525,18 @@
                 "goalsAgainst": 9
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               }
             },
             {
               "teamId": 554,
               "team": "Anderlecht",
-              "rank": 10,
+              "rank": 11,
               "points": 6,
               "goalsDiff": -2,
               "form": "WLLW",
@@ -36588,38 +35562,6 @@
                 "draws": 0,
                 "losses": 2,
                 "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 735,
-              "team": "St. Truiden",
-              "rank": 11,
-              "points": 5,
-              "goalsDiff": 0,
-              "form": "LWDD",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 8,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
                 "goalsAgainst": 4
               }
             },
@@ -36756,15 +35698,15 @@
               "team": "RAAL La Louvière",
               "rank": 16,
               "points": 1,
-              "goalsDiff": -4,
-              "form": "DLLL",
+              "goalsDiff": -8,
+              "form": "LDLLL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 1,
-                "losses": 3,
+                "losses": 4,
                 "goalsFor": 4,
-                "goalsAgainst": 8
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 2,
@@ -36775,12 +35717,12 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 0,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 1,
-                "goalsAgainst": 4
+                "goalsAgainst": 8
               }
             },
             {
@@ -36850,6 +35792,64 @@
           ],
           "teams": [
             {
+              "teamId": 741,
+              "team": "Cercle Brugge",
+              "form": "DDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 5,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 631,
+              "team": "Gent",
+              "form": "WWWW",
+              "all": {
+                "played": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 266,
               "team": "KV Mechelen",
               "form": "LDLDL",
@@ -36908,16 +35908,103 @@
               }
             },
             {
-              "teamId": 741,
-              "team": "Cercle Brugge",
-              "form": "DDLL",
+              "teamId": 733,
+              "team": "Standard Liege",
+              "form": "DDWWW",
               "all": {
-                "played": 4,
-                "wins": 0,
+                "played": 5,
+                "wins": 3,
                 "draws": 2,
-                "losses": 2,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 1,
+                "losses": 0,
                 "goalsFor": 5,
-                "goalsAgainst": 7
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 740,
+              "team": "Antwerp",
+              "form": "WWDLL",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 10,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 9
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 735,
+              "team": "St. Truiden",
+              "form": "DDWLW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 12,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 5902,
+              "team": "RAAL La Louvière",
+              "form": "LLLDL",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 1,
+                "losses": 4,
+                "goalsFor": 4,
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 2,
@@ -36928,41 +36015,12 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 631,
-              "team": "Gent",
-              "form": "WWWW",
-              "all": {
-                "played": 4,
-                "wins": 4,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 2
-              },
-              "home": {
                 "played": 3,
-                "wins": 3,
+                "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 1
+                "losses": 3,
+                "goalsFor": 1,
+                "goalsAgainst": 8
               }
             },
             {
@@ -37022,125 +36080,61 @@
                 "goalsFor": 2,
                 "goalsAgainst": 2
               }
-            },
-            {
-              "teamId": 733,
-              "team": "Standard Liege",
-              "form": "DDWW",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 740,
-              "team": "Antwerp",
-              "form": "WWDL",
-              "all": {
-                "played": 4,
-                "wins": 2,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 10,
-                "goalsAgainst": 9
-              },
-              "home": {
-                "played": 3,
-                "wins": 1,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 9
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 735,
-              "team": "St. Truiden",
-              "form": "DDWL",
-              "all": {
-                "played": 4,
-                "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 8,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 5902,
-              "team": "RAAL La Louvière",
-              "form": "LLLD",
-              "all": {
-                "played": 4,
-                "wins": 0,
-                "draws": 1,
-                "losses": 3,
-                "goalsFor": 4,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
             }
           ],
           "fixtures": [
+            {
+              "fixtureId": 1558622,
+              "kickoff": "2026-09-06T20:30:00+09:00",
+              "status": "1H",
+              "homeTeamId": 741,
+              "homeTeam": "Cercle Brugge",
+              "awayTeamId": 631,
+              "awayTeam": "Gent",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 741,
+                  "team": "Cercle Brugge",
+                  "formation": "3-4-3",
+                  "coach": "L. Friis",
+                  "starters": [
+                    "G. Coucke",
+                    "I. Diakité",
+                    "Emmanuel Kakou",
+                    "G. Kondo",
+                    "G. Magnée",
+                    "L. Amani",
+                    "L. Mondele",
+                    "V. Konaté",
+                    "V. Martens",
+                    "S. Ngoura",
+                    "L. Michal"
+                  ]
+                },
+                {
+                  "teamId": 631,
+                  "team": "Gent",
+                  "formation": "3-4-2-1",
+                  "coach": "R. Demil",
+                  "starters": [
+                    "D. Roef",
+                    "M. Ngom",
+                    "C. Burgess",
+                    "S. Van der Heyden",
+                    "M. Volckaert",
+                    "T. De Vlieger",
+                    "M. Delorge-Knieper",
+                    "Tiago Araújo",
+                    "M. Balikwisha",
+                    "M. Sonko",
+                    "J. Y. Vergara Ortega"
+                  ]
+                }
+              ]
+            },
             {
               "fixtureId": 1558619,
               "kickoff": "2026-09-06T01:15:00+09:00",
@@ -37151,56 +36145,30 @@
               "awayTeam": "KVC Westerlo",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 266,
-                  "team": "KV Mechelen",
-                  "formation": "3-4-2-1",
-                  "coach": "Frédéric Vanderbiest",
-                  "starters": [
-                    "Nacho Mirás",
-                    "L. Marijnissen",
-                    "José Marsà",
-                    "M. Eerdhuijzen",
-                    "T. Koudou",
-                    "D. Praet",
-                    "F. Hammar",
-                    "C. Van Meirvenne",
-                    "K. Van Rafelghem",
-                    "M. van Brederode",
-                    "Shina Ayodele"
-                  ]
-                },
-                {
-                  "teamId": 261,
-                  "team": "KVC Westerlo",
-                  "formation": "4-2-3-1",
-                  "coach": "I. Charaï",
-                  "starters": [
-                    "A. Jungdal",
-                    "L. Flø",
-                    "S. Kimura",
-                    "A. Lapage",
-                    "D. Ourega",
-                    "I. Fofana",
-                    "C. Sandra",
-                    "C. Congreve",
-                    "I. Sakamoto",
-                    "S. Saito",
-                    "N. Bassette"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
-              "fixtureId": 1558622,
-              "kickoff": "2026-09-06T20:30:00+09:00",
-              "status": "NS",
-              "homeTeamId": 741,
-              "homeTeam": "Cercle Brugge",
-              "awayTeamId": 631,
-              "awayTeam": "Gent",
+              "fixtureId": 1558620,
+              "kickoff": "2026-09-06T03:45:00+09:00",
+              "status": "FT",
+              "homeTeamId": 733,
+              "homeTeam": "Standard Liege",
+              "awayTeamId": 740,
+              "awayTeam": "Antwerp",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1558621,
+              "kickoff": "2026-09-06T03:45:00+09:00",
+              "status": "FT",
+              "homeTeamId": 735,
+              "homeTeam": "St. Truiden",
+              "awayTeamId": 5902,
+              "awayTeam": "RAAL La Louvière",
               "injuriesChecked": true,
               "injuries": [],
               "lineupsChecked": false,
@@ -37216,112 +36184,8 @@
               "awayTeam": "Zulte Waregem",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
-            },
-            {
-              "fixtureId": 1558620,
-              "kickoff": "2026-09-06T03:45:00+09:00",
-              "status": "2H",
-              "homeTeamId": 733,
-              "homeTeam": "Standard Liege",
-              "awayTeamId": 740,
-              "awayTeam": "Antwerp",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 733,
-                  "team": "Standard Liege",
-                  "formation": "4-3-3",
-                  "coach": "V. Euvrard",
-                  "starters": [
-                    "M. Epolo",
-                    "M. Fossey",
-                    "I. Karamoko",
-                    "I. Hautekiet",
-                    "G. Mortensen",
-                    "C. Nielsen",
-                    "A. Trouillet",
-                    "R. Touzghar",
-                    "Bernard Nguene",
-                    "D. Eckert Ayensa",
-                    "A. Abid"
-                  ]
-                },
-                {
-                  "teamId": 740,
-                  "team": "Antwerp",
-                  "formation": "4-4-2",
-                  "coach": "Marvin Compper",
-                  "starters": [
-                    "T. Nozawa",
-                    "M. Busi",
-                    "Y. Tsunashima",
-                    "Álvaro Cortés Moyano",
-                    "S. Renders",
-                    "T. Somers",
-                    "X. Dierckx",
-                    "A. Vermeeren",
-                    "C. Scott",
-                    "I. Salah",
-                    "M. Frey"
-                  ]
-                }
-              ]
-            },
-            {
-              "fixtureId": 1558621,
-              "kickoff": "2026-09-06T03:45:00+09:00",
-              "status": "2H",
-              "homeTeamId": 735,
-              "homeTeam": "St. Truiden",
-              "awayTeamId": 5902,
-              "awayTeam": "RAAL La Louvière",
-              "injuriesChecked": true,
-              "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 735,
-                  "team": "St. Truiden",
-                  "formation": "4-2-3-1",
-                  "coach": "F. De Meyer",
-                  "starters": [
-                    "L. Kokubo",
-                    "R. Vanwesemael",
-                    "S. Taniguchi",
-                    "V. Musliu",
-                    "T. Hata",
-                    "A. Sissako",
-                    "R. Merlen",
-                    "K. Matsuzawa",
-                    "R. Araki",
-                    "I. Sebaoui",
-                    "S. Baždar"
-                  ]
-                },
-                {
-                  "teamId": 5902,
-                  "team": "RAAL La Louvière",
-                  "formation": "3-4-3",
-                  "coach": "Edward Still",
-                  "starters": [
-                    "M. Peano",
-                    "M. Boukamir",
-                    "P. Nkoa",
-                    "Y. Okou",
-                    "S. Delos",
-                    "M. Courcoul",
-                    "I. Coulibaly",
-                    "T. Lutonda",
-                    "Z. Gruber",
-                    "E. Filet",
-                    "M. Ubandoma"
-                  ]
-                }
-              ]
             }
           ]
         },
@@ -38117,57 +36981,10 @@
                   "player": "C. Soyuncu",
                   "type": "Missing Fixture",
                   "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1584397,
-                  "teamId": 611,
-                  "playerId": 142959,
-                  "player": "K. Akturkoglu",
-                  "type": "Questionable",
-                  "reason": "Concussion"
                 }
               ],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 611,
-                  "team": "Fenerbahçe",
-                  "formation": "4-2-3-1",
-                  "coach": "İ. Kartal",
-                  "starters": [
-                    "Ederson",
-                    "Nélson Semedo",
-                    "M. Škriniar",
-                    "N. Aké",
-                    "A. Brown",
-                    "M. Guendouzi",
-                    "N. Kanté",
-                    "M. Greenwood",
-                    "İ. Kahveci",
-                    "O. Aydın",
-                    "V. Muriqi"
-                  ]
-                },
-                {
-                  "teamId": 549,
-                  "team": "Beşiktaş",
-                  "formation": "4-1-4-1",
-                  "coach": "V. Italiano",
-                  "starters": [
-                    "A. Nübel",
-                    "A. Murillo",
-                    "E. Agbadou",
-                    "E. Topçu",
-                    "R. Yılmaz",
-                    "S. Özcan",
-                    "V. Černý",
-                    "J. Olaitan",
-                    "O. Kökçü",
-                    "L. Trossard",
-                    "D. Vlahović"
-                  ]
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             },
             {
               "fixtureId": 1584399,
@@ -38186,6 +37003,38 @@
                   "player": "K. Corekci",
                   "type": "Missing Fixture",
                   "reason": "Achilles Tendon Injury"
+                },
+                {
+                  "fixtureId": 1584399,
+                  "teamId": 1004,
+                  "playerId": 329642,
+                  "player": "T. Diarra",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1584399,
+                  "teamId": 1004,
+                  "playerId": 50067,
+                  "player": "H. Hajradinovic",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1584399,
+                  "teamId": 1004,
+                  "playerId": 428299,
+                  "player": "J. Jessen",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1584399,
+                  "teamId": 1004,
+                  "playerId": 49469,
+                  "player": "M. Ouanes",
+                  "type": "Questionable",
+                  "reason": "Inactive"
                 },
                 {
                   "fixtureId": 1584399,
@@ -38212,7 +37061,7 @@
                   "reason": "Inactive"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -38234,7 +37083,7 @@
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -38633,22 +37482,22 @@
             {
               "teamId": 2748,
               "team": "FC Anyang",
-              "form": "DWDLLDDWDWLDDDWLWDWWLLLLWD",
+              "form": "DWDLLDDWDWLDDDWLWDWWLLLLWDL",
               "all": {
-                "played": 26,
+                "played": 27,
                 "wins": 8,
                 "draws": 10,
-                "losses": 8,
+                "losses": 9,
                 "goalsFor": 33,
-                "goalsAgainst": 39
+                "goalsAgainst": 42
               },
               "home": {
-                "played": 13,
+                "played": 14,
                 "wins": 3,
                 "draws": 5,
-                "losses": 5,
+                "losses": 6,
                 "goalsFor": 15,
-                "goalsAgainst": 23
+                "goalsAgainst": 26
               },
               "away": {
                 "played": 13,
@@ -38662,13 +37511,13 @@
             {
               "teamId": 2746,
               "team": "Gangwon FC",
-              "form": "LDDDLWWDWLWDDWWWDWDLLWLDD",
+              "form": "LDDDLWWDWLWDDWWWDWDLLWLDDW",
               "all": {
-                "played": 25,
-                "wins": 9,
+                "played": 26,
+                "wins": 10,
                 "draws": 10,
                 "losses": 6,
-                "goalsFor": 30,
+                "goalsFor": 33,
                 "goalsAgainst": 24
               },
               "home": {
@@ -38680,33 +37529,33 @@
                 "goalsAgainst": 11
               },
               "away": {
-                "played": 13,
-                "wins": 5,
+                "played": 14,
+                "wins": 6,
                 "draws": 4,
                 "losses": 4,
-                "goalsFor": 14,
+                "goalsFor": 17,
                 "goalsAgainst": 13
               }
             },
             {
               "teamId": 2768,
               "team": "Gimcheon Sangmu FC",
-              "form": "DDDDDLDDLWWLLDLDDLDWWDDDDL",
+              "form": "DDDDDLDDLWWLLDLDDLDWWDDDDLD",
               "all": {
-                "played": 26,
+                "played": 27,
                 "wins": 4,
-                "draws": 15,
+                "draws": 16,
                 "losses": 7,
-                "goalsFor": 24,
-                "goalsAgainst": 32
+                "goalsFor": 26,
+                "goalsAgainst": 34
               },
               "home": {
-                "played": 12,
+                "played": 13,
                 "wins": 1,
-                "draws": 8,
+                "draws": 9,
                 "losses": 3,
-                "goalsFor": 10,
-                "goalsAgainst": 16
+                "goalsFor": 12,
+                "goalsAgainst": 18
               },
               "away": {
                 "played": 14,
@@ -38720,14 +37569,14 @@
             {
               "teamId": 2759,
               "team": "Gwangju FC",
-              "form": "DWDDLLLLLLLLDLLDLDDLLDLLDL",
+              "form": "DWDDLLLLLLLLDLLDLDDLLDLLDLD",
               "all": {
-                "played": 26,
+                "played": 27,
                 "wins": 1,
-                "draws": 9,
+                "draws": 10,
                 "losses": 16,
-                "goalsFor": 16,
-                "goalsAgainst": 57
+                "goalsFor": 18,
+                "goalsAgainst": 59
               },
               "home": {
                 "played": 14,
@@ -38738,12 +37587,12 @@
                 "goalsAgainst": 29
               },
               "away": {
-                "played": 12,
+                "played": 13,
                 "wins": 0,
-                "draws": 5,
+                "draws": 6,
                 "losses": 7,
-                "goalsFor": 5,
-                "goalsAgainst": 28
+                "goalsFor": 7,
+                "goalsAgainst": 30
               }
             }
           ],
@@ -38751,28 +37600,106 @@
             {
               "fixtureId": 1507056,
               "kickoff": "2026-09-06T19:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 2748,
               "homeTeam": "FC Anyang",
               "awayTeamId": 2746,
               "awayTeam": "Gangwon FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2748,
+                  "team": "FC Anyang",
+                  "formation": "4-3-3",
+                  "coach": "Ryu Byeong-Hoon",
+                  "starters": [
+                    "Kim Jeong-Hoon",
+                    "Ju Hyun-Woo",
+                    "Lee Chang-Yong",
+                    "Kwon Kyung-Won",
+                    "Kim Dong-Jin",
+                    "Matheus Oliveira",
+                    "Kim Jung-Hyun",
+                    "D. Bakker",
+                    "Chae Hyun-Woo",
+                    "Woon Kim",
+                    "Airton"
+                  ]
+                },
+                {
+                  "teamId": 2746,
+                  "team": "Gangwon FC",
+                  "formation": "4-4-2",
+                  "coach": "Chung Kyung-Ho",
+                  "starters": [
+                    "Park Cheong-Hyo",
+                    "Park Ho-Young",
+                    "Seo Min-Woo",
+                    "K. Mammar",
+                    "Kang Joon-Hyuck",
+                    "Mo Jae-Hyeon",
+                    "Kim Dong-Hyun",
+                    "Lee You-Hyeon",
+                    "Kim Do-Hyun",
+                    "Kim Gun-Hee",
+                    "J. Sekidika"
+                  ]
+                }
+              ]
             },
             {
               "fixtureId": 1507057,
               "kickoff": "2026-09-06T19:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 2768,
               "homeTeam": "Gimcheon Sangmu FC",
               "awayTeamId": 2759,
               "awayTeam": "Gwangju FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 2768,
+                  "team": "Gimcheon Sangmu FC",
+                  "formation": "4-4-2",
+                  "coach": "Seung-jin Joo",
+                  "starters": [
+                    "Park Man-Ho",
+                    "Kim Tae-Hwan",
+                    "Byeon Jun-Soo",
+                    "Lee Jung-Taek",
+                    "Park Cheol-Woo",
+                    "Go Jae-Hyeon",
+                    "Kim Yi-Seok",
+                    "Lee Kang-Hyun",
+                    "Hong Yun-Sang",
+                    "Lee Sang-Heon",
+                    "Lee Kun-Hee"
+                  ]
+                },
+                {
+                  "teamId": 2759,
+                  "team": "Gwangju FC",
+                  "formation": "4-4-2",
+                  "coach": "Jeong-kyu Lee",
+                  "starters": [
+                    "Kim Dong-Hwa",
+                    "Kwon Sung-Yun",
+                    "Min Sang-Gi",
+                    "Jang Suk-Hwan",
+                    "João Pedro",
+                    "Shin Chang-Moo",
+                    "Choi Kyoung-Rok",
+                    "Yu Je-Ho",
+                    "Ju Se-Jong",
+                    "A. Ba Loua",
+                    "J. Iredale"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -39330,21 +38257,21 @@
             {
               "teamId": 2765,
               "team": "Suwon Bluewings",
-              "form": "WWWWWDLWWLDWLWWLDWDWDWW",
+              "form": "WWWWWDLWWLDWLWWLDWDWDWWW",
               "all": {
-                "played": 23,
-                "wins": 14,
+                "played": 24,
+                "wins": 15,
                 "draws": 5,
                 "losses": 4,
-                "goalsFor": 36,
+                "goalsFor": 38,
                 "goalsAgainst": 20
               },
               "home": {
-                "played": 11,
-                "wins": 6,
+                "played": 12,
+                "wins": 7,
                 "draws": 4,
                 "losses": 1,
-                "goalsFor": 14,
+                "goalsFor": 16,
                 "goalsAgainst": 8
               },
               "away": {
@@ -39359,14 +38286,14 @@
             {
               "teamId": 2753,
               "team": "Asan Mugunghwa",
-              "form": "WLLWWDDDLWLDWDWDLLWDLW",
+              "form": "WLLWWDDDLWLDWDWDLLWDLWL",
               "all": {
-                "played": 22,
+                "played": 23,
                 "wins": 8,
                 "draws": 7,
-                "losses": 7,
+                "losses": 8,
                 "goalsFor": 31,
-                "goalsAgainst": 27
+                "goalsAgainst": 29
               },
               "home": {
                 "played": 12,
@@ -39377,33 +38304,33 @@
                 "goalsAgainst": 15
               },
               "away": {
-                "played": 10,
+                "played": 11,
                 "wins": 2,
                 "draws": 3,
-                "losses": 5,
+                "losses": 6,
                 "goalsFor": 10,
-                "goalsAgainst": 12
+                "goalsAgainst": 14
               }
             },
             {
               "teamId": 7078,
               "team": "Gimpo Citizen",
-              "form": "WWLDDWDDLDWWWDLLDDDWDL",
+              "form": "WWLDDWDDLDWWWDLLDDDWDLL",
               "all": {
-                "played": 22,
+                "played": 23,
                 "wins": 7,
                 "draws": 10,
-                "losses": 5,
-                "goalsFor": 27,
-                "goalsAgainst": 26
+                "losses": 6,
+                "goalsFor": 28,
+                "goalsAgainst": 28
               },
               "home": {
-                "played": 8,
+                "played": 9,
                 "wins": 1,
                 "draws": 5,
-                "losses": 2,
-                "goalsFor": 10,
-                "goalsAgainst": 12
+                "losses": 3,
+                "goalsFor": 11,
+                "goalsAgainst": 14
               },
               "away": {
                 "played": 14,
@@ -39417,14 +38344,14 @@
             {
               "teamId": 2757,
               "team": "Seongnam FC",
-              "form": "DDWDWLLDWDDLDDLLWLWLWD",
+              "form": "DDWDWLLDWDDLDDLLWLWLWDW",
               "all": {
-                "played": 22,
-                "wins": 6,
+                "played": 23,
+                "wins": 7,
                 "draws": 9,
                 "losses": 7,
-                "goalsFor": 24,
-                "goalsAgainst": 26
+                "goalsFor": 26,
+                "goalsAgainst": 27
               },
               "home": {
                 "played": 11,
@@ -39435,12 +38362,12 @@
                 "goalsAgainst": 10
               },
               "away": {
-                "played": 11,
-                "wins": 3,
+                "played": 12,
+                "wins": 4,
                 "draws": 3,
                 "losses": 5,
-                "goalsFor": 13,
-                "goalsAgainst": 16
+                "goalsFor": 15,
+                "goalsAgainst": 17
               }
             }
           ],
@@ -39448,27 +38375,27 @@
             {
               "fixtureId": 1510442,
               "kickoff": "2026-09-06T19:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 2765,
               "homeTeam": "Suwon Bluewings",
               "awayTeamId": 2753,
               "awayTeam": "Asan Mugunghwa",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1510441,
               "kickoff": "2026-09-06T19:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 7078,
               "homeTeam": "Gimpo Citizen",
               "awayTeamId": 2757,
               "awayTeam": "Seongnam FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -39477,7 +38404,7 @@
     },
     {
       "date": "2026-09-07",
-      "updatedAt": "2026-09-05T11:51:29.797Z",
+      "updatedAt": "2026-09-06T12:08:54.384Z",
       "leagues": [
         {
           "key": "EPL",
@@ -39488,23 +38415,23 @@
               "teamId": 50,
               "team": "Manchester City",
               "rank": 1,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WW",
+              "points": 9,
+              "goalsDiff": 5,
+              "form": "WWW",
               "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "home": {
                 "played": 2,
                 "wins": 2,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
+                "goalsFor": 3,
                 "goalsAgainst": 1
               },
               "away": {
@@ -39517,26 +38444,26 @@
               }
             },
             {
-              "teamId": 42,
-              "team": "Arsenal",
+              "teamId": 64,
+              "team": "Hull City",
               "rank": 2,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WW",
+              "points": 7,
+              "goalsDiff": 3,
+              "form": "DWW",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 2,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 4,
+                "goalsFor": 3,
                 "goalsAgainst": 0
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 3,
+                "goalsFor": 2,
                 "goalsAgainst": 0
               },
               "away": {
@@ -39549,18 +38476,18 @@
               }
             },
             {
-              "teamId": 64,
-              "team": "Hull City",
+              "teamId": 42,
+              "team": "Arsenal",
               "rank": 3,
               "points": 6,
-              "goalsDiff": 3,
+              "goalsDiff": 4,
               "form": "WW",
               "all": {
                 "played": 2,
                 "wins": 2,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 3,
+                "goalsFor": 4,
                 "goalsAgainst": 0
               },
               "home": {
@@ -39568,7 +38495,7 @@
                 "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 2,
+                "goalsFor": 3,
                 "goalsAgainst": 0
               },
               "away": {
@@ -39613,9 +38540,41 @@
               }
             },
             {
+              "teamId": 55,
+              "team": "Brentford",
+              "rank": 5,
+              "points": 5,
+              "goalsDiff": 3,
+              "form": "DDW",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 40,
               "team": "Liverpool",
-              "rank": 5,
+              "rank": 6,
               "points": 5,
               "goalsDiff": 2,
               "form": "WDD",
@@ -39645,59 +38604,27 @@
               }
             },
             {
-              "teamId": 55,
-              "team": "Brentford",
-              "rank": 6,
-              "points": 4,
-              "goalsDiff": 3,
-              "form": "DW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              }
-            },
-            {
               "teamId": 34,
               "team": "Newcastle",
               "rank": 7,
-              "points": 4,
+              "points": 5,
               "goalsDiff": 2,
-              "form": "WD",
+              "form": "DWD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
                 "losses": 0,
                 "goalsFor": 4,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 1,
@@ -39706,54 +38633,22 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 45,
-              "team": "Everton",
-              "rank": 8,
-              "points": 4,
-              "goalsDiff": 2,
-              "form": "DW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
               }
             },
             {
               "teamId": 63,
               "team": "Leeds",
-              "rank": 9,
-              "points": 4,
+              "rank": 8,
+              "points": 5,
               "goalsDiff": 1,
-              "form": "DW",
+              "form": "DDW",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 1
+                "goalsFor": 3,
+                "goalsAgainst": 2
               },
               "home": {
                 "played": 1,
@@ -39764,36 +38659,36 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
+                "goalsFor": 2,
+                "goalsAgainst": 1
               }
             },
             {
               "teamId": 51,
               "team": "Brighton",
-              "rank": 10,
-              "points": 3,
+              "rank": 9,
+              "points": 4,
               "goalsDiff": 3,
-              "form": "LW",
+              "form": "DLW",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 4
+                "goalsFor": 8,
+                "goalsAgainst": 5
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
+                "goalsFor": 5,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 1,
@@ -39805,9 +38700,73 @@
               }
             },
             {
+              "teamId": 45,
+              "team": "Everton",
+              "rank": 10,
+              "points": 4,
+              "goalsDiff": 2,
+              "form": "DW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 746,
+              "team": "Sunderland",
+              "rank": 11,
+              "points": 4,
+              "goalsDiff": 0,
+              "form": "DWL",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 33,
               "team": "Manchester United",
-              "rank": 11,
+              "rank": 12,
               "points": 3,
               "goalsDiff": 1,
               "form": "WL",
@@ -39837,41 +38796,41 @@
               }
             },
             {
-              "teamId": 746,
-              "team": "Sunderland",
-              "rank": 12,
+              "teamId": 52,
+              "team": "Crystal Palace",
+              "rank": 13,
               "points": 3,
-              "goalsDiff": 0,
-              "form": "WL",
+              "goalsDiff": -4,
+              "form": "WLL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 2
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "away": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 1,
-                "goalsAgainst": 2
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
               }
             },
             {
               "teamId": 57,
               "team": "Ipswich",
-              "rank": 13,
+              "rank": 14,
               "points": 3,
               "goalsDiff": -4,
               "form": "LLW",
@@ -39903,17 +38862,17 @@
             {
               "teamId": 35,
               "team": "Bournemouth",
-              "rank": 14,
-              "points": 1,
+              "rank": 15,
+              "points": 2,
               "goalsDiff": -1,
-              "form": "DL",
+              "form": "DDL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsFor": 4,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 1,
@@ -39924,33 +38883,33 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
+                "goalsFor": 3,
+                "goalsAgainst": 4
               }
             },
             {
               "teamId": 65,
               "team": "Nottingham Forest",
-              "rank": 15,
-              "points": 1,
+              "rank": 16,
+              "points": 2,
               "goalsDiff": -1,
-              "form": "DL",
+              "form": "DDL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
                 "goalsFor": 2,
                 "goalsAgainst": 3
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
                 "goalsFor": 0,
                 "goalsAgainst": 1
@@ -39965,27 +38924,91 @@
               }
             },
             {
-              "teamId": 36,
-              "team": "Fulham",
-              "rank": 16,
-              "points": 0,
-              "goalsDiff": -2,
-              "form": "LL",
+              "teamId": 66,
+              "team": "Aston Villa",
+              "rank": 17,
+              "points": 1,
+              "goalsDiff": -5,
+              "form": "DLL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 4
+                "goalsFor": 0,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
-                "goalsFor": 2,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 47,
+              "team": "Tottenham",
+              "rank": 18,
+              "points": 1,
+              "goalsDiff": -5,
+              "form": "DLL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 0,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 0,
                 "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 36,
+              "team": "Fulham",
+              "rank": 19,
+              "points": 0,
+              "goalsDiff": -3,
+              "form": "LLL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
               },
               "away": {
                 "played": 1,
@@ -39999,111 +39022,15 @@
             {
               "teamId": 1346,
               "team": "Coventry",
-              "rank": 17,
-              "points": 0,
-              "goalsDiff": -4,
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 52,
-              "team": "Crystal Palace",
-              "rank": 18,
-              "points": 0,
-              "goalsDiff": -5,
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 66,
-              "team": "Aston Villa",
-              "rank": 19,
-              "points": 0,
-              "goalsDiff": -5,
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 47,
-              "team": "Tottenham",
               "rank": 20,
               "points": 0,
               "goalsDiff": -5,
-              "form": "LL",
+              "form": "LLL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 0,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 0,
                 "goalsAgainst": 5
               },
@@ -40113,15 +39040,15 @@
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 2
+                "goalsAgainst": 1
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 0,
-                "goalsAgainst": 3
+                "goalsAgainst": 4
               }
             }
           ],
@@ -40207,10 +39134,10 @@
                 {
                   "fixtureId": 1557387,
                   "teamId": 42,
-                  "playerId": 38746,
-                  "player": "J. Timber",
-                  "type": "Missing Fixture",
-                  "reason": "Ankle Injury"
+                  "playerId": 10135,
+                  "player": "Bruno Guimaraes",
+                  "type": "Questionable",
+                  "reason": "Knock"
                 },
                 {
                   "fixtureId": 1557387,
@@ -40219,6 +39146,14 @@
                   "player": "C. Mosquera",
                   "type": "Questionable",
                   "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1557387,
+                  "teamId": 42,
+                  "playerId": 38746,
+                  "player": "J. Timber",
+                  "type": "Questionable",
+                  "reason": "Ankle Injury"
                 },
                 {
                   "fixtureId": 1557387,
@@ -40231,21 +39166,21 @@
                 {
                   "fixtureId": 1557387,
                   "teamId": 49,
-                  "playerId": 116117,
-                  "player": "M. Caicedo",
-                  "type": "Questionable",
+                  "playerId": 383018,
+                  "player": "M. Palestra",
+                  "type": "Missing Fixture",
                   "reason": "Injury"
                 },
                 {
                   "fixtureId": 1557387,
                   "teamId": 49,
-                  "playerId": 383018,
-                  "player": "M. Palestra",
+                  "playerId": 116117,
+                  "player": "M. Caicedo",
                   "type": "Questionable",
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -40352,19 +39287,19 @@
               }
             },
             {
-              "teamId": 530,
-              "team": "Atletico Madrid",
+              "teamId": 544,
+              "team": "Deportivo La Coruna",
               "rank": 4,
-              "points": 7,
-              "goalsDiff": 4,
-              "form": "WDW",
+              "points": 8,
+              "goalsDiff": 3,
+              "form": "WWDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 3
+                "goalsFor": 8,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 2,
@@ -40375,12 +39310,12 @@
                 "goalsAgainst": 2
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
+                "goalsFor": 4,
+                "goalsAgainst": 3
               }
             },
             {
@@ -40448,9 +39383,41 @@
               }
             },
             {
+              "teamId": 530,
+              "team": "Atletico Madrid",
+              "rank": 7,
+              "points": 7,
+              "goalsDiff": 1,
+              "form": "LWDW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 536,
               "team": "Sevilla",
-              "rank": 7,
+              "rank": 8,
               "points": 6,
               "goalsDiff": 1,
               "form": "LWW",
@@ -40480,41 +39447,41 @@
               }
             },
             {
-              "teamId": 544,
-              "team": "Deportivo La Coruna",
-              "rank": 8,
-              "points": 5,
-              "goalsDiff": 2,
-              "form": "WDD",
+              "teamId": 531,
+              "team": "Athletic Club",
+              "rank": 9,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "WWLL",
               "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 3
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 2,
                 "wins": 1,
-                "draws": 1,
-                "losses": 0,
+                "draws": 0,
+                "losses": 1,
                 "goalsFor": 4,
-                "goalsAgainst": 2
+                "goalsAgainst": 3
               },
               "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
               }
             },
             {
               "teamId": 539,
               "team": "Levante",
-              "rank": 9,
+              "rank": 10,
               "points": 4,
               "goalsDiff": 0,
               "form": "WDL",
@@ -40546,17 +39513,17 @@
             {
               "teamId": 4665,
               "team": "Racing Santander",
-              "rank": 10,
+              "rank": 11,
               "points": 4,
-              "goalsDiff": 0,
-              "form": "WLD",
+              "goalsDiff": -1,
+              "form": "LWLD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 5,
-                "goalsAgainst": 5
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -40567,18 +39534,50 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 728,
+              "team": "Rayo Vallecano",
+              "rank": 12,
+              "points": 4,
+              "goalsDiff": -3,
+              "form": "WLDL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 548,
               "team": "Real Sociedad",
-              "rank": 11,
+              "rank": 13,
               "points": 4,
               "goalsDiff": -3,
               "form": "DWLL",
@@ -40610,7 +39609,7 @@
             {
               "teamId": 540,
               "team": "Espanyol",
-              "rank": 12,
+              "rank": 14,
               "points": 3,
               "goalsDiff": 1,
               "form": "LLW",
@@ -40640,41 +39639,9 @@
               }
             },
             {
-              "teamId": 531,
-              "team": "Athletic Club",
-              "rank": 13,
-              "points": 3,
-              "goalsDiff": -2,
-              "form": "WLL",
-              "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 546,
               "team": "Getafe",
-              "rank": 14,
+              "rank": 15,
               "points": 3,
               "goalsDiff": -3,
               "form": "LWL",
@@ -40706,25 +39673,25 @@
             {
               "teamId": 533,
               "team": "Villarreal",
-              "rank": 15,
+              "rank": 16,
               "points": 2,
-              "goalsDiff": -1,
-              "form": "LDD",
+              "goalsDiff": -2,
+              "form": "LLDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 3,
@@ -40738,7 +39705,7 @@
             {
               "teamId": 538,
               "team": "Celta Vigo",
-              "rank": 16,
+              "rank": 17,
               "points": 2,
               "goalsDiff": -3,
               "form": "DLLD",
@@ -40770,7 +39737,7 @@
             {
               "teamId": 532,
               "team": "Valencia",
-              "rank": 17,
+              "rank": 18,
               "points": 1,
               "goalsDiff": -3,
               "form": "LLD",
@@ -40797,38 +39764,6 @@
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 728,
-              "team": "Rayo Vallecano",
-              "rank": 18,
-              "points": 1,
-              "goalsDiff": -4,
-              "form": "LDL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 7
               }
             },
             {
@@ -41086,6 +40021,22 @@
                 {
                   "fixtureId": 1570369,
                   "teamId": 535,
+                  "playerId": 47478,
+                  "player": "F. Calero",
+                  "type": "Missing Fixture",
+                  "reason": "Ribs Injury"
+                },
+                {
+                  "fixtureId": 1570369,
+                  "teamId": 535,
+                  "playerId": 328192,
+                  "player": "M. Diarra",
+                  "type": "Missing Fixture",
+                  "reason": "Calf Injury"
+                },
+                {
+                  "fixtureId": 1570369,
+                  "teamId": 535,
                   "playerId": 182602,
                   "player": "J. Lobete",
                   "type": "Missing Fixture",
@@ -41110,22 +40061,6 @@
                 {
                   "fixtureId": 1570369,
                   "teamId": 535,
-                  "playerId": 47478,
-                  "player": "F. Calero",
-                  "type": "Questionable",
-                  "reason": "Ribs Injury"
-                },
-                {
-                  "fixtureId": 1570369,
-                  "teamId": 535,
-                  "playerId": 328192,
-                  "player": "M. Diarra",
-                  "type": "Questionable",
-                  "reason": "Calf Injury"
-                },
-                {
-                  "fixtureId": 1570369,
-                  "teamId": 535,
                   "playerId": 386850,
                   "player": "A. Nino",
                   "type": "Questionable",
@@ -41134,9 +40069,17 @@
                 {
                   "fixtureId": 1570369,
                   "teamId": 539,
+                  "playerId": 378284,
+                  "player": "K. Etta Eyong",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1570369,
+                  "teamId": 539,
                   "playerId": 338295,
                   "player": "A. Primo",
-                  "type": "Questionable",
+                  "type": "Missing Fixture",
                   "reason": "Shoulder Injury"
                 }
               ],
@@ -41164,18 +40107,18 @@
                 {
                   "fixtureId": 1570363,
                   "teamId": 542,
-                  "playerId": 47181,
-                  "player": "T. Martinez",
+                  "playerId": 332645,
+                  "player": "M. Rodriguez",
                   "type": "Missing Fixture",
-                  "reason": "Foot Injury"
+                  "reason": "Ankle Injury"
                 },
                 {
                   "fixtureId": 1570363,
                   "teamId": 542,
-                  "playerId": 332645,
-                  "player": "M. Rodriguez",
+                  "playerId": 47181,
+                  "player": "T. Martinez",
                   "type": "Questionable",
-                  "reason": "Ankle Injury"
+                  "reason": "Foot Injury"
                 },
                 {
                   "fixtureId": 1570363,
@@ -41241,11 +40184,11 @@
                 },
                 {
                   "fixtureId": 1570367,
-                  "teamId": 540,
-                  "playerId": 47299,
-                  "player": "A. Gorosabel",
-                  "type": "Questionable",
-                  "reason": "Transfer negotiations"
+                  "teamId": 536,
+                  "playerId": 433,
+                  "player": "Marcao",
+                  "type": "Missing Fixture",
+                  "reason": "Foot Injury"
                 },
                 {
                   "fixtureId": 1570367,
@@ -41267,9 +40210,73 @@
           "season": "2026",
           "standings": [
             {
+              "teamId": 497,
+              "team": "AS Roma",
+              "rank": 1,
+              "points": 9,
+              "goalsDiff": 9,
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 505,
+              "team": "Inter",
+              "rank": 2,
+              "points": 9,
+              "goalsDiff": 5,
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 895,
               "team": "Como",
-              "rank": 1,
+              "rank": 3,
               "points": 7,
               "goalsDiff": 4,
               "form": "WWD",
@@ -41296,70 +40303,6 @@
                 "losses": 0,
                 "goalsFor": 7,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 497,
-              "team": "AS Roma",
-              "rank": 2,
-              "points": 6,
-              "goalsDiff": 8,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 505,
-              "team": "Inter",
-              "rank": 3,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
               }
             },
             {
@@ -41427,41 +40370,9 @@
               }
             },
             {
-              "teamId": 499,
-              "team": "Atalanta",
-              "rank": 6,
-              "points": 6,
-              "goalsDiff": 2,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
               "teamId": 487,
               "team": "Lazio",
-              "rank": 7,
+              "rank": 6,
               "points": 6,
               "goalsDiff": 2,
               "form": "WW",
@@ -41488,6 +40399,38 @@
                 "losses": 0,
                 "goalsFor": 1,
                 "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 499,
+              "team": "Atalanta",
+              "rank": 7,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "LWW",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
               }
             },
             {
@@ -41555,41 +40498,9 @@
               }
             },
             {
-              "teamId": 492,
-              "team": "Napoli",
-              "rank": 10,
-              "points": 3,
-              "goalsDiff": 1,
-              "form": "LW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              }
-            },
-            {
               "teamId": 488,
               "team": "Sassuolo",
-              "rank": 11,
+              "rank": 10,
               "points": 3,
               "goalsDiff": 0,
               "form": "WL",
@@ -41621,7 +40532,7 @@
             {
               "teamId": 490,
               "team": "Cagliari",
-              "rank": 12,
+              "rank": 11,
               "points": 3,
               "goalsDiff": 0,
               "form": "LW",
@@ -41653,7 +40564,7 @@
             {
               "teamId": 867,
               "team": "Lecce",
-              "rank": 13,
+              "rank": 12,
               "points": 3,
               "goalsDiff": -2,
               "form": "LW",
@@ -41683,19 +40594,19 @@
               }
             },
             {
-              "teamId": 503,
-              "team": "Torino",
-              "rank": 14,
-              "points": 0,
-              "goalsDiff": -2,
-              "form": "LL",
+              "teamId": 492,
+              "team": "Napoli",
+              "rank": 13,
+              "points": 3,
+              "goalsDiff": 0,
+              "form": "LLW",
               "all": {
-                "played": 2,
-                "wins": 0,
+                "played": 3,
+                "wins": 1,
                 "draws": 0,
                 "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 4
+                "goalsFor": 5,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 1,
@@ -41706,12 +40617,44 @@
                 "goalsAgainst": 2
               },
               "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 503,
+              "team": "Torino",
+              "rank": 14,
+              "points": 3,
+              "goalsDiff": -1,
+              "form": "WLL",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "home": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
               }
             },
             {
@@ -41843,41 +40786,9 @@
               }
             },
             {
-              "teamId": 502,
-              "team": "Fiorentina",
-              "rank": 19,
-              "points": 0,
-              "goalsDiff": -7,
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 7
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 495,
               "team": "Genoa",
-              "rank": 20,
+              "rank": 19,
               "points": 0,
               "goalsDiff": -6,
               "form": "LLL",
@@ -41904,6 +40815,38 @@
                 "losses": 1,
                 "goalsFor": 0,
                 "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 502,
+              "team": "Fiorentina",
+              "rank": 20,
+              "points": 0,
+              "goalsDiff": -8,
+              "form": "LLL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 1,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 4
               }
             }
           ],
@@ -42097,11 +41040,11 @@
                   "teamId": 488,
                   "playerId": 40582,
                   "player": "S. Walukiewicz",
-                  "type": "Questionable",
+                  "type": "Missing Fixture",
                   "reason": "Muscle Injury"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -42125,8 +41068,32 @@
                 {
                   "fixtureId": 1550114,
                   "teamId": 496,
+                  "playerId": 127011,
+                  "player": "A. Cambiaso",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1550114,
+                  "teamId": 496,
                   "playerId": 451504,
                   "player": "J. Ekhator",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1550114,
+                  "teamId": 496,
+                  "playerId": 415,
+                  "player": "W. McKennie",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1550114,
+                  "teamId": 496,
+                  "playerId": 237129,
+                  "player": "P. M. Sarr",
                   "type": "Missing Fixture",
                   "reason": "Muscle Injury"
                 },
@@ -42149,22 +41116,6 @@
                 {
                   "fixtureId": 1550114,
                   "teamId": 496,
-                  "playerId": 127011,
-                  "player": "A. Cambiaso",
-                  "type": "Questionable",
-                  "reason": "Ankle Injury"
-                },
-                {
-                  "fixtureId": 1550114,
-                  "teamId": 496,
-                  "playerId": 415,
-                  "player": "W. McKennie",
-                  "type": "Questionable",
-                  "reason": "Muscle Injury"
-                },
-                {
-                  "fixtureId": 1550114,
-                  "teamId": 496,
                   "playerId": 48392,
                   "player": "E. Zhegrova",
                   "type": "Questionable",
@@ -42175,7 +41126,7 @@
                   "teamId": 489,
                   "playerId": 56473,
                   "player": "M. Gabbia",
-                  "type": "Questionable",
+                  "type": "Missing Fixture",
                   "reason": "Ankle Injury"
                 }
               ],
@@ -42190,16 +41141,112 @@
           "season": "2026",
           "standings": [
             {
-              "teamId": 157,
-              "team": "Bayern München",
+              "teamId": 160,
+              "team": "SC Freiburg",
               "rank": 1,
-              "points": 3,
+              "points": 6,
               "goalsDiff": 4,
-              "form": "W",
+              "form": "WW",
               "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 1
+              },
+              "home": {
                 "played": 1,
                 "wins": 1,
                 "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 165,
+              "team": "Borussia Dortmund",
+              "rank": 2,
+              "points": 6,
+              "goalsDiff": 3,
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1660,
+              "team": "SV Elversberg",
+              "rank": 3,
+              "points": 6,
+              "goalsDiff": 2,
+              "form": "WW",
+              "all": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 157,
+              "team": "Bayern München",
+              "rank": 4,
+              "points": 4,
+              "goalsDiff": 4,
+              "form": "DW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
                 "losses": 0,
                 "goalsFor": 5,
                 "goalsAgainst": 1
@@ -42213,28 +41260,28 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
                 "goalsFor": 0,
                 "goalsAgainst": 0
               }
             },
             {
-              "teamId": 160,
-              "team": "SC Freiburg",
-              "rank": 2,
+              "teamId": 168,
+              "team": "Bayer Leverkusen",
+              "rank": 5,
               "points": 3,
               "goalsDiff": 3,
-              "form": "W",
+              "form": "WL",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 3
               },
               "home": {
                 "played": 1,
@@ -42242,21 +41289,21 @@
                 "draws": 0,
                 "losses": 0,
                 "goalsFor": 4,
-                "goalsAgainst": 1
+                "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
               }
             },
             {
               "teamId": 170,
               "team": "FC Augsburg",
-              "rank": 3,
+              "rank": 6,
               "points": 3,
               "goalsDiff": 3,
               "form": "W",
@@ -42288,81 +41335,17 @@
             {
               "teamId": 173,
               "team": "RB Leipzig",
-              "rank": 4,
-              "points": 3,
-              "goalsDiff": 3,
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 165,
-              "team": "Borussia Dortmund",
-              "rank": 5,
-              "points": 3,
-              "goalsDiff": 2,
-              "form": "W",
-              "all": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 1660,
-              "team": "SV Elversberg",
-              "rank": 6,
+              "rank": 7,
               "points": 3,
               "goalsDiff": 1,
-              "form": "W",
+              "form": "LW",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
               },
               "home": {
                 "played": 1,
@@ -42370,21 +41353,21 @@
                 "draws": 0,
                 "losses": 0,
                 "goalsFor": 3,
-                "goalsAgainst": 2
+                "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 3
               }
             },
             {
               "teamId": 172,
               "team": "VfB Stuttgart",
-              "rank": 7,
+              "rank": 8,
               "points": 3,
               "goalsDiff": -1,
               "form": "WL",
@@ -42414,9 +41397,41 @@
               }
             },
             {
+              "teamId": 162,
+              "team": "Werder Bremen",
+              "rank": 9,
+              "points": 3,
+              "goalsDiff": -1,
+              "form": "WL",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 192,
               "team": "1. FC Köln",
-              "rank": 8,
+              "rank": 10,
               "points": 3,
               "goalsDiff": -2,
               "form": "LW",
@@ -42448,7 +41463,7 @@
             {
               "teamId": 169,
               "team": "Eintracht Frankfurt",
-              "rank": 9,
+              "rank": 11,
               "points": 1,
               "goalsDiff": 0,
               "form": "D",
@@ -42475,44 +41490,12 @@
                 "losses": 0,
                 "goalsFor": 3,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 182,
-              "team": "Union Berlin",
-              "rank": 10,
-              "points": 1,
-              "goalsDiff": 0,
-              "form": "D",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
               }
             },
             {
               "teamId": 164,
               "team": "FSV Mainz 05",
-              "rank": 11,
+              "rank": 12,
               "points": 1,
               "goalsDiff": 0,
               "form": "D",
@@ -42544,25 +41527,25 @@
             {
               "teamId": 185,
               "team": "SC Paderborn 07",
-              "rank": 12,
+              "rank": 13,
               "points": 1,
-              "goalsDiff": 0,
-              "form": "D",
+              "goalsDiff": -1,
+              "form": "LD",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 1,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 1,
@@ -42571,62 +41554,94 @@
                 "losses": 0,
                 "goalsFor": 0,
                 "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 174,
+              "team": "FC Schalke 04",
+              "rank": 14,
+              "points": 1,
+              "goalsDiff": -3,
+              "form": "DL",
+              "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 182,
+              "team": "Union Berlin",
+              "rank": 15,
+              "points": 1,
+              "goalsDiff": -4,
+              "form": "LD",
+              "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 4
               }
             },
             {
               "teamId": 167,
               "team": "1899 Hoffenheim",
-              "rank": 13,
+              "rank": 16,
               "points": 0,
-              "goalsDiff": -1,
-              "form": "L",
+              "goalsDiff": -2,
+              "form": "LL",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
               },
               "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 2,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 168,
-              "team": "Bayer Leverkusen",
-              "rank": 14,
-              "points": 0,
-              "goalsDiff": -1,
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
               },
               "away": {
                 "played": 1,
@@ -42640,7 +41655,7 @@
             {
               "teamId": 175,
               "team": "Hamburger SV",
-              "rank": 15,
+              "rank": 17,
               "points": 0,
               "goalsDiff": -2,
               "form": "L",
@@ -42670,91 +41685,27 @@
               }
             },
             {
-              "teamId": 162,
-              "team": "Werder Bremen",
-              "rank": 16,
-              "points": 0,
-              "goalsDiff": -3,
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 163,
               "team": "Borussia Mönchengladbach",
-              "rank": 17,
-              "points": 0,
-              "goalsDiff": -3,
-              "form": "L",
-              "all": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 174,
-              "team": "FC Schalke 04",
               "rank": 18,
               "points": 0,
-              "goalsDiff": -3,
-              "form": "L",
+              "goalsDiff": -4,
+              "form": "LL",
               "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 7
+              },
+              "home": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 3,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 1,
@@ -42894,7 +41845,7 @@
                   "reason": "Injury"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -43001,9 +41952,41 @@
               }
             },
             {
+              "teamId": 106,
+              "team": "Stade Brestois 29",
+              "rank": 4,
+              "points": 5,
+              "goalsDiff": 1,
+              "form": "WDD",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
               "teamId": 114,
               "team": "Paris FC",
-              "rank": 4,
+              "rank": 5,
               "points": 4,
               "goalsDiff": 3,
               "form": "WD",
@@ -43035,7 +42018,7 @@
             {
               "teamId": 94,
               "team": "Rennes",
-              "rank": 5,
+              "rank": 6,
               "points": 4,
               "goalsDiff": 1,
               "form": "WD",
@@ -43067,7 +42050,7 @@
             {
               "teamId": 110,
               "team": "Estac Troyes",
-              "rank": 6,
+              "rank": 7,
               "points": 4,
               "goalsDiff": 1,
               "form": "WD",
@@ -43097,41 +42080,41 @@
               }
             },
             {
-              "teamId": 116,
-              "team": "Lens",
-              "rank": 7,
-              "points": 3,
-              "goalsDiff": 2,
-              "form": "LW",
+              "teamId": 97,
+              "team": "Lorient",
+              "rank": 8,
+              "points": 4,
+              "goalsDiff": 0,
+              "form": "WLD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
+                "goalsFor": 2,
                 "goalsAgainst": 2
               },
-              "away": {
+              "home": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
               }
             },
             {
               "teamId": 81,
               "team": "Marseille",
-              "rank": 8,
+              "rank": 9,
               "points": 3,
               "goalsDiff": 2,
               "form": "LW",
@@ -43161,9 +42144,41 @@
               }
             },
             {
+              "teamId": 116,
+              "team": "Lens",
+              "rank": 10,
+              "points": 3,
+              "goalsDiff": 1,
+              "form": "LLW",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 77,
               "team": "Angers",
-              "rank": 9,
+              "rank": 11,
               "points": 3,
               "goalsDiff": 0,
               "form": "WL",
@@ -43195,7 +42210,7 @@
             {
               "teamId": 95,
               "team": "Strasbourg",
-              "rank": 10,
+              "rank": 12,
               "points": 3,
               "goalsDiff": -3,
               "form": "WL",
@@ -43225,41 +42240,9 @@
               }
             },
             {
-              "teamId": 106,
-              "team": "Stade Brestois 29",
-              "rank": 11,
-              "points": 2,
-              "goalsDiff": 0,
-              "form": "DD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 85,
               "team": "Paris Saint Germain",
-              "rank": 12,
+              "rank": 13,
               "points": 2,
               "goalsDiff": -1,
               "form": "LDD",
@@ -43291,17 +42274,17 @@
             {
               "teamId": 1298,
               "team": "Le Mans",
-              "rank": 13,
-              "points": 1,
+              "rank": 14,
+              "points": 2,
               "goalsDiff": -1,
-              "form": "LD",
+              "form": "DLD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
+                "goalsFor": 5,
+                "goalsAgainst": 6
               },
               "home": {
                 "played": 1,
@@ -43312,68 +42295,68 @@
                 "goalsAgainst": 2
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsFor": 3,
+                "goalsAgainst": 4
               }
             },
             {
-              "teamId": 97,
-              "team": "Lorient",
-              "rank": 14,
-              "points": 1,
-              "goalsDiff": -1,
-              "form": "LD",
+              "teamId": 84,
+              "team": "Nice",
+              "rank": 15,
+              "points": 2,
+              "goalsDiff": -3,
+              "form": "DLD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
                 "goalsFor": 1,
-                "goalsAgainst": 2
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 0,
-                "losses": 1,
+                "draws": 2,
+                "losses": 0,
                 "goalsFor": 1,
-                "goalsAgainst": 2
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 1,
                 "wins": 0,
-                "draws": 1,
-                "losses": 0,
+                "draws": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 3
               }
             },
             {
               "teamId": 111,
               "team": "Le Havre",
-              "rank": 15,
+              "rank": 16,
               "points": 1,
-              "goalsDiff": -1,
-              "form": "DL",
+              "goalsDiff": -2,
+              "form": "LDL",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 1,
@@ -43387,7 +42370,7 @@
             {
               "teamId": 96,
               "team": "Toulouse",
-              "rank": 16,
+              "rank": 17,
               "points": 1,
               "goalsDiff": -3,
               "form": "LDL",
@@ -43414,38 +42397,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 84,
-              "team": "Nice",
-              "rank": 17,
-              "points": 1,
-              "goalsDiff": -3,
-              "form": "LD",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
               }
             },
             {
@@ -43623,11 +42574,27 @@
                   "teamId": 77,
                   "playerId": 289555,
                   "player": "L. Mouton",
-                  "type": "Questionable",
+                  "type": "Missing Fixture",
                   "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1552747,
+                  "teamId": 94,
+                  "playerId": 417830,
+                  "player": "A. Ait Boudlal",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552747,
+                  "teamId": 94,
+                  "playerId": 343792,
+                  "player": "D. Cisse",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
                 }
               ],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -43667,8 +42634,16 @@
                 {
                   "fixtureId": 1552751,
                   "teamId": 114,
-                  "playerId": 359603,
-                  "player": "L. Koleosho",
+                  "playerId": 490981,
+                  "player": "E. Mbemba",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552751,
+                  "teamId": 114,
+                  "playerId": 266013,
+                  "player": "Otavio",
                   "type": "Missing Fixture",
                   "reason": "Injury"
                 },
@@ -43678,22 +42653,6 @@
                   "playerId": 389322,
                   "player": "N. Sangui",
                   "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1552751,
-                  "teamId": 114,
-                  "playerId": 490981,
-                  "player": "E. Mbemba",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1552751,
-                  "teamId": 114,
-                  "playerId": 266013,
-                  "player": "Otavio",
-                  "type": "Questionable",
                   "reason": "Injury"
                 }
               ],
@@ -43743,23 +42702,23 @@
               "teamId": 228,
               "team": "Sporting CP",
               "rank": 2,
-              "points": 10,
-              "goalsDiff": 7,
-              "form": "WWWD",
+              "points": 13,
+              "goalsDiff": 9,
+              "form": "WWWWD",
               "all": {
-                "played": 4,
-                "wins": 3,
+                "played": 5,
+                "wins": 4,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 12,
+                "goalsFor": 14,
                 "goalsAgainst": 5
               },
               "home": {
-                "played": 2,
-                "wins": 2,
+                "played": 3,
+                "wins": 3,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 6,
+                "goalsFor": 8,
                 "goalsAgainst": 3
               },
               "away": {
@@ -43772,9 +42731,41 @@
               }
             },
             {
+              "teamId": 211,
+              "team": "Benfica",
+              "rank": 3,
+              "points": 10,
+              "goalsDiff": 11,
+              "form": "WWWD",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 14,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 240,
               "team": "Arouca",
-              "rank": 3,
+              "rank": 4,
               "points": 9,
               "goalsDiff": 4,
               "form": "WLWW",
@@ -43806,7 +42797,7 @@
             {
               "teamId": 227,
               "team": "Santa Clara",
-              "rank": 4,
+              "rank": 5,
               "points": 8,
               "goalsDiff": 2,
               "form": "DWWD",
@@ -43833,38 +42824,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 211,
-              "team": "Benfica",
-              "rank": 5,
-              "points": 7,
-              "goalsDiff": 8,
-              "form": "WWD",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 0
               }
             },
             {
@@ -43900,27 +42859,59 @@
               }
             },
             {
-              "teamId": 214,
-              "team": "Maritimo",
+              "teamId": 217,
+              "team": "SC Braga",
               "rank": 7,
               "points": 7,
-              "goalsDiff": 1,
-              "form": "LDWW",
+              "goalsDiff": 2,
+              "form": "WWD",
               "all": {
-                "played": 4,
+                "played": 3,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 5
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 3
               },
               "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 214,
+              "team": "Maritimo",
+              "rank": 8,
+              "points": 7,
+              "goalsDiff": -2,
+              "form": "LLDWW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 2
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -43934,25 +42925,25 @@
             {
               "teamId": 15130,
               "team": "Estrela",
-              "rank": 8,
-              "points": 5,
+              "rank": 9,
+              "points": 6,
               "goalsDiff": 1,
-              "form": "WDD",
+              "form": "DWDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 2,
+                "draws": 3,
                 "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 6
+                "goalsFor": 9,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
+                "goalsFor": 4,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
@@ -43964,51 +42955,19 @@
               }
             },
             {
-              "teamId": 217,
-              "team": "SC Braga",
-              "rank": 9,
-              "points": 4,
-              "goalsDiff": 1,
-              "form": "WD",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 225,
               "team": "Nacional",
               "rank": 10,
               "points": 4,
-              "goalsDiff": 0,
-              "form": "LLWD",
+              "goalsDiff": -2,
+              "form": "LLLWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 1,
                 "draws": 1,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 6,
-                "goalsAgainst": 6
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -44019,12 +42978,12 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsAgainst": 5
               }
             },
             {
@@ -44092,9 +43051,41 @@
               }
             },
             {
+              "teamId": 242,
+              "team": "Famalicao",
+              "rank": 13,
+              "points": 3,
+              "goalsDiff": -2,
+              "form": "DDLLD",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 3,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 226,
               "team": "Rio Ave",
-              "rank": 13,
+              "rank": 14,
               "points": 3,
               "goalsDiff": -5,
               "form": "LWLL",
@@ -44121,38 +43112,6 @@
                 "losses": 1,
                 "goalsFor": 2,
                 "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 242,
-              "team": "Famalicao",
-              "rank": 14,
-              "points": 2,
-              "goalsDiff": -2,
-              "form": "DLLD",
-              "all": {
-                "played": 4,
-                "wins": 0,
-                "draws": 2,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
               }
             },
             {
@@ -44192,23 +43151,23 @@
               "team": "Alverca",
               "rank": 16,
               "points": 2,
-              "goalsDiff": -4,
-              "form": "DLDL",
+              "goalsDiff": -5,
+              "form": "LDLDL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 2,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 8
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 10
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 2,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -44437,35 +43396,35 @@
           "season": "2026",
           "standings": [
             {
-              "teamId": 736,
-              "team": "Charleroi",
+              "teamId": 1393,
+              "team": "Union St. Gilloise",
               "rank": 1,
-              "points": 12,
-              "goalsDiff": 7,
-              "form": "WWWW",
+              "points": 13,
+              "goalsDiff": 11,
+              "form": "WWWDW",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 4,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 2
+                "goalsFor": 14,
+                "goalsAgainst": 3
               },
               "home": {
                 "played": 2,
-                "wins": 2,
-                "draws": 0,
+                "wins": 1,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
+                "goalsFor": 3,
+                "goalsAgainst": 0
               },
               "away": {
-                "played": 2,
-                "wins": 2,
+                "played": 3,
+                "wins": 3,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
+                "goalsFor": 11,
+                "goalsAgainst": 3
               }
             },
             {
@@ -44501,9 +43460,41 @@
               }
             },
             {
+              "teamId": 736,
+              "team": "Charleroi",
+              "rank": 3,
+              "points": 12,
+              "goalsDiff": 6,
+              "form": "LWWWW",
+              "all": {
+                "played": 5,
+                "wins": 4,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              }
+            },
+            {
               "teamId": 631,
               "team": "Gent",
-              "rank": 3,
+              "rank": 4,
               "points": 12,
               "goalsDiff": 5,
               "form": "WWWW",
@@ -44533,41 +43524,41 @@
               }
             },
             {
-              "teamId": 1393,
-              "team": "Union St. Gilloise",
-              "rank": 4,
-              "points": 10,
-              "goalsDiff": 10,
-              "form": "WWDW",
+              "teamId": 733,
+              "team": "Standard Liege",
+              "rank": 5,
+              "points": 11,
+              "goalsDiff": 4,
+              "form": "WWWDD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 3,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 1
+                "goalsFor": 10,
+                "goalsAgainst": 6
               },
               "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 1
+                "goalsFor": 5,
+                "goalsAgainst": 4
               }
             },
             {
               "teamId": 600,
               "team": "Zulte Waregem",
-              "rank": 5,
+              "rank": 6,
               "points": 8,
               "goalsDiff": 5,
               "form": "DWDW",
@@ -44597,41 +43588,41 @@
               }
             },
             {
-              "teamId": 733,
-              "team": "Standard Liege",
-              "rank": 6,
+              "teamId": 735,
+              "team": "St. Truiden",
+              "rank": 7,
               "points": 8,
-              "goalsDiff": 3,
-              "form": "WWDD",
+              "goalsDiff": 4,
+              "form": "WLWDD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 2,
-                "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 6
+                "losses": 1,
+                "goalsFor": 12,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
                 "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 5,
+                "goalsFor": 7,
                 "goalsAgainst": 4
               }
             },
             {
               "teamId": 742,
               "team": "Genk",
-              "rank": 7,
+              "rank": 8,
               "points": 7,
               "goalsDiff": 4,
               "form": "WDWL",
@@ -44663,7 +43654,7 @@
             {
               "teamId": 259,
               "team": "Lommel United",
-              "rank": 8,
+              "rank": 9,
               "points": 7,
               "goalsDiff": 3,
               "form": "LWWLD",
@@ -44695,17 +43686,17 @@
             {
               "teamId": 740,
               "team": "Antwerp",
-              "rank": 9,
+              "rank": 10,
               "points": 7,
-              "goalsDiff": 1,
-              "form": "LDWW",
+              "goalsDiff": 0,
+              "form": "LLDWW",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 10,
-                "goalsAgainst": 9
+                "goalsAgainst": 10
               },
               "home": {
                 "played": 3,
@@ -44716,18 +43707,18 @@
                 "goalsAgainst": 9
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               }
             },
             {
               "teamId": 554,
               "team": "Anderlecht",
-              "rank": 10,
+              "rank": 11,
               "points": 6,
               "goalsDiff": -2,
               "form": "WLLW",
@@ -44757,41 +43748,41 @@
               }
             },
             {
-              "teamId": 735,
-              "team": "St. Truiden",
-              "rank": 11,
-              "points": 5,
-              "goalsDiff": 0,
-              "form": "LWDD",
+              "teamId": 261,
+              "team": "KVC Westerlo",
+              "rank": 12,
+              "points": 4,
+              "goalsDiff": -5,
+              "form": "WDLLL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 1,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 8,
-                "goalsAgainst": 8
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 9,
+                "goalsAgainst": 14
               },
               "home": {
                 "played": 2,
                 "wins": 0,
                 "draws": 1,
                 "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
+                "goalsFor": 3,
+                "goalsAgainst": 7
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 4
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 738,
               "team": "SK Beveren",
-              "rank": 12,
+              "rank": 13,
               "points": 3,
               "goalsDiff": -8,
               "form": "LLWL",
@@ -44823,7 +43814,7 @@
             {
               "teamId": 741,
               "team": "Cercle Brugge",
-              "rank": 13,
+              "rank": 14,
               "points": 2,
               "goalsDiff": -2,
               "form": "LLDD",
@@ -44855,25 +43846,25 @@
             {
               "teamId": 266,
               "team": "KV Mechelen",
-              "rank": 14,
+              "rank": 15,
               "points": 2,
-              "goalsDiff": -4,
-              "form": "DLDL",
+              "goalsDiff": -8,
+              "form": "LDLDL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 2,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 5,
-                "goalsAgainst": 9
+                "goalsAgainst": 13
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 1,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 3
+                "goalsAgainst": 7
               },
               "away": {
                 "played": 3,
@@ -44887,49 +43878,17 @@
             {
               "teamId": 5902,
               "team": "RAAL La Louvière",
-              "rank": 15,
-              "points": 1,
-              "goalsDiff": -4,
-              "form": "DLLL",
-              "all": {
-                "played": 4,
-                "wins": 0,
-                "draws": 1,
-                "losses": 3,
-                "goalsFor": 4,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 261,
-              "team": "KVC Westerlo",
               "rank": 16,
               "points": 1,
-              "goalsDiff": -9,
-              "form": "DLLL",
+              "goalsDiff": -8,
+              "form": "LDLLL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 1,
-                "losses": 3,
-                "goalsFor": 5,
-                "goalsAgainst": 14
+                "losses": 4,
+                "goalsFor": 4,
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 2,
@@ -44937,15 +43896,15 @@
                 "draws": 1,
                 "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 7
+                "goalsAgainst": 4
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 0,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 7
+                "losses": 3,
+                "goalsFor": 1,
+                "goalsAgainst": 8
               }
             },
             {
@@ -45198,9 +44157,41 @@
               }
             },
             {
+              "teamId": 549,
+              "team": "Beşiktaş",
+              "rank": 2,
+              "points": 9,
+              "goalsDiff": 5,
+              "form": "WWLW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 997,
               "team": "Gençlerbirliği S.K.",
-              "rank": 2,
+              "rank": 3,
               "points": 7,
               "goalsDiff": 2,
               "form": "DWW",
@@ -45230,59 +44221,27 @@
               }
             },
             {
-              "teamId": 549,
-              "team": "Beşiktaş",
-              "rank": 3,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WLW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              }
-            },
-            {
               "teamId": 611,
               "team": "Fenerbahçe",
               "rank": 4,
               "points": 6,
-              "goalsDiff": 3,
-              "form": "WWL",
+              "goalsDiff": 2,
+              "form": "LWWL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 4
+                "losses": 2,
+                "goalsFor": 8,
+                "goalsAgainst": 6
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
@@ -45582,9 +44541,41 @@
               }
             },
             {
+              "teamId": 1009,
+              "team": "Erzurumspor FK",
+              "rank": 14,
+              "points": 4,
+              "goalsDiff": -6,
+              "form": "WDLL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 3588,
               "team": "Eyüpspor",
-              "rank": 14,
+              "rank": 15,
               "points": 3,
               "goalsDiff": -1,
               "form": "WLL",
@@ -45616,7 +44607,7 @@
             {
               "teamId": 994,
               "team": "Göztepe",
-              "rank": 15,
+              "rank": 16,
               "points": 1,
               "goalsDiff": -2,
               "form": "LLD",
@@ -45648,7 +44639,7 @@
             {
               "teamId": 6343,
               "team": "Çorum FK",
-              "rank": 16,
+              "rank": 17,
               "points": 1,
               "goalsDiff": -5,
               "form": "LLD",
@@ -45678,51 +44669,19 @@
               }
             },
             {
-              "teamId": 1009,
-              "team": "Erzurumspor FK",
-              "rank": 17,
-              "points": 1,
-              "goalsDiff": -7,
-              "form": "DLL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 607,
               "team": "Konyaspor",
               "rank": 18,
               "points": 0,
-              "goalsDiff": -4,
-              "form": "LLL",
+              "goalsDiff": -5,
+              "form": "LLLL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 0,
-                "losses": 3,
+                "losses": 4,
                 "goalsFor": 3,
-                "goalsAgainst": 7
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -45733,12 +44692,12 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 4
+                "goalsAgainst": 5
               }
             }
           ],
@@ -45882,14 +44841,6 @@
                 {
                   "fixtureId": 1584402,
                   "teamId": 998,
-                  "playerId": 274355,
-                  "player": "B. Bouchouari",
-                  "type": "Missing Fixture",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1584402,
-                  "teamId": 998,
                   "playerId": 22408,
                   "player": "T. Jabol-Folcarelli",
                   "type": "Missing Fixture",
@@ -45906,18 +44857,18 @@
                 {
                   "fixtureId": 1584402,
                   "teamId": 998,
-                  "playerId": 47443,
-                  "player": "O. Yokuslu",
+                  "playerId": 454973,
+                  "player": "N. Saviolo",
                   "type": "Missing Fixture",
-                  "reason": "Lacking Match Fitness"
+                  "reason": "Injury"
                 },
                 {
                   "fixtureId": 1584402,
                   "teamId": 998,
-                  "playerId": 454973,
-                  "player": "N. Saviolo",
-                  "type": "Questionable",
-                  "reason": "Injury"
+                  "playerId": 47443,
+                  "player": "O. Yokuslu",
+                  "type": "Missing Fixture",
+                  "reason": "Lacking Match Fitness"
                 },
                 {
                   "fixtureId": 1584402,
@@ -45926,6 +44877,14 @@
                   "player": "D. Demir",
                   "type": "Missing Fixture",
                   "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1584402,
+                  "teamId": 997,
+                  "playerId": 47304,
+                  "player": "K. Rodrigues",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
                 },
                 {
                   "fixtureId": 1584402,
@@ -45940,14 +44899,6 @@
                   "teamId": 997,
                   "playerId": 22239,
                   "player": "C. Niasse",
-                  "type": "Questionable",
-                  "reason": "Inactive"
-                },
-                {
-                  "fixtureId": 1584402,
-                  "teamId": 997,
-                  "playerId": 47304,
-                  "player": "K. Rodrigues",
                   "type": "Questionable",
                   "reason": "Inactive"
                 }
@@ -46055,7 +45006,7 @@
     },
     {
       "date": "2026-09-08",
-      "updatedAt": "2026-09-05T11:51:35.703Z",
+      "updatedAt": "2026-09-06T12:09:02.757Z",
       "leagues": [
         {
           "key": "LALIGA",
@@ -46159,19 +45110,19 @@
               }
             },
             {
-              "teamId": 530,
-              "team": "Atletico Madrid",
+              "teamId": 544,
+              "team": "Deportivo La Coruna",
               "rank": 4,
-              "points": 7,
-              "goalsDiff": 4,
-              "form": "WDW",
+              "points": 8,
+              "goalsDiff": 3,
+              "form": "WWDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 3
+                "goalsFor": 8,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 2,
@@ -46182,12 +45133,12 @@
                 "goalsAgainst": 2
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
+                "goalsFor": 4,
+                "goalsAgainst": 3
               }
             },
             {
@@ -46255,9 +45206,41 @@
               }
             },
             {
+              "teamId": 530,
+              "team": "Atletico Madrid",
+              "rank": 7,
+              "points": 7,
+              "goalsDiff": 1,
+              "form": "LWDW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 536,
               "team": "Sevilla",
-              "rank": 7,
+              "rank": 8,
               "points": 6,
               "goalsDiff": 1,
               "form": "LWW",
@@ -46287,41 +45270,41 @@
               }
             },
             {
-              "teamId": 544,
-              "team": "Deportivo La Coruna",
-              "rank": 8,
-              "points": 5,
-              "goalsDiff": 2,
-              "form": "WDD",
+              "teamId": 531,
+              "team": "Athletic Club",
+              "rank": 9,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "WWLL",
               "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 3
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 2,
                 "wins": 1,
-                "draws": 1,
-                "losses": 0,
+                "draws": 0,
+                "losses": 1,
                 "goalsFor": 4,
-                "goalsAgainst": 2
+                "goalsAgainst": 3
               },
               "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
               }
             },
             {
               "teamId": 539,
               "team": "Levante",
-              "rank": 9,
+              "rank": 10,
               "points": 4,
               "goalsDiff": 0,
               "form": "WDL",
@@ -46353,17 +45336,17 @@
             {
               "teamId": 4665,
               "team": "Racing Santander",
-              "rank": 10,
+              "rank": 11,
               "points": 4,
-              "goalsDiff": 0,
-              "form": "WLD",
+              "goalsDiff": -1,
+              "form": "LWLD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 5,
-                "goalsAgainst": 5
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -46374,18 +45357,50 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 728,
+              "team": "Rayo Vallecano",
+              "rank": 12,
+              "points": 4,
+              "goalsDiff": -3,
+              "form": "WLDL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 548,
               "team": "Real Sociedad",
-              "rank": 11,
+              "rank": 13,
               "points": 4,
               "goalsDiff": -3,
               "form": "DWLL",
@@ -46417,7 +45432,7 @@
             {
               "teamId": 540,
               "team": "Espanyol",
-              "rank": 12,
+              "rank": 14,
               "points": 3,
               "goalsDiff": 1,
               "form": "LLW",
@@ -46447,41 +45462,9 @@
               }
             },
             {
-              "teamId": 531,
-              "team": "Athletic Club",
-              "rank": 13,
-              "points": 3,
-              "goalsDiff": -2,
-              "form": "WLL",
-              "all": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 5
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 546,
               "team": "Getafe",
-              "rank": 14,
+              "rank": 15,
               "points": 3,
               "goalsDiff": -3,
               "form": "LWL",
@@ -46513,25 +45496,25 @@
             {
               "teamId": 533,
               "team": "Villarreal",
-              "rank": 15,
+              "rank": 16,
               "points": 2,
-              "goalsDiff": -1,
-              "form": "LDD",
+              "goalsDiff": -2,
+              "form": "LLDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 2,
-                "losses": 1,
-                "goalsFor": 4,
-                "goalsAgainst": 5
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 3,
@@ -46545,7 +45528,7 @@
             {
               "teamId": 538,
               "team": "Celta Vigo",
-              "rank": 16,
+              "rank": 17,
               "points": 2,
               "goalsDiff": -3,
               "form": "DLLD",
@@ -46577,7 +45560,7 @@
             {
               "teamId": 532,
               "team": "Valencia",
-              "rank": 17,
+              "rank": 18,
               "points": 1,
               "goalsDiff": -3,
               "form": "LLD",
@@ -46604,38 +45587,6 @@
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 728,
-              "team": "Rayo Vallecano",
-              "rank": 18,
-              "points": 1,
-              "goalsDiff": -4,
-              "form": "LDL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 7
               }
             },
             {
@@ -46835,24 +45786,8 @@
                 {
                   "fixtureId": 1570368,
                   "teamId": 546,
-                  "playerId": 46813,
-                  "player": "A. Abqar",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1570368,
-                  "teamId": 546,
                   "playerId": 47320,
                   "player": "Juanmi",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
-                },
-                {
-                  "fixtureId": 1570368,
-                  "teamId": 546,
-                  "playerId": 343205,
-                  "player": "M. Martin",
                   "type": "Missing Fixture",
                   "reason": "Injury"
                 },
@@ -46867,8 +45802,24 @@
                 {
                   "fixtureId": 1570368,
                   "teamId": 546,
+                  "playerId": 46813,
+                  "player": "A. Abqar",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1570368,
+                  "teamId": 546,
                   "playerId": 388013,
                   "player": "A. Garcia",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1570368,
+                  "teamId": 546,
+                  "playerId": 343205,
+                  "player": "M. Martin",
                   "type": "Questionable",
                   "reason": "Injury"
                 },
@@ -46877,7 +45828,7 @@
                   "teamId": 538,
                   "playerId": 46711,
                   "player": "A. Febas",
-                  "type": "Missing Fixture",
+                  "type": "Questionable",
                   "reason": "Ribs Injury"
                 },
                 {
@@ -46885,7 +45836,7 @@
                   "teamId": 538,
                   "playerId": 47348,
                   "player": "B. Iglesias",
-                  "type": "Missing Fixture",
+                  "type": "Questionable",
                   "reason": "Muscle Injury"
                 }
               ],
@@ -46905,22 +45856,6 @@
                 {
                   "fixtureId": 1570366,
                   "teamId": 797,
-                  "playerId": 439293,
-                  "player": "A. Boayar",
-                  "type": "Missing Fixture",
-                  "reason": "Muscle Injury"
-                },
-                {
-                  "fixtureId": 1570366,
-                  "teamId": 797,
-                  "playerId": 45,
-                  "player": "T. Lemar",
-                  "type": "Missing Fixture",
-                  "reason": "Coach's decision"
-                },
-                {
-                  "fixtureId": 1570366,
-                  "teamId": 797,
                   "playerId": 284415,
                   "player": "Y. Santiago",
                   "type": "Missing Fixture",
@@ -46928,11 +45863,19 @@
                 },
                 {
                   "fixtureId": 1570366,
-                  "teamId": 548,
-                  "playerId": 290106,
-                  "player": "P. Marin",
-                  "type": "Missing Fixture",
-                  "reason": "Injury"
+                  "teamId": 797,
+                  "playerId": 439293,
+                  "player": "A. Boayar",
+                  "type": "Questionable",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1570366,
+                  "teamId": 797,
+                  "playerId": 45,
+                  "player": "T. Lemar",
+                  "type": "Questionable",
+                  "reason": "Coach's decision"
                 },
                 {
                   "fixtureId": 1570366,
@@ -46941,6 +45884,14 @@
                   "player": "A. Odriozola",
                   "type": "Missing Fixture",
                   "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1570366,
+                  "teamId": 548,
+                  "playerId": 290106,
+                  "player": "P. Marin",
+                  "type": "Questionable",
+                  "reason": "Injury"
                 }
               ],
               "lineupsChecked": false,
@@ -46954,9 +45905,73 @@
           "season": "2026",
           "standings": [
             {
+              "teamId": 497,
+              "team": "AS Roma",
+              "rank": 1,
+              "points": 9,
+              "goalsDiff": 9,
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 505,
+              "team": "Inter",
+              "rank": 2,
+              "points": 9,
+              "goalsDiff": 5,
+              "form": "WWW",
+              "all": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 895,
               "team": "Como",
-              "rank": 1,
+              "rank": 3,
               "points": 7,
               "goalsDiff": 4,
               "form": "WWD",
@@ -46983,70 +45998,6 @@
                 "losses": 0,
                 "goalsFor": 7,
                 "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 497,
-              "team": "AS Roma",
-              "rank": 2,
-              "points": 6,
-              "goalsDiff": 8,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 0
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 0
-              }
-            },
-            {
-              "teamId": 505,
-              "team": "Inter",
-              "rank": 3,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 5,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
               }
             },
             {
@@ -47114,41 +46065,9 @@
               }
             },
             {
-              "teamId": 499,
-              "team": "Atalanta",
-              "rank": 6,
-              "points": 6,
-              "goalsDiff": 2,
-              "form": "WW",
-              "all": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 1
-              },
-              "away": {
-                "played": 0,
-                "wins": 0,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
-              }
-            },
-            {
               "teamId": 487,
               "team": "Lazio",
-              "rank": 7,
+              "rank": 6,
               "points": 6,
               "goalsDiff": 2,
               "form": "WW",
@@ -47175,6 +46094,38 @@
                 "losses": 0,
                 "goalsFor": 1,
                 "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 499,
+              "team": "Atalanta",
+              "rank": 7,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "LWW",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
               }
             },
             {
@@ -47242,41 +46193,9 @@
               }
             },
             {
-              "teamId": 492,
-              "team": "Napoli",
-              "rank": 10,
-              "points": 3,
-              "goalsDiff": 1,
-              "form": "LW",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 0
-              }
-            },
-            {
               "teamId": 488,
               "team": "Sassuolo",
-              "rank": 11,
+              "rank": 10,
               "points": 3,
               "goalsDiff": 0,
               "form": "WL",
@@ -47308,7 +46227,7 @@
             {
               "teamId": 490,
               "team": "Cagliari",
-              "rank": 12,
+              "rank": 11,
               "points": 3,
               "goalsDiff": 0,
               "form": "LW",
@@ -47340,7 +46259,7 @@
             {
               "teamId": 867,
               "team": "Lecce",
-              "rank": 13,
+              "rank": 12,
               "points": 3,
               "goalsDiff": -2,
               "form": "LW",
@@ -47370,19 +46289,19 @@
               }
             },
             {
-              "teamId": 503,
-              "team": "Torino",
-              "rank": 14,
-              "points": 0,
-              "goalsDiff": -2,
-              "form": "LL",
+              "teamId": 492,
+              "team": "Napoli",
+              "rank": 13,
+              "points": 3,
+              "goalsDiff": 0,
+              "form": "LLW",
               "all": {
-                "played": 2,
-                "wins": 0,
+                "played": 3,
+                "wins": 1,
                 "draws": 0,
                 "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 4
+                "goalsFor": 5,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 1,
@@ -47393,12 +46312,44 @@
                 "goalsAgainst": 2
               },
               "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 503,
+              "team": "Torino",
+              "rank": 14,
+              "points": 3,
+              "goalsDiff": -1,
+              "form": "WLL",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "home": {
                 "played": 1,
                 "wins": 0,
                 "draws": 0,
                 "losses": 1,
                 "goalsFor": 1,
                 "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
               }
             },
             {
@@ -47530,41 +46481,9 @@
               }
             },
             {
-              "teamId": 502,
-              "team": "Fiorentina",
-              "rank": 19,
-              "points": 0,
-              "goalsDiff": -7,
-              "form": "LL",
-              "all": {
-                "played": 2,
-                "wins": 0,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 0,
-                "goalsAgainst": 7
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 495,
               "team": "Genoa",
-              "rank": 20,
+              "rank": 19,
               "points": 0,
               "goalsDiff": -6,
               "form": "LLL",
@@ -47591,6 +46510,38 @@
                 "losses": 1,
                 "goalsFor": 0,
                 "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 502,
+              "team": "Fiorentina",
+              "rank": 20,
+              "points": 0,
+              "goalsDiff": -8,
+              "form": "LLL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 1,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 4
               }
             }
           ],
@@ -47734,18 +46685,18 @@
                 {
                   "fixtureId": 1550109,
                   "teamId": 490,
-                  "playerId": 2484,
-                  "player": "Y. Mina",
-                  "type": "Missing Fixture",
-                  "reason": "Calf Injury"
-                },
-                {
-                  "fixtureId": 1550109,
-                  "teamId": 490,
                   "playerId": 584116,
                   "player": "Y. Trepy",
                   "type": "Missing Fixture",
                   "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1550109,
+                  "teamId": 490,
+                  "playerId": 2484,
+                  "player": "Y. Mina",
+                  "type": "Questionable",
+                  "reason": "Calf Injury"
                 },
                 {
                   "fixtureId": 1550109,
@@ -47788,18 +46739,26 @@
                 {
                   "fixtureId": 1550116,
                   "teamId": 494,
-                  "playerId": 162907,
-                  "player": "A. Zanoli",
-                  "type": "Missing Fixture",
-                  "reason": "Knee Injury"
-                },
-                {
-                  "fixtureId": 1550116,
-                  "teamId": 494,
                   "playerId": 8481,
                   "player": "G. Chakvetadze",
                   "type": "Questionable",
                   "reason": "Foot Injury"
+                },
+                {
+                  "fixtureId": 1550116,
+                  "teamId": 494,
+                  "playerId": 162907,
+                  "player": "A. Zanoli",
+                  "type": "Questionable",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1550116,
+                  "teamId": 487,
+                  "playerId": 1852,
+                  "player": "D. Cataldi",
+                  "type": "Missing Fixture",
+                  "reason": "Groin Injury"
                 },
                 {
                   "fixtureId": 1550116,
@@ -47846,7 +46805,7 @@
                   "teamId": 487,
                   "playerId": 30784,
                   "player": "N. Rovella",
-                  "type": "Questionable",
+                  "type": "Missing Fixture",
                   "reason": "Injury"
                 }
               ],
@@ -47896,23 +46855,23 @@
               "teamId": 228,
               "team": "Sporting CP",
               "rank": 2,
-              "points": 10,
-              "goalsDiff": 7,
-              "form": "WWWD",
+              "points": 13,
+              "goalsDiff": 9,
+              "form": "WWWWD",
               "all": {
-                "played": 4,
-                "wins": 3,
+                "played": 5,
+                "wins": 4,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 12,
+                "goalsFor": 14,
                 "goalsAgainst": 5
               },
               "home": {
-                "played": 2,
-                "wins": 2,
+                "played": 3,
+                "wins": 3,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 6,
+                "goalsFor": 8,
                 "goalsAgainst": 3
               },
               "away": {
@@ -47925,9 +46884,41 @@
               }
             },
             {
+              "teamId": 211,
+              "team": "Benfica",
+              "rank": 3,
+              "points": 10,
+              "goalsDiff": 11,
+              "form": "WWWD",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 14,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 0
+              }
+            },
+            {
               "teamId": 240,
               "team": "Arouca",
-              "rank": 3,
+              "rank": 4,
               "points": 9,
               "goalsDiff": 4,
               "form": "WLWW",
@@ -47959,7 +46950,7 @@
             {
               "teamId": 227,
               "team": "Santa Clara",
-              "rank": 4,
+              "rank": 5,
               "points": 8,
               "goalsDiff": 2,
               "form": "DWWD",
@@ -47986,38 +46977,6 @@
                 "losses": 0,
                 "goalsFor": 2,
                 "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 211,
-              "team": "Benfica",
-              "rank": 5,
-              "points": 7,
-              "goalsDiff": 8,
-              "form": "WWD",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 0
               }
             },
             {
@@ -48053,27 +47012,59 @@
               }
             },
             {
-              "teamId": 214,
-              "team": "Maritimo",
+              "teamId": 217,
+              "team": "SC Braga",
               "rank": 7,
               "points": 7,
-              "goalsDiff": 1,
-              "form": "LDWW",
+              "goalsDiff": 2,
+              "form": "WWD",
               "all": {
-                "played": 4,
+                "played": 3,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 5
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 3
               },
               "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 0
+              },
+              "away": {
                 "played": 2,
                 "wins": 1,
                 "draws": 1,
                 "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 214,
+              "team": "Maritimo",
+              "rank": 8,
+              "points": 7,
+              "goalsDiff": -2,
+              "form": "LLDWW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
                 "goalsFor": 3,
-                "goalsAgainst": 2
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -48087,25 +47078,25 @@
             {
               "teamId": 15130,
               "team": "Estrela",
-              "rank": 8,
-              "points": 5,
+              "rank": 9,
+              "points": 6,
               "goalsDiff": 1,
-              "form": "WDD",
+              "form": "DWDD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 2,
+                "draws": 3,
                 "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 6
+                "goalsFor": 9,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
+                "goalsFor": 4,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
@@ -48117,51 +47108,19 @@
               }
             },
             {
-              "teamId": 217,
-              "team": "SC Braga",
-              "rank": 9,
-              "points": 4,
-              "goalsDiff": 1,
-              "form": "WD",
-              "all": {
-                "played": 2,
-                "wins": 1,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 1,
-                "wins": 1,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 1,
-                "goalsAgainst": 0
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 1,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 2
-              }
-            },
-            {
               "teamId": 225,
               "team": "Nacional",
               "rank": 10,
               "points": 4,
-              "goalsDiff": 0,
-              "form": "LLWD",
+              "goalsDiff": -2,
+              "form": "LLLWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 1,
                 "draws": 1,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 6,
-                "goalsAgainst": 6
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -48172,12 +47131,12 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsAgainst": 5
               }
             },
             {
@@ -48245,9 +47204,41 @@
               }
             },
             {
+              "teamId": 242,
+              "team": "Famalicao",
+              "rank": 13,
+              "points": 3,
+              "goalsDiff": -2,
+              "form": "DDLLD",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 3,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 226,
               "team": "Rio Ave",
-              "rank": 13,
+              "rank": 14,
               "points": 3,
               "goalsDiff": -5,
               "form": "LWLL",
@@ -48274,38 +47265,6 @@
                 "losses": 1,
                 "goalsFor": 2,
                 "goalsAgainst": 1
-              }
-            },
-            {
-              "teamId": 242,
-              "team": "Famalicao",
-              "rank": 14,
-              "points": 2,
-              "goalsDiff": -2,
-              "form": "DLLD",
-              "all": {
-                "played": 4,
-                "wins": 0,
-                "draws": 2,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 4
-              },
-              "home": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
               }
             },
             {
@@ -48345,23 +47304,23 @@
               "team": "Alverca",
               "rank": 16,
               "points": 2,
-              "goalsDiff": -4,
-              "form": "DLDL",
+              "goalsDiff": -5,
+              "form": "LDLDL",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 0,
                 "draws": 2,
-                "losses": 2,
-                "goalsFor": 4,
-                "goalsAgainst": 8
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 10
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
                 "draws": 2,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 2,
@@ -48551,9 +47510,41 @@
               }
             },
             {
+              "teamId": 549,
+              "team": "Beşiktaş",
+              "rank": 2,
+              "points": 9,
+              "goalsDiff": 5,
+              "form": "WWLW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
               "teamId": 997,
               "team": "Gençlerbirliği S.K.",
-              "rank": 2,
+              "rank": 3,
               "points": 7,
               "goalsDiff": 2,
               "form": "DWW",
@@ -48583,59 +47574,27 @@
               }
             },
             {
-              "teamId": 549,
-              "team": "Beşiktaş",
-              "rank": 3,
-              "points": 6,
-              "goalsDiff": 4,
-              "form": "WLW",
-              "all": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 3
-              },
-              "home": {
-                "played": 2,
-                "wins": 2,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
-              }
-            },
-            {
               "teamId": 611,
               "team": "Fenerbahçe",
               "rank": 4,
               "points": 6,
-              "goalsDiff": 3,
-              "form": "WWL",
+              "goalsDiff": 2,
+              "form": "LWWL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 4
+                "losses": 2,
+                "goalsFor": 8,
+                "goalsAgainst": 6
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 2,
@@ -48935,9 +47894,41 @@
               }
             },
             {
+              "teamId": 1009,
+              "team": "Erzurumspor FK",
+              "rank": 14,
+              "points": 4,
+              "goalsDiff": -6,
+              "form": "WDLL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
               "teamId": 3588,
               "team": "Eyüpspor",
-              "rank": 14,
+              "rank": 15,
               "points": 3,
               "goalsDiff": -1,
               "form": "WLL",
@@ -48969,7 +47960,7 @@
             {
               "teamId": 994,
               "team": "Göztepe",
-              "rank": 15,
+              "rank": 16,
               "points": 1,
               "goalsDiff": -2,
               "form": "LLD",
@@ -49001,7 +47992,7 @@
             {
               "teamId": 6343,
               "team": "Çorum FK",
-              "rank": 16,
+              "rank": 17,
               "points": 1,
               "goalsDiff": -5,
               "form": "LLD",
@@ -49031,51 +48022,19 @@
               }
             },
             {
-              "teamId": 1009,
-              "team": "Erzurumspor FK",
-              "rank": 17,
-              "points": 1,
-              "goalsDiff": -7,
-              "form": "DLL",
-              "all": {
-                "played": 3,
-                "wins": 0,
-                "draws": 1,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 1,
-                "wins": 0,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
               "teamId": 607,
               "team": "Konyaspor",
               "rank": 18,
               "points": 0,
-              "goalsDiff": -4,
-              "form": "LLL",
+              "goalsDiff": -5,
+              "form": "LLLL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 0,
-                "losses": 3,
+                "losses": 4,
                 "goalsFor": 3,
-                "goalsAgainst": 7
+                "goalsAgainst": 8
               },
               "home": {
                 "played": 2,
@@ -49086,12 +48045,12 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 4
+                "goalsAgainst": 5
               }
             }
           ],
@@ -49301,6 +48260,4813 @@
                   "player": "K. Alikulov",
                   "type": "Missing Fixture",
                   "reason": "Knee Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        },
+        {
+          "key": "KLEAGUE1",
+          "leagueId": 292,
+          "season": "2026",
+          "standings": [
+            {
+              "teamId": 2766,
+              "team": "FC Seoul",
+              "rank": 1,
+              "points": 59,
+              "goalsDiff": 32,
+              "form": "WWWWW",
+              "all": {
+                "played": 27,
+                "wins": 18,
+                "draws": 5,
+                "losses": 4,
+                "goalsFor": 53,
+                "goalsAgainst": 21
+              },
+              "home": {
+                "played": 13,
+                "wins": 8,
+                "draws": 2,
+                "losses": 3,
+                "goalsFor": 22,
+                "goalsAgainst": 10
+              },
+              "away": {
+                "played": 14,
+                "wins": 10,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 31,
+                "goalsAgainst": 11
+              }
+            },
+            {
+              "teamId": 2762,
+              "team": "Jeonbuk Motors",
+              "rank": 2,
+              "points": 42,
+              "goalsDiff": 11,
+              "form": "WDDWL",
+              "all": {
+                "played": 27,
+                "wins": 11,
+                "draws": 9,
+                "losses": 7,
+                "goalsFor": 34,
+                "goalsAgainst": 23
+              },
+              "home": {
+                "played": 13,
+                "wins": 7,
+                "draws": 2,
+                "losses": 4,
+                "goalsFor": 20,
+                "goalsAgainst": 13
+              },
+              "away": {
+                "played": 14,
+                "wins": 4,
+                "draws": 7,
+                "losses": 3,
+                "goalsFor": 14,
+                "goalsAgainst": 10
+              }
+            },
+            {
+              "teamId": 2767,
+              "team": "Ulsan Hyundai FC",
+              "rank": 3,
+              "points": 41,
+              "goalsDiff": 4,
+              "form": "DWLLL",
+              "all": {
+                "played": 27,
+                "wins": 12,
+                "draws": 5,
+                "losses": 10,
+                "goalsFor": 41,
+                "goalsAgainst": 37
+              },
+              "home": {
+                "played": 13,
+                "wins": 6,
+                "draws": 1,
+                "losses": 6,
+                "goalsFor": 23,
+                "goalsAgainst": 22
+              },
+              "away": {
+                "played": 14,
+                "wins": 6,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 18,
+                "goalsAgainst": 15
+              }
+            },
+            {
+              "teamId": 2761,
+              "team": "Jeju United FC",
+              "rank": 4,
+              "points": 39,
+              "goalsDiff": 4,
+              "form": "DWLDW",
+              "all": {
+                "played": 27,
+                "wins": 10,
+                "draws": 9,
+                "losses": 8,
+                "goalsFor": 31,
+                "goalsAgainst": 27
+              },
+              "home": {
+                "played": 17,
+                "wins": 5,
+                "draws": 7,
+                "losses": 5,
+                "goalsFor": 18,
+                "goalsAgainst": 18
+              },
+              "away": {
+                "played": 10,
+                "wins": 5,
+                "draws": 2,
+                "losses": 3,
+                "goalsFor": 13,
+                "goalsAgainst": 9
+              }
+            },
+            {
+              "teamId": 2746,
+              "team": "Gangwon FC",
+              "rank": 5,
+              "points": 37,
+              "goalsDiff": 6,
+              "form": "DDLWL",
+              "all": {
+                "played": 25,
+                "wins": 9,
+                "draws": 10,
+                "losses": 6,
+                "goalsFor": 30,
+                "goalsAgainst": 24
+              },
+              "home": {
+                "played": 12,
+                "wins": 4,
+                "draws": 6,
+                "losses": 2,
+                "goalsFor": 16,
+                "goalsAgainst": 11
+              },
+              "away": {
+                "played": 13,
+                "wins": 5,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 14,
+                "goalsAgainst": 13
+              }
+            },
+            {
+              "teamId": 2750,
+              "team": "Daejeon Citizen",
+              "rank": 6,
+              "points": 35,
+              "goalsDiff": 8,
+              "form": "WLWWL",
+              "all": {
+                "played": 27,
+                "wins": 9,
+                "draws": 8,
+                "losses": 10,
+                "goalsFor": 40,
+                "goalsAgainst": 32
+              },
+              "home": {
+                "played": 13,
+                "wins": 3,
+                "draws": 5,
+                "losses": 5,
+                "goalsFor": 14,
+                "goalsAgainst": 15
+              },
+              "away": {
+                "played": 14,
+                "wins": 6,
+                "draws": 3,
+                "losses": 5,
+                "goalsFor": 26,
+                "goalsAgainst": 17
+              }
+            },
+            {
+              "teamId": 2764,
+              "team": "Pohang Steelers",
+              "rank": 7,
+              "points": 35,
+              "goalsDiff": -7,
+              "form": "LDWLW",
+              "all": {
+                "played": 27,
+                "wins": 10,
+                "draws": 5,
+                "losses": 12,
+                "goalsFor": 24,
+                "goalsAgainst": 31
+              },
+              "home": {
+                "played": 11,
+                "wins": 3,
+                "draws": 2,
+                "losses": 6,
+                "goalsFor": 4,
+                "goalsAgainst": 10
+              },
+              "away": {
+                "played": 16,
+                "wins": 7,
+                "draws": 3,
+                "losses": 6,
+                "goalsFor": 20,
+                "goalsAgainst": 21
+              }
+            },
+            {
+              "teamId": 2748,
+              "team": "FC Anyang",
+              "rank": 8,
+              "points": 34,
+              "goalsDiff": -6,
+              "form": "DWLLL",
+              "all": {
+                "played": 26,
+                "wins": 8,
+                "draws": 10,
+                "losses": 8,
+                "goalsFor": 33,
+                "goalsAgainst": 39
+              },
+              "home": {
+                "played": 13,
+                "wins": 3,
+                "draws": 5,
+                "losses": 5,
+                "goalsFor": 15,
+                "goalsAgainst": 23
+              },
+              "away": {
+                "played": 13,
+                "wins": 5,
+                "draws": 5,
+                "losses": 3,
+                "goalsFor": 18,
+                "goalsAgainst": 16
+              }
+            },
+            {
+              "teamId": 2763,
+              "team": "Incheon United",
+              "rank": 9,
+              "points": 34,
+              "goalsDiff": 3,
+              "form": "LDLWD",
+              "all": {
+                "played": 26,
+                "wins": 9,
+                "draws": 7,
+                "losses": 10,
+                "goalsFor": 32,
+                "goalsAgainst": 29
+              },
+              "home": {
+                "played": 13,
+                "wins": 4,
+                "draws": 3,
+                "losses": 6,
+                "goalsFor": 14,
+                "goalsAgainst": 14
+              },
+              "away": {
+                "played": 13,
+                "wins": 5,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 18,
+                "goalsAgainst": 15
+              }
+            },
+            {
+              "teamId": 2745,
+              "team": "Bucheon FC 1995",
+              "rank": 10,
+              "points": 31,
+              "goalsDiff": -6,
+              "form": "LDLWW",
+              "all": {
+                "played": 27,
+                "wins": 7,
+                "draws": 10,
+                "losses": 10,
+                "goalsFor": 28,
+                "goalsAgainst": 34
+              },
+              "home": {
+                "played": 15,
+                "wins": 3,
+                "draws": 6,
+                "losses": 6,
+                "goalsFor": 16,
+                "goalsAgainst": 22
+              },
+              "away": {
+                "played": 12,
+                "wins": 4,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 12,
+                "goalsAgainst": 12
+              }
+            },
+            {
+              "teamId": 2768,
+              "team": "Gimcheon Sangmu FC",
+              "rank": 11,
+              "points": 27,
+              "goalsDiff": -8,
+              "form": "LDDDD",
+              "all": {
+                "played": 26,
+                "wins": 4,
+                "draws": 15,
+                "losses": 7,
+                "goalsFor": 24,
+                "goalsAgainst": 32
+              },
+              "home": {
+                "played": 12,
+                "wins": 1,
+                "draws": 8,
+                "losses": 3,
+                "goalsFor": 10,
+                "goalsAgainst": 16
+              },
+              "away": {
+                "played": 14,
+                "wins": 3,
+                "draws": 7,
+                "losses": 4,
+                "goalsFor": 14,
+                "goalsAgainst": 16
+              }
+            },
+            {
+              "teamId": 2759,
+              "team": "Gwangju FC",
+              "rank": 12,
+              "points": 12,
+              "goalsDiff": -41,
+              "form": "LDLLD",
+              "all": {
+                "played": 26,
+                "wins": 1,
+                "draws": 9,
+                "losses": 16,
+                "goalsFor": 16,
+                "goalsAgainst": 57
+              },
+              "home": {
+                "played": 14,
+                "wins": 1,
+                "draws": 4,
+                "losses": 9,
+                "goalsFor": 11,
+                "goalsAgainst": 29
+              },
+              "away": {
+                "played": 12,
+                "wins": 0,
+                "draws": 5,
+                "losses": 7,
+                "goalsFor": 5,
+                "goalsAgainst": 28
+              }
+            }
+          ],
+          "teams": [
+            {
+              "teamId": 2763,
+              "team": "Incheon United",
+              "form": "LLDLWWLDWWLDWLWLLWWDDDWLDL",
+              "all": {
+                "played": 26,
+                "wins": 9,
+                "draws": 7,
+                "losses": 10,
+                "goalsFor": 32,
+                "goalsAgainst": 29
+              },
+              "home": {
+                "played": 13,
+                "wins": 4,
+                "draws": 3,
+                "losses": 6,
+                "goalsFor": 14,
+                "goalsAgainst": 14
+              },
+              "away": {
+                "played": 13,
+                "wins": 5,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 18,
+                "goalsAgainst": 15
+              }
+            },
+            {
+              "teamId": 2745,
+              "team": "Bucheon FC 1995",
+              "form": "WDLDDLWDLLWLLDWDDLLDWDWWLDL",
+              "all": {
+                "played": 27,
+                "wins": 7,
+                "draws": 10,
+                "losses": 10,
+                "goalsFor": 28,
+                "goalsAgainst": 34
+              },
+              "home": {
+                "played": 15,
+                "wins": 3,
+                "draws": 6,
+                "losses": 6,
+                "goalsFor": 16,
+                "goalsAgainst": 22
+              },
+              "away": {
+                "played": 12,
+                "wins": 4,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 12,
+                "goalsAgainst": 12
+              }
+            },
+            {
+              "teamId": 2767,
+              "team": "Ulsan Hyundai FC",
+              "form": "WWWDLWLWDLLWWWLDLDLWWWLLLWD",
+              "all": {
+                "played": 27,
+                "wins": 12,
+                "draws": 5,
+                "losses": 10,
+                "goalsFor": 41,
+                "goalsAgainst": 37
+              },
+              "home": {
+                "played": 13,
+                "wins": 6,
+                "draws": 1,
+                "losses": 6,
+                "goalsFor": 23,
+                "goalsAgainst": 22
+              },
+              "away": {
+                "played": 14,
+                "wins": 6,
+                "draws": 4,
+                "losses": 4,
+                "goalsFor": 18,
+                "goalsAgainst": 15
+              }
+            },
+            {
+              "teamId": 2766,
+              "team": "FC Seoul",
+              "form": "WWWWDWWLWWLDLWWWDWWLDDWWWWW",
+              "all": {
+                "played": 27,
+                "wins": 18,
+                "draws": 5,
+                "losses": 4,
+                "goalsFor": 53,
+                "goalsAgainst": 21
+              },
+              "home": {
+                "played": 13,
+                "wins": 8,
+                "draws": 2,
+                "losses": 3,
+                "goalsFor": 22,
+                "goalsAgainst": 10
+              },
+              "away": {
+                "played": 14,
+                "wins": 10,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 31,
+                "goalsAgainst": 11
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1507058,
+              "kickoff": "2026-09-08T19:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 2763,
+              "homeTeam": "Incheon United",
+              "awayTeamId": 2745,
+              "awayTeam": "Bucheon FC 1995",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1507059,
+              "kickoff": "2026-09-08T19:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 2767,
+              "homeTeam": "Ulsan Hyundai FC",
+              "awayTeamId": 2766,
+              "awayTeam": "FC Seoul",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "updatedAt": "2026-09-06T12:09:13.192Z",
+      "leagues": [
+        {
+          "key": "CHAMPIONSHIP",
+          "leagueId": 40,
+          "season": "2026",
+          "standings": [
+            {
+              "teamId": 76,
+              "team": "Swansea",
+              "rank": 1,
+              "points": 11,
+              "goalsDiff": 6,
+              "form": "DWWDW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 70,
+              "team": "Middlesbrough",
+              "rank": 2,
+              "points": 10,
+              "goalsDiff": 3,
+              "form": "WDWLW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 72,
+              "team": "QPR",
+              "rank": 3,
+              "points": 10,
+              "goalsDiff": 3,
+              "form": "LWWDW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 56,
+              "team": "Bristol City",
+              "rank": 4,
+              "points": 10,
+              "goalsDiff": 2,
+              "form": "WWWDL",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 2,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 60,
+              "team": "West Brom",
+              "rank": 5,
+              "points": 10,
+              "goalsDiff": 2,
+              "form": "WDLWW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 1335,
+              "team": "Charlton",
+              "rank": 6,
+              "points": 10,
+              "goalsDiff": -1,
+              "form": "LDWWW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 58,
+              "team": "Millwall",
+              "rank": 7,
+              "points": 9,
+              "goalsDiff": 2,
+              "form": "WLLWW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 10,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 48,
+              "team": "West Ham",
+              "rank": 8,
+              "points": 8,
+              "goalsDiff": 4,
+              "form": "WWDLD",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 39,
+              "team": "Wolves",
+              "rank": 9,
+              "points": 7,
+              "goalsDiff": 3,
+              "form": "LWWD",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 1837,
+              "team": "Wrexham",
+              "rank": 10,
+              "points": 6,
+              "goalsDiff": 2,
+              "form": "DWLDD",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 54,
+              "team": "Birmingham",
+              "rank": 11,
+              "points": 6,
+              "goalsDiff": 1,
+              "form": "DWDD",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 3,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 71,
+              "team": "Norwich",
+              "rank": 12,
+              "points": 6,
+              "goalsDiff": 0,
+              "form": "WLWLL",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 8,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 75,
+              "team": "Stoke City",
+              "rank": 13,
+              "points": 6,
+              "goalsDiff": -1,
+              "form": "WWLLL",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 8,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 1355,
+              "team": "Portsmouth",
+              "rank": 14,
+              "points": 6,
+              "goalsDiff": -1,
+              "form": "WLLWL",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 7,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 62,
+              "team": "Sheffield Utd",
+              "rank": 15,
+              "points": 6,
+              "goalsDiff": -1,
+              "form": "LWDDD",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 67,
+              "team": "Blackburn",
+              "rank": 16,
+              "points": 5,
+              "goalsDiff": -1,
+              "form": "LDLWD",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 38,
+              "team": "Watford",
+              "rank": 17,
+              "points": 5,
+              "goalsDiff": -2,
+              "form": "LLDDW",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 1379,
+              "team": "Lincoln",
+              "rank": 18,
+              "points": 5,
+              "goalsDiff": -2,
+              "form": "DDWLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 41,
+              "team": "Southampton",
+              "rank": 19,
+              "points": 4,
+              "goalsDiff": 5,
+              "form": "DDWWL",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 69,
+              "team": "Derby",
+              "rank": 20,
+              "points": 4,
+              "goalsDiff": -5,
+              "form": "LWLDL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 68,
+              "team": "Bolton",
+              "rank": 21,
+              "points": 4,
+              "goalsDiff": -5,
+              "form": "LLLDW",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 43,
+              "team": "Cardiff",
+              "rank": 22,
+              "points": 3,
+              "goalsDiff": -3,
+              "form": "LLDDD",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 3,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 59,
+              "team": "Preston",
+              "rank": 23,
+              "points": 3,
+              "goalsDiff": -5,
+              "form": "WLLLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 0,
+                "losses": 4,
+                "goalsFor": 5,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 7
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 44,
+              "team": "Burnley",
+              "rank": 24,
+              "points": 2,
+              "goalsDiff": -6,
+              "form": "LDLLD",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 2,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 12
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            }
+          ],
+          "teams": [
+            {
+              "teamId": 38,
+              "team": "Watford",
+              "form": "WDDLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 59,
+              "team": "Preston",
+              "form": "LLLLW",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 0,
+                "losses": 4,
+                "goalsFor": 5,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 7
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 41,
+              "team": "Southampton",
+              "form": "LWWDD",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 76,
+              "team": "Swansea",
+              "form": "WDWWD",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 43,
+              "team": "Cardiff",
+              "form": "DDDLL",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 3,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 75,
+              "team": "Stoke City",
+              "form": "LLLWW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 8,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 67,
+              "team": "Blackburn",
+              "form": "DWLDL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 62,
+              "team": "Sheffield Utd",
+              "form": "DDDWL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1837,
+              "team": "Wrexham",
+              "form": "DDLWD",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 44,
+              "team": "Burnley",
+              "form": "DLLDL",
+              "all": {
+                "played": 5,
+                "wins": 0,
+                "draws": 2,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 12
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 68,
+              "team": "Bolton",
+              "form": "WDLLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 48,
+              "team": "West Ham",
+              "form": "DLDWW",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1563149,
+              "kickoff": "2026-09-09T03:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 38,
+              "homeTeam": "Watford",
+              "awayTeamId": 59,
+              "awayTeam": "Preston",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 152699,
+                  "player": "K. Baah",
+                  "type": "Missing Fixture",
+                  "reason": "Knock"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 20044,
+                  "player": "M. Bola",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 367473,
+                  "player": "J. Grieves",
+                  "type": "Missing Fixture",
+                  "reason": "Lacking Match Fitness"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 193296,
+                  "player": "J. Ngakia",
+                  "type": "Missing Fixture",
+                  "reason": "Thigh Injury"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 25502,
+                  "player": "O. H. Traore",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 38,
+                  "playerId": 351341,
+                  "player": "T. Akomeah",
+                  "type": "Questionable",
+                  "reason": "Lacking Match Fitness"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 59,
+                  "playerId": 19455,
+                  "player": "B. Potts",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 59,
+                  "playerId": 459284,
+                  "player": "T. Carroll",
+                  "type": "Questionable",
+                  "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1563149,
+                  "teamId": 59,
+                  "playerId": 70519,
+                  "player": "A. McCann",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1563148,
+              "kickoff": "2026-09-09T03:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 41,
+              "homeTeam": "Southampton",
+              "awayTeamId": 76,
+              "awayTeam": "Swansea",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563148,
+                  "teamId": 41,
+                  "playerId": 282060,
+                  "player": "C. Jander",
+                  "type": "Missing Fixture",
+                  "reason": "Lacking Match Fitness"
+                },
+                {
+                  "fixtureId": 1563148,
+                  "teamId": 76,
+                  "playerId": 20457,
+                  "player": "C. Burgess",
+                  "type": "Missing Fixture",
+                  "reason": "Achilles Tendon Injury"
+                },
+                {
+                  "fixtureId": 1563148,
+                  "teamId": 76,
+                  "playerId": 68441,
+                  "player": "G. Franco",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
+                },
+                {
+                  "fixtureId": 1563148,
+                  "teamId": 76,
+                  "playerId": 45078,
+                  "player": "R. Stewart",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1563146,
+              "kickoff": "2026-09-09T03:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 43,
+              "homeTeam": "Cardiff",
+              "awayTeamId": 75,
+              "awayTeam": "Stoke City",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 43,
+                  "playerId": 19016,
+                  "player": "C. Chambers",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 43,
+                  "playerId": 153434,
+                  "player": "W. Fish",
+                  "type": "Missing Fixture",
+                  "reason": "Hernia"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 43,
+                  "playerId": 394973,
+                  "player": "D. Lawlor",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 75,
+                  "playerId": 18813,
+                  "player": "A. Cresswell",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 75,
+                  "playerId": 18914,
+                  "player": "B. Gibson",
+                  "type": "Missing Fixture",
+                  "reason": "Head Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 75,
+                  "playerId": 360011,
+                  "player": "A. Ampah",
+                  "type": "Questionable",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 75,
+                  "playerId": 30809,
+                  "player": "S. Ingelsson",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563146,
+                  "teamId": 75,
+                  "playerId": 294552,
+                  "player": "J. Tchamadeu",
+                  "type": "Questionable",
+                  "reason": "Knee Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1563143,
+              "kickoff": "2026-09-09T03:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 67,
+              "homeTeam": "Blackburn",
+              "awayTeamId": 62,
+              "awayTeam": "Sheffield Utd",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 429613,
+                  "player": "M. Baradji",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 50968,
+                  "player": "M. Jorgensen",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 30998,
+                  "player": "A. Kargbo",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 7037,
+                  "player": "L. Miller",
+                  "type": "Missing Fixture",
+                  "reason": "Achilles Tendon Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 33147,
+                  "player": "Y. Ohashi",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 17395,
+                  "player": "S. Wharton",
+                  "type": "Missing Fixture",
+                  "reason": "Achilles Tendon Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 313248,
+                  "player": "M. Litherland",
+                  "type": "Questionable",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 67,
+                  "playerId": 17685,
+                  "player": "H. Pickering",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 62,
+                  "playerId": 19961,
+                  "player": "H. Burrows",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 62,
+                  "playerId": 906,
+                  "player": "T. Chong",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 62,
+                  "playerId": 373615,
+                  "player": "R. One",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563143,
+                  "teamId": 62,
+                  "playerId": 17407,
+                  "player": "F. Seriki",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1563154,
+              "kickoff": "2026-09-09T03:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1837,
+              "homeTeam": "Wrexham",
+              "awayTeamId": 44,
+              "awayTeam": "Burnley",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 1837,
+                  "playerId": 278123,
+                  "player": "S. Revan",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 1837,
+                  "playerId": 194461,
+                  "player": "G. Thomason",
+                  "type": "Missing Fixture",
+                  "reason": "Thigh Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 1837,
+                  "playerId": 126791,
+                  "player": "N. Broadhead",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 1837,
+                  "playerId": 6931,
+                  "player": "L. Cacace",
+                  "type": "Questionable",
+                  "reason": "Calf Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 1837,
+                  "playerId": 88457,
+                  "player": "B. Sheaf",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 361388,
+                  "player": "E. Agyei",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 336578,
+                  "player": "J. Banel",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 18927,
+                  "player": "A. Barnes",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 25628,
+                  "player": "J. Beyer",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 19827,
+                  "player": "J. Cullen",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 98936,
+                  "player": "L. Foster",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 181797,
+                  "player": "B. Humphreys",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 330238,
+                  "player": "Lucas Pires",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563154,
+                  "teamId": 44,
+                  "playerId": 445472,
+                  "player": "D. Satpaev",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1563144,
+              "kickoff": "2026-09-09T04:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 68,
+              "homeTeam": "Bolton",
+              "awayTeamId": 48,
+              "awayTeam": "West Ham",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1563144,
+                  "teamId": 68,
+                  "playerId": 82034,
+                  "player": "J. Sheehan",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1563144,
+                  "teamId": 68,
+                  "playerId": 284367,
+                  "player": "L. Stephenson",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1563144,
+                  "teamId": 48,
+                  "playerId": 1243,
+                  "player": "T. Soucek",
+                  "type": "Missing Fixture",
+                  "reason": "Ankle Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        },
+        {
+          "key": "EREDIVISIE",
+          "leagueId": 88,
+          "season": "2026",
+          "standings": [
+            {
+              "teamId": 197,
+              "team": "PSV Eindhoven",
+              "rank": 1,
+              "points": 13,
+              "goalsDiff": 12,
+              "form": "WWWWD",
+              "all": {
+                "played": 5,
+                "wins": 4,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 18,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 11,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 201,
+              "team": "AZ Alkmaar",
+              "rank": 2,
+              "points": 12,
+              "goalsDiff": 10,
+              "form": "WWWW",
+              "all": {
+                "played": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 209,
+              "team": "Feyenoord",
+              "rank": 3,
+              "points": 11,
+              "goalsDiff": 6,
+              "form": "WDWDW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 9,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 196,
+              "team": "Excelsior",
+              "rank": 4,
+              "points": 9,
+              "goalsDiff": 7,
+              "form": "WWLW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 194,
+              "team": "Ajax",
+              "rank": 5,
+              "points": 7,
+              "goalsDiff": 4,
+              "form": "LWDW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 410,
+              "team": "GO Ahead Eagles",
+              "rank": 6,
+              "points": 7,
+              "goalsDiff": 2,
+              "form": "LWDW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 11,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 205,
+              "team": "Fortuna Sittard",
+              "rank": 7,
+              "points": 7,
+              "goalsDiff": 1,
+              "form": "WLWD",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 8,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 415,
+              "team": "Twente",
+              "rank": 8,
+              "points": 6,
+              "goalsDiff": 4,
+              "form": "WWL",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 413,
+              "team": "NEC Nijmegen",
+              "rank": 9,
+              "points": 6,
+              "goalsDiff": 2,
+              "form": "LWWL",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 9,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 202,
+              "team": "Groningen",
+              "rank": 10,
+              "points": 6,
+              "goalsDiff": -1,
+              "form": "LLWW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 9,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 210,
+              "team": "Heerenveen",
+              "rank": 11,
+              "points": 5,
+              "goalsDiff": -1,
+              "form": "DLDW",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 426,
+              "team": "Sparta Rotterdam",
+              "rank": 12,
+              "points": 5,
+              "goalsDiff": 0,
+              "form": "DLDWL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 9,
+                "goalsAgainst": 9
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 193,
+              "team": "PEC Zwolle",
+              "rank": 13,
+              "points": 4,
+              "goalsDiff": -4,
+              "form": "DLWLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 427,
+              "team": "Telstar",
+              "rank": 14,
+              "points": 3,
+              "goalsDiff": -5,
+              "form": "LLW",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 7
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 198,
+              "team": "ADO Den Haag",
+              "rank": 15,
+              "points": 1,
+              "goalsDiff": -7,
+              "form": "DLLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 11
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 207,
+              "team": "Utrecht",
+              "rank": 16,
+              "points": 1,
+              "goalsDiff": -9,
+              "form": "LDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 15
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 10
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              }
+            },
+            {
+              "teamId": 195,
+              "team": "Willem II",
+              "rank": 17,
+              "points": 1,
+              "goalsDiff": -9,
+              "form": "LDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 13
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 9
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 420,
+              "team": "Cambuur",
+              "rank": 18,
+              "points": 0,
+              "goalsDiff": -12,
+              "form": "LLLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 0,
+                "losses": 4,
+                "goalsFor": 4,
+                "goalsAgainst": 16
+              },
+              "home": {
+                "played": 3,
+                "wins": 0,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 3,
+                "goalsAgainst": 13
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 3
+              }
+            }
+          ],
+          "teams": [
+            {
+              "teamId": 413,
+              "team": "NEC Nijmegen",
+              "form": "LWWL",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 9,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 196,
+              "team": "Excelsior",
+              "form": "WLWW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 0
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1552136,
+              "kickoff": "2026-09-09T01:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 413,
+              "homeTeam": "NEC Nijmegen",
+              "awayTeamId": 196,
+              "awayTeam": "Excelsior",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1552136,
+                  "teamId": 413,
+                  "playerId": 353808,
+                  "player": "D. Fonville",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552136,
+                  "teamId": 413,
+                  "playerId": 278159,
+                  "player": "A. Kaplan",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1552136,
+                  "teamId": 413,
+                  "playerId": 47446,
+                  "player": "E. Mor",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1552136,
+                  "teamId": 413,
+                  "playerId": 625,
+                  "player": "P. Sandler",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1552136,
+                  "teamId": 196,
+                  "playerId": 321632,
+                  "player": "N. Naujoks",
+                  "type": "Questionable",
+                  "reason": "Inactive"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        },
+        {
+          "key": "UCL",
+          "leagueId": 2,
+          "season": "2026",
+          "standings": [
+            {
+              "teamId": 575,
+              "team": "AEK Athens FC",
+              "rank": 1,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WD",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 42,
+              "team": "Arsenal",
+              "rank": 2,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 66,
+              "team": "Aston Villa",
+              "rank": 3,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 530,
+              "team": "Atletico Madrid",
+              "rank": 4,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 165,
+              "team": "Borussia Dortmund",
+              "rank": 5,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 529,
+              "team": "Barcelona",
+              "rank": 6,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 157,
+              "team": "Bayern München",
+              "rank": 7,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 327,
+              "team": "Bodo/Glimt",
+              "rank": 8,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WWWD",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 569,
+              "team": "Club Brugge KV",
+              "rank": 9,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 895,
+              "team": "Como",
+              "rank": 10,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 611,
+              "team": "Fenerbahçe",
+              "rank": 11,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WDWWD",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 209,
+              "team": "Feyenoord",
+              "rank": 12,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 645,
+              "team": "Galatasaray",
+              "rank": 13,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 505,
+              "team": "Inter",
+              "rank": 14,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 1026,
+              "team": "Lask Linz",
+              "rank": 15,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WL",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 173,
+              "team": "RB Leipzig",
+              "rank": 16,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 116,
+              "team": "Lens",
+              "rank": 17,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 79,
+              "team": "Lille",
+              "rank": 18,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 40,
+              "team": "Liverpool",
+              "rank": 19,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 50,
+              "team": "Manchester City",
+              "rank": 20,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 33,
+              "team": "Manchester United",
+              "rank": 21,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 492,
+              "team": "Napoli",
+              "rank": 22,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 85,
+              "team": "Paris Saint Germain",
+              "rank": 23,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 212,
+              "team": "FC Porto",
+              "rank": 24,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 197,
+              "team": "PSV Eindhoven",
+              "rank": 25,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 543,
+              "team": "Real Betis",
+              "rank": 26,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 541,
+              "team": "Real Madrid",
+              "rank": 27,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 497,
+              "team": "AS Roma",
+              "rank": 28,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 656,
+              "team": "Slovan Bratislava",
+              "rank": 29,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WDWWD",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 13976,
+              "team": "Sabah FA",
+              "rank": 30,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WLWLW",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 550,
+              "team": "Shakhtar Donetsk",
+              "rank": 31,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 560,
+              "team": "Slavia Praha",
+              "rank": 32,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 228,
+              "team": "Sporting CP",
+              "rank": 33,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 172,
+              "team": "VfB Stuttgart",
+              "rank": 34,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 759,
+              "team": "Viking",
+              "rank": 35,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "WD",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 533,
+              "team": "Villarreal",
+              "rank": 36,
+              "points": 0,
+              "goalsDiff": 0,
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            }
+          ],
+          "teams": [
+            {
+              "teamId": 569,
+              "team": "Club Brugge KV",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 66,
+              "team": "Aston Villa",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 575,
+              "team": "AEK Athens FC",
+              "form": "DW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 1026,
+              "team": "Lask Linz",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 5,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 79,
+              "team": "Lille",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 543,
+              "team": "Real Betis",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 165,
+              "team": "Borussia Dortmund",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 533,
+              "team": "Villarreal",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 212,
+              "team": "FC Porto",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 50,
+              "team": "Manchester City",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 541,
+              "team": "Real Madrid",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 505,
+              "team": "Inter",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1635643,
+              "kickoff": "2026-09-09T01:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 569,
+              "homeTeam": "Club Brugge KV",
+              "awayTeamId": 66,
+              "awayTeam": "Aston Villa",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 569,
+                  "playerId": 354027,
+                  "player": "J. Ordonez",
+                  "type": "Missing Fixture",
+                  "reason": "Foot Injury"
+                },
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 66,
+                  "playerId": 478441,
+                  "player": "M. Cisse",
+                  "type": "Missing Fixture",
+                  "reason": "Off the roster"
+                },
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 66,
+                  "playerId": 144729,
+                  "player": "T. Harwood-Bellis",
+                  "type": "Missing Fixture",
+                  "reason": "Off the roster"
+                },
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 66,
+                  "playerId": 406244,
+                  "player": "J. Manzambi",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 66,
+                  "playerId": 162714,
+                  "player": "A. Onana",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635643,
+                  "teamId": 66,
+                  "playerId": 514519,
+                  "player": "B. Madjo",
+                  "type": "Questionable",
+                  "reason": "Ankle Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1635609,
+              "kickoff": "2026-09-09T01:45:00+09:00",
+              "status": "NS",
+              "homeTeamId": 575,
+              "homeTeam": "AEK Athens FC",
+              "awayTeamId": 1026,
+              "awayTeam": "Lask Linz",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1635683,
+              "kickoff": "2026-09-09T04:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 79,
+              "homeTeam": "Lille",
+              "awayTeamId": 543,
+              "awayTeam": "Real Betis",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 79,
+                  "playerId": 487381,
+                  "player": "S. Diaoune",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 79,
+                  "playerId": 306979,
+                  "player": "H. Igamane",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 79,
+                  "playerId": 133110,
+                  "player": "T. Nianzou",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 79,
+                  "playerId": 394211,
+                  "player": "L. Srdanovic",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 543,
+                  "playerId": 122956,
+                  "player": "D. Conde",
+                  "type": "Missing Fixture",
+                  "reason": "Shoulder Injury"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 543,
+                  "playerId": 181421,
+                  "player": "A. Ezzalzouli",
+                  "type": "Missing Fixture",
+                  "reason": "Illness"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 543,
+                  "playerId": 1578,
+                  "player": "G. Lo Celso",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 543,
+                  "playerId": 47119,
+                  "player": "A. Ruibal",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635683,
+                  "teamId": 543,
+                  "playerId": 47302,
+                  "player": "D. Llorente",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1635652,
+              "kickoff": "2026-09-09T04:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 165,
+              "homeTeam": "Borussia Dortmund",
+              "awayTeamId": 533,
+              "awayTeam": "Villarreal",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 2194,
+                  "player": "R. Bensebaini",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 864,
+                  "player": "E. Can",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 592218,
+                  "player": "M. Kaba",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 162410,
+                  "player": "G. Konstantelias",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 465666,
+                  "player": "J. Lerma",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 26243,
+                  "player": "N. Schlotterbeck",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 165,
+                  "playerId": 341839,
+                  "player": "F. Mane",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1635652,
+                  "teamId": 533,
+                  "playerId": 166,
+                  "player": "J. Foyth",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1635654,
+              "kickoff": "2026-09-09T04:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 212,
+              "homeTeam": "FC Porto",
+              "awayTeamId": 50,
+              "awayTeam": "Manchester City",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 2999,
+                  "player": "J. Bednarek",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 507527,
+                  "player": "Gabriel Mec",
+                  "type": "Missing Fixture",
+                  "reason": "Off the roster"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 442540,
+                  "player": "O. Pietuszewski",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 340572,
+                  "player": "D. Prpic",
+                  "type": "Missing Fixture",
+                  "reason": "Off the roster"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 358628,
+                  "player": "Samu",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 325830,
+                  "player": "V. Sousa",
+                  "type": "Missing Fixture",
+                  "reason": "Leg Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 126899,
+                  "player": "Zaidu",
+                  "type": "Missing Fixture",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 212,
+                  "playerId": 388872,
+                  "player": "V. Froholdt",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 50,
+                  "playerId": 1422,
+                  "player": "J. Doku",
+                  "type": "Missing Fixture",
+                  "reason": "Calf Injury"
+                },
+                {
+                  "fixtureId": 1635654,
+                  "teamId": 50,
+                  "playerId": 18592,
+                  "player": "I. Ndiaye",
+                  "type": "Questionable",
+                  "reason": "Injury"
+                }
+              ],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1635714,
+              "kickoff": "2026-09-09T04:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 541,
+              "homeTeam": "Real Madrid",
+              "awayTeamId": 505,
+              "awayTeam": "Inter",
+              "injuriesChecked": true,
+              "injuries": [
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 341640,
+                  "player": "R. Asencio",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 2207,
+                  "player": "E. Camavinga",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 372,
+                  "player": "Eder Militao",
+                  "type": "Missing Fixture",
+                  "reason": "Hamstring Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 377122,
+                  "player": "Endrick",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 291964,
+                  "player": "A. Guler",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 653,
+                  "player": "F. Mendy",
+                  "type": "Missing Fixture",
+                  "reason": "Hip Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 509470,
+                  "player": "T. Pitarch",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 10009,
+                  "player": "Rodrygo",
+                  "type": "Missing Fixture",
+                  "reason": "Knee Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 636,
+                  "player": "B. Silva",
+                  "type": "Missing Fixture",
+                  "reason": "Red Card"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 541,
+                  "playerId": 1271,
+                  "player": "A. Tchouameni",
+                  "type": "Missing Fixture",
+                  "reason": "Muscle Injury"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 505,
+                  "playerId": 19235,
+                  "player": "D. Spence",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
+                },
+                {
+                  "fixtureId": 1635714,
+                  "teamId": 505,
+                  "playerId": 436238,
+                  "player": "M. Spinacce",
+                  "type": "Missing Fixture",
+                  "reason": "Inactive"
                 }
               ],
               "lineupsChecked": false,
