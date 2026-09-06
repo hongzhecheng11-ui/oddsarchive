@@ -2,7 +2,35 @@
   const syncTools = globalScope?.ODDS_ARCHIVE_FAVORITE_SYNC
     || (typeof require !== "undefined" ? require("./favorite-sync.js") : null);
   const LOGIN_TIMEOUT_MS = 15000;
+  const LOCK_ACQUIRE_TIMEOUT_MS = 3000;
   const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
+
+  // supabase-js 는 인증 호출이 탭 간에 겹치지 않게 Web Locks(navigator.locks)로 직렬화한다.
+  // 문제는 잠금을 쥔 컨텍스트가 비정상 종료되면 그 잠금이 영영 안 풀린다는 것이다. 그러면
+  // getSession() 이 무한정 대기해서 로그인 화면이 "로그인 확인"에서 멈춘다. TWA 앱은 크롬
+  // 프로필을 공유하기 때문에 앱을 지웠다 다시 깔아도 이 상태가 남아 계속 재현된다.
+  // 잠금은 잠깐만 기다리고, 못 얻으면 잠금 없이 진행해서 교착을 끊는다.
+  function createAuthLock(scope) {
+    const setTimer = (fn, ms) => (scope?.setTimeout ? scope.setTimeout(fn, ms) : setTimeout(fn, ms));
+    const clearTimer = (id) => (scope?.clearTimeout ? scope.clearTimeout(id) : clearTimeout(id));
+
+    return async function authLock(name, _acquireTimeout, fn) {
+      const locks = scope?.navigator?.locks;
+      const AbortControllerRef = scope?.AbortController;
+      if (typeof locks?.request !== "function" || typeof AbortControllerRef !== "function") return fn();
+
+      const controller = new AbortControllerRef();
+      const timer = setTimer(() => controller.abort(), LOCK_ACQUIRE_TIMEOUT_MS);
+      try {
+        return await locks.request(name, { signal: controller.signal }, () => fn());
+      } catch (error) {
+        if (error?.name !== "AbortError") throw error;
+        return fn();
+      } finally {
+        clearTimer(timer);
+      }
+    };
+  }
 
   function waitForLoginStep(promise, stage) {
     return new Promise((resolve, reject) => {
@@ -77,7 +105,15 @@
     const clientFactory = options.clientFactory || ((config) => globalScope.supabase.createClient(
       config.supabaseUrl,
       config.publishableKey,
-      { auth: { flowType: "pkce", persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
+      {
+        auth: {
+          flowType: "pkce",
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+          lock: createAuthLock(globalScope)
+        }
+      }
     ));
     let client = null;
     let config = null;
@@ -319,7 +355,7 @@
     };
   }
 
-  const exportsObject = { createAccountService, loadScriptOnce };
+  const exportsObject = { createAccountService, loadScriptOnce, createAuthLock };
   if (typeof module !== "undefined" && module.exports) module.exports = exportsObject;
   if (globalScope) globalScope.ODDS_ARCHIVE_AUTH = exportsObject;
 })(typeof window !== "undefined" ? window : globalThis);

@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v150-auth-event-scheduling";
+const CACHE_NAME = "oddsarchive-v151-auth-lock-timeout";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=147",
-  "/app.js?v=145",
+  "/app.js?v=146",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -15,7 +15,7 @@ const CORE_ASSETS = [
   "/src/lib/i18n.js?v=26",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js?v=2",
-  "/src/lib/auth.js?v=8",
+  "/src/lib/auth.js?v=9",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",
