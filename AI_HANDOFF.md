@@ -1,5 +1,13 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Member statistics
+- Authentication and member records remain Supabase Auth (`auth.users`): Google OAuth PKCE, `created_at`, `last_sign_in_at`, provider metadata and user metadata. Administrators remain rows in `public.app_admins`.
+- Added `supabase/member-stats.sql`: one `security definer` function aggregates member/new-member/unique last-sign-in counts in the DB (Asia/Seoul day boundary) and returns the newest 20 members. Execute is revoked from public, anon and authenticated, and granted only to `service_role`.
+- Added `api/member-stats.js`: it reuses the existing bearer-token plus `app_admins` server-side guard before calling that function with the server-only service role. Its response is allowlisted to counts plus display name, email, created/last-sign-in timestamp, provider and administrator flag; it never returns tokens or user IDs.
+- Added administrator-only `#admin` UI, account link, 14-day closed-test reference disclaimer, responsive statistic cards and recent-member table. App/cache versions are prepared for a future deployment.
+- Tests: new admin/regular/anonymous API coverage, UI route/format coverage, English i18n audit, syntax checks and the full `npm test` suite all pass.
+- The production Supabase SQL Editor applied the function successfully on 2026-09-06. The web deployment must still be verified with an administrator account and with anonymous/non-administrator API requests. No Android build or Play release is needed because the TWA serves the web application.
+
 ## Android PKCE diagnostic deployment approved
 - Supabase logs show Android `authorize` with the exact production redirect and PKCE challenge, then Google callback 302, then `POST /auth/v1/token?grant_type=pkce` 422. Redirect configuration matches the deployed callback URL.
 - This diagnostic records only callback/code presence, verifier/session-key presence, Android/standalone mode, session-check outcome and safe auth event names. It never records OAuth codes, access tokens, refresh tokens, user IDs, URLs or user agents.

@@ -17,7 +17,7 @@
     <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="assets/app-icon-192.png">
-    <link rel="stylesheet" href="styles.css?v=147">
+    <link rel="stylesheet" href="styles.css?v=148">
     <script defer src="vendor/supabase-js-2.49.8.min.js"></script>
     <script src="src/lib/i18n.js?v=27"></script>
     <script src="src/lib/telemetry.js?v=68"></script>
@@ -591,6 +591,68 @@
             </div>
           </details>
 
+          <details class="panel flow-panel" id="admin" data-admin-only hidden>
+            <summary>
+              <span>
+                <small>운영</small>
+                <strong>회원 통계</strong>
+              </span>
+            </summary>
+            <div class="panel-body">
+              <section class="account-card member-statistics-card" aria-label="회원 통계">
+                <div class="simple-card-heading">
+                  <strong>회원 통계</strong>
+                  <span>Supabase 회원 기준으로 집계합니다. 최근 로그인 수는 같은 회원을 한 번만 계산합니다.</span>
+                </div>
+                <div class="account-data-grid member-statistics-grid" aria-label="회원 및 활동 통계">
+                  <div><span>총 회원</span><strong id="member-stat-total">-</strong></div>
+                  <div><span>오늘 신규</span><strong id="member-stat-new-today">-</strong></div>
+                  <div><span>최근 7일 신규</span><strong id="member-stat-new-7-days">-</strong></div>
+                  <div><span>최근 14일 신규</span><strong id="member-stat-new-14-days">-</strong></div>
+                  <div><span>최근 30일 신규</span><strong id="member-stat-new-30-days">-</strong></div>
+                  <div><span>오늘 로그인</span><strong id="member-stat-active-today">-</strong></div>
+                  <div><span>최근 7일 활성</span><strong id="member-stat-active-7-days">-</strong></div>
+                  <div><span>최근 14일 활성</span><strong id="member-stat-active-14-days">-</strong></div>
+                  <div><span>최근 30일 활성</span><strong id="member-stat-active-30-days">-</strong></div>
+                </div>
+                <button class="ghost-action" type="button" id="refresh-member-statistics">새로고침</button>
+                <p class="match-count" id="member-statistics-status" aria-live="polite">관리자 권한을 확인한 뒤 회원 통계를 불러옵니다.</p>
+              </section>
+
+              <section class="beta-test-card" aria-label="비공개 테스트 참고">
+                <div class="simple-card-heading">
+                  <strong>비공개 테스트 참고</strong>
+                  <span id="member-stat-private-test-summary">최근 14일 가입 -명 · 최근 14일 활성 -명</span>
+                </div>
+                <p>이 값은 OddsArchive 내부 회원/활동 데이터이며 Google Play 비공개 테스트 참여자 수와 다를 수 있습니다.</p>
+              </section>
+
+              <section class="account-card member-statistics-card" aria-label="최근 가입 회원">
+                <div class="simple-card-heading">
+                  <strong>최근 가입 회원</strong>
+                  <span>최근 가입 순으로 최대 20명만 표시합니다.</span>
+                </div>
+                <div class="preview-shell">
+                  <table class="member-statistics-table">
+                    <thead>
+                      <tr>
+                        <th>이름</th>
+                        <th>이메일</th>
+                        <th>가입일</th>
+                        <th>최근 로그인</th>
+                        <th>제공자</th>
+                        <th>관리자</th>
+                      </tr>
+                    </thead>
+                    <tbody id="member-statistics-members">
+                      <tr><td colspan="6">회원 통계를 불러오는 중입니다.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </details>
+
           <details class="panel flow-panel" id="account">
             <summary>
               <span>
@@ -677,6 +739,7 @@
                 <div class="account-management-links" id="admin-management-links" data-admin-only aria-label="고급 데이터 관리" hidden>
                   <a class="ghost-link-button" href="#matches">경기DB 보기</a>
                   <a class="ghost-link-button" href="#upload">CSV/데이터 관리</a>
+                  <a class="ghost-link-button" href="#admin">회원 통계</a>
                 </div>
               </section>
               <section class="share-card" aria-label="공유하기">
@@ -771,6 +834,6 @@
     <script src="data/team-context-pack.js"></script>
     <script src="data/match-statistics-pack.js"></script>
     <script src="./src/lib/analysis-sentences.js"></script>
-    <script src="app.js?v=153"></script>
+    <script src="app.js?v=154"></script>
   </body>
 </html>

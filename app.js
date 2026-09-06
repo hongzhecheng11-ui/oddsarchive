@@ -170,6 +170,9 @@ let cloudAccountLastError = null;
 const CLOUD_ACCOUNT_RETRY_COOLDOWN_MS = 5000;
 let cloudAccountState = "local";
 let cloudAccountIsAdmin = false;
+let adminMemberStatistics = null;
+let adminMemberStatisticsOwnerId = "";
+let adminMemberStatisticsLoadPromise = null;
 let guestAccessGateRequested = false;
 let memoryGuestSearchTrialUsed = false;
 let memoryAutoUpdateState = null;
@@ -1432,7 +1435,12 @@ function refreshFavoriteViews() {
 }
 
 function setActiveAccountFavoriteRecords(userId, records = []) {
-  activeFavoriteAccountId = String(userId || "");
+  const nextUserId = String(userId || "");
+  if (activeFavoriteAccountId && activeFavoriteAccountId !== nextUserId) {
+    adminMemberStatistics = null;
+    adminMemberStatisticsOwnerId = "";
+  }
+  activeFavoriteAccountId = nextUserId;
   activeAccountFavoriteRecords = (Array.isArray(records) ? records : [])
     .map((record) => FAVORITE_SYNC_LIBRARY.normalizeFavoriteRecord?.(record))
     .filter(Boolean);
@@ -1442,6 +1450,8 @@ function setActiveAccountFavoriteRecords(userId, records = []) {
 function clearActiveAccountFavoriteRecords() {
   activeFavoriteAccountId = "";
   activeAccountFavoriteRecords = [];
+  adminMemberStatistics = null;
+  adminMemberStatisticsOwnerId = "";
   refreshFavoriteViews();
 }
 
@@ -3936,6 +3946,148 @@ function formatLoginTimingNote() {
   return ` (${slow.map((entry) => `${entry.stage} ${(entry.ms / 1000).toFixed(1)}초`).join(" · ")})`;
 }
 
+function normalizeMemberStatistics(value = {}) {
+  const count = (item) => {
+    const number = Number(item);
+    return Number.isFinite(number) && number >= 0 ? Math.floor(number) : 0;
+  };
+  return {
+    totalMembers: count(value.totalMembers),
+    newToday: count(value.newToday),
+    new7Days: count(value.new7Days),
+    new14Days: count(value.new14Days),
+    new30Days: count(value.new30Days),
+    activeToday: count(value.activeToday),
+    active7Days: count(value.active7Days),
+    active14Days: count(value.active14Days),
+    active30Days: count(value.active30Days),
+    recentMembers: (Array.isArray(value.recentMembers) ? value.recentMembers : []).slice(0, 20).map((member) => ({
+      displayName: String(member?.displayName || ""),
+      email: String(member?.email || ""),
+      createdAt: String(member?.createdAt || ""),
+      lastSignInAt: String(member?.lastSignInAt || ""),
+      provider: String(member?.provider || ""),
+      isAdmin: Boolean(member?.isAdmin)
+    }))
+  };
+}
+
+function formatMemberStatisticDate(value, emptyLabel = "기록 없음") {
+  if (!value) return emptyLabel;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return emptyLabel;
+  return new Intl.DateTimeFormat("ko-KR", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23"
+  }).format(date);
+}
+
+function setMemberStatisticsStatus(message) {
+  const element = document.getElementById("member-statistics-status");
+  if (element) element.textContent = translateUiText(message);
+}
+
+function renderMemberStatistics(statistics = null) {
+  if (typeof document === "undefined") return;
+  const data = statistics ? normalizeMemberStatistics(statistics) : null;
+  const values = {
+    "member-stat-total": data ? `${data.totalMembers}명` : "-",
+    "member-stat-new-today": data ? `${data.newToday}명` : "-",
+    "member-stat-new-7-days": data ? `${data.new7Days}명` : "-",
+    "member-stat-new-14-days": data ? `${data.new14Days}명` : "-",
+    "member-stat-new-30-days": data ? `${data.new30Days}명` : "-",
+    "member-stat-active-today": data ? `${data.activeToday}명` : "-",
+    "member-stat-active-7-days": data ? `${data.active7Days}명` : "-",
+    "member-stat-active-14-days": data ? `${data.active14Days}명` : "-",
+    "member-stat-active-30-days": data ? `${data.active30Days}명` : "-",
+    "member-stat-private-test-summary": data
+      ? `최근 14일 가입 ${data.new14Days}명 · 최근 14일 활성 ${data.active14Days}명`
+      : "최근 14일 가입 -명 · 최근 14일 활성 -명"
+  };
+  Object.entries(values).forEach(([id, text]) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = text;
+  });
+
+  const body = document.getElementById("member-statistics-members");
+  if (!body) return;
+  body.replaceChildren();
+  const members = data?.recentMembers || [];
+  if (members.length === 0) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+    cell.colSpan = 6;
+    cell.textContent = data ? "최근 가입 회원이 없습니다." : "회원 통계를 불러오는 중입니다.";
+    row.appendChild(cell);
+    body.appendChild(row);
+    return;
+  }
+  members.forEach((member) => {
+    const row = document.createElement("tr");
+    [
+      member.displayName || "이름 없음",
+      member.email || "이메일 없음",
+      formatMemberStatisticDate(member.createdAt),
+      formatMemberStatisticDate(member.lastSignInAt),
+      member.provider || "확인 불가",
+      member.isAdmin ? "관리자" : "일반"
+    ].forEach((text) => {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      row.appendChild(cell);
+    });
+    body.appendChild(row);
+  });
+}
+
+async function loadMemberStatistics(force = false) {
+  if (!isAdminMode()) return { error: "관리자 권한이 필요합니다." };
+  const ownerId = activeFavoriteAccountId;
+  if (!force && adminMemberStatistics && adminMemberStatisticsOwnerId === ownerId) {
+    renderMemberStatistics(adminMemberStatistics);
+    return { statistics: adminMemberStatistics };
+  }
+  if (adminMemberStatisticsLoadPromise) return adminMemberStatisticsLoadPromise;
+  const accessToken = cloudAccountService?.getAccessToken?.() || "";
+  if (!accessToken) return { error: "로그인 세션을 확인하지 못했습니다." };
+
+  setMemberStatisticsStatus("회원 통계를 불러오는 중입니다.");
+  adminMemberStatisticsLoadPromise = (async () => {
+    const response = await fetch("/api/member-stats", {
+      headers: { Accept: "application/json", Authorization: `Bearer ${accessToken}` },
+      credentials: "same-origin"
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || !payload.statistics) throw new Error(payload.error || "회원 통계를 불러오지 못했습니다.");
+    if (!isAdminMode() || activeFavoriteAccountId !== ownerId) return { error: "계정이 변경되었습니다." };
+    adminMemberStatistics = normalizeMemberStatistics(payload.statistics);
+    adminMemberStatisticsOwnerId = ownerId;
+    renderMemberStatistics(adminMemberStatistics);
+    setMemberStatisticsStatus(`최근 갱신: ${formatMemberStatisticDate(new Date().toISOString(), "방금")}`);
+    return { statistics: adminMemberStatistics };
+  })().catch((error) => {
+    setMemberStatisticsStatus(error.message || "회원 통계를 불러오지 못했습니다.");
+    return { error: error.message || "회원 통계를 불러오지 못했습니다." };
+  }).finally(() => {
+    adminMemberStatisticsLoadPromise = null;
+  });
+  return adminMemberStatisticsLoadPromise;
+}
+
+function wireMemberStatistics() {
+  const refreshButton = document.getElementById("refresh-member-statistics");
+  refreshButton?.addEventListener("click", async () => {
+    refreshButton.disabled = true;
+    await loadMemberStatistics(true);
+    refreshButton.disabled = false;
+  });
+}
+
 function setCloudAccountUi(state = {}) {
   cloudAccountState = state.status || cloudAccountState;
   cloudAccountIsAdmin = Boolean(state.isAdmin);
@@ -3965,6 +4117,7 @@ function setCloudAccountUi(state = {}) {
   document.body?.classList.toggle("auth-locked", accessLocked);
   document.body?.classList.toggle("auth-pending", !signedIn && ["loading", "syncing"].includes(cloudAccountState));
   document.body?.classList.toggle("is-authenticated", signedIn);
+  if (!cloudAccountIsAdmin) renderMemberStatistics(null);
   updateAdminControls();
   if (!isAdminMode() && typeof window !== "undefined" && ADMIN_VIEW_IDS.includes(getActiveViewId(window.location.hash))) {
     showActiveView(window.location.hash);
@@ -12476,9 +12629,9 @@ function wireLocalAccount() {
   }
 }
 
-const VIEW_IDS = ["search", "today", "detail", "matches", "saved", "upload", "account"];
+const VIEW_IDS = ["search", "today", "detail", "matches", "saved", "upload", "admin", "account"];
 const DETAIL_SECTION_IDS = ["detail-summary", "detail-same", "detail-similar", "detail-league", "detail-recent"];
-const ADMIN_VIEW_IDS = ["matches", "upload"];
+const ADMIN_VIEW_IDS = ["matches", "upload", "admin"];
 
 function isAdminMode() {
   return Boolean(activeFavoriteAccountId && cloudAccountIsAdmin);
@@ -12569,6 +12722,9 @@ function showActiveView(hashValue) {
   }
   if (activeViewId === "account") {
     ensureCloudAccountReady().catch(() => {});
+  }
+  if (activeViewId === "admin") {
+    loadMemberStatistics().catch(() => {});
   }
   if (detailWasOpen && activeViewId !== "detail" && matchDetailReturnState) {
     if (matchDetailReturnState.fixtureDate) selectedFixtureDate = matchDetailReturnState.fixtureDate;
@@ -12823,6 +12979,7 @@ if (typeof document !== "undefined") {
   wireSaveSearchForm();
   wireLocalAccount();
   wireCloudAccount();
+  wireMemberStatistics();
   wireShareLinkCopy();
   wireBetaFeedback();
   wirePwaInstall();
@@ -13158,6 +13315,8 @@ if (typeof module !== "undefined") {
     getAllowedViewId,
     getAuthenticatedViewId,
     isAdminMode,
+    normalizeMemberStatistics,
+    formatMemberStatisticDate,
     showActiveView,
     showMoreOddsResults,
     showMoreTeamMatches,

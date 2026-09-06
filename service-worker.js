@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v158-auth-diagnostics";
+const CACHE_NAME = "oddsarchive-v159-member-statistics";
 const CORE_ASSETS = [
   "/",
   "/index.html",
-  "/styles.css?v=147",
-  "/app.js?v=153",
+  "/styles.css?v=148",
+  "/app.js?v=154",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",

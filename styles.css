@@ -798,6 +798,20 @@ body.auth-required.auth-locked .cloud-account-card {
   gap: 10px;
 }
 
+.member-statistics-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.member-statistics-table {
+  min-width: 720px;
+}
+
+@media (max-width: 520px) {
+  .member-statistics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .account-management-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
