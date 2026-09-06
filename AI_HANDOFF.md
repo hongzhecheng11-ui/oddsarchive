@@ -1,5 +1,11 @@
 # OddsArchive Handoff - 2026-09-02
 
+## Local: match-detail at-a-glance card (not deployed)
+- `app.js`: the first section of the Match Summary tab now brings together comparison basis, completed sample count, home/draw/away results, the dominant historical result and a low-sample caution. It uses similar odds first and falls back to exact odds only when no similar-odds results exist.
+- `src/lib/i18n.js`: added English labels and English summary copy.
+- `tests/app-shell.test.js`: added similar-odds and exact-odds fallback coverage. `npm test` passed in full.
+- Local visual navigation is blocked by the already-used guest trial, so this session did not claim a rendered match-detail screen check. `preview-server.js` remains unmodified.
+
 ## Session-independent sign-in deployment approved
 - User approved deploying the saved-session-blocking fix described below. Earlier local-only statements refer to the pre-approval state.
 - Runtime versions: app v142, auth v7 and service-worker v147-session-independent-login. Existing navigation restoration and diagnostic messages remain included.

@@ -95,6 +95,29 @@ test("uses the same one-time guest trial for match detail access", () => {
   assert.strictEqual(app.canOpenMatchDetail(storage, false), false);
 });
 
+test("summarizes match detail with the available similar-odds sample and a low-sample caution", () => {
+  const view = app.buildDetailOverviewSummary({
+    similarOdds: { breakdown: { knownMatches: 8, totalMatches: 8, homeWins: 5, draws: 2, awayWins: 1, homeRate: "63%", drawRate: "25%", awayRate: "13%" } },
+    sameOdds: { breakdown: { knownMatches: 3, totalMatches: 3, homeWins: 1, draws: 1, awayWins: 1, homeRate: "33%", drawRate: "33%", awayRate: "33%" } }
+  });
+
+  assert.strictEqual(view.comparison, "유사배당 ±0.05");
+  assert.strictEqual(view.topResult.label, "홈승");
+  assert.match(view.headline, /홈승.*63%/);
+  assert.match(view.caution, /참고용/);
+});
+
+test("falls back to exact odds when no similar-odds result is available", () => {
+  const view = app.buildDetailOverviewSummary({
+    similarOdds: { breakdown: { knownMatches: 0, totalMatches: 0, homeWins: 0, draws: 0, awayWins: 0, homeRate: "0%", drawRate: "0%", awayRate: "0%" } },
+    sameOdds: { breakdown: { knownMatches: 18, totalMatches: 18, homeWins: 4, draws: 5, awayWins: 9, homeRate: "22%", drawRate: "28%", awayRate: "50%" } }
+  });
+
+  assert.strictEqual(view.comparison, "동일배당");
+  assert.strictEqual(view.topResult.label, "원정승");
+  assert.match(view.caution, /미래 결과를 보장하지 않습니다/);
+});
+
 test("builds a seven-day Seoul date strip centered on today", () => {
   const dates = app.getFixtureDateOptions("2026-07-13");
 

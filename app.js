@@ -6715,12 +6715,67 @@ function createDetailTabPanel(tabName, { active = false } = {}) {
   return panel;
 }
 
+function buildDetailOverviewSummary(analysis = {}) {
+  const english = getUiLanguage() === "en";
+  const similarBreakdown = analysis?.similarOdds?.breakdown || calculateResultBreakdown([]);
+  const sameBreakdown = analysis?.sameOdds?.breakdown || calculateResultBreakdown([]);
+  const useSimilarOdds = Number(similarBreakdown.knownMatches || 0) > 0;
+  const useSameOdds = !useSimilarOdds && Number(sameBreakdown.knownMatches || 0) > 0;
+  const breakdown = useSimilarOdds ? similarBreakdown : useSameOdds ? sameBreakdown : similarBreakdown;
+  const knownMatches = Number(breakdown.knownMatches || 0);
+  const totalMatches = Number(breakdown.totalMatches || 0);
+  const comparison = useSameOdds ? (english ? "Exact odds" : "동일배당") : (english ? "Similar odds ±0.05" : "유사배당 ±0.05");
+  const sourceTopResult = getTopBreakdownResult(breakdown);
+  const topResult = {
+    ...sourceTopResult,
+    label: english ? ({ H: "Home win", D: "Draw", A: "Away win" }[sourceTopResult.key] || "") : sourceTopResult.label
+  };
+  const topClassName = topResult.key === "H" ? "outcome-home" : topResult.key === "D" ? "outcome-draw" : "outcome-away";
+  const headline = knownMatches <= 0
+    ? (english ? `There are no past results for ${comparison.toLowerCase()} comparison.` : `비교할 ${comparison} 과거 결과가 없습니다.`)
+    : english
+      ? `${topResult.label} had the highest rate in ${knownMatches} ${comparison.toLowerCase()} matches (${topResult.rate}).`
+      : `${comparison} ${knownMatches}경기에서 ${topResult.label} 비율이 가장 높았습니다 (${topResult.rate}).`;
+  const caution = knownMatches <= 0
+    ? (english ? "Comparison results will appear as past odds records are collected." : "과거 배당 기록이 쌓이면 비교 결과를 보여드립니다.")
+    : knownMatches < 15
+      ? (english ? "Fewer than 15 matches: use this as a reference only." : "표본이 15경기 미만이라 참고용으로만 확인하세요.")
+      : (english ? "Based on completed past matches; it does not guarantee future results." : "확정된 과거 경기 결과 기준이며, 미래 결과를 보장하지 않습니다.");
+
+  return { breakdown, knownMatches, totalMatches, comparison, topResult, topClassName, headline, caution };
+}
+
+function createDetailOverviewSummarySection(analysis = {}) {
+  const view = buildDetailOverviewSummary(analysis);
+  const section = document.createElement("section");
+  section.className = "match-detail-section";
+
+  const title = document.createElement("strong");
+  title.textContent = translateUiText("한눈에 보기");
+  const headline = document.createElement("p");
+  headline.className = "match-detail-note";
+  headline.textContent = view.headline;
+  const metrics = document.createElement("div");
+  metrics.className = "match-detail-metrics";
+  metrics.append(
+    createDetailMetric(translateUiText("비교 기준"), view.comparison),
+    createDetailMetric(translateUiText("확정 결과"), `${view.knownMatches}/${view.totalMatches}${translateUiText("경기")}`),
+    createDetailMetric(translateUiText("홈승"), `${view.breakdown.homeWins || 0}${translateUiText("승")} ${view.breakdown.homeRate || "0%"}`, "outcome-home"),
+    createDetailMetric(translateUiText("무/원정승"), `${view.breakdown.draws || 0}${translateUiText("무")} · ${view.breakdown.awayWins || 0}${translateUiText("승")}`, view.topClassName)
+  );
+  const caution = document.createElement("p");
+  caution.className = "match-detail-note";
+  caution.textContent = view.caution;
+  section.append(title, headline, metrics, caution);
+  return section;
+}
+
 // 요약: 경기 흐름만 남긴다. 팀 전력과 선발 정보는 각자의 탭으로 옮겼다.
 function createDetailOverviewPanel(match = {}, analysis = {}) {
   const panel = createDetailTabPanel("summary", { active: true });
   const recent = createRecentRecordSection(analysis.recentRecords || {});
   recent.classList.add("match-detail-recent-section");
-  panel.append(createDetailOddsMovementSection(analysis.oddsMovement || {}), recent);
+  panel.append(createDetailOverviewSummarySection(analysis), createDetailOddsMovementSection(analysis.oddsMovement || {}), recent);
   return panel;
 }
 
@@ -12913,6 +12968,7 @@ if (typeof module !== "undefined") {
     getLeagueBreakdownStats,
     getRecentKnownResults,
     buildMatchDetailAnalysis,
+    buildDetailOverviewSummary,
     buildDetailAiViewModel,
     buildDetailNarrativeViewModel,
     getMatchDetailAnalysisCached,

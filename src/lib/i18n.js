@@ -43,6 +43,7 @@
     "일정을 불러오지 못했습니다": "Could not load fixtures", "시간 미정": "Time TBA", "경기 전": "Scheduled", "진행 중": "Live",
     "종료": "Finished", "연장 종료": "After Extra Time", "승부차기 종료": "After Penalties", "취소": "Cancelled",
     "연기": "Postponed", "중단": "Suspended", "경기 요약": "Summary", "동일 배당": "Exact Odds",
+    "한눈에 보기": "At a Glance", "비교 기준": "Comparison", "확정 결과": "Completed Results", "무/원정승": "Draw/Away Win",
     "AI 분석": "AI Analysis", "AI 종합 해설": "AI Analysis Summary", "요약": "Summary", "유사배당": "Similar Odds", "같은 리그": "Same League",
     "최근 전적": "Recent Form", "동일배당 전적": "Exact-Odds Record", "유사배당 전적": "Similar-Odds Record",
     "같은 리그 유사배당 전적": "Same-League Similar Odds", "관련 과거 경기": "Related Past Matches",
