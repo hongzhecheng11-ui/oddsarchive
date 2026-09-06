@@ -29,6 +29,7 @@
     "카드형 결과로 표시됩니다.": "Results are shown as match cards.",
     "오늘 이변 후보": "Today's Upset Watch", "오늘의 이변후보 TOP": "Today's Upset Candidates",
     "오늘은 신뢰할 만한 이변 후보가 없습니다": "No reliable upset candidates today",
+    "이변 후보를 계산하는 중입니다": "Checking for upset candidates",
     "오늘은 뚜렷한 이변 후보가 없습니다": "No clear upset candidates today", "강한 후보만 표시": "Strong candidates only",
     "오늘의 강한 신호": "Today's Strong Signal",
     "정배 신뢰도가 시장 예상보다 뚜렷하게 높은 경기": "A match where favorite confidence clearly beats market expectation",

@@ -3946,6 +3946,15 @@ function renderAuthDiagnosticNote(details = {}) {
   if (typeof document === "undefined") return;
   const note = document.getElementById("auth-diagnostic-note");
   if (!note) return;
+  // 평소에는 숨긴다. 테스터에게 보이는 화면이라 기술 문구가 늘 떠 있을 이유가 없다.
+  // 로그인이 실패했을 때만 띄워서, 재발하면 캡처 한 장으로 원인을 가릴 수 있게 남겨둔다.
+  const failed = details.stage === "session_error" || Boolean(details.callbackError);
+  if (!failed) {
+    note.hidden = true;
+    note.textContent = "";
+    return;
+  }
+
   // 표시는 영문/기호로만 만든다. 화면 문구가 아니라 진단용 값이라 번역 대상이 아니다.
   const mark = (value) => (value ? "O" : "X");
   note.hidden = false;
@@ -9978,6 +9987,18 @@ function createHomeUpsetCandidateCard(item = {}) {
   return card;
 }
 
+// 계산이 끝나기 전에 "후보가 없습니다"를 띄우면 없다고 했다가 뒤늦게 나타나는 꼴이 된다.
+// 계산 중임을 먼저 알린다.
+function setHomeUpsetLoading() {
+  if (typeof document === "undefined") return;
+  const list = document.getElementById("home-upset-list");
+  if (!list) return;
+  const loading = document.createElement("div");
+  loading.className = "home-upset-empty";
+  loading.textContent = translateUiText("이변 후보를 계산하는 중입니다");
+  list.replaceChildren(loading);
+}
+
 function renderHomeUpsetCandidates(matches = [], assessed = null) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("home-upset-list");
@@ -10171,6 +10192,16 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     return;
   }
 
+  const renderTodaySignals = () => {
+    if (renderVersion !== homeTodayAnalysisRenderVersion) return;
+    // 이 콜백은 나중에 실행돼서 그 사이 데이터 캐시가 비워졌을 수 있다.
+    const assessed = cachedSearchableMatches
+      ? assessTodayMatches(majorMatches, cachedSearchableMatches)
+      : null;
+    renderHomeUpsetCandidates(majorMatches, assessed);
+    renderHomeStrongSignal(majorMatches, assessed);
+  };
+
   let analysisIndex = 0;
   const analyzeNextMatch = () => {
     if (renderVersion !== homeTodayAnalysisRenderVersion) return;
@@ -10189,18 +10220,16 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
         createHomeTodayMatchCard(match, homeTodayLastUpdatedAt, analyses[index] || null)
       )));
     }
-    runWhenBrowserIsIdle(() => {
-      if (renderVersion === homeTodayAnalysisRenderVersion) {
-        // 이 콜백은 나중에 실행돼서 그 사이 데이터 캐시가 비워졌을 수 있다.
-        const assessed = cachedSearchableMatches
-          ? assessTodayMatches(majorMatches, cachedSearchableMatches)
-          : null;
-        renderHomeUpsetCandidates(majorMatches, assessed);
-        renderHomeStrongSignal(majorMatches, assessed);
-      }
-    });
   };
-  window.setTimeout(analyzeNextMatch, 0);
+
+  // 이변 후보는 사용자가 이 화면에서 가장 먼저 찾는 정보다. 예전에는 경기 카드를 하나씩
+  // 전부 분석한 뒤에야 계산을 시작해서 한참 뒤에야 떴다. 카드 목록은 이미 그려둔 상태이므로,
+  // 후보 계산을 앞으로 당기고 카드별 분석을 그 뒤로 미룬다.
+  setHomeUpsetLoading();
+  window.setTimeout(() => {
+    renderTodaySignals();
+    window.setTimeout(analyzeNextMatch, 0);
+  }, 0);
 }
 
 function getFixtureDateOptions(todayKey = getTodayKey()) {

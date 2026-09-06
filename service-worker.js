@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v162-in-process-auth-lock";
+const CACHE_NAME = "oddsarchive-v163-upset-first-render";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=148",
-  "/app.js?v=157",
+  "/app.js?v=158",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -12,7 +12,7 @@ const CORE_ASSETS = [
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/data/upset-candidate-audit.json",
-  "/src/lib/i18n.js?v=27",
+  "/src/lib/i18n.js?v=28",
   "/src/lib/telemetry.js?v=68",
   "/src/lib/favorite-sync.js?v=2",
   "/src/lib/auth.js?v=16",
