@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v160-pkce-verifier-fix";
+const CACHE_NAME = "oddsarchive-v161-visible-auth-diagnostics";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=148",
-  "/app.js?v=155",
+  "/app.js?v=156",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",

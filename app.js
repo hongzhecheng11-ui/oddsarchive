@@ -3939,6 +3939,22 @@ function getBundledFootballDataSearchPack() {
 
 // 로그인이 느리다는 신고를 어림짐작으로 쫓지 않으려고, 오래 걸린 단계를 화면에 같이 적는다.
 // 1초 넘게 걸린 단계만 보여줘서 평소에는 눈에 띄지 않는다.
+// 안드로이드 앱에서만 로그인이 안 되는 원인을 기기 화면에서 바로 읽기 위한 표시다.
+// 특히 "코드는 돌아왔는데 검증값이 없음"이면 로그인 창과 앱이 저장소를 공유하지 못한다는 뜻이라,
+// 그 한 줄로 원인이 갈린다.
+function renderAuthDiagnosticNote(details = {}) {
+  if (typeof document === "undefined") return;
+  const note = document.getElementById("auth-diagnostic-note");
+  if (!note) return;
+  // 표시는 영문/기호로만 만든다. 화면 문구가 아니라 진단용 값이라 번역 대상이 아니다.
+  const mark = (value) => (value ? "O" : "X");
+  note.hidden = false;
+  note.textContent = `[${details.stage || "-"}${details.result ? `/${details.result}` : ""}] `
+    + `code:${mark(details.callbackCode)} verifier:${mark(details.verifierPresent)} `
+    + `session:${mark(details.sessionStored)} err:${mark(details.callbackError)} `
+    + `android:${mark(details.android)} standalone:${mark(details.standalone)}`;
+}
+
 function formatLoginTimingNote() {
   const timings = cloudAccountService?.getLoginTimings?.() || [];
   const slow = timings.filter((entry) => Number(entry.ms) >= 1000);
@@ -4167,7 +4183,10 @@ async function loadCloudAccountService() {
       clearAccountRecords: clearActiveAccountFavoriteRecords
     },
     onStateChange: setCloudAccountUi,
-    onDiagnostic: (details) => appTelemetry?.recordAuthDiagnostic(details)
+    onDiagnostic: (details) => {
+      appTelemetry?.recordAuthDiagnostic(details);
+      renderAuthDiagnosticNote(details);
+    }
   });
   return cloudAccountService;
 }
