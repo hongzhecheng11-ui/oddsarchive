@@ -248,13 +248,50 @@
       return preparePromise;
     }
 
+    // supabase-js 는 세션을 "sb-<프로젝트>-auth-token" 키로 저장한다. 저장된 토큰이
+    // 무효해지면 getSession() 이 갱신 시도에서 매달려 로그인 화면이 "로그인 확인"에서
+    // 영영 안 넘어간다. 실제로 지운 게 있을 때만 true 를 돌려줘서, 지울 게 없으면
+    // 괜히 재시도하지 않게 한다.
+    function clearStoredAuthTokens() {
+      try {
+        if (typeof storage?.key !== "function") return false;
+        const staleKeys = [];
+        for (let index = 0; index < Number(storage.length || 0); index += 1) {
+          const key = String(storage.key(index) || "");
+          if (/^sb-.+-auth-token/.test(key)) staleKeys.push(key);
+        }
+        staleKeys.forEach((key) => storage.removeItem(key));
+        return staleKeys.length > 0;
+      } catch (_error) {
+        return false;
+      }
+    }
+
+    async function readStoredSession(stage) {
+      const { data, error } = await waitForLoginStep(client.auth.getSession(), stage);
+      if (error) throw error;
+      return data;
+    }
+
+    // 기기에 남은 토큰이 원인이면 사용자가 브라우저 사이트 데이터를 직접 지우는 것 말고는
+    // 빠져나올 방법이 없다. 한 번은 우리가 대신 지우고 다시 시도한다. 클라이언트도 새로
+    // 만드는데, 이미 메모리에 올라간 세션까지 버려야 지운 효과가 나기 때문이다.
+    async function readStoredSessionWithRecovery() {
+      try {
+        return await readStoredSession("기존 로그인 확인");
+      } catch (error) {
+        if (!clearStoredAuthTokens()) throw error;
+        client = clientFactory(config);
+        return readStoredSession("기존 로그인 다시 확인");
+      }
+    }
+
     async function initialize() {
       if (initializePromise) return initializePromise;
       initializePromise = (async () => {
         emit("loading");
         await prepareClient();
-        const { data, error } = await waitForLoginStep(client.auth.getSession(), "기존 로그인 확인");
-        if (error) throw error;
+        const data = await readStoredSessionWithRecovery();
         await synchronizeSession(data?.session || null);
         const listener = client.auth.onAuthStateChange((_event, session) => {
           // Run database calls after the auth event has released its session lock.

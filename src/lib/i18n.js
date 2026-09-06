@@ -381,7 +381,7 @@
     "Google 로그인을 준비하지 못했습니다. 잠시 후 다시 시도해주세요.": "Google sign-in is unavailable. Please try again shortly."
   };
   const EN_PATTERNS = [
-    [/^(로그인 설정 확인|로그인 필수 파일 로딩|기존 로그인 확인):\s*(.+)$/, (_, stage, detail) => `${({ "로그인 설정 확인": "Sign-in configuration", "로그인 필수 파일 로딩": "Sign-in library", "기존 로그인 확인": "Saved sign-in check" })[stage]}: ${translateText(detail, "en")}`],
+    [/^(로그인 설정 확인|로그인 필수 파일 로딩|기존 로그인 확인|기존 로그인 다시 확인):\s*(.+)$/, (_, stage, detail) => `${({ "로그인 설정 확인": "Sign-in configuration", "로그인 필수 파일 로딩": "Sign-in library", "기존 로그인 확인": "Saved sign-in check", "기존 로그인 다시 확인": "Saved sign-in recheck" })[stage]}: ${translateText(detail, "en")}`],
     [/^([\d-]+|포메이션 미정)\s*·\s*공개$/, (_, formation) => `${formation === "포메이션 미정" ? "Formation TBD" : formation} · Announced`],
     [/^([\d,]+(?:\.\d+)?)개$/, "$1"],
     [/^([\d,]+)\/([\d,]+)경기$/, "$1/$2 matches"],

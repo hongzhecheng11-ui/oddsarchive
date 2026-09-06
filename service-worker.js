@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v151-auth-lock-timeout";
+const CACHE_NAME = "oddsarchive-v152-auth-token-recovery";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=147",
-  "/app.js?v=146",
+  "/app.js?v=147",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -12,10 +12,10 @@ const CORE_ASSETS = [
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/data/upset-candidate-audit.json",
-  "/src/lib/i18n.js?v=26",
+  "/src/lib/i18n.js?v=27",
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js?v=2",
-  "/src/lib/auth.js?v=9",
+  "/src/lib/auth.js?v=10",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",
