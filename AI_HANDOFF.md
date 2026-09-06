@@ -1,9 +1,10 @@
 # OddsArchive Handoff - 2026-09-02
 
-## Local: match-detail at-a-glance card (not deployed)
+## Deployed: match-detail at-a-glance card
 - `app.js`: the first section of the Match Summary tab now brings together comparison basis, completed sample count, home/draw/away results, the dominant historical result and a low-sample caution. It uses similar odds first and falls back to exact odds only when no similar-odds results exist.
 - `src/lib/i18n.js`: added English labels and English summary copy.
-- `tests/app-shell.test.js`: added similar-odds and exact-odds fallback coverage. `npm test` passed in full.
+- `tests/app-shell.test.js`: added similar-odds and exact-odds fallback coverage. `npm test` passed in full before deployment.
+- Deployed as commit `1c60799` after rebasing onto the latest API odds-pack updates. Production HTML includes the Search Console verification tag, and Google confirmed ownership by the HTML tag method.
 - Local visual navigation is blocked by the already-used guest trial, so this session did not claim a rendered match-detail screen check. `preview-server.js` remains unmodified.
 
 ## Session-independent sign-in deployment approved
