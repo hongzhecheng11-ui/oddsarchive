@@ -4174,7 +4174,7 @@ function loadBrowserScript(source, marker) {
 
 async function loadCloudAccountService() {
   if (cloudAccountService) return cloudAccountService;
-  await loadBrowserScript("/src/lib/auth.js?v=15", "account-auth");
+  await loadBrowserScript("/src/lib/auth.js?v=16", "account-auth");
   if (typeof window.ODDS_ARCHIVE_AUTH?.createAccountService !== "function") throw new Error("로그인 모듈을 초기화하지 못했습니다.");
   if (!cloudAccountService) cloudAccountService = window.ODDS_ARCHIVE_AUTH.createAccountService({
     favorites: {

@@ -4,6 +4,24 @@
   const LOGIN_TIMEOUT_MS = 15000;
   const LOGIN_TIMEOUT_MESSAGE = "로그인 준비 시간이 초과되었습니다. 네트워크 연결을 확인한 뒤 다시 눌러주세요.";
 
+  // supabase 기본 잠금은 navigator.locks 라서 브라우저 전체(다른 탭 포함)를 대상으로 건다.
+  // 안드로이드 앱에서는 로그인하러 구글로 갈 때 원래 화면이 백그라운드로 내려가는데, 그 페이지가
+  // 얼면 쥐고 있던 잠금이 안 풀린다. 그러면 돌아온 화면의 getSession() 이 영영 기다려서
+  // 로그인이 완성되지 않는다 (실제로 기기에서 15초 제한까지 매달리는 게 확인됐다).
+  //
+  // 그래서 이 페이지 안에서만 도는 잠금으로 바꾼다. 같은 화면에서 일어나는 인증 호출은
+  // 순서대로 처리되므로, 교체형 refresh token 이 동시에 두 번 쓰이는 사고는 그대로 막힌다.
+  // 대신 다른 탭과는 직렬화되지 않는다 - 얼어붙은 페이지 때문에 로그인 자체가 막히는 것보다 낫다.
+  function createInProcessLock() {
+    const chains = new Map();
+    return function inProcessLock(name, _acquireTimeout, fn) {
+      const previous = chains.get(name) || Promise.resolve();
+      const result = previous.then(() => fn(), () => fn());
+      chains.set(name, result.then(() => {}, () => {}));
+      return result;
+    };
+  }
+
   // 어느 단계가 얼마나 걸렸는지 남긴다. 로그인이 느리다는 신고가 들어왔을 때
   // 화면에서 바로 확인할 수 있어야 어림짐작으로 고치지 않는다.
   const loginTimings = [];
@@ -99,11 +117,15 @@
     const clientFactory = options.clientFactory || ((config) => globalScope.supabase.createClient(
       config.supabaseUrl,
       config.publishableKey,
-      // 잠금(navigator.locks)은 supabase 기본값을 그대로 쓴다. 직접 만든 잠금으로
-      // "못 얻으면 그냥 진행"하게 했더니, 갱신 때마다 교체되는 refresh token 이 동시에
-      // 두 번 쓰여 세션이 통째로 무효화됐다 (앱을 다시 열면 로그인이 풀렸다).
-      // 예전의 멈춤 증상은 인증 콜백 안에서 DB를 호출하던 재진입 문제였고 dcc14fd 에서 고쳤다.
-      { auth: { flowType: "pkce", persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }
+      {
+        auth: {
+          flowType: "pkce",
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+          lock: createInProcessLock()
+        }
+      }
     ));
     let client = null;
     let config = null;
@@ -457,7 +479,7 @@
     };
   }
 
-  const exportsObject = { createAccountService, loadScriptOnce };
+  const exportsObject = { createAccountService, loadScriptOnce, createInProcessLock };
   if (typeof module !== "undefined" && module.exports) module.exports = exportsObject;
   if (globalScope) globalScope.ODDS_ARCHIVE_AUTH = exportsObject;
 })(typeof window !== "undefined" ? window : globalThis);
