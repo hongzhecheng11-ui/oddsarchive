@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v153-today-analysis-cache";
+const CACHE_NAME = "oddsarchive-v154-self-hosted-sdk";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=147",
-  "/app.js?v=148",
+  "/app.js?v=149",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
@@ -16,6 +16,7 @@ const CORE_ASSETS = [
   "/src/lib/telemetry.js",
   "/src/lib/favorite-sync.js?v=2",
   "/src/lib/auth.js?v=10",
+  "/vendor/supabase-js-2.49.8.min.js",
   "/src/lib/translations/leagues.js",
   "/src/lib/translations/teams.js",
   "/privacy.html",

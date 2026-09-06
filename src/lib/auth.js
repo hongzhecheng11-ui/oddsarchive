@@ -238,7 +238,11 @@
       if (preparePromise) return preparePromise;
       preparePromise = (async () => {
         config = await waitForLoginStep(fetchConfig(), "로그인 설정 확인");
-        await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
+        // index.html 이 SDK 를 미리 불러오므로 대개 이 시점에 이미 준비돼 있다. 그러면
+        // 설정을 받은 뒤 파일을 또 기다리는 왕복을 통째로 건너뛴다.
+        if (typeof globalScope?.supabase?.createClient !== "function") {
+          await waitForLoginStep(sdkLoader(config.sdkUrl), "로그인 필수 파일 로딩");
+        }
         if (!client) client = clientFactory(config);
         return client;
       })().catch((error) => {

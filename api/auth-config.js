@@ -1,4 +1,8 @@
-const SUPABASE_SDK_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js";
+// 예전엔 jsDelivr 에서 받았는데, 외부 CDN 왕복이 로그인 대기 시간에 그대로 얹혔다.
+// 같은 파일을 저장소에 두고 우리 도메인에서 준다. index.html 이 미리 불러오고
+// 서비스워커가 캐시하므로 로그인 시점엔 대개 이미 로드돼 있다.
+// 버전을 올릴 땐 vendor 파일과 index.html 의 script 태그도 같이 교체할 것.
+const SUPABASE_SDK_URL = "/vendor/supabase-js-2.49.8.min.js";
 
 function getAllowedOrigins() {
   return String(process.env.APP_ORIGIN || "")
