@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-07T14:13:42.240Z",
+  "updatedAt": "2026-09-07T17:44:10.594Z",
   "summary": {
-    "trackedDays": 51,
-    "trackedCandidates": 78,
+    "trackedDays": 52,
+    "trackedCandidates": 79,
     "resolvedCandidates": 62,
     "favoriteFailures": 25,
     "directionHits": 14
@@ -381,14 +381,14 @@
     {
       "date": "2026-09-08",
       "firstEvaluatedAt": "2026-09-04T16:18:34.282Z",
-      "lastEvaluatedAt": "2026-09-07T14:13:42.240Z",
+      "lastEvaluatedAt": "2026-09-07T17:44:10.594Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     },
     {
       "date": "2026-09-09",
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastEvaluatedAt": "2026-09-07T14:13:42.240Z",
+      "lastEvaluatedAt": "2026-09-07T17:44:10.594Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1507062",
@@ -398,11 +398,20 @@
     {
       "date": "2026-09-10",
       "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
-      "lastEvaluatedAt": "2026-09-07T14:13:42.240Z",
+      "lastEvaluatedAt": "2026-09-07T17:44:10.594Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1556645",
         "fixture:1552142"
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
+      "lastEvaluatedAt": "2026-09-07T17:44:10.594Z",
+      "eligibleMatchCount": 7,
+      "candidateIds": [
+        "fixture:1635708"
       ]
     }
   ],
@@ -2324,7 +2333,7 @@
       ],
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-07T14:13:42.240Z",
+      "lastSeenAt": "2026-09-07T17:44:10.594Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2350,7 +2359,7 @@
       ],
       "sampleSize": 70,
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastSeenAt": "2026-09-07T14:13:42.240Z",
+      "lastSeenAt": "2026-09-07T17:44:10.594Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2402,7 +2411,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-07T14:13:42.240Z",
+      "lastSeenAt": "2026-09-07T17:44:10.594Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2428,7 +2437,33 @@
       ],
       "sampleSize": 33,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-07T14:13:42.240Z",
+      "lastSeenAt": "2026-09-07T17:44:10.594Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1635708",
+      "fixtureId": "1635708",
+      "date": "2026-09-11",
+      "league": "UCL",
+      "homeTeam": "PSV Eindhoven",
+      "awayTeam": "Shakhtar Donetsk",
+      "homeOdds": "1.44",
+      "drawOdds": "4.60",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 91,
+      "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
+      "lastSeenAt": "2026-09-07T17:44:10.594Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
