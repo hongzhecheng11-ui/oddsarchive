@@ -1,10 +1,10 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-09T08:03:57.820Z",
+  "updatedAt": "2026-09-09T12:56:53.108Z",
   "summary": {
     "trackedDays": 53,
-    "trackedCandidates": 81,
-    "resolvedCandidates": 65,
+    "trackedCandidates": 84,
+    "resolvedCandidates": 66,
     "favoriteFailures": 26,
     "directionHits": 15
   },
@@ -395,26 +395,32 @@
     {
       "date": "2026-09-10",
       "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
-      "lastEvaluatedAt": "2026-09-09T08:03:57.820Z",
+      "lastEvaluatedAt": "2026-09-09T12:56:53.108Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
-        "fixture:1556645",
-        "fixture:1552142"
+        "fixture:1635741",
+        "fixture:1552142",
+        "fixture:1556645"
       ]
     },
     {
       "date": "2026-09-11",
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastEvaluatedAt": "2026-09-09T08:03:57.820Z",
+      "lastEvaluatedAt": "2026-09-09T12:56:53.108Z",
       "eligibleMatchCount": 7,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1635708"
+      ]
     },
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-09T08:03:57.820Z",
-      "eligibleMatchCount": 8,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-09-09T12:56:53.108Z",
+      "eligibleMatchCount": 44,
+      "candidateIds": [
+        "fixture:1563159",
+        "fixture:1557403"
+      ]
     }
   ],
   "candidates": [
@@ -2336,10 +2342,10 @@
       "sampleSize": 27,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
       "lastSeenAt": "2026-09-08T08:00:11.508Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "A",
+      "score": "0-1",
+      "resolvedAt": "2026-09-09T12:56:53.108Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -2439,7 +2445,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-09T08:03:57.820Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2491,7 +2497,33 @@
       ],
       "sampleSize": 33,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-09T08:03:57.820Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1635741",
+      "fixtureId": "1635741",
+      "date": "2026-09-10",
+      "league": "UCL",
+      "homeTeam": "VfB Stuttgart",
+      "awayTeam": "Viking",
+      "homeOdds": "1.25",
+      "drawOdds": "6.60",
+      "awayOdds": "8.20",
+      "favoriteKey": "H",
+      "candidateLabel": "대형 이변 후보",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2517,7 +2549,59 @@
       ],
       "sampleSize": 91,
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastSeenAt": "2026-09-08T08:00:11.508Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1557403",
+      "fixtureId": "1557403",
+      "date": "2026-09-12",
+      "league": "EPL",
+      "homeTeam": "Liverpool",
+      "awayTeam": "Fulham",
+      "homeOdds": "1.44",
+      "drawOdds": "4.75",
+      "awayOdds": "6.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 40,
+      "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1563159",
+      "fixtureId": "1563159",
+      "date": "2026-09-12",
+      "league": "CHAMPIONSHIP",
+      "homeTeam": "Middlesbrough",
+      "awayTeam": "Norwich",
+      "homeOdds": "1.81",
+      "drawOdds": "3.85",
+      "awayOdds": "3.90",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
+      "lastSeenAt": "2026-09-09T12:56:53.108Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
