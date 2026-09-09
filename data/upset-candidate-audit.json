@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-08T21:04:08.544Z",
+  "updatedAt": "2026-09-09T01:13:40.665Z",
   "summary": {
     "trackedDays": 53,
-    "trackedCandidates": 80,
+    "trackedCandidates": 81,
     "resolvedCandidates": 65,
     "favoriteFailures": 26,
     "directionHits": 15
@@ -388,31 +388,31 @@
     {
       "date": "2026-09-09",
       "firstEvaluatedAt": "2026-09-05T15:09:07.153Z",
-      "lastEvaluatedAt": "2026-09-08T21:04:08.544Z",
+      "lastEvaluatedAt": "2026-09-09T01:13:40.665Z",
       "eligibleMatchCount": 4,
       "candidateIds": []
     },
     {
       "date": "2026-09-10",
       "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
-      "lastEvaluatedAt": "2026-09-08T21:04:08.544Z",
+      "lastEvaluatedAt": "2026-09-09T01:13:40.665Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
-        "fixture:1556645",
-        "fixture:1552142"
+        "fixture:1556644",
+        "fixture:1556645"
       ]
     },
     {
       "date": "2026-09-11",
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastEvaluatedAt": "2026-09-08T21:04:08.544Z",
+      "lastEvaluatedAt": "2026-09-09T01:13:40.665Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-08T21:04:08.544Z",
+      "lastEvaluatedAt": "2026-09-09T01:13:40.665Z",
       "eligibleMatchCount": 8,
       "candidateIds": []
     }
@@ -2447,6 +2447,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1556644",
+      "fixtureId": "1556644",
+      "date": "2026-09-10",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeam": "Rangers",
+      "awayTeam": "ST Mirren",
+      "homeOdds": "1.33",
+      "drawOdds": "5.25",
+      "awayOdds": "7.80",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 30,
+      "firstEvaluatedAt": "2026-09-09T01:13:40.665Z",
+      "lastSeenAt": "2026-09-09T01:13:40.665Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1556645",
       "fixtureId": "1556645",
       "date": "2026-09-10",
@@ -2465,7 +2491,7 @@
       ],
       "sampleSize": 33,
       "firstEvaluatedAt": "2026-09-07T14:13:42.240Z",
-      "lastSeenAt": "2026-09-08T21:04:08.544Z",
+      "lastSeenAt": "2026-09-09T01:13:40.665Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
