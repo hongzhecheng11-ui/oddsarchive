@@ -1,6 +1,6 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-09T20:52:23.811Z",
+  "updatedAt": "2026-09-10T01:01:51.020Z",
   "summary": {
     "trackedDays": 54,
     "trackedCandidates": 86,
@@ -395,14 +395,14 @@
     {
       "date": "2026-09-10",
       "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
-      "lastEvaluatedAt": "2026-09-09T20:52:23.811Z",
+      "lastEvaluatedAt": "2026-09-10T01:01:51.020Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-09-11",
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastEvaluatedAt": "2026-09-09T20:52:23.811Z",
+      "lastEvaluatedAt": "2026-09-10T01:01:51.020Z",
       "eligibleMatchCount": 7,
       "candidateIds": [
         "fixture:1635708"
@@ -411,7 +411,7 @@
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-09T20:52:23.811Z",
+      "lastEvaluatedAt": "2026-09-10T01:01:51.020Z",
       "eligibleMatchCount": 44,
       "candidateIds": [
         "fixture:1563159",
@@ -421,7 +421,7 @@
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-09T20:52:23.811Z",
+      "lastEvaluatedAt": "2026-09-10T01:01:51.020Z",
       "eligibleMatchCount": 22,
       "candidateIds": [
         "fixture:1558630",
@@ -2555,7 +2555,7 @@
       ],
       "sampleSize": 91,
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastSeenAt": "2026-09-09T20:52:23.811Z",
+      "lastSeenAt": "2026-09-10T01:01:51.020Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2581,7 +2581,7 @@
       ],
       "sampleSize": 40,
       "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
-      "lastSeenAt": "2026-09-09T20:52:23.811Z",
+      "lastSeenAt": "2026-09-10T01:01:51.020Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2607,7 +2607,7 @@
       ],
       "sampleSize": 24,
       "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
-      "lastSeenAt": "2026-09-09T20:52:23.811Z",
+      "lastSeenAt": "2026-09-10T01:01:51.020Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2633,7 +2633,7 @@
       ],
       "sampleSize": 23,
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastSeenAt": "2026-09-09T20:52:23.811Z",
+      "lastSeenAt": "2026-09-10T01:01:51.020Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2659,7 +2659,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastSeenAt": "2026-09-09T20:52:23.811Z",
+      "lastSeenAt": "2026-09-10T01:01:51.020Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
