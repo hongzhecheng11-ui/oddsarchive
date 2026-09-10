@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-10T08:03:18.814Z",
+  "updatedAt": "2026-09-10T12:53:57.112Z",
   "summary": {
     "trackedDays": 54,
-    "trackedCandidates": 86,
+    "trackedCandidates": 89,
     "resolvedCandidates": 70,
     "favoriteFailures": 26,
     "directionHits": 15
@@ -395,14 +395,14 @@
     {
       "date": "2026-09-10",
       "firstEvaluatedAt": "2026-09-06T15:25:09.349Z",
-      "lastEvaluatedAt": "2026-09-10T08:03:18.814Z",
+      "lastEvaluatedAt": "2026-09-10T12:53:57.112Z",
       "eligibleMatchCount": 6,
       "candidateIds": []
     },
     {
       "date": "2026-09-11",
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastEvaluatedAt": "2026-09-10T08:03:18.814Z",
+      "lastEvaluatedAt": "2026-09-10T12:53:57.112Z",
       "eligibleMatchCount": 7,
       "candidateIds": [
         "fixture:1635708"
@@ -411,21 +411,21 @@
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-10T08:03:18.814Z",
+      "lastEvaluatedAt": "2026-09-10T12:53:57.112Z",
       "eligibleMatchCount": 44,
       "candidateIds": [
-        "fixture:1563159",
         "fixture:1557403"
       ]
     },
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-10T08:03:18.814Z",
-      "eligibleMatchCount": 22,
+      "lastEvaluatedAt": "2026-09-10T12:53:57.112Z",
+      "eligibleMatchCount": 43,
       "candidateIds": [
-        "fixture:1558630",
-        "fixture:1552168"
+        "fixture:1570374",
+        "fixture:1510448",
+        "fixture:1550117"
       ]
     }
   ],
@@ -2555,7 +2555,7 @@
       ],
       "sampleSize": 91,
       "firstEvaluatedAt": "2026-09-07T17:44:10.594Z",
-      "lastSeenAt": "2026-09-10T08:03:18.814Z",
+      "lastSeenAt": "2026-09-10T12:53:57.112Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2581,7 +2581,7 @@
       ],
       "sampleSize": 40,
       "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
-      "lastSeenAt": "2026-09-10T08:03:18.814Z",
+      "lastSeenAt": "2026-09-10T12:53:57.112Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2608,6 +2608,58 @@
       "sampleSize": 24,
       "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
       "lastSeenAt": "2026-09-10T08:03:18.814Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1510448",
+      "fixtureId": "1510448",
+      "date": "2026-09-13",
+      "league": "KLEAGUE2",
+      "homeTeam": "Jeonnam Dragons",
+      "awayTeam": "Gimpo Citizen",
+      "homeOdds": "3.60",
+      "drawOdds": "3.30",
+      "awayOdds": "2.00",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 46,
+      "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
+      "lastSeenAt": "2026-09-10T12:53:57.112Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1550117",
+      "fixtureId": "1550117",
+      "date": "2026-09-13",
+      "league": "SERIEA",
+      "homeTeam": "Atalanta",
+      "awayTeam": "Cagliari",
+      "homeOdds": "1.55",
+      "drawOdds": "3.80",
+      "awayOdds": "5.80",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 70,
+      "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
+      "lastSeenAt": "2026-09-10T12:53:57.112Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2660,6 +2712,32 @@
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
       "lastSeenAt": "2026-09-10T08:03:18.814Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570374",
+      "fixtureId": "1570374",
+      "date": "2026-09-13",
+      "league": "LALIGA",
+      "homeTeam": "Celta Vigo",
+      "awayTeam": "Malaga",
+      "homeOdds": "1.73",
+      "drawOdds": "3.55",
+      "awayOdds": "4.70",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 20,
+      "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
+      "lastSeenAt": "2026-09-10T12:53:57.112Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
