@@ -1,6 +1,6 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-12T01:04:45.967Z",
+  "updatedAt": "2026-09-12T07:51:45.914Z",
   "summary": {
     "trackedDays": 56,
     "trackedCandidates": 97,
@@ -409,34 +409,33 @@
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
       "eligibleMatchCount": 38,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1557403"
+      ]
     },
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
-        "fixture:1584410",
-        "fixture:1575491",
         "fixture:1570373",
-        "fixture:1552760",
-        "fixture:1557405"
+        "fixture:1552760"
       ]
     },
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
       "eligibleMatchCount": 16,
       "candidateIds": []
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     }
@@ -2593,7 +2592,7 @@
       ],
       "sampleSize": 40,
       "firstEvaluatedAt": "2026-09-09T12:56:53.108Z",
-      "lastSeenAt": "2026-09-11T07:58:51.687Z",
+      "lastSeenAt": "2026-09-12T07:51:45.914Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2775,7 +2774,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
-      "lastSeenAt": "2026-09-12T01:04:45.967Z",
+      "lastSeenAt": "2026-09-12T07:51:45.914Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2853,7 +2852,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-12T01:04:45.967Z",
-      "lastSeenAt": "2026-09-12T01:04:45.967Z",
+      "lastSeenAt": "2026-09-12T07:51:45.914Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
