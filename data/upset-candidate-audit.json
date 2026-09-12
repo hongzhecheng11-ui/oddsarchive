@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-11T20:53:34.433Z",
+  "updatedAt": "2026-09-12T01:04:45.967Z",
   "summary": {
     "trackedDays": 56,
-    "trackedCandidates": 94,
+    "trackedCandidates": 97,
     "resolvedCandidates": 71,
     "favoriteFailures": 27,
     "directionHits": 16
@@ -409,31 +409,34 @@
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-11T20:53:34.433Z",
+      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
       "eligibleMatchCount": 38,
       "candidateIds": []
     },
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-11T20:53:34.433Z",
+      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
-        "fixture:1557405",
-        "fixture:1552760"
+        "fixture:1584410",
+        "fixture:1575491",
+        "fixture:1570373",
+        "fixture:1552760",
+        "fixture:1557405"
       ]
     },
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-11T20:53:34.433Z",
+      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
       "eligibleMatchCount": 16,
       "candidateIds": []
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-11T20:53:34.433Z",
+      "lastEvaluatedAt": "2026-09-12T01:04:45.967Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     }
@@ -2772,7 +2775,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
-      "lastSeenAt": "2026-09-11T20:53:34.433Z",
+      "lastSeenAt": "2026-09-12T01:04:45.967Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2798,7 +2801,7 @@
       ],
       "sampleSize": 38,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
-      "lastSeenAt": "2026-09-11T20:53:34.433Z",
+      "lastSeenAt": "2026-09-12T01:04:45.967Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2832,6 +2835,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1570373",
+      "fixtureId": "1570373",
+      "date": "2026-09-13",
+      "league": "LALIGA",
+      "homeTeam": "Athletic Club",
+      "awayTeam": "Elche",
+      "homeOdds": "1.40",
+      "drawOdds": "4.60",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 71,
+      "firstEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastSeenAt": "2026-09-12T01:04:45.967Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1570374",
       "fixtureId": "1570374",
       "date": "2026-09-13",
@@ -2851,6 +2880,58 @@
       "sampleSize": 20,
       "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
       "lastSeenAt": "2026-09-11T07:58:51.687Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575491",
+      "fixtureId": "1575491",
+      "date": "2026-09-13",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeam": "Academico Viseu",
+      "awayTeam": "Vitória SC",
+      "homeOdds": "3.50",
+      "drawOdds": "3.25",
+      "awayOdds": "2.00",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 28,
+      "firstEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastSeenAt": "2026-09-12T01:04:45.967Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1584410",
+      "fixtureId": "1584410",
+      "date": "2026-09-13",
+      "league": "SUPER_LIG",
+      "homeTeam": "Konyaspor",
+      "awayTeam": "Trabzonspor",
+      "homeOdds": "3.40",
+      "drawOdds": "3.50",
+      "awayOdds": "1.95",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 28,
+      "firstEvaluatedAt": "2026-09-12T01:04:45.967Z",
+      "lastSeenAt": "2026-09-12T01:04:45.967Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
