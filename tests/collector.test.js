@@ -185,6 +185,8 @@ test("runs daily upcoming collection separately from lightweight closing-odds re
   assert.match(workflow, /npm run collect:api-odds:auto/);
   assert.match(workflow, /npm run collect:api-odds:closing/);
   assert.match(workflow, /npm run collect:team-context:upcoming/);
+  assert.match(workflow, /npm run collect:team-context:standings/);
+  assert.match(workflow, /inputs\.task == 'standings'/);
   assert.match(workflow, /concurrency:[\s\S]*cancel-in-progress: false/);
 });
 

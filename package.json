@@ -7,6 +7,7 @@
     "collect:api-odds:closing": "node scripts/collect-api-odds.js --past-days=0 --future-days=0 --result-days=1 --leagues=EPL,CHAMPIONSHIP,LALIGA,SERIEA,BUNDESLIGA,LIGUE1,EREDIVISIE,PRIMEIRA_LIGA,SCOTTISH_PREMIERSHIP,BELGIAN_PRO_LEAGUE,SUPER_LIG,UCL,UEL,WORLDCUP,WCQ,KLEAGUE1,KLEAGUE2,J1LEAGUE,J2LEAGUE,ACL,INTL_FRIENDLIES",
     "collect:team-context": "node scripts/collect-team-context.js",
     "collect:team-context:upcoming": "node scripts/collect-team-context.js --future-days=3",
+    "collect:team-context:standings": "node scripts/refresh-team-standings.js",
     "collect:match-statistics": "node scripts/collect-match-statistics.js --past-days=3",
     "collect:the-odds:kleague1:2025": "node scripts/collect-the-odds-history.js --league=KLEAGUE1 --season=2025",
     "audit:i18n": "node scripts/audit-i18n.js",

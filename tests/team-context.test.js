@@ -1,5 +1,6 @@
 const assert = require("assert");
 const collector = require("../scripts/collect-team-context.js");
+const standingsRefresh = require("../scripts/refresh-team-standings.js");
 const oddsCollector = require("../scripts/collect-api-odds.js");
 const app = require("../app.js");
 
@@ -179,6 +180,31 @@ test("targets only leagues with stored odds on each requested date", () => {
   ] }, ["2026-07-16", "2026-07-17"], ["EPL", "UEL"]);
   assert.deepStrictEqual([...targets.get("2026-07-16")], ["EPL"]);
   assert.deepStrictEqual([...targets.get("2026-07-17")], ["UEL"]);
+});
+
+test("refreshes standings once per league and preserves the rest of team context", () => {
+  const pack = {
+    version: "team-context-v3",
+    date: "2026-09-12",
+    updatedAt: "old",
+    dates: [
+      { date: "2026-09-12", updatedAt: "old", leagues: [{ key: "EPL", leagueId: 39, season: "2026", standings: [{ rank: 2 }], teams: [{ teamId: 1 }], fixtures: [{ fixtureId: 7 }] }] },
+      { date: "2026-09-13", updatedAt: "old", leagues: [{ key: "EPL", leagueId: 39, season: "2026", standings: [{ rank: 2 }], teams: [{ teamId: 2 }], fixtures: [{ fixtureId: 8 }] }] }
+    ]
+  };
+  const targets = standingsRefresh.getStandingsTargets(pack);
+  const updates = new Map([["39|2026", [{ teamId: 1, rank: 1 }]]]);
+  updates.requested = 1;
+  updates.failures = 0;
+  const refreshed = standingsRefresh.applyStandingsUpdates(pack, updates, "2026-09-12T03:10:00.000Z");
+
+  assert.strictEqual(targets.length, 1);
+  assert.strictEqual(refreshed.dates[0].leagues[0].standings[0].rank, 1);
+  assert.strictEqual(refreshed.dates[1].leagues[0].standings[0].rank, 1);
+  assert.deepStrictEqual(refreshed.dates[0].leagues[0].teams, [{ teamId: 1 }]);
+  assert.deepStrictEqual(refreshed.dates[0].leagues[0].fixtures, [{ fixtureId: 7 }]);
+  assert.strictEqual(refreshed.leagues, refreshed.dates[0].leagues);
+  assert.deepStrictEqual(refreshed.standingsRefresh, { updatedAt: "2026-09-12T03:10:00.000Z", requested: 1, updated: 1, failures: 0 });
 });
 
 test("matches fixture availability by fixture id and separates each team", () => {

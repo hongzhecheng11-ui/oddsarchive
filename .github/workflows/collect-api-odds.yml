@@ -8,10 +8,20 @@ on:
     - cron: "10 18 * * *"
     # 08:10, 12:10, 21:10 KST: extra same-day-only odds checks so genuinely moving odds get
     # caught more than once; matches that don't move still collapse to one entry via dedup.
+    # The 12:10 run also refreshes standings only, without repeating team/injury requests.
     - cron: "10 23 * * *"
     - cron: "10 3 * * *"
     - cron: "10 12 * * *"
   workflow_dispatch:
+    inputs:
+      task:
+        description: "Collection task"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - standings
 
 permissions:
   contents: write
@@ -33,6 +43,7 @@ jobs:
           node-version: "24"
 
       - name: Collect odds
+        if: github.event_name == 'schedule' || inputs.task == 'all'
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: |
@@ -45,6 +56,7 @@ jobs:
           fi
 
       - name: Update upset candidate audit
+        if: github.event_name == 'schedule' || inputs.task == 'all'
         run: npm run audit:upset-candidates
 
       - name: Collect standings and team context
@@ -57,6 +69,12 @@ jobs:
           else
             npm run collect:team-context
           fi
+
+      - name: Refresh standings only
+        if: (github.event_name == 'schedule' && github.event.schedule == '10 3 * * *') || (github.event_name == 'workflow_dispatch' && inputs.task == 'standings')
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: npm run collect:team-context:standings
 
       - name: Collect completed match statistics
         if: github.event_name == 'schedule' && github.event.schedule == '10 8 * * *'
