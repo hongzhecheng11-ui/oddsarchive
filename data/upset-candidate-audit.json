@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-12T07:51:45.914Z",
+  "updatedAt": "2026-09-12T12:08:53.446Z",
   "summary": {
     "trackedDays": 56,
-    "trackedCandidates": 97,
+    "trackedCandidates": 100,
     "resolvedCandidates": 71,
     "favoriteFailures": 27,
     "directionHits": 16
@@ -409,34 +409,37 @@
     {
       "date": "2026-09-12",
       "firstEvaluatedAt": "2026-09-08T16:35:08.528Z",
-      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
-      "eligibleMatchCount": 38,
-      "candidateIds": [
-        "fixture:1557403"
-      ]
+      "lastEvaluatedAt": "2026-09-12T12:08:53.446Z",
+      "eligibleMatchCount": 30,
+      "candidateIds": []
     },
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
+      "lastEvaluatedAt": "2026-09-12T12:08:53.446Z",
       "eligibleMatchCount": 43,
       "candidateIds": [
-        "fixture:1570373",
-        "fixture:1552760"
+        "fixture:1570374",
+        "fixture:1552760",
+        "fixture:1558630",
+        "fixture:1552166",
+        "fixture:1552165"
       ]
     },
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
+      "lastEvaluatedAt": "2026-09-12T12:08:53.446Z",
       "eligibleMatchCount": 16,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1575496"
+      ]
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-12T07:51:45.914Z",
-      "eligibleMatchCount": 9,
+      "lastEvaluatedAt": "2026-09-12T12:08:53.446Z",
+      "eligibleMatchCount": 12,
       "candidateIds": []
     }
   ],
@@ -2730,6 +2733,58 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1552165",
+      "fixtureId": "1552165",
+      "date": "2026-09-13",
+      "league": "EREDIVISIE",
+      "homeTeam": "Fortuna Sittard",
+      "awayTeam": "Ajax",
+      "homeOdds": "6.00",
+      "drawOdds": "4.75",
+      "awayOdds": "1.40",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552166",
+      "fixtureId": "1552166",
+      "date": "2026-09-13",
+      "league": "EREDIVISIE",
+      "homeTeam": "Heerenveen",
+      "awayTeam": "Telstar",
+      "homeOdds": "1.62",
+      "drawOdds": "4.20",
+      "awayOdds": "4.40",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 42,
+      "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1552168",
       "fixtureId": "1552168",
       "date": "2026-09-13",
@@ -2774,7 +2829,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
-      "lastSeenAt": "2026-09-12T07:51:45.914Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2826,7 +2881,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastSeenAt": "2026-09-10T08:03:18.814Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2878,7 +2933,7 @@
       ],
       "sampleSize": 20,
       "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
-      "lastSeenAt": "2026-09-11T07:58:51.687Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2957,6 +3012,32 @@
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
       "lastSeenAt": "2026-09-11T07:58:51.687Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1575496",
+      "fixtureId": "1575496",
+      "date": "2026-09-14",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeam": "Famalicao",
+      "awayTeam": "Sporting CP",
+      "homeOdds": "5.50",
+      "drawOdds": "4.20",
+      "awayOdds": "1.50",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 33,
+      "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
+      "lastSeenAt": "2026-09-12T12:08:53.446Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
