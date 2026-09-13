@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-12T20:28:57.603Z",
+  "updatedAt": "2026-09-13T00:56:42.176Z",
   "summary": {
     "trackedDays": 57,
-    "trackedCandidates": 100,
+    "trackedCandidates": 101,
     "resolvedCandidates": 76,
     "favoriteFailures": 30,
     "directionHits": 18
@@ -416,18 +416,18 @@
     {
       "date": "2026-09-13",
       "firstEvaluatedAt": "2026-09-09T16:34:55.267Z",
-      "lastEvaluatedAt": "2026-09-12T20:28:57.603Z",
+      "lastEvaluatedAt": "2026-09-13T00:56:42.176Z",
       "eligibleMatchCount": 32,
       "candidateIds": [
-        "fixture:1570374",
         "fixture:1552760",
+        "fixture:1552170",
         "fixture:1552166"
       ]
     },
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-12T20:28:57.603Z",
+      "lastEvaluatedAt": "2026-09-13T00:56:42.176Z",
       "eligibleMatchCount": 16,
       "candidateIds": [
         "fixture:1575496"
@@ -436,14 +436,14 @@
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-12T20:28:57.603Z",
+      "lastEvaluatedAt": "2026-09-13T00:56:42.176Z",
       "eligibleMatchCount": 12,
       "candidateIds": []
     },
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-12T20:28:57.603Z",
+      "lastEvaluatedAt": "2026-09-13T00:56:42.176Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     }
@@ -2782,7 +2782,7 @@
       ],
       "sampleSize": 42,
       "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
-      "lastSeenAt": "2026-09-12T20:28:57.603Z",
+      "lastSeenAt": "2026-09-13T00:56:42.176Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -2816,6 +2816,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1552170",
+      "fixtureId": "1552170",
+      "date": "2026-09-13",
+      "league": "EREDIVISIE",
+      "homeTeam": "PEC Zwolle",
+      "awayTeam": "Feyenoord",
+      "homeOdds": "5.80",
+      "drawOdds": "4.50",
+      "awayOdds": "1.44",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-09-13T00:56:42.176Z",
+      "lastSeenAt": "2026-09-13T00:56:42.176Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1552760",
       "fixtureId": "1552760",
       "date": "2026-09-13",
@@ -2834,7 +2860,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
-      "lastSeenAt": "2026-09-12T20:28:57.603Z",
+      "lastSeenAt": "2026-09-13T00:56:42.176Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3042,7 +3068,7 @@
       ],
       "sampleSize": 33,
       "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
-      "lastSeenAt": "2026-09-12T20:28:57.603Z",
+      "lastSeenAt": "2026-09-13T00:56:42.176Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
