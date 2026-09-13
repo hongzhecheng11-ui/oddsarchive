@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-13T13:18:11.408Z",
+  "updatedAt": "2026-09-13T16:12:59.913Z",
   "summary": {
-    "trackedDays": 57,
-    "trackedCandidates": 101,
-    "resolvedCandidates": 77,
-    "favoriteFailures": 31,
-    "directionHits": 18
+    "trackedDays": 58,
+    "trackedCandidates": 102,
+    "resolvedCandidates": 80,
+    "favoriteFailures": 33,
+    "directionHits": 19
   },
   "days": [
     {
@@ -426,23 +426,32 @@
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-13T13:18:11.408Z",
+      "lastEvaluatedAt": "2026-09-13T16:12:59.913Z",
       "eligibleMatchCount": 17,
       "candidateIds": []
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-13T13:18:11.408Z",
+      "lastEvaluatedAt": "2026-09-13T16:12:59.913Z",
       "eligibleMatchCount": 19,
       "candidateIds": []
     },
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-13T13:18:11.408Z",
+      "lastEvaluatedAt": "2026-09-13T16:12:59.913Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
+    },
+    {
+      "date": "2026-09-17",
+      "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
+      "lastEvaluatedAt": "2026-09-13T16:12:59.913Z",
+      "eligibleMatchCount": 13,
+      "candidateIds": [
+        "fixture:1570384"
+      ]
     }
   ],
   "candidates": [
@@ -2780,11 +2789,11 @@
       "sampleSize": 42,
       "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
       "lastSeenAt": "2026-09-13T08:14:10.585Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "0-0",
+      "resolvedAt": "2026-09-13T16:12:59.913Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1552168",
@@ -2858,11 +2867,11 @@
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-11T12:48:28.525Z",
       "lastSeenAt": "2026-09-13T13:18:11.408Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "2-0",
+      "resolvedAt": "2026-09-13T16:12:59.913Z",
+      "favoriteFailed": false,
+      "directionHit": false
     },
     {
       "candidateId": "fixture:1557405",
@@ -2962,10 +2971,10 @@
       "sampleSize": 20,
       "firstEvaluatedAt": "2026-09-10T12:53:57.112Z",
       "lastSeenAt": "2026-09-12T20:28:57.603Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "D",
+      "score": "1-1",
+      "resolvedAt": "2026-09-13T16:12:59.913Z",
+      "favoriteFailed": true,
       "directionHit": null
     },
     {
@@ -3066,6 +3075,32 @@
       "sampleSize": 33,
       "firstEvaluatedAt": "2026-09-12T12:08:53.446Z",
       "lastSeenAt": "2026-09-13T00:56:42.176Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570384",
+      "fixtureId": "1570384",
+      "date": "2026-09-17",
+      "league": "LALIGA",
+      "homeTeam": "Atletico Madrid",
+      "awayTeam": "Osasuna",
+      "homeOdds": "1.50",
+      "drawOdds": "4.00",
+      "awayOdds": "6.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 25,
+      "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
+      "lastSeenAt": "2026-09-13T16:12:59.913Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
