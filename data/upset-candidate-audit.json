@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-13T20:42:14.367Z",
+  "updatedAt": "2026-09-14T01:00:06.210Z",
   "summary": {
     "trackedDays": 58,
-    "trackedCandidates": 102,
+    "trackedCandidates": 104,
     "resolvedCandidates": 82,
     "favoriteFailures": 33,
     "directionHits": 19
@@ -426,28 +426,31 @@
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-13T20:42:14.367Z",
+      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-13T20:42:14.367Z",
+      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
       "eligibleMatchCount": 19,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1629912",
+        "fixture:1550118"
+      ]
     },
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-13T20:42:14.367Z",
+      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-13T20:42:14.367Z",
+      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1570384"
@@ -3082,6 +3085,58 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1550118",
+      "fixtureId": "1550118",
+      "date": "2026-09-15",
+      "league": "SERIEA",
+      "homeTeam": "Como",
+      "awayTeam": "Parma",
+      "homeOdds": "1.22",
+      "drawOdds": "5.80",
+      "awayOdds": "13.00",
+      "favoriteKey": "H",
+      "candidateLabel": "원정 역배 주의",
+      "predictedDirection": "A",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastSeenAt": "2026-09-14T01:00:06.210Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1629912",
+      "fixtureId": "1629912",
+      "date": "2026-09-15",
+      "league": "ACL",
+      "homeTeam": "Esteghlal FC",
+      "awayTeam": "Al Sadd",
+      "homeOdds": "3.50",
+      "drawOdds": "3.25",
+      "awayOdds": "2.00",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 28,
+      "firstEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastSeenAt": "2026-09-14T01:00:06.210Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1570384",
       "fixtureId": "1570384",
       "date": "2026-09-17",
@@ -3100,7 +3155,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastSeenAt": "2026-09-13T20:42:14.367Z",
+      "lastSeenAt": "2026-09-14T01:00:06.210Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
