@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-14T01:00:06.210Z",
+  "updatedAt": "2026-09-14T08:48:58.125Z",
   "summary": {
     "trackedDays": 58,
-    "trackedCandidates": 104,
+    "trackedCandidates": 106,
     "resolvedCandidates": 82,
     "favoriteFailures": 33,
     "directionHits": 19
@@ -426,31 +426,32 @@
     {
       "date": "2026-09-14",
       "firstEvaluatedAt": "2026-09-10T16:21:00.542Z",
-      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastEvaluatedAt": "2026-09-14T08:48:58.125Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastEvaluatedAt": "2026-09-14T08:48:58.125Z",
       "eligibleMatchCount": 19,
       "candidateIds": [
-        "fixture:1629912",
+        "fixture:1550120",
+        "fixture:1629916",
         "fixture:1550118"
       ]
     },
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastEvaluatedAt": "2026-09-14T08:48:58.125Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-14T01:00:06.210Z",
+      "lastEvaluatedAt": "2026-09-14T08:48:58.125Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1570384"
@@ -3103,7 +3104,33 @@
       ],
       "sampleSize": 24,
       "firstEvaluatedAt": "2026-09-14T01:00:06.210Z",
-      "lastSeenAt": "2026-09-14T01:00:06.210Z",
+      "lastSeenAt": "2026-09-14T08:48:58.125Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1550120",
+      "fixtureId": "1550120",
+      "date": "2026-09-15",
+      "league": "SERIEA",
+      "homeTeam": "Inter",
+      "awayTeam": "Udinese",
+      "homeOdds": "1.25",
+      "drawOdds": "5.50",
+      "awayOdds": "11.00",
+      "favoriteKey": "H",
+      "candidateLabel": "대형 이변 후보",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 20,
+      "firstEvaluatedAt": "2026-09-14T08:48:58.125Z",
+      "lastSeenAt": "2026-09-14T08:48:58.125Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3137,6 +3164,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1629916",
+      "fixtureId": "1629916",
+      "date": "2026-09-15",
+      "league": "ACL",
+      "homeTeam": "Al-Qadisiyah FC",
+      "awayTeam": "Al-Wasl FC",
+      "homeOdds": "1.40",
+      "drawOdds": "4.50",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 72,
+      "firstEvaluatedAt": "2026-09-14T08:48:58.125Z",
+      "lastSeenAt": "2026-09-14T08:48:58.125Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1570384",
       "fixtureId": "1570384",
       "date": "2026-09-17",
@@ -3155,7 +3208,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastSeenAt": "2026-09-14T01:00:06.210Z",
+      "lastSeenAt": "2026-09-14T08:48:58.125Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
