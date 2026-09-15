@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-15T01:24:56.894Z",
+  "updatedAt": "2026-09-15T08:35:45.948Z",
   "summary": {
     "trackedDays": 59,
-    "trackedCandidates": 106,
+    "trackedCandidates": 108,
     "resolvedCandidates": 86,
     "favoriteFailures": 34,
     "directionHits": 19
@@ -433,21 +433,25 @@
     {
       "date": "2026-09-15",
       "firstEvaluatedAt": "2026-09-11T16:25:04.248Z",
-      "lastEvaluatedAt": "2026-09-15T01:24:56.894Z",
+      "lastEvaluatedAt": "2026-09-15T08:35:45.948Z",
       "eligibleMatchCount": 6,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1629918"
+      ]
     },
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-15T01:24:56.894Z",
+      "lastEvaluatedAt": "2026-09-15T08:35:45.948Z",
       "eligibleMatchCount": 10,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1570388"
+      ]
     },
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-15T01:24:56.894Z",
+      "lastEvaluatedAt": "2026-09-15T08:35:45.948Z",
       "eligibleMatchCount": 13,
       "candidateIds": [
         "fixture:1570384"
@@ -456,7 +460,7 @@
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-15T01:24:56.894Z",
+      "lastEvaluatedAt": "2026-09-15T08:35:45.948Z",
       "eligibleMatchCount": 11,
       "candidateIds": []
     }
@@ -3193,6 +3197,58 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1629918",
+      "fixtureId": "1629918",
+      "date": "2026-09-15",
+      "league": "ACL",
+      "homeTeam": "Gamba Osaka",
+      "awayTeam": "Công An Nhân Dân",
+      "homeOdds": "1.40",
+      "drawOdds": "4.40",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 89,
+      "firstEvaluatedAt": "2026-09-15T08:35:45.948Z",
+      "lastSeenAt": "2026-09-15T08:35:45.948Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570388",
+      "fixtureId": "1570388",
+      "date": "2026-09-16",
+      "league": "LALIGA",
+      "homeTeam": "Elche",
+      "awayTeam": "Real Madrid",
+      "homeOdds": "10.00",
+      "drawOdds": "6.50",
+      "awayOdds": "1.22",
+      "favoriteKey": "A",
+      "candidateLabel": "대형 이변 후보",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-09-15T08:35:45.948Z",
+      "lastSeenAt": "2026-09-15T08:35:45.948Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1570384",
       "fixtureId": "1570384",
       "date": "2026-09-17",
@@ -3211,7 +3267,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastSeenAt": "2026-09-15T01:24:56.894Z",
+      "lastSeenAt": "2026-09-15T08:35:45.948Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
