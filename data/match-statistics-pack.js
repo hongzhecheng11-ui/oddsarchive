@@ -5,7 +5,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-14T15:02:33.927Z",
+  "updatedAt": "2026-09-15T13:30:56.229Z",
   "collection": {
     "dates": [
       "2026-09-14",
@@ -14,9 +14,9 @@
     ],
     "requestGroups": 35,
     "skippedGroups": 43,
-    "finishedFixtures": 103,
-    "skippedComplete": 44,
-    "saved": 59,
+    "finishedFixtures": 104,
+    "skippedComplete": 103,
+    "saved": 1,
     "failures": 0,
     "errors": []
   },
@@ -1911,6 +1911,81 @@
           "reason": "Inactive"
         }
       ]
+    },
+    {
+      "fixtureId": 1629911,
+      "date": "2026-09-14",
+      "league": "ACL",
+      "homeTeamId": 4217,
+      "homeTeam": "Neftchi",
+      "awayTeamId": 8009,
+      "awayTeam": "Al Quwa Al Jawiya",
+      "home": {
+        "teamId": 4217,
+        "team": "Neftchi",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 8009,
+        "team": "Al Quwa Al Jawiya",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 4217,
+          "team": "Neftchi",
+          "formation": "",
+          "coach": "Islom Ismoilov",
+          "starters": [
+            "B. Ergashev",
+            "K. Kouao",
+            "N. Abduganiyev",
+            "B. Ciger",
+            "F. Sayfiev",
+            "Yan Sasse",
+            "I. Alibaev",
+            "Ratinho",
+            "A. Ismoilov",
+            "S. Perica",
+            "A. Odilov"
+          ]
+        },
+        {
+          "teamId": 8009,
+          "team": "Al Quwa Al Jawiya",
+          "formation": "",
+          "coach": "Fathi Al Jabal",
+          "starters": [
+            "M. Saleh",
+            "T. Kisinda",
+            "R. Hanoon",
+            "S. Al Rosan",
+            "M. Mousa",
+            "M. Jeahze",
+            "A. H. Hatem",
+            "A. Fawzi",
+            "S. Abdulameer",
+            "A. Saad",
+            "M. Jawad"
+          ]
+        }
+      ],
+      "injuries": []
     },
     {
       "fixtureId": 1557406,
