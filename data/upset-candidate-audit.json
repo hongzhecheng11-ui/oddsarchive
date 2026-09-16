@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-15T21:14:36.721Z",
+  "updatedAt": "2026-09-16T01:22:46.348Z",
   "summary": {
     "trackedDays": 60,
-    "trackedCandidates": 109,
+    "trackedCandidates": 110,
     "resolvedCandidates": 88,
     "favoriteFailures": 35,
     "directionHits": 19
@@ -442,28 +442,30 @@
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-15T21:14:36.721Z",
+      "lastEvaluatedAt": "2026-09-16T01:22:46.348Z",
       "eligibleMatchCount": 3,
       "candidateIds": []
     },
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-15T21:14:36.721Z",
+      "lastEvaluatedAt": "2026-09-16T01:22:46.348Z",
       "eligibleMatchCount": 13,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1636344"
+      ]
     },
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-15T21:14:36.721Z",
+      "lastEvaluatedAt": "2026-09-16T01:22:46.348Z",
       "eligibleMatchCount": 12,
       "candidateIds": []
     },
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-15T21:14:36.721Z",
+      "lastEvaluatedAt": "2026-09-16T01:22:46.348Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     }
@@ -3297,6 +3299,32 @@
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
       "lastSeenAt": "2026-09-15T08:35:45.948Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1636344",
+      "fixtureId": "1636344",
+      "date": "2026-09-17",
+      "league": "UEL",
+      "homeTeam": "Sunderland",
+      "awayTeam": "AZ Alkmaar",
+      "homeOdds": "1.57",
+      "drawOdds": "4.00",
+      "awayOdds": "5.00",
+      "favoriteKey": "H",
+      "candidateLabel": "원정 역배 주의",
+      "predictedDirection": "A",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 159,
+      "firstEvaluatedAt": "2026-09-16T01:22:46.348Z",
+      "lastSeenAt": "2026-09-16T01:22:46.348Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
