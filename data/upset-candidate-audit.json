@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-16T08:29:47.441Z",
+  "updatedAt": "2026-09-16T13:28:35.108Z",
   "summary": {
     "trackedDays": 60,
-    "trackedCandidates": 110,
+    "trackedCandidates": 113,
     "resolvedCandidates": 88,
     "favoriteFailures": 35,
     "directionHits": 19
@@ -442,30 +442,34 @@
     {
       "date": "2026-09-16",
       "firstEvaluatedAt": "2026-09-12T15:28:54.857Z",
-      "lastEvaluatedAt": "2026-09-16T08:29:47.441Z",
-      "eligibleMatchCount": 3,
+      "lastEvaluatedAt": "2026-09-16T13:28:35.108Z",
+      "eligibleMatchCount": 2,
       "candidateIds": []
     },
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-16T08:29:47.441Z",
+      "lastEvaluatedAt": "2026-09-16T13:28:35.108Z",
       "eligibleMatchCount": 13,
       "candidateIds": []
     },
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-16T08:29:47.441Z",
+      "lastEvaluatedAt": "2026-09-16T13:28:35.108Z",
       "eligibleMatchCount": 12,
       "candidateIds": []
     },
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-16T08:29:47.441Z",
-      "eligibleMatchCount": 9,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-09-16T13:28:35.108Z",
+      "eligibleMatchCount": 46,
+      "candidateIds": [
+        "fixture:1510452",
+        "fixture:1552769",
+        "fixture:1570393"
+      ]
     }
   ],
   "candidates": [
@@ -3323,6 +3327,84 @@
       "sampleSize": 159,
       "firstEvaluatedAt": "2026-09-16T01:22:46.348Z",
       "lastSeenAt": "2026-09-16T01:22:46.348Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1510452",
+      "fixtureId": "1510452",
+      "date": "2026-09-19",
+      "league": "KLEAGUE2",
+      "homeTeam": "Jeonnam Dragons",
+      "awayTeam": "Suwon City FC",
+      "homeOdds": "3.50",
+      "drawOdds": "3.30",
+      "awayOdds": "1.85",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 28,
+      "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
+      "lastSeenAt": "2026-09-16T13:28:35.108Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552769",
+      "fixtureId": "1552769",
+      "date": "2026-09-19",
+      "league": "LIGUE1",
+      "homeTeam": "Monaco",
+      "awayTeam": "Lens",
+      "homeOdds": "2.00",
+      "drawOdds": "3.50",
+      "awayOdds": "3.30",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 26,
+      "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
+      "lastSeenAt": "2026-09-16T13:28:35.108Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1570393",
+      "fixtureId": "1570393",
+      "date": "2026-09-19",
+      "league": "LALIGA",
+      "homeTeam": "Athletic Club",
+      "awayTeam": "Alaves",
+      "homeOdds": "1.67",
+      "drawOdds": "3.60",
+      "awayOdds": "5.00",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 25,
+      "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
+      "lastSeenAt": "2026-09-16T13:28:35.108Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
