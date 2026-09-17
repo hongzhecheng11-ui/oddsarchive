@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-17T16:55:49.456Z",
+  "updatedAt": "2026-09-17T21:16:51.992Z",
   "collection": {
-    "lastAttemptAt": "2026-09-17T16:55:37.853Z",
-    "lastSuccessAt": "2026-09-17T16:55:49.456Z",
+    "lastAttemptAt": "2026-09-17T21:16:40.215Z",
+    "lastSuccessAt": "2026-09-17T21:16:51.992Z",
     "requestSuccesses": 28,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 9,
-    "duplicateCount": 2,
+    "updatedCount": 11,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -34961,13 +34961,13 @@
       "fixtureId": "1570390",
       "homeTeam": "Malaga",
       "awayTeam": "Villarreal",
-      "homeOdds": "3.60",
+      "homeOdds": "3.70",
       "drawOdds": "3.60",
       "awayOdds": "1.91",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:39.323Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:41.669Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:15.964Z",
@@ -34992,6 +34992,12 @@
           "homeOdds": "3.60",
           "drawOdds": "3.60",
           "awayOdds": "1.91"
+        },
+        {
+          "capturedAt": "2026-09-17T21:16:41.669Z",
+          "homeOdds": "3.70",
+          "drawOdds": "3.60",
+          "awayOdds": "1.91"
         }
       ]
     },
@@ -35001,13 +35007,13 @@
       "fixtureId": "1570386",
       "homeTeam": "Real Betis",
       "awayTeam": "Getafe",
-      "homeOdds": "1.62",
-      "drawOdds": "3.60",
-      "awayOdds": "5.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.50",
+      "drawOdds": "3.80",
+      "awayOdds": "6.50",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:39.323Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:41.669Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:15.964Z",
@@ -35050,10 +35056,10 @@
       "homeOdds": "1.73",
       "drawOdds": "3.90",
       "awayOdds": "4.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "4-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:35.068Z",
@@ -35105,13 +35111,13 @@
       "fixtureId": "1636247",
       "homeTeam": "Celtic",
       "awayTeam": "Ferencvarosi TC",
-      "homeOdds": "1.70",
-      "drawOdds": "3.80",
+      "homeOdds": "1.67",
+      "drawOdds": "3.90",
       "awayOdds": "4.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-3",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:35.068Z",
@@ -35154,10 +35160,10 @@
       "homeOdds": "1.33",
       "drawOdds": "5.00",
       "awayOdds": "8.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "4-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:35.068Z",
@@ -35200,10 +35206,10 @@
       "homeOdds": "1.17",
       "drawOdds": "7.50",
       "awayOdds": "15.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "5-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:20.452Z",
@@ -35252,10 +35258,10 @@
       "homeOdds": "3.25",
       "drawOdds": "3.40",
       "awayOdds": "2.10",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:20.452Z",
@@ -35298,10 +35304,10 @@
       "homeOdds": "1.62",
       "drawOdds": "4.00",
       "awayOdds": "4.80",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:35.068Z",
@@ -35344,10 +35350,10 @@
       "homeOdds": "8.50",
       "drawOdds": "5.00",
       "awayOdds": "1.30",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "2-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-14T14:59:35.068Z",
@@ -35390,10 +35396,10 @@
       "homeOdds": "2.40",
       "drawOdds": "3.40",
       "awayOdds": "2.70",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-3",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:28:04.763Z",
@@ -35433,13 +35439,13 @@
       "fixtureId": "1636321",
       "homeTeam": "Real Sociedad",
       "awayTeam": "Bournemouth",
-      "homeOdds": "2.70",
-      "drawOdds": "3.60",
-      "awayOdds": "2.30",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "2.90",
+      "drawOdds": "3.40",
+      "awayOdds": "2.25",
+      "result": "A",
+      "score": "1-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-17T16:55:43.281Z",
+      "oddsUpdatedAt": "2026-09-17T21:16:45.730Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:20.452Z",
