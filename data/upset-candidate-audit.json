@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-17T01:20:59.949Z",
+  "updatedAt": "2026-09-17T08:34:45.789Z",
   "summary": {
     "trackedDays": 61,
-    "trackedCandidates": 116,
+    "trackedCandidates": 117,
     "resolvedCandidates": 90,
     "favoriteFailures": 35,
     "directionHits": 19
@@ -449,23 +449,24 @@
     {
       "date": "2026-09-17",
       "firstEvaluatedAt": "2026-09-13T16:12:59.913Z",
-      "lastEvaluatedAt": "2026-09-17T01:20:59.949Z",
+      "lastEvaluatedAt": "2026-09-17T08:34:45.789Z",
       "eligibleMatchCount": 2,
       "candidateIds": []
     },
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-17T01:20:59.949Z",
+      "lastEvaluatedAt": "2026-09-17T08:34:45.789Z",
       "eligibleMatchCount": 12,
       "candidateIds": [
-        "fixture:1636287"
+        "fixture:1636287",
+        "fixture:1636278"
       ]
     },
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-17T01:20:59.949Z",
+      "lastEvaluatedAt": "2026-09-17T08:34:45.789Z",
       "eligibleMatchCount": 46,
       "candidateIds": [
         "fixture:1510452",
@@ -476,7 +477,7 @@
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-17T01:20:59.949Z",
+      "lastEvaluatedAt": "2026-09-17T08:34:45.789Z",
       "eligibleMatchCount": 22,
       "candidateIds": [
         "fixture:1584413",
@@ -3346,6 +3347,32 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1636278",
+      "fixtureId": "1636278",
+      "date": "2026-09-18",
+      "league": "UEL",
+      "homeTeam": "Juventus",
+      "awayTeam": "NEC Nijmegen",
+      "homeOdds": "1.20",
+      "drawOdds": "6.50",
+      "awayOdds": "12.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 69,
+      "firstEvaluatedAt": "2026-09-17T08:34:45.789Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1636287",
       "fixtureId": "1636287",
       "date": "2026-09-18",
@@ -3364,7 +3391,7 @@
       ],
       "sampleSize": 62,
       "firstEvaluatedAt": "2026-09-17T01:20:59.949Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3390,7 +3417,7 @@
       ],
       "sampleSize": 28,
       "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3416,7 +3443,7 @@
       ],
       "sampleSize": 26,
       "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3442,7 +3469,7 @@
       ],
       "sampleSize": 25,
       "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3468,7 +3495,7 @@
       ],
       "sampleSize": 40,
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3494,7 +3521,7 @@
       ],
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastSeenAt": "2026-09-17T01:20:59.949Z",
+      "lastSeenAt": "2026-09-17T08:34:45.789Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
