@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-17T13:24:05.008Z",
+  "updatedAt": "2026-09-17T16:55:49.746Z",
   "summary": {
-    "trackedDays": 61,
-    "trackedCandidates": 120,
+    "trackedDays": 62,
+    "trackedCandidates": 123,
     "resolvedCandidates": 90,
     "favoriteFailures": 35,
     "directionHits": 19
@@ -456,14 +456,16 @@
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-17T13:24:05.008Z",
+      "lastEvaluatedAt": "2026-09-17T16:55:49.746Z",
       "eligibleMatchCount": 12,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1570386"
+      ]
     },
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-17T13:24:05.008Z",
+      "lastEvaluatedAt": "2026-09-17T16:55:49.746Z",
       "eligibleMatchCount": 46,
       "candidateIds": [
         "fixture:1552769",
@@ -473,12 +475,22 @@
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-17T13:24:05.008Z",
+      "lastEvaluatedAt": "2026-09-17T16:55:49.746Z",
       "eligibleMatchCount": 54,
       "candidateIds": [
         "fixture:1584413",
         "fixture:1552177",
         "fixture:1558641"
+      ]
+    },
+    {
+      "date": "2026-09-21",
+      "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
+      "lastEvaluatedAt": "2026-09-17T16:55:49.746Z",
+      "eligibleMatchCount": 17,
+      "candidateIds": [
+        "fixture:1552770",
+        "fixture:1558642"
       ]
     }
   ],
@@ -3344,6 +3356,32 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1570386",
+      "fixtureId": "1570386",
+      "date": "2026-09-18",
+      "league": "LALIGA",
+      "homeTeam": "Real Betis",
+      "awayTeam": "Getafe",
+      "homeOdds": "1.62",
+      "drawOdds": "3.60",
+      "awayOdds": "5.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1636278",
       "fixtureId": "1636278",
       "date": "2026-09-18",
@@ -3440,7 +3478,7 @@
       ],
       "sampleSize": 26,
       "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
-      "lastSeenAt": "2026-09-17T13:24:05.008Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3466,7 +3504,7 @@
       ],
       "sampleSize": 160,
       "firstEvaluatedAt": "2026-09-17T13:24:05.008Z",
-      "lastSeenAt": "2026-09-17T13:24:05.008Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3544,7 +3582,7 @@
       ],
       "sampleSize": 30,
       "firstEvaluatedAt": "2026-09-17T13:24:05.008Z",
-      "lastSeenAt": "2026-09-17T13:24:05.008Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3570,7 +3608,7 @@
       ],
       "sampleSize": 38,
       "firstEvaluatedAt": "2026-09-17T13:24:05.008Z",
-      "lastSeenAt": "2026-09-17T13:24:05.008Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3596,7 +3634,59 @@
       ],
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastSeenAt": "2026-09-17T13:24:05.008Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1552770",
+      "fixtureId": "1552770",
+      "date": "2026-09-21",
+      "league": "LIGUE1",
+      "homeTeam": "Nice",
+      "awayTeam": "Lille",
+      "homeOdds": "3.50",
+      "drawOdds": "3.30",
+      "awayOdds": "2.00",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 31,
+      "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1558642",
+      "fixtureId": "1558642",
+      "date": "2026-09-21",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeam": "Club Brugge KV",
+      "awayTeam": "Genk",
+      "homeOdds": "1.50",
+      "drawOdds": "4.40",
+      "awayOdds": "5.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 31,
+      "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
+      "lastSeenAt": "2026-09-17T16:55:49.746Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
