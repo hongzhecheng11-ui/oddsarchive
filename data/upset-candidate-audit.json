@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-18T08:10:21.738Z",
+  "updatedAt": "2026-09-18T12:56:53.097Z",
   "summary": {
     "trackedDays": 62,
-    "trackedCandidates": 124,
+    "trackedCandidates": 125,
     "resolvedCandidates": 93,
     "favoriteFailures": 36,
     "directionHits": 19
@@ -456,35 +456,34 @@
     {
       "date": "2026-09-18",
       "firstEvaluatedAt": "2026-09-14T15:00:09.179Z",
-      "lastEvaluatedAt": "2026-09-18T08:10:21.738Z",
+      "lastEvaluatedAt": "2026-09-18T12:56:53.097Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
     },
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-18T08:10:21.738Z",
+      "lastEvaluatedAt": "2026-09-18T12:56:53.097Z",
       "eligibleMatchCount": 46,
       "candidateIds": [
-        "fixture:1557414",
-        "fixture:1552173"
+        "fixture:1552769",
+        "fixture:1557414"
       ]
     },
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-18T08:10:21.738Z",
+      "lastEvaluatedAt": "2026-09-18T12:56:53.097Z",
       "eligibleMatchCount": 54,
       "candidateIds": [
-        "fixture:1584413",
-        "fixture:1552177",
-        "fixture:1558641"
+        "fixture:1563177",
+        "fixture:1584413"
       ]
     },
     {
       "date": "2026-09-21",
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastEvaluatedAt": "2026-09-18T08:10:21.738Z",
+      "lastEvaluatedAt": "2026-09-18T12:56:53.097Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1552770",
@@ -3502,7 +3501,7 @@
       ],
       "sampleSize": 26,
       "firstEvaluatedAt": "2026-09-16T13:28:35.108Z",
-      "lastSeenAt": "2026-09-17T21:16:52.336Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3528,7 +3527,7 @@
       ],
       "sampleSize": 160,
       "firstEvaluatedAt": "2026-09-17T13:24:05.008Z",
-      "lastSeenAt": "2026-09-18T08:10:21.738Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3640,6 +3639,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1563177",
+      "fixtureId": "1563177",
+      "date": "2026-09-20",
+      "league": "CHAMPIONSHIP",
+      "homeTeam": "Wolves",
+      "awayTeam": "West Brom",
+      "homeOdds": "1.80",
+      "drawOdds": "3.40",
+      "awayOdds": "4.20",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 62,
+      "firstEvaluatedAt": "2026-09-18T12:56:53.097Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1584413",
       "fixtureId": "1584413",
       "date": "2026-09-20",
@@ -3658,7 +3683,7 @@
       ],
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastSeenAt": "2026-09-18T08:10:21.738Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3684,7 +3709,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-18T08:10:21.738Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3710,7 +3735,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-18T08:10:21.738Z",
+      "lastSeenAt": "2026-09-18T12:56:53.097Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
