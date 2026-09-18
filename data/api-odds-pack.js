@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-18T16:20:59.476Z",
+  "updatedAt": "2026-09-18T20:50:12.852Z",
   "collection": {
-    "lastAttemptAt": "2026-09-18T16:20:47.486Z",
-    "lastSuccessAt": "2026-09-18T16:20:59.476Z",
+    "lastAttemptAt": "2026-09-18T20:50:00.326Z",
+    "lastSuccessAt": "2026-09-18T20:50:12.852Z",
     "requestSuccesses": 28,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 6,
-    "duplicateCount": 4,
+    "updatedCount": 8,
+    "duplicateCount": 2,
     "errors": []
   },
   "matches": [
@@ -35487,11 +35487,11 @@
       "awayTeam": "Standard Liege",
       "homeOdds": "1.75",
       "drawOdds": "3.30",
-      "awayOdds": "4.33",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "4.40",
+      "result": "H",
+      "score": "2-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:52.353Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:05.462Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:16.197Z",
@@ -35559,13 +35559,13 @@
       "fixtureId": "1575167",
       "homeTeam": "Bayern München",
       "awayTeam": "Union Berlin",
-      "homeOdds": "1.05",
+      "homeOdds": "1.04",
       "drawOdds": "17.00",
-      "awayOdds": "36.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "41.00",
+      "result": "H",
+      "score": "7-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:50.245Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:03.233Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:08.474Z",
@@ -35727,13 +35727,13 @@
       "fixtureId": "1563168",
       "homeTeam": "Bristol City",
       "awayTeam": "Watford",
-      "homeOdds": "1.75",
-      "drawOdds": "3.60",
-      "awayOdds": "4.33",
+      "homeOdds": "1.70",
+      "drawOdds": "3.70",
+      "awayOdds": "4.40",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:48.837Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:01.717Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T08:10:10.048Z",
@@ -35746,6 +35746,12 @@
           "homeOdds": "1.75",
           "drawOdds": "3.60",
           "awayOdds": "4.33"
+        },
+        {
+          "capturedAt": "2026-09-18T20:50:01.717Z",
+          "homeOdds": "1.70",
+          "drawOdds": "3.70",
+          "awayOdds": "4.40"
         }
       ]
     },
@@ -35973,7 +35979,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:48.374Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:01.231Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:39.220Z",
@@ -35988,7 +35994,7 @@
           "awayOdds": "2.30"
         },
         {
-          "capturedAt": "2026-09-18T16:20:48.374Z",
+          "capturedAt": "2026-09-18T20:50:01.231Z",
           "homeOdds": "2.60",
           "drawOdds": "3.50",
           "awayOdds": "2.50"
@@ -36129,13 +36135,13 @@
       "fixtureId": "1552173",
       "homeTeam": "Groningen",
       "awayTeam": "PEC Zwolle",
-      "homeOdds": "1.50",
-      "drawOdds": "4.33",
+      "homeOdds": "1.44",
+      "drawOdds": "4.40",
       "awayOdds": "5.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "3-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:51.181Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:04.192Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:52.615Z",
@@ -36353,13 +36359,13 @@
       "fixtureId": "1570397",
       "homeTeam": "Espanyol",
       "awayTeam": "Elche",
-      "homeOdds": "1.80",
-      "drawOdds": "3.40",
-      "awayOdds": "4.20",
+      "homeOdds": "1.75",
+      "drawOdds": "3.50",
+      "awayOdds": "4.40",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:49.301Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:02.208Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:43.989Z",
@@ -36378,6 +36384,12 @@
           "homeOdds": "1.80",
           "drawOdds": "3.40",
           "awayOdds": "4.20"
+        },
+        {
+          "capturedAt": "2026-09-18T20:50:02.208Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.50",
+          "awayOdds": "4.40"
         }
       ]
     },
@@ -36415,13 +36427,13 @@
       "fixtureId": "1552769",
       "homeTeam": "Monaco",
       "awayTeam": "Lens",
-      "homeOdds": "1.95",
-      "drawOdds": "3.40",
-      "awayOdds": "3.40",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.85",
+      "drawOdds": "3.50",
+      "awayOdds": "3.70",
+      "result": "H",
+      "score": "2-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:50.710Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:03.717Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:10.010Z",
@@ -36633,13 +36645,13 @@
       "fixtureId": "1550133",
       "homeTeam": "Monza",
       "awayTeam": "Sassuolo",
-      "homeOdds": "2.62",
+      "homeOdds": "2.75",
       "drawOdds": "3.10",
       "awayOdds": "2.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "2-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:49.776Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:02.718Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-15T13:29:06.916Z",
@@ -36732,10 +36744,10 @@
       "homeOdds": "2.40",
       "drawOdds": "3.00",
       "awayOdds": "2.90",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "D",
+      "score": "0-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T16:20:52.818Z",
+      "oddsUpdatedAt": "2026-09-18T20:50:05.987Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T08:10:14.283Z",
