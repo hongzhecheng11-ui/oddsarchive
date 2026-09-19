@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-19T01:08:21.356Z",
+  "updatedAt": "2026-09-19T07:59:17.513Z",
   "summary": {
     "trackedDays": 62,
-    "trackedCandidates": 127,
+    "trackedCandidates": 128,
     "resolvedCandidates": 95,
     "favoriteFailures": 36,
     "directionHits": 19
@@ -463,16 +463,17 @@
     {
       "date": "2026-09-19",
       "firstEvaluatedAt": "2026-09-15T16:54:01.185Z",
-      "lastEvaluatedAt": "2026-09-19T01:08:21.356Z",
+      "lastEvaluatedAt": "2026-09-19T07:59:17.513Z",
       "eligibleMatchCount": 40,
       "candidateIds": [
-        "fixture:1556667"
+        "fixture:1556667",
+        "fixture:1563169"
       ]
     },
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-19T01:08:21.356Z",
+      "lastEvaluatedAt": "2026-09-19T07:59:17.513Z",
       "eligibleMatchCount": 54,
       "candidateIds": [
         "fixture:1563177",
@@ -483,7 +484,7 @@
     {
       "date": "2026-09-21",
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastEvaluatedAt": "2026-09-19T01:08:21.356Z",
+      "lastEvaluatedAt": "2026-09-19T07:59:17.513Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1552770",
@@ -3527,7 +3528,7 @@
       ],
       "sampleSize": 42,
       "firstEvaluatedAt": "2026-09-19T01:08:21.356Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3554,6 +3555,32 @@
       "sampleSize": 160,
       "firstEvaluatedAt": "2026-09-17T13:24:05.008Z",
       "lastSeenAt": "2026-09-18T20:50:13.134Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1563169",
+      "fixtureId": "1563169",
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeam": "Burnley",
+      "awayTeam": "Derby",
+      "homeOdds": "1.80",
+      "drawOdds": "3.50",
+      "awayOdds": "4.00",
+      "favoriteKey": "H",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 95,
+      "firstEvaluatedAt": "2026-09-19T07:59:17.513Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3657,7 +3684,7 @@
       ],
       "sampleSize": 71,
       "firstEvaluatedAt": "2026-09-19T01:08:21.356Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3709,7 +3736,7 @@
       ],
       "sampleSize": 62,
       "firstEvaluatedAt": "2026-09-18T12:56:53.097Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3735,7 +3762,7 @@
       ],
       "sampleSize": 50,
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3761,7 +3788,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3787,7 +3814,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-19T01:08:21.356Z",
+      "lastSeenAt": "2026-09-19T07:59:17.513Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
