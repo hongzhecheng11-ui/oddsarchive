@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-18T20:50:12.852Z",
+  "updatedAt": "2026-09-19T01:08:21.102Z",
   "collection": {
-    "lastAttemptAt": "2026-09-18T20:50:00.326Z",
-    "lastSuccessAt": "2026-09-18T20:50:12.852Z",
-    "requestSuccesses": 28,
+    "lastAttemptAt": "2026-09-19T01:08:03.963Z",
+    "lastSuccessAt": "2026-09-19T01:08:21.102Z",
+    "requestSuccesses": 39,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 8,
-    "duplicateCount": 2,
+    "updatedCount": 35,
+    "duplicateCount": 24,
     "errors": []
   },
   "matches": [
@@ -35532,12 +35532,12 @@
       "homeTeam": "OH Leuven",
       "awayTeam": "RAAL La Louvière",
       "homeOdds": "2.05",
-      "drawOdds": "3.25",
-      "awayOdds": "3.30",
+      "drawOdds": "3.20",
+      "awayOdds": "3.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:21.311Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.392Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:36.285Z",
@@ -35550,6 +35550,12 @@
           "homeOdds": "2.05",
           "drawOdds": "3.25",
           "awayOdds": "3.30"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:09.392Z",
+          "homeOdds": "2.05",
+          "drawOdds": "3.20",
+          "awayOdds": "3.50"
         }
       ]
     },
@@ -35617,10 +35623,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:10.582Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.850Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:10.582Z",
+          "capturedAt": "2026-09-19T01:08:06.850Z",
           "homeOdds": "2.88",
           "drawOdds": "3.50",
           "awayOdds": "2.20"
@@ -35639,10 +35645,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:10.582Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.850Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:10.582Z",
+          "capturedAt": "2026-09-19T01:08:06.850Z",
           "homeOdds": "2.30",
           "drawOdds": "3.60",
           "awayOdds": "2.62"
@@ -35661,10 +35667,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:10.582Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.850Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:10.582Z",
+          "capturedAt": "2026-09-19T01:08:06.850Z",
           "homeOdds": "2.62",
           "drawOdds": "3.40",
           "awayOdds": "2.40"
@@ -35677,19 +35683,25 @@
       "fixtureId": "1575172",
       "homeTeam": "Werder Bremen",
       "awayTeam": "FC Augsburg",
-      "homeOdds": "2.25",
+      "homeOdds": "2.30",
       "drawOdds": "3.70",
-      "awayOdds": "2.70",
+      "awayOdds": "2.62",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:10.582Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.850Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:10.582Z",
           "homeOdds": "2.25",
           "drawOdds": "3.70",
           "awayOdds": "2.70"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:06.850Z",
+          "homeOdds": "2.30",
+          "drawOdds": "3.70",
+          "awayOdds": "2.62"
         }
       ]
     },
@@ -35699,13 +35711,13 @@
       "fixtureId": "1563167",
       "homeTeam": "Birmingham",
       "awayTeam": "Middlesbrough",
-      "homeOdds": "2.80",
+      "homeOdds": "2.75",
       "drawOdds": "3.40",
-      "awayOdds": "2.25",
+      "awayOdds": "2.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:20.871Z",
@@ -35718,6 +35730,12 @@
           "homeOdds": "2.80",
           "drawOdds": "3.40",
           "awayOdds": "2.25"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "2.75",
+          "drawOdds": "3.40",
+          "awayOdds": "2.30"
         }
       ]
     },
@@ -35761,19 +35779,25 @@
       "fixtureId": "1563169",
       "homeTeam": "Burnley",
       "awayTeam": "Derby",
-      "homeOdds": "1.85",
-      "drawOdds": "3.40",
-      "awayOdds": "4.00",
+      "homeOdds": "1.75",
+      "drawOdds": "3.60",
+      "awayOdds": "4.20",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:03.932Z",
           "homeOdds": "1.85",
           "drawOdds": "3.40",
           "awayOdds": "4.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.60",
+          "awayOdds": "4.20"
         }
       ]
     },
@@ -35783,13 +35807,13 @@
       "fixtureId": "1563170",
       "homeTeam": "Cardiff",
       "awayTeam": "Charlton",
-      "homeOdds": "1.80",
-      "drawOdds": "3.75",
-      "awayOdds": "3.80",
+      "homeOdds": "1.75",
+      "drawOdds": "3.80",
+      "awayOdds": "3.90",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:20.871Z",
@@ -35802,6 +35826,12 @@
           "homeOdds": "1.80",
           "drawOdds": "3.75",
           "awayOdds": "3.80"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.80",
+          "awayOdds": "3.90"
         }
       ]
     },
@@ -35811,18 +35841,24 @@
       "fixtureId": "1563171",
       "homeTeam": "Lincoln",
       "awayTeam": "Swansea",
-      "homeOdds": "2.75",
-      "drawOdds": "3.30",
+      "homeOdds": "2.80",
+      "drawOdds": "3.20",
       "awayOdds": "2.40",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:03.932Z",
           "homeOdds": "2.75",
           "drawOdds": "3.30",
+          "awayOdds": "2.40"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "2.80",
+          "drawOdds": "3.20",
           "awayOdds": "2.40"
         }
       ]
@@ -35839,7 +35875,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:42.064Z",
@@ -35854,7 +35890,7 @@
           "awayOdds": "1.80"
         },
         {
-          "capturedAt": "2026-09-18T12:56:03.932Z",
+          "capturedAt": "2026-09-19T01:08:05.335Z",
           "homeOdds": "3.90",
           "drawOdds": "3.60",
           "awayOdds": "1.80"
@@ -35868,23 +35904,23 @@
       "homeTeam": "Portsmouth",
       "awayTeam": "Blackburn",
       "homeOdds": "2.10",
-      "drawOdds": "3.30",
+      "drawOdds": "3.25",
       "awayOdds": "3.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
-        {
-          "capturedAt": "2026-09-17T13:23:20.871Z",
-          "homeOdds": "2.10",
-          "drawOdds": "3.25",
-          "awayOdds": "3.30"
-        },
         {
           "capturedAt": "2026-09-18T12:56:03.932Z",
           "homeOdds": "2.10",
           "drawOdds": "3.30",
+          "awayOdds": "3.30"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "2.10",
+          "drawOdds": "3.25",
           "awayOdds": "3.30"
         }
       ]
@@ -35895,13 +35931,13 @@
       "fixtureId": "1563175",
       "homeTeam": "QPR",
       "awayTeam": "Preston",
-      "homeOdds": "1.73",
-      "drawOdds": "3.70",
-      "awayOdds": "4.40",
+      "homeOdds": "1.75",
+      "drawOdds": "3.60",
+      "awayOdds": "4.33",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:20.871Z",
@@ -35914,6 +35950,12 @@
           "homeOdds": "1.73",
           "drawOdds": "3.70",
           "awayOdds": "4.40"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.60",
+          "awayOdds": "4.33"
         }
       ]
     },
@@ -35923,13 +35965,13 @@
       "fixtureId": "1563176",
       "homeTeam": "Stoke City",
       "awayTeam": "Sheffield Utd",
-      "homeOdds": "2.40",
+      "homeOdds": "2.30",
       "drawOdds": "3.25",
-      "awayOdds": "2.75",
+      "awayOdds": "2.90",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:20.871Z",
@@ -35942,6 +35984,12 @@
           "homeOdds": "2.40",
           "drawOdds": "3.25",
           "awayOdds": "2.75"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "2.30",
+          "drawOdds": "3.25",
+          "awayOdds": "2.90"
         }
       ]
     },
@@ -35951,19 +35999,25 @@
       "fixtureId": "1563178",
       "homeTeam": "Wrexham",
       "awayTeam": "Southampton",
-      "homeOdds": "2.90",
+      "homeOdds": "2.88",
       "drawOdds": "3.30",
-      "awayOdds": "2.25",
+      "awayOdds": "2.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:03.932Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.335Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:03.932Z",
           "homeOdds": "2.90",
           "drawOdds": "3.30",
           "awayOdds": "2.25"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.335Z",
+          "homeOdds": "2.88",
+          "drawOdds": "3.30",
+          "awayOdds": "2.30"
         }
       ]
     },
@@ -36008,12 +36062,12 @@
       "homeTeam": "Brighton",
       "awayTeam": "Arsenal",
       "homeOdds": "4.50",
-      "drawOdds": "3.80",
+      "drawOdds": "3.90",
       "awayOdds": "1.70",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:01.702Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:04.819Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:39.875Z",
@@ -36032,6 +36086,12 @@
           "homeOdds": "4.50",
           "drawOdds": "3.80",
           "awayOdds": "1.70"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:04.819Z",
+          "homeOdds": "4.50",
+          "drawOdds": "3.90",
+          "awayOdds": "1.70"
         }
       ]
     },
@@ -36041,19 +36101,25 @@
       "fixtureId": "1557410",
       "homeTeam": "Everton",
       "awayTeam": "Ipswich",
-      "homeOdds": "1.75",
+      "homeOdds": "1.83",
       "drawOdds": "3.60",
-      "awayOdds": "4.33",
+      "awayOdds": "4.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:01.702Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:04.819Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:01.702Z",
           "homeOdds": "1.75",
           "drawOdds": "3.60",
           "awayOdds": "4.33"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:04.819Z",
+          "homeOdds": "1.83",
+          "drawOdds": "3.60",
+          "awayOdds": "4.00"
         }
       ]
     },
@@ -36063,13 +36129,13 @@
       "fixtureId": "1557414",
       "homeTeam": "Newcastle",
       "awayTeam": "Hull City",
-      "homeOdds": "1.57",
-      "drawOdds": "4.00",
+      "homeOdds": "1.60",
+      "drawOdds": "4.20",
       "awayOdds": "5.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:01.702Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:04.819Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:39.875Z",
@@ -36082,6 +36148,12 @@
           "homeOdds": "1.57",
           "drawOdds": "4.00",
           "awayOdds": "5.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:04.819Z",
+          "homeOdds": "1.60",
+          "drawOdds": "4.20",
+          "awayOdds": "5.00"
         }
       ]
     },
@@ -36091,17 +36163,23 @@
       "fixtureId": "1557416",
       "homeTeam": "Tottenham",
       "awayTeam": "Aston Villa",
-      "homeOdds": "1.95",
+      "homeOdds": "2.00",
       "drawOdds": "3.50",
       "awayOdds": "3.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:01.702Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:04.819Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:01.702Z",
           "homeOdds": "1.95",
+          "drawOdds": "3.50",
+          "awayOdds": "3.50"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:04.819Z",
+          "homeOdds": "2.00",
           "drawOdds": "3.50",
           "awayOdds": "3.50"
         }
@@ -36119,10 +36197,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:15.014Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.865Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:15.014Z",
+          "capturedAt": "2026-09-19T01:08:07.865Z",
           "homeOdds": "1.75",
           "drawOdds": "3.80",
           "awayOdds": "3.80"
@@ -36187,10 +36265,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:40.897Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:13.818Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:40.897Z",
+          "capturedAt": "2026-09-19T01:08:13.818Z",
           "homeOdds": "3.00",
           "drawOdds": "3.10",
           "awayOdds": "2.25"
@@ -36209,10 +36287,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:40.897Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:13.818Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:40.897Z",
+          "capturedAt": "2026-09-19T01:08:13.818Z",
           "homeOdds": "3.40",
           "drawOdds": "3.40",
           "awayOdds": "2.00"
@@ -36226,12 +36304,12 @@
       "homeTeam": "Asan Mugunghwa",
       "awayTeam": "Cheonan City",
       "homeOdds": "2.00",
-      "drawOdds": "3.25",
+      "drawOdds": "3.20",
       "awayOdds": "3.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:42.945Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:14.331Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:55.958Z",
@@ -36244,6 +36322,12 @@
           "homeOdds": "2.00",
           "drawOdds": "3.25",
           "awayOdds": "3.30"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:14.331Z",
+          "homeOdds": "2.00",
+          "drawOdds": "3.20",
+          "awayOdds": "3.30"
         }
       ]
     },
@@ -36254,17 +36338,23 @@
       "homeTeam": "Gimpo Citizen",
       "awayTeam": "Busan I Park",
       "homeOdds": "2.30",
-      "drawOdds": "3.20",
+      "drawOdds": "3.10",
       "awayOdds": "2.75",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:42.945Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:14.331Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:42.945Z",
           "homeOdds": "2.30",
           "drawOdds": "3.20",
+          "awayOdds": "2.75"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:14.331Z",
+          "homeOdds": "2.30",
+          "drawOdds": "3.10",
           "awayOdds": "2.75"
         }
       ]
@@ -36281,7 +36371,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:42.945Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:14.331Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:28:22.162Z",
@@ -36290,7 +36380,7 @@
           "awayOdds": "1.85"
         },
         {
-          "capturedAt": "2026-09-18T12:56:42.945Z",
+          "capturedAt": "2026-09-19T01:08:14.331Z",
           "homeOdds": "3.50",
           "drawOdds": "3.40",
           "awayOdds": "1.85"
@@ -36309,10 +36399,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:42.945Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:14.331Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:42.945Z",
+          "capturedAt": "2026-09-19T01:08:14.331Z",
           "homeOdds": "2.05",
           "drawOdds": "3.50",
           "awayOdds": "2.90"
@@ -36331,7 +36421,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:06.144Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.838Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:44.634Z",
@@ -36346,7 +36436,7 @@
           "awayOdds": "5.00"
         },
         {
-          "capturedAt": "2026-09-18T12:56:06.144Z",
+          "capturedAt": "2026-09-19T01:08:05.838Z",
           "homeOdds": "1.65",
           "drawOdds": "3.75",
           "awayOdds": "5.00"
@@ -36399,13 +36489,13 @@
       "fixtureId": "1570399",
       "homeTeam": "Osasuna",
       "awayTeam": "Rayo Vallecano",
-      "homeOdds": "2.38",
+      "homeOdds": "2.45",
       "drawOdds": "3.10",
-      "awayOdds": "3.00",
+      "awayOdds": "2.88",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:06.144Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.838Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:44.634Z",
@@ -36418,6 +36508,12 @@
           "homeOdds": "2.38",
           "drawOdds": "3.10",
           "awayOdds": "3.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.838Z",
+          "homeOdds": "2.45",
+          "drawOdds": "3.10",
+          "awayOdds": "2.88"
         }
       ]
     },
@@ -36467,13 +36563,13 @@
       "fixtureId": "1575504",
       "homeTeam": "GIL Vicente",
       "awayTeam": "Maritimo",
-      "homeOdds": "1.95",
+      "homeOdds": "1.91",
       "drawOdds": "3.25",
-      "awayOdds": "3.80",
+      "awayOdds": "3.90",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:17.051Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.383Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:55.225Z",
@@ -36486,6 +36582,12 @@
           "homeOdds": "1.95",
           "drawOdds": "3.25",
           "awayOdds": "3.80"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:08.383Z",
+          "homeOdds": "1.91",
+          "drawOdds": "3.25",
+          "awayOdds": "3.90"
         }
       ]
     },
@@ -36495,19 +36597,25 @@
       "fixtureId": "1575505",
       "homeTeam": "Nacional",
       "awayTeam": "Famalicao",
-      "homeOdds": "3.50",
+      "homeOdds": "3.60",
       "drawOdds": "3.20",
-      "awayOdds": "2.05",
+      "awayOdds": "2.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:17.051Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.383Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:17.051Z",
           "homeOdds": "3.50",
           "drawOdds": "3.20",
           "awayOdds": "2.05"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:08.383Z",
+          "homeOdds": "3.60",
+          "drawOdds": "3.20",
+          "awayOdds": "2.00"
         }
       ]
     },
@@ -36523,7 +36631,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:19.093Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.888Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:57.214Z",
@@ -36532,7 +36640,7 @@
           "awayOdds": "2.15"
         },
         {
-          "capturedAt": "2026-09-18T12:56:19.093Z",
+          "capturedAt": "2026-09-19T01:08:08.888Z",
           "homeOdds": "2.90",
           "drawOdds": "3.30",
           "awayOdds": "2.25"
@@ -36551,7 +36659,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:19.093Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.888Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:57.214Z",
@@ -36560,7 +36668,7 @@
           "awayOdds": "4.33"
         },
         {
-          "capturedAt": "2026-09-18T12:56:19.093Z",
+          "capturedAt": "2026-09-19T01:08:08.888Z",
           "homeOdds": "1.75",
           "drawOdds": "3.70",
           "awayOdds": "4.20"
@@ -36573,17 +36681,23 @@
       "fixtureId": "1556667",
       "homeTeam": "ST Johnstone",
       "awayTeam": "Falkirk",
-      "homeOdds": "2.05",
+      "homeOdds": "2.00",
       "drawOdds": "3.30",
       "awayOdds": "3.40",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:19.093Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.888Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:19.093Z",
           "homeOdds": "2.05",
+          "drawOdds": "3.30",
+          "awayOdds": "3.40"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:08.888Z",
+          "homeOdds": "2.00",
           "drawOdds": "3.30",
           "awayOdds": "3.40"
         }
@@ -36595,19 +36709,25 @@
       "fixtureId": "1556668",
       "homeTeam": "ST Mirren",
       "awayTeam": "Dundee Utd",
-      "homeOdds": "2.30",
+      "homeOdds": "2.38",
       "drawOdds": "3.40",
-      "awayOdds": "2.75",
+      "awayOdds": "2.70",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:19.093Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.888Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:19.093Z",
           "homeOdds": "2.30",
           "drawOdds": "3.40",
           "awayOdds": "2.75"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:08.888Z",
+          "homeOdds": "2.38",
+          "drawOdds": "3.40",
+          "awayOdds": "2.70"
         }
       ]
     },
@@ -36623,7 +36743,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:08.366Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.342Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:46.793Z",
@@ -36632,7 +36752,7 @@
           "awayOdds": "3.75"
         },
         {
-          "capturedAt": "2026-09-18T12:56:08.366Z",
+          "capturedAt": "2026-09-19T01:08:06.342Z",
           "homeOdds": "1.91",
           "drawOdds": "3.30",
           "awayOdds": "3.80"
@@ -36691,19 +36811,25 @@
       "fixtureId": "1550135",
       "homeTeam": "Udinese",
       "awayTeam": "Cagliari",
-      "homeOdds": "2.20",
-      "drawOdds": "3.10",
-      "awayOdds": "3.30",
+      "homeOdds": "2.15",
+      "drawOdds": "3.20",
+      "awayOdds": "3.25",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:08.366Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.342Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:08.366Z",
           "homeOdds": "2.20",
           "drawOdds": "3.10",
           "awayOdds": "3.30"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:06.342Z",
+          "homeOdds": "2.15",
+          "drawOdds": "3.20",
+          "awayOdds": "3.25"
         }
       ]
     },
@@ -36719,7 +36845,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:23.534Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.895Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:28:01.641Z",
@@ -36728,7 +36854,7 @@
           "awayOdds": "3.40"
         },
         {
-          "capturedAt": "2026-09-18T12:56:23.534Z",
+          "capturedAt": "2026-09-19T01:08:09.895Z",
           "homeOdds": "2.10",
           "drawOdds": "3.10",
           "awayOdds": "3.30"
@@ -36775,18 +36901,24 @@
       "fixtureId": "1584419",
       "homeTeam": "Kocaelispor",
       "awayTeam": "Gaziantep FK",
-      "homeOdds": "2.15",
-      "drawOdds": "3.10",
+      "homeOdds": "2.20",
+      "drawOdds": "2.90",
       "awayOdds": "3.30",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:23.534Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.895Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:23.534Z",
           "homeOdds": "2.15",
           "drawOdds": "3.10",
+          "awayOdds": "3.30"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:09.895Z",
+          "homeOdds": "2.20",
+          "drawOdds": "2.90",
           "awayOdds": "3.30"
         }
       ]
@@ -36803,7 +36935,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:21.311Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.392Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:36.285Z",
@@ -36812,7 +36944,7 @@
           "awayOdds": "4.20"
         },
         {
-          "capturedAt": "2026-09-18T12:56:21.311Z",
+          "capturedAt": "2026-09-19T01:08:09.392Z",
           "homeOdds": "1.75",
           "drawOdds": "3.50",
           "awayOdds": "4.33"
@@ -36859,7 +36991,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:21.311Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.392Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:36.285Z",
@@ -36868,7 +37000,7 @@
           "awayOdds": "3.90"
         },
         {
-          "capturedAt": "2026-09-18T12:56:21.311Z",
+          "capturedAt": "2026-09-19T01:08:09.392Z",
           "homeOdds": "1.75",
           "drawOdds": "3.80",
           "awayOdds": "3.90"
@@ -36881,19 +37013,25 @@
       "fixtureId": "1558639",
       "homeTeam": "Lommel United",
       "awayTeam": "KV Mechelen",
-      "homeOdds": "2.50",
+      "homeOdds": "2.62",
       "drawOdds": "3.30",
-      "awayOdds": "2.50",
+      "awayOdds": "2.45",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:21.311Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.392Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:21.311Z",
           "homeOdds": "2.50",
           "drawOdds": "3.30",
           "awayOdds": "2.50"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:09.392Z",
+          "homeOdds": "2.62",
+          "drawOdds": "3.30",
+          "awayOdds": "2.45"
         }
       ]
     },
@@ -36953,13 +37091,13 @@
       "fixtureId": "1575168",
       "homeTeam": "VfB Stuttgart",
       "awayTeam": "Borussia Dortmund",
-      "homeOdds": "2.30",
-      "drawOdds": "3.50",
-      "awayOdds": "2.70",
+      "homeOdds": "2.38",
+      "drawOdds": "3.60",
+      "awayOdds": "2.62",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:10.582Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.850Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:26.837Z",
@@ -36972,6 +37110,12 @@
           "homeOdds": "2.30",
           "drawOdds": "3.50",
           "awayOdds": "2.70"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:06.850Z",
+          "homeOdds": "2.38",
+          "drawOdds": "3.60",
+          "awayOdds": "2.62"
         }
       ]
     },
@@ -37109,13 +37253,13 @@
       "fixtureId": "1557415",
       "homeTeam": "Nottingham Forest",
       "awayTeam": "Coventry",
-      "homeOdds": "1.60",
+      "homeOdds": "1.65",
       "drawOdds": "3.80",
       "awayOdds": "5.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:01.702Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:04.819Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:18.944Z",
@@ -37126,6 +37270,12 @@
         {
           "capturedAt": "2026-09-18T12:56:01.702Z",
           "homeOdds": "1.60",
+          "drawOdds": "3.80",
+          "awayOdds": "5.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:04.819Z",
+          "homeOdds": "1.65",
           "drawOdds": "3.80",
           "awayOdds": "5.00"
         }
@@ -37143,7 +37293,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:15.014Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.865Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:53.254Z",
@@ -37158,7 +37308,7 @@
           "awayOdds": "7.50"
         },
         {
-          "capturedAt": "2026-09-18T12:56:15.014Z",
+          "capturedAt": "2026-09-19T01:08:07.865Z",
           "homeOdds": "1.20",
           "drawOdds": "6.50",
           "awayOdds": "10.00"
@@ -37255,10 +37405,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:15.014Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.865Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:15.014Z",
+          "capturedAt": "2026-09-19T01:08:07.865Z",
           "homeOdds": "2.45",
           "drawOdds": "3.40",
           "awayOdds": "2.50"
@@ -37293,25 +37443,25 @@
       "fixtureId": "1552175",
       "homeTeam": "Willem II",
       "awayTeam": "Fortuna Sittard",
-      "homeOdds": "2.45",
+      "homeOdds": "2.50",
       "drawOdds": "3.50",
-      "awayOdds": "2.50",
+      "awayOdds": "2.45",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:15.014Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.865Z",
       "oddsHistory": [
-        {
-          "capturedAt": "2026-09-16T13:27:53.254Z",
-          "homeOdds": "2.50",
-          "drawOdds": "3.50",
-          "awayOdds": "2.45"
-        },
         {
           "capturedAt": "2026-09-18T12:56:15.014Z",
           "homeOdds": "2.45",
           "drawOdds": "3.50",
           "awayOdds": "2.50"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:07.865Z",
+          "homeOdds": "2.50",
+          "drawOdds": "3.50",
+          "awayOdds": "2.45"
         }
       ]
     },
@@ -37547,13 +37697,13 @@
       "fixtureId": "1570395",
       "homeTeam": "Celta Vigo",
       "awayTeam": "Racing Santander",
-      "homeOdds": "1.80",
-      "drawOdds": "3.75",
+      "homeOdds": "1.75",
+      "drawOdds": "3.80",
       "awayOdds": "4.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:06.144Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.838Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:44.634Z",
@@ -37571,6 +37721,12 @@
           "capturedAt": "2026-09-18T12:56:06.144Z",
           "homeOdds": "1.80",
           "drawOdds": "3.75",
+          "awayOdds": "4.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.838Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.80",
           "awayOdds": "4.00"
         }
       ]
@@ -37611,11 +37767,11 @@
       "awayTeam": "Barcelona",
       "homeOdds": "11.00",
       "drawOdds": "6.50",
-      "awayOdds": "1.20",
+      "awayOdds": "1.22",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:06.144Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:05.838Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:44.634Z",
@@ -37634,6 +37790,12 @@
           "homeOdds": "11.00",
           "drawOdds": "6.50",
           "awayOdds": "1.20"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:05.838Z",
+          "homeOdds": "11.00",
+          "drawOdds": "6.50",
+          "awayOdds": "1.22"
         }
       ]
     },
@@ -37649,10 +37811,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:12.797Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.364Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:12.797Z",
+          "capturedAt": "2026-09-19T01:08:07.364Z",
           "homeOdds": "2.15",
           "drawOdds": "3.25",
           "awayOdds": "3.20"
@@ -37699,10 +37861,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:12.797Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.364Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:12.797Z",
+          "capturedAt": "2026-09-19T01:08:07.364Z",
           "homeOdds": "2.62",
           "drawOdds": "3.20",
           "awayOdds": "2.50"
@@ -37721,7 +37883,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:12.797Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.364Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:28.773Z",
@@ -37730,7 +37892,7 @@
           "awayOdds": "3.00"
         },
         {
-          "capturedAt": "2026-09-18T12:56:12.797Z",
+          "capturedAt": "2026-09-19T01:08:07.364Z",
           "homeOdds": "2.10",
           "drawOdds": "3.50",
           "awayOdds": "3.00"
@@ -37743,19 +37905,25 @@
       "fixtureId": "1552771",
       "homeTeam": "Paris FC",
       "awayTeam": "Strasbourg",
-      "homeOdds": "2.00",
+      "homeOdds": "1.95",
       "drawOdds": "3.40",
-      "awayOdds": "3.40",
+      "awayOdds": "3.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:12.797Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.364Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:12.797Z",
           "homeOdds": "2.00",
           "drawOdds": "3.40",
           "awayOdds": "3.40"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:07.364Z",
+          "homeOdds": "1.95",
+          "drawOdds": "3.40",
+          "awayOdds": "3.50"
         }
       ]
     },
@@ -37765,13 +37933,13 @@
       "fixtureId": "1552772",
       "homeTeam": "Toulouse",
       "awayTeam": "Le Havre",
-      "homeOdds": "1.75",
-      "drawOdds": "3.50",
-      "awayOdds": "4.40",
+      "homeOdds": "1.73",
+      "drawOdds": "3.70",
+      "awayOdds": "4.33",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:12.797Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:07.364Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:51.105Z",
@@ -37784,6 +37952,12 @@
           "homeOdds": "1.75",
           "drawOdds": "3.50",
           "awayOdds": "4.40"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:07.364Z",
+          "homeOdds": "1.73",
+          "drawOdds": "3.70",
+          "awayOdds": "4.33"
         }
       ]
     },
@@ -37793,19 +37967,25 @@
       "fixtureId": "1575500",
       "homeTeam": "Alverca",
       "awayTeam": "Rio Ave",
-      "homeOdds": "1.85",
-      "drawOdds": "3.40",
-      "awayOdds": "4.00",
+      "homeOdds": "1.95",
+      "drawOdds": "3.30",
+      "awayOdds": "3.75",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:17.051Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.383Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-18T12:56:17.051Z",
           "homeOdds": "1.85",
           "drawOdds": "3.40",
           "awayOdds": "4.00"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:08.383Z",
+          "homeOdds": "1.95",
+          "drawOdds": "3.30",
+          "awayOdds": "3.75"
         }
       ]
     },
@@ -37843,7 +38023,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:17.051Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.383Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-16T13:27:55.225Z",
@@ -37852,7 +38032,7 @@
           "awayOdds": "13.00"
         },
         {
-          "capturedAt": "2026-09-18T12:56:17.051Z",
+          "capturedAt": "2026-09-19T01:08:08.383Z",
           "homeOdds": "1.18",
           "drawOdds": "6.50",
           "awayOdds": "13.00"
@@ -37927,10 +38107,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:19.093Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:08.888Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:19.093Z",
+          "capturedAt": "2026-09-19T01:08:08.888Z",
           "homeOdds": "4.50",
           "drawOdds": "3.90",
           "awayOdds": "1.67"
@@ -37943,24 +38123,24 @@
       "fixtureId": "1550128",
       "homeTeam": "AS Roma",
       "awayTeam": "Inter",
-      "homeOdds": "2.62",
-      "drawOdds": "3.30",
+      "homeOdds": "2.60",
+      "drawOdds": "3.25",
       "awayOdds": "2.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:08.366Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.342Z",
       "oddsHistory": [
-        {
-          "capturedAt": "2026-09-17T13:23:24.895Z",
-          "homeOdds": "2.60",
-          "drawOdds": "3.25",
-          "awayOdds": "2.50"
-        },
         {
           "capturedAt": "2026-09-18T12:56:08.366Z",
           "homeOdds": "2.62",
           "drawOdds": "3.30",
+          "awayOdds": "2.50"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:06.342Z",
+          "homeOdds": "2.60",
+          "drawOdds": "3.25",
           "awayOdds": "2.50"
         }
       ]
@@ -38037,13 +38217,13 @@
       "fixtureId": "1550136",
       "homeTeam": "Venezia",
       "awayTeam": "Lazio",
-      "homeOdds": "3.60",
+      "homeOdds": "3.75",
       "drawOdds": "3.40",
-      "awayOdds": "1.95",
+      "awayOdds": "1.91",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:08.366Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:06.342Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:24.895Z",
@@ -38056,6 +38236,12 @@
           "homeOdds": "3.60",
           "drawOdds": "3.40",
           "awayOdds": "1.95"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:06.342Z",
+          "homeOdds": "3.75",
+          "drawOdds": "3.40",
+          "awayOdds": "1.91"
         }
       ]
     },
@@ -38071,10 +38257,10 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:23.534Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.895Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-18T12:56:23.534Z",
+          "capturedAt": "2026-09-19T01:08:09.895Z",
           "homeOdds": "1.53",
           "drawOdds": "4.00",
           "awayOdds": "5.00"
@@ -38131,13 +38317,13 @@
       "fixtureId": "1584420",
       "homeTeam": "Trabzonspor",
       "awayTeam": "Galatasaray",
-      "homeOdds": "3.00",
-      "drawOdds": "3.50",
-      "awayOdds": "2.05",
+      "homeOdds": "2.80",
+      "drawOdds": "3.60",
+      "awayOdds": "2.20",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-18T12:56:23.534Z",
+      "oddsUpdatedAt": "2026-09-19T01:08:09.895Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-17T13:23:38.278Z",
@@ -38150,6 +38336,12 @@
           "homeOdds": "3.00",
           "drawOdds": "3.50",
           "awayOdds": "2.05"
+        },
+        {
+          "capturedAt": "2026-09-19T01:08:09.895Z",
+          "homeOdds": "2.80",
+          "drawOdds": "3.60",
+          "awayOdds": "2.20"
         }
       ]
     },
