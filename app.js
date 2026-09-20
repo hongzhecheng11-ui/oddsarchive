@@ -10235,11 +10235,17 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     )));
   }
 
+  // 공통 API 결과가 화면에 올라간 뒤에는 로컬 계산으로 다시 그리지 않는다. 둘 다 그리면
+  // 나중에 끝난 쪽이 이기는데, 로컬 계산은 이 기기에 있는 데이터까지 세기 때문에 사용자마다
+  // 후보 수가 달라진다(실제로 웹 7개 / 앱 4개로 갈렸다). 서버가 느릴 때 로컬이 먼저 보여주는
+  // 것은 그대로 두고, 서버 답이 오면 그쪽이 최종이 되게 한다.
+  let sharedSignalsRendered = false;
   const signalDate = String(majorMatches[0]?.date || "").slice(0, 10);
   if (signalDate) {
     loadSharedTodaySignals(signalDate)
       .then((signals) => {
         if (renderVersion !== homeTodayAnalysisRenderVersion) return;
+        sharedSignalsRendered = true;
         renderHomeUpsetCandidates(majorMatches, null, signals);
         renderHomeStrongSignal(majorMatches, null, signals);
       })
@@ -10261,6 +10267,7 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
 
   const renderTodaySignals = () => {
     if (renderVersion !== homeTodayAnalysisRenderVersion) return;
+    if (sharedSignalsRendered) return;
     // 이 콜백은 나중에 실행돼서 그 사이 데이터 캐시가 비워졌을 수 있다.
     const assessed = cachedSearchableMatches
       ? assessTodayMatches(majorMatches, cachedSearchableMatches)

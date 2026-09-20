@@ -1,9 +1,9 @@
-const CACHE_NAME = "oddsarchive-v164-guest-trial-10";
+const CACHE_NAME = "oddsarchive-v165-shared-signals-win";
 const CORE_ASSETS = [
   "/",
   "/index.html",
   "/styles.css?v=148",
-  "/app.js?v=159",
+  "/app.js?v=160",
   "/assets/app-icon.svg?v=91",
   "/assets/app-icon-192.png",
   "/assets/app-icon-512.png",
