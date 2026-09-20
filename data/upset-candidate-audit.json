@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-19T20:31:58.503Z",
+  "updatedAt": "2026-09-20T01:03:32.403Z",
   "summary": {
     "trackedDays": 62,
-    "trackedCandidates": 129,
+    "trackedCandidates": 131,
     "resolvedCandidates": 104,
     "favoriteFailures": 40,
     "directionHits": 20
@@ -472,16 +472,18 @@
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-19T20:31:58.503Z",
+      "lastEvaluatedAt": "2026-09-20T01:03:32.403Z",
       "eligibleMatchCount": 42,
       "candidateIds": [
-        "fixture:1563177"
+        "fixture:1563177",
+        "fixture:1507073",
+        "fixture:1557413"
       ]
     },
     {
       "date": "2026-09-21",
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastEvaluatedAt": "2026-09-19T20:31:58.503Z",
+      "lastEvaluatedAt": "2026-09-20T01:03:32.403Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1552770",
@@ -3611,6 +3613,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1507073",
+      "fixtureId": "1507073",
+      "date": "2026-09-20",
+      "league": "KLEAGUE1",
+      "homeTeam": "Jeonbuk Motors",
+      "awayTeam": "Gwangju FC",
+      "homeOdds": "1.40",
+      "drawOdds": "4.50",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 73,
+      "firstEvaluatedAt": "2026-09-20T01:03:32.403Z",
+      "lastSeenAt": "2026-09-20T01:03:32.403Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1552174",
       "fixtureId": "1552174",
       "date": "2026-09-20",
@@ -3689,6 +3717,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1557413",
+      "fixtureId": "1557413",
+      "date": "2026-09-20",
+      "league": "EPL",
+      "homeTeam": "Manchester City",
+      "awayTeam": "Sunderland",
+      "homeOdds": "1.33",
+      "drawOdds": "5.00",
+      "awayOdds": "8.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 17,
+      "firstEvaluatedAt": "2026-09-20T01:03:32.403Z",
+      "lastSeenAt": "2026-09-20T01:03:32.403Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1558637",
       "fixtureId": "1558637",
       "date": "2026-09-20",
@@ -3759,7 +3813,7 @@
       ],
       "sampleSize": 62,
       "firstEvaluatedAt": "2026-09-18T12:56:53.097Z",
-      "lastSeenAt": "2026-09-19T20:31:58.503Z",
+      "lastSeenAt": "2026-09-20T01:03:32.403Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3811,7 +3865,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-19T20:31:58.503Z",
+      "lastSeenAt": "2026-09-20T01:03:32.403Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3837,7 +3891,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-19T20:31:58.503Z",
+      "lastSeenAt": "2026-09-20T01:03:32.403Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
