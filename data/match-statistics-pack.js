@@ -5,22 +5,5508 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-19T12:31:20.346Z",
+  "updatedAt": "2026-09-20T13:04:01.306Z",
   "collection": {
     "dates": [
+      "2026-09-19",
       "2026-09-18",
-      "2026-09-17",
-      "2026-09-16"
+      "2026-09-17"
     ],
-    "requestGroups": 10,
-    "skippedGroups": 68,
-    "finishedFixtures": 37,
-    "skippedComplete": 25,
-    "saved": 12,
+    "requestGroups": 18,
+    "skippedGroups": 60,
+    "finishedFixtures": 70,
+    "skippedComplete": 24,
+    "saved": 46,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1557408,
+      "date": "2026-09-19",
+      "league": "EPL",
+      "homeTeamId": 55,
+      "homeTeam": "Brentford",
+      "awayTeamId": 49,
+      "awayTeam": "Chelsea",
+      "home": {
+        "teamId": 55,
+        "team": "Brentford",
+        "shots": 13,
+        "shotsOnGoal": 6,
+        "possession": 40,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 49,
+        "team": "Chelsea",
+        "shots": 12,
+        "shotsOnGoal": 2,
+        "possession": 60,
+        "corners": 12,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 55,
+          "team": "Brentford",
+          "formation": "4-2-3-1",
+          "coach": "Keith Andrews",
+          "starters": [
+            "C. Kelleher",
+            "M. Kayode",
+            "Jannik Schuster",
+            "K. Ajer",
+            "K. Lewis-Potter",
+            "Y. Yarmolyuk",
+            "V. Janelt",
+            "J. Anthony",
+            "M. Damsgaard",
+            "K. Schade",
+            "Thiago"
+          ]
+        },
+        {
+          "teamId": 49,
+          "team": "Chelsea",
+          "formation": "3-4-2-1",
+          "coach": "Xabi Alonso",
+          "starters": [
+            "E. Martínez",
+            "W. Fofana",
+            "M. Lacroix",
+            "L. Colwill",
+            "Pedro Neto",
+            "J. Henderson",
+            "V. Barco",
+            "Pep Chavarría",
+            "C. Palmer",
+            "M. Rogers",
+            "D. Welbeck"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1557408,
+          "teamId": 55,
+          "playerId": 19495,
+          "player": "N. Collins",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 55,
+          "playerId": 19362,
+          "player": "J. Dasilva",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 55,
+          "playerId": 393193,
+          "player": "K. Furo",
+          "type": "Missing Fixture",
+          "reason": "Surgery"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 55,
+          "playerId": 47438,
+          "player": "M. Jensen",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 55,
+          "playerId": 36922,
+          "player": "S. van den Berg",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 49,
+          "playerId": 116117,
+          "player": "M. Caicedo",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 49,
+          "playerId": 203762,
+          "player": "E. Emegha",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 49,
+          "playerId": 10329,
+          "player": "Joao Pedro",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557408,
+          "teamId": 49,
+          "playerId": 383018,
+          "player": "M. Palestra",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1557416,
+      "date": "2026-09-19",
+      "league": "EPL",
+      "homeTeamId": 47,
+      "homeTeam": "Tottenham",
+      "awayTeamId": 66,
+      "awayTeam": "Aston Villa",
+      "home": {
+        "teamId": 47,
+        "team": "Tottenham",
+        "shots": 20,
+        "shotsOnGoal": 7,
+        "possession": 64,
+        "corners": 11,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 66,
+        "team": "Aston Villa",
+        "shots": 15,
+        "shotsOnGoal": 6,
+        "possession": 36,
+        "corners": 1,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 47,
+          "team": "Tottenham",
+          "formation": "4-2-3-1",
+          "coach": "R. De Zerbi",
+          "starters": [
+            "A. Kinský",
+            "Pedro Porro",
+            "J. van Hecke",
+            "M. van de Ven",
+            "A. Robertson",
+            "R. Bentancur",
+            "S. Tonali",
+            "Sávio",
+            "Mateus Fernandes",
+            "Omar Marmoush",
+            "D. Solanke"
+          ]
+        },
+        {
+          "teamId": 66,
+          "team": "Aston Villa",
+          "formation": "4-2-3-1",
+          "coach": "Unai Emery",
+          "starters": [
+            "Z. Suzuki",
+            "A. Wan-Bissaka",
+            "V. Lindelöf",
+            "T. Mings",
+            "M. Ruggeri",
+            "B. Kamara",
+            "João Gomes",
+            "J.  McGinn",
+            "J. Manzambi",
+            "E. Buendía",
+            "N. Jackson"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1557416,
+          "teamId": 47,
+          "playerId": 30435,
+          "player": "D. Kulusevski",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 47,
+          "playerId": 63577,
+          "player": "M. Mudryk",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 47,
+          "playerId": 336564,
+          "player": "W. Odobert",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 47,
+          "playerId": 2413,
+          "player": "Richarlison",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 47,
+          "playerId": 162016,
+          "player": "X. Simons",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 464004,
+          "player": "Alysson",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 36878,
+          "player": "M. Bizot",
+          "type": "Missing Fixture",
+          "reason": "Back Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 511,
+          "player": "L. Goretzka",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 138816,
+          "player": "I. Maatsen",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 514519,
+          "player": "B. Madjo",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 162714,
+          "player": "A. Onana",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557416,
+          "teamId": 66,
+          "playerId": 46815,
+          "player": "P. Torres",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1557414,
+      "date": "2026-09-19",
+      "league": "EPL",
+      "homeTeamId": 34,
+      "homeTeam": "Newcastle",
+      "awayTeamId": 64,
+      "awayTeam": "Hull City",
+      "home": {
+        "teamId": 34,
+        "team": "Newcastle",
+        "shots": 12,
+        "shotsOnGoal": 5,
+        "possession": 56,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 64,
+        "team": "Hull City",
+        "shots": 22,
+        "shotsOnGoal": 4,
+        "possession": 44,
+        "corners": 7,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 34,
+          "team": "Newcastle",
+          "formation": "4-2-3-1",
+          "coach": "Matthias Jaissle",
+          "starters": [
+            "L. Horníček",
+            "L. Miley",
+            "M. Thiaw",
+            "S. Botman",
+            "L. Hall",
+            "Sean Steur",
+            "J. Willock",
+            "J. Murphy",
+            "M. Fernandez-Pardo",
+            "H. Barnes",
+            "Y. Wissa"
+          ]
+        },
+        {
+          "teamId": 64,
+          "team": "Hull City",
+          "formation": "5-4-1",
+          "coach": "S. Jakirović",
+          "starters": [
+            "K. Tzolakis",
+            "L. Coyle",
+            "S. Ajayi",
+            "J. Egan",
+            "L. Herrington",
+            "R. Giles",
+            "M. Belloumi",
+            "M. Crooks",
+            "R. Slater",
+            "S. Thomas",
+            "O. McBurnie"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 18961,
+          "player": "D. Burn",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 7318,
+          "player": "A. Dedic",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 153430,
+          "player": "A. Elanga",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 329640,
+          "player": "E. Jaouen",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 723,
+          "player": "Joelinton",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 161933,
+          "player": "Nico",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 315237,
+          "player": "W. Osula",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 34,
+          "playerId": 19192,
+          "player": "J. Ramsey",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 380873,
+          "player": "I. Ansah",
+          "type": "Missing Fixture",
+          "reason": "Back Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 2930,
+          "player": "J. Butland",
+          "type": "Missing Fixture",
+          "reason": "Arm Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 282124,
+          "player": "D. Gyabi",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 331551,
+          "player": "C. Hughes",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 162991,
+          "player": "E. Matazo",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 358431,
+          "player": "N. Mendy",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 32960,
+          "player": "H. Morita",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1557414,
+          "teamId": 64,
+          "playerId": 18941,
+          "player": "M. Targett",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1557410,
+      "date": "2026-09-19",
+      "league": "EPL",
+      "homeTeamId": 45,
+      "homeTeam": "Everton",
+      "awayTeamId": 57,
+      "awayTeam": "Ipswich",
+      "home": {
+        "teamId": 45,
+        "team": "Everton",
+        "shots": 21,
+        "shotsOnGoal": 2,
+        "possession": 52,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 57,
+        "team": "Ipswich",
+        "shots": 13,
+        "shotsOnGoal": 4,
+        "possession": 48,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 45,
+          "team": "Everton",
+          "formation": "4-2-3-1",
+          "coach": "D. Moyes",
+          "starters": [
+            "J. Pickford",
+            "A. Maitland-Niles",
+            "J. Tarkowski",
+            "J. Branthwaite",
+            "V. Mykolenko",
+            "H. Armstrong",
+            "J. Garner",
+            "B. Johnson",
+            "K. Dewsbury-Hall",
+            "J. Grealish",
+            "T. Barry"
+          ]
+        },
+        {
+          "teamId": 57,
+          "team": "Ipswich",
+          "formation": "4-2-3-1",
+          "coach": "G. O'Neil",
+          "starters": [
+            "C. Walton",
+            "A. Ouattara",
+            "I. Diop",
+            "D. O&apos;Shea",
+            "L. Davis",
+            "S. Lukić",
+            "E. Palacios",
+            "A. Fatawu",
+            "J. Enciso",
+            "J. Clarke",
+            "Emersonn"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1557410,
+          "teamId": 45,
+          "playerId": 30407,
+          "player": "C. Norgaard",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557410,
+          "teamId": 45,
+          "playerId": 202854,
+          "player": "M. Rohl",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557410,
+          "teamId": 57,
+          "playerId": 37236,
+          "player": "A. Matusiwa",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1557410,
+          "teamId": 57,
+          "playerId": 18397,
+          "player": "J. Taylor",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1557409,
+      "date": "2026-09-19",
+      "league": "EPL",
+      "homeTeamId": 51,
+      "homeTeam": "Brighton",
+      "awayTeamId": 42,
+      "awayTeam": "Arsenal",
+      "home": {
+        "teamId": 51,
+        "team": "Brighton",
+        "shots": 17,
+        "shotsOnGoal": 5,
+        "possession": 40,
+        "corners": 5,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 42,
+        "team": "Arsenal",
+        "shots": 11,
+        "shotsOnGoal": 2,
+        "possession": 60,
+        "corners": 6,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 51,
+          "team": "Brighton",
+          "formation": "4-2-3-1",
+          "coach": "F. Hürzeler",
+          "starters": [
+            "B. Verbruggen",
+            "F. Kadıoğlu",
+            "L. Vušković",
+            "P. Struijk",
+            "O. Boscagli",
+            "José María Andrés Baixauli",
+            "P. Groß",
+            "D. Gómez",
+            "Y. Ayari",
+            "M. De Cuyper",
+            "C. Kostoulas"
+          ]
+        },
+        {
+          "teamId": 42,
+          "team": "Arsenal",
+          "formation": "4-2-3-1",
+          "coach": "Mikel Arteta",
+          "starters": [
+            "David Raya",
+            "J. Timber",
+            "E. Konsa",
+            "Gabriel Magalhães",
+            "R. Calafiori",
+            "D. Rice",
+            "Bruno Guimarães",
+            "B. Saka",
+            "M. Ødegaard",
+            "C. Tzolis",
+            "K. Havertz"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 282637,
+          "player": "F. Azeez",
+          "type": "Missing Fixture",
+          "reason": "Abdominal strain"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 129643,
+          "player": "E. Ferguson",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 305730,
+          "player": "J. Hinshelwood",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 383685,
+          "player": "Y. Minteh",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 106835,
+          "player": "K. Mitoma",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 343311,
+          "player": "S. Tzimas",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 92993,
+          "player": "M. Wieffer",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 51,
+          "playerId": 524411,
+          "player": "Z. Yohanna",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 42,
+          "playerId": 333682,
+          "player": "C. Mosquera",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 42,
+          "playerId": 22090,
+          "player": "W. Saliba",
+          "type": "Missing Fixture",
+          "reason": "Back Injury"
+        },
+        {
+          "fixtureId": 1557409,
+          "teamId": 42,
+          "playerId": 19959,
+          "player": "B. White",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563168,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 56,
+      "homeTeam": "Bristol City",
+      "awayTeamId": 38,
+      "awayTeam": "Watford",
+      "home": {
+        "teamId": 56,
+        "team": "Bristol City",
+        "shots": 17,
+        "shotsOnGoal": 7,
+        "possession": 36,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 38,
+        "team": "Watford",
+        "shots": 10,
+        "shotsOnGoal": 2,
+        "possession": 64,
+        "corners": 5,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 56,
+          "team": "Bristol City",
+          "formation": "4-2-3-1",
+          "coach": "M. Skubala",
+          "starters": [
+            "S. Tickle",
+            "G. Tanner",
+            "N. Eile",
+            "R. Atkinson",
+            "Rio Cardines",
+            "J. Williams",
+            "A. Randell",
+            "Y. Hirakawa",
+            "J. Knight",
+            "S. Greenwood",
+            "D. Ballard"
+          ]
+        },
+        {
+          "teamId": 38,
+          "team": "Watford",
+          "formation": "3-4-1-2",
+          "coach": "A. Dionisi",
+          "starters": [
+            "F. Ravaglia",
+            "K. Keben",
+            "M. Pollock",
+            "Branimir Mlačić",
+            "R. Vata",
+            "H. Kyprianou",
+            "E. Kayembe",
+            "Amin Nabizada",
+            "Iker Bravo",
+            "M. Doumbia",
+            "L. Kjerrumgaard"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563168,
+          "teamId": 56,
+          "playerId": 8902,
+          "player": "B. De Keersmaecker",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 56,
+          "playerId": 20103,
+          "player": "R. Dickie",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 56,
+          "playerId": 69539,
+          "player": "L. McNally",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 351341,
+          "player": "T. Akomeah",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 152699,
+          "player": "K. Baah",
+          "type": "Missing Fixture",
+          "reason": "Knock"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 20044,
+          "player": "M. Bola",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 286475,
+          "player": "E. Bove",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 193296,
+          "player": "J. Ngakia",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1563168,
+          "teamId": 38,
+          "playerId": 19824,
+          "player": "J. Zemura",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563170,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 43,
+      "homeTeam": "Cardiff",
+      "awayTeamId": 1335,
+      "awayTeam": "Charlton",
+      "home": {
+        "teamId": 43,
+        "team": "Cardiff",
+        "shots": 27,
+        "shotsOnGoal": 8,
+        "possession": 62,
+        "corners": 6,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1335,
+        "team": "Charlton",
+        "shots": 6,
+        "shotsOnGoal": 3,
+        "possession": 38,
+        "corners": 1,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 43,
+          "team": "Cardiff",
+          "formation": "4-2-3-1",
+          "coach": "B. Barry-Murphy",
+          "starters": [
+            "N. Trott",
+            "P. Ng",
+            "K. Bielik",
+            "G. Osho",
+            "J. Bagan",
+            "A. Robertson",
+            "J. Colwill",
+            "O. Tanner",
+            "J. Moylan",
+            "C. Willock",
+            "Y. Salech"
+          ]
+        },
+        {
+          "teamId": 1335,
+          "team": "Charlton",
+          "formation": "4-2-3-1",
+          "coach": "N. Jones",
+          "starters": [
+            "A. Okonkwo",
+            "D. McNamara",
+            "L. Jones",
+            "Tyler Bindon",
+            "I. Mesík",
+            "C. Coventry",
+            "O. Skipp",
+            "M. Alli",
+            "K. Ahearne-Grant",
+            "T. Campbell",
+            "M. Leaburn"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563170,
+          "teamId": 43,
+          "playerId": 19016,
+          "player": "C. Chambers",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 43,
+          "playerId": 301184,
+          "player": "R. Colwill",
+          "type": "Missing Fixture",
+          "reason": "Health problems"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 43,
+          "playerId": 215847,
+          "player": "I. Davies",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 43,
+          "playerId": 153434,
+          "player": "W. Fish",
+          "type": "Missing Fixture",
+          "reason": "Hernia"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 18803,
+          "player": "N. Chalobah",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 19970,
+          "player": "M. Godden",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 152974,
+          "player": "B. Koumetio",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 18603,
+          "player": "W. Mannion",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 18939,
+          "player": "K. Ramsay",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563170,
+          "teamId": 1335,
+          "playerId": 283144,
+          "player": "C. Sichenje",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563172,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 58,
+      "homeTeam": "Millwall",
+      "awayTeamId": 48,
+      "awayTeam": "West Ham",
+      "home": {
+        "teamId": 58,
+        "team": "Millwall",
+        "shots": 19,
+        "shotsOnGoal": 7,
+        "possession": 33,
+        "corners": 3,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 48,
+        "team": "West Ham",
+        "shots": 15,
+        "shotsOnGoal": 6,
+        "possession": 67,
+        "corners": 11,
+        "yellowCards": 4,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 58,
+          "team": "Millwall",
+          "formation": "4-2-3-1",
+          "coach": "A. Neil",
+          "starters": [
+            "F. Marschall",
+            "J. Osei-Tutu",
+            "C. Taylor",
+            "J. Cooper",
+            "Zak Norton Sturge",
+            "Jenson Metcalfe",
+            "D. Mazou-Sacko",
+            "M. Sykes",
+            "L. Dykes",
+            "C. Neghli",
+            "T. Arconte"
+          ]
+        },
+        {
+          "teamId": 48,
+          "team": "West Ham",
+          "formation": "4-4-2",
+          "coach": "Nuno Espírito Santo",
+          "starters": [
+            "M. Hermansen",
+            "K. Walker-Peters",
+            "K. Mavropanos",
+            "M. Kilman",
+            "Morato",
+            "J. Bowen",
+            "D. Mukasa",
+            "A. Engels",
+            "M. Solomon",
+            "J. Piroe",
+            "V. Castellanos"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 272553,
+          "player": "J. Coburn",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 191337,
+          "player": "T. Crama",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 1935,
+          "player": "C. De Norre",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 402640,
+          "player": "R. Esse",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 368659,
+          "player": "M. Ivanovic",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 190595,
+          "player": "L. Jensen",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 19639,
+          "player": "R. Leonard",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 58,
+          "playerId": 2752,
+          "player": "M. Luongo",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 48,
+          "playerId": 253,
+          "player": "A. Areola",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 48,
+          "playerId": 1243,
+          "player": "T. Soucek",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563172,
+          "teamId": 48,
+          "playerId": 537,
+          "player": "J. Veltman",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563176,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 75,
+      "homeTeam": "Stoke City",
+      "awayTeamId": 62,
+      "awayTeam": "Sheffield Utd",
+      "home": {
+        "teamId": 75,
+        "team": "Stoke City",
+        "shots": 12,
+        "shotsOnGoal": 5,
+        "possession": 62,
+        "corners": 8,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 62,
+        "team": "Sheffield Utd",
+        "shots": 8,
+        "shotsOnGoal": 3,
+        "possession": 38,
+        "corners": 1,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 75,
+          "team": "Stoke City",
+          "formation": "3-4-3",
+          "coach": "M. Robins",
+          "starters": [
+            "V. Johansson",
+            "B. Wilmot",
+            "M. Talovierov",
+            "L. Graham",
+            "B. Johnson",
+            "El Hadji Djibril Soumaré",
+            "E. Galbraith",
+            "E. Bocat",
+            "J. McGlynn",
+            "L. Cissé",
+            "J. Devenny"
+          ]
+        },
+        {
+          "teamId": 62,
+          "team": "Sheffield Utd",
+          "formation": "3-4-2-1",
+          "coach": "Chris Wilder",
+          "starters": [
+            "M. Cooper",
+            "J. Baptiste",
+            "J. Tanganga",
+            "L. Kitching",
+            "H. Choudhury",
+            "K. Phillips",
+            "Sydie Peck",
+            "R. Norrington-Davies",
+            "O. Arblaster",
+            "B. Brereton",
+            "P. Bamford"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563176,
+          "teamId": 75,
+          "playerId": 18813,
+          "player": "A. Cresswell",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563176,
+          "teamId": 75,
+          "playerId": 30809,
+          "player": "S. Ingelsson",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563176,
+          "teamId": 75,
+          "playerId": 425199,
+          "player": "B. Lawal",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563176,
+          "teamId": 62,
+          "playerId": 19961,
+          "player": "H. Burrows",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563176,
+          "teamId": 62,
+          "playerId": 373615,
+          "player": "R. One",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563176,
+          "teamId": 62,
+          "playerId": 17407,
+          "player": "F. Seriki",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563169,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 44,
+      "homeTeam": "Burnley",
+      "awayTeamId": 69,
+      "awayTeam": "Derby",
+      "home": {
+        "teamId": 44,
+        "team": "Burnley",
+        "shots": 6,
+        "shotsOnGoal": 2,
+        "possession": 47,
+        "corners": 4,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 69,
+        "team": "Derby",
+        "shots": 17,
+        "shotsOnGoal": 6,
+        "possession": 53,
+        "corners": 6,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 44,
+          "team": "Burnley",
+          "formation": "4-4-2",
+          "coach": "N. Hayen",
+          "starters": [
+            "G. Coudert",
+            "C. Roberts",
+            "A. Ahmedhodžić",
+            "Igor",
+            "Lucas Pires",
+            "M. Edwards",
+            "J. Laurent",
+            "Max Alleyne",
+            "R. Hatate",
+            "J. Bruun Larsen",
+            "Z. Amdouni"
+          ]
+        },
+        {
+          "teamId": 69,
+          "team": "Derby",
+          "formation": "4-2-3-1",
+          "coach": "J. Eustace",
+          "starters": [
+            "J. Vickers",
+            "J. Ward",
+            "S. Langås",
+            "D. Sanderson",
+            "C. Taylor",
+            "A. Mowatt",
+            "D. Ozoh",
+            "R. Hedges",
+            "S. Szmodics",
+            "B. Clark",
+            "C. Morris"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 361388,
+          "player": "E. Agyei",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 336578,
+          "player": "J. Banel",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 18927,
+          "player": "A. Barnes",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 25628,
+          "player": "J. Beyer",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 19827,
+          "player": "J. Cullen",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 181797,
+          "player": "B. Humphreys",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 180560,
+          "player": "H. Mejbri",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 278079,
+          "player": "A. Ramsey",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 44,
+          "playerId": 445472,
+          "player": "D. Satpaev",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 407652,
+          "player": "P. Agyemang",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 125726,
+          "player": "F. Bilbija",
+          "type": "Missing Fixture",
+          "reason": "Back Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 19860,
+          "player": "M. Clarke",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 19205,
+          "player": "C. Forsyth",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 331678,
+          "player": "H. Meister",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 37760,
+          "player": "D. Murkin",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563169,
+          "teamId": 69,
+          "playerId": 48033,
+          "player": "J. Widell Zetterstrom",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563167,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 54,
+      "homeTeam": "Birmingham",
+      "awayTeamId": 70,
+      "awayTeam": "Middlesbrough",
+      "home": {
+        "teamId": 54,
+        "team": "Birmingham",
+        "shots": 15,
+        "shotsOnGoal": 5,
+        "possession": 57,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 70,
+        "team": "Middlesbrough",
+        "shots": 15,
+        "shotsOnGoal": 4,
+        "possession": 43,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 54,
+          "team": "Birmingham",
+          "formation": "4-2-3-1",
+          "coach": "C. Davies",
+          "starters": [
+            "J. Beadle",
+            "B. Osayi-Samuel",
+            "P. Neumann",
+            "C. Klarer",
+            "A. Cochrane",
+            "T. Iwata",
+            "J. Solis",
+            "Carlos Vicente",
+            "J. Stansfield",
+            "L. Millar",
+            "L. Vázquez"
+          ]
+        },
+        {
+          "teamId": 70,
+          "team": "Middlesbrough",
+          "formation": "3-4-2-1",
+          "coach": "K. Hellberg",
+          "starters": [
+            "R. Vítek",
+            "L. Ayling",
+            "A. Phillips",
+            "A. Malanda",
+            "C. Brittain",
+            "A. Morris",
+            "R. McGree",
+            "M. Arfsten",
+            "A. Cozier-Duberry",
+            "M. Peart-Harris",
+            "W. Lankshear"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563167,
+          "teamId": 54,
+          "playerId": 19211,
+          "player": "M. Bird",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563167,
+          "teamId": 54,
+          "playerId": 231078,
+          "player": "T. Gardner-Hickman",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563167,
+          "teamId": 54,
+          "playerId": 18781,
+          "player": "D. Gray",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563167,
+          "teamId": 54,
+          "playerId": 167656,
+          "player": "M. Leonard",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1563167,
+          "teamId": 54,
+          "playerId": 45049,
+          "player": "S. Wright",
+          "type": "Missing Fixture",
+          "reason": "Off the roster"
+        },
+        {
+          "fixtureId": 1563167,
+          "teamId": 70,
+          "playerId": 18938,
+          "player": "A. Jones",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563175,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 72,
+      "homeTeam": "QPR",
+      "awayTeamId": 59,
+      "awayTeam": "Preston",
+      "home": {
+        "teamId": 72,
+        "team": "QPR",
+        "shots": 33,
+        "shotsOnGoal": 7,
+        "possession": 60,
+        "corners": 10,
+        "yellowCards": 2,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 59,
+        "team": "Preston",
+        "shots": 14,
+        "shotsOnGoal": 3,
+        "possession": 40,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 72,
+          "team": "QPR",
+          "formation": "4-4-2",
+          "coach": "Julien Stéphan",
+          "starters": [
+            "P. Charles",
+            "A. Mbengue",
+            "J. Dunne",
+            "R. Edwards",
+            "D. Cirkin",
+            "J. Varane",
+            "G. Kamara",
+            "N. Madsen",
+            "K. Poku",
+            "Leon Scarlett",
+            "R. Burrell"
+          ]
+        },
+        {
+          "teamId": 59,
+          "team": "Preston",
+          "formation": "5-3-2",
+          "coach": "P. Heckingbottom",
+          "starters": [
+            "D. Iversen",
+            "S. Mills",
+            "H. Clarke",
+            "J. Storey",
+            "A. Hughes",
+            "A. Vukčević",
+            "L. Leroy",
+            "J. Thompson",
+            "A. Devine",
+            "C. Lang",
+            "J. Kenny"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563175,
+          "teamId": 72,
+          "playerId": 17632,
+          "player": "I. Chair",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 72,
+          "playerId": 67959,
+          "player": "K. Dembele",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 72,
+          "playerId": 38737,
+          "player": "B. Kemper",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 72,
+          "playerId": 453043,
+          "player": "R. Kone",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 72,
+          "playerId": 138815,
+          "player": "T. Lamptey",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 59,
+          "playerId": 459284,
+          "player": "T. Carroll",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 59,
+          "playerId": 70519,
+          "player": "A. McCann",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563175,
+          "teamId": 59,
+          "playerId": 19455,
+          "player": "B. Potts",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563174,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 1355,
+      "homeTeam": "Portsmouth",
+      "awayTeamId": 67,
+      "awayTeam": "Blackburn",
+      "home": {
+        "teamId": 1355,
+        "team": "Portsmouth",
+        "shots": 22,
+        "shotsOnGoal": 7,
+        "possession": 54,
+        "corners": 9,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 67,
+        "team": "Blackburn",
+        "shots": 8,
+        "shotsOnGoal": 5,
+        "possession": 46,
+        "corners": 7,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1355,
+          "team": "Portsmouth",
+          "formation": "4-2-3-1",
+          "coach": "John Mousinho",
+          "starters": [
+            "D. Bielica",
+            "Z. Swanson",
+            "M. Dia",
+            "C. Shaughnessy",
+            "J. Meghoma",
+            "M. Pack",
+            "R. Shein",
+            "A. Kamara",
+            "A. Segecic",
+            "R. Kavuma McQueen",
+            "T. Shade"
+          ]
+        },
+        {
+          "teamId": 67,
+          "team": "Blackburn",
+          "formation": "5-4-1",
+          "coach": "Tony Mowbray",
+          "starters": [
+            "B. Tóth",
+            "R. Alebiosu",
+            "Tom Atcheson",
+            "H. Carter",
+            "S. McLoughlin",
+            "H. Pickering",
+            "R. Morishita",
+            "Sam Morsy",
+            "Kristi Montgomery",
+            "O. Afolayan",
+            "T. Cantwell"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 17728,
+          "player": "K. Anderson",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 462900,
+          "player": "L. Brooke-Smith",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 237115,
+          "player": "M. Kosznovszky",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 312650,
+          "player": "Marezi",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 19002,
+          "player": "J. Murphy",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 20138,
+          "player": "C. Ogilvie",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 340136,
+          "player": "F. Umeh",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 1355,
+          "playerId": 361472,
+          "player": "T. Waddingham",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 19127,
+          "player": "A. Forshaw",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 50968,
+          "player": "M. Jorgensen",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 30998,
+          "player": "A. Kargbo",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 313248,
+          "player": "M. Litherland",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 7037,
+          "player": "L. Miller",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 33147,
+          "player": "Y. Ohashi",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 565,
+          "player": "Y. Ribeiro",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1563174,
+          "teamId": 67,
+          "playerId": 17395,
+          "player": "S. Wharton",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563171,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 1379,
+      "homeTeam": "Lincoln",
+      "awayTeamId": 76,
+      "awayTeam": "Swansea",
+      "home": {
+        "teamId": 1379,
+        "team": "Lincoln",
+        "shots": 13,
+        "shotsOnGoal": 4,
+        "possession": 58,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 76,
+        "team": "Swansea",
+        "shots": 10,
+        "shotsOnGoal": 4,
+        "possession": 42,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1379,
+          "team": "Lincoln",
+          "formation": "3-4-2-1",
+          "coach": "Chris Cohen",
+          "starters": [
+            "G. Wickens",
+            "D. Elerewe",
+            "S. Bradley",
+            "R. Towler",
+            "A. Coubiș",
+            "T. Bayliss",
+            "C. McGrandles",
+            "A. Reach",
+            "R. Hackett",
+            "B. House",
+            "F. Draper"
+          ]
+        },
+        {
+          "teamId": 76,
+          "team": "Swansea",
+          "formation": "4-3-3",
+          "coach": "Vítor Matos",
+          "starters": [
+            "L. Vigouroux",
+            "F. Lissah",
+            "B. Cabango",
+            "S. Welsh",
+            "J. Tymon",
+            "E. Just",
+            "M. Stamenić",
+            "S. Eustáquio",
+            "M. Yeo",
+            "A. Idah",
+            "M. Widell"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563171,
+          "teamId": 1379,
+          "playerId": 19288,
+          "player": "T. Darikwa",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1563171,
+          "teamId": 1379,
+          "playerId": 17740,
+          "player": "T. Hamer",
+          "type": "Missing Fixture",
+          "reason": "Health problems"
+        },
+        {
+          "fixtureId": 1563171,
+          "teamId": 1379,
+          "playerId": 394935,
+          "player": "M. Melia",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1563171,
+          "teamId": 76,
+          "playerId": 20457,
+          "player": "C. Burgess",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1563171,
+          "teamId": 76,
+          "playerId": 17606,
+          "player": "J. Key",
+          "type": "Missing Fixture",
+          "reason": "Health problems"
+        },
+        {
+          "fixtureId": 1563171,
+          "teamId": 76,
+          "playerId": 45078,
+          "player": "R. Stewart",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1563178,
+      "date": "2026-09-19",
+      "league": "CHAMPIONSHIP",
+      "homeTeamId": 1837,
+      "homeTeam": "Wrexham",
+      "awayTeamId": 41,
+      "awayTeam": "Southampton",
+      "home": {
+        "teamId": 1837,
+        "team": "Wrexham",
+        "shots": 8,
+        "shotsOnGoal": 4,
+        "possession": 40,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 41,
+        "team": "Southampton",
+        "shots": 20,
+        "shotsOnGoal": 7,
+        "possession": 60,
+        "corners": 3,
+        "yellowCards": 4,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1837,
+          "team": "Wrexham",
+          "formation": "3-4-2-1",
+          "coach": "P. Parkinson",
+          "starters": [
+            "A. Patterson",
+            "Z. Vyner",
+            "D. Hyam",
+            "C. Doyle",
+            "I. Kaboré",
+            "B. Sheaf",
+            "B. Whiteman",
+            "J. Ekomié",
+            "J. Windass",
+            "C. O&apos;Hare",
+            "K. Moore"
+          ]
+        },
+        {
+          "teamId": 41,
+          "team": "Southampton",
+          "formation": "4-2-3-1",
+          "coach": "Tonda Eckert",
+          "starters": [
+            "Daniel Peretz",
+            "J. Bree",
+            "N. Wood-Gordon",
+            "K. Schlotterbeck",
+            "R. Manning",
+            "F. Downes",
+            "J. Ward-Prowse",
+            "K. Matsuki",
+            "F. Azaz",
+            "Léo Scienza",
+            "C. Larin"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1563178,
+          "teamId": 1837,
+          "playerId": 6931,
+          "player": "L. Cacace",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1563178,
+          "teamId": 1837,
+          "playerId": 146316,
+          "player": "M. Cleworth",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1563178,
+          "teamId": 1837,
+          "playerId": 20248,
+          "player": "O. Rathbone",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1563178,
+          "teamId": 1837,
+          "playerId": 278123,
+          "player": "S. Revan",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1563178,
+          "teamId": 1837,
+          "playerId": 194461,
+          "player": "G. Thomason",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1563178,
+          "teamId": 41,
+          "playerId": 282060,
+          "player": "C. Jander",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1570397,
+      "date": "2026-09-19",
+      "league": "LALIGA",
+      "homeTeamId": 540,
+      "homeTeam": "Espanyol",
+      "awayTeamId": 797,
+      "awayTeam": "Elche",
+      "home": {
+        "teamId": 540,
+        "team": "Espanyol",
+        "shots": 23,
+        "shotsOnGoal": 4,
+        "possession": 66,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 797,
+        "team": "Elche",
+        "shots": 9,
+        "shotsOnGoal": 6,
+        "possession": 34,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 540,
+          "team": "Espanyol",
+          "formation": "4-2-3-1",
+          "coach": "Manolo González",
+          "starters": [
+            "M. Dmitrović",
+            "J. A. Lopez",
+            "Unai Núñez",
+            "L. Cabrera",
+            "Roger Hinojo",
+            "Edu Expósito",
+            "Urko González",
+            "Álex Calatrava",
+            "Javier Hernandez",
+            "Bryan Zaragoza",
+            "Roberto Fernández"
+          ]
+        },
+        {
+          "teamId": 797,
+          "team": "Elche",
+          "formation": "4-3-3",
+          "coach": "M. Anselmi",
+          "starters": [
+            "M. Dituro",
+            "Buba Sangaré",
+            "F. Redondo",
+            "Víctor Chust",
+            "R. Revivo",
+            "Gonzalo Villar",
+            "J. Morcillo",
+            "T. Lemar",
+            "L. Cepeda",
+            "Fer Niño",
+            "Germán Valera"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1570397,
+          "teamId": 540,
+          "playerId": 286601,
+          "player": "O. El Hilali",
+          "type": "Missing Fixture",
+          "reason": "Red Card"
+        },
+        {
+          "fixtureId": 1570397,
+          "teamId": 540,
+          "playerId": 47396,
+          "player": "K. Garcia",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1570397,
+          "teamId": 540,
+          "playerId": 182674,
+          "player": "Jofre",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1570397,
+          "teamId": 540,
+          "playerId": 47349,
+          "player": "J. Puado",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1570397,
+          "teamId": 797,
+          "playerId": 284415,
+          "player": "Y. Santiago",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1570399,
+      "date": "2026-09-19",
+      "league": "LALIGA",
+      "homeTeamId": 727,
+      "homeTeam": "Osasuna",
+      "awayTeamId": 728,
+      "awayTeam": "Rayo Vallecano",
+      "home": {
+        "teamId": 727,
+        "team": "Osasuna",
+        "shots": 10,
+        "shotsOnGoal": 3,
+        "possession": 37,
+        "corners": 4,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 728,
+        "team": "Rayo Vallecano",
+        "shots": 19,
+        "shotsOnGoal": 2,
+        "possession": 63,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 727,
+          "team": "Osasuna",
+          "formation": "5-4-1",
+          "coach": "Luis Miguel Ramis",
+          "starters": [
+            "Aitor Fernández",
+            "Íñigo Arguibide",
+            "Asier Osambela",
+            "Catena",
+            "U. Santos",
+            "Diego Rico",
+            "Rubén García",
+            "Moncayola",
+            "Iker Muñoz",
+            "Kike Barja",
+            "A. Budimir"
+          ]
+        },
+        {
+          "teamId": 728,
+          "team": "Rayo Vallecano",
+          "formation": "4-3-3",
+          "coach": "Beñat San José",
+          "starters": [
+            "E. Audero",
+            "A. Rațiu",
+            "Mujaid Sadick",
+            "F. Lejeune",
+            "Adrià Pedrosa",
+            "Unai López",
+            "P. Ciss",
+            "Óscar Valentín",
+            "Jorge de Frutos",
+            "Sergio Camello",
+            "Álvaro García"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1570399,
+          "teamId": 727,
+          "playerId": 47574,
+          "player": "M. Gomez",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 727,
+          "playerId": 182592,
+          "player": "J. Herrando",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 727,
+          "playerId": 67939,
+          "player": "A. Oroz",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 727,
+          "playerId": 21701,
+          "player": "V. Rosier",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 728,
+          "playerId": 11379,
+          "player": "A. Batalla",
+          "type": "Missing Fixture",
+          "reason": "Broken calfbone"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 728,
+          "playerId": 1847,
+          "player": "Luiz Felipe",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 728,
+          "playerId": 122657,
+          "player": "R. Nteka",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 728,
+          "playerId": 131546,
+          "player": "I. Palazon",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570399,
+          "teamId": 728,
+          "playerId": 314006,
+          "player": "J. Vertrouwd",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1570393,
+      "date": "2026-09-19",
+      "league": "LALIGA",
+      "homeTeamId": 531,
+      "homeTeam": "Athletic Club",
+      "awayTeamId": 542,
+      "awayTeam": "Alaves",
+      "home": {
+        "teamId": 531,
+        "team": "Athletic Club",
+        "shots": 24,
+        "shotsOnGoal": 6,
+        "possession": 69,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 542,
+        "team": "Alaves",
+        "shots": 2,
+        "shotsOnGoal": 0,
+        "possession": 31,
+        "corners": 1,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 531,
+          "team": "Athletic Club",
+          "formation": "4-2-3-1",
+          "coach": "E. Terzić",
+          "starters": [
+            "Unai Simón",
+            "J. Louis-Jean",
+            "Aitor Paredes",
+            "Aymeric Laporte",
+            "Yuri",
+            "Ruíz de Galarreta",
+            "Mikel Jauregizar",
+            "Robert Navarro",
+            "Oihan Sancet",
+            "Nico Williams",
+            "I. Williams"
+          ]
+        },
+        {
+          "teamId": 542,
+          "team": "Alaves",
+          "formation": "5-3-2",
+          "coach": "Quique Sánchez Flores",
+          "starters": [
+            "Sivera",
+            "N. Tenaglia",
+            "Jonny",
+            "V. Koski",
+            "N. Valentini",
+            "A. Rebbach",
+            "C. Benavídez",
+            "Guevara",
+            "Pablo Ibáñez",
+            "L. Boyé",
+            "M. Díaz"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1570393,
+          "teamId": 531,
+          "playerId": 332305,
+          "player": "U. Egiluz",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1570393,
+          "teamId": 531,
+          "playerId": 47291,
+          "player": "G. Guruzeta",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1570393,
+          "teamId": 531,
+          "playerId": 47278,
+          "player": "D. Vivian",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1570393,
+          "teamId": 542,
+          "playerId": 6638,
+          "player": "F. Garces",
+          "type": "Missing Fixture",
+          "reason": "Suspended"
+        },
+        {
+          "fixtureId": 1570393,
+          "teamId": 542,
+          "playerId": 330440,
+          "player": "A. Manas",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1570393,
+          "teamId": 542,
+          "playerId": 332645,
+          "player": "M. Rodriguez",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1550133,
+      "date": "2026-09-19",
+      "league": "SERIEA",
+      "homeTeamId": 1579,
+      "homeTeam": "Monza",
+      "awayTeamId": 488,
+      "awayTeam": "Sassuolo",
+      "home": {
+        "teamId": 1579,
+        "team": "Monza",
+        "shots": 15,
+        "shotsOnGoal": 6,
+        "possession": 35,
+        "corners": 7,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": 1.51
+      },
+      "away": {
+        "teamId": 488,
+        "team": "Sassuolo",
+        "shots": 20,
+        "shotsOnGoal": 8,
+        "possession": 65,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 1.47
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1579,
+          "team": "Monza",
+          "formation": "3-4-2-1",
+          "coach": "Ivan Juric",
+          "starters": [
+            "N. Tornqvist",
+            "E. Kouadio",
+            "L. Lucchesi",
+            "A. Carboni",
+            "S. Birindelli",
+            "M. Folorunsho",
+            "E. Akinsanmiro",
+            "R. Mangas",
+            "P. Cutrone",
+            "J. Robinson",
+            "G. Varela"
+          ]
+        },
+        {
+          "teamId": 488,
+          "team": "Sassuolo",
+          "formation": "4-3-3",
+          "coach": "Alberto Aquilani",
+          "starters": [
+            "A. Muric",
+            "S. Cinquegrano",
+            "D. Caleta-Car",
+            "F. Leysen",
+            "J. Doig",
+            "K. Thorstvedt",
+            "N. Matic",
+            "D. Bakola",
+            "D. Berardi",
+            "S. Esposito",
+            "A. Lauriente"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1550133,
+          "teamId": 1579,
+          "playerId": 31532,
+          "player": "P. Ciurria",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 1579,
+          "playerId": 30436,
+          "player": "M. Pessina",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 1579,
+          "playerId": 56293,
+          "player": "I. Toure",
+          "type": "Missing Fixture",
+          "reason": "Contusion"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 1579,
+          "playerId": 384543,
+          "player": "J. Ziolkowski",
+          "type": "Missing Fixture",
+          "reason": "Foot Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 291780,
+          "player": "D. Boloca",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 41371,
+          "player": "F. Cande",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 37651,
+          "player": "J. Idzes",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 328046,
+          "player": "I. Kone",
+          "type": "Missing Fixture",
+          "reason": "Broken Leg"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 59513,
+          "player": "Y. Paz",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 342055,
+          "player": "E. Pieragnolo",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 342035,
+          "player": "C. Volpato",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1550133,
+          "teamId": 488,
+          "playerId": 40582,
+          "player": "S. Walukiewicz",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1550135,
+      "date": "2026-09-19",
+      "league": "SERIEA",
+      "homeTeamId": 494,
+      "homeTeam": "Udinese",
+      "awayTeamId": 490,
+      "awayTeam": "Cagliari",
+      "home": {
+        "teamId": 494,
+        "team": "Udinese",
+        "shots": 26,
+        "shotsOnGoal": 5,
+        "possession": 65,
+        "corners": 16,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 1.92
+      },
+      "away": {
+        "teamId": 490,
+        "team": "Cagliari",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 35,
+        "corners": 1,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": 1.12
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 494,
+          "team": "Udinese",
+          "formation": "3-4-2-1",
+          "coach": "Kosta Runjaic",
+          "starters": [
+            "M. Okoye",
+            "J. Abankwah",
+            "C. Kabasele",
+            "E. Ebosse",
+            "M. Vojvoda",
+            "L. Miller",
+            "J. Karlstrom",
+            "H. Kamara",
+            "N. Zaniolo",
+            "J. Ekkelenkamp",
+            "K. Davis"
+          ]
+        },
+        {
+          "teamId": 490,
+          "team": "Cagliari",
+          "formation": "5-3-2",
+          "coach": "Fabio Pisacane",
+          "starters": [
+            "E. Caprile",
+            "M. Adopo",
+            "J. Pedro",
+            "Y. Mina",
+            "J. Rodriguez",
+            "A. Obert",
+            "A. Romano",
+            "H. Winks",
+            "A. Deiola",
+            "P. Mendy",
+            "D. Maldini"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1550135,
+          "teamId": 494,
+          "playerId": 411171,
+          "player": "J. Arizala",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 494,
+          "playerId": 422156,
+          "player": "M. Palma",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 494,
+          "playerId": 1939,
+          "player": "J. Piotrowski",
+          "type": "Missing Fixture",
+          "reason": "Heart Problems"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 494,
+          "playerId": 656,
+          "player": "O. Solet",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 490,
+          "playerId": 31734,
+          "player": "M. Felici",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 490,
+          "playerId": 383026,
+          "player": "R. Idrissi",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 490,
+          "playerId": 31318,
+          "player": "M. Nzola",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        },
+        {
+          "fixtureId": 1550135,
+          "teamId": 490,
+          "playerId": 584116,
+          "player": "Y. Trepy",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1550129,
+      "date": "2026-09-19",
+      "league": "SERIEA",
+      "homeTeamId": 500,
+      "homeTeam": "Bologna",
+      "awayTeamId": 503,
+      "awayTeam": "Torino",
+      "home": {
+        "teamId": 500,
+        "team": "Bologna",
+        "shots": 11,
+        "shotsOnGoal": 1,
+        "possession": 40,
+        "corners": 1,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": 0.58
+      },
+      "away": {
+        "teamId": 503,
+        "team": "Torino",
+        "shots": 14,
+        "shotsOnGoal": 3,
+        "possession": 60,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 0.87
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 500,
+          "team": "Bologna",
+          "formation": "3-4-3",
+          "coach": "Domenico Tedesco",
+          "starters": [
+            "L. Skorupski",
+            "E. Fauske Helland",
+            "T. Heggem",
+            "A. Theate",
+            "N. Zortea",
+            "L. Ferguson",
+            "T. Pobega",
+            "J. Miranda",
+            "F. Bernardeschi",
+            "R. Piccoli",
+            "N. Cambiaghi"
+          ]
+        },
+        {
+          "teamId": 503,
+          "team": "Torino",
+          "formation": "3-5-2",
+          "coach": "Ignazio Abate",
+          "starters": [
+            "Lucas Perri",
+            "E. Comert",
+            "A. Ismajli",
+            "S. Coco",
+            "N. Fortini",
+            "D. Braganca",
+            "R. Mandragora",
+            "K. Fitz-Jim",
+            "A. Cacciamani",
+            "G. Simeone",
+            "N. Vlasic"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1550129,
+          "teamId": 500,
+          "playerId": 15811,
+          "player": "A. Dovbyk",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1550129,
+          "teamId": 503,
+          "playerId": 19524,
+          "player": "C. Adams",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1550129,
+          "teamId": 503,
+          "playerId": 270507,
+          "player": "C. Casadei",
+          "type": "Missing Fixture",
+          "reason": "Rest"
+        },
+        {
+          "fixtureId": 1550129,
+          "teamId": 503,
+          "playerId": 56266,
+          "player": "F. Israel",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1550129,
+          "teamId": 503,
+          "playerId": 123,
+          "player": "P. Pellegri",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575167,
+      "date": "2026-09-19",
+      "league": "BUNDESLIGA",
+      "homeTeamId": 157,
+      "homeTeam": "Bayern München",
+      "awayTeamId": 182,
+      "awayTeam": "Union Berlin",
+      "home": {
+        "teamId": 157,
+        "team": "Bayern München",
+        "shots": 23,
+        "shotsOnGoal": 15,
+        "possession": 68,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 182,
+        "team": "Union Berlin",
+        "shots": 3,
+        "shotsOnGoal": 2,
+        "possession": 32,
+        "corners": 2,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 157,
+          "team": "Bayern München",
+          "formation": "4-2-3-1",
+          "coach": "V. Kompany",
+          "starters": [
+            "M. Neuer",
+            "J. Stanišić",
+            "D. Upamecano",
+            "J. Tah",
+            "A. Davies",
+            "J. Kimmich",
+            "A. Pavlović",
+            "M. Olise",
+            "J. Musiala",
+            "L. Díaz",
+            "H. Kane"
+          ]
+        },
+        {
+          "teamId": 182,
+          "team": "Union Berlin",
+          "formation": "4-2-3-1",
+          "coach": "M. Lustrinelli",
+          "starters": [
+            "F. Rønnow",
+            "C. Trimmel",
+            "L. Querfeld",
+            "F. Uduokhai",
+            "T. Rothe",
+            "R. Khedira",
+            "M. Aebischer",
+            "J. Haberer",
+            "Jeong Woo-Yeong",
+            "A. Schäfer",
+            "E. Latte Lath"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1575167,
+          "teamId": 157,
+          "playerId": 330612,
+          "player": "T. Buchmann",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 1124,
+          "player": "O. Burke",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 24839,
+          "player": "M. Friedrich",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 45892,
+          "player": "A. Ilic",
+          "type": "Missing Fixture",
+          "reason": "Illness"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 14330,
+          "player": "J. Juranovic",
+          "type": "Missing Fixture",
+          "reason": "Illness"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 413294,
+          "player": "A. Markgraf",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575167,
+          "teamId": 182,
+          "playerId": 270,
+          "player": "S. Nsoki",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575172,
+      "date": "2026-09-19",
+      "league": "BUNDESLIGA",
+      "homeTeamId": 162,
+      "homeTeam": "Werder Bremen",
+      "awayTeamId": 170,
+      "awayTeam": "FC Augsburg",
+      "home": {
+        "teamId": 162,
+        "team": "Werder Bremen",
+        "shots": 20,
+        "shotsOnGoal": 11,
+        "possession": 59,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 170,
+        "team": "FC Augsburg",
+        "shots": 7,
+        "shotsOnGoal": 4,
+        "possession": 41,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 162,
+          "team": "Werder Bremen",
+          "formation": "3-4-3",
+          "coach": "D. Thioune",
+          "starters": [
+            "K. Hein",
+            "A. Pieper",
+            "M. Friedl",
+            "O. Deman",
+            "Arthur",
+            "L. Reis",
+            "Y. Regeer",
+            "M. Grüll",
+            "Chuky San José",
+            "N. Füllkrug",
+            "E. Dinkçi"
+          ]
+        },
+        {
+          "teamId": 170,
+          "team": "FC Augsburg",
+          "formation": "3-4-2-1",
+          "coach": "M. Baum",
+          "starters": [
+            "F. Dahmen",
+            "Noahkai Kai Daniel Banks",
+            "C. Matsima",
+            "C. Brackelmann",
+            "M. Wolf",
+            "H. Massengo",
+            "F. Rieder",
+            "Hennes Behrens",
+            "R. Fellhauer",
+            "M. Kömür",
+            "M. Gregoritsch"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 26319,
+          "player": "F. Agu",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 38798,
+          "player": "S. Lynen",
+          "type": "Missing Fixture",
+          "reason": "Hip Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 175415,
+          "player": "M. N'Diaye",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 177807,
+          "player": "J. Njinmah",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 15592,
+          "player": "J. Stage",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 162,
+          "playerId": 334334,
+          "player": "K. Topp",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 202755,
+          "player": "T. Breithaupt",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 279993,
+          "player": "A. Kade",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 3395,
+          "player": "S. Mounie",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 479269,
+          "player": "F. Sakar",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 585671,
+          "player": "T. Schnitzer",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1575172,
+          "teamId": 170,
+          "playerId": 343159,
+          "player": "S. Suso",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575174,
+      "date": "2026-09-19",
+      "league": "BUNDESLIGA",
+      "homeTeamId": 163,
+      "homeTeam": "Borussia Mönchengladbach",
+      "awayTeamId": 164,
+      "awayTeam": "FSV Mainz 05",
+      "home": {
+        "teamId": 163,
+        "team": "Borussia Mönchengladbach",
+        "shots": 21,
+        "shotsOnGoal": 7,
+        "possession": 47,
+        "corners": 6,
+        "yellowCards": 6,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 164,
+        "team": "FSV Mainz 05",
+        "shots": 17,
+        "shotsOnGoal": 8,
+        "possession": 53,
+        "corners": 4,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 163,
+          "team": "Borussia Mönchengladbach",
+          "formation": "3-4-2-1",
+          "coach": "J. Lichte",
+          "starters": [
+            "M. Nicolas",
+            "K. Itakura",
+            "J. Leszczyński",
+            "K. Diks",
+            "J. Scally",
+            "H. Bolin",
+            "P. Sander",
+            "L. Ullrich",
+            "F. Honorat",
+            "F. Neuhaus",
+            "I. Lidberg"
+          ]
+        },
+        {
+          "teamId": 164,
+          "team": "FSV Mainz 05",
+          "formation": "3-5-2",
+          "coach": "U. Fischer",
+          "starters": [
+            "A. Schwolow",
+            "S. Posch",
+            "F. Gruber",
+            "K. Potulski",
+            "A. Caci",
+            "N. Amiri",
+            "K. Sano",
+            "Lee Jae-Sung",
+            "P. Mwene",
+            "P. Tietz",
+            "S. Becker"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 280358,
+          "player": "J. Castrop",
+          "type": "Missing Fixture",
+          "reason": "Shoulder Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 26256,
+          "player": "T. Kleindienst",
+          "type": "Missing Fixture",
+          "reason": "Red Card"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 125418,
+          "player": "Y. Konoplya",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 38753,
+          "player": "N. Kuhn",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 178250,
+          "player": "E. Leopold",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 163,
+          "playerId": 351084,
+          "player": "Z. Uno",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 164,
+          "playerId": 979,
+          "player": "D. Kohr",
+          "type": "Missing Fixture",
+          "reason": "Foot Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 164,
+          "playerId": 202736,
+          "player": "P. Nebel",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 164,
+          "playerId": 20617,
+          "player": "Silas",
+          "type": "Missing Fixture",
+          "reason": "Broken shinbone"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 164,
+          "playerId": 48378,
+          "player": "S. Widmer",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575174,
+          "teamId": 164,
+          "playerId": 25906,
+          "player": "R. Zentner",
+          "type": "Missing Fixture",
+          "reason": "Hand Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575170,
+      "date": "2026-09-19",
+      "league": "BUNDESLIGA",
+      "homeTeamId": 169,
+      "homeTeam": "Eintracht Frankfurt",
+      "awayTeamId": 160,
+      "awayTeam": "SC Freiburg",
+      "home": {
+        "teamId": 169,
+        "team": "Eintracht Frankfurt",
+        "shots": 10,
+        "shotsOnGoal": 3,
+        "possession": 40,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 160,
+        "team": "SC Freiburg",
+        "shots": 22,
+        "shotsOnGoal": 7,
+        "possession": 60,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 169,
+          "team": "Eintracht Frankfurt",
+          "formation": "4-4-2",
+          "coach": "A. Hütter",
+          "starters": [
+            "N. Atubolu",
+            "Elias Baum",
+            "R. Koch",
+            "L. Brassier",
+            "K. Kosugi",
+            "R. Dōan",
+            "N. Aséko Nkili",
+            "R. Onyedika",
+            "C. Uzun",
+            "Y. Ebnoutalib",
+            "J. Burkardt"
+          ]
+        },
+        {
+          "teamId": 160,
+          "team": "SC Freiburg",
+          "formation": "4-2-3-1",
+          "coach": "J. Schuster",
+          "starters": [
+            "M. Backhaus",
+            "P. Treu",
+            "M. Ginter",
+            "P. Lienhart",
+            "J. Makengo",
+            "M. Eggestein",
+            "Y. Engelhardt",
+            "J. Beste",
+            "Y. Suzuki",
+            "D. Scherhant",
+            "I. Matanović"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1575170,
+          "teamId": 169,
+          "playerId": 276670,
+          "player": "F. Chaibi",
+          "type": "Missing Fixture",
+          "reason": "Illness"
+        },
+        {
+          "fixtureId": 1575170,
+          "teamId": 169,
+          "playerId": 585451,
+          "player": "J. Maluze",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1575170,
+          "teamId": 169,
+          "playerId": 162771,
+          "player": "J. Ngankam",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575171,
+      "date": "2026-09-19",
+      "league": "BUNDESLIGA",
+      "homeTeamId": 175,
+      "homeTeam": "Hamburger SV",
+      "awayTeamId": 192,
+      "awayTeam": "1. FC Köln",
+      "home": {
+        "teamId": 175,
+        "team": "Hamburger SV",
+        "shots": 12,
+        "shotsOnGoal": 7,
+        "possession": 45,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 192,
+        "team": "1. FC Köln",
+        "shots": 18,
+        "shotsOnGoal": 5,
+        "possession": 55,
+        "corners": 5,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 175,
+          "team": "Hamburger SV",
+          "formation": "3-4-2-1",
+          "coach": "M. Polzin",
+          "starters": [
+            "Daniel Heuer Fernandes",
+            "N. Capaldo",
+            "J. Torunarigha",
+            "W. Omari",
+            "Z. El Ouahdi",
+            "A. Sambi Lokonga",
+            "N. Remberg",
+            "D. Møller Wolfe",
+            "Fábio Vieira",
+            "A. Grønbæk",
+            "T. Moffi"
+          ]
+        },
+        {
+          "teamId": 192,
+          "team": "1. FC Köln",
+          "formation": "4-2-3-1",
+          "coach": "René Wagner",
+          "starters": [
+            "M. Schwäbe",
+            "A. Castro-Montes",
+            "Jahmai Simpson-Pusey",
+            "L. Lochoshvili",
+            "G. Mensah",
+            "T. Krauß",
+            "E. Skhiri",
+            "L. Maina",
+            "M. Moore",
+            "S. El Mala",
+            "T. Dallinga"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1575171,
+          "teamId": 175,
+          "playerId": 1408,
+          "player": "S. Bornauw",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1575171,
+          "teamId": 175,
+          "playerId": 470282,
+          "player": "A. Rossing-Lelesiit",
+          "type": "Missing Fixture",
+          "reason": "Ankle Injury"
+        },
+        {
+          "fixtureId": 1575171,
+          "teamId": 175,
+          "playerId": 14335,
+          "player": "M. Vuskovic",
+          "type": "Missing Fixture",
+          "reason": "Doping"
+        },
+        {
+          "fixtureId": 1575171,
+          "teamId": 192,
+          "playerId": 90641,
+          "player": "T. Hubers",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1575171,
+          "teamId": 192,
+          "playerId": 441269,
+          "player": "P. Okon-Engstler",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1552769,
+      "date": "2026-09-19",
+      "league": "LIGUE1",
+      "homeTeamId": 91,
+      "homeTeam": "Monaco",
+      "awayTeamId": 116,
+      "awayTeam": "Lens",
+      "home": {
+        "teamId": 91,
+        "team": "Monaco",
+        "shots": 9,
+        "shotsOnGoal": 6,
+        "possession": 52,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 116,
+        "team": "Lens",
+        "shots": 12,
+        "shotsOnGoal": 4,
+        "possession": 48,
+        "corners": 8,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 91,
+          "team": "Monaco",
+          "formation": "4-4-2",
+          "coach": "Filipe Luís",
+          "starters": [
+            "L. Hrádecký",
+            "Vanderson",
+            "Sadibou Sané",
+            "E. Dier",
+            "Flávio Nazinho",
+            "E. Diop",
+            "L. Camara",
+            "D. Zakaria",
+            "A. Golovin",
+            "M. Abline",
+            "Paris Josua  Brunner"
+          ]
+        },
+        {
+          "teamId": 116,
+          "team": "Lens",
+          "formation": "3-4-2-1",
+          "coach": "Yannick Cahuzac",
+          "starters": [
+            "R. Risser",
+            "K. Antonio",
+            "J. Todibo",
+            "M. Udol",
+            "R. Aguilar",
+            "M. Cuisance",
+            "A. Haidara",
+            "J. Kadile",
+            "F. Thauvin",
+            "Mezian Mesloub",
+            "A. Sima"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 283026,
+          "player": "M. Biereth",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 419035,
+          "player": "M. Coulibaly",
+          "type": "Missing Fixture",
+          "reason": "Muscle Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 135775,
+          "player": "A. Fati",
+          "type": "Missing Fixture",
+          "reason": "Calf Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 340152,
+          "player": "S. Idumbo",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 671702,
+          "player": "A. Soubeir",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 91,
+          "playerId": 231,
+          "player": "J. Teze",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 116,
+          "playerId": 44594,
+          "player": "S. Abdulhamid",
+          "type": "Missing Fixture",
+          "reason": "Contusion"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 116,
+          "playerId": 322984,
+          "player": "S. Baidoo",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 116,
+          "playerId": 237191,
+          "player": "J. Chavez",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 116,
+          "playerId": 178708,
+          "player": "M. Nawrocki",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552769,
+          "teamId": 116,
+          "playerId": 327599,
+          "player": "Y. Titraoui",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1552173,
+      "date": "2026-09-19",
+      "league": "EREDIVISIE",
+      "homeTeamId": 202,
+      "homeTeam": "Groningen",
+      "awayTeamId": 193,
+      "awayTeam": "PEC Zwolle",
+      "home": {
+        "teamId": 202,
+        "team": "Groningen",
+        "shots": 17,
+        "shotsOnGoal": 7,
+        "possession": 52,
+        "corners": 5,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 193,
+        "team": "PEC Zwolle",
+        "shots": 9,
+        "shotsOnGoal": 1,
+        "possession": 48,
+        "corners": 6,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 202,
+          "team": "Groningen",
+          "formation": "4-2-3-1",
+          "coach": "D. Lukkien",
+          "starters": [
+            "E. Vaessen",
+            "J. Schreuders",
+            "T. Blokzijl",
+            "M. Rente",
+            "M. Csinger",
+            "T. de Jonge",
+            "P. Clement",
+            "D. van der Werff",
+            "T. van Bergen",
+            "J. Ondrejka",
+            "B. Willumsson"
+          ]
+        },
+        {
+          "teamId": 193,
+          "team": "PEC Zwolle",
+          "formation": "4-1-4-1",
+          "coach": "Henry van der Vegt",
+          "starters": [
+            "J. Schendelaar",
+            "O. Aertssen",
+            "S. Graves",
+            "N. Viergever",
+            "S. Floranus",
+            "N. Fichtinger",
+            "D. Mbayo",
+            "T. Oosting",
+            "T. Sommer",
+            "I. Cissoko",
+            "K. Kostons"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 361643,
+          "player": "N. Brandis",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 384585,
+          "player": "T. Hernes",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 414188,
+          "player": "M. Jeng",
+          "type": "Missing Fixture",
+          "reason": "Leg Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 446871,
+          "player": "T. Mercera",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 631615,
+          "player": "R. Metu",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 439830,
+          "player": "W. Prins",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 202,
+          "playerId": 497022,
+          "player": "E. van der Laan",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 193,
+          "playerId": 11245,
+          "player": "F. Krastev",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 193,
+          "playerId": 36932,
+          "player": "Y. Namli",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1552173,
+          "teamId": 193,
+          "playerId": 242,
+          "player": "R. Thomas",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1552172,
+      "date": "2026-09-19",
+      "league": "EREDIVISIE",
+      "homeTeamId": 198,
+      "homeTeam": "ADO Den Haag",
+      "awayTeamId": 420,
+      "awayTeam": "Cambuur",
+      "home": {
+        "teamId": 198,
+        "team": "ADO Den Haag",
+        "shots": 18,
+        "shotsOnGoal": 6,
+        "possession": 63,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 420,
+        "team": "Cambuur",
+        "shots": 8,
+        "shotsOnGoal": 3,
+        "possession": 37,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 198,
+          "team": "ADO Den Haag",
+          "formation": "4-4-2",
+          "coach": "R. Peter",
+          "starters": [
+            "K. Nikiéma",
+            "J. Jensen-Abbew",
+            "P. Mulder",
+            "M. Waem",
+            "M. Hokke",
+            "J. Hawkins",
+            "J. Kilo",
+            "M. Šín",
+            "N. Thomas",
+            "Y. Eduardo",
+            "E. Rottier"
+          ]
+        },
+        {
+          "teamId": 420,
+          "team": "Cambuur",
+          "formation": "4-2-3-1",
+          "coach": "J. Plat",
+          "starters": [
+            "T. Jansen",
+            "D. Bouah",
+            "I. Baouf",
+            "B. van Duijl",
+            "M. Costarelli",
+            "M. Maertens",
+            "N. Souren",
+            "F. Kvam",
+            "R. El Arguioui",
+            "I. Hamache",
+            "S. Bouhoudane"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1552172,
+          "teamId": 198,
+          "playerId": 309764,
+          "player": "M. Jimenez",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 198,
+          "playerId": 216809,
+          "player": "C. Peupion",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 198,
+          "playerId": 46688,
+          "player": "A. Pozo",
+          "type": "Missing Fixture",
+          "reason": "Lacking Match Fitness"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 198,
+          "playerId": 271562,
+          "player": "L. Reischl",
+          "type": "Missing Fixture",
+          "reason": "Groin Injury"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 420,
+          "playerId": 383068,
+          "player": "W. Asselman",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 420,
+          "playerId": 169446,
+          "player": "N. Binder",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1552172,
+          "teamId": 420,
+          "playerId": 516834,
+          "player": "D. Visser",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1575505,
+      "date": "2026-09-19",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeamId": 225,
+      "homeTeam": "Nacional",
+      "awayTeamId": 242,
+      "awayTeam": "Famalicao",
+      "home": {
+        "teamId": 225,
+        "team": "Nacional",
+        "shots": 12,
+        "shotsOnGoal": 3,
+        "possession": 55,
+        "corners": 7,
+        "yellowCards": 1,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 242,
+        "team": "Famalicao",
+        "shots": 12,
+        "shotsOnGoal": 7,
+        "possession": 45,
+        "corners": 3,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 225,
+          "team": "Nacional",
+          "formation": "4-1-4-1",
+          "coach": "Alexandre Santos",
+          "starters": [
+            "Renato Bellucci",
+            "Daniel Isai de la Cruz de la Cruz",
+            "Francisco Gonçalves",
+            "Zé Vitor",
+            "José Gomes",
+            "Matheus Dias",
+            "Miguel Baeza",
+            "C. Labidi",
+            "Matchoi Djaló",
+            "Song Min-Kyu",
+            "A. Obando"
+          ]
+        },
+        {
+          "teamId": 242,
+          "team": "Famalicao",
+          "formation": "4-2-3-1",
+          "coach": "Carlos Carvalhal",
+          "starters": [
+            "L. Carević",
+            "Rodrigo Pinheiro",
+            "Víctor Rofino",
+            "F. van Breemen",
+            "Pedro Francisco",
+            "Marcos Peña",
+            "Tamás Szücs",
+            "Gil Dias",
+            "Mathias De Amorim",
+            "Sorriso",
+            "G. Koutsias"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1575504,
+      "date": "2026-09-19",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeamId": 762,
+      "homeTeam": "GIL Vicente",
+      "awayTeamId": 214,
+      "awayTeam": "Maritimo",
+      "home": {
+        "teamId": 762,
+        "team": "GIL Vicente",
+        "shots": 19,
+        "shotsOnGoal": 4,
+        "possession": 60,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 214,
+        "team": "Maritimo",
+        "shots": 10,
+        "shotsOnGoal": 3,
+        "possession": 40,
+        "corners": 3,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 762,
+          "team": "GIL Vicente",
+          "formation": "4-2-3-1",
+          "coach": "Luís Pinto",
+          "starters": [
+            "Lucão",
+            "Ricardo Esgaio",
+            "M. Elimbi Gilbert",
+            "Jonathan Buatu",
+            "David Moreira",
+            "A. Lausen",
+            "Diogo Ferreira Prioste",
+            "Murilo",
+            "Santi García",
+            "Gil Pinto Martins",
+            "Héctor Hernández"
+          ]
+        },
+        {
+          "teamId": 214,
+          "team": "Maritimo",
+          "formation": "4-2-3-1",
+          "coach": "M. van der Gaag",
+          "starters": [
+            "Fran Vieites",
+            "Igor Julião",
+            "Romain Correia",
+            "G. Szalai",
+            "Paulo Henrique",
+            "Rodrigo Andrade",
+            "V. Danilović",
+            "M. Dominguez",
+            "Raphael Guzzo",
+            "Martín Tejón",
+            "Adrián Butzke"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556665,
+      "date": "2026-09-19",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 249,
+      "homeTeam": "Hibernian",
+      "awayTeamId": 252,
+      "awayTeam": "Aberdeen",
+      "home": {
+        "teamId": 249,
+        "team": "Hibernian",
+        "shots": 12,
+        "shotsOnGoal": 2,
+        "possession": 52,
+        "corners": 6,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 252,
+        "team": "Aberdeen",
+        "shots": 9,
+        "shotsOnGoal": 2,
+        "possession": 48,
+        "corners": 9,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 249,
+          "team": "Hibernian",
+          "formation": "3-4-1-2",
+          "coach": "David Gray",
+          "starters": [
+            "R. Sallinger",
+            "J. Kerr",
+            "G. Hanley",
+            "J. Iredale",
+            "F. Passlack",
+            "J. Mulligan",
+            "M. Chaiwa",
+            "A. Mayor",
+            "C. Wright",
+            "M. Boyle",
+            "O. Elding"
+          ]
+        },
+        {
+          "teamId": 252,
+          "team": "Aberdeen",
+          "formation": "3-5-2",
+          "coach": "S. Robinson",
+          "starters": [
+            "M. Müller",
+            "C. Cadden",
+            "J. Milne",
+            "M. Knoester",
+            "G. Molloy",
+            "N. Guinness-Walker",
+            "C. Ronan",
+            "A. Aremu",
+            "F. Marshall",
+            "T. Olusanya",
+            "K. Nisbet"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556668,
+      "date": "2026-09-19",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 251,
+      "homeTeam": "ST Mirren",
+      "awayTeamId": 1386,
+      "awayTeam": "Dundee Utd",
+      "home": {
+        "teamId": 251,
+        "team": "ST Mirren",
+        "shots": 10,
+        "shotsOnGoal": 0,
+        "possession": 60,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1386,
+        "team": "Dundee Utd",
+        "shots": 13,
+        "shotsOnGoal": 9,
+        "possession": 40,
+        "corners": 7,
+        "yellowCards": 2,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 251,
+          "team": "ST Mirren",
+          "formation": "4-2-3-1",
+          "coach": "Craig McLeish",
+          "starters": [
+            "J. Chapman",
+            "C. Ramsay",
+            "A. Gogić",
+            "Henry Fieldson",
+            "D. John",
+            "R. Carr",
+            "F. Taylor",
+            "Ismeal Kabia",
+            "K. Phillips",
+            "P. Nsio",
+            "Eseosa Sule"
+          ]
+        },
+        {
+          "teamId": 1386,
+          "team": "Dundee Utd",
+          "formation": "4-3-3",
+          "coach": "J. Goodwin",
+          "starters": [
+            "J. Walton",
+            "J. Rawlins",
+            "B. Esselink",
+            "M. Forbes",
+            "K. Ciubotaru",
+            "Zidane Iqbal",
+            "D. Tait",
+            "L. Cameron",
+            "J. Randall",
+            "I. Metsoko",
+            "D. Bennie"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556664,
+      "date": "2026-09-19",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 253,
+      "homeTeam": "Dundee",
+      "awayTeamId": 256,
+      "awayTeam": "Motherwell",
+      "home": {
+        "teamId": 253,
+        "team": "Dundee",
+        "shots": 11,
+        "shotsOnGoal": 6,
+        "possession": 39,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 256,
+        "team": "Motherwell",
+        "shots": 15,
+        "shotsOnGoal": 4,
+        "possession": 61,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 253,
+          "team": "Dundee",
+          "formation": "4-4-2",
+          "coach": "S. Pressley",
+          "starters": [
+            "O. Goodman",
+            "D. Wright",
+            "R. Astley",
+            "O. Bevan",
+            "I. Samuels",
+            "A. Forrest",
+            "C. Jones",
+            "E. Hamilton",
+            "J. Moorhouse",
+            "J. Westley",
+            "B. Fink"
+          ]
+        },
+        {
+          "teamId": 256,
+          "team": "Motherwell",
+          "formation": "4-2-3-1",
+          "coach": "Alfred Johansson",
+          "starters": [
+            "A. Paulsen",
+            "T. Sparrow",
+            "J. Girdwood-Reich",
+            "M. Moormann",
+            "M. Emmanuel",
+            "L. Fadinger",
+            "J. Hodge",
+            "Tawanda Jethro Maswanhise",
+            "A. Lowry",
+            "I. Said",
+            "S. Palmer-Houlden"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1556667,
+      "date": "2026-09-19",
+      "league": "SCOTTISH_PREMIERSHIP",
+      "homeTeamId": 258,
+      "homeTeam": "ST Johnstone",
+      "awayTeamId": 1389,
+      "awayTeam": "Falkirk",
+      "home": {
+        "teamId": 258,
+        "team": "ST Johnstone",
+        "shots": 8,
+        "shotsOnGoal": 5,
+        "possession": 44,
+        "corners": 3,
+        "yellowCards": 2,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1389,
+        "team": "Falkirk",
+        "shots": 13,
+        "shotsOnGoal": 4,
+        "possession": 56,
+        "corners": 8,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 258,
+          "team": "ST Johnstone",
+          "formation": "4-2-3-1",
+          "coach": "S. Valakari",
+          "starters": [
+            "T. Steward",
+            "L. Smith",
+            "Z. Mitchell",
+            "C. Diabate",
+            "E. Alıç",
+            "R. McAlear",
+            "J. Holt",
+            "J. Campbell",
+            "J. Cotterill",
+            "T. Steven",
+            "J. Fowler"
+          ]
+        },
+        {
+          "teamId": 1389,
+          "team": "Falkirk",
+          "formation": "4-2-3-1",
+          "coach": "J. McGlynn",
+          "starters": [
+            "S. Bain",
+            "R. Strain",
+            "D. Meļņiks",
+            "L. Henderson",
+            "L. McCann",
+            "Finley Frank Barbrook",
+            "B. Spencer",
+            "E. Ross",
+            "B. Krauhaus",
+            "Owen Eames",
+            "J. Murrell"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1558635,
+      "date": "2026-09-19",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeamId": 631,
+      "homeTeam": "Gent",
+      "awayTeamId": 733,
+      "awayTeam": "Standard Liege",
+      "home": {
+        "teamId": 631,
+        "team": "Gent",
+        "shots": 11,
+        "shotsOnGoal": 6,
+        "possession": 45,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 733,
+        "team": "Standard Liege",
+        "shots": 14,
+        "shotsOnGoal": 4,
+        "possession": 55,
+        "corners": 6,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 631,
+          "team": "Gent",
+          "formation": "3-4-2-1",
+          "coach": "R. Demil",
+          "starters": [
+            "D. Roef",
+            "M. Ngom",
+            "C. Burgess",
+            "S. Van der Heyden",
+            "M. Volckaert",
+            "T. De Vlieger",
+            "M. Delorge-Knieper",
+            "Tiago Araújo",
+            "M. Balikwisha",
+            "M. Sonko",
+            "J. Y. Vergara Ortega"
+          ]
+        },
+        {
+          "teamId": 733,
+          "team": "Standard Liege",
+          "formation": "4-3-3",
+          "coach": "V. Euvrard",
+          "starters": [
+            "M. Epolo",
+            "M. Fossey",
+            "I. Karamoko",
+            "I. Hautekiet",
+            "H. Lawrence",
+            "C. Nielsen",
+            "A. Trouillet",
+            "R. Touzghar",
+            "S. Drammeh",
+            "D. Eckert Ayensa",
+            "A. Abid"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1558636,
+      "date": "2026-09-19",
+      "league": "BELGIAN_PRO_LEAGUE",
+      "homeTeamId": 260,
+      "homeTeam": "OH Leuven",
+      "awayTeamId": 5902,
+      "awayTeam": "RAAL La Louvière",
+      "home": {
+        "teamId": 260,
+        "team": "OH Leuven",
+        "shots": 10,
+        "shotsOnGoal": 4,
+        "possession": 47,
+        "corners": 3,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5902,
+        "team": "RAAL La Louvière",
+        "shots": 7,
+        "shotsOnGoal": 2,
+        "possession": 53,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 260,
+          "team": "OH Leuven",
+          "formation": "3-5-2",
+          "coach": "T. Simons",
+          "starters": [
+            "D. van den Heuvel",
+            "J. Lawrence",
+            "N. Dussenne",
+            "R. Nyakossi",
+            "Óscar Gil",
+            "W. George",
+            "B. Verstraete",
+            "S. Schrijvers",
+            "D. Opoku",
+            "A. Traoré",
+            "R. Mirisola"
+          ]
+        },
+        {
+          "teamId": 5902,
+          "team": "RAAL La Louvière",
+          "formation": "3-5-1-1",
+          "coach": "Edward Still",
+          "starters": [
+            "M. Peano",
+            "W. Faye",
+            "P. Nkoa",
+            "Y. Okou",
+            "Máté Krisztián Kovács",
+            "M. Courcoul",
+            "I. Coulibaly",
+            "A. Tajaouart",
+            "S. Delos",
+            "M. Wade",
+            "M. Ubandoma"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1584418,
+      "date": "2026-09-19",
+      "league": "SUPER_LIG",
+      "homeTeamId": 1004,
+      "homeTeam": "Kasımpaşa",
+      "awayTeamId": 607,
+      "awayTeam": "Konyaspor",
+      "home": {
+        "teamId": 1004,
+        "team": "Kasımpaşa",
+        "shots": 14,
+        "shotsOnGoal": 2,
+        "possession": 47,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": 0.59
+      },
+      "away": {
+        "teamId": 607,
+        "team": "Konyaspor",
+        "shots": 11,
+        "shotsOnGoal": 4,
+        "possession": 53,
+        "corners": 4,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": 1.22
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1004,
+          "team": "Kasımpaşa",
+          "formation": "4-2-3-1",
+          "coach": "Emre Belozoglu",
+          "starters": [
+            "A. Gianniotis",
+            "C. Winck",
+            "K. Mouanga",
+            "M. Ilie",
+            "J. Jessen",
+            "E. Mendes",
+            "K. Demirbay",
+            "G. Yalcin",
+            "M. Rafferty",
+            "A. Kol",
+            "A. Benedyczak"
+          ]
+        },
+        {
+          "teamId": 607,
+          "team": "Konyaspor",
+          "formation": "4-2-3-1",
+          "coach": "Ilhan Palut",
+          "starters": [
+            "B. Gungordu",
+            "U. Yazgili",
+            "R. Baniya",
+            "A. Demirbag",
+            "A. Masuaku",
+            "M. Jevtovic",
+            "M. Ibrahimoglu",
+            "D. Turuc",
+            "R. Toth",
+            "D. Goncalves",
+            "J. Muleka"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1584418,
+          "teamId": 1004,
+          "playerId": 89723,
+          "player": "A. Baldursson",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1584418,
+          "teamId": 1004,
+          "playerId": 49870,
+          "player": "K. Corekci",
+          "type": "Missing Fixture",
+          "reason": "Achilles Tendon Injury"
+        },
+        {
+          "fixtureId": 1584418,
+          "teamId": 1004,
+          "playerId": 49469,
+          "player": "M. Ouanes",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584418,
+          "teamId": 607,
+          "playerId": 182422,
+          "player": "E. Destan",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584418,
+          "teamId": 607,
+          "playerId": 339986,
+          "player": "M. Ibrahimoglu",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1584414,
+      "date": "2026-09-19",
+      "league": "SUPER_LIG",
+      "homeTeamId": 6343,
+      "homeTeam": "Çorum FK",
+      "awayTeamId": 996,
+      "awayTeam": "Alanyaspor",
+      "home": {
+        "teamId": 6343,
+        "team": "Çorum FK",
+        "shots": 12,
+        "shotsOnGoal": 5,
+        "possession": 67,
+        "corners": 3,
+        "yellowCards": 5,
+        "redCards": null,
+        "expectedGoals": 1.16
+      },
+      "away": {
+        "teamId": 996,
+        "team": "Alanyaspor",
+        "shots": 9,
+        "shotsOnGoal": 5,
+        "possession": 33,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": 1.16
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 6343,
+          "team": "Çorum FK",
+          "formation": "4-2-3-1",
+          "coach": "Tamer Sivrikaya",
+          "starters": [
+            "Marcos Felipe",
+            "G. Sazdagi",
+            "S. Saatci",
+            "H. Smolcic",
+            "A. Borza",
+            "Y. Ramadani",
+            "Fredy",
+            "C. Under",
+            "M. Diomande",
+            "A. Kyziridis",
+            "J. Ramirez"
+          ]
+        },
+        {
+          "teamId": 996,
+          "team": "Alanyaspor",
+          "formation": "3-4-2-1",
+          "coach": "Joao Pereira",
+          "starters": [
+            "Paulo Victor",
+            "N. Lima",
+            "F. Aliti",
+            "F. Aksoy",
+            "F. Hadergjonaj",
+            "G. Makouta",
+            "B. Gezek",
+            "Ruan",
+            "P. Fernandes",
+            "Hwang Ui-Jo",
+            "Bikoue"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1584414,
+          "teamId": 996,
+          "playerId": 237120,
+          "player": "Maestro",
+          "type": "Missing Fixture",
+          "reason": "Thigh Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1584419,
+      "date": "2026-09-19",
+      "league": "SUPER_LIG",
+      "homeTeamId": 7411,
+      "homeTeam": "Kocaelispor",
+      "awayTeamId": 3573,
+      "awayTeam": "Gaziantep FK",
+      "home": {
+        "teamId": 7411,
+        "team": "Kocaelispor",
+        "shots": 19,
+        "shotsOnGoal": 5,
+        "possession": 51,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": 1.16
+      },
+      "away": {
+        "teamId": 3573,
+        "team": "Gaziantep FK",
+        "shots": 16,
+        "shotsOnGoal": 3,
+        "possession": 49,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": 0.88
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 7411,
+          "team": "Kocaelispor",
+          "formation": "4-3-3",
+          "coach": "Selcuk Inan",
+          "starters": [
+            "S. Oztasdelen",
+            "U. Yildiz",
+            "A. Dijksteel",
+            "E. Ortakaya",
+            "M. Haidara",
+            "Show",
+            "B. Kutlu",
+            "M. Susoho",
+            "G. Sousa",
+            "F. Aye",
+            "M. Altunbas"
+          ]
+        },
+        {
+          "teamId": 3573,
+          "team": "Gaziantep FK",
+          "formation": "4-1-4-1",
+          "coach": "Orhan Ak",
+          "starters": [
+            "K. Tobiasz",
+            "L. Perez",
+            "A. Kizildag",
+            "M. Abena",
+            "K. Calhanoglu",
+            "U. Meleke",
+            "D. Sorescu",
+            "V. Gidado",
+            "A. Maxim",
+            "K. Kozlowski",
+            "H. Dervisoglu"
+          ]
+        }
+      ],
+      "injuries": [
+        {
+          "fixtureId": 1584419,
+          "teamId": 7411,
+          "playerId": 146053,
+          "player": "T. Gulliksen",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 7411,
+          "playerId": 47558,
+          "player": "A. Jovanovic",
+          "type": "Missing Fixture",
+          "reason": "Knee Injury"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 7411,
+          "playerId": 1331,
+          "player": "B. Petkovic",
+          "type": "Missing Fixture",
+          "reason": "Hamstring Injury"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 7411,
+          "playerId": 31280,
+          "player": "R. Rivas",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 3573,
+          "playerId": 62038,
+          "player": "F. Bavuk",
+          "type": "Missing Fixture",
+          "reason": "Injury"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 3573,
+          "playerId": 522647,
+          "player": "A. O. Kalin",
+          "type": "Missing Fixture",
+          "reason": "Inactive"
+        },
+        {
+          "fixtureId": 1584419,
+          "teamId": 3573,
+          "playerId": 49964,
+          "player": "N. Sangare",
+          "type": "Missing Fixture",
+          "reason": "Back Injury"
+        }
+      ]
+    },
+    {
+      "fixtureId": 1507070,
+      "date": "2026-09-19",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2745,
+      "homeTeam": "Bucheon FC 1995",
+      "awayTeamId": 2768,
+      "awayTeam": "Gimcheon Sangmu FC",
+      "home": {
+        "teamId": 2745,
+        "team": "Bucheon FC 1995",
+        "shots": 13,
+        "shotsOnGoal": 3,
+        "possession": 39,
+        "corners": 7,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2768,
+        "team": "Gimcheon Sangmu FC",
+        "shots": 12,
+        "shotsOnGoal": 4,
+        "possession": 61,
+        "corners": 6,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2745,
+          "team": "Bucheon FC 1995",
+          "formation": "3-4-3",
+          "coach": "Lee Young-Min",
+          "starters": [
+            "Kim Hyung-Geun",
+            "Jeong Ho-Jin",
+            "Patrick William",
+            "Hong Sung-Wook",
+            "Thiaguinho",
+            "Yoon Bit-Garam",
+            "Kim Sang-Jun",
+            "An Tae-Hyun",
+            "Rodrigo Bassani",
+            "Jefferson Galego",
+            "Kim Seung-Bin"
+          ]
+        },
+        {
+          "teamId": 2768,
+          "team": "Gimcheon Sangmu FC",
+          "formation": "4-4-2",
+          "coach": "Seung-jin Joo",
+          "starters": [
+            "Park Man-Ho",
+            "Kim Tae-Hwan",
+            "Kim Hyun-Woo",
+            "Lee Jung-Taek",
+            "Park Cheol-Woo",
+            "Go Jae-Hyeon",
+            "Park Tae-Jun",
+            "Lee Soo-Bin",
+            "Hong Yun-Sang",
+            "Lee Sang-Heon",
+            "Jeong Jae-Min"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507071,
+      "date": "2026-09-19",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2748,
+      "homeTeam": "FC Anyang",
+      "awayTeamId": 2767,
+      "awayTeam": "Ulsan Hyundai FC",
+      "home": {
+        "teamId": 2748,
+        "team": "FC Anyang",
+        "shots": 6,
+        "shotsOnGoal": 3,
+        "possession": 38,
+        "corners": 3,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2767,
+        "team": "Ulsan Hyundai FC",
+        "shots": 7,
+        "shotsOnGoal": 4,
+        "possession": 62,
+        "corners": 8,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2748,
+          "team": "FC Anyang",
+          "formation": "4-3-3",
+          "coach": "Ryu Byeong-Hoon",
+          "starters": [
+            "Kim Jeong-Hoon",
+            "Kang Ji-Hoon",
+            "Kim Young-Chan",
+            "Kwon Kyung-Won",
+            "Kim Dong-Jin",
+            "Chae Hyun-Woo",
+            "B. Knežević",
+            "D. Bakker",
+            "Matheus Oliveira",
+            "Breno Herculano",
+            "Gang Kim"
+          ]
+        },
+        {
+          "teamId": 2767,
+          "team": "Ulsan Hyundai FC",
+          "formation": "4-2-3-1",
+          "coach": "Kim Hyun-Seok",
+          "starters": [
+            "Jo Hyeon-Woo",
+            "Jang Si-Young",
+            "Jung Seung-Hyun",
+            "Kim Young-Gwon",
+            "Cho Hyun-Taek",
+            "Lee Gyu-Sung",
+            "T. Oude Kotte",
+            "Pedrinho",
+            "Lee Dong-Gyeong",
+            "Erick Farias",
+            "Yago Cariello"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510451,
+      "date": "2026-09-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2753,
+      "homeTeam": "Asan Mugunghwa",
+      "awayTeamId": 7060,
+      "awayTeam": "Cheonan City",
+      "home": {
+        "teamId": 2753,
+        "team": "Asan Mugunghwa",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7060,
+        "team": "Cheonan City",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510452,
+      "date": "2026-09-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2760,
+      "homeTeam": "Jeonnam Dragons",
+      "awayTeamId": 2756,
+      "awayTeam": "Suwon City FC",
+      "home": {
+        "teamId": 2760,
+        "team": "Jeonnam Dragons",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2756,
+        "team": "Suwon City FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510454,
+      "date": "2026-09-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 2749,
+      "homeTeam": "Seoul E-Land FC",
+      "awayTeamId": 2747,
+      "awayTeam": "Daegu FC",
+      "home": {
+        "teamId": 2749,
+        "team": "Seoul E-Land FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2747,
+        "team": "Daegu FC",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1510453,
+      "date": "2026-09-19",
+      "league": "KLEAGUE2",
+      "homeTeamId": 7078,
+      "homeTeam": "Gimpo Citizen",
+      "awayTeamId": 2752,
+      "awayTeam": "Busan I Park",
+      "home": {
+        "teamId": 7078,
+        "team": "Gimpo Citizen",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2752,
+        "team": "Busan I Park",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
     {
       "fixtureId": 1570386,
       "date": "2026-09-18",
