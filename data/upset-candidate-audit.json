@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-20T01:03:32.403Z",
+  "updatedAt": "2026-09-20T08:30:31.710Z",
   "summary": {
     "trackedDays": 62,
-    "trackedCandidates": 131,
+    "trackedCandidates": 134,
     "resolvedCandidates": 104,
     "favoriteFailures": 40,
     "directionHits": 20
@@ -472,21 +472,21 @@
     {
       "date": "2026-09-20",
       "firstEvaluatedAt": "2026-09-16T16:48:30.976Z",
-      "lastEvaluatedAt": "2026-09-20T01:03:32.403Z",
+      "lastEvaluatedAt": "2026-09-20T08:30:31.710Z",
       "eligibleMatchCount": 42,
       "candidateIds": [
-        "fixture:1563177",
-        "fixture:1507073",
-        "fixture:1557413"
+        "fixture:1550131",
+        "fixture:1575508"
       ]
     },
     {
       "date": "2026-09-21",
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastEvaluatedAt": "2026-09-20T01:03:32.403Z",
+      "lastEvaluatedAt": "2026-09-20T08:30:31.710Z",
       "eligibleMatchCount": 17,
       "candidateIds": [
         "fixture:1552770",
+        "fixture:1550127",
         "fixture:1558642"
       ]
     }
@@ -3639,6 +3639,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1550131",
+      "fixtureId": "1550131",
+      "date": "2026-09-20",
+      "league": "SERIEA",
+      "homeTeam": "Frosinone",
+      "awayTeam": "Como",
+      "homeOdds": "5.50",
+      "drawOdds": "4.20",
+      "awayOdds": "1.50",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 33,
+      "firstEvaluatedAt": "2026-09-20T08:30:31.710Z",
+      "lastSeenAt": "2026-09-20T08:30:31.710Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1552174",
       "fixtureId": "1552174",
       "date": "2026-09-20",
@@ -3821,6 +3847,32 @@
       "directionHit": null
     },
     {
+      "candidateId": "fixture:1575508",
+      "fixtureId": "1575508",
+      "date": "2026-09-20",
+      "league": "PRIMEIRA_LIGA",
+      "homeTeam": "Vitória SC",
+      "awayTeam": "Moreirense",
+      "homeOdds": "1.50",
+      "drawOdds": "4.00",
+      "awayOdds": "6.00",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 186,
+      "firstEvaluatedAt": "2026-09-20T08:30:31.710Z",
+      "lastSeenAt": "2026-09-20T08:30:31.710Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1584413",
       "fixtureId": "1584413",
       "date": "2026-09-20",
@@ -3847,6 +3899,32 @@
       "directionHit": false
     },
     {
+      "candidateId": "fixture:1550127",
+      "fixtureId": "1550127",
+      "date": "2026-09-21",
+      "league": "SERIEA",
+      "homeTeam": "AC Milan",
+      "awayTeam": "Lecce",
+      "homeOdds": "1.25",
+      "drawOdds": "5.50",
+      "awayOdds": "11.00",
+      "favoriteKey": "H",
+      "candidateLabel": "대형 이변 후보",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 20,
+      "firstEvaluatedAt": "2026-09-20T08:30:31.710Z",
+      "lastSeenAt": "2026-09-20T08:30:31.710Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
+    },
+    {
       "candidateId": "fixture:1552770",
       "fixtureId": "1552770",
       "date": "2026-09-21",
@@ -3865,7 +3943,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-20T01:03:32.403Z",
+      "lastSeenAt": "2026-09-20T08:30:31.710Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
@@ -3891,7 +3969,7 @@
       ],
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastSeenAt": "2026-09-20T01:03:32.403Z",
+      "lastSeenAt": "2026-09-20T08:30:31.710Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",
