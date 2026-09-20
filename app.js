@@ -13234,6 +13234,8 @@ if (typeof module !== "undefined") {
     getDuplicateKey,
     getBaseMatches,
     getSharedCandidateMatches,
+    getStoredFixturesForDate,
+    mergeStoredOddsIntoFixtures,
     getCurrentTimestamp,
     deduplicateTodayMatches,
     getResultBreakdownMemo,

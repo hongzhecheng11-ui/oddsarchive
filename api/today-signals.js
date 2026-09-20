@@ -15,6 +15,8 @@ function loadAnalysisApp() {
   global.window = globalThis;
   require("../data/football-data-pack.js");
   require("../data/api-odds-pack.js");
+  require("../data/team-context-pack.js");
+  require("../data/match-statistics-pack.js");
   return require("../app.js");
 }
 
@@ -55,7 +57,14 @@ function serializeStrong(item = {}) {
 }
 
 function buildTodaySignals(matches = [], app = loadAnalysisApp(), date = "") {
-  const majorMatches = app.getMajorTodayMatches(Array.isArray(matches) ? matches : []);
+  const storedMatches = typeof app.getStoredFixturesForDate === "function"
+    ? app.getStoredFixturesForDate(date, null)
+    : [];
+  const mergedMatches = typeof app.mergeStoredOddsIntoFixtures === "function"
+    ? app.mergeStoredOddsIntoFixtures(Array.isArray(matches) ? matches : [], storedMatches)
+    : (Array.isArray(matches) ? matches : []);
+  const candidateMatches = mergedMatches.length > 0 ? mergedMatches : storedMatches;
+  const majorMatches = app.getMajorTodayMatches(candidateMatches);
   const history = app.getSharedCandidateMatches();
   const assessed = app.assessTodayMatches(majorMatches, history);
   const upset = assessed
@@ -95,13 +104,20 @@ async function handler(request, response) {
   if (request.method !== "GET") return response.status(405).json({ error: "Method not allowed" });
   const date = String(request.query?.date || getSeoulDateKey()).slice(0, 10);
   try {
+    const app = loadAnalysisApp();
+    const storedMatches = app.getStoredFixturesForDate(date, null);
+    if (storedMatches.length > 0) {
+      const result = buildTodaySignals(storedMatches, app, date);
+      response.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
+      return response.status(200).json(result);
+    }
     const live = await invokeLiveOdds({ date, league: "ALL" });
     if (live.statusCode !== 200) {
       return response.status(live.statusCode).json({
         error: live.body?.error || "오늘 경기 데이터를 불러오지 못했습니다."
       });
     }
-    const result = buildTodaySignals(live.body?.matches || [], loadAnalysisApp(), date);
+    const result = buildTodaySignals(live.body?.matches || [], app, date);
     response.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
     return response.status(200).json(result);
   } catch (error) {

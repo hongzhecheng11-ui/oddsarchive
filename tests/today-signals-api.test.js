@@ -31,6 +31,8 @@ const assessment = {
 
 const fakeApp = {
   getMajorTodayMatches(matches) { return matches; },
+  getStoredFixturesForDate() { return []; },
+  mergeStoredOddsIntoFixtures(matches) { return matches; },
   getSharedCandidateMatches() { return [{ id: "history-1" }]; },
   assessTodayMatches(matches, history) {
     assert.strictEqual(matches[0], match);
@@ -54,5 +56,16 @@ assert.strictEqual(result.upset[0].sampleSize, 20);
 assert.strictEqual(result.upset[0].selectionKey, "D");
 assert.strictEqual(result.upset[0].riskLevel, "high");
 assert.strictEqual(result.strong, null);
+
+const storedMatch = { ...match, id: "stored-1" };
+const storedResult = buildTodaySignals([], {
+  ...fakeApp,
+  getStoredFixturesForDate() { return [storedMatch]; },
+  mergeStoredOddsIntoFixtures(matches) { return matches; },
+  assessTodayMatches(matches) { return [{ match: matches[0], assessment }]; },
+  getTodayStrongSignal() { return null; }
+}, "2026-09-21");
+assert.strictEqual(storedResult.eligibleMatchCount, 1);
+assert.strictEqual(storedResult.upset[0].match.id, "stored-1");
 
 console.log("today-signals-api.test.js passed");
