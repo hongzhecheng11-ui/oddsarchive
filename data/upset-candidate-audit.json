@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-20T16:00:39.240Z",
+  "updatedAt": "2026-09-20T20:44:10.910Z",
   "summary": {
     "trackedDays": 62,
     "trackedCandidates": 135,
-    "resolvedCandidates": 111,
-    "favoriteFailures": 44,
-    "directionHits": 22
+    "resolvedCandidates": 115,
+    "favoriteFailures": 46,
+    "directionHits": 23
   },
   "days": [
     {
@@ -483,11 +483,9 @@
     {
       "date": "2026-09-21",
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
-      "lastEvaluatedAt": "2026-09-20T16:00:39.240Z",
-      "eligibleMatchCount": 18,
-      "candidateIds": [
-        "fixture:1550127"
-      ]
+      "lastEvaluatedAt": "2026-09-20T20:44:10.910Z",
+      "eligibleMatchCount": 3,
+      "candidateIds": []
     }
   ],
   "candidates": [
@@ -3891,11 +3889,11 @@
       "sampleSize": 186,
       "firstEvaluatedAt": "2026-09-20T08:30:31.710Z",
       "lastSeenAt": "2026-09-20T13:02:03.114Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "1-1",
+      "resolvedAt": "2026-09-20T20:44:10.910Z",
+      "favoriteFailed": true,
+      "directionHit": true
     },
     {
       "candidateId": "fixture:1584413",
@@ -3943,10 +3941,10 @@
       "sampleSize": 20,
       "firstEvaluatedAt": "2026-09-20T08:30:31.710Z",
       "lastSeenAt": "2026-09-20T16:00:39.240Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "H",
+      "score": "3-0",
+      "resolvedAt": "2026-09-20T20:44:10.910Z",
+      "favoriteFailed": false,
       "directionHit": null
     },
     {
@@ -3969,10 +3967,10 @@
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
       "lastSeenAt": "2026-09-20T08:30:31.710Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
+      "result": "H",
+      "score": "2-1",
+      "resolvedAt": "2026-09-20T20:44:10.910Z",
+      "favoriteFailed": true,
       "directionHit": null
     },
     {
@@ -3995,11 +3993,11 @@
       "sampleSize": 31,
       "firstEvaluatedAt": "2026-09-17T16:55:49.746Z",
       "lastSeenAt": "2026-09-20T08:30:31.710Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "H",
+      "score": "3-0",
+      "resolvedAt": "2026-09-20T20:44:10.910Z",
+      "favoriteFailed": false,
+      "directionHit": false
     }
   ]
 }
