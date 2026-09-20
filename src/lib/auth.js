@@ -344,10 +344,11 @@
     // 기기에 남은 토큰이 원인이면 사용자가 브라우저 사이트 데이터를 직접 지우는 것 말고는
     // 빠져나올 방법이 없다. 한 번은 우리가 대신 지우고 다시 시도한다. 클라이언트도 새로
     // 만드는데, 이미 메모리에 올라간 세션까지 버려야 지운 효과가 나기 때문이다.
-    // 저장된 토큰이 진짜로 못 쓰게 됐을 때만 지운다. 느려서 시간이 초과된 것뿐인데
-    // 지워버리면 멀쩡한 로그인이 날아가고 자동 로그인이 매번 풀린다.
+    // 저장된 Supabase 토큰이 있고 그 토큰 확인만 시간 초과된 경우에도 한 번은 지운다.
+    // 시크릿 모드에서는 되는데 일반 브라우저에서만 멈춘 기기는 이 저장값 때문에
+    // 다시 로그인으로 못 넘어갈 수 있다. 토큰 키가 없으면 시간 초과 오류는 그대로 보인다.
     function isBrokenSessionError(error) {
-      if (error?.isLoginTimeout) return false;
+      if (error?.isLoginTimeout) return true;
       const cause = error?.cause;
       if (cause?.__isAuthError) return true;
       return /AuthApiError|AuthSessionMissingError|invalid[ _]?grant|refresh[ _]?token/i.test(

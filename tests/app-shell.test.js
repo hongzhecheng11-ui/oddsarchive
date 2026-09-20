@@ -810,6 +810,10 @@ test("includes bundled API odds pack rows in base searchable matches", () => {
   }
 });
 
+test("uses only the shared server packs for public candidate signals", () => {
+  assert.strictEqual(app.getSharedCandidateMatches(), app.getBaseMatches());
+});
+
 test("summarizes odds result data sources for search trust", () => {
   const summary = app.getOddsResultSourceSummary([
     { source: "API 과거 배당" },

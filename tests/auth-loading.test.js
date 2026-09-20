@@ -131,6 +131,42 @@ async function checkLoader(load, document, timer) {
     assert.equal(subscriptions, 1);
     assert.equal(timer.size, 0);
   }
+  {
+    const timer = clock();
+    const auth = authRuntime(timer);
+    const values = new Map([["sb-phone-auth-token", "stale"]]);
+    const storage = {
+      get length() { return values.size; },
+      key(index) { return [...values.keys()][index] || null; },
+      getItem(key) { return values.get(key) || null; },
+      removeItem(key) { values.delete(key); }
+    };
+    let clientCount = 0;
+    const statuses = [];
+    const service = auth.createAccountService({
+      storage,
+      fetchConfig: async () => ({ sdkUrl: "sdk", redirectTo: "https://app.test/#account" }),
+      sdkLoader: async () => {},
+      clientFactory: () => {
+        clientCount += 1;
+        return { auth: {
+          getSession: () => clientCount === 1
+            ? new Promise(() => {})
+            : Promise.resolve({ data: { session: null }, error: null }),
+          onAuthStateChange: () => ({})
+        } };
+      },
+      onStateChange: ({ status }) => statuses.push(status)
+    });
+    const initializing = service.initialize();
+    await drain();
+    timer.expire();
+    await initializing;
+    assert.equal(storage.getItem("sb-phone-auth-token"), null);
+    assert.equal(clientCount, 2);
+    assert.equal(statuses.at(-1), "signed_out");
+    assert.equal(timer.size, 0);
+  }
   const timer = clock();
   const auth = authRuntime(timer);
   let sessionCalls = 0;

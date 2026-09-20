@@ -27,6 +27,7 @@ const SEARCH_RESULT_COLUMN_COUNT = CSV_HEADERS.length + 1;
 const RESULT_PAGE_SIZE = 20;
 const STORED_MATCH_RENDER_LIMIT = 100;
 const LIVE_ODDS_ENDPOINT = "/api/live-odds";
+const TODAY_SIGNALS_ENDPOINT = "/api/today-signals";
 const TELEMETRY_ENDPOINT = "/api/client-log";
 const HOME_TODAY_MATCH_LIMIT = 8;
 const DATE_FIXTURE_CACHE_TTL = 15 * 60 * 1000;
@@ -201,7 +202,26 @@ let footballDataPackLoadPromise = null;
 const matchContextProfileCache = new Map();
 const todayMatchAnalysisCache = new Map();
 const upsetCandidateAnalysisCache = new Map();
+const sharedTodaySignalsCache = new Map();
 let homeTodayAnalysisRenderVersion = 0;
+
+async function loadSharedTodaySignals(date) {
+  const dateKey = String(date || "").slice(0, 10);
+  if (!dateKey) throw new Error("후보 날짜가 없습니다.");
+  if (sharedTodaySignalsCache.has(dateKey)) return sharedTodaySignalsCache.get(dateKey);
+  const request = fetch(`${TODAY_SIGNALS_ENDPOINT}?date=${encodeURIComponent(dateKey)}`)
+    .then(async (response) => {
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || `후보 데이터 오류 (${response.status})`);
+      return payload;
+    })
+    .catch((error) => {
+      sharedTodaySignalsCache.delete(dateKey);
+      throw error;
+    });
+  sharedTodaySignalsCache.set(dateKey, request);
+  return request;
+}
 
 const CSV_HEADER_ALIASES = {
   date: ["date", "matchdate", "gamedate", "날짜", "경기날짜", "일자"],
@@ -5408,6 +5428,12 @@ function getBaseMatches() {
   return cachedBaseMatches;
 }
 
+// 공개 후보 신호는 기기별 저장 데이터가 아니라 배포된 공통 데이터팩만 사용한다.
+// 일반 배당 검색은 기존대로 사용자가 가져오거나 저장한 데이터까지 포함한다.
+function getSharedCandidateMatches() {
+  return getBaseMatches();
+}
+
 function buildDefaultDataFailureMessage({ url = "", status = "", reason = "", responsePreview = "" } = {}) {
   const parts = ["데이터를 불러오지 못했습니다. 데이터 추가를 이용해주세요."];
   if (url) parts.push(`CSV URL: ${url}`);
@@ -9983,10 +10009,10 @@ function createHomeUpsetCandidateCard(item = {}) {
   const meta = document.createElement("div");
   meta.className = "home-upset-meta";
   const judgementBadge = document.createElement("b");
-  judgementBadge.textContent = item.topLabel || judgement.judgement || "대형 이변 후보";
+  judgementBadge.textContent = item.label || item.topLabel || judgement.judgement || "대형 이변 후보";
   meta.appendChild(judgementBadge);
   const sampleBadge = document.createElement("span");
-  sampleBadge.textContent = `표본 ${Number(judgement.sampleSize || 0)}`;
+  sampleBadge.textContent = `표본 ${Number(item.sampleSize || judgement.sampleSize || 0)}`;
   meta.appendChild(sampleBadge);
   (item.evidence || []).slice(0, 2).forEach((text) => {
     const evidenceBadge = document.createElement("span");
@@ -10017,7 +10043,7 @@ function setHomeUpsetLoading() {
   list.replaceChildren(loading);
 }
 
-function renderHomeUpsetCandidates(matches = [], assessed = null) {
+function renderHomeUpsetCandidates(matches = [], assessed = null, sharedSignals = null) {
   if (typeof document === "undefined") return;
   const list = document.getElementById("home-upset-list");
   if (!list) return;
@@ -10025,7 +10051,8 @@ function renderHomeUpsetCandidates(matches = [], assessed = null) {
   // 후보 목록 옆에 지금까지의 검증 성적을 같이 둔다. 실패해도 화면은 그대로 진행한다.
   loadUpsetTrackRecord().catch(() => {});
 
-  if (!cachedSearchableMatches) {
+  const candidateMatches = getSharedCandidateMatches();
+  if (candidateMatches.length === 0) {
     const empty = document.createElement("div");
     empty.className = "home-upset-empty";
     empty.textContent = "오늘은 신뢰할 만한 이변 후보가 없습니다";
@@ -10033,7 +10060,9 @@ function renderHomeUpsetCandidates(matches = [], assessed = null) {
     return;
   }
 
-  const candidates = getTodayUpsetCandidates(matches, cachedSearchableMatches, assessed);
+  const candidates = Array.isArray(sharedSignals?.upset)
+    ? sharedSignals.upset
+    : getTodayUpsetCandidates(matches, candidateMatches, assessed);
   if (candidates.length === 0) {
     const empty = document.createElement("div");
     empty.className = "home-upset-empty";
@@ -10067,10 +10096,10 @@ function createHomeStrongSignalCard(item = {}) {
   const meta = document.createElement("div");
   meta.className = "home-strong-signal-meta";
   const evidence = document.createElement("b");
-  evidence.textContent = `이 조건 실제 적중률 ${Math.round(Number(judgement.favoriteHitRate || 0))}% · 시장 예상보다 ${Math.round(Number(item.hitRateLift || 0))}%p 높음`;
+  evidence.textContent = `이 조건 실제 적중률 ${Math.round(Number(item.favoriteHitRate || judgement.favoriteHitRate || 0))}% · 시장 예상보다 ${Math.round(Number(item.lift || item.hitRateLift || 0))}%p 높음`;
   meta.appendChild(evidence);
   const sampleBadge = document.createElement("span");
-  sampleBadge.textContent = `표본 ${Number(item.knownMatches || 0)}`;
+  sampleBadge.textContent = `표본 ${Number(item.sampleSize || item.knownMatches || 0)}`;
   meta.appendChild(sampleBadge);
 
   card.append(league, title, odds, meta);
@@ -10083,18 +10112,21 @@ function createHomeStrongSignalCard(item = {}) {
   return card;
 }
 
-function renderHomeStrongSignal(matches = [], assessed = null) {
+function renderHomeStrongSignal(matches = [], assessed = null, sharedSignals = null) {
   if (typeof document === "undefined") return;
   const section = document.getElementById("home-strong-signal-section");
   const list = document.getElementById("home-strong-signal-list");
   if (!section || !list) return;
 
-  if (!cachedSearchableMatches) {
+  const candidateMatches = getSharedCandidateMatches();
+  if (candidateMatches.length === 0) {
     section.hidden = true;
     return;
   }
 
-  const signal = getTodayStrongSignal(matches, cachedSearchableMatches, assessed);
+  const signal = sharedSignals && Object.prototype.hasOwnProperty.call(sharedSignals, "strong")
+    ? sharedSignals.strong
+    : getTodayStrongSignal(matches, candidateMatches, assessed);
   if (!signal) {
     section.hidden = true;
     list.replaceChildren();
@@ -10203,10 +10235,27 @@ function renderHomeTodayMatches(matches = homeTodayMatches, { status = "" } = {}
     )));
   }
 
+  const signalDate = String(majorMatches[0]?.date || "").slice(0, 10);
+  if (signalDate) {
+    loadSharedTodaySignals(signalDate)
+      .then((signals) => {
+        if (renderVersion !== homeTodayAnalysisRenderVersion) return;
+        renderHomeUpsetCandidates(majorMatches, null, signals);
+        renderHomeStrongSignal(majorMatches, null, signals);
+      })
+      .catch(() => {
+        if (renderVersion !== homeTodayAnalysisRenderVersion) return;
+        const candidateMatches = getSharedCandidateMatches();
+        const assessed = candidateMatches.length > 0
+          ? assessTodayMatches(majorMatches, candidateMatches)
+          : null;
+        renderHomeUpsetCandidates(majorMatches, assessed);
+        renderHomeStrongSignal(majorMatches, assessed);
+      });
+  }
+
   if (!cachedSearchableMatches || typeof window === "undefined") {
     // 아직 과거 데이터가 없으면 심사할 것도 없다. 두 렌더러가 알아서 빈 상태를 그린다.
-    renderHomeUpsetCandidates(majorMatches);
-    renderHomeStrongSignal(majorMatches);
     return;
   }
 
@@ -13184,6 +13233,7 @@ if (typeof module !== "undefined") {
     getDashboardCounts,
     getDuplicateKey,
     getBaseMatches,
+    getSharedCandidateMatches,
     getCurrentTimestamp,
     deduplicateTodayMatches,
     getResultBreakdownMemo,

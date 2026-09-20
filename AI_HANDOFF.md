@@ -13,6 +13,20 @@
 - This diagnostic records only callback/code presence, verifier/session-key presence, Android/standalone mode, session-check outcome and safe auth event names. It never records OAuth codes, access tokens, refresh tokens, user IDs, URLs or user agents.
 - User approved deployment to reproduce once in Android Chrome and once in the installed TWA, then compare server log entries before choosing a fix.
 
+## Standings-only automatic refresh (deployed)
+- Added `scripts/refresh-team-standings.js`: it deduplicates the league/season pairs already present in `team-context-pack.js`, requests only `/standings`, and replaces only non-empty standings responses. Existing team statistics, fixtures, injuries and lineups are preserved.
+- `.github/workflows/collect-api-odds.yml`: the existing 12:10 KST closing-odds run also performs the lightweight standings refresh. Manual Actions runs now offer `all` (the previous behavior) or `standings`; standings-only runs skip the 30-day odds collection and upset audit.
+- `package.json`: added `collect:team-context:standings`. `tests/team-context.test.js` covers deduplication and preservation of non-standings context; `tests/collector.test.js` covers workflow wiring.
+- Validation: JavaScript syntax check, workflow YAML parse, targeted collector/team-context tests and full `npm test` passed. No live API call was made, so no API quota was consumed and the checked-in pack was not rewritten.
+- Deployment: the latest `origin/main` received implementation commit `153dc6e`. Manual `standings` run `34692344557` succeeded and created data commit `81f1399`; 14 targets updated, 0 failures. Vercel completed successfully and production `team-context-pack.js` reports `standingsRefresh.updatedAt=2026-09-12T11:56:56.532Z`.
+- `preview-server.js` remains unmodified and untracked. Existing unrelated dirty files were preserved.
+- Local checkout `main` still points to the equivalent local commit `2ad9b71` and is behind the automated remote data commits; do not hard-reset because the checkout also contains unrelated uncommitted auth/app work. The deployed implementation is `153dc6e` on `origin/main`.
+
+## Phone-only saved-session timeout recovery (local, not deployed)
+- Phone normal Chrome and installed app time out at "기존 로그인 확인", while phone Chrome Incognito succeeds and desktop succeeds. This points to a stale persisted Supabase session on the normal phone profile.
+- `src/lib/auth.js`: when that saved-session lookup times out and an `sb-*-auth-token` key exists, delete only that Supabase token, create a fresh client and retry once. Favorites and other OddsArchive local data are untouched. If no such token exists, the original timeout still appears.
+- `tests/auth-loading.test.js`: covers this timeout-to-fresh-signed-out recovery. Pending validation and user approval before commit/push/deploy.
+
 ## Auth-event scheduling fix: deployment approved
 - Phone screenshot: saved-session lookup exceeds 15 seconds; user confirms normal phone Chrome also fails but Incognito succeeds. Device root cause is not confirmed.
 - src/lib/auth.js: defer auth-event favorite synchronization with setTimeout(0), rather than a microtask, so database calls start after the SDK auth-event lock can release. No session, favorite, or account deletion and no lock bypass.
@@ -99,3 +113,18 @@
 - Cached fixture cards briefly showed scheduled status before live refresh. No collection or historical data logic was changed in this task.
 - No version/cache bump, commit, push, or deployment. Current base: bfb9116d46112c69df0c93b2b4ff250de9edfff2; pulled automated data updates only.
 - preview-server.js was already untracked; do not modify or commit it. Local preview runs at http://127.0.0.1:4222/ (process 20552).
+
+## 2026-09-21 shared candidate history (local only)
+
+- Public upset/favorite candidate signals now use only the deployed `football-data-pack` plus deduplicated automatic `api-odds-pack` through `getBaseMatches`. Browser-local imported matches and cached live results remain available to ordinary odds search but no longer change the public candidate list per device.
+- Added a regression check that the public candidate source is the shared server-pack source. All web tests passed.
+- No authentication, Supabase, database, automatic collector, search, favorite, commit, push, cache/version, or deployment change was made. Existing unrelated local edits were preserved.
+- Web and native Google login both create/use the same Supabase `auth.users` records. No signup-platform field is currently stored, so historical users cannot be reliably attributed to web versus native app from the member totals alone.
+## 2026-09-21 이변후보 단일 계산 API (로컬, 미배포)
+
+- 웹과 React Native의 후보 개수 차이 및 앱의 약 6초 계산 지연을 없애기 위해 `api/today-signals.js`를 추가했다.
+- 후보 판정은 웹의 기존 `assessTodayMatches` / `getTodayStrongSignal`을 서버에서 한 번만 실행하며, 웹과 앱은 같은 결과를 받는다.
+- 기존 자동수집 워크플로는 변경하지 않았다. GitHub Actions에서 2026-09-20까지 정상 실행됨을 확인했다.
+- 서버 요청 실패 시 기존 기기 계산으로 복귀하는 fallback을 유지했다.
+- 웹 전체 테스트와 새 API 테스트, RN typecheck/lint/Jest(18 suites, 83 tests), Android debug build가 통과했다.
+- 아직 commit/push/Vercel 배포/Play 업로드는 하지 않았다. 실제 개수·속도 실기기 검증은 서버 API 배포 후 앱 빌드에서 수행해야 한다.
