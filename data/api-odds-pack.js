@@ -5,14 +5,14 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-21T15:04:45.443Z",
+  "updatedAt": "2026-09-21T18:12:00.164Z",
   "collection": {
-    "lastAttemptAt": "2026-09-21T15:03:56.531Z",
-    "lastSuccessAt": "2026-09-21T15:04:45.443Z",
-    "requestSuccesses": 117,
+    "lastAttemptAt": "2026-09-21T18:11:45.129Z",
+    "lastSuccessAt": "2026-09-21T18:12:00.164Z",
+    "requestSuccesses": 34,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 2,
+    "updatedCount": 1,
     "duplicateCount": 2,
     "errors": []
   },
@@ -39940,10 +39940,10 @@
       "homeOdds": "1.20",
       "drawOdds": "6.00",
       "awayOdds": "11.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "1-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-21T15:04:38.601Z",
+      "oddsUpdatedAt": "2026-09-21T18:11:56.503Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-21T08:50:16.139Z",
