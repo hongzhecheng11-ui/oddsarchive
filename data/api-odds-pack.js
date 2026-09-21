@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-20T20:44:10.626Z",
+  "updatedAt": "2026-09-21T01:02:37.877Z",
   "collection": {
-    "lastAttemptAt": "2026-09-20T20:43:54.436Z",
-    "lastSuccessAt": "2026-09-20T20:44:10.626Z",
+    "lastAttemptAt": "2026-09-21T01:02:21.916Z",
+    "lastSuccessAt": "2026-09-21T01:02:37.877Z",
     "requestSuccesses": 35,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 20,
-    "duplicateCount": 33,
+    "updatedCount": 1,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -39433,19 +39433,25 @@
       "fixtureId": "1640500",
       "homeTeam": "Fiji",
       "awayTeam": "Vanuatu",
-      "homeOdds": "2.05",
-      "drawOdds": "3.30",
-      "awayOdds": "3.20",
+      "homeOdds": "1.95",
+      "drawOdds": "3.40",
+      "awayOdds": "3.40",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-20T13:01:54.195Z",
+      "oddsUpdatedAt": "2026-09-21T01:02:33.857Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-20T13:01:54.195Z",
           "homeOdds": "2.05",
           "drawOdds": "3.30",
           "awayOdds": "3.20"
+        },
+        {
+          "capturedAt": "2026-09-21T01:02:33.857Z",
+          "homeOdds": "1.95",
+          "drawOdds": "3.40",
+          "awayOdds": "3.40"
         }
       ]
     },
