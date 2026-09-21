@@ -6,16 +6,13 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-22",
-  "updatedAt": "2026-09-21T15:04:48.988Z",
+  "updatedAt": "2026-09-21T21:56:13.092Z",
   "collection": {
     "dates": [
-      "2026-09-22",
-      "2026-09-23",
-      "2026-09-24",
-      "2026-09-25"
+      "2026-09-22"
     ],
     "requestGroups": 1,
-    "skippedGroups": 103,
+    "skippedGroups": 25,
     "failures": 0,
     "errors": []
   },
@@ -29,21 +26,21 @@
         {
           "teamId": 5531,
           "team": "Dominica",
-          "form": "",
+          "form": "W",
           "all": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
+            "goalsFor": 1,
             "goalsAgainst": 0
           },
           "home": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
+            "goalsFor": 1,
             "goalsAgainst": 0
           },
           "away": {
@@ -58,14 +55,14 @@
         {
           "teamId": 8150,
           "team": "Anguilla",
-          "form": "",
+          "form": "L",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsAgainst": 1
           },
           "home": {
             "played": 0,
@@ -76,12 +73,12 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsAgainst": 1
           }
         }
       ],
@@ -89,30 +86,15 @@
         {
           "fixtureId": 1640822,
           "kickoff": "2026-09-22T00:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 5531,
           "homeTeam": "Dominica",
           "awayTeamId": 8150,
           "awayTeam": "Anguilla",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
-          "lineups": [
-            {
-              "teamId": 5531,
-              "team": "Dominica",
-              "formation": "",
-              "coach": "Ellington Sabin",
-              "starters": []
-            },
-            {
-              "teamId": 8150,
-              "team": "Anguilla",
-              "formation": "",
-              "coach": "",
-              "starters": []
-            }
-          ]
+          "lineupsChecked": false,
+          "lineups": []
         }
       ]
     }
@@ -7640,7 +7622,7 @@
     },
     {
       "date": "2026-09-22",
-      "updatedAt": "2026-09-21T15:04:48.974Z",
+      "updatedAt": "2026-09-21T21:56:13.087Z",
       "leagues": [
         {
           "key": "INTL_FRIENDLIES",
@@ -7651,21 +7633,21 @@
             {
               "teamId": 5531,
               "team": "Dominica",
-              "form": "",
+              "form": "W",
               "all": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
+                "goalsFor": 1,
                 "goalsAgainst": 0
               },
               "home": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
+                "goalsFor": 1,
                 "goalsAgainst": 0
               },
               "away": {
@@ -7680,14 +7662,14 @@
             {
               "teamId": 8150,
               "team": "Anguilla",
-              "form": "",
+              "form": "L",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               },
               "home": {
                 "played": 0,
@@ -7698,12 +7680,12 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               }
             }
           ],
@@ -7711,30 +7693,15 @@
             {
               "fixtureId": 1640822,
               "kickoff": "2026-09-22T00:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 5531,
               "homeTeam": "Dominica",
               "awayTeamId": 8150,
               "awayTeam": "Anguilla",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
-              "lineups": [
-                {
-                  "teamId": 5531,
-                  "team": "Dominica",
-                  "formation": "",
-                  "coach": "Ellington Sabin",
-                  "starters": []
-                },
-                {
-                  "teamId": 8150,
-                  "team": "Anguilla",
-                  "formation": "",
-                  "coach": "",
-                  "starters": []
-                }
-              ]
+              "lineupsChecked": false,
+              "lineups": []
             }
           ]
         }
