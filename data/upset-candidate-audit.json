@@ -1,6 +1,6 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-21T08:50:20.203Z",
+  "updatedAt": "2026-09-21T15:04:45.707Z",
   "summary": {
     "trackedDays": 63,
     "trackedCandidates": 135,
@@ -490,7 +490,7 @@
     {
       "date": "2026-09-22",
       "firstEvaluatedAt": "2026-09-21T08:50:20.203Z",
-      "lastEvaluatedAt": "2026-09-21T08:50:20.203Z",
+      "lastEvaluatedAt": "2026-09-21T15:04:45.707Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
     }

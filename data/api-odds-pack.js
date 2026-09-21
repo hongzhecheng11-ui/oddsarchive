@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-21T08:50:19.975Z",
+  "updatedAt": "2026-09-21T15:04:45.443Z",
   "collection": {
-    "lastAttemptAt": "2026-09-21T08:50:05.466Z",
-    "lastSuccessAt": "2026-09-21T08:50:19.975Z",
-    "requestSuccesses": 35,
+    "lastAttemptAt": "2026-09-21T15:03:56.531Z",
+    "lastSuccessAt": "2026-09-21T15:04:45.443Z",
+    "requestSuccesses": 117,
     "requestFailures": 0,
-    "addedCount": 2,
-    "updatedCount": 1,
-    "duplicateCount": 0,
+    "addedCount": 0,
+    "updatedCount": 2,
+    "duplicateCount": 2,
     "errors": []
   },
   "matches": [
@@ -39436,10 +39436,10 @@
       "homeOdds": "1.85",
       "drawOdds": "3.50",
       "awayOdds": "3.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-21T08:50:16.139Z",
+      "oddsUpdatedAt": "2026-09-21T15:04:38.601Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-20T13:01:54.195Z",
@@ -39937,19 +39937,25 @@
       "fixtureId": "1640822",
       "homeTeam": "Dominica",
       "awayTeam": "Anguilla",
-      "homeOdds": "1.18",
-      "drawOdds": "6.50",
-      "awayOdds": "12.00",
+      "homeOdds": "1.20",
+      "drawOdds": "6.00",
+      "awayOdds": "11.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-21T08:50:16.139Z",
+      "oddsUpdatedAt": "2026-09-21T15:04:38.601Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-21T08:50:16.139Z",
           "homeOdds": "1.18",
           "drawOdds": "6.50",
           "awayOdds": "12.00"
+        },
+        {
+          "capturedAt": "2026-09-21T15:04:38.601Z",
+          "homeOdds": "1.20",
+          "drawOdds": "6.00",
+          "awayOdds": "11.00"
         }
       ]
     }
