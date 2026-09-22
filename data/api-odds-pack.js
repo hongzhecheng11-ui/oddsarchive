@@ -7,11 +7,11 @@
   "version": "api-odds-pack-v1",
   "updatedAt": "2026-09-22T13:22:57.296Z",
   "collection": {
-    "lastAttemptAt": "2026-09-22T13:22:12.478Z",
-    "lastSuccessAt": "2026-09-22T13:22:57.296Z",
-    "requestSuccesses": 115,
+    "lastAttemptAt": "2026-09-22T16:53:15.810Z",
+    "lastSuccessAt": "2026-09-22T16:53:25.924Z",
+    "requestSuccesses": 28,
     "requestFailures": 0,
-    "addedCount": 2,
+    "addedCount": 0,
     "updatedCount": 0,
     "duplicateCount": 0,
     "errors": []
