@@ -5,7 +5,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-21T15:06:02.679Z",
+  "updatedAt": "2026-09-22T13:23:22.767Z",
   "collection": {
     "dates": [
       "2026-09-21",
@@ -15,8 +15,8 @@
     "requestGroups": 36,
     "skippedGroups": 42,
     "finishedFixtures": 119,
-    "skippedComplete": 46,
-    "saved": 73,
+    "skippedComplete": 119,
+    "saved": 0,
     "failures": 0,
     "errors": []
   },

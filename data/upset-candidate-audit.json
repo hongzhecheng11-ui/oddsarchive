@@ -1,8 +1,8 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-22T08:27:34.095Z",
+  "updatedAt": "2026-09-22T13:22:57.591Z",
   "summary": {
-    "trackedDays": 63,
+    "trackedDays": 64,
     "trackedCandidates": 135,
     "resolvedCandidates": 115,
     "favoriteFailures": 46,
@@ -492,6 +492,13 @@
       "firstEvaluatedAt": "2026-09-21T08:50:20.203Z",
       "lastEvaluatedAt": "2026-09-21T15:04:45.707Z",
       "eligibleMatchCount": 1,
+      "candidateIds": []
+    },
+    {
+      "date": "2026-09-24",
+      "firstEvaluatedAt": "2026-09-22T13:22:57.591Z",
+      "lastEvaluatedAt": "2026-09-22T13:22:57.591Z",
+      "eligibleMatchCount": 2,
       "candidateIds": []
     }
   ],

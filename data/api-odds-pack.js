@@ -5,13 +5,13 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-21T21:56:11.054Z",
+  "updatedAt": "2026-09-22T13:22:57.296Z",
   "collection": {
-    "lastAttemptAt": "2026-09-22T08:27:21.795Z",
-    "lastSuccessAt": "2026-09-22T08:27:33.806Z",
-    "requestSuccesses": 28,
+    "lastAttemptAt": "2026-09-22T13:22:12.478Z",
+    "lastSuccessAt": "2026-09-22T13:22:57.296Z",
+    "requestSuccesses": 115,
     "requestFailures": 0,
-    "addedCount": 0,
+    "addedCount": 2,
     "updatedCount": 0,
     "duplicateCount": 0,
     "errors": []
@@ -39956,6 +39956,50 @@
           "homeOdds": "1.20",
           "drawOdds": "6.00",
           "awayOdds": "11.00"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1610876",
+      "homeTeam": "Azerbaijan",
+      "awayTeam": "Tajikistan",
+      "homeOdds": "1.65",
+      "drawOdds": "3.70",
+      "awayOdds": "4.60",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-22T13:22:51.985Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-22T13:22:51.985Z",
+          "homeOdds": "1.65",
+          "drawOdds": "3.70",
+          "awayOdds": "4.60"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1640055",
+      "homeTeam": "Gibraltar",
+      "awayTeam": "Sao Tome and Principe",
+      "homeOdds": "1.36",
+      "drawOdds": "4.90",
+      "awayOdds": "6.80",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-22T13:22:51.985Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-22T13:22:51.985Z",
+          "homeOdds": "1.36",
+          "drawOdds": "4.90",
+          "awayOdds": "6.80"
         }
       ]
     }
