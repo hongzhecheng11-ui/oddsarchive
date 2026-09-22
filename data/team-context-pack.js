@@ -6,7 +6,7 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-22",
-  "updatedAt": "2026-09-21T21:56:13.092Z",
+  "updatedAt": "2026-09-21T21:56:13.087Z",
   "collection": {
     "dates": [
       "2026-09-22"
@@ -102,7 +102,7 @@
   "dates": [
     {
       "date": "2026-09-21",
-      "updatedAt": "2026-09-21T08:50:26.184Z",
+      "updatedAt": "2026-09-22T08:27:37.269Z",
       "leagues": [
         {
           "key": "EPL",
@@ -937,7 +937,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "LALIGA",
@@ -2074,7 +2074,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "SERIEA",
@@ -3060,7 +3060,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "BUNDESLIGA",
@@ -3950,7 +3950,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "LIGUE1",
@@ -4832,7 +4832,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "PRIMEIRA_LIGA",
@@ -5750,7 +5750,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "BELGIAN_PRO_LEAGUE",
@@ -6558,7 +6558,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "SUPER_LIG",
@@ -7464,7 +7464,7 @@
               ]
             }
           ],
-          "standingsUpdatedAt": "2026-09-21T08:50:26.184Z"
+          "standingsUpdatedAt": "2026-09-22T08:27:37.269Z"
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -7722,6 +7722,12 @@
       "updatedAt": "2026-09-21T15:04:48.974Z",
       "leagues": []
     }
-  ]
+  ],
+  "standingsRefresh": {
+    "updatedAt": "2026-09-22T08:27:37.269Z",
+    "requested": 9,
+    "updated": 8,
+    "failures": 1
+  }
 };
 });
