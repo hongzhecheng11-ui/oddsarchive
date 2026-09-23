@@ -5,14 +5,14 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-22T13:22:57.296Z",
+  "updatedAt": "2026-09-23T01:27:52.382Z",
   "collection": {
-    "lastAttemptAt": "2026-09-22T21:12:32.896Z",
-    "lastSuccessAt": "2026-09-22T21:12:43.809Z",
-    "requestSuccesses": 28,
+    "lastAttemptAt": "2026-09-23T01:27:42.014Z",
+    "lastSuccessAt": "2026-09-23T01:27:52.382Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 0,
+    "updatedCount": 2,
     "duplicateCount": 0,
     "errors": []
   },
@@ -39965,19 +39965,25 @@
       "fixtureId": "1610876",
       "homeTeam": "Azerbaijan",
       "awayTeam": "Tajikistan",
-      "homeOdds": "1.65",
-      "drawOdds": "3.70",
-      "awayOdds": "4.60",
+      "homeOdds": "1.75",
+      "drawOdds": "3.40",
+      "awayOdds": "4.20",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-22T13:22:51.985Z",
+      "oddsUpdatedAt": "2026-09-23T01:27:52.115Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-22T13:22:51.985Z",
           "homeOdds": "1.65",
           "drawOdds": "3.70",
           "awayOdds": "4.60"
+        },
+        {
+          "capturedAt": "2026-09-23T01:27:52.115Z",
+          "homeOdds": "1.75",
+          "drawOdds": "3.40",
+          "awayOdds": "4.20"
         }
       ]
     },
@@ -39987,19 +39993,25 @@
       "fixtureId": "1640055",
       "homeTeam": "Gibraltar",
       "awayTeam": "Sao Tome and Principe",
-      "homeOdds": "1.36",
-      "drawOdds": "4.90",
-      "awayOdds": "6.80",
+      "homeOdds": "1.25",
+      "drawOdds": "5.00",
+      "awayOdds": "11.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-22T13:22:51.985Z",
+      "oddsUpdatedAt": "2026-09-23T01:27:52.115Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-22T13:22:51.985Z",
           "homeOdds": "1.36",
           "drawOdds": "4.90",
           "awayOdds": "6.80"
+        },
+        {
+          "capturedAt": "2026-09-23T01:27:52.115Z",
+          "homeOdds": "1.25",
+          "drawOdds": "5.00",
+          "awayOdds": "11.00"
         }
       ]
     }
