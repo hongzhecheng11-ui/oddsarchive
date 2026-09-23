@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-23T08:29:30.429Z",
+  "updatedAt": "2026-09-23T13:36:23.775Z",
   "summary": {
-    "trackedDays": 64,
-    "trackedCandidates": 135,
+    "trackedDays": 65,
+    "trackedCandidates": 136,
     "resolvedCandidates": 115,
     "favoriteFailures": 46,
     "directionHits": 23
@@ -497,8 +497,17 @@
     {
       "date": "2026-09-24",
       "firstEvaluatedAt": "2026-09-22T13:22:57.591Z",
-      "lastEvaluatedAt": "2026-09-23T08:29:30.429Z",
-      "eligibleMatchCount": 2,
+      "lastEvaluatedAt": "2026-09-23T13:36:23.775Z",
+      "eligibleMatchCount": 10,
+      "candidateIds": [
+        "fixture:1640056"
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "firstEvaluatedAt": "2026-09-23T13:36:23.775Z",
+      "lastEvaluatedAt": "2026-09-23T13:36:23.775Z",
+      "eligibleMatchCount": 10,
       "candidateIds": []
     }
   ],
@@ -4012,6 +4021,32 @@
       "resolvedAt": "2026-09-20T20:44:10.910Z",
       "favoriteFailed": false,
       "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1640056",
+      "fixtureId": "1640056",
+      "date": "2026-09-24",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Palestine",
+      "awayTeam": "New Zealand",
+      "homeOdds": "3.80",
+      "drawOdds": "3.25",
+      "awayOdds": "1.91",
+      "favoriteKey": "A",
+      "candidateLabel": "정배 불안",
+      "predictedDirection": "",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 92,
+      "firstEvaluatedAt": "2026-09-23T13:36:23.775Z",
+      "lastSeenAt": "2026-09-23T13:36:23.775Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     }
   ]
 }

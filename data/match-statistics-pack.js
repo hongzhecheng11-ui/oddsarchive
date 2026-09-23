@@ -5,22 +5,97 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-22T13:23:22.767Z",
+  "updatedAt": "2026-09-23T13:36:56.361Z",
   "collection": {
     "dates": [
+      "2026-09-22",
       "2026-09-21",
-      "2026-09-20",
-      "2026-09-19"
+      "2026-09-20"
     ],
-    "requestGroups": 36,
-    "skippedGroups": 42,
-    "finishedFixtures": 119,
-    "skippedComplete": 119,
-    "saved": 0,
+    "requestGroups": 24,
+    "skippedGroups": 54,
+    "finishedFixtures": 74,
+    "skippedComplete": 73,
+    "saved": 1,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1640822,
+      "date": "2026-09-22",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 5531,
+      "homeTeam": "Dominica",
+      "awayTeamId": 8150,
+      "awayTeam": "Anguilla",
+      "home": {
+        "teamId": 5531,
+        "team": "Dominica",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 8150,
+        "team": "Anguilla",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 5531,
+          "team": "Dominica",
+          "formation": "",
+          "coach": "Ellington Sabin",
+          "starters": [
+            "E. Dwight",
+            "T. Sandy",
+            "E. Marshall",
+            "T. Jnohope",
+            "M. Bredas",
+            "L. Edwards",
+            "B. Thomas",
+            "N. Harve",
+            "J. George",
+            "R. Cuffy",
+            "A. Laville"
+          ]
+        },
+        {
+          "teamId": 8150,
+          "team": "Anguilla",
+          "formation": "",
+          "coach": "",
+          "starters": [
+            "J. Lawrence",
+            "K. Connor",
+            "J. Jones",
+            "C. Carty",
+            "G. Hughes",
+            "J. Gayle",
+            "J. Lloyd",
+            "N. Owen",
+            "S. Bradshaw",
+            "K. Lake Bryan",
+            "T. Leveret"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1557411,
       "date": "2026-09-21",
