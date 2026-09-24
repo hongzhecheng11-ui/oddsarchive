@@ -5,14 +5,14 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-24T17:06:04.574Z",
+  "updatedAt": "2026-09-24T21:26:54.896Z",
   "collection": {
-    "lastAttemptAt": "2026-09-24T17:05:52.902Z",
-    "lastSuccessAt": "2026-09-24T17:06:04.574Z",
-    "requestSuccesses": 27,
+    "lastAttemptAt": "2026-09-24T21:26:42.398Z",
+    "lastSuccessAt": "2026-09-24T21:26:54.896Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 2,
+    "updatedCount": 0,
     "duplicateCount": 9,
     "errors": []
   },
