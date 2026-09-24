@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-24T13:31:24.425Z",
+  "updatedAt": "2026-09-24T17:06:04.574Z",
   "collection": {
-    "lastAttemptAt": "2026-09-24T13:30:38.492Z",
-    "lastSuccessAt": "2026-09-24T13:31:24.425Z",
-    "requestSuccesses": 107,
+    "lastAttemptAt": "2026-09-24T17:05:52.902Z",
+    "lastSuccessAt": "2026-09-24T17:06:04.574Z",
+    "requestSuccesses": 27,
     "requestFailures": 0,
-    "addedCount": 4,
-    "updatedCount": 9,
-    "duplicateCount": 16,
+    "addedCount": 0,
+    "updatedCount": 2,
+    "duplicateCount": 9,
     "errors": []
   },
   "matches": [
@@ -40188,10 +40188,10 @@
       "homeOdds": "2.20",
       "drawOdds": "3.10",
       "awayOdds": "2.88",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "1-2",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-24T13:31:21.474Z",
+      "oddsUpdatedAt": "2026-09-24T17:06:03.791Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-23T13:36:19.302Z",
@@ -40278,10 +40278,10 @@
       "homeOdds": "2.90",
       "drawOdds": "2.80",
       "awayOdds": "2.50",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "3-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-24T13:31:21.474Z",
+      "oddsUpdatedAt": "2026-09-24T17:06:03.791Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-24T01:20:12.214Z",
