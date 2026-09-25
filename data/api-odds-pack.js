@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-25T13:41:46.319Z",
+  "updatedAt": "2026-09-25T17:06:13.262Z",
   "collection": {
-    "lastAttemptAt": "2026-09-25T13:41:07.718Z",
-    "lastSuccessAt": "2026-09-25T13:41:46.319Z",
-    "requestSuccesses": 105,
+    "lastAttemptAt": "2026-09-25T17:06:01.489Z",
+    "lastSuccessAt": "2026-09-25T17:06:13.262Z",
+    "requestSuccesses": 27,
     "requestFailures": 0,
-    "addedCount": 2,
-    "updatedCount": 14,
-    "duplicateCount": 2,
+    "addedCount": 1,
+    "updatedCount": 1,
+    "duplicateCount": 3,
     "errors": []
   },
   "matches": [
@@ -40346,10 +40346,10 @@
       "homeOdds": "7.50",
       "drawOdds": "5.00",
       "awayOdds": "1.27",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "D",
+      "score": "1-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-25T13:41:44.504Z",
+      "oddsUpdatedAt": "2026-09-25T17:06:12.402Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-24T13:31:22.055Z",
@@ -40402,6 +40402,28 @@
           "homeOdds": "2.30",
           "drawOdds": "3.30",
           "awayOdds": "2.50"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-26",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1637599",
+      "homeTeam": "England U19",
+      "awayTeam": "Republic of Ireland U19",
+      "homeOdds": "1.33",
+      "drawOdds": "4.40",
+      "awayOdds": "7.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-25T17:06:12.402Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-25T17:06:12.402Z",
+          "homeOdds": "1.33",
+          "drawOdds": "4.40",
+          "awayOdds": "7.00"
         }
       ]
     },
