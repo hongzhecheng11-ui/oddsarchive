@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-25",
-  "updatedAt": "2026-09-24T21:27:05.730Z",
+  "updatedAt": "2026-09-25T13:42:13.067Z",
   "collection": {
     "dates": [
-      "2026-09-25"
+      "2026-09-25",
+      "2026-09-26",
+      "2026-09-27",
+      "2026-09-28"
     ],
-    "requestGroups": 1,
-    "skippedGroups": 25,
+    "requestGroups": 4,
+    "skippedGroups": 100,
     "failures": 0,
     "errors": []
   },
@@ -26,21 +29,21 @@
         {
           "teamId": 17952,
           "team": "Finland U17",
-          "form": "LLLDDWW",
+          "form": "LLLDDWWW",
           "all": {
-            "played": 7,
-            "wins": 2,
+            "played": 8,
+            "wins": 3,
             "draws": 2,
             "losses": 3,
-            "goalsFor": 9,
+            "goalsFor": 10,
             "goalsAgainst": 22
           },
           "home": {
-            "played": 5,
-            "wins": 2,
+            "played": 6,
+            "wins": 3,
             "draws": 2,
             "losses": 1,
-            "goalsFor": 9,
+            "goalsFor": 10,
             "goalsAgainst": 10
           },
           "away": {
@@ -55,14 +58,14 @@
         {
           "teamId": 12507,
           "team": "France U17",
-          "form": "LWL",
+          "form": "LWLL",
           "all": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
+            "losses": 3,
             "goalsFor": 3,
-            "goalsAgainst": 6
+            "goalsAgainst": 7
           },
           "home": {
             "played": 0,
@@ -73,33 +76,33 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
+            "losses": 3,
             "goalsFor": 3,
-            "goalsAgainst": 6
+            "goalsAgainst": 7
           }
         },
         {
           "teamId": 17970,
           "team": "Poland U17",
-          "form": "WWD",
+          "form": "WWDW",
           "all": {
-            "played": 3,
-            "wins": 2,
+            "played": 4,
+            "wins": 3,
             "draws": 1,
             "losses": 0,
-            "goalsFor": 7,
-            "goalsAgainst": 3
+            "goalsFor": 11,
+            "goalsAgainst": 4
           },
           "home": {
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
+            "goalsFor": 10,
+            "goalsAgainst": 3
           },
           "away": {
             "played": 1,
@@ -113,14 +116,14 @@
         {
           "teamId": 17947,
           "team": "Czechia U17",
-          "form": "W",
+          "form": "WL",
           "all": {
-            "played": 1,
+            "played": 2,
             "wins": 1,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           },
           "home": {
             "played": 0,
@@ -131,33 +134,33 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 1,
+            "played": 2,
             "wins": 1,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 2,
-            "goalsAgainst": 1
+            "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           }
         },
         {
           "teamId": 10376,
           "team": "Poland U19",
-          "form": "",
+          "form": "L",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsAgainst": 1
           },
           "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsAgainst": 1
           },
           "away": {
             "played": 0,
@@ -171,13 +174,13 @@
         {
           "teamId": 10350,
           "team": "Switzerland U19",
-          "form": "",
+          "form": "W",
           "all": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
+            "goalsFor": 1,
             "goalsAgainst": 0
           },
           "home": {
@@ -189,33 +192,33 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
+            "goalsFor": 1,
             "goalsAgainst": 0
           }
         },
         {
           "teamId": 20,
           "team": "Australia",
-          "form": "LD",
+          "form": "LDD",
           "all": {
-            "played": 2,
+            "played": 3,
             "wins": 0,
-            "draws": 1,
+            "draws": 2,
             "losses": 1,
-            "goalsFor": 1,
-            "goalsAgainst": 2
+            "goalsFor": 2,
+            "goalsAgainst": 3
           },
           "home": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "away": {
             "played": 2,
@@ -229,14 +232,14 @@
         {
           "teamId": 6,
           "team": "Brazil",
-          "form": "LWWW",
+          "form": "LWWWD",
           "all": {
-            "played": 4,
+            "played": 5,
             "wins": 3,
-            "draws": 0,
+            "draws": 1,
             "losses": 1,
-            "goalsFor": 12,
-            "goalsAgainst": 6
+            "goalsFor": 13,
+            "goalsAgainst": 7
           },
           "home": {
             "played": 4,
@@ -247,12 +250,12 @@
             "goalsAgainst": 6
           },
           "away": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           }
         },
         {
@@ -434,53 +437,53 @@
         {
           "fixtureId": 1640058,
           "kickoff": "2026-09-25T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 17952,
           "homeTeam": "Finland U17",
           "awayTeamId": 12507,
           "awayTeam": "France U17",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1640059,
           "kickoff": "2026-09-25T18:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 17970,
           "homeTeam": "Poland U17",
           "awayTeamId": 17947,
           "awayTeam": "Czechia U17",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1640060,
           "kickoff": "2026-09-25T18:30:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 10376,
           "homeTeam": "Poland U19",
           "awayTeamId": 10350,
           "awayTeam": "Switzerland U19",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1583655,
           "kickoff": "2026-09-25T19:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 20,
           "homeTeam": "Australia",
           "awayTeamId": 6,
           "awayTeam": "Brazil",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -493,7 +496,7 @@
           "awayTeam": "Japan U18",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
@@ -506,8 +509,23 @@
           "awayTeam": "Panama",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
-          "lineups": []
+          "lineupsChecked": true,
+          "lineups": [
+            {
+              "teamId": 1537,
+              "team": "India",
+              "formation": "",
+              "coach": "Ahmed Jamil Khalid",
+              "starters": []
+            },
+            {
+              "teamId": 11,
+              "team": "Panama",
+              "formation": "",
+              "coach": "Thomas Christiansen",
+              "starters": []
+            }
+          ]
         },
         {
           "fixtureId": 1640825,
@@ -519,7 +537,7 @@
           "awayTeam": "Russia U18",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -1680,7 +1698,7 @@
     },
     {
       "date": "2026-09-25",
-      "updatedAt": "2026-09-24T21:27:05.730Z",
+      "updatedAt": "2026-09-25T13:41:57.984Z",
       "leagues": [
         {
           "key": "INTL_FRIENDLIES",
@@ -1691,21 +1709,21 @@
             {
               "teamId": 17952,
               "team": "Finland U17",
-              "form": "LLLDDWW",
+              "form": "LLLDDWWW",
               "all": {
-                "played": 7,
-                "wins": 2,
+                "played": 8,
+                "wins": 3,
                 "draws": 2,
                 "losses": 3,
-                "goalsFor": 9,
+                "goalsFor": 10,
                 "goalsAgainst": 22
               },
               "home": {
-                "played": 5,
-                "wins": 2,
+                "played": 6,
+                "wins": 3,
                 "draws": 2,
                 "losses": 1,
-                "goalsFor": 9,
+                "goalsFor": 10,
                 "goalsAgainst": 10
               },
               "away": {
@@ -1720,14 +1738,14 @@
             {
               "teamId": 12507,
               "team": "France U17",
-              "form": "LWL",
+              "form": "LWLL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 0,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 3,
-                "goalsAgainst": 6
+                "goalsAgainst": 7
               },
               "home": {
                 "played": 0,
@@ -1738,33 +1756,33 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 0,
-                "losses": 2,
+                "losses": 3,
                 "goalsFor": 3,
-                "goalsAgainst": 6
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 17970,
               "team": "Poland U17",
-              "form": "WWD",
+              "form": "WWDW",
               "all": {
-                "played": 3,
-                "wins": 2,
+                "played": 4,
+                "wins": 3,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 7,
-                "goalsAgainst": 3
+                "goalsFor": 11,
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 2,
-                "wins": 2,
+                "played": 3,
+                "wins": 3,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 2
+                "goalsFor": 10,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 1,
@@ -1778,14 +1796,14 @@
             {
               "teamId": 17947,
               "team": "Czechia U17",
-              "form": "W",
+              "form": "WL",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 1
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
               },
               "home": {
                 "played": 0,
@@ -1796,33 +1814,33 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 1,
+                "played": 2,
                 "wins": 1,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 2,
-                "goalsAgainst": 1
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
               }
             },
             {
               "teamId": 10376,
               "team": "Poland U19",
-              "form": "",
+              "form": "L",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 0,
@@ -1836,13 +1854,13 @@
             {
               "teamId": 10350,
               "team": "Switzerland U19",
-              "form": "",
+              "form": "W",
               "all": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
+                "goalsFor": 1,
                 "goalsAgainst": 0
               },
               "home": {
@@ -1854,33 +1872,33 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
+                "goalsFor": 1,
                 "goalsAgainst": 0
               }
             },
             {
               "teamId": 20,
               "team": "Australia",
-              "form": "LD",
+              "form": "LDD",
               "all": {
-                "played": 2,
+                "played": 3,
                 "wins": 0,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 1,
-                "goalsAgainst": 2
+                "goalsFor": 2,
+                "goalsAgainst": 3
               },
               "home": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 2,
@@ -1894,14 +1912,14 @@
             {
               "teamId": 6,
               "team": "Brazil",
-              "form": "LWWW",
+              "form": "LWWWD",
               "all": {
-                "played": 4,
+                "played": 5,
                 "wins": 3,
-                "draws": 0,
+                "draws": 1,
                 "losses": 1,
-                "goalsFor": 12,
-                "goalsAgainst": 6
+                "goalsFor": 13,
+                "goalsAgainst": 7
               },
               "home": {
                 "played": 4,
@@ -1912,12 +1930,12 @@
                 "goalsAgainst": 6
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               }
             },
             {
@@ -2099,53 +2117,53 @@
             {
               "fixtureId": 1640058,
               "kickoff": "2026-09-25T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 17952,
               "homeTeam": "Finland U17",
               "awayTeamId": 12507,
               "awayTeam": "France U17",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1640059,
               "kickoff": "2026-09-25T18:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 17970,
               "homeTeam": "Poland U17",
               "awayTeamId": 17947,
               "awayTeam": "Czechia U17",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1640060,
               "kickoff": "2026-09-25T18:30:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 10376,
               "homeTeam": "Poland U19",
               "awayTeamId": 10350,
               "awayTeam": "Switzerland U19",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1583655,
               "kickoff": "2026-09-25T19:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 20,
               "homeTeam": "Australia",
               "awayTeamId": 6,
               "awayTeam": "Brazil",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -2158,7 +2176,7 @@
               "awayTeam": "Japan U18",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
@@ -2171,8 +2189,23 @@
               "awayTeam": "Panama",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
-              "lineups": []
+              "lineupsChecked": true,
+              "lineups": [
+                {
+                  "teamId": 1537,
+                  "team": "India",
+                  "formation": "",
+                  "coach": "Ahmed Jamil Khalid",
+                  "starters": []
+                },
+                {
+                  "teamId": 11,
+                  "team": "Panama",
+                  "formation": "",
+                  "coach": "Thomas Christiansen",
+                  "starters": []
+                }
+              ]
             },
             {
               "fixtureId": 1640825,
@@ -2184,7 +2217,7 @@
               "awayTeam": "Russia U18",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -2193,7 +2226,7 @@
     },
     {
       "date": "2026-09-26",
-      "updatedAt": "2026-09-25T08:44:32.135Z",
+      "updatedAt": "2026-09-25T13:42:05.316Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -3554,14 +3587,13 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ],
-          "standingsUpdatedAt": "2026-09-25T08:44:32.135Z"
+          ]
         }
       ]
     },
     {
       "date": "2026-09-27",
-      "updatedAt": "2026-09-25T08:44:32.135Z",
+      "updatedAt": "2026-09-25T13:42:13.063Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -4027,17 +4059,735 @@
               "lineupsChecked": false,
               "lineups": []
             }
+          ]
+        },
+        {
+          "key": "INTL_FRIENDLIES",
+          "leagueId": 10,
+          "season": "2026",
+          "standings": [],
+          "teams": [
+            {
+              "teamId": 2384,
+              "team": "USA",
+              "form": "LLWL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 11
+              },
+              "home": {
+                "played": 4,
+                "wins": 1,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 6,
+                "goalsAgainst": 11
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 30,
+              "team": "Peru",
+              "form": "LDWL",
+              "all": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 5,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 5529,
+              "team": "Canada",
+              "form": "WDDWD",
+              "all": {
+                "played": 5,
+                "wins": 2,
+                "draws": 3,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 5,
+                "wins": 2,
+                "draws": 3,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 2383,
+              "team": "Chile",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 16,
+              "team": "Mexico",
+              "form": "WWWDDWWW",
+              "all": {
+                "played": 8,
+                "wins": 6,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 15,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 6,
+                "wins": 4,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 8,
+              "team": "Colombia",
+              "form": "LLWW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 5170,
+              "team": "Vanuatu",
+              "form": "WDWD",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 5163,
+              "team": "New Caledonia",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 8174,
+              "team": "Cook Islands",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 5167,
+              "team": "Tahiti",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 5160,
+              "team": "Fiji",
+              "form": "LDL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 8175,
+              "team": "Papua New Guinea",
+              "form": "L",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 17970,
+              "team": "Poland U17",
+              "form": "WWDW",
+              "all": {
+                "played": 4,
+                "wins": 3,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 11,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 3,
+                "wins": 3,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 17972,
+              "team": "Republic of Ireland U17",
+              "form": "WLL",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 1566,
+              "team": "China",
+              "form": "DWDW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 7,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 3,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 4673,
+              "team": "New Zealand",
+              "form": "LLD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 1515,
+              "team": "Seychelles",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 5166,
+              "team": "Sri Lanka",
+              "form": "W",
+              "all": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 22343,
+              "team": "Ukraine U18",
+              "form": "DWDDWL",
+              "all": {
+                "played": 6,
+                "wins": 2,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 1,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 4,
+                "wins": 2,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 5,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 21460,
+              "team": "Austria U18",
+              "form": "LDD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              }
+            }
           ],
-          "standingsUpdatedAt": "2026-09-25T08:44:32.135Z"
+          "fixtures": [
+            {
+              "fixtureId": 1628997,
+              "kickoff": "2026-09-27T05:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 2384,
+              "homeTeam": "USA",
+              "awayTeamId": 30,
+              "awayTeam": "Peru",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1610877,
+              "kickoff": "2026-09-27T08:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 5529,
+              "homeTeam": "Canada",
+              "awayTeamId": 2383,
+              "awayTeam": "Chile",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1628996,
+              "kickoff": "2026-09-27T10:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 16,
+              "homeTeam": "Mexico",
+              "awayTeamId": 8,
+              "awayTeam": "Colombia",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640505,
+              "kickoff": "2026-09-27T13:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 5170,
+              "homeTeam": "Vanuatu",
+              "awayTeamId": 5163,
+              "awayTeam": "New Caledonia",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640062,
+              "kickoff": "2026-09-27T13:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 8174,
+              "homeTeam": "Cook Islands",
+              "awayTeamId": 5167,
+              "awayTeam": "Tahiti",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640506,
+              "kickoff": "2026-09-27T16:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 5160,
+              "homeTeam": "Fiji",
+              "awayTeamId": 8175,
+              "awayTeam": "Papua New Guinea",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640063,
+              "kickoff": "2026-09-27T18:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 17970,
+              "homeTeam": "Poland U17",
+              "awayTeamId": 17972,
+              "awayTeam": "Republic of Ireland U17",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1637601,
+              "kickoff": "2026-09-27T20:35:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1566,
+              "homeTeam": "China",
+              "awayTeamId": 4673,
+              "awayTeam": "New Zealand",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640064,
+              "kickoff": "2026-09-27T21:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1515,
+              "homeTeam": "Seychelles",
+              "awayTeamId": 5166,
+              "awayTeam": "Sri Lanka",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640065,
+              "kickoff": "2026-09-27T21:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 22343,
+              "homeTeam": "Ukraine U18",
+              "awayTeamId": 21460,
+              "awayTeam": "Austria U18",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
         }
       ]
+    },
+    {
+      "date": "2026-09-28",
+      "updatedAt": "2026-09-25T13:42:13.063Z",
+      "leagues": []
     }
-  ],
-  "standingsRefresh": {
-    "updatedAt": "2026-09-25T08:44:32.135Z",
-    "requested": 3,
-    "updated": 2,
-    "failures": 1
-  }
+  ]
 };
 });
