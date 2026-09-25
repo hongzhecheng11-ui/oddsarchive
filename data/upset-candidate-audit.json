@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-24T21:26:55.241Z",
+  "updatedAt": "2026-09-25T01:26:43.717Z",
   "summary": {
     "trackedDays": 67,
-    "trackedCandidates": 137,
+    "trackedCandidates": 138,
     "resolvedCandidates": 116,
     "favoriteFailures": 47,
     "directionHits": 23
@@ -504,23 +504,23 @@
     {
       "date": "2026-09-25",
       "firstEvaluatedAt": "2026-09-24T13:31:24.711Z",
-      "lastEvaluatedAt": "2026-09-24T21:26:55.241Z",
+      "lastEvaluatedAt": "2026-09-25T01:26:43.717Z",
       "eligibleMatchCount": 3,
       "candidateIds": [
-        "fixture:1637600"
+        "fixture:1583655"
       ]
     },
     {
       "date": "2026-09-26",
       "firstEvaluatedAt": "2026-09-23T13:36:23.775Z",
-      "lastEvaluatedAt": "2026-09-24T21:26:55.241Z",
+      "lastEvaluatedAt": "2026-09-25T01:26:43.717Z",
       "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-09-27",
       "firstEvaluatedAt": "2026-09-24T13:31:24.711Z",
-      "lastEvaluatedAt": "2026-09-24T21:26:55.241Z",
+      "lastEvaluatedAt": "2026-09-25T01:26:43.717Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
     }
@@ -4060,6 +4060,32 @@
       "score": "2-2",
       "resolvedAt": "2026-09-24T13:31:24.711Z",
       "favoriteFailed": true,
+      "directionHit": null
+    },
+    {
+      "candidateId": "fixture:1583655",
+      "fixtureId": "1583655",
+      "date": "2026-09-25",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Australia",
+      "awayTeam": "Brazil",
+      "homeOdds": "8.50",
+      "drawOdds": "4.80",
+      "awayOdds": "1.30",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 24,
+      "firstEvaluatedAt": "2026-09-25T01:26:43.717Z",
+      "lastSeenAt": "2026-09-25T01:26:43.717Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
       "directionHit": null
     },
     {
