@@ -6,7 +6,7 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-26",
-  "updatedAt": "2026-09-25T21:29:19.915Z",
+  "updatedAt": "2026-09-26T08:31:06.417Z",
   "collection": {
     "dates": [
       "2026-09-26"
@@ -1376,7 +1376,8 @@
           "lineupsChecked": false,
           "lineups": []
         }
-      ]
+      ],
+      "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
     },
     {
       "key": "INTL_FRIENDLIES",
@@ -2133,7 +2134,7 @@
     },
     {
       "date": "2026-09-26",
-      "updatedAt": "2026-09-25T21:29:19.912Z",
+      "updatedAt": "2026-09-26T08:31:06.417Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -3494,7 +3495,8 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -3723,7 +3725,7 @@
     },
     {
       "date": "2026-09-27",
-      "updatedAt": "2026-09-25T13:42:13.063Z",
+      "updatedAt": "2026-09-26T08:31:06.417Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -4189,7 +4191,8 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -4918,6 +4921,12 @@
       "updatedAt": "2026-09-25T13:42:13.063Z",
       "leagues": []
     }
-  ]
+  ],
+  "standingsRefresh": {
+    "updatedAt": "2026-09-26T08:31:06.417Z",
+    "requested": 3,
+    "updated": 2,
+    "failures": 1
+  }
 };
 });
