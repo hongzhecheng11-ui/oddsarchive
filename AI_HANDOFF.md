@@ -83,3 +83,9 @@ J1리그(마감배당) 제외. **집계 대상 54,696경기** — 검색 가능 
 - `scripts/collect-new-leagues-odds.js` writes only those six leagues into the separate pack, fails closed if an older pack already contains a target league, validates fixture uniqueness, and uses a temporary file before replacement. Repeating September 25 collection kept 66 rows and added 0 duplicates. The older `football-data-pack.js` and `api-odds-pack.js` were not modified.
 - Existing scheduled collection retains its old target leagues. The same workflow now also runs the new collector and stages its file. Web search/base rates and shared today signals read the supplementary pack; the React Native loader reads it optionally, so older API deployments still load the two original packs.
 - Web full test suite passed. Samsung SM-S931N local proxy/debug test showed 9 Nations League fixtures on September 26 and a Nations League match in odds search/detail; no fatal logcat errors. Original installed version 12 was restored without clearing app data. No commit, push, production deploy, or Play upload. The scheduled extension is therefore local only until an approved release.
+
+## 2026-09-26 신규 리그 배포 및 배당 보정
+- 신규 리그 자동수집 워크플로와 별도 66경기 배당팩/API/웹 연결을 main에 배포했다(`91a1edf`, `abdc845`). 공개 파일과 실제 웹의 2026-09-26 경기 24건·네이션스리그 9건을 확인했다.
+- 종료된 네이션스리그 카드에서 새 팩의 배당 보정이 누락된 것을 발견해 `getStoredFixturesForDate`와 `mergeStoredOddsIntoFixtures`에 별도 팩을 추가했다. 관련 회귀 테스트와 전체 `npm test`, `git diff --check`가 통과했다.
+- 무료 과거팩 22,918경기는 원본 제공처의 공개 서비스·자동수집 이용 제한을 확인해 로컬에만 보관했다. 기존 데이터팩은 교체하지 않았다.
+- Android 버전 13 서명 빌드와 검사는 통과했다. Play에는 빈 Alpha 초안만 생성되어 있으며 업로드·심사 제출은 아직 완료되지 않았다. 로컬 설치는 Play 서명 차이로 거절되어 휴대폰의 기존 버전 12와 데이터를 유지했다.

@@ -821,6 +821,29 @@ test("includes bundled API odds pack rows in base searchable matches", () => {
   }
 });
 
+test("uses the separate new-leagues pack for fixtures and missing live odds", () => {
+  const previousPack = globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK;
+  globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK = { matches: [{
+    date: "2026-09-26", league: "NATIONS_LEAGUE", fixtureId: "1545602",
+    homeTeam: "Armenia", awayTeam: "Latvia",
+    homeOdds: "1.75", drawOdds: "3.40", awayOdds: "4.40", result: "UNKNOWN"
+  }] };
+  try {
+    const fixtures = app.getStoredFixturesForDate("2026-09-26", { getItem: () => null });
+    assert(fixtures.some((match) => match.fixtureId === "1545602"));
+    const [merged] = app.mergeStoredOddsIntoFixtures([{
+      date: "2026-09-26", league: "NATIONS_LEAGUE", fixtureId: "1545602",
+      homeTeam: "Armenia", awayTeam: "Latvia"
+    }]);
+    assert.strictEqual(merged.homeOdds, 1.75);
+    assert.strictEqual(merged.drawOdds, 3.4);
+    assert.strictEqual(merged.awayOdds, 4.4);
+  } finally {
+    if (previousPack) globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK = previousPack;
+    else delete globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK;
+  }
+});
+
 test("uses only the shared server packs for public candidate signals", () => {
   assert.strictEqual(app.getSharedCandidateMatches(), app.getBaseMatches());
 });

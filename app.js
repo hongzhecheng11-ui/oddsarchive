@@ -10363,7 +10363,8 @@ function getStoredFixturesForDate(date, storage) {
   const targetDate = String(date || "").slice(0, 10);
   return getFixturesForDate([
     ...getStorageTodayMatches(storage),
-    ...getApiOddsPackRowsForDates([targetDate])
+    ...getApiOddsPackRowsForDates([targetDate]),
+    ...getApiOddsPackRowsForDates([targetDate], getBundledNewLeaguesOddsPack())
   ], targetDate);
 }
 
@@ -10381,7 +10382,8 @@ function mergeStoredOddsIntoFixtures(matches = [], storedMatches = []) {
   );
   const fallbackRows = [
     ...(Array.isArray(storedMatches) ? storedMatches : []),
-    ...getApiOddsPackRowsForDates(fixtureDates)
+    ...getApiOddsPackRowsForDates(fixtureDates),
+    ...getApiOddsPackRowsForDates(fixtureDates, getBundledNewLeaguesOddsPack())
   ].filter(hasCompleteOdds);
   if (fallbackRows.length === 0) return [...(Array.isArray(matches) ? matches : [])];
 
