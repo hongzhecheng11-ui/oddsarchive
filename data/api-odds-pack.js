@@ -5,14 +5,14 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-26T16:18:43.102Z",
+  "updatedAt": "2026-09-26T21:02:19.416Z",
   "collection": {
-    "lastAttemptAt": "2026-09-26T16:18:32.419Z",
-    "lastSuccessAt": "2026-09-26T16:18:43.102Z",
-    "requestSuccesses": 27,
+    "lastAttemptAt": "2026-09-26T21:02:09.419Z",
+    "lastSuccessAt": "2026-09-26T21:02:19.416Z",
+    "requestSuccesses": 26,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 3,
+    "updatedCount": 2,
     "duplicateCount": 11,
     "errors": []
   },
@@ -40801,13 +40801,13 @@
       "fixtureId": "1610877",
       "homeTeam": "Canada",
       "awayTeam": "Chile",
-      "homeOdds": "1.67",
-      "drawOdds": "3.40",
-      "awayOdds": "4.50",
+      "homeOdds": "1.60",
+      "drawOdds": "3.50",
+      "awayOdds": "5.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-26T16:18:42.454Z",
+      "oddsUpdatedAt": "2026-09-26T21:02:19.136Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-26T01:30:10.214Z",
@@ -40826,6 +40826,12 @@
           "homeOdds": "1.67",
           "drawOdds": "3.40",
           "awayOdds": "4.50"
+        },
+        {
+          "capturedAt": "2026-09-26T21:02:19.136Z",
+          "homeOdds": "1.60",
+          "drawOdds": "3.50",
+          "awayOdds": "5.00"
         }
       ]
     },
@@ -40923,13 +40929,13 @@
       "fixtureId": "1628997",
       "homeTeam": "USA",
       "awayTeam": "Peru",
-      "homeOdds": "1.44",
-      "drawOdds": "3.90",
+      "homeOdds": "1.40",
+      "drawOdds": "4.00",
       "awayOdds": "6.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-26T16:18:42.454Z",
+      "oddsUpdatedAt": "2026-09-26T21:02:19.136Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-26T01:30:10.214Z",
@@ -40947,6 +40953,12 @@
           "capturedAt": "2026-09-26T16:18:42.454Z",
           "homeOdds": "1.44",
           "drawOdds": "3.90",
+          "awayOdds": "6.00"
+        },
+        {
+          "capturedAt": "2026-09-26T21:02:19.136Z",
+          "homeOdds": "1.40",
+          "drawOdds": "4.00",
           "awayOdds": "6.00"
         }
       ]
