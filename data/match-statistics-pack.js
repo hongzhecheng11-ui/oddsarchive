@@ -5,22 +5,223 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-25T13:42:21.393Z",
+  "updatedAt": "2026-09-26T13:02:37.028Z",
   "collection": {
     "dates": [
+      "2026-09-25",
       "2026-09-24",
-      "2026-09-23",
-      "2026-09-22"
+      "2026-09-23"
     ],
     "requestGroups": 2,
     "skippedGroups": 76,
-    "finishedFixtures": 12,
-    "skippedComplete": 1,
-    "saved": 11,
+    "finishedFixtures": 14,
+    "skippedComplete": 11,
+    "saved": 3,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1640060,
+      "date": "2026-09-25",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10376,
+      "homeTeam": "Poland U19",
+      "awayTeamId": 10350,
+      "awayTeam": "Switzerland U19",
+      "home": {
+        "teamId": 10376,
+        "team": "Poland U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10350,
+        "team": "Switzerland U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10376,
+          "team": "Poland U19",
+          "formation": "",
+          "coach": "W. Kobeszko",
+          "starters": []
+        },
+        {
+          "teamId": 10350,
+          "team": "Switzerland U19",
+          "formation": "",
+          "coach": "M. Rizzo",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1583655,
+      "date": "2026-09-25",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 20,
+      "homeTeam": "Australia",
+      "awayTeamId": 6,
+      "awayTeam": "Brazil",
+      "home": {
+        "teamId": 20,
+        "team": "Australia",
+        "shots": 7,
+        "shotsOnGoal": 2,
+        "possession": 35,
+        "corners": 9,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 6,
+        "team": "Brazil",
+        "shots": 16,
+        "shotsOnGoal": 5,
+        "possession": 65,
+        "corners": 8,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 20,
+          "team": "Australia",
+          "formation": "",
+          "coach": "Tony Popovic",
+          "starters": [
+            "Patrick Beach",
+            "Alessandro Circati",
+            "Harry Souttar",
+            "Lucas Herrington",
+            "Jacob Italiano",
+            "Jackson Irvine",
+            "Paul Okon-Engstler",
+            "Aziz Behich",
+            "Connor Metcalfe",
+            "Nestory Irankunda",
+            "Tete Yengi"
+          ]
+        },
+        {
+          "teamId": 6,
+          "team": "Brazil",
+          "formation": "",
+          "coach": "Carlo Ancelotti",
+          "starters": [
+            "Hugo Souza",
+            "Matheuzinho",
+            "Marquinhos",
+            "Vitor Reis",
+            "Douglas Santos",
+            "Bruno Guimarães",
+            "Danilo Santos",
+            "Estêvão",
+            "Raphinha",
+            "Vinícius Júnior",
+            "Endrick"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1637600,
+      "date": "2026-09-25",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1537,
+      "homeTeam": "India",
+      "awayTeamId": 11,
+      "awayTeam": "Panama",
+      "home": {
+        "teamId": 1537,
+        "team": "India",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 11,
+        "team": "Panama",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1537,
+          "team": "India",
+          "formation": "",
+          "coach": "Ahmed Jamil Khalid",
+          "starters": [
+            "Gurpreet Singh Sandhu",
+            "Tekcham Abhishek Singh",
+            "Bijoy Varghese",
+            "Anwar Ali",
+            "Akash Mishra",
+            "Vikram Partap Singh",
+            "Apuia Ralte",
+            "Ricky John Shabong",
+            "Ashique Kuruniyan",
+            "Ryan Williams",
+            "Manvir Singh"
+          ]
+        },
+        {
+          "teamId": 11,
+          "team": "Panama",
+          "formation": "",
+          "coach": "Thomas Christiansen",
+          "starters": [
+            "Marcos de León",
+            "César Blackman",
+            "Eduardo Anderson",
+            "Joseph Jones",
+            "Jair Modelo",
+            "Víctor Griffith",
+            "Tomás Rodríguez",
+            "Giovany Herbert",
+            "Deivis Murillo",
+            "Rafael Mosquera",
+            "Mijahir Jimenez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1640055,
       "date": "2026-09-24",

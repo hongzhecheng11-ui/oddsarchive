@@ -1,11 +1,11 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-26T08:31:01.866Z",
+  "updatedAt": "2026-09-26T13:01:50.441Z",
   "summary": {
-    "trackedDays": 67,
-    "trackedCandidates": 139,
-    "resolvedCandidates": 118,
-    "favoriteFailures": 49,
+    "trackedDays": 68,
+    "trackedCandidates": 140,
+    "resolvedCandidates": 119,
+    "favoriteFailures": 50,
     "directionHits": 25
   },
   "days": [
@@ -513,18 +513,25 @@
     {
       "date": "2026-09-26",
       "firstEvaluatedAt": "2026-09-23T13:36:23.775Z",
-      "lastEvaluatedAt": "2026-09-26T08:31:01.866Z",
-      "eligibleMatchCount": 11,
-      "candidateIds": [
-        "fixture:1606670"
-      ]
+      "lastEvaluatedAt": "2026-09-26T13:01:50.441Z",
+      "eligibleMatchCount": 1,
+      "candidateIds": []
     },
     {
       "date": "2026-09-27",
       "firstEvaluatedAt": "2026-09-24T13:31:24.711Z",
-      "lastEvaluatedAt": "2026-09-26T08:31:01.866Z",
-      "eligibleMatchCount": 3,
+      "lastEvaluatedAt": "2026-09-26T13:01:50.441Z",
+      "eligibleMatchCount": 7,
       "candidateIds": []
+    },
+    {
+      "date": "2026-09-28",
+      "firstEvaluatedAt": "2026-09-26T13:01:50.441Z",
+      "lastEvaluatedAt": "2026-09-26T13:01:50.441Z",
+      "eligibleMatchCount": 3,
+      "candidateIds": [
+        "fixture:1640066"
+      ]
     }
   ],
   "candidates": [
@@ -4136,6 +4143,32 @@
       "sampleSize": 16,
       "firstEvaluatedAt": "2026-09-25T13:41:46.606Z",
       "lastSeenAt": "2026-09-26T08:31:01.866Z",
+      "result": "A",
+      "score": "1-2",
+      "resolvedAt": "2026-09-26T13:01:50.441Z",
+      "favoriteFailed": true,
+      "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1640066",
+      "fixtureId": "1640066",
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Jordan",
+      "awayTeam": "Syria",
+      "homeOdds": "1.50",
+      "drawOdds": "3.50",
+      "awayOdds": "6.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 31,
+      "firstEvaluatedAt": "2026-09-26T13:01:50.441Z",
+      "lastSeenAt": "2026-09-26T13:01:50.441Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

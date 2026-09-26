@@ -6,13 +6,16 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-26",
-  "updatedAt": "2026-09-26T08:31:06.417Z",
+  "updatedAt": "2026-09-26T13:02:33.318Z",
   "collection": {
     "dates": [
-      "2026-09-26"
+      "2026-09-26",
+      "2026-09-27",
+      "2026-09-28",
+      "2026-09-29"
     ],
-    "requestGroups": 2,
-    "skippedGroups": 24,
+    "requestGroups": 5,
+    "skippedGroups": 99,
     "failures": 0,
     "errors": []
   },
@@ -23,50 +26,18 @@
       "season": "2026",
       "standings": [
         {
-          "teamId": 311,
-          "team": "Albirex Niigata",
-          "rank": 1,
-          "points": 15,
-          "goalsDiff": -1,
-          "form": "WWLWW",
-          "all": {
-            "played": 7,
-            "wins": 5,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 9,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 4,
-            "wins": 4,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 8
-          }
-        },
-        {
           "teamId": 286,
           "team": "Vegalta Sendai",
-          "rank": 2,
-          "points": 14,
-          "goalsDiff": 6,
-          "form": "WDWWW",
+          "rank": 1,
+          "points": 17,
+          "goalsDiff": 8,
+          "form": "WWDWW",
           "all": {
-            "played": 7,
-            "wins": 4,
+            "played": 8,
+            "wins": 5,
             "draws": 2,
             "losses": 1,
-            "goalsFor": 13,
+            "goalsFor": 15,
             "goalsAgainst": 7
           },
           "home": {
@@ -78,36 +49,132 @@
             "goalsAgainst": 3
           },
           "away": {
-            "played": 4,
-            "wins": 3,
+            "played": 5,
+            "wins": 4,
             "draws": 0,
             "losses": 1,
+            "goalsFor": 10,
+            "goalsAgainst": 4
+          }
+        },
+        {
+          "teamId": 313,
+          "team": "Omiya Ardija",
+          "rank": 2,
+          "points": 16,
+          "goalsDiff": 9,
+          "form": "WDDDD",
+          "all": {
+            "played": 8,
+            "wins": 4,
+            "draws": 4,
+            "losses": 0,
+            "goalsFor": 16,
+            "goalsAgainst": 7
+          },
+          "home": {
+            "played": 4,
+            "wins": 2,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 8,
+            "goalsAgainst": 3
+          },
+          "away": {
+            "played": 4,
+            "wins": 2,
+            "draws": 2,
+            "losses": 0,
             "goalsFor": 8,
             "goalsAgainst": 4
           }
         },
         {
-          "teamId": 4322,
-          "team": "Kataller Toyama",
+          "teamId": 311,
+          "team": "Albirex Niigata",
           "rank": 3,
-          "points": 13,
-          "goalsDiff": 8,
-          "form": "WDWLW",
+          "points": 16,
+          "goalsDiff": -1,
+          "form": "DWWLW",
           "all": {
-            "played": 7,
-            "wins": 4,
+            "played": 8,
+            "wins": 5,
             "draws": 1,
             "losses": 2,
-            "goalsFor": 13,
-            "goalsAgainst": 5
+            "goalsFor": 11,
+            "goalsAgainst": 12
+          },
+          "home": {
+            "played": 4,
+            "wins": 4,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 2
+          },
+          "away": {
+            "played": 4,
+            "wins": 1,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 5,
+            "goalsAgainst": 10
+          }
+        },
+        {
+          "teamId": 284,
+          "team": "Shonan Bellmare",
+          "rank": 4,
+          "points": 15,
+          "goalsDiff": 2,
+          "form": "WDWLD",
+          "all": {
+            "played": 8,
+            "wins": 4,
+            "draws": 3,
+            "losses": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 7
           },
           "home": {
             "played": 3,
             "wins": 1,
             "draws": 1,
             "losses": 1,
+            "goalsFor": 3,
+            "goalsAgainst": 4
+          },
+          "away": {
+            "played": 5,
+            "wins": 3,
+            "draws": 2,
+            "losses": 0,
             "goalsFor": 6,
             "goalsAgainst": 3
+          }
+        },
+        {
+          "teamId": 4322,
+          "team": "Kataller Toyama",
+          "rank": 5,
+          "points": 14,
+          "goalsDiff": 8,
+          "form": "DWDWL",
+          "all": {
+            "played": 8,
+            "wins": 4,
+            "draws": 2,
+            "losses": 2,
+            "goalsFor": 16,
+            "goalsAgainst": 8
+          },
+          "home": {
+            "played": 4,
+            "wins": 1,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 6
           },
           "away": {
             "played": 4,
@@ -121,17 +188,17 @@
         {
           "teamId": 307,
           "team": "Yokohama FC",
-          "rank": 4,
-          "points": 13,
+          "rank": 6,
+          "points": 14,
           "goalsDiff": 5,
-          "form": "WLWDL",
+          "form": "DWLWD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 4,
-            "draws": 1,
+            "draws": 2,
             "losses": 2,
-            "goalsFor": 13,
-            "goalsAgainst": 8
+            "goalsFor": 16,
+            "goalsAgainst": 11
           },
           "home": {
             "played": 4,
@@ -142,195 +209,35 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 313,
-          "team": "Omiya Ardija",
-          "rank": 5,
-          "points": 13,
-          "goalsDiff": 5,
-          "form": "DDDDW",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 4,
-            "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 3,
-            "wins": 1,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 2
-          },
-          "away": {
             "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 8,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 284,
-          "team": "Shonan Bellmare",
-          "rank": 6,
-          "points": 12,
-          "goalsDiff": 1,
-          "form": "DWLDD",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 3,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 6
-          },
-          "home": {
-            "played": 3,
             "wins": 1,
             "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
+            "losses": 2,
             "goalsFor": 4,
-            "goalsAgainst": 2
-          }
-        },
-        {
-          "teamId": 4317,
-          "team": "Fujieda MYFC",
-          "rank": 7,
-          "points": 11,
-          "goalsDiff": 3,
-          "form": "DLDWL",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 2,
-            "losses": 2,
-            "goalsFor": 11,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 4,
-            "wins": 2,
-            "draws": 2,
-            "losses": 0,
-            "goalsFor": 6,
-            "goalsAgainst": 2
-          },
-          "away": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 5,
-            "goalsAgainst": 6
-          }
-        },
-        {
-          "teamId": 7145,
-          "team": "Tochigi City",
-          "rank": 8,
-          "points": 10,
-          "goalsDiff": 4,
-          "form": "LDWLW",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 1,
-            "losses": 3,
-            "goalsFor": 14,
-            "goalsAgainst": 10
-          },
-          "home": {
-            "played": 3,
-            "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 7,
-            "goalsAgainst": 6
-          },
-          "away": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 4
-          }
-        },
-        {
-          "teamId": 280,
-          "team": "Jubilo Iwata",
-          "rank": 9,
-          "points": 10,
-          "goalsDiff": 0,
-          "form": "LWLWW",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 1,
-            "losses": 3,
-            "goalsFor": 9,
-            "goalsAgainst": 9
-          },
-          "home": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
-          },
-          "away": {
-            "played": 4,
-            "wins": 2,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 6,
-            "goalsAgainst": 6
+            "goalsAgainst": 7
           }
         },
         {
           "teamId": 299,
           "team": "Tokushima Vortis",
-          "rank": 10,
-          "points": 10,
-          "goalsDiff": -3,
-          "form": "WLWWL",
+          "rank": 7,
+          "points": 13,
+          "goalsDiff": 0,
+          "form": "WWLWW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 1,
             "losses": 3,
-            "goalsFor": 5,
+            "goalsFor": 8,
             "goalsAgainst": 8
           },
           "home": {
-            "played": 3,
-            "wins": 2,
+            "played": 4,
+            "wins": 3,
             "draws": 1,
             "losses": 0,
-            "goalsFor": 2,
+            "goalsFor": 5,
             "goalsAgainst": 0
           },
           "away": {
@@ -345,24 +252,24 @@
         {
           "teamId": 312,
           "team": "Montedio Yamagata",
-          "rank": 11,
-          "points": 9,
-          "goalsDiff": 2,
-          "form": "LLLWW",
+          "rank": 8,
+          "points": 12,
+          "goalsDiff": 4,
+          "form": "WLLLW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 0,
             "losses": 4,
-            "goalsFor": 8,
+            "goalsFor": 10,
             "goalsAgainst": 6
           },
           "home": {
-            "played": 4,
-            "wins": 2,
+            "played": 5,
+            "wins": 3,
             "draws": 0,
             "losses": 2,
-            "goalsFor": 5,
+            "goalsFor": 7,
             "goalsAgainst": 4
           },
           "away": {
@@ -375,91 +282,27 @@
           }
         },
         {
-          "teamId": 4315,
-          "team": "Blaublitz Akita",
-          "rank": 12,
-          "points": 9,
-          "goalsDiff": 1,
-          "form": "DWDLW",
+          "teamId": 4317,
+          "team": "Fujieda MYFC",
+          "rank": 9,
+          "points": 12,
+          "goalsDiff": 3,
+          "form": "DDLDW",
           "all": {
-            "played": 7,
-            "wins": 2,
+            "played": 8,
+            "wins": 3,
             "draws": 3,
             "losses": 2,
-            "goalsFor": 9,
-            "goalsAgainst": 8
-          },
-          "home": {
-            "played": 4,
-            "wins": 2,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 5
-          },
-          "away": {
-            "played": 3,
-            "wins": 0,
-            "draws": 2,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
-          }
-        },
-        {
-          "teamId": 7127,
-          "team": "Iwaki",
-          "rank": 13,
-          "points": 9,
-          "goalsDiff": -2,
-          "form": "WWLLL",
-          "all": {
-            "played": 7,
-            "wins": 3,
-            "draws": 0,
-            "losses": 4,
-            "goalsFor": 11,
-            "goalsAgainst": 13
-          },
-          "home": {
-            "played": 3,
-            "wins": 2,
-            "draws": 0,
-            "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 4
-          },
-          "away": {
-            "played": 4,
-            "wins": 1,
-            "draws": 0,
-            "losses": 3,
-            "goalsFor": 5,
+            "goalsFor": 12,
             "goalsAgainst": 9
-          }
-        },
-        {
-          "teamId": 10409,
-          "team": "Tegevajaro Miyazaki",
-          "rank": 14,
-          "points": 8,
-          "goalsDiff": -1,
-          "form": "WWLLD",
-          "all": {
-            "played": 7,
-            "wins": 2,
-            "draws": 2,
-            "losses": 3,
-            "goalsFor": 9,
-            "goalsAgainst": 10
           },
           "home": {
-            "played": 3,
-            "wins": 1,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
+            "played": 4,
+            "wins": 2,
+            "draws": 2,
+            "losses": 0,
+            "goalsFor": 6,
+            "goalsAgainst": 2
           },
           "away": {
             "played": 4,
@@ -471,27 +314,91 @@
           }
         },
         {
-          "teamId": 295,
-          "team": "Sagan Tosu",
-          "rank": 15,
-          "points": 8,
-          "goalsDiff": -1,
-          "form": "LLWDL",
+          "teamId": 10409,
+          "team": "Tegevajaro Miyazaki",
+          "rank": 10,
+          "points": 11,
+          "goalsDiff": 0,
+          "form": "WWWLL",
           "all": {
-            "played": 7,
-            "wins": 2,
+            "played": 8,
+            "wins": 3,
             "draws": 2,
             "losses": 3,
-            "goalsFor": 8,
-            "goalsAgainst": 9
+            "goalsFor": 12,
+            "goalsAgainst": 12
           },
           "home": {
             "played": 4,
             "wins": 2,
-            "draws": 0,
+            "draws": 1,
+            "losses": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 5
+          },
+          "away": {
+            "played": 4,
+            "wins": 1,
+            "draws": 1,
             "losses": 2,
             "goalsFor": 6,
+            "goalsAgainst": 7
+          }
+        },
+        {
+          "teamId": 7145,
+          "team": "Tochigi City",
+          "rank": 11,
+          "points": 10,
+          "goalsDiff": 1,
+          "form": "LLDWL",
+          "all": {
+            "played": 8,
+            "wins": 3,
+            "draws": 1,
+            "losses": 4,
+            "goalsFor": 14,
+            "goalsAgainst": 13
+          },
+          "home": {
+            "played": 3,
+            "wins": 1,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 7,
             "goalsAgainst": 6
+          },
+          "away": {
+            "played": 5,
+            "wins": 2,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 7
+          }
+        },
+        {
+          "teamId": 4315,
+          "team": "Blaublitz Akita",
+          "rank": 12,
+          "points": 10,
+          "goalsDiff": 1,
+          "form": "DDWDL",
+          "all": {
+            "played": 8,
+            "wins": 2,
+            "draws": 4,
+            "losses": 2,
+            "goalsFor": 11,
+            "goalsAgainst": 10
+          },
+          "home": {
+            "played": 5,
+            "wins": 2,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 9,
+            "goalsAgainst": 7
           },
           "away": {
             "played": 3,
@@ -503,27 +410,123 @@
           }
         },
         {
-          "teamId": 298,
-          "team": "Oita Trinita",
-          "rank": 16,
-          "points": 7,
-          "goalsDiff": 1,
-          "form": "DDDLW",
+          "teamId": 280,
+          "team": "Jubilo Iwata",
+          "rank": 13,
+          "points": 10,
+          "goalsDiff": -1,
+          "form": "LLWLW",
           "all": {
-            "played": 7,
-            "wins": 1,
-            "draws": 4,
-            "losses": 2,
-            "goalsFor": 6,
-            "goalsAgainst": 5
+            "played": 8,
+            "wins": 3,
+            "draws": 1,
+            "losses": 4,
+            "goalsFor": 10,
+            "goalsAgainst": 11
           },
           "home": {
+            "played": 4,
+            "wins": 1,
+            "draws": 1,
+            "losses": 2,
+            "goalsFor": 4,
+            "goalsAgainst": 5
+          },
+          "away": {
+            "played": 4,
+            "wins": 2,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 6
+          }
+        },
+        {
+          "teamId": 4326,
+          "team": "Vanraure Hachinohe",
+          "rank": 14,
+          "points": 10,
+          "goalsDiff": -7,
+          "form": "WLLDW",
+          "all": {
+            "played": 8,
+            "wins": 3,
+            "draws": 1,
+            "losses": 4,
+            "goalsFor": 5,
+            "goalsAgainst": 12
+          },
+          "home": {
+            "played": 5,
+            "wins": 2,
+            "draws": 0,
+            "losses": 3,
+            "goalsFor": 3,
+            "goalsAgainst": 6
+          },
+          "away": {
             "played": 3,
             "wins": 1,
             "draws": 1,
             "losses": 1,
+            "goalsFor": 2,
+            "goalsAgainst": 6
+          }
+        },
+        {
+          "teamId": 7127,
+          "team": "Iwaki",
+          "rank": 15,
+          "points": 9,
+          "goalsDiff": -4,
+          "form": "LWWLL",
+          "all": {
+            "played": 8,
+            "wins": 3,
+            "draws": 0,
+            "losses": 5,
+            "goalsFor": 11,
+            "goalsAgainst": 15
+          },
+          "home": {
+            "played": 4,
+            "wins": 2,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 6
+          },
+          "away": {
+            "played": 4,
+            "wins": 1,
+            "draws": 0,
+            "losses": 3,
             "goalsFor": 5,
-            "goalsAgainst": 3
+            "goalsAgainst": 9
+          }
+        },
+        {
+          "teamId": 298,
+          "team": "Oita Trinita",
+          "rank": 16,
+          "points": 8,
+          "goalsDiff": 1,
+          "form": "DDDDL",
+          "all": {
+            "played": 8,
+            "wins": 1,
+            "draws": 5,
+            "losses": 2,
+            "goalsFor": 7,
+            "goalsAgainst": 6
+          },
+          "home": {
+            "played": 4,
+            "wins": 1,
+            "draws": 2,
+            "losses": 1,
+            "goalsFor": 6,
+            "goalsAgainst": 4
           },
           "away": {
             "played": 4,
@@ -535,19 +538,51 @@
           }
         },
         {
+          "teamId": 295,
+          "team": "Sagan Tosu",
+          "rank": 17,
+          "points": 8,
+          "goalsDiff": -3,
+          "form": "LLLWD",
+          "all": {
+            "played": 8,
+            "wins": 2,
+            "draws": 2,
+            "losses": 4,
+            "goalsFor": 8,
+            "goalsAgainst": 11
+          },
+          "home": {
+            "played": 4,
+            "wins": 2,
+            "draws": 0,
+            "losses": 2,
+            "goalsFor": 6,
+            "goalsAgainst": 6
+          },
+          "away": {
+            "played": 4,
+            "wins": 0,
+            "draws": 2,
+            "losses": 2,
+            "goalsFor": 2,
+            "goalsAgainst": 5
+          }
+        },
+        {
           "teamId": 308,
           "team": "Ventforet Kofu",
-          "rank": 17,
+          "rank": 18,
           "points": 7,
-          "goalsDiff": -5,
-          "form": "LLWWL",
+          "goalsDiff": -9,
+          "form": "LLLWW",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 2,
             "draws": 1,
-            "losses": 4,
-            "goalsFor": 5,
-            "goalsAgainst": 10
+            "losses": 5,
+            "goalsFor": 6,
+            "goalsAgainst": 15
           },
           "home": {
             "played": 4,
@@ -558,44 +593,12 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 0,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 6
-          }
-        },
-        {
-          "teamId": 4326,
-          "team": "Vanraure Hachinohe",
-          "rank": 18,
-          "points": 7,
-          "goalsDiff": -8,
-          "form": "LLDWL",
-          "all": {
-            "played": 7,
-            "wins": 2,
-            "draws": 1,
-            "losses": 4,
-            "goalsFor": 3,
-            "goalsAgainst": 11
-          },
-          "home": {
-            "played": 5,
-            "wins": 2,
             "draws": 0,
             "losses": 3,
             "goalsFor": 3,
-            "goalsAgainst": 6
-          },
-          "away": {
-            "played": 2,
-            "wins": 0,
-            "draws": 1,
-            "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 5
+            "goalsAgainst": 11
           }
         },
         {
@@ -603,15 +606,15 @@
           "team": "Consadole Sapporo",
           "rank": 19,
           "points": 5,
-          "goalsDiff": -6,
-          "form": "DDLLL",
+          "goalsDiff": -7,
+          "form": "LDDLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 1,
             "draws": 2,
-            "losses": 4,
-            "goalsFor": 8,
-            "goalsAgainst": 14
+            "losses": 5,
+            "goalsFor": 10,
+            "goalsAgainst": 17
           },
           "home": {
             "played": 4,
@@ -622,12 +625,12 @@
             "goalsAgainst": 9
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 0,
             "draws": 1,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 5
+            "losses": 3,
+            "goalsFor": 5,
+            "goalsAgainst": 8
           }
         },
         {
@@ -635,23 +638,23 @@
           "team": "Imabari",
           "rank": 20,
           "points": 4,
-          "goalsDiff": -9,
-          "form": "LWDLL",
+          "goalsDiff": -10,
+          "form": "LLWDL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 1,
             "draws": 1,
-            "losses": 5,
-            "goalsFor": 6,
-            "goalsAgainst": 15
+            "losses": 6,
+            "goalsFor": 7,
+            "goalsAgainst": 17
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 6
+            "losses": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 8
           },
           "away": {
             "played": 4,
@@ -667,22 +670,22 @@
         {
           "teamId": 280,
           "team": "Jubilo Iwata",
-          "form": "DLWWLWL",
+          "form": "DLWWLWLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 3,
             "draws": 1,
-            "losses": 3,
-            "goalsFor": 9,
-            "goalsAgainst": 9
+            "losses": 4,
+            "goalsFor": 10,
+            "goalsAgainst": 11
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 1,
-            "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
+            "losses": 2,
+            "goalsFor": 4,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 4,
@@ -696,14 +699,14 @@
         {
           "teamId": 4326,
           "team": "Vanraure Hachinohe",
-          "form": "WLLWDLL",
+          "form": "WLLWDLLW",
           "all": {
-            "played": 7,
-            "wins": 2,
+            "played": 8,
+            "wins": 3,
             "draws": 1,
             "losses": 4,
-            "goalsFor": 3,
-            "goalsAgainst": 11
+            "goalsFor": 5,
+            "goalsAgainst": 12
           },
           "home": {
             "played": 5,
@@ -714,33 +717,33 @@
             "goalsAgainst": 6
           },
           "away": {
-            "played": 2,
-            "wins": 0,
+            "played": 3,
+            "wins": 1,
             "draws": 1,
             "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 5
+            "goalsFor": 2,
+            "goalsAgainst": 6
           }
         },
         {
           "teamId": 298,
           "team": "Oita Trinita",
-          "form": "LDWLDDD",
+          "form": "LDWLDDDD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 1,
-            "draws": 4,
+            "draws": 5,
             "losses": 2,
-            "goalsFor": 6,
-            "goalsAgainst": 5
+            "goalsFor": 7,
+            "goalsAgainst": 6
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 1,
+            "draws": 2,
             "losses": 1,
-            "goalsFor": 5,
-            "goalsAgainst": 3
+            "goalsFor": 6,
+            "goalsAgainst": 4
           },
           "away": {
             "played": 4,
@@ -754,14 +757,14 @@
         {
           "teamId": 4317,
           "team": "Fujieda MYFC",
-          "form": "WWLWDLD",
+          "form": "WWLWDLDD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 3,
-            "draws": 2,
+            "draws": 3,
             "losses": 2,
-            "goalsFor": 11,
-            "goalsAgainst": 8
+            "goalsFor": 12,
+            "goalsAgainst": 9
           },
           "home": {
             "played": 4,
@@ -772,32 +775,32 @@
             "goalsAgainst": 2
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 0,
+            "draws": 1,
             "losses": 2,
-            "goalsFor": 5,
-            "goalsAgainst": 6
+            "goalsFor": 6,
+            "goalsAgainst": 7
           }
         },
         {
           "teamId": 299,
           "team": "Tokushima Vortis",
-          "form": "LDLWWLW",
+          "form": "LDLWWLWW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 1,
             "losses": 3,
-            "goalsFor": 5,
+            "goalsFor": 8,
             "goalsAgainst": 8
           },
           "home": {
-            "played": 3,
-            "wins": 2,
+            "played": 4,
+            "wins": 3,
             "draws": 1,
             "losses": 0,
-            "goalsFor": 2,
+            "goalsFor": 5,
             "goalsAgainst": 0
           },
           "away": {
@@ -812,14 +815,14 @@
         {
           "teamId": 7145,
           "team": "Tochigi City",
-          "form": "LWWLWDL",
+          "form": "LWWLWDLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 3,
             "draws": 1,
-            "losses": 3,
+            "losses": 4,
             "goalsFor": 14,
-            "goalsAgainst": 10
+            "goalsAgainst": 13
           },
           "home": {
             "played": 3,
@@ -830,32 +833,32 @@
             "goalsAgainst": 6
           },
           "away": {
-            "played": 4,
+            "played": 5,
             "wins": 2,
             "draws": 1,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 7,
-            "goalsAgainst": 4
+            "goalsAgainst": 7
           }
         },
         {
           "teamId": 312,
           "team": "Montedio Yamagata",
-          "form": "WLWWLLL",
+          "form": "WLWWLLLW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 0,
             "losses": 4,
-            "goalsFor": 8,
+            "goalsFor": 10,
             "goalsAgainst": 6
           },
           "home": {
-            "played": 4,
-            "wins": 2,
+            "played": 5,
+            "wins": 3,
             "draws": 0,
             "losses": 2,
-            "goalsFor": 5,
+            "goalsFor": 7,
             "goalsAgainst": 4
           },
           "away": {
@@ -870,14 +873,14 @@
         {
           "teamId": 295,
           "team": "Sagan Tosu",
-          "form": "WDLDWLL",
+          "form": "WDLDWLLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 2,
             "draws": 2,
-            "losses": 3,
+            "losses": 4,
             "goalsFor": 8,
-            "goalsAgainst": 9
+            "goalsAgainst": 11
           },
           "home": {
             "played": 4,
@@ -888,33 +891,33 @@
             "goalsAgainst": 6
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 0,
             "draws": 2,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 2,
-            "goalsAgainst": 3
+            "goalsAgainst": 5
           }
         },
         {
           "teamId": 313,
           "team": "Omiya Ardija",
-          "form": "WWWDDDD",
+          "form": "WWWDDDDW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 4,
             "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 6
+            "goalsFor": 16,
+            "goalsAgainst": 7
           },
           "home": {
-            "played": 3,
-            "wins": 1,
+            "played": 4,
+            "wins": 2,
             "draws": 2,
             "losses": 0,
-            "goalsFor": 3,
-            "goalsAgainst": 2
+            "goalsFor": 8,
+            "goalsAgainst": 3
           },
           "away": {
             "played": 4,
@@ -928,14 +931,14 @@
         {
           "teamId": 308,
           "team": "Ventforet Kofu",
-          "form": "LDLWWLL",
+          "form": "LDLWWLLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 2,
             "draws": 1,
-            "losses": 4,
-            "goalsFor": 5,
-            "goalsAgainst": 10
+            "losses": 5,
+            "goalsFor": 6,
+            "goalsAgainst": 15
           },
           "home": {
             "played": 4,
@@ -946,33 +949,33 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
-            "goalsFor": 2,
-            "goalsAgainst": 6
+            "losses": 3,
+            "goalsFor": 3,
+            "goalsAgainst": 11
           }
         },
         {
           "teamId": 4315,
           "team": "Blaublitz Akita",
-          "form": "DLWLDWD",
+          "form": "DLWLDWDD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 2,
-            "draws": 3,
+            "draws": 4,
             "losses": 2,
-            "goalsFor": 9,
-            "goalsAgainst": 8
+            "goalsFor": 11,
+            "goalsAgainst": 10
           },
           "home": {
-            "played": 4,
+            "played": 5,
             "wins": 2,
-            "draws": 1,
+            "draws": 2,
             "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 5
+            "goalsFor": 9,
+            "goalsAgainst": 7
           },
           "away": {
             "played": 3,
@@ -986,14 +989,14 @@
         {
           "teamId": 311,
           "team": "Albirex Niigata",
-          "form": "LWWWLWW",
+          "form": "LWWWLWWD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 5,
-            "draws": 0,
+            "draws": 1,
             "losses": 2,
-            "goalsFor": 9,
-            "goalsAgainst": 10
+            "goalsFor": 11,
+            "goalsAgainst": 12
           },
           "home": {
             "played": 4,
@@ -1004,33 +1007,33 @@
             "goalsAgainst": 2
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 0,
+            "draws": 1,
             "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 8
+            "goalsFor": 5,
+            "goalsAgainst": 10
           }
         },
         {
           "teamId": 4322,
           "team": "Kataller Toyama",
-          "form": "LWWLWDW",
+          "form": "LWWLWDWD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 4,
-            "draws": 1,
+            "draws": 2,
             "losses": 2,
-            "goalsFor": 13,
-            "goalsAgainst": 5
+            "goalsFor": 16,
+            "goalsAgainst": 8
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 1,
+            "draws": 2,
             "losses": 1,
-            "goalsFor": 6,
-            "goalsAgainst": 3
+            "goalsFor": 9,
+            "goalsAgainst": 6
           },
           "away": {
             "played": 4,
@@ -1044,14 +1047,14 @@
         {
           "teamId": 307,
           "team": "Yokohama FC",
-          "form": "WWLDWLW",
+          "form": "WWLDWLWD",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 4,
-            "draws": 1,
+            "draws": 2,
             "losses": 2,
-            "goalsFor": 13,
-            "goalsAgainst": 8
+            "goalsFor": 16,
+            "goalsAgainst": 11
           },
           "home": {
             "played": 4,
@@ -1062,33 +1065,33 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 0,
+            "draws": 1,
             "losses": 2,
-            "goalsFor": 1,
-            "goalsAgainst": 4
+            "goalsFor": 4,
+            "goalsAgainst": 7
           }
         },
         {
           "teamId": 7127,
           "team": "Iwaki",
-          "form": "WLLLLWW",
+          "form": "WLLLLWWL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 3,
             "draws": 0,
-            "losses": 4,
+            "losses": 5,
             "goalsFor": 11,
-            "goalsAgainst": 13
+            "goalsAgainst": 15
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 2,
             "draws": 0,
-            "losses": 1,
+            "losses": 2,
             "goalsFor": 6,
-            "goalsAgainst": 4
+            "goalsAgainst": 6
           },
           "away": {
             "played": 4,
@@ -1102,13 +1105,13 @@
         {
           "teamId": 286,
           "team": "Vegalta Sendai",
-          "form": "LDWWWDW",
+          "form": "LDWWWDWW",
           "all": {
-            "played": 7,
-            "wins": 4,
+            "played": 8,
+            "wins": 5,
             "draws": 2,
             "losses": 1,
-            "goalsFor": 13,
+            "goalsFor": 15,
             "goalsAgainst": 7
           },
           "home": {
@@ -1120,33 +1123,33 @@
             "goalsAgainst": 3
           },
           "away": {
-            "played": 4,
-            "wins": 3,
+            "played": 5,
+            "wins": 4,
             "draws": 0,
             "losses": 1,
-            "goalsFor": 8,
+            "goalsFor": 10,
             "goalsAgainst": 4
           }
         },
         {
           "teamId": 10075,
           "team": "Imabari",
-          "form": "LLLLDWL",
+          "form": "LLLLDWLL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 1,
             "draws": 1,
-            "losses": 5,
-            "goalsFor": 6,
-            "goalsAgainst": 15
+            "losses": 6,
+            "goalsFor": 7,
+            "goalsAgainst": 17
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
             "draws": 0,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 6
+            "losses": 3,
+            "goalsFor": 4,
+            "goalsAgainst": 8
           },
           "away": {
             "played": 4,
@@ -1160,14 +1163,14 @@
         {
           "teamId": 284,
           "team": "Shonan Bellmare",
-          "form": "WWDDLWD",
+          "form": "WWDDLWDW",
           "all": {
-            "played": 7,
-            "wins": 3,
+            "played": 8,
+            "wins": 4,
             "draws": 3,
             "losses": 1,
-            "goalsFor": 7,
-            "goalsAgainst": 6
+            "goalsFor": 9,
+            "goalsAgainst": 7
           },
           "home": {
             "played": 3,
@@ -1178,33 +1181,33 @@
             "goalsAgainst": 4
           },
           "away": {
-            "played": 4,
-            "wins": 2,
+            "played": 5,
+            "wins": 3,
             "draws": 2,
             "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 2
+            "goalsFor": 6,
+            "goalsAgainst": 3
           }
         },
         {
           "teamId": 10409,
           "team": "Tegevajaro Miyazaki",
-          "form": "LDDLLWW",
+          "form": "LDDLLWWW",
           "all": {
-            "played": 7,
-            "wins": 2,
+            "played": 8,
+            "wins": 3,
             "draws": 2,
             "losses": 3,
-            "goalsFor": 9,
-            "goalsAgainst": 10
+            "goalsFor": 12,
+            "goalsAgainst": 12
           },
           "home": {
-            "played": 3,
-            "wins": 1,
+            "played": 4,
+            "wins": 2,
             "draws": 1,
             "losses": 1,
-            "goalsFor": 3,
-            "goalsAgainst": 3
+            "goalsFor": 6,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 4,
@@ -1218,14 +1221,14 @@
         {
           "teamId": 279,
           "team": "Consadole Sapporo",
-          "form": "WLLLLDD",
+          "form": "WLLLLDDL",
           "all": {
-            "played": 7,
+            "played": 8,
             "wins": 1,
             "draws": 2,
-            "losses": 4,
-            "goalsFor": 8,
-            "goalsAgainst": 14
+            "losses": 5,
+            "goalsFor": 10,
+            "goalsAgainst": 17
           },
           "home": {
             "played": 4,
@@ -1236,12 +1239,12 @@
             "goalsAgainst": 9
           },
           "away": {
-            "played": 3,
+            "played": 4,
             "wins": 0,
             "draws": 1,
-            "losses": 2,
-            "goalsFor": 3,
-            "goalsAgainst": 5
+            "losses": 3,
+            "goalsFor": 5,
+            "goalsAgainst": 8
           }
         }
       ],
@@ -1249,135 +1252,134 @@
         {
           "fixtureId": 1606670,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 280,
           "homeTeam": "Jubilo Iwata",
           "awayTeamId": 4326,
           "awayTeam": "Vanraure Hachinohe",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606666,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 298,
           "homeTeam": "Oita Trinita",
           "awayTeamId": 4317,
           "awayTeam": "Fujieda MYFC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606673,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 299,
           "homeTeam": "Tokushima Vortis",
           "awayTeamId": 7145,
           "awayTeam": "Tochigi City",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606668,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 312,
           "homeTeam": "Montedio Yamagata",
           "awayTeamId": 295,
           "awayTeam": "Sagan Tosu",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606671,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 313,
           "homeTeam": "Omiya Ardija",
           "awayTeamId": 308,
           "awayTeam": "Ventforet Kofu",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606669,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 4315,
           "homeTeam": "Blaublitz Akita",
           "awayTeamId": 311,
           "awayTeam": "Albirex Niigata",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606672,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 4322,
           "homeTeam": "Kataller Toyama",
           "awayTeamId": 307,
           "awayTeam": "Yokohama FC",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606667,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 7127,
           "homeTeam": "Iwaki",
           "awayTeamId": 286,
           "awayTeam": "Vegalta Sendai",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606675,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 10075,
           "homeTeam": "Imabari",
           "awayTeamId": 284,
           "awayTeam": "Shonan Bellmare",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         },
         {
           "fixtureId": 1606674,
           "kickoff": "2026-09-26T17:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 10409,
           "homeTeam": "Tegevajaro Miyazaki",
           "awayTeamId": 279,
           "awayTeam": "Consadole Sapporo",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
-      ],
-      "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
+      ]
     },
     {
       "key": "INTL_FRIENDLIES",
@@ -1571,7 +1573,7 @@
           "awayTeam": "Ukraine U18",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
+          "lineupsChecked": false,
           "lineups": []
         },
         {
@@ -1584,7 +1586,7 @@
           "awayTeam": "Republic of Ireland U19",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
+          "lineupsChecked": false,
           "lineups": []
         },
         {
@@ -1597,7 +1599,7 @@
           "awayTeam": "Bulgaria U19",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": false,
+          "lineupsChecked": true,
           "lineups": []
         }
       ]
@@ -2134,7 +2136,7 @@
     },
     {
       "date": "2026-09-26",
-      "updatedAt": "2026-09-26T08:31:06.417Z",
+      "updatedAt": "2026-09-26T13:02:13.703Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -2142,50 +2144,18 @@
           "season": "2026",
           "standings": [
             {
-              "teamId": 311,
-              "team": "Albirex Niigata",
-              "rank": 1,
-              "points": 15,
-              "goalsDiff": -1,
-              "form": "WWLWW",
-              "all": {
-                "played": 7,
-                "wins": 5,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 9,
-                "goalsAgainst": 10
-              },
-              "home": {
-                "played": 4,
-                "wins": 4,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 8
-              }
-            },
-            {
               "teamId": 286,
               "team": "Vegalta Sendai",
-              "rank": 2,
-              "points": 14,
-              "goalsDiff": 6,
-              "form": "WDWWW",
+              "rank": 1,
+              "points": 17,
+              "goalsDiff": 8,
+              "form": "WWDWW",
               "all": {
-                "played": 7,
-                "wins": 4,
+                "played": 8,
+                "wins": 5,
                 "draws": 2,
                 "losses": 1,
-                "goalsFor": 13,
+                "goalsFor": 15,
                 "goalsAgainst": 7
               },
               "home": {
@@ -2197,36 +2167,132 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 4,
-                "wins": 3,
+                "played": 5,
+                "wins": 4,
                 "draws": 0,
                 "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 313,
+              "team": "Omiya Ardija",
+              "rank": 2,
+              "points": 16,
+              "goalsDiff": 9,
+              "form": "WDDDD",
+              "all": {
+                "played": 8,
+                "wins": 4,
+                "draws": 4,
+                "losses": 0,
+                "goalsFor": 16,
+                "goalsAgainst": 7
+              },
+              "home": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 8,
+                "goalsAgainst": 3
+              },
+              "away": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
                 "goalsFor": 8,
                 "goalsAgainst": 4
               }
             },
             {
-              "teamId": 4322,
-              "team": "Kataller Toyama",
+              "teamId": 311,
+              "team": "Albirex Niigata",
               "rank": 3,
-              "points": 13,
-              "goalsDiff": 8,
-              "form": "WDWLW",
+              "points": 16,
+              "goalsDiff": -1,
+              "form": "DWWLW",
               "all": {
-                "played": 7,
-                "wins": 4,
+                "played": 8,
+                "wins": 5,
                 "draws": 1,
                 "losses": 2,
-                "goalsFor": 13,
-                "goalsAgainst": 5
+                "goalsFor": 11,
+                "goalsAgainst": 12
+              },
+              "home": {
+                "played": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 5,
+                "goalsAgainst": 10
+              }
+            },
+            {
+              "teamId": 284,
+              "team": "Shonan Bellmare",
+              "rank": 4,
+              "points": 15,
+              "goalsDiff": 2,
+              "form": "WDWLD",
+              "all": {
+                "played": 8,
+                "wins": 4,
+                "draws": 3,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 7
               },
               "home": {
                 "played": 3,
                 "wins": 1,
                 "draws": 1,
                 "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 5,
+                "wins": 3,
+                "draws": 2,
+                "losses": 0,
                 "goalsFor": 6,
                 "goalsAgainst": 3
+              }
+            },
+            {
+              "teamId": 4322,
+              "team": "Kataller Toyama",
+              "rank": 5,
+              "points": 14,
+              "goalsDiff": 8,
+              "form": "DWDWL",
+              "all": {
+                "played": 8,
+                "wins": 4,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 16,
+                "goalsAgainst": 8
+              },
+              "home": {
+                "played": 4,
+                "wins": 1,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 6
               },
               "away": {
                 "played": 4,
@@ -2240,17 +2306,17 @@
             {
               "teamId": 307,
               "team": "Yokohama FC",
-              "rank": 4,
-              "points": 13,
+              "rank": 6,
+              "points": 14,
               "goalsDiff": 5,
-              "form": "WLWDL",
+              "form": "DWLWD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 4,
-                "draws": 1,
+                "draws": 2,
                 "losses": 2,
-                "goalsFor": 13,
-                "goalsAgainst": 8
+                "goalsFor": 16,
+                "goalsAgainst": 11
               },
               "home": {
                 "played": 4,
@@ -2261,195 +2327,35 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 313,
-              "team": "Omiya Ardija",
-              "rank": 5,
-              "points": 13,
-              "goalsDiff": 5,
-              "form": "DDDDW",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 4,
-                "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 3,
-                "wins": 1,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
-              },
-              "away": {
                 "played": 4,
-                "wins": 2,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 8,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 284,
-              "team": "Shonan Bellmare",
-              "rank": 6,
-              "points": 12,
-              "goalsDiff": 1,
-              "form": "DWLDD",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 3,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 6
-              },
-              "home": {
-                "played": 3,
                 "wins": 1,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 4,
-                "wins": 2,
-                "draws": 2,
-                "losses": 0,
+                "losses": 2,
                 "goalsFor": 4,
-                "goalsAgainst": 2
-              }
-            },
-            {
-              "teamId": 4317,
-              "team": "Fujieda MYFC",
-              "rank": 7,
-              "points": 11,
-              "goalsDiff": 3,
-              "form": "DLDWL",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 2,
-                "losses": 2,
-                "goalsFor": 11,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 4,
-                "wins": 2,
-                "draws": 2,
-                "losses": 0,
-                "goalsFor": 6,
-                "goalsAgainst": 2
-              },
-              "away": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 5,
-                "goalsAgainst": 6
-              }
-            },
-            {
-              "teamId": 7145,
-              "team": "Tochigi City",
-              "rank": 8,
-              "points": 10,
-              "goalsDiff": 4,
-              "form": "LDWLW",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 1,
-                "losses": 3,
-                "goalsFor": 14,
-                "goalsAgainst": 10
-              },
-              "home": {
-                "played": 3,
-                "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 7,
-                "goalsAgainst": 6
-              },
-              "away": {
-                "played": 4,
-                "wins": 2,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 4
-              }
-            },
-            {
-              "teamId": 280,
-              "team": "Jubilo Iwata",
-              "rank": 9,
-              "points": 10,
-              "goalsDiff": 0,
-              "form": "LWLWW",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 1,
-                "losses": 3,
-                "goalsFor": 9,
-                "goalsAgainst": 9
-              },
-              "home": {
-                "played": 3,
-                "wins": 1,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
-              },
-              "away": {
-                "played": 4,
-                "wins": 2,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 6,
-                "goalsAgainst": 6
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 299,
               "team": "Tokushima Vortis",
-              "rank": 10,
-              "points": 10,
-              "goalsDiff": -3,
-              "form": "WLWWL",
+              "rank": 7,
+              "points": 13,
+              "goalsDiff": 0,
+              "form": "WWLWW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 1,
                 "losses": 3,
-                "goalsFor": 5,
+                "goalsFor": 8,
                 "goalsAgainst": 8
               },
               "home": {
-                "played": 3,
-                "wins": 2,
+                "played": 4,
+                "wins": 3,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 2,
+                "goalsFor": 5,
                 "goalsAgainst": 0
               },
               "away": {
@@ -2464,24 +2370,24 @@
             {
               "teamId": 312,
               "team": "Montedio Yamagata",
-              "rank": 11,
-              "points": 9,
-              "goalsDiff": 2,
-              "form": "LLLWW",
+              "rank": 8,
+              "points": 12,
+              "goalsDiff": 4,
+              "form": "WLLLW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 0,
                 "losses": 4,
-                "goalsFor": 8,
+                "goalsFor": 10,
                 "goalsAgainst": 6
               },
               "home": {
-                "played": 4,
-                "wins": 2,
+                "played": 5,
+                "wins": 3,
                 "draws": 0,
                 "losses": 2,
-                "goalsFor": 5,
+                "goalsFor": 7,
                 "goalsAgainst": 4
               },
               "away": {
@@ -2494,91 +2400,27 @@
               }
             },
             {
-              "teamId": 4315,
-              "team": "Blaublitz Akita",
-              "rank": 12,
-              "points": 9,
-              "goalsDiff": 1,
-              "form": "DWDLW",
+              "teamId": 4317,
+              "team": "Fujieda MYFC",
+              "rank": 9,
+              "points": 12,
+              "goalsDiff": 3,
+              "form": "DDLDW",
               "all": {
-                "played": 7,
-                "wins": 2,
+                "played": 8,
+                "wins": 3,
                 "draws": 3,
                 "losses": 2,
-                "goalsFor": 9,
-                "goalsAgainst": 8
-              },
-              "home": {
-                "played": 4,
-                "wins": 2,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 5
-              },
-              "away": {
-                "played": 3,
-                "wins": 0,
-                "draws": 2,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
-              }
-            },
-            {
-              "teamId": 7127,
-              "team": "Iwaki",
-              "rank": 13,
-              "points": 9,
-              "goalsDiff": -2,
-              "form": "WWLLL",
-              "all": {
-                "played": 7,
-                "wins": 3,
-                "draws": 0,
-                "losses": 4,
-                "goalsFor": 11,
-                "goalsAgainst": 13
-              },
-              "home": {
-                "played": 3,
-                "wins": 2,
-                "draws": 0,
-                "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 4
-              },
-              "away": {
-                "played": 4,
-                "wins": 1,
-                "draws": 0,
-                "losses": 3,
-                "goalsFor": 5,
+                "goalsFor": 12,
                 "goalsAgainst": 9
-              }
-            },
-            {
-              "teamId": 10409,
-              "team": "Tegevajaro Miyazaki",
-              "rank": 14,
-              "points": 8,
-              "goalsDiff": -1,
-              "form": "WWLLD",
-              "all": {
-                "played": 7,
-                "wins": 2,
-                "draws": 2,
-                "losses": 3,
-                "goalsFor": 9,
-                "goalsAgainst": 10
               },
               "home": {
-                "played": 3,
-                "wins": 1,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 2
               },
               "away": {
                 "played": 4,
@@ -2590,27 +2432,91 @@
               }
             },
             {
-              "teamId": 295,
-              "team": "Sagan Tosu",
-              "rank": 15,
-              "points": 8,
-              "goalsDiff": -1,
-              "form": "LLWDL",
+              "teamId": 10409,
+              "team": "Tegevajaro Miyazaki",
+              "rank": 10,
+              "points": 11,
+              "goalsDiff": 0,
+              "form": "WWWLL",
               "all": {
-                "played": 7,
-                "wins": 2,
+                "played": 8,
+                "wins": 3,
                 "draws": 2,
                 "losses": 3,
-                "goalsFor": 8,
-                "goalsAgainst": 9
+                "goalsFor": 12,
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 4,
                 "wins": 2,
-                "draws": 0,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
                 "losses": 2,
                 "goalsFor": 6,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 7145,
+              "team": "Tochigi City",
+              "rank": 11,
+              "points": 10,
+              "goalsDiff": 1,
+              "form": "LLDWL",
+              "all": {
+                "played": 8,
+                "wins": 3,
+                "draws": 1,
+                "losses": 4,
+                "goalsFor": 14,
+                "goalsAgainst": 13
+              },
+              "home": {
+                "played": 3,
+                "wins": 1,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 7,
                 "goalsAgainst": 6
+              },
+              "away": {
+                "played": 5,
+                "wins": 2,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 7
+              }
+            },
+            {
+              "teamId": 4315,
+              "team": "Blaublitz Akita",
+              "rank": 12,
+              "points": 10,
+              "goalsDiff": 1,
+              "form": "DDWDL",
+              "all": {
+                "played": 8,
+                "wins": 2,
+                "draws": 4,
+                "losses": 2,
+                "goalsFor": 11,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 5,
+                "wins": 2,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 7
               },
               "away": {
                 "played": 3,
@@ -2622,27 +2528,123 @@
               }
             },
             {
-              "teamId": 298,
-              "team": "Oita Trinita",
-              "rank": 16,
-              "points": 7,
-              "goalsDiff": 1,
-              "form": "DDDLW",
+              "teamId": 280,
+              "team": "Jubilo Iwata",
+              "rank": 13,
+              "points": 10,
+              "goalsDiff": -1,
+              "form": "LLWLW",
               "all": {
-                "played": 7,
-                "wins": 1,
-                "draws": 4,
-                "losses": 2,
-                "goalsFor": 6,
-                "goalsAgainst": 5
+                "played": 8,
+                "wins": 3,
+                "draws": 1,
+                "losses": 4,
+                "goalsFor": 10,
+                "goalsAgainst": 11
               },
               "home": {
+                "played": 4,
+                "wins": 1,
+                "draws": 1,
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 5
+              },
+              "away": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 4326,
+              "team": "Vanraure Hachinohe",
+              "rank": 14,
+              "points": 10,
+              "goalsDiff": -7,
+              "form": "WLLDW",
+              "all": {
+                "played": 8,
+                "wins": 3,
+                "draws": 1,
+                "losses": 4,
+                "goalsFor": 5,
+                "goalsAgainst": 12
+              },
+              "home": {
+                "played": 5,
+                "wins": 2,
+                "draws": 0,
+                "losses": 3,
+                "goalsFor": 3,
+                "goalsAgainst": 6
+              },
+              "away": {
                 "played": 3,
                 "wins": 1,
                 "draws": 1,
                 "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 7127,
+              "team": "Iwaki",
+              "rank": 15,
+              "points": 9,
+              "goalsDiff": -4,
+              "form": "LWWLL",
+              "all": {
+                "played": 8,
+                "wins": 3,
+                "draws": 0,
+                "losses": 5,
+                "goalsFor": 11,
+                "goalsAgainst": 15
+              },
+              "home": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 4,
+                "wins": 1,
+                "draws": 0,
+                "losses": 3,
                 "goalsFor": 5,
-                "goalsAgainst": 3
+                "goalsAgainst": 9
+              }
+            },
+            {
+              "teamId": 298,
+              "team": "Oita Trinita",
+              "rank": 16,
+              "points": 8,
+              "goalsDiff": 1,
+              "form": "DDDDL",
+              "all": {
+                "played": 8,
+                "wins": 1,
+                "draws": 5,
+                "losses": 2,
+                "goalsFor": 7,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 4,
+                "wins": 1,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 4,
@@ -2654,19 +2656,51 @@
               }
             },
             {
+              "teamId": 295,
+              "team": "Sagan Tosu",
+              "rank": 17,
+              "points": 8,
+              "goalsDiff": -3,
+              "form": "LLLWD",
+              "all": {
+                "played": 8,
+                "wins": 2,
+                "draws": 2,
+                "losses": 4,
+                "goalsFor": 8,
+                "goalsAgainst": 11
+              },
+              "home": {
+                "played": 4,
+                "wins": 2,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 6,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 5
+              }
+            },
+            {
               "teamId": 308,
               "team": "Ventforet Kofu",
-              "rank": 17,
+              "rank": 18,
               "points": 7,
-              "goalsDiff": -5,
-              "form": "LLWWL",
+              "goalsDiff": -9,
+              "form": "LLLWW",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 2,
                 "draws": 1,
-                "losses": 4,
-                "goalsFor": 5,
-                "goalsAgainst": 10
+                "losses": 5,
+                "goalsFor": 6,
+                "goalsAgainst": 15
               },
               "home": {
                 "played": 4,
@@ -2677,44 +2711,12 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 0,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 6
-              }
-            },
-            {
-              "teamId": 4326,
-              "team": "Vanraure Hachinohe",
-              "rank": 18,
-              "points": 7,
-              "goalsDiff": -8,
-              "form": "LLDWL",
-              "all": {
-                "played": 7,
-                "wins": 2,
-                "draws": 1,
-                "losses": 4,
-                "goalsFor": 3,
-                "goalsAgainst": 11
-              },
-              "home": {
-                "played": 5,
-                "wins": 2,
                 "draws": 0,
                 "losses": 3,
                 "goalsFor": 3,
-                "goalsAgainst": 6
-              },
-              "away": {
-                "played": 2,
-                "wins": 0,
-                "draws": 1,
-                "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 5
+                "goalsAgainst": 11
               }
             },
             {
@@ -2722,15 +2724,15 @@
               "team": "Consadole Sapporo",
               "rank": 19,
               "points": 5,
-              "goalsDiff": -6,
-              "form": "DDLLL",
+              "goalsDiff": -7,
+              "form": "LDDLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 1,
                 "draws": 2,
-                "losses": 4,
-                "goalsFor": 8,
-                "goalsAgainst": 14
+                "losses": 5,
+                "goalsFor": 10,
+                "goalsAgainst": 17
               },
               "home": {
                 "played": 4,
@@ -2741,12 +2743,12 @@
                 "goalsAgainst": 9
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 1,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 5
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 8
               }
             },
             {
@@ -2754,23 +2756,23 @@
               "team": "Imabari",
               "rank": 20,
               "points": 4,
-              "goalsDiff": -9,
-              "form": "LWDLL",
+              "goalsDiff": -10,
+              "form": "LLWDL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 1,
                 "draws": 1,
-                "losses": 5,
-                "goalsFor": 6,
-                "goalsAgainst": 15
+                "losses": 6,
+                "goalsFor": 7,
+                "goalsAgainst": 17
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 6
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 8
               },
               "away": {
                 "played": 4,
@@ -2786,22 +2788,22 @@
             {
               "teamId": 280,
               "team": "Jubilo Iwata",
-              "form": "DLWWLWL",
+              "form": "DLWWLWLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 3,
                 "draws": 1,
-                "losses": 3,
-                "goalsFor": 9,
-                "goalsAgainst": 9
+                "losses": 4,
+                "goalsFor": 10,
+                "goalsAgainst": 11
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 1,
-                "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "losses": 2,
+                "goalsFor": 4,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 4,
@@ -2815,14 +2817,14 @@
             {
               "teamId": 4326,
               "team": "Vanraure Hachinohe",
-              "form": "WLLWDLL",
+              "form": "WLLWDLLW",
               "all": {
-                "played": 7,
-                "wins": 2,
+                "played": 8,
+                "wins": 3,
                 "draws": 1,
                 "losses": 4,
-                "goalsFor": 3,
-                "goalsAgainst": 11
+                "goalsFor": 5,
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 5,
@@ -2833,33 +2835,33 @@
                 "goalsAgainst": 6
               },
               "away": {
-                "played": 2,
-                "wins": 0,
+                "played": 3,
+                "wins": 1,
                 "draws": 1,
                 "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 5
+                "goalsFor": 2,
+                "goalsAgainst": 6
               }
             },
             {
               "teamId": 298,
               "team": "Oita Trinita",
-              "form": "LDWLDDD",
+              "form": "LDWLDDDD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 1,
-                "draws": 4,
+                "draws": 5,
                 "losses": 2,
-                "goalsFor": 6,
-                "goalsAgainst": 5
+                "goalsFor": 7,
+                "goalsAgainst": 6
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 5,
-                "goalsAgainst": 3
+                "goalsFor": 6,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 4,
@@ -2873,14 +2875,14 @@
             {
               "teamId": 4317,
               "team": "Fujieda MYFC",
-              "form": "WWLWDLD",
+              "form": "WWLWDLDD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 3,
-                "draws": 2,
+                "draws": 3,
                 "losses": 2,
-                "goalsFor": 11,
-                "goalsAgainst": 8
+                "goalsFor": 12,
+                "goalsAgainst": 9
               },
               "home": {
                 "played": 4,
@@ -2891,32 +2893,32 @@
                 "goalsAgainst": 2
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 2,
-                "goalsFor": 5,
-                "goalsAgainst": 6
+                "goalsFor": 6,
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 299,
               "team": "Tokushima Vortis",
-              "form": "LDLWWLW",
+              "form": "LDLWWLWW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 1,
                 "losses": 3,
-                "goalsFor": 5,
+                "goalsFor": 8,
                 "goalsAgainst": 8
               },
               "home": {
-                "played": 3,
-                "wins": 2,
+                "played": 4,
+                "wins": 3,
                 "draws": 1,
                 "losses": 0,
-                "goalsFor": 2,
+                "goalsFor": 5,
                 "goalsAgainst": 0
               },
               "away": {
@@ -2931,14 +2933,14 @@
             {
               "teamId": 7145,
               "team": "Tochigi City",
-              "form": "LWWLWDL",
+              "form": "LWWLWDLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 3,
                 "draws": 1,
-                "losses": 3,
+                "losses": 4,
                 "goalsFor": 14,
-                "goalsAgainst": 10
+                "goalsAgainst": 13
               },
               "home": {
                 "played": 3,
@@ -2949,32 +2951,32 @@
                 "goalsAgainst": 6
               },
               "away": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 7,
-                "goalsAgainst": 4
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 312,
               "team": "Montedio Yamagata",
-              "form": "WLWWLLL",
+              "form": "WLWWLLLW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 0,
                 "losses": 4,
-                "goalsFor": 8,
+                "goalsFor": 10,
                 "goalsAgainst": 6
               },
               "home": {
-                "played": 4,
-                "wins": 2,
+                "played": 5,
+                "wins": 3,
                 "draws": 0,
                 "losses": 2,
-                "goalsFor": 5,
+                "goalsFor": 7,
                 "goalsAgainst": 4
               },
               "away": {
@@ -2989,14 +2991,14 @@
             {
               "teamId": 295,
               "team": "Sagan Tosu",
-              "form": "WDLDWLL",
+              "form": "WDLDWLLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 2,
                 "draws": 2,
-                "losses": 3,
+                "losses": 4,
                 "goalsFor": 8,
-                "goalsAgainst": 9
+                "goalsAgainst": 11
               },
               "home": {
                 "played": 4,
@@ -3007,33 +3009,33 @@
                 "goalsAgainst": 6
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 2,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsAgainst": 5
               }
             },
             {
               "teamId": 313,
               "team": "Omiya Ardija",
-              "form": "WWWDDDD",
+              "form": "WWWDDDDW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 4,
                 "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 6
+                "goalsFor": 16,
+                "goalsAgainst": 7
               },
               "home": {
-                "played": 3,
-                "wins": 1,
+                "played": 4,
+                "wins": 2,
                 "draws": 2,
                 "losses": 0,
-                "goalsFor": 3,
-                "goalsAgainst": 2
+                "goalsFor": 8,
+                "goalsAgainst": 3
               },
               "away": {
                 "played": 4,
@@ -3047,14 +3049,14 @@
             {
               "teamId": 308,
               "team": "Ventforet Kofu",
-              "form": "LDLWWLL",
+              "form": "LDLWWLLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 2,
                 "draws": 1,
-                "losses": 4,
-                "goalsFor": 5,
-                "goalsAgainst": 10
+                "losses": 5,
+                "goalsFor": 6,
+                "goalsAgainst": 15
               },
               "home": {
                 "played": 4,
@@ -3065,33 +3067,33 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 0,
-                "losses": 2,
-                "goalsFor": 2,
-                "goalsAgainst": 6
+                "losses": 3,
+                "goalsFor": 3,
+                "goalsAgainst": 11
               }
             },
             {
               "teamId": 4315,
               "team": "Blaublitz Akita",
-              "form": "DLWLDWD",
+              "form": "DLWLDWDD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 2,
-                "draws": 3,
+                "draws": 4,
                 "losses": 2,
-                "goalsFor": 9,
-                "goalsAgainst": 8
+                "goalsFor": 11,
+                "goalsAgainst": 10
               },
               "home": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 5
+                "goalsFor": 9,
+                "goalsAgainst": 7
               },
               "away": {
                 "played": 3,
@@ -3105,14 +3107,14 @@
             {
               "teamId": 311,
               "team": "Albirex Niigata",
-              "form": "LWWWLWW",
+              "form": "LWWWLWWD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 5,
-                "draws": 0,
+                "draws": 1,
                 "losses": 2,
-                "goalsFor": 9,
-                "goalsAgainst": 10
+                "goalsFor": 11,
+                "goalsAgainst": 12
               },
               "home": {
                 "played": 4,
@@ -3123,33 +3125,33 @@
                 "goalsAgainst": 2
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 8
+                "goalsFor": 5,
+                "goalsAgainst": 10
               }
             },
             {
               "teamId": 4322,
               "team": "Kataller Toyama",
-              "form": "LWWLWDW",
+              "form": "LWWLWDWD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 4,
-                "draws": 1,
+                "draws": 2,
                 "losses": 2,
-                "goalsFor": 13,
-                "goalsAgainst": 5
+                "goalsFor": 16,
+                "goalsAgainst": 8
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 1,
+                "draws": 2,
                 "losses": 1,
-                "goalsFor": 6,
-                "goalsAgainst": 3
+                "goalsFor": 9,
+                "goalsAgainst": 6
               },
               "away": {
                 "played": 4,
@@ -3163,14 +3165,14 @@
             {
               "teamId": 307,
               "team": "Yokohama FC",
-              "form": "WWLDWLW",
+              "form": "WWLDWLWD",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 4,
-                "draws": 1,
+                "draws": 2,
                 "losses": 2,
-                "goalsFor": 13,
-                "goalsAgainst": 8
+                "goalsFor": 16,
+                "goalsAgainst": 11
               },
               "home": {
                 "played": 4,
@@ -3181,33 +3183,33 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 0,
+                "draws": 1,
                 "losses": 2,
-                "goalsFor": 1,
-                "goalsAgainst": 4
+                "goalsFor": 4,
+                "goalsAgainst": 7
               }
             },
             {
               "teamId": 7127,
               "team": "Iwaki",
-              "form": "WLLLLWW",
+              "form": "WLLLLWWL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 3,
                 "draws": 0,
-                "losses": 4,
+                "losses": 5,
                 "goalsFor": 11,
-                "goalsAgainst": 13
+                "goalsAgainst": 15
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 2,
                 "draws": 0,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 6,
-                "goalsAgainst": 4
+                "goalsAgainst": 6
               },
               "away": {
                 "played": 4,
@@ -3221,13 +3223,13 @@
             {
               "teamId": 286,
               "team": "Vegalta Sendai",
-              "form": "LDWWWDW",
+              "form": "LDWWWDWW",
               "all": {
-                "played": 7,
-                "wins": 4,
+                "played": 8,
+                "wins": 5,
                 "draws": 2,
                 "losses": 1,
-                "goalsFor": 13,
+                "goalsFor": 15,
                 "goalsAgainst": 7
               },
               "home": {
@@ -3239,33 +3241,33 @@
                 "goalsAgainst": 3
               },
               "away": {
-                "played": 4,
-                "wins": 3,
+                "played": 5,
+                "wins": 4,
                 "draws": 0,
                 "losses": 1,
-                "goalsFor": 8,
+                "goalsFor": 10,
                 "goalsAgainst": 4
               }
             },
             {
               "teamId": 10075,
               "team": "Imabari",
-              "form": "LLLLDWL",
+              "form": "LLLLDWLL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 1,
                 "draws": 1,
-                "losses": 5,
-                "goalsFor": 6,
-                "goalsAgainst": 15
+                "losses": 6,
+                "goalsFor": 7,
+                "goalsAgainst": 17
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
                 "draws": 0,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 6
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 8
               },
               "away": {
                 "played": 4,
@@ -3279,14 +3281,14 @@
             {
               "teamId": 284,
               "team": "Shonan Bellmare",
-              "form": "WWDDLWD",
+              "form": "WWDDLWDW",
               "all": {
-                "played": 7,
-                "wins": 3,
+                "played": 8,
+                "wins": 4,
                 "draws": 3,
                 "losses": 1,
-                "goalsFor": 7,
-                "goalsAgainst": 6
+                "goalsFor": 9,
+                "goalsAgainst": 7
               },
               "home": {
                 "played": 3,
@@ -3297,33 +3299,33 @@
                 "goalsAgainst": 4
               },
               "away": {
-                "played": 4,
-                "wins": 2,
+                "played": 5,
+                "wins": 3,
                 "draws": 2,
                 "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 2
+                "goalsFor": 6,
+                "goalsAgainst": 3
               }
             },
             {
               "teamId": 10409,
               "team": "Tegevajaro Miyazaki",
-              "form": "LDDLLWW",
+              "form": "LDDLLWWW",
               "all": {
-                "played": 7,
-                "wins": 2,
+                "played": 8,
+                "wins": 3,
                 "draws": 2,
                 "losses": 3,
-                "goalsFor": 9,
-                "goalsAgainst": 10
+                "goalsFor": 12,
+                "goalsAgainst": 12
               },
               "home": {
-                "played": 3,
-                "wins": 1,
+                "played": 4,
+                "wins": 2,
                 "draws": 1,
                 "losses": 1,
-                "goalsFor": 3,
-                "goalsAgainst": 3
+                "goalsFor": 6,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 4,
@@ -3337,14 +3339,14 @@
             {
               "teamId": 279,
               "team": "Consadole Sapporo",
-              "form": "WLLLLDD",
+              "form": "WLLLLDDL",
               "all": {
-                "played": 7,
+                "played": 8,
                 "wins": 1,
                 "draws": 2,
-                "losses": 4,
-                "goalsFor": 8,
-                "goalsAgainst": 14
+                "losses": 5,
+                "goalsFor": 10,
+                "goalsAgainst": 17
               },
               "home": {
                 "played": 4,
@@ -3355,12 +3357,12 @@
                 "goalsAgainst": 9
               },
               "away": {
-                "played": 3,
+                "played": 4,
                 "wins": 0,
                 "draws": 1,
-                "losses": 2,
-                "goalsFor": 3,
-                "goalsAgainst": 5
+                "losses": 3,
+                "goalsFor": 5,
+                "goalsAgainst": 8
               }
             }
           ],
@@ -3368,135 +3370,134 @@
             {
               "fixtureId": 1606670,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 280,
               "homeTeam": "Jubilo Iwata",
               "awayTeamId": 4326,
               "awayTeam": "Vanraure Hachinohe",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606666,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 298,
               "homeTeam": "Oita Trinita",
               "awayTeamId": 4317,
               "awayTeam": "Fujieda MYFC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606673,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 299,
               "homeTeam": "Tokushima Vortis",
               "awayTeamId": 7145,
               "awayTeam": "Tochigi City",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606668,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 312,
               "homeTeam": "Montedio Yamagata",
               "awayTeamId": 295,
               "awayTeam": "Sagan Tosu",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606671,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 313,
               "homeTeam": "Omiya Ardija",
               "awayTeamId": 308,
               "awayTeam": "Ventforet Kofu",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606669,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 4315,
               "homeTeam": "Blaublitz Akita",
               "awayTeamId": 311,
               "awayTeam": "Albirex Niigata",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606672,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 4322,
               "homeTeam": "Kataller Toyama",
               "awayTeamId": 307,
               "awayTeam": "Yokohama FC",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606667,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 7127,
               "homeTeam": "Iwaki",
               "awayTeamId": 286,
               "awayTeam": "Vegalta Sendai",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606675,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 10075,
               "homeTeam": "Imabari",
               "awayTeamId": 284,
               "awayTeam": "Shonan Bellmare",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             },
             {
               "fixtureId": 1606674,
               "kickoff": "2026-09-26T17:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 10409,
               "homeTeam": "Tegevajaro Miyazaki",
               "awayTeamId": 279,
               "awayTeam": "Consadole Sapporo",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
-          ],
-          "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
+          ]
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -3690,7 +3691,7 @@
               "awayTeam": "Ukraine U18",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
+              "lineupsChecked": false,
               "lineups": []
             },
             {
@@ -3703,7 +3704,7 @@
               "awayTeam": "Republic of Ireland U19",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
+              "lineupsChecked": false,
               "lineups": []
             },
             {
@@ -3716,7 +3717,7 @@
               "awayTeam": "Bulgaria U19",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": false,
+              "lineupsChecked": true,
               "lineups": []
             }
           ]
@@ -3725,7 +3726,7 @@
     },
     {
       "date": "2026-09-27",
-      "updatedAt": "2026-09-26T08:31:06.417Z",
+      "updatedAt": "2026-09-26T13:02:23.941Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -4191,8 +4192,7 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ],
-          "standingsUpdatedAt": "2026-09-26T08:31:06.417Z"
+          ]
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -4725,14 +4725,14 @@
             {
               "teamId": 22343,
               "team": "Ukraine U18",
-              "form": "DWDDWL",
+              "form": "DWDDWLL",
               "all": {
-                "played": 6,
+                "played": 7,
                 "wins": 2,
                 "draws": 3,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 6,
-                "goalsAgainst": 5
+                "goalsAgainst": 6
               },
               "home": {
                 "played": 2,
@@ -4743,33 +4743,33 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 4,
+                "played": 5,
                 "wins": 2,
                 "draws": 1,
-                "losses": 1,
+                "losses": 2,
                 "goalsFor": 5,
-                "goalsAgainst": 4
+                "goalsAgainst": 5
               }
             },
             {
               "teamId": 21460,
               "team": "Austria U18",
-              "form": "LDD",
+              "form": "LDDW",
               "all": {
-                "played": 3,
-                "wins": 0,
+                "played": 4,
+                "wins": 1,
                 "draws": 2,
                 "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "goalsFor": 4,
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 2,
+                "goalsAgainst": 1
               },
               "away": {
                 "played": 3,
@@ -4918,15 +4918,777 @@
     },
     {
       "date": "2026-09-28",
-      "updatedAt": "2026-09-25T13:42:13.063Z",
+      "updatedAt": "2026-09-26T13:02:33.314Z",
+      "leagues": [
+        {
+          "key": "INTL_FRIENDLIES",
+          "leagueId": 10,
+          "season": "2026",
+          "standings": [],
+          "teams": [
+            {
+              "teamId": 8194,
+              "team": "France U21",
+              "form": "DW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 22431,
+              "team": "Japan U18",
+              "form": "WL",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1112,
+              "team": "Malta",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1107,
+              "team": "Liechtenstein",
+              "form": "LL",
+              "all": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 0,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1548,
+              "team": "Jordan",
+              "form": "DDLL",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 5,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 1,
+                "goalsAgainst": 6
+              }
+            },
+            {
+              "teamId": 1565,
+              "team": "Syria",
+              "form": "L",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 2381,
+              "team": "Bolivia",
+              "form": "DLWLL",
+              "all": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 10
+              },
+              "home": {
+                "played": 5,
+                "wins": 1,
+                "draws": 1,
+                "losses": 3,
+                "goalsFor": 4,
+                "goalsAgainst": 10
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 2380,
+              "team": "Paraguay",
+              "form": "WLW",
+              "all": {
+                "played": 3,
+                "wins": 2,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              }
+            },
+            {
+              "teamId": 1539,
+              "team": "Turkmenistan",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 1562,
+              "team": "Palestine",
+              "form": "DDD",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 3,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 12,
+              "team": "Japan",
+              "form": "WWWW",
+              "all": {
+                "played": 4,
+                "wins": 4,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 1
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 1
+              },
+              "away": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 2379,
+              "team": "Venezuela",
+              "form": "LW",
+              "all": {
+                "played": 2,
+                "wins": 1,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 3,
+                "goalsAgainst": 2
+              },
+              "home": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 1,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 2,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 17,
+              "team": "South Korea",
+              "form": "LLWWW",
+              "all": {
+                "played": 5,
+                "wins": 3,
+                "draws": 0,
+                "losses": 2,
+                "goalsFor": 9,
+                "goalsAgainst": 5
+              },
+              "home": {
+                "played": 4,
+                "wins": 3,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 9,
+                "goalsAgainst": 4
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 7,
+              "team": "Uruguay",
+              "form": "DDL",
+              "all": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 3,
+                "wins": 0,
+                "draws": 2,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 1536,
+              "team": "Tajikistan",
+              "form": "WDL",
+              "all": {
+                "played": 3,
+                "wins": 1,
+                "draws": 1,
+                "losses": 1,
+                "goalsFor": 4,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 2,
+                "wins": 1,
+                "draws": 1,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 0,
+                "goalsAgainst": 1
+              }
+            },
+            {
+              "teamId": 1554,
+              "team": "Kyrgyzstan",
+              "form": "LLDD",
+              "all": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 4,
+                "wins": 0,
+                "draws": 2,
+                "losses": 2,
+                "goalsFor": 2,
+                "goalsAgainst": 6
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 1551,
+              "team": "Lebanon",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 17949,
+              "team": "England U17",
+              "form": "W",
+              "all": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 1,
+                "wins": 1,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 18914,
+              "team": "Israel U17",
+              "form": "",
+              "all": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              }
+            },
+            {
+              "teamId": 22437,
+              "team": "Serbia U18",
+              "form": "DDWW",
+              "all": {
+                "played": 4,
+                "wins": 2,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 10,
+                "goalsAgainst": 6
+              },
+              "home": {
+                "played": 2,
+                "wins": 2,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 6,
+                "goalsAgainst": 2
+              },
+              "away": {
+                "played": 2,
+                "wins": 0,
+                "draws": 2,
+                "losses": 0,
+                "goalsFor": 4,
+                "goalsAgainst": 4
+              }
+            },
+            {
+              "teamId": 25280,
+              "team": "Russia U18",
+              "form": "L",
+              "all": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              },
+              "home": {
+                "played": 0,
+                "wins": 0,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 0,
+                "goalsAgainst": 0
+              },
+              "away": {
+                "played": 1,
+                "wins": 0,
+                "draws": 0,
+                "losses": 1,
+                "goalsFor": 2,
+                "goalsAgainst": 3
+              }
+            }
+          ],
+          "fixtures": [
+            {
+              "fixtureId": 1640826,
+              "kickoff": "2026-09-28T01:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 8194,
+              "homeTeam": "France U21",
+              "awayTeamId": 22431,
+              "awayTeam": "Japan U18",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1628998,
+              "kickoff": "2026-09-28T01:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1112,
+              "homeTeam": "Malta",
+              "awayTeamId": 1107,
+              "awayTeam": "Liechtenstein",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640066,
+              "kickoff": "2026-09-28T02:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1548,
+              "homeTeam": "Jordan",
+              "awayTeamId": 1565,
+              "awayTeam": "Syria",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1637602,
+              "kickoff": "2026-09-28T05:30:00+09:00",
+              "status": "NS",
+              "homeTeamId": 2381,
+              "homeTeam": "Bolivia",
+              "awayTeamId": 2380,
+              "awayTeam": "Paraguay",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1638592,
+              "kickoff": "2026-09-28T18:30:00+09:00",
+              "status": "CANC",
+              "homeTeamId": 1539,
+              "homeTeam": "Turkmenistan",
+              "awayTeamId": 1562,
+              "awayTeam": "Palestine",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1629000,
+              "kickoff": "2026-09-28T19:25:00+09:00",
+              "status": "NS",
+              "homeTeamId": 12,
+              "homeTeam": "Japan",
+              "awayTeamId": 2379,
+              "awayTeam": "Venezuela",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1628999,
+              "kickoff": "2026-09-28T20:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 17,
+              "homeTeam": "South Korea",
+              "awayTeamId": 7,
+              "awayTeam": "Uruguay",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1638596,
+              "kickoff": "2026-09-28T21:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1536,
+              "homeTeam": "Tajikistan",
+              "awayTeamId": 1562,
+              "awayTeam": "Palestine",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640507,
+              "kickoff": "2026-09-28T21:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 1554,
+              "homeTeam": "Kyrgyzstan",
+              "awayTeamId": 1551,
+              "awayTeam": "Lebanon",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1638593,
+              "kickoff": "2026-09-28T23:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 17949,
+              "homeTeam": "England U17",
+              "awayTeamId": 18914,
+              "awayTeam": "Israel U17",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            },
+            {
+              "fixtureId": 1640827,
+              "kickoff": "2026-09-28T23:00:00+09:00",
+              "status": "NS",
+              "homeTeamId": 22437,
+              "homeTeam": "Serbia U18",
+              "awayTeamId": 25280,
+              "awayTeam": "Russia U18",
+              "injuriesChecked": true,
+              "injuries": [],
+              "lineupsChecked": false,
+              "lineups": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "updatedAt": "2026-09-26T13:02:33.315Z",
       "leagues": []
     }
-  ],
-  "standingsRefresh": {
-    "updatedAt": "2026-09-26T08:31:06.417Z",
-    "requested": 3,
-    "updated": 2,
-    "failures": 1
-  }
+  ]
 };
 });
