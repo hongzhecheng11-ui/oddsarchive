@@ -5369,6 +5369,7 @@ function normalizeApiOddsPackMatch(match = {}) {
   return validation.messages.length === 0 ? {
     ...validation.row,
     source,
+    status: String(match.status || "").trim(),
     fixtureId: String(match.fixtureId || "").trim(),
     oddsUpdatedAt: String(match.oddsUpdatedAt || "").trim(),
     oddsHistory: Array.isArray(match.oddsHistory) ? match.oddsHistory : []

@@ -7,6 +7,7 @@ const root = path.resolve(__dirname, "..");
 const packPath = path.join(root, "data", "new-leagues-odds-pack.js");
 const existingApiPath = path.join(root, "data", "api-odds-pack.js");
 const footballPath = path.join(root, "data", "football-data-pack.js");
+const historicalPath = path.join(root, "data", "free-extra-leagues-pack.json");
 const leagues = ["NATIONS_LEAGUE", "ACL_TWO", "MLS", "LIGA_MX", "ARGENTINA_PRIMERA", "BRAZIL_SERIE_A"];
 
 function identity(match) {
@@ -27,11 +28,26 @@ function assertUncoveredLeagues() {
 function loadPack() {
   if (!fs.existsSync(packPath)) return { version: "api-odds-pack-v1", updatedAt: "", collection: {}, matches: [] };
   delete require.cache[require.resolve(packPath)];
-  return require(packPath);
+  const pack = require(packPath);
+  return { ...pack, matches: (pack.matches || []).filter(match => match.source !== "football-data.co.uk") };
+}
+
+function withHistoricalMatches(pack, history = fs.existsSync(historicalPath) ? JSON.parse(fs.readFileSync(historicalPath, "utf8")) : null) {
+  if (!history) return pack;
+  const app = require("../app.js");
+  const rows = history.matches.map(row => ({
+    date: history.dates[row[0]], league: history.leagues[row[1]],
+    homeTeam: history.teams[row[2]], awayTeam: history.teams[row[3]],
+    homeOdds: row[4] / 100, drawOdds: row[5] / 100, awayOdds: row[6] / 100,
+    result: ["H", "D", "A"][row[7]], score: history.scores[row[8]], status: "FT",
+    source: "football-data.co.uk", oddsType: "closing"
+  }));
+  const extra = app.dropRowsCoveredByPack(pack.matches || [], rows);
+  return { ...pack, historical: { source: "football-data.co.uk", collectedAt: history.collectedAt, totalMatches: rows.length, includedMatches: extra.length, oddsType: "closing" }, matches: [...(pack.matches || []), ...extra] };
 }
 
 function writePack(pack) {
-  const content = `(function attachNewLeaguesOddsPack(root, factory) {\n  const pack = factory();\n  if (typeof module !== "undefined" && module.exports) module.exports = pack;\n  if (root) root.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK = pack;\n})(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {\n  return ${JSON.stringify(pack, null, 2)};\n});\n`;
+  const content = `(function attachNewLeaguesOddsPack(root, factory) {\n  const pack = factory();\n  if (typeof module !== "undefined" && module.exports) module.exports = pack;\n  if (root) root.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK = pack;\n})(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {\n  return ${JSON.stringify(withHistoricalMatches(pack))};\n});\n`;
   const temporaryPath = `${packPath}.tmp`;
   fs.writeFileSync(temporaryPath, content, "utf8");
   fs.renameSync(temporaryPath, packPath);
@@ -99,4 +115,4 @@ async function main() {
 
 if (require.main === module) main().catch(error => { console.error(error.message || error); process.exitCode = 1; });
 
-module.exports = { leagues, identity, assertUncoveredLeagues, loadPack, main };
+module.exports = { leagues, identity, assertUncoveredLeagues, loadPack, withHistoricalMatches, writePack, main };

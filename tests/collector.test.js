@@ -5,6 +5,31 @@ const collector = require("../scripts/collect-api-odds.js");
 const newLeaguesCollector = require("../scripts/collect-new-leagues-odds.js");
 const packageJson = require("../package.json");
 
+test("keeps the free historical pack separate and preserves collected odds", () => {
+  const paid = newLeaguesCollector.loadPack();
+  const served = require("../data/new-leagues-odds-pack.js");
+  const history = require("../data/free-extra-leagues-pack.json");
+  const rebuilt = newLeaguesCollector.withHistoricalMatches(paid, history);
+  assert.strictEqual(history.matches.length, 22918);
+  assert.deepStrictEqual(rebuilt.matches.slice(0, paid.matches.length), paid.matches);
+  assert.deepStrictEqual(rebuilt.matches, served.matches);
+  assert.ok(rebuilt.historical.includedMatches > 0 && rebuilt.historical.includedMatches <= history.matches.length);
+  assert.strictEqual(rebuilt.matches.length, paid.matches.length + rebuilt.historical.includedMatches);
+  assert.ok(paid.matches.every(row => row.source !== "football-data.co.uk"));
+  assert.ok(rebuilt.matches.every(row => [row.homeOdds, row.drawOdds, row.awayOdds].every(value => Number(value) > 1)));
+  const app = require("../app.js");
+  assert.ok(app.getApiOddsPackRows({ matches: rebuilt.matches.filter(row => row.source === "football-data.co.uk") }).every(row => row.status === "FT"));
+  const keys = rebuilt.matches.map(app.getCrossSourceMatchKey);
+  assert.strictEqual(new Set(keys).size, keys.length);
+});
+
+test("keeps supplemental data compatible with the version 13 Android JSON parser", () => {
+  const script = fs.readFileSync(path.join(__dirname, "..", "data", "new-leagues-odds-pack.js"), "utf8");
+  const parsed = script.match(/function createApiOddsPack\(\) \{\s*return (\{[\s\S]*\});\s*\}\);\s*$/);
+  assert.ok(parsed);
+  assert.strictEqual(JSON.parse(parsed[1]).matches.length, require("../data/new-leagues-odds-pack.js").matches.length);
+});
+
 test("includes UEFA Nations League in scheduled odds collection", () => {
   assert.deepStrictEqual(collector.getLeagueIds("NATIONS_LEAGUE"), [5]);
   assert.strictEqual(collector.getSeason("2027-03-25", "NATIONS_LEAGUE"), "2026");
