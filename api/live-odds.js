@@ -9,6 +9,9 @@ const LEAGUE_IDS = {
   WORLDCUP: 1,
   UCL: 2,
   UEL: 3,
+  UEFA_CONFERENCE: 848,
+  NATIONS_LEAGUE: 5,
+  ACL_TWO: 18,
   KLEAGUE1: 292,
   KLEAGUE2: 293,
   J1LEAGUE: 98,
@@ -19,14 +22,24 @@ const LEAGUE_IDS = {
   SCOTTISH_PREMIERSHIP: 179,
   BELGIAN_PRO_LEAGUE: 144,
   SUPER_LIG: 203,
+  MLS: 253,
+  LIGA_MX: 262,
+  ARGENTINA_PRIMERA: 128,
+  BRAZIL_SERIE_A: 71,
   ACL: 17,
+  SAUDI_PRO_LEAGUE: 307,
   WCQ: [29, 30, 31, 32, 33, 34],
   INTL_FRIENDLIES: 10
 };
+const FIXTURE_ONLY_LEAGUES = new Set(["UEFA_CONFERENCE", "SAUDI_PRO_LEAGUE", "ACL"]);
 const CALENDAR_YEAR_LEAGUES = new Set([
   "WORLDCUP",
   "WCQ",
   "INTL_FRIENDLIES",
+  "MLS",
+  "LIGA_MX",
+  "ARGENTINA_PRIMERA",
+  "BRAZIL_SERIE_A",
   "KLEAGUE1",
   "KLEAGUE2",
   "J1LEAGUE",
@@ -200,6 +213,7 @@ function normalizeFixtureItem(item, leagueKey, dateText) {
     homeOdds: "",
     drawOdds: "",
     awayOdds: "",
+    oddsUnavailable: FIXTURE_ONLY_LEAGUES.has(leagueLabel),
     result,
     score: scoreText,
     source: "API-Football Fixtures"
@@ -305,6 +319,7 @@ async function loadOddsForFixtures({ fixtures, leagueKey, date, apiKey }) {
 
   fixtureCandidates.forEach((match) => {
     const matchLeagueKey = String(match.league || leagueKey || "").trim().toUpperCase();
+    if (FIXTURE_ONLY_LEAGUES.has(matchLeagueKey)) return;
     const mappedLeagueIds = getLeagueIds(matchLeagueKey).filter(Boolean);
     const matchLeagueId = Number(match.leagueId || 0);
     const leagueIds = matchLeagueId ? [matchLeagueId] : mappedLeagueIds;
@@ -348,10 +363,11 @@ function mergeFixturesWithOdds(fixtures, odds) {
 async function loadLeagueMatches({ date, leagueKey, apiKey }) {
   const leagueIds = getLeagueIds(leagueKey).filter(Boolean);
   const results = await Promise.all(leagueIds.map(async (leagueId) => {
-    const [fixtures, odds] = await Promise.all([
-      loadLeagueFixtures({ date, leagueKey, leagueId, apiKey }),
-      loadLeagueOdds({ date, leagueKey, leagueId, apiKey })
-    ]);
+    const fixturesPromise = loadLeagueFixtures({ date, leagueKey, leagueId, apiKey });
+    const oddsPromise = FIXTURE_ONLY_LEAGUES.has(leagueKey)
+      ? Promise.resolve([])
+      : loadLeagueOdds({ date, leagueKey, leagueId, apiKey });
+    const [fixtures, odds] = await Promise.all([fixturesPromise, oddsPromise]);
     return { fixtures, odds };
   }));
   const fixtures = results.flatMap((result) => result.fixtures);

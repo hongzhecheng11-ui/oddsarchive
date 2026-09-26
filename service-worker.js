@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   "/assets/app-icon-512.png",
   "/assets/app-icon-maskable-512.png",
   "/data/api-odds-pack.js",
+  "/data/new-leagues-odds-pack.js",
   "/data/team-context-pack.js",
   "/data/match-statistics-pack.js",
   "/data/upset-candidate-audit.json",

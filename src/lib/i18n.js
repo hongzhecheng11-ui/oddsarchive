@@ -61,7 +61,7 @@
     "박빙주의": "Close Match", "혼전": "Wide Open", "확인 중": "Checking",
     "AI 종합 분석": "AI Match Analysis", "최종 판정": "Final Verdict", "경기 공통 지표": "Match Indicators",
     "최근 사례": "Recent Examples", "관련 과거 경기가 없습니다.": "No related past matches available.",
-    "배당 준비 중": "Odds Pending", "이전": "Previous", "상태": "Status", "결과": "Result",
+    "배당 준비 중": "Odds Pending", "배당 미제공": "Odds unavailable", "이전": "Previous", "상태": "Status", "결과": "Result",
     "승": "W", "패": "L", "득": "GF", "실": "GA", "스코어": "Score", "최종": "Final",
     "공격": "Attack", "수비": "Defense", "흐름": "Form", "양 팀 공격": "Both Teams Attack",
     "양 팀 수비": "Both Teams Defense", "양 팀 흐름": "Both Teams Form", "데이터 부족": "Insufficient Data",
@@ -524,7 +524,7 @@
     [/^헤더:\s*([A-Za-z0-9,]+)$/, "Header: $1"]
   ];
   const EN_INLINE_TERMS = [
-    ["배당 없음", "No odds"], ["전적 없음", "No Record"], ["확인 중", "Checking"], ["정배불안", "Favorite at Risk"],
+    ["배당 없음", "No odds"], ["배당 미제공", "Odds unavailable"], ["전적 없음", "No Record"], ["확인 중", "Checking"], ["정배불안", "Favorite at Risk"],
     ["초강정배", "Very Strong Favorite"], ["박빙정배", "Narrow Favorite"],
     ["약정배", "Slight Favorite"], ["강정배", "Strong Favorite"], ["정배", "Favorite"],
     ["승부차기 종료", "After Penalties"], ["연장 종료", "After Extra Time"], ["경기 전", "Scheduled"],

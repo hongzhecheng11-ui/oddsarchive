@@ -1,5 +1,6 @@
 const assert = require("assert");
 const i18n = require("../src/lib/i18n.js");
+const leagues = require("../src/lib/translations/leagues.js");
 
 assert.strictEqual(i18n.translateText("배당검색", "en"), "Odds Search");
 assert.strictEqual(i18n.translateText("  오늘경기  ", "en"), "  Fixtures  ");
@@ -16,6 +17,13 @@ assert.strictEqual(i18n.translateText("판정 이변 주의", "en"), "Verdict: U
 assert.strictEqual(i18n.translateText("유사배당에서는 무승부이 31%로 가장 많이 발생했습니다.", "en"), "In similar-odds history, Draw occurred most often at 31%.");
 assert.strictEqual(i18n.translateText("Arsenal", "en"), "Arsenal");
 assert.strictEqual(i18n.translateText("배당검색", "ko"), "배당검색");
+assert.strictEqual(leagues.labels.NATIONS_LEAGUE, "UEFA 네이션스리그");
+assert.ok(leagues.categories.find((category) => category.label === "국가대항").leagues.includes("NATIONS_LEAGUE"));
+assert.ok(leagues.categories.find((category) => category.label === "미주").leagues.includes("MLS"));
+assert.strictEqual(leagues.labels.ACL_TWO, "AFC 챔피언스리그 Two");
+assert.strictEqual(leagues.labels.UEFA_CONFERENCE, "UEFA 컨퍼런스리그");
+assert.strictEqual(leagues.labels.SAUDI_PRO_LEAGUE, "사우디 프로리그");
+assert.strictEqual(leagues.labels.BRAZIL_SERIE_A, "브라질 세리에A");
 for (const [ko, en] of [
   ["Google 로그인", "Google Account"],
   ["Google 로그인 창을 여는 중입니다.", "Opening Google sign-in."],

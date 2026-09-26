@@ -583,6 +583,11 @@ test("formats expanded league and team names for Korean users", () => {
   assert.strictEqual(app.formatLeagueName("Scottish Premiership"), "스코틀랜드 프리미어십");
   assert.strictEqual(app.formatLeagueName("Jupiler Pro League"), "벨기에 프로리그");
   assert.strictEqual(app.formatLeagueName("Süper Lig"), "튀르키예 쉬페르리그");
+  assert.strictEqual(app.formatLeagueName("MLS"), "미국 MLS");
+  assert.strictEqual(app.formatLeagueName("BRAZIL_SERIE_A"), "브라질 세리에A");
+  assert.strictEqual(app.formatLeagueName("ACL_TWO"), "AFC 챔피언스리그 Two");
+  assert.strictEqual(app.formatLeagueName("UEFA Europa Conference League"), "UEFA 컨퍼런스리그");
+  assert.strictEqual(app.formatLeagueName("Saudi Pro League"), "사우디 프로리그");
   assert.strictEqual(app.formatLeagueName("E0"), "EPL");
   assert.strictEqual(app.formatTeamName("FC Seoul"), "FC서울");
   assert.strictEqual(app.formatTeamName("Unknown FC"), "Unknown FC");
@@ -687,6 +692,12 @@ test("matches expanded league aliases for fixture filters", () => {
   assert.strictEqual(app.leagueMatchesFixture("Jupiler Pro League", "BELGIAN_PRO_LEAGUE"), true);
   assert.strictEqual(app.leagueMatchesFixture("Süper Lig", "SUPER_LIG"), true);
   assert.strictEqual(app.leagueMatchesFixture("International Friendlies", "INTL_FRIENDLIES"), true);
+  assert.strictEqual(app.leagueMatchesFixture("UEFA Nations League", "NATIONS_LEAGUE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("AFC Champions League Two", "ACL_TWO"), true);
+  assert.strictEqual(app.leagueMatchesFixture("UEFA Europa Conference League", "UEFA_CONFERENCE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Saudi Pro League", "SAUDI_PRO_LEAGUE"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Major League Soccer", "MLS"), true);
+  assert.strictEqual(app.leagueMatchesFixture("Liga Profesional Argentina", "ARGENTINA_PRIMERA"), true);
   assert.strictEqual(app.leagueMatchesFixture("UEFA Champions League", "KLEAGUE1"), false);
 });
 
@@ -846,6 +857,26 @@ test("includes Korean priority leagues in fixture league options", () => {
   assert(values.includes("ACL"));
   assert(values.includes("WCQ"));
   assert(values.includes("INTL_FRIENDLIES"));
+  assert(values.includes("NATIONS_LEAGUE"));
+  assert(values.includes("ACL_TWO"));
+  assert(values.includes("MLS"));
+  assert(values.includes("LIGA_MX"));
+  assert(values.includes("ARGENTINA_PRIMERA"));
+  assert(values.includes("BRAZIL_SERIE_A"));
+  assert(values.includes("UEFA_CONFERENCE"));
+  assert(values.includes("SAUDI_PRO_LEAGUE"));
+});
+
+test("labels fixture-only odds as unavailable instead of pending", () => {
+  const view = app.getHomeTodayCardViewModel({
+    league: "SAUDI_PRO_LEAGUE",
+    homeTeam: "Al Hilal",
+    awayTeam: "Al Nassr",
+    oddsUnavailable: true
+  });
+
+  assert.strictEqual(view.odds, "배당 미제공");
+  assert.strictEqual(view.insight.text, "배당 미제공");
 });
 
 test("translates first expanded league team samples", () => {

@@ -1,3 +1,13 @@
+# 2026-09-25 Verified live league coverage additions
+
+- Added Nations League (`NATIONS_LEAGUE`, ID 5) and the current 2026-season fixtures-and-odds-supported competitions: AFC Champions League Two (`ACL_TWO`, 18), MLS (253), Liga MX (262), Argentina Liga Profesional (128), and Brazil Serie A (71).
+- UEFA Conference League (848) and Saudi Pro League (307) are now fixture-only in the live schedule endpoint. AFC Champions League Elite (17) was already mapped as `ACL` and remains in the existing scheduled collector list; the live endpoint treats it as fixture-only because current-season odds are unavailable.
+- Updated the live allowlist, scheduled collector lists for the six odds-supported additions, calendar-year season handling for the Americas, web filters/options, and Korean/English league labels in web and native app. The `ALL` fixture route continues using Asia/Seoul; its response adds only the optional `oddsUnavailable` field, while historical odds archive records remain unchanged.
+- Fixture-only live responses carry the optional `oddsUnavailable` flag, and web/native Today cards show “배당 미제공” rather than “배당 대기 중”. The live endpoint skips odds requests for these three competitions. This fixture-only patch did not change the DB schema, odds packs, API keys, or background collector workflow; the browser Today-match cache preserves the optional flag. Six odds-supported additions remain local schedule configuration from the previous change.
+- API-Football metadata was checked read-only. No match-collection run, archive/database write, commit, push, deployment, versionCode change, or Play upload occurred.
+- Verification: full web test suite passed, English-mode Hangul audit reported 0 leftovers, React Native full Jest suite passed (18 suites / 84 tests), TypeScript and focused ESLint passed, and `git diff --check` passed. A normal schedule would add about 40 odds lookup calls/day for the five new odds-supported leagues (and up to 40 fixture lookups when odds are returned), before result-update requests.
+- The changes remain local and will not affect the live API or app until the relevant source is pushed and deployed.
+
 # OddsArchive Handoff - 2026-09-21
 
 ## 현재 상태
@@ -67,3 +77,9 @@ J1리그(마감배당) 제외. **집계 대상 54,696경기** — 검색 가능 
 - API-Football은 **Pro 요금제, 만료 2026-10-14**. 만료되면 수집이 멈춰도 워크플로는 성공으로 뜰 수 있다.
 - 한국어 팀명 별칭 경고가 일부 남아 있음(Urawa, Kashima, FC Augsburg, FC Schalke 04, SC Freiburg 등).
 - 비공개 테스트 요건(14일·12명) 미충족 상태 — 최근 14일 활성 5명. 이는 코드가 아니라 테스터 확보 문제다.
+# Separate odds pack and automatic collection - 2026-09-25
+
+- Added `data/new-leagues-odds-pack.js` with 66 real, complete-odds fixtures absent from both older packs: Nations League 16, MLS 16, Liga MX 9, Argentina Primera 15, Brazil Serie A 10. 58 have confirmed results. ACL Two returned no odds in the queried window and remains an automatic-collection target; no rows were fabricated. The 30-day API query returned available odds only from September 18 onward for these leagues.
+- `scripts/collect-new-leagues-odds.js` writes only those six leagues into the separate pack, fails closed if an older pack already contains a target league, validates fixture uniqueness, and uses a temporary file before replacement. Repeating September 25 collection kept 66 rows and added 0 duplicates. The older `football-data-pack.js` and `api-odds-pack.js` were not modified.
+- Existing scheduled collection retains its old target leagues. The same workflow now also runs the new collector and stages its file. Web search/base rates and shared today signals read the supplementary pack; the React Native loader reads it optionally, so older API deployments still load the two original packs.
+- Web full test suite passed. Samsung SM-S931N local proxy/debug test showed 9 Nations League fixtures on September 26 and a Nations League match in odds search/detail; no fatal logcat errors. Original installed version 12 was restored without clearing app data. No commit, push, production deploy, or Play upload. The scheduled extension is therefore local only until an approved release.

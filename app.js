@@ -294,6 +294,8 @@ const ENGLISH_LEAGUE_LABELS = {
   WORLDCUP: "World Cup",
   UCL: "Champions League",
   UEL: "Europa League",
+  UEFA_CONFERENCE: "UEFA Conference League",
+  NATIONS_LEAGUE: "UEFA Nations League",
   CHAMPIONSHIP: "EFL Championship",
   EREDIVISIE: "Eredivisie",
   PRIMEIRA_LIGA: "Primeira Liga",
@@ -304,7 +306,13 @@ const ENGLISH_LEAGUE_LABELS = {
   KLEAGUE2: "K League 2",
   J1LEAGUE: "J1 League",
   J2LEAGUE: "J2 League",
-  ACL: "AFC Champions League",
+  ACL: "AFC Champions League Elite",
+  ACL_TWO: "AFC Champions League Two",
+  MLS: "Major League Soccer",
+  LIGA_MX: "Liga MX",
+  ARGENTINA_PRIMERA: "Argentine Primera División",
+  BRAZIL_SERIE_A: "Brazilian Serie A",
+  SAUDI_PRO_LEAGUE: "Saudi Pro League",
   WCQ: "World Cup Qualifiers",
   INTL_FRIENDLIES: "International Friendlies"
 };
@@ -1276,6 +1284,7 @@ function saveTodayMatch(match, storage) {
     homeOdds: String(match.homeOdds || "").trim(),
     drawOdds: String(match.drawOdds || "").trim(),
     awayOdds: String(match.awayOdds || "").trim(),
+    oddsUnavailable: Boolean(match.oddsUnavailable),
     tolerance: match.tolerance || "0.05",
     createdAt: match.createdAt || getCurrentTimestamp()
   };
@@ -1316,6 +1325,7 @@ function mergeTodayMatches(matches, storage) {
       homeOdds: String(match.homeOdds || "").trim(),
       drawOdds: String(match.drawOdds || "").trim(),
       awayOdds: String(match.awayOdds || "").trim(),
+      oddsUnavailable: Boolean(match.oddsUnavailable),
       result: String(match.result || "").trim().toUpperCase(),
       score: String(match.score || "").trim(),
       updatedAt: String(match.updatedAt || match.oddsUpdatedAt || "").trim(),
@@ -2138,6 +2148,8 @@ const LEAGUE_FILTERS = {
   WORLDCUP: ["WORLDCUP", "월드컵", "WORLD CUP", "FIFA WORLD CUP"],
   UCL: ["UCL", "UEFA Champions League", "Champions League", "챔피언스리그"],
   UEL: ["UEL", "UEFA Europa League", "Europa League", "유로파리그"],
+  UEFA_CONFERENCE: ["UEFA_CONFERENCE", "UEFA Europa Conference League", "UEFA Conference League", "UEFA 컨퍼런스리그"],
+  NATIONS_LEAGUE: ["NATIONS_LEAGUE", "UEFA Nations League", "Nations League", "UEFA 네이션스리그"],
   CHAMPIONSHIP: ["CHAMPIONSHIP", "Championship", "EFL Championship", "English Championship", "잉글랜드 챔피언십"],
   EREDIVISIE: ["EREDIVISIE", "Eredivisie", "에레디비시", "N1"],
   PRIMEIRA_LIGA: ["PRIMEIRA_LIGA", "Primeira Liga", "Liga Portugal", "포르투갈 프리메이라리가", "P1"],
@@ -2148,7 +2160,13 @@ const LEAGUE_FILTERS = {
   KLEAGUE2: ["KLEAGUE2", "K League 2", "K리그2", "K LEAGUE 2"],
   J1LEAGUE: ["J1LEAGUE", "J1 League", "J리그1", "J. League Division 1", "J-League"],
   J2LEAGUE: ["J2LEAGUE", "J2 League", "J리그2", "J. League Division 2", "J-League 2"],
-  ACL: ["ACL", "AFC Champions League", "AFC Champions League Elite", "AFC 챔피언스리그"],
+  ACL: ["ACL", "AFC Champions League", "AFC Champions League Elite", "AFC 챔피언스리그 엘리트"],
+  ACL_TWO: ["ACL_TWO", "AFC Champions League Two", "AFC 챔피언스리그 Two"],
+  SAUDI_PRO_LEAGUE: ["SAUDI_PRO_LEAGUE", "Saudi Pro League", "Saudi Professional League", "사우디 프로리그"],
+  MLS: ["MLS", "Major League Soccer", "미국 MLS"],
+  LIGA_MX: ["LIGA_MX", "Liga MX", "멕시코 리가 MX"],
+  ARGENTINA_PRIMERA: ["ARGENTINA_PRIMERA", "Liga Profesional Argentina", "아르헨티나 프리메라 디비시온"],
+  BRAZIL_SERIE_A: ["BRAZIL_SERIE_A", "브라질 세리에A"],
   WCQ: ["WCQ", "FIFA World Cup Qualification", "World Cup Qualification", "월드컵 예선"],
   INTL_FRIENDLIES: ["INTL_FRIENDLIES", "International Friendlies", "Friendlies", "국가대표 친선경기"]
 };
@@ -2162,6 +2180,8 @@ const FIXTURE_LEAGUE_OPTIONS = [
   { value: "WORLDCUP", label: "월드컵" },
   { value: "UCL", label: "챔피언스리그" },
   { value: "UEL", label: "유로파리그" },
+  { value: "UEFA_CONFERENCE", label: "UEFA 컨퍼런스리그" },
+  { value: "NATIONS_LEAGUE", label: "UEFA 네이션스리그" },
   { value: "CHAMPIONSHIP", label: "잉글랜드 챔피언십" },
   { value: "EREDIVISIE", label: "에레디비시" },
   { value: "PRIMEIRA_LIGA", label: "포르투갈 프리메이라리가" },
@@ -2172,7 +2192,13 @@ const FIXTURE_LEAGUE_OPTIONS = [
   { value: "KLEAGUE2", label: "K리그2" },
   { value: "J1LEAGUE", label: "J리그1" },
   { value: "J2LEAGUE", label: "J리그2" },
-  { value: "ACL", label: "AFC 챔피언스리그" },
+  { value: "ACL", label: "AFC 챔피언스리그 엘리트" },
+  { value: "ACL_TWO", label: "AFC 챔피언스리그 Two" },
+  { value: "SAUDI_PRO_LEAGUE", label: "사우디 프로리그" },
+  { value: "MLS", label: "미국 MLS" },
+  { value: "LIGA_MX", label: "멕시코 리가 MX" },
+  { value: "ARGENTINA_PRIMERA", label: "아르헨티나 프리메라 디비시온" },
+  { value: "BRAZIL_SERIE_A", label: "브라질 세리에A" },
   { value: "WCQ", label: "월드컵 예선" },
   { value: "INTL_FRIENDLIES", label: "국가대표 친선경기" }
 ];
@@ -4364,6 +4390,12 @@ function getBundledApiOddsPack() {
   return { matches: [] };
 }
 
+function getBundledNewLeaguesOddsPack() {
+  if (typeof window !== "undefined" && window.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK) return window.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK;
+  if (typeof globalThis !== "undefined" && globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK) return globalThis.ODDS_ARCHIVE_NEW_LEAGUES_ODDS_PACK;
+  return { matches: [] };
+}
+
 function getBundledTotoRoundPack() {
   const storedPack = getStoredTotoRoundPack();
   if (storedPack.currentRound?.fixtures?.length) return storedPack;
@@ -5424,7 +5456,11 @@ function getBaseMatches() {
   if (cachedBaseMatches) return cachedBaseMatches;
 
   const packRows = getDefaultPackRows();
-  cachedBaseMatches = getUniqueMatches([...packRows, ...dropRowsCoveredByPack(packRows, getApiOddsPackRows())]);
+  cachedBaseMatches = getUniqueMatches([
+    ...packRows,
+    ...dropRowsCoveredByPack(packRows, getApiOddsPackRows()),
+    ...dropRowsCoveredByPack(packRows, getApiOddsPackRows(getBundledNewLeaguesOddsPack()))
+  ]);
   return cachedBaseMatches;
 }
 
@@ -9948,7 +9984,7 @@ function getHomeTodayCardViewModel(match = {}, updatedAt = "", analysis = null) 
   let insight = hasOdds && analysis
     ? getTodayUserInsight(match, analysis)
     : {
-      text: hasOdds ? "배당 확인 가능" : "배당 준비 중",
+      text: hasOdds ? "배당 확인 가능" : match.oddsUnavailable ? "배당 미제공" : "배당 준비 중",
       tone: hasOdds ? "balanced" : "pending",
       sampleSize: 0,
       upsetProbability: null,
@@ -9974,7 +10010,7 @@ function getHomeTodayCardViewModel(match = {}, updatedAt = "", analysis = null) 
     league: translateLeagueName(getLeagueLabel(match.league || "")),
     startTime: formatMatchStartTime(match),
     status: getMatchStatusLabel(match),
-    odds: hasOdds ? `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}` : "배당 준비 중",
+    odds: hasOdds ? `${formatOdds(match.homeOdds)} / ${formatOdds(match.drawOdds)} / ${formatOdds(match.awayOdds)}` : match.oddsUnavailable ? "배당 미제공" : "배당 준비 중",
     resultText: formatMatchResultText(match),
     insight,
     hasOdds,
@@ -10159,8 +10195,8 @@ function createHomeTodayMatchCard(match, updatedAt = "", analysis = null) {
   odds.className = view.hasOdds ? "home-today-odds ready" : "home-today-odds";
   const insight = document.createElement("p");
   insight.className = `home-today-insight ${view.insight?.tone || "pending"}`;
-  insight.textContent = view.insight?.text || "분석 준비 중";
-  odds.textContent = view.hasOdds ? `홈승 / 무 / 원정승 ${view.odds}` : view.odds;
+  insight.textContent = translateText(view.insight?.text || "분석 준비 중");
+  odds.textContent = view.hasOdds ? `홈승 / 무 / 원정승 ${view.odds}` : translateText(view.odds);
   const result = document.createElement("p");
   result.className = "home-today-result";
   result.textContent = view.resultText;
@@ -11057,6 +11093,7 @@ function normalizeTodayCsvMatch(match = {}) {
     homeOdds: String(homeOdds || "").trim(),
     drawOdds: String(drawOdds || "").trim(),
     awayOdds: String(awayOdds || "").trim(),
+    oddsUnavailable: Boolean(match.oddsUnavailable),
     result: String(match.result || "UNKNOWN").trim().toUpperCase() || "UNKNOWN",
     score: String(match.score || "").trim(),
     updatedAt: String(match.updatedAt || match.oddsUpdatedAt || "").trim(),

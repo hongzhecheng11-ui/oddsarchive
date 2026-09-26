@@ -15,6 +15,7 @@ function loadAnalysisApp() {
   global.window = globalThis;
   require("../data/football-data-pack.js");
   require("../data/api-odds-pack.js");
+  require("../data/new-leagues-odds-pack.js");
   require("../data/team-context-pack.js");
   require("../data/match-statistics-pack.js");
   return require("../app.js");

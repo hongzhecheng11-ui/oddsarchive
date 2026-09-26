@@ -2,6 +2,39 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const collector = require("../scripts/collect-api-odds.js");
+const newLeaguesCollector = require("../scripts/collect-new-leagues-odds.js");
+const packageJson = require("../package.json");
+
+test("includes UEFA Nations League in scheduled odds collection", () => {
+  assert.deepStrictEqual(collector.getLeagueIds("NATIONS_LEAGUE"), [5]);
+  assert.strictEqual(collector.getSeason("2027-03-25", "NATIONS_LEAGUE"), "2026");
+  assert.deepStrictEqual(collector.getLeagueIds("ACL_TWO"), [18]);
+  assert.deepStrictEqual(collector.getLeagueIds("MLS"), [253]);
+  assert.deepStrictEqual(collector.getLeagueIds("LIGA_MX"), [262]);
+  assert.deepStrictEqual(collector.getLeagueIds("ARGENTINA_PRIMERA"), [128]);
+  assert.deepStrictEqual(collector.getLeagueIds("BRAZIL_SERIE_A"), [71]);
+  ["MLS", "LIGA_MX", "ARGENTINA_PRIMERA", "BRAZIL_SERIE_A"].forEach((league) => {
+    assert.strictEqual(collector.getSeason("2027-03-25", league), "2027");
+  });
+  ["collect:new-leagues-odds:major", "collect:new-leagues-odds:auto", "collect:new-leagues-odds:closing"].forEach((script) => {
+    assert.ok(packageJson.scripts[script].includes("collect-new-leagues-odds.js"));
+  });
+  ["collect:api-odds:major", "collect:api-odds:auto", "collect:api-odds:closing"].forEach((script) => {
+    assert.ok(!packageJson.scripts[script].includes("NATIONS_LEAGUE"), `${script} must preserve the original pack`);
+  });
+});
+
+test("new league pack contains only previously uncovered unique fixtures", () => {
+  newLeaguesCollector.assertUncoveredLeagues();
+  const oldPack = require("../data/api-odds-pack.js");
+  const newPack = newLeaguesCollector.loadPack();
+  const existing = new Set(oldPack.matches.map(newLeaguesCollector.identity));
+  const newKeys = new Set(newPack.matches.map(newLeaguesCollector.identity));
+  assert.strictEqual(newKeys.size, newPack.matches.length);
+  assert.ok(newPack.matches.every(match => newLeaguesCollector.leagues.includes(match.league)));
+  assert.ok(newPack.matches.every(match => !existing.has(newLeaguesCollector.identity(match))));
+  assert.ok(newPack.matches.every(match => [match.homeOdds, match.drawOdds, match.awayOdds].every(value => Number(value) >= 1)));
+});
 
 function test(name, fn) {
   try {

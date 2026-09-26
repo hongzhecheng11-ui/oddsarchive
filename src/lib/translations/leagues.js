@@ -20,6 +20,15 @@
       WORLDCUP: "월드컵",
       UCL: "챔피언스리그",
       UEL: "유로파리그",
+      UEFA_CONFERENCE: "UEFA 컨퍼런스리그",
+      NATIONS_LEAGUE: "UEFA 네이션스리그",
+      ACL: "AFC 챔피언스리그 엘리트",
+      ACL_TWO: "AFC 챔피언스리그 Two",
+      MLS: "미국 MLS",
+      LIGA_MX: "멕시코 리가 MX",
+      ARGENTINA_PRIMERA: "아르헨티나 프리메라 디비시온",
+      BRAZIL_SERIE_A: "브라질 세리에A",
+      SAUDI_PRO_LEAGUE: "사우디 프로리그",
       CHAMPIONSHIP: "잉글랜드 챔피언십",
       EREDIVISIE: "에레디비시",
       PRIMEIRA_LIGA: "포르투갈 프리메이라리가",
@@ -30,7 +39,6 @@
       KLEAGUE2: "K리그2",
       J1LEAGUE: "J리그1",
       J2LEAGUE: "J리그2",
-      ACL: "AFC 챔피언스리그",
       WCQ: "월드컵 예선",
       INTL_FRIENDLIES: "국가대표 친선경기",
       "Premier League": "EPL",
@@ -46,6 +54,10 @@
       "Champions League": "챔피언스리그",
       "UEFA Europa League": "유로파리그",
       "Europa League": "유로파리그",
+      "UEFA Europa Conference League": "UEFA 컨퍼런스리그",
+      "UEFA Conference League": "UEFA 컨퍼런스리그",
+      "UEFA Nations League": "UEFA 네이션스리그",
+      "Nations League": "UEFA 네이션스리그",
       Championship: "잉글랜드 챔피언십",
       "EFL Championship": "잉글랜드 챔피언십",
       "English Championship": "잉글랜드 챔피언십",
@@ -63,10 +75,16 @@
       "J1 League": "J리그1",
       "J2 League": "J리그2",
       "AFC Champions League": "AFC 챔피언스리그",
-      "AFC Champions League Elite": "AFC 챔피언스리그",
+      "AFC Champions League Elite": "AFC 챔피언스리그 엘리트",
+      "AFC Champions League Two": "AFC 챔피언스리그 Two",
       "FIFA World Cup Qualification": "월드컵 예선",
       "World Cup Qualification": "월드컵 예선",
       "International Friendlies": "국가대표 친선경기",
+      "Major League Soccer": "미국 MLS",
+      "Liga MX": "멕시코 리가 MX",
+      "Liga Profesional Argentina": "아르헨티나 프리메라 디비시온",
+      "Saudi Pro League": "사우디 프로리그",
+      "Saudi Professional League": "사우디 프로리그",
       Friendlies: "국가대표 친선경기",
       World: "세계",
       Europe: "유럽",
@@ -79,15 +97,19 @@
       },
       {
         label: "유럽",
-        leagues: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "PRIMEIRA_LIGA", "SCOTTISH_PREMIERSHIP", "BELGIAN_PRO_LEAGUE", "SUPER_LIG", "UCL", "UEL"]
+        leagues: ["EPL", "CHAMPIONSHIP", "LALIGA", "SERIEA", "BUNDESLIGA", "LIGUE1", "EREDIVISIE", "PRIMEIRA_LIGA", "SCOTTISH_PREMIERSHIP", "BELGIAN_PRO_LEAGUE", "SUPER_LIG", "UCL", "UEL", "UEFA_CONFERENCE"]
       },
       {
         label: "아시아",
-        leagues: ["KLEAGUE1", "KLEAGUE2", "J1LEAGUE", "J2LEAGUE", "ACL"]
+        leagues: ["KLEAGUE1", "KLEAGUE2", "J1LEAGUE", "J2LEAGUE", "ACL", "ACL_TWO", "SAUDI_PRO_LEAGUE"]
+      },
+      {
+        label: "미주",
+        leagues: ["MLS", "LIGA_MX", "ARGENTINA_PRIMERA", "BRAZIL_SERIE_A"]
       },
       {
         label: "국가대항",
-        leagues: ["WORLDCUP", "WCQ", "INTL_FRIENDLIES"]
+        leagues: ["WORLDCUP", "WCQ", "NATIONS_LEAGUE", "INTL_FRIENDLIES"]
       }
     ]
   };
