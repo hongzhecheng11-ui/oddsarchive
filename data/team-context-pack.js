@@ -6,16 +6,13 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-29",
-  "updatedAt": "2026-09-28T16:44:35.112Z",
+  "updatedAt": "2026-09-28T23:12:15.217Z",
   "collection": {
     "dates": [
-      "2026-09-29",
-      "2026-09-30",
-      "2026-10-01",
-      "2026-10-02"
+      "2026-09-29"
     ],
-    "requestGroups": 2,
-    "skippedGroups": 102,
+    "requestGroups": 1,
+    "skippedGroups": 25,
     "failures": 0,
     "errors": []
   },
@@ -29,22 +26,22 @@
         {
           "teamId": 10347,
           "team": "Slovakia U19",
-          "form": "L",
+          "form": "LL",
           "all": {
-            "played": 1,
+            "played": 2,
             "wins": 0,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
+            "losses": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           },
           "home": {
-            "played": 1,
+            "played": 2,
             "wins": 0,
             "draws": 0,
-            "losses": 1,
-            "goalsFor": 2,
-            "goalsAgainst": 3
+            "losses": 2,
+            "goalsFor": 3,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 0,
@@ -58,14 +55,14 @@
         {
           "teamId": 10376,
           "team": "Poland U19",
-          "form": "L",
+          "form": "LW",
           "all": {
-            "played": 1,
-            "wins": 0,
+            "played": 2,
+            "wins": 1,
             "draws": 0,
             "losses": 1,
-            "goalsFor": 0,
-            "goalsAgainst": 1
+            "goalsFor": 2,
+            "goalsAgainst": 2
           },
           "home": {
             "played": 1,
@@ -76,12 +73,12 @@
             "goalsAgainst": 1
           },
           "away": {
-            "played": 0,
-            "wins": 0,
+            "played": 1,
+            "wins": 1,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 2,
+            "goalsAgainst": 1
           }
         },
         {
@@ -379,14 +376,14 @@
         {
           "fixtureId": 1640068,
           "kickoff": "2026-09-29T00:00:00+09:00",
-          "status": "2H",
+          "status": "FT",
           "homeTeamId": 10347,
           "homeTeam": "Slovakia U19",
           "awayTeamId": 10376,
           "awayTeam": "Poland U19",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
+          "lineupsChecked": false,
           "lineups": []
         },
         {
@@ -1345,7 +1342,7 @@
     },
     {
       "date": "2026-09-29",
-      "updatedAt": "2026-09-28T16:44:25.678Z",
+      "updatedAt": "2026-09-28T23:12:15.214Z",
       "leagues": [
         {
           "key": "INTL_FRIENDLIES",
@@ -1356,22 +1353,22 @@
             {
               "teamId": 10347,
               "team": "Slovakia U19",
-              "form": "L",
+              "form": "LL",
               "all": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
               },
               "home": {
-                "played": 1,
+                "played": 2,
                 "wins": 0,
                 "draws": 0,
-                "losses": 1,
-                "goalsFor": 2,
-                "goalsAgainst": 3
+                "losses": 2,
+                "goalsFor": 3,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 0,
@@ -1385,14 +1382,14 @@
             {
               "teamId": 10376,
               "team": "Poland U19",
-              "form": "L",
+              "form": "LW",
               "all": {
-                "played": 1,
-                "wins": 0,
+                "played": 2,
+                "wins": 1,
                 "draws": 0,
                 "losses": 1,
-                "goalsFor": 0,
-                "goalsAgainst": 1
+                "goalsFor": 2,
+                "goalsAgainst": 2
               },
               "home": {
                 "played": 1,
@@ -1403,12 +1400,12 @@
                 "goalsAgainst": 1
               },
               "away": {
-                "played": 0,
-                "wins": 0,
+                "played": 1,
+                "wins": 1,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 2,
+                "goalsAgainst": 1
               }
             },
             {
@@ -1706,14 +1703,14 @@
             {
               "fixtureId": 1640068,
               "kickoff": "2026-09-29T00:00:00+09:00",
-              "status": "2H",
+              "status": "FT",
               "homeTeamId": 10347,
               "homeTeam": "Slovakia U19",
               "awayTeamId": 10376,
               "awayTeam": "Poland U19",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
+              "lineupsChecked": false,
               "lineups": []
             },
             {
