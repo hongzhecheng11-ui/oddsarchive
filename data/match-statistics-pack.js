@@ -5,22 +5,1042 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-27T13:55:06.678Z",
+  "updatedAt": "2026-09-28T16:44:51.428Z",
   "collection": {
     "dates": [
-      "2026-09-26",
-      "2026-09-25",
-      "2026-09-24"
+      "2026-09-28",
+      "2026-09-27",
+      "2026-09-26"
     ],
-    "requestGroups": 4,
-    "skippedGroups": 74,
-    "finishedFixtures": 26,
-    "skippedComplete": 14,
-    "saved": 12,
+    "requestGroups": 5,
+    "skippedGroups": 73,
+    "finishedFixtures": 28,
+    "skippedComplete": 12,
+    "saved": 16,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1628998,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1112,
+      "homeTeam": "Malta",
+      "awayTeamId": 1107,
+      "awayTeam": "Liechtenstein",
+      "home": {
+        "teamId": 1112,
+        "team": "Malta",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1107,
+        "team": "Liechtenstein",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1112,
+          "team": "Malta",
+          "formation": "4-2-3-1",
+          "coach": "Emilio De Leo",
+          "starters": [
+            "Rashed Al-Tumi",
+            "Juan Carlos Corbalan",
+            "Gabriel Mentz",
+            "Jean Borg",
+            "Myles Beerman",
+            "Brandon Paiber",
+            "Jake Azzopardi",
+            "Joseph Mbong",
+            "Jake Grech",
+            "Keyon Ewurum",
+            "Basil Tuma"
+          ]
+        },
+        {
+          "teamId": 1107,
+          "team": "Liechtenstein",
+          "formation": "3-5-2",
+          "coach": "Konrad Fünfstück",
+          "starters": [
+            "Justin Ospelt",
+            "Livio Meier",
+            "Lars Traber",
+            "Jens Hofer",
+            "Nicolas Hasler",
+            "Andrin Netzer",
+            "Marcel Büchel",
+            "Liam Kranz",
+            "Maximilian Göppel",
+            "Alessandro Lo Russo",
+            "Kenny Kindle"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640066,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1548,
+      "homeTeam": "Jordan",
+      "awayTeamId": 1565,
+      "awayTeam": "Syria",
+      "home": {
+        "teamId": 1548,
+        "team": "Jordan",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1565,
+        "team": "Syria",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1548,
+          "team": "Jordan",
+          "formation": "3-4-2-1",
+          "coach": "Jamal Sellami",
+          "starters": [
+            "Alec Smir",
+            "Yazan Al-Arab",
+            "Hadi Al-Hourani",
+            "Odeh Fakhoury",
+            "Ehsan Haddad",
+            "Nizar Al-Rashdan",
+            "Noor Al-Rawabdeh",
+            "Mohannad Abu Taha",
+            "Mahmoud Shawkat",
+            "Ali Olwan",
+            "Mousa Tamari"
+          ]
+        },
+        {
+          "teamId": 1565,
+          "team": "Syria",
+          "formation": "4-2-3-1",
+          "coach": "Jose Lana",
+          "starters": [
+            "Elias Hadaya",
+            "Zakaria Hannan",
+            "Aiham Ousou",
+            "Abdullah Al Shami",
+            "Ahmad Faqa",
+            "Elmar Abraham",
+            "Noah Shamoun",
+            "Khaled Kourdoghli",
+            "Mohammed Osman",
+            "Mahmoud Al Aswad",
+            "Mohammed Al-Mustafa"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1637602,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 2381,
+      "homeTeam": "Bolivia",
+      "awayTeamId": 2380,
+      "awayTeam": "Paraguay",
+      "home": {
+        "teamId": 2381,
+        "team": "Bolivia",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2380,
+        "team": "Paraguay",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2381,
+          "team": "Bolivia",
+          "formation": "3-5-2",
+          "coach": "Óscar Adolfo Villegas Cámara",
+          "starters": [
+            "Guillermo Viscarra",
+            "Efraín Morales",
+            "Luis Haquín",
+            "Diego Arroyo",
+            "Diego Medina",
+            "Héctor Cuellar",
+            "Carlos Melgar",
+            "Gabriel Villamil",
+            "Roberto Fernández",
+            "Miguelito",
+            "Fernando Nava"
+          ]
+        },
+        {
+          "teamId": 2380,
+          "team": "Paraguay",
+          "formation": "4-4-2",
+          "coach": "Gustavo Alfaro",
+          "starters": [
+            "Gastón Olveira",
+            "Juan Cáceres",
+            "Gustavo Gómez",
+            "Omar Alderete",
+            "Alexandro Maidana",
+            "Mauricio",
+            "Diego Gómez",
+            "Andrés Cubas",
+            "Miguel Almirón",
+            "Robert Morales",
+            "Julio Enciso"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1629000,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 12,
+      "homeTeam": "Japan",
+      "awayTeamId": 2379,
+      "awayTeam": "Venezuela",
+      "home": {
+        "teamId": 12,
+        "team": "Japan",
+        "shots": 12,
+        "shotsOnGoal": 4,
+        "possession": 52,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2379,
+        "team": "Venezuela",
+        "shots": 9,
+        "shotsOnGoal": 5,
+        "possession": 48,
+        "corners": 7,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 12,
+          "team": "Japan",
+          "formation": "3-4-2-1",
+          "coach": "Hajime Moriyasu",
+          "starters": [
+            "Léo Kokubo",
+            "Tsuyoshi Watanabe",
+            "Ayumu Seko",
+            "Junnosuke Suzuki",
+            "Shuto Nakano",
+            "Koki Kumasaka",
+            "Daichi Kamada",
+            "Yuki Soma",
+            "Ryunosuke Sato",
+            "Shunsuke Saito",
+            "Keisuke Goto"
+          ]
+        },
+        {
+          "teamId": 2379,
+          "team": "Venezuela",
+          "formation": "3-4-1-2",
+          "coach": "Fernando Ariel Batista",
+          "starters": [
+            "José Contreras",
+            "Yordan Osorio",
+            "Nahuel Ferraresi",
+            "Christian Makoun",
+            "Jon Aramburu",
+            "Marco Libra",
+            "Yangel Herrera",
+            "Luís Balbo",
+            "Daniel Pereira",
+            "Kevin Kelsy",
+            "Bryan Castillo"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1628999,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 17,
+      "homeTeam": "South Korea",
+      "awayTeamId": 7,
+      "awayTeam": "Uruguay",
+      "home": {
+        "teamId": 17,
+        "team": "South Korea",
+        "shots": 14,
+        "shotsOnGoal": 7,
+        "possession": 59,
+        "corners": 7,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 7,
+        "team": "Uruguay",
+        "shots": 9,
+        "shotsOnGoal": 4,
+        "possession": 41,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 17,
+          "team": "South Korea",
+          "formation": "4-4-2",
+          "coach": "",
+          "starters": [
+            "Kim Seung-gyu",
+            "Young-woo Seol",
+            "Han-Beom Lee",
+            "Kim Min-jae",
+            "Lee Tae-seok",
+            "Kang-in Lee",
+            "Kim Bong-Soo",
+            "Jae-sung Lee",
+            "Hwang Hee-chan",
+            "Hyeon-gyu Oh",
+            "Son Heung-min"
+          ]
+        },
+        {
+          "teamId": 7,
+          "team": "Uruguay",
+          "formation": "4-2-3-1",
+          "coach": "Marcelo Bielsa",
+          "starters": [
+            "Cristopher Fiermarín",
+            "Guillermo Varela",
+            "Ronald Araújo",
+            "Mathías Olivera",
+            "Joaquín Piquerez",
+            "Lucas Torreira",
+            "Rodrigo Bentancur",
+            "Brian Rodríguez",
+            "Giorgian de Arrascaeta",
+            "Maximiliano Araújo",
+            "Darwin Núñez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1638596,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1536,
+      "homeTeam": "Tajikistan",
+      "awayTeamId": 1562,
+      "awayTeam": "Palestine",
+      "home": {
+        "teamId": 1536,
+        "team": "Tajikistan",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1562,
+        "team": "Palestine",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1536,
+          "team": "Tajikistan",
+          "formation": "",
+          "coach": "Igor Angelovski",
+          "starters": []
+        },
+        {
+          "teamId": 1562,
+          "team": "Palestine",
+          "formation": "",
+          "coach": "Ehab Abu Jazar",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640067,
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1554,
+      "homeTeam": "Kyrgyzstan",
+      "awayTeamId": 1549,
+      "awayTeam": "Maldives",
+      "home": {
+        "teamId": 1554,
+        "team": "Kyrgyzstan",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1549,
+        "team": "Maldives",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1554,
+          "team": "Kyrgyzstan",
+          "formation": "4-2-3-1",
+          "coach": "",
+          "starters": [
+            "Erzhan Tokotaev",
+            "Aleksandr Mishchenko",
+            "Eldiyar Zarypbekov",
+            "Valeriy Murzakov",
+            "Valeriy Kichin",
+            "Alimardon Shukurov",
+            "Odilzhon Abdurakhmanov",
+            "Sirozhiddin Astanakulov",
+            "Erbol Atabaev",
+            "Kayrat Zhyrgalbek Uulu",
+            "Joel Kojo"
+          ]
+        },
+        {
+          "teamId": 1549,
+          "team": "Maldives",
+          "formation": "5-4-1",
+          "coach": "Ali Suzain",
+          "starters": [
+            "Hussain Shareef",
+            "Ahmed Aiham",
+            "Ali Samooh",
+            "Amdhan Ali",
+            "Hassan Eenaaz",
+            "Thoif Gasim",
+            "Ahzam Rasheed",
+            "Nisham Mohamed Rasheed",
+            "Ibrahim Waheed Hassan",
+            "Haisham Hassan",
+            "Muzdhan Hassan"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1507024,
+      "date": "2026-09-27",
+      "league": "KLEAGUE1",
+      "homeTeamId": 2746,
+      "homeTeam": "Gangwon FC",
+      "awayTeamId": 2763,
+      "awayTeam": "Incheon United",
+      "home": {
+        "teamId": 2746,
+        "team": "Gangwon FC",
+        "shots": 6,
+        "shotsOnGoal": 1,
+        "possession": 55,
+        "corners": 5,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2763,
+        "team": "Incheon United",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 45,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2746,
+          "team": "Gangwon FC",
+          "formation": "4-4-2",
+          "coach": "Chung Kyung-Ho",
+          "starters": [
+            "Park Cheong-Hyo",
+            "Kim Do-Hyun",
+            "Park Ho-Young",
+            "M. Tuci",
+            "Kang Joon-Hyuck",
+            "Mo Jae-Hyeon",
+            "Lee You-Hyeon",
+            "Seo Min-Woo",
+            "Kim Dae-Won",
+            "Choe Byeong-Chan",
+            "Goh Young-Jun"
+          ]
+        },
+        {
+          "teamId": 2763,
+          "team": "Incheon United",
+          "formation": "4-4-2",
+          "coach": "Jong-hwan Yoon",
+          "starters": [
+            "Kim Dong-Heon",
+            "Kim Myung-Sun",
+            "Kim Yeonsoo",
+            "Juan Fernández",
+            "Lee Ju-Yong",
+            "Kim Seong-Min",
+            "Lee Chung-Yong",
+            "Lee Myung-Joo",
+            "Leandro Ribeiro",
+            "Lee Min-Hyeok",
+            "S. Mugoša"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1628997,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 2384,
+      "homeTeam": "USA",
+      "awayTeamId": 30,
+      "awayTeam": "Peru",
+      "home": {
+        "teamId": 2384,
+        "team": "USA",
+        "shots": 16,
+        "shotsOnGoal": 6,
+        "possession": 70,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 30,
+        "team": "Peru",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 30,
+        "corners": 2,
+        "yellowCards": 4,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2384,
+          "team": "USA",
+          "formation": "4-2-3-1",
+          "coach": "Mauricio Pochettino",
+          "starters": [
+            "Matthew Freese",
+            "Alexander Freeman",
+            "George Campbell",
+            "Auston Trusty",
+            "Peyton Miller",
+            "Yunus Musah",
+            "Tyler Adams",
+            "Cavan Sullivan",
+            "Giovanni Reyna",
+            "Malik Tillman",
+            "Justin Ellis"
+          ]
+        },
+        {
+          "teamId": 30,
+          "team": "Peru",
+          "formation": "4-2-3-1",
+          "coach": "Óscar Manuel Ibáñez Holzmann",
+          "starters": [
+            "Pedro Gallese",
+            "Oliver Sonne",
+            "Miguel Araujo",
+            "Renzo Garcés",
+            "Marcos López",
+            "Wilder Cartagena",
+            "Yoshimar Yotún",
+            "Piero Magallanes",
+            "Jairo Vélez",
+            "Jhonny Vidales",
+            "Gianluca Lapadula"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1610877,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 5529,
+      "homeTeam": "Canada",
+      "awayTeamId": 2383,
+      "awayTeam": "Chile",
+      "home": {
+        "teamId": 5529,
+        "team": "Canada",
+        "shots": 5,
+        "shotsOnGoal": 3,
+        "possession": 53,
+        "corners": 2,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2383,
+        "team": "Chile",
+        "shots": 3,
+        "shotsOnGoal": 2,
+        "possession": 47,
+        "corners": 2,
+        "yellowCards": 1,
+        "redCards": 1,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 5529,
+          "team": "Canada",
+          "formation": "4-4-2",
+          "coach": "Jesse Marsch",
+          "starters": [
+            "Dayne St. Clair",
+            "Niko Sigur",
+            "Luc De Fougerolles",
+            "Ralph Priso",
+            "Richie Laryea",
+            "Tajon Buchanan",
+            "Mathieu Choinière",
+            "Nathan-Dylan Saliba",
+            "Jacob Shaffelburg",
+            "Jonathan David",
+            "Cyle Larin"
+          ]
+        },
+        {
+          "teamId": 2383,
+          "team": "Chile",
+          "formation": "4-3-3",
+          "coach": "Nicolás Andrés Córdova San Cristóbal",
+          "starters": [
+            "Lawrence Vigouroux",
+            "Felipe Faúndez",
+            "Jonathan Villagra",
+            "Iván Román",
+            "Gabriel Suazo",
+            "César Pérez",
+            "Vicente Pizarro",
+            "Marcelino Núñez",
+            "Lucas Cepeda",
+            "Gonzalo Tapia",
+            "Darío Osorio"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1628996,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 16,
+      "homeTeam": "Mexico",
+      "awayTeamId": 8,
+      "awayTeam": "Colombia",
+      "home": {
+        "teamId": 16,
+        "team": "Mexico",
+        "shots": 16,
+        "shotsOnGoal": 4,
+        "possession": 53,
+        "corners": 2,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 8,
+        "team": "Colombia",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 47,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 16,
+          "team": "Mexico",
+          "formation": "4-3-3",
+          "coach": "Rafael Marquez",
+          "starters": [
+            "Raúl Rangel",
+            "Jorge Sánchez",
+            "Israel Reyes",
+            "Johan Vásquez",
+            "Jesús Gallardo",
+            "Gilberto Mora",
+            "Erik Lira",
+            "Luis Chávez",
+            "Roberto Alvarado",
+            "Armando González",
+            "Hirving Lozano"
+          ]
+        },
+        {
+          "teamId": 8,
+          "team": "Colombia",
+          "formation": "4-3-3",
+          "coach": "Nestor Lorenzo",
+          "starters": [
+            "Álvaro Montero",
+            "Daniel Muñoz",
+            "Davinson Sánchez",
+            "Jhon Lucumí",
+            "Álvaro Angulo",
+            "Richard Ríos",
+            "Kevin Castaño",
+            "Gustavo Puerta",
+            "Jhon Arias",
+            "Luis Javier Suárez",
+            "Andrés Gómez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640505,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 5170,
+      "homeTeam": "Vanuatu",
+      "awayTeamId": 5163,
+      "awayTeam": "New Caledonia",
+      "home": {
+        "teamId": 5170,
+        "team": "Vanuatu",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5163,
+        "team": "New Caledonia",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640062,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 8174,
+      "homeTeam": "Cook Islands",
+      "awayTeamId": 5167,
+      "awayTeam": "Tahiti",
+      "home": {
+        "teamId": 8174,
+        "team": "Cook Islands",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5167,
+        "team": "Tahiti",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640506,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 5160,
+      "homeTeam": "Fiji",
+      "awayTeamId": 8175,
+      "awayTeam": "Papua New Guinea",
+      "home": {
+        "teamId": 5160,
+        "team": "Fiji",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 8175,
+        "team": "Papua New Guinea",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1637601,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1566,
+      "homeTeam": "China",
+      "awayTeamId": 4673,
+      "awayTeam": "New Zealand",
+      "home": {
+        "teamId": 1566,
+        "team": "China",
+        "shots": 8,
+        "shotsOnGoal": 2,
+        "possession": 43,
+        "corners": 3,
+        "yellowCards": 0,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 4673,
+        "team": "New Zealand",
+        "shots": 13,
+        "shotsOnGoal": 6,
+        "possession": 57,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1566,
+          "team": "China",
+          "formation": "4-4-2",
+          "coach": "Branko Ivanković",
+          "starters": [
+            "Yan Junling",
+            "Zhang Aihui",
+            "Guangtai Jiang",
+            "Zhen Wei",
+            "Yang Liu",
+            "Wenneng Xie",
+            "Jiahui Huang",
+            "Shangyuan Wang",
+            "Chen Pu",
+            "Wang Ziming",
+            "Wei Shihao"
+          ]
+        },
+        {
+          "teamId": 4673,
+          "team": "New Zealand",
+          "formation": "4-2-3-1",
+          "coach": "",
+          "starters": [
+            "Alex Paulsen",
+            "Callan Elliot",
+            "Bill Tuiloma",
+            "Tyler Bindon",
+            "Benjamin Old",
+            "Logan Rogerson",
+            "Marko Stamenić",
+            "Elijah Just",
+            "Callum McCowatt",
+            "Jesse Randall",
+            "Ben Waine"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640064,
+      "date": "2026-09-27",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1515,
+      "homeTeam": "Seychelles",
+      "awayTeamId": 5166,
+      "awayTeam": "Sri Lanka",
+      "home": {
+        "teamId": 1515,
+        "team": "Seychelles",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5166,
+        "team": "Sri Lanka",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
     {
       "fixtureId": 1606670,
       "date": "2026-09-26",
