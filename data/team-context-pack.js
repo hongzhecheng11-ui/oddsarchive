@@ -6,7 +6,7 @@
   return {
   "version": "team-context-v3",
   "date": "2026-09-28",
-  "updatedAt": "2026-09-27T21:16:38.205Z",
+  "updatedAt": "2026-09-27T21:16:38.201Z",
   "collection": {
     "dates": [
       "2026-09-28"
@@ -900,7 +900,7 @@
   "dates": [
     {
       "date": "2026-09-27",
-      "updatedAt": "2026-09-27T13:54:37.764Z",
+      "updatedAt": "2026-09-28T09:39:10.706Z",
       "leagues": [
         {
           "key": "KLEAGUE1",
@@ -1039,21 +1039,21 @@
               "teamId": 2746,
               "team": "Gangwon FC",
               "rank": 5,
-              "points": 42,
+              "points": 43,
               "goalsDiff": 8,
-              "form": "LDDWD",
+              "form": "DLDDW",
               "all": {
-                "played": 29,
+                "played": 30,
                 "wins": 10,
-                "draws": 12,
+                "draws": 13,
                 "losses": 7,
                 "goalsFor": 36,
                 "goalsAgainst": 28
               },
               "home": {
-                "played": 14,
+                "played": 15,
                 "wins": 4,
-                "draws": 7,
+                "draws": 8,
                 "losses": 3,
                 "goalsFor": 17,
                 "goalsAgainst": 13
@@ -1132,9 +1132,41 @@
               }
             },
             {
+              "teamId": 2763,
+              "team": "Incheon United",
+              "rank": 8,
+              "points": 39,
+              "goalsDiff": 3,
+              "form": "DDLWL",
+              "all": {
+                "played": 30,
+                "wins": 10,
+                "draws": 9,
+                "losses": 11,
+                "goalsFor": 36,
+                "goalsAgainst": 33
+              },
+              "home": {
+                "played": 15,
+                "wins": 5,
+                "draws": 4,
+                "losses": 6,
+                "goalsFor": 17,
+                "goalsAgainst": 16
+              },
+              "away": {
+                "played": 15,
+                "wins": 5,
+                "draws": 5,
+                "losses": 5,
+                "goalsFor": 19,
+                "goalsAgainst": 17
+              }
+            },
+            {
               "teamId": 2748,
               "team": "FC Anyang",
-              "rank": 8,
+              "rank": 9,
               "points": 38,
               "goalsDiff": -9,
               "form": "WDLLD",
@@ -1161,38 +1193,6 @@
                 "losses": 4,
                 "goalsFor": 21,
                 "goalsAgainst": 20
-              }
-            },
-            {
-              "teamId": 2763,
-              "team": "Incheon United",
-              "rank": 9,
-              "points": 38,
-              "goalsDiff": 3,
-              "form": "DLWLD",
-              "all": {
-                "played": 29,
-                "wins": 10,
-                "draws": 8,
-                "losses": 11,
-                "goalsFor": 36,
-                "goalsAgainst": 33
-              },
-              "home": {
-                "played": 15,
-                "wins": 5,
-                "draws": 4,
-                "losses": 6,
-                "goalsFor": 17,
-                "goalsAgainst": 16
-              },
-              "away": {
-                "played": 14,
-                "wins": 5,
-                "draws": 4,
-                "losses": 5,
-                "goalsFor": 19,
-                "goalsAgainst": 17
               }
             },
             {
@@ -1405,7 +1405,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-09-28T09:39:10.706Z"
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -3500,6 +3501,12 @@
       "updatedAt": "2026-09-27T13:54:54.196Z",
       "leagues": []
     }
-  ]
+  ],
+  "standingsRefresh": {
+    "updatedAt": "2026-09-28T09:39:10.706Z",
+    "requested": 2,
+    "updated": 1,
+    "failures": 1
+  }
 };
 });

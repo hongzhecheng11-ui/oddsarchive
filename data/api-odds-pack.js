@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-28T01:36:37.936Z",
+  "updatedAt": "2026-09-28T09:39:04.001Z",
   "collection": {
-    "lastAttemptAt": "2026-09-28T01:36:26.543Z",
-    "lastSuccessAt": "2026-09-28T01:36:37.936Z",
+    "lastAttemptAt": "2026-09-28T09:38:52.337Z",
+    "lastSuccessAt": "2026-09-28T09:39:04.001Z",
     "requestSuccesses": 28,
     "requestFailures": 0,
-    "addedCount": 0,
-    "updatedCount": 3,
-    "duplicateCount": 0,
+    "addedCount": 1,
+    "updatedCount": 1,
+    "duplicateCount": 2,
     "errors": []
   },
   "matches": [
@@ -41129,7 +41129,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T01:36:36.816Z",
+      "oddsUpdatedAt": "2026-09-28T09:39:02.793Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-27T13:54:12.268Z",
@@ -41138,7 +41138,7 @@
           "awayOdds": "8.50"
         },
         {
-          "capturedAt": "2026-09-28T01:36:36.816Z",
+          "capturedAt": "2026-09-28T09:39:02.793Z",
           "homeOdds": "1.25",
           "drawOdds": "5.00",
           "awayOdds": "9.50"
@@ -41231,13 +41231,13 @@
       "fixtureId": "1628999",
       "homeTeam": "South Korea",
       "awayTeam": "Uruguay",
-      "homeOdds": "2.30",
-      "drawOdds": "2.90",
-      "awayOdds": "2.90",
+      "homeOdds": "2.40",
+      "drawOdds": "3.00",
+      "awayOdds": "2.75",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T01:36:36.816Z",
+      "oddsUpdatedAt": "2026-09-28T09:39:02.793Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-27T13:54:12.268Z",
@@ -41250,6 +41250,34 @@
           "homeOdds": "2.30",
           "drawOdds": "2.90",
           "awayOdds": "2.90"
+        },
+        {
+          "capturedAt": "2026-09-28T09:39:02.793Z",
+          "homeOdds": "2.40",
+          "drawOdds": "3.00",
+          "awayOdds": "2.75"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-28",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1638596",
+      "homeTeam": "Tajikistan",
+      "awayTeam": "Palestine",
+      "homeOdds": "2.80",
+      "drawOdds": "3.00",
+      "awayOdds": "2.30",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-28T09:39:02.793Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-28T09:39:02.793Z",
+          "homeOdds": "2.80",
+          "drawOdds": "3.00",
+          "awayOdds": "2.30"
         }
       ]
     },
@@ -41265,7 +41293,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T01:36:36.816Z",
+      "oddsUpdatedAt": "2026-09-28T09:39:02.793Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-27T13:54:12.268Z",
@@ -41274,7 +41302,7 @@
           "awayOdds": "1.95"
         },
         {
-          "capturedAt": "2026-09-28T01:36:36.816Z",
+          "capturedAt": "2026-09-28T09:39:02.793Z",
           "homeOdds": "3.50",
           "drawOdds": "3.50",
           "awayOdds": "1.85"
