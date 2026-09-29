@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-28T23:12:03.100Z",
+  "updatedAt": "2026-09-29T02:33:47.870Z",
   "collection": {
-    "lastAttemptAt": "2026-09-28T23:11:50.222Z",
-    "lastSuccessAt": "2026-09-28T23:12:03.100Z",
+    "lastAttemptAt": "2026-09-29T02:33:35.618Z",
+    "lastSuccessAt": "2026-09-29T02:33:47.870Z",
     "requestSuccesses": 28,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 0,
-    "duplicateCount": 5,
+    "updatedCount": 3,
+    "duplicateCount": 0,
     "errors": []
   },
   "matches": [
@@ -41301,19 +41301,25 @@
       "fixtureId": "1583654",
       "homeTeam": "Australia",
       "awayTeam": "Brazil",
-      "homeOdds": "7.50",
-      "drawOdds": "4.80",
-      "awayOdds": "1.30",
+      "homeOdds": "7.00",
+      "drawOdds": "4.60",
+      "awayOdds": "1.33",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T16:44:06.743Z",
+      "oddsUpdatedAt": "2026-09-29T02:33:46.435Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
           "homeOdds": "7.50",
           "drawOdds": "4.80",
           "awayOdds": "1.30"
+        },
+        {
+          "capturedAt": "2026-09-29T02:33:46.435Z",
+          "homeOdds": "7.00",
+          "drawOdds": "4.60",
+          "awayOdds": "1.33"
         }
       ]
     },
@@ -41323,19 +41329,25 @@
       "fixtureId": "1640508",
       "homeTeam": "Serbia U19",
       "awayTeam": "Hungary U19",
-      "homeOdds": "1.75",
-      "drawOdds": "3.30",
-      "awayOdds": "3.90",
+      "homeOdds": "1.85",
+      "drawOdds": "3.25",
+      "awayOdds": "3.50",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T16:44:06.743Z",
+      "oddsUpdatedAt": "2026-09-29T02:33:46.435Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
           "homeOdds": "1.75",
           "drawOdds": "3.30",
           "awayOdds": "3.90"
+        },
+        {
+          "capturedAt": "2026-09-29T02:33:46.435Z",
+          "homeOdds": "1.85",
+          "drawOdds": "3.25",
+          "awayOdds": "3.50"
         }
       ]
     },
@@ -41379,19 +41391,25 @@
       "fixtureId": "1632350",
       "homeTeam": "Russia",
       "awayTeam": "Iran",
-      "homeOdds": "1.81",
+      "homeOdds": "1.82",
       "drawOdds": "3.48",
-      "awayOdds": "4.25",
+      "awayOdds": "4.20",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T16:44:06.743Z",
+      "oddsUpdatedAt": "2026-09-29T02:33:46.435Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
           "homeOdds": "1.81",
           "drawOdds": "3.48",
           "awayOdds": "4.25"
+        },
+        {
+          "capturedAt": "2026-09-29T02:33:46.435Z",
+          "homeOdds": "1.82",
+          "drawOdds": "3.48",
+          "awayOdds": "4.20"
         }
       ]
     },
