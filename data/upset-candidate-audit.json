@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-09-29T02:33:50.038Z",
+  "updatedAt": "2026-09-29T09:43:44.258Z",
   "summary": {
     "trackedDays": 70,
-    "trackedCandidates": 141,
+    "trackedCandidates": 142,
     "resolvedCandidates": 120,
     "favoriteFailures": 51,
     "directionHits": 26
@@ -536,14 +536,16 @@
     {
       "date": "2026-09-29",
       "firstEvaluatedAt": "2026-09-27T13:54:21.742Z",
-      "lastEvaluatedAt": "2026-09-29T02:33:50.038Z",
-      "eligibleMatchCount": 2,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-09-29T09:43:44.258Z",
+      "eligibleMatchCount": 3,
+      "candidateIds": [
+        "fixture:1583654"
+      ]
     },
     {
       "date": "2026-09-30",
       "firstEvaluatedAt": "2026-09-28T16:44:16.664Z",
-      "lastEvaluatedAt": "2026-09-29T02:33:50.038Z",
+      "lastEvaluatedAt": "2026-09-29T09:43:44.258Z",
       "eligibleMatchCount": 2,
       "candidateIds": []
     }
@@ -4214,6 +4216,32 @@
       "resolvedAt": "2026-09-27T21:16:24.024Z",
       "favoriteFailed": true,
       "directionHit": true
+    },
+    {
+      "candidateId": "fixture:1583654",
+      "fixtureId": "1583654",
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Australia",
+      "awayTeam": "Brazil",
+      "homeOdds": "7.50",
+      "drawOdds": "4.60",
+      "awayOdds": "1.33",
+      "favoriteKey": "A",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 32,
+      "firstEvaluatedAt": "2026-09-29T09:43:44.258Z",
+      "lastSeenAt": "2026-09-29T09:43:44.258Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     }
   ]
 }
