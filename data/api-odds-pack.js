@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-09-29T09:43:41.112Z",
+  "updatedAt": "2026-09-29T14:49:57.045Z",
   "collection": {
-    "lastAttemptAt": "2026-09-29T09:43:26.451Z",
-    "lastSuccessAt": "2026-09-29T09:43:41.112Z",
-    "requestSuccesses": 28,
+    "lastAttemptAt": "2026-09-29T14:49:13.267Z",
+    "lastSuccessAt": "2026-09-29T14:49:57.045Z",
+    "requestSuccesses": 107,
     "requestFailures": 0,
-    "addedCount": 1,
-    "updatedCount": 2,
-    "duplicateCount": 1,
+    "addedCount": 11,
+    "updatedCount": 4,
+    "duplicateCount": 3,
     "errors": []
   },
   "matches": [
@@ -41304,10 +41304,10 @@
       "homeOdds": "7.50",
       "drawOdds": "4.60",
       "awayOdds": "1.33",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "A",
+      "score": "2-4",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-29T09:43:39.705Z",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
@@ -41332,16 +41332,52 @@
     {
       "date": "2026-09-29",
       "league": "INTL_FRIENDLIES",
-      "fixtureId": "1640508",
-      "homeTeam": "Serbia U19",
-      "awayTeam": "Hungary U19",
-      "homeOdds": "1.85",
-      "drawOdds": "3.25",
-      "awayOdds": "3.50",
+      "fixtureId": "1642971",
+      "homeTeam": "Bulgaria U19",
+      "awayTeam": "Romania U19",
+      "homeOdds": "3.00",
+      "drawOdds": "3.10",
+      "awayOdds": "2.10",
+      "result": "A",
+      "score": "0-1",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z"
+    },
+    {
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1637603",
+      "homeTeam": "England U19",
+      "awayTeam": "Norway U19",
+      "homeOdds": "1.62",
+      "drawOdds": "3.75",
+      "awayOdds": "4.33",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-29T09:43:39.705Z",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.101Z",
+          "homeOdds": "1.62",
+          "drawOdds": "3.75",
+          "awayOdds": "4.33"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1640508",
+      "homeTeam": "Serbia U19",
+      "awayTeam": "Hungary U19",
+      "homeOdds": "2.00",
+      "drawOdds": "3.20",
+      "awayOdds": "3.20",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
@@ -41354,6 +41390,12 @@
           "homeOdds": "1.85",
           "drawOdds": "3.25",
           "awayOdds": "3.50"
+        },
+        {
+          "capturedAt": "2026-09-29T14:49:54.101Z",
+          "homeOdds": "2.00",
+          "drawOdds": "3.20",
+          "awayOdds": "3.20"
         }
       ]
     },
@@ -41399,11 +41441,11 @@
       "awayTeam": "Wales U19",
       "homeOdds": "1.30",
       "drawOdds": "4.60",
-      "awayOdds": "7.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "7.50",
+      "result": "H",
+      "score": "2-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-29T09:43:39.705Z",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-29T09:43:39.705Z",
@@ -41416,16 +41458,126 @@
     {
       "date": "2026-09-30",
       "league": "INTL_FRIENDLIES",
-      "fixtureId": "1632350",
-      "homeTeam": "Russia",
-      "awayTeam": "Iran",
-      "homeOdds": "1.72",
-      "drawOdds": "3.62",
-      "awayOdds": "4.60",
+      "fixtureId": "1642978",
+      "homeTeam": "Albania U19",
+      "awayTeam": "Lithuania U19",
+      "homeOdds": "2.00",
+      "drawOdds": "3.60",
+      "awayOdds": "3.00",
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-29T09:43:39.705Z",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "2.00",
+          "drawOdds": "3.60",
+          "awayOdds": "3.00"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1642977",
+      "homeTeam": "Austria U19",
+      "awayTeam": "Denmark U19",
+      "homeOdds": "2.75",
+      "drawOdds": "3.40",
+      "awayOdds": "2.20",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "2.75",
+          "drawOdds": "3.40",
+          "awayOdds": "2.20"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1640510",
+      "homeTeam": "Fiji",
+      "awayTeam": "New Caledonia",
+      "homeOdds": "1.65",
+      "drawOdds": "4.20",
+      "awayOdds": "3.70",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "1.65",
+          "drawOdds": "4.20",
+          "awayOdds": "3.70"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1642973",
+      "homeTeam": "Finland U19",
+      "awayTeam": "Germany U19",
+      "homeOdds": "4.75",
+      "drawOdds": "4.50",
+      "awayOdds": "1.48",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "4.75",
+          "drawOdds": "4.50",
+          "awayOdds": "1.48"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1629001",
+      "homeTeam": "Mexico",
+      "awayTeam": "Peru",
+      "homeOdds": "1.44",
+      "drawOdds": "3.90",
+      "awayOdds": "6.50",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "1.44",
+          "drawOdds": "3.90",
+          "awayOdds": "6.50"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1632350",
+      "homeTeam": "Russia",
+      "awayTeam": "Iran",
+      "homeOdds": "1.67",
+      "drawOdds": "3.74",
+      "awayOdds": "4.80",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.101Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-09-28T16:44:06.743Z",
@@ -41444,6 +41596,56 @@
           "homeOdds": "1.72",
           "drawOdds": "3.62",
           "awayOdds": "4.60"
+        },
+        {
+          "capturedAt": "2026-09-29T14:49:54.101Z",
+          "homeOdds": "1.67",
+          "drawOdds": "3.74",
+          "awayOdds": "4.80"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1642975",
+      "homeTeam": "Scotland U19",
+      "awayTeam": "Ukraine U19",
+      "homeOdds": "2.70",
+      "drawOdds": "3.10",
+      "awayOdds": "2.25",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "2.70",
+          "drawOdds": "3.10",
+          "awayOdds": "2.25"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1640070",
+      "homeTeam": "Seychelles",
+      "awayTeam": "Sri Lanka",
+      "homeOdds": "3.10",
+      "drawOdds": "3.10",
+      "awayOdds": "2.27",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "3.10",
+          "drawOdds": "3.10",
+          "awayOdds": "2.27"
         }
       ]
     },
@@ -41459,13 +41661,57 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-09-28T16:44:07.340Z",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
       "oddsHistory": [
         {
-          "capturedAt": "2026-09-28T16:44:07.340Z",
+          "capturedAt": "2026-09-29T14:49:54.635Z",
           "homeOdds": "1.44",
           "drawOdds": "4.00",
           "awayOdds": "6.00"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1640511",
+      "homeTeam": "Argentina",
+      "awayTeam": "Bolivia",
+      "homeOdds": "1.07",
+      "drawOdds": "10.00",
+      "awayOdds": "26.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:55.166Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:55.166Z",
+          "homeOdds": "1.07",
+          "drawOdds": "10.00",
+          "awayOdds": "26.00"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "fixtureId": "1610878",
+      "homeTeam": "Lithuania",
+      "awayTeam": "Andorra",
+      "homeOdds": "1.70",
+      "drawOdds": "3.00",
+      "awayOdds": "5.00",
+      "result": "UNKNOWN",
+      "score": "",
+      "source": "API 과거 배당",
+      "oddsUpdatedAt": "2026-09-29T14:49:54.635Z",
+      "oddsHistory": [
+        {
+          "capturedAt": "2026-09-29T14:49:54.635Z",
+          "homeOdds": "1.70",
+          "drawOdds": "3.00",
+          "awayOdds": "5.00"
         }
       ]
     }
