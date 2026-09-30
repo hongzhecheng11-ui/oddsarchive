@@ -5,22 +5,324 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-29T14:50:47.871Z",
+  "updatedAt": "2026-09-30T14:55:02.104Z",
   "collection": {
     "dates": [
+      "2026-09-29",
       "2026-09-28",
-      "2026-09-27",
-      "2026-09-26"
+      "2026-09-27"
     ],
-    "requestGroups": 5,
-    "skippedGroups": 73,
-    "finishedFixtures": 28,
-    "skippedComplete": 28,
-    "saved": 0,
+    "requestGroups": 4,
+    "skippedGroups": 74,
+    "finishedFixtures": 22,
+    "skippedComplete": 16,
+    "saved": 6,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1640068,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10347,
+      "homeTeam": "Slovakia U19",
+      "awayTeamId": 10376,
+      "awayTeam": "Poland U19",
+      "home": {
+        "teamId": 10347,
+        "team": "Slovakia U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10376,
+        "team": "Poland U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10347,
+          "team": "Slovakia U19",
+          "formation": "",
+          "coach": "M. Fabuš",
+          "starters": []
+        },
+        {
+          "teamId": 10376,
+          "team": "Poland U19",
+          "formation": "",
+          "coach": "W. Kobeszko",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1583654,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 20,
+      "homeTeam": "Australia",
+      "awayTeamId": 6,
+      "awayTeam": "Brazil",
+      "home": {
+        "teamId": 20,
+        "team": "Australia",
+        "shots": 8,
+        "shotsOnGoal": 2,
+        "possession": 49,
+        "corners": 4,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 6,
+        "team": "Brazil",
+        "shots": 18,
+        "shotsOnGoal": 8,
+        "possession": 51,
+        "corners": 6,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 20,
+          "team": "Australia",
+          "formation": "",
+          "coach": "Tony Popovic",
+          "starters": [
+            "Patrick Beach",
+            "Jacob Italiano",
+            "Alessandro Circati",
+            "Harry Souttar",
+            "Lucas Herrington",
+            "Aziz Behich",
+            "Connor Metcalfe",
+            "Jackson Irvine",
+            "Paul Okon-Engstler",
+            "Nestory Irankunda",
+            "Tete Yengi"
+          ]
+        },
+        {
+          "teamId": 6,
+          "team": "Brazil",
+          "formation": "",
+          "coach": "Carlo Ancelotti",
+          "starters": [
+            "Otávio Costa",
+            "Vanderson",
+            "Jair",
+            "Gabriel Magalhães",
+            "Mauro Júnior",
+            "Gabriel Bontempo",
+            "Bruno Guimarães",
+            "Danilo Santos",
+            "Rayan",
+            "Raphinha",
+            "Vinícius Júnior"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640828,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 25282,
+      "homeTeam": "USA U19",
+      "awayTeamId": 10353,
+      "awayTeam": "Wales U19",
+      "home": {
+        "teamId": 25282,
+        "team": "USA U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10353,
+        "team": "Wales U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10353,
+          "team": "Wales U19",
+          "formation": "",
+          "coach": "C. Gunter",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642971,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10328,
+      "homeTeam": "Bulgaria U19",
+      "awayTeamId": 10378,
+      "awayTeam": "Romania U19",
+      "home": {
+        "teamId": 10328,
+        "team": "Bulgaria U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10378,
+        "team": "Romania U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10378,
+          "team": "Romania U19",
+          "formation": "",
+          "coach": "Pavel-Adrian Dulcea",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1637603,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10332,
+      "homeTeam": "England U19",
+      "awayTeamId": 10342,
+      "awayTeam": "Norway U19",
+      "home": {
+        "teamId": 10332,
+        "team": "England U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10342,
+        "team": "Norway U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10332,
+          "team": "England U19",
+          "formation": "",
+          "coach": "Will Antwi",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640508,
+      "date": "2026-09-29",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10346,
+      "homeTeam": "Serbia U19",
+      "awayTeamId": 10365,
+      "awayTeam": "Hungary U19",
+      "home": {
+        "teamId": 10346,
+        "team": "Serbia U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10365,
+        "team": "Hungary U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10365,
+          "team": "Hungary U19",
+          "formation": "",
+          "coach": "G. Jeremiás",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1628998,
       "date": "2026-09-28",
