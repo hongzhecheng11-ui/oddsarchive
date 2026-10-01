@@ -5,22 +5,852 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-09-30T14:55:02.104Z",
+  "updatedAt": "2026-10-01T15:26:00.789Z",
   "collection": {
     "dates": [
-      "2026-09-29",
-      "2026-09-28",
-      "2026-09-27"
+      "2026-10-01",
+      "2026-09-30",
+      "2026-09-29"
     ],
-    "requestGroups": 4,
-    "skippedGroups": 74,
+    "requestGroups": 3,
+    "skippedGroups": 75,
     "finishedFixtures": 22,
-    "skippedComplete": 16,
-    "saved": 6,
+    "skippedComplete": 6,
+    "saved": 16,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1610878,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1097,
+      "homeTeam": "Lithuania",
+      "awayTeamId": 1110,
+      "awayTeam": "Andorra",
+      "home": {
+        "teamId": 1097,
+        "team": "Lithuania",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1110,
+        "team": "Andorra",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1097,
+          "team": "Lithuania",
+          "formation": "",
+          "coach": "Edgaras Jankauskas",
+          "starters": [
+            "Tomas Švedkauskas",
+            "Deividas Malžinskas",
+            "Rokas Lekiatas",
+            "Kipras Kazukolovas",
+            "Motiejus Burba",
+            "Domantas Šluta",
+            "Modestas Vorobjovas",
+            "Zygimantas Baltrunas",
+            "Faustas Steponavičius",
+            "Manfredas Ruzgis",
+            "Eligijus Jankauskas"
+          ]
+        },
+        {
+          "teamId": 1110,
+          "team": "Andorra",
+          "formation": "4-4-2",
+          "coach": "",
+          "starters": [
+            "Alex Ruiz",
+            "Joel Guillén",
+            "Christian García",
+            "Francisco Pomares",
+            "Marc García",
+            "Jesús Rubio",
+            "Alexandre Martínez",
+            "Éric Izquierdo",
+            "Éric Vales",
+            "Ricard Fernández Cucu",
+            "Jordi Aláez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640511,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 26,
+      "homeTeam": "Argentina",
+      "awayTeamId": 2381,
+      "awayTeam": "Bolivia",
+      "home": {
+        "teamId": 26,
+        "team": "Argentina",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2381,
+        "team": "Bolivia",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 26,
+          "team": "Argentina",
+          "formation": "",
+          "coach": "Lionel Scaloni",
+          "starters": []
+        },
+        {
+          "teamId": 2381,
+          "team": "Bolivia",
+          "formation": "",
+          "coach": "Óscar Adolfo Villegas Cámara",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642983,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10347,
+      "homeTeam": "Slovakia U19",
+      "awayTeamId": 10350,
+      "awayTeam": "Switzerland U19",
+      "home": {
+        "teamId": 10347,
+        "team": "Slovakia U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10350,
+        "team": "Switzerland U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640072,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10376,
+      "homeTeam": "Poland U19",
+      "awayTeamId": 10367,
+      "awayTeam": "Kazakhstan U19",
+      "home": {
+        "teamId": 10376,
+        "team": "Poland U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10367,
+        "team": "Kazakhstan U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642984,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10334,
+      "homeTeam": "France U19",
+      "awayTeamId": 10351,
+      "awayTeam": "Turkey U19",
+      "home": {
+        "teamId": 10334,
+        "team": "France U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10351,
+        "team": "Turkey U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1643193,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10329,
+      "homeTeam": "Croatia U19",
+      "awayTeamId": 10338,
+      "awayTeam": "Italy U19",
+      "home": {
+        "teamId": 10329,
+        "team": "Croatia U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10338,
+        "team": "Italy U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1632350,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 4,
+      "homeTeam": "Russia",
+      "awayTeamId": 22,
+      "awayTeam": "Iran",
+      "home": {
+        "teamId": 4,
+        "team": "Russia",
+        "shots": 12,
+        "shotsOnGoal": 5,
+        "possession": 67,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 22,
+        "team": "Iran",
+        "shots": 8,
+        "shotsOnGoal": 3,
+        "possession": 33,
+        "corners": 5,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 22,
+          "team": "Iran",
+          "formation": "5-4-1",
+          "coach": "Amir Ghalenoei",
+          "starters": [
+            "S. Hosseini",
+            "R. Rezaeian",
+            "S. Hardani",
+            "S. Khalilzadeh",
+            "A. Nemati",
+            "A. Yousefi",
+            "M. Mohebi",
+            "M. Ghorbani",
+            "S. Ezatolahi",
+            "M. Taremi",
+            "S. Azmoun"
+          ]
+        },
+        {
+          "teamId": 4,
+          "team": "Russia",
+          "formation": "",
+          "coach": "",
+          "starters": [
+            "M. Safonov",
+            "I. Vakhania",
+            "I. Diveev",
+            "V. Melekhin",
+            "D. Krugovoy",
+            "A. Batrakov",
+            "M. Kislyak",
+            "I. Oblyakov",
+            "M. Glushenkov",
+            "K. Tyukavin",
+            "A. Golovin"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1629002,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 2384,
+      "homeTeam": "USA",
+      "awayTeamId": 2383,
+      "awayTeam": "Chile",
+      "home": {
+        "teamId": 2384,
+        "team": "USA",
+        "shots": 18,
+        "shotsOnGoal": 9,
+        "possession": 58,
+        "corners": 5,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2383,
+        "team": "Chile",
+        "shots": 17,
+        "shotsOnGoal": 8,
+        "possession": 42,
+        "corners": 13,
+        "yellowCards": 2,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 2384,
+          "team": "USA",
+          "formation": "4-2-3-1",
+          "coach": "Mauricio Pochettino",
+          "starters": [
+            "C. Brady",
+            "F. Westfield",
+            "N. Pierre",
+            "M. Robinson",
+            "A. Robinson",
+            "B. Raines",
+            "S. Berhalter",
+            "S. Dest",
+            "G. Reyna",
+            "A. Mehmeti",
+            "J. Hall"
+          ]
+        },
+        {
+          "teamId": 2383,
+          "team": "Chile",
+          "formation": "4-2-3-1",
+          "coach": "Nicolás Andrés Córdova San Cristóbal",
+          "starters": [
+            "L. Vigouroux",
+            "F. Faundez",
+            "J. Villagra",
+            "I. Roman",
+            "D. Ulloa",
+            "F. Loyola",
+            "V. Mendez",
+            "D. Osorio",
+            "N. Reichmuth",
+            "M. Gutierrez",
+            "B. Brereton Diaz"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1629001,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 16,
+      "homeTeam": "Mexico",
+      "awayTeamId": 30,
+      "awayTeam": "Peru",
+      "home": {
+        "teamId": 16,
+        "team": "Mexico",
+        "shots": 9,
+        "shotsOnGoal": 3,
+        "possession": 64,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 30,
+        "team": "Peru",
+        "shots": 5,
+        "shotsOnGoal": 2,
+        "possession": 36,
+        "corners": 4,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 16,
+          "team": "Mexico",
+          "formation": "4-3-3",
+          "coach": "Rafael Marquez",
+          "starters": [
+            "O. Garcia",
+            "J. Marquez",
+            "V. Guzman",
+            "E. del Villar",
+            "M. Chavez Garcia",
+            "A. Fidalgo",
+            "D. Garcia",
+            "O. Vargas",
+            "I. Violante",
+            "G. Berterame",
+            "O. Pineda"
+          ]
+        },
+        {
+          "teamId": 30,
+          "team": "Peru",
+          "formation": "4-1-3-2",
+          "coach": "Óscar Manuel Ibáñez Holzmann",
+          "starters": [
+            "P. Gallese",
+            "M. Huaman",
+            "E. Noriega",
+            "R. Garces",
+            "M. Lopez",
+            "W. Cartagena",
+            "P. Magallanes",
+            "O. Mora",
+            "Y. Yotun",
+            "A. Ugarriza",
+            "J. Velez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640509,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 8175,
+      "homeTeam": "Papua New Guinea",
+      "awayTeamId": 5165,
+      "awayTeam": "Solomon Islands",
+      "home": {
+        "teamId": 8175,
+        "team": "Papua New Guinea",
+        "shots": 9,
+        "shotsOnGoal": 4,
+        "possession": 44,
+        "corners": 8,
+        "yellowCards": 5,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5165,
+        "team": "Solomon Islands",
+        "shots": 9,
+        "shotsOnGoal": 5,
+        "possession": 56,
+        "corners": 3,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640510,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 5160,
+      "homeTeam": "Fiji",
+      "awayTeamId": 5163,
+      "awayTeam": "New Caledonia",
+      "home": {
+        "teamId": 5160,
+        "team": "Fiji",
+        "shots": 2,
+        "shotsOnGoal": 1,
+        "possession": 67,
+        "corners": 3,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5163,
+        "team": "New Caledonia",
+        "shots": 2,
+        "shotsOnGoal": 1,
+        "possession": 33,
+        "corners": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 5160,
+          "team": "Fiji",
+          "formation": "",
+          "coach": "Ratu Marika Rodu Tavanavanua",
+          "starters": []
+        },
+        {
+          "teamId": 5163,
+          "team": "New Caledonia",
+          "formation": "",
+          "coach": "J. Sidaner",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642975,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10345,
+      "homeTeam": "Scotland U19",
+      "awayTeamId": 10352,
+      "awayTeam": "Ukraine U19",
+      "home": {
+        "teamId": 10345,
+        "team": "Scotland U19",
+        "shots": 13,
+        "shotsOnGoal": 2,
+        "possession": 43,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10352,
+        "team": "Ukraine U19",
+        "shots": 7,
+        "shotsOnGoal": 3,
+        "possession": 57,
+        "corners": 6,
+        "yellowCards": 3,
+        "redCards": 2,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10352,
+          "team": "Ukraine U19",
+          "formation": "",
+          "coach": "D. Mykhailenko",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642973,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10333,
+      "homeTeam": "Finland U19",
+      "awayTeamId": 10336,
+      "awayTeam": "Germany U19",
+      "home": {
+        "teamId": 10333,
+        "team": "Finland U19",
+        "shots": 4,
+        "shotsOnGoal": 2,
+        "possession": 43,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10336,
+        "team": "Germany U19",
+        "shots": 14,
+        "shotsOnGoal": 4,
+        "possession": 57,
+        "corners": 7,
+        "yellowCards": 1,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10333,
+          "team": "Finland U19",
+          "formation": "",
+          "coach": "P. Lundberg",
+          "starters": []
+        },
+        {
+          "teamId": 10336,
+          "team": "Germany U19",
+          "formation": "",
+          "coach": "Hanno Balitsch",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642977,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10326,
+      "homeTeam": "Austria U19",
+      "awayTeamId": 10331,
+      "awayTeam": "Denmark U19",
+      "home": {
+        "teamId": 10326,
+        "team": "Austria U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10331,
+        "team": "Denmark U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10326,
+          "team": "Austria U19",
+          "formation": "",
+          "coach": "O. Lederer",
+          "starters": []
+        },
+        {
+          "teamId": 10331,
+          "team": "Denmark U19",
+          "formation": "",
+          "coach": "Mads Kristensen",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640070,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1515,
+      "homeTeam": "Seychelles",
+      "awayTeamId": 5166,
+      "awayTeam": "Sri Lanka",
+      "home": {
+        "teamId": 1515,
+        "team": "Seychelles",
+        "shots": 0,
+        "shotsOnGoal": 0,
+        "possession": 0,
+        "corners": 0,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 5166,
+        "team": "Sri Lanka",
+        "shots": 0,
+        "shotsOnGoal": 0,
+        "possession": 100,
+        "corners": 1,
+        "yellowCards": 0,
+        "redCards": 0,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1515,
+          "team": "Seychelles",
+          "formation": "",
+          "coach": "Ralph Jean-Louis",
+          "starters": []
+        },
+        {
+          "teamId": 5166,
+          "team": "Sri Lanka",
+          "formation": "",
+          "coach": "Andrew Charles Morrison",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642978,
+      "date": "2026-09-30",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10354,
+      "homeTeam": "Albania U19",
+      "awayTeamId": 10370,
+      "awayTeam": "Lithuania U19",
+      "home": {
+        "teamId": 10354,
+        "team": "Albania U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10370,
+        "team": "Lithuania U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10354,
+          "team": "Albania U19",
+          "formation": "",
+          "coach": "J. Ahmati",
+          "starters": []
+        },
+        {
+          "teamId": 10370,
+          "team": "Lithuania U19",
+          "formation": "",
+          "coach": "R. Breu",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1640068,
       "date": "2026-09-29",
