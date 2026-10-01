@@ -1,6 +1,6 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-10-01T18:23:59.261Z",
+  "updatedAt": "2026-10-01T22:37:00.310Z",
   "summary": {
     "trackedDays": 74,
     "trackedCandidates": 144,
@@ -557,7 +557,7 @@
     {
       "date": "2026-10-02",
       "firstEvaluatedAt": "2026-09-30T14:53:50.026Z",
-      "lastEvaluatedAt": "2026-10-01T18:23:59.261Z",
+      "lastEvaluatedAt": "2026-10-01T22:37:00.310Z",
       "eligibleMatchCount": 7,
       "candidateIds": [
         "fixture:1629003"
@@ -566,14 +566,14 @@
     {
       "date": "2026-10-03",
       "firstEvaluatedAt": "2026-09-30T14:53:50.026Z",
-      "lastEvaluatedAt": "2026-10-01T18:23:59.261Z",
+      "lastEvaluatedAt": "2026-10-01T22:37:00.310Z",
       "eligibleMatchCount": 7,
       "candidateIds": []
     },
     {
       "date": "2026-10-04",
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
-      "lastEvaluatedAt": "2026-10-01T18:23:59.261Z",
+      "lastEvaluatedAt": "2026-10-01T22:37:00.310Z",
       "eligibleMatchCount": 5,
       "candidateIds": []
     }
@@ -4316,7 +4316,7 @@
       ],
       "sampleSize": 394,
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
-      "lastSeenAt": "2026-10-01T18:23:59.261Z",
+      "lastSeenAt": "2026-10-01T22:37:00.310Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

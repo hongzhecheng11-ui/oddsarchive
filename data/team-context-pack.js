@@ -6,16 +6,13 @@
   return {
   "version": "team-context-v3",
   "date": "2026-10-02",
-  "updatedAt": "2026-10-01T15:25:48.082Z",
+  "updatedAt": "2026-10-01T22:37:15.993Z",
   "collection": {
     "dates": [
-      "2026-10-02",
-      "2026-10-03",
-      "2026-10-04",
-      "2026-10-05"
+      "2026-10-02"
     ],
-    "requestGroups": 4,
-    "skippedGroups": 100,
+    "requestGroups": 1,
+    "skippedGroups": 25,
     "failures": 0,
     "errors": []
   },
@@ -29,22 +26,22 @@
         {
           "teamId": 10179,
           "team": "Morocco U23",
-          "form": "DDW",
+          "form": "DDWD",
           "all": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 2,
+            "draws": 3,
             "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
+            "goalsFor": 5,
+            "goalsAgainst": 4
           },
           "home": {
-            "played": 3,
+            "played": 4,
             "wins": 1,
-            "draws": 2,
+            "draws": 3,
             "losses": 0,
-            "goalsFor": 4,
-            "goalsAgainst": 3
+            "goalsFor": 5,
+            "goalsAgainst": 4
           },
           "away": {
             "played": 0,
@@ -58,14 +55,14 @@
         {
           "teamId": 20551,
           "team": "Mali U23",
-          "form": "",
+          "form": "D",
           "all": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           },
           "home": {
             "played": 0,
@@ -76,32 +73,32 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 0,
+            "played": 1,
             "wins": 0,
-            "draws": 0,
+            "draws": 1,
             "losses": 0,
-            "goalsFor": 0,
-            "goalsAgainst": 0
+            "goalsFor": 1,
+            "goalsAgainst": 1
           }
         },
         {
           "teamId": 16200,
           "team": "Brazil U20",
-          "form": "WWWWW",
+          "form": "WWWWWW",
           "all": {
+            "played": 6,
+            "wins": 6,
+            "draws": 0,
+            "losses": 0,
+            "goalsFor": 13,
+            "goalsAgainst": 2
+          },
+          "home": {
             "played": 5,
             "wins": 5,
             "draws": 0,
             "losses": 0,
-            "goalsFor": 11,
-            "goalsAgainst": 2
-          },
-          "home": {
-            "played": 4,
-            "wins": 4,
-            "draws": 0,
-            "losses": 0,
-            "goalsFor": 10,
+            "goalsFor": 12,
             "goalsAgainst": 2
           },
           "away": {
@@ -116,14 +113,14 @@
         {
           "teamId": 10306,
           "team": "United States U20",
-          "form": "WWW",
+          "form": "WWWL",
           "all": {
-            "played": 3,
+            "played": 4,
             "wins": 3,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 6,
-            "goalsAgainst": 0
+            "goalsAgainst": 2
           },
           "home": {
             "played": 1,
@@ -134,12 +131,12 @@
             "goalsAgainst": 0
           },
           "away": {
-            "played": 2,
+            "played": 3,
             "wins": 2,
             "draws": 0,
-            "losses": 0,
+            "losses": 1,
             "goalsFor": 5,
-            "goalsAgainst": 0
+            "goalsAgainst": 2
           }
         },
         {
@@ -174,22 +171,22 @@
         {
           "teamId": 10342,
           "team": "Norway U19",
-          "form": "LLWWWL",
+          "form": "LLWWWLL",
           "all": {
-            "played": 6,
+            "played": 7,
             "wins": 3,
             "draws": 0,
-            "losses": 3,
-            "goalsFor": 13,
-            "goalsAgainst": 11
+            "losses": 4,
+            "goalsFor": 14,
+            "goalsAgainst": 13
           },
           "home": {
-            "played": 2,
+            "played": 3,
             "wins": 2,
             "draws": 0,
-            "losses": 0,
-            "goalsFor": 9,
-            "goalsAgainst": 3
+            "losses": 1,
+            "goalsFor": 10,
+            "goalsAgainst": 5
           },
           "away": {
             "played": 4,
@@ -872,27 +869,27 @@
         {
           "fixtureId": 1642988,
           "kickoff": "2026-10-02T01:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 10179,
           "homeTeam": "Morocco U23",
           "awayTeamId": 20551,
           "awayTeam": "Mali U23",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
+          "lineupsChecked": false,
           "lineups": []
         },
         {
           "fixtureId": 1642987,
           "kickoff": "2026-10-02T01:00:00+09:00",
-          "status": "NS",
+          "status": "FT",
           "homeTeamId": 16200,
           "homeTeam": "Brazil U20",
           "awayTeamId": 10306,
           "awayTeam": "United States U20",
           "injuriesChecked": true,
           "injuries": [],
-          "lineupsChecked": true,
+          "lineupsChecked": false,
           "lineups": []
         },
         {
@@ -2364,7 +2361,7 @@
     },
     {
       "date": "2026-10-02",
-      "updatedAt": "2026-10-01T15:25:28.789Z",
+      "updatedAt": "2026-10-01T22:37:15.989Z",
       "leagues": [
         {
           "key": "INTL_FRIENDLIES",
@@ -2375,22 +2372,22 @@
             {
               "teamId": 10179,
               "team": "Morocco U23",
-              "form": "DDW",
+              "form": "DDWD",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 2,
+                "draws": 3,
                 "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "home": {
-                "played": 3,
+                "played": 4,
                 "wins": 1,
-                "draws": 2,
+                "draws": 3,
                 "losses": 0,
-                "goalsFor": 4,
-                "goalsAgainst": 3
+                "goalsFor": 5,
+                "goalsAgainst": 4
               },
               "away": {
                 "played": 0,
@@ -2404,14 +2401,14 @@
             {
               "teamId": 20551,
               "team": "Mali U23",
-              "form": "",
+              "form": "D",
               "all": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               },
               "home": {
                 "played": 0,
@@ -2422,32 +2419,32 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 0,
+                "played": 1,
                 "wins": 0,
-                "draws": 0,
+                "draws": 1,
                 "losses": 0,
-                "goalsFor": 0,
-                "goalsAgainst": 0
+                "goalsFor": 1,
+                "goalsAgainst": 1
               }
             },
             {
               "teamId": 16200,
               "team": "Brazil U20",
-              "form": "WWWWW",
+              "form": "WWWWWW",
               "all": {
+                "played": 6,
+                "wins": 6,
+                "draws": 0,
+                "losses": 0,
+                "goalsFor": 13,
+                "goalsAgainst": 2
+              },
+              "home": {
                 "played": 5,
                 "wins": 5,
                 "draws": 0,
                 "losses": 0,
-                "goalsFor": 11,
-                "goalsAgainst": 2
-              },
-              "home": {
-                "played": 4,
-                "wins": 4,
-                "draws": 0,
-                "losses": 0,
-                "goalsFor": 10,
+                "goalsFor": 12,
                 "goalsAgainst": 2
               },
               "away": {
@@ -2462,14 +2459,14 @@
             {
               "teamId": 10306,
               "team": "United States U20",
-              "form": "WWW",
+              "form": "WWWL",
               "all": {
-                "played": 3,
+                "played": 4,
                 "wins": 3,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 6,
-                "goalsAgainst": 0
+                "goalsAgainst": 2
               },
               "home": {
                 "played": 1,
@@ -2480,12 +2477,12 @@
                 "goalsAgainst": 0
               },
               "away": {
-                "played": 2,
+                "played": 3,
                 "wins": 2,
                 "draws": 0,
-                "losses": 0,
+                "losses": 1,
                 "goalsFor": 5,
-                "goalsAgainst": 0
+                "goalsAgainst": 2
               }
             },
             {
@@ -2520,22 +2517,22 @@
             {
               "teamId": 10342,
               "team": "Norway U19",
-              "form": "LLWWWL",
+              "form": "LLWWWLL",
               "all": {
-                "played": 6,
+                "played": 7,
                 "wins": 3,
                 "draws": 0,
-                "losses": 3,
-                "goalsFor": 13,
-                "goalsAgainst": 11
+                "losses": 4,
+                "goalsFor": 14,
+                "goalsAgainst": 13
               },
               "home": {
-                "played": 2,
+                "played": 3,
                 "wins": 2,
                 "draws": 0,
-                "losses": 0,
-                "goalsFor": 9,
-                "goalsAgainst": 3
+                "losses": 1,
+                "goalsFor": 10,
+                "goalsAgainst": 5
               },
               "away": {
                 "played": 4,
@@ -3218,27 +3215,27 @@
             {
               "fixtureId": 1642988,
               "kickoff": "2026-10-02T01:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 10179,
               "homeTeam": "Morocco U23",
               "awayTeamId": 20551,
               "awayTeam": "Mali U23",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
+              "lineupsChecked": false,
               "lineups": []
             },
             {
               "fixtureId": 1642987,
               "kickoff": "2026-10-02T01:00:00+09:00",
-              "status": "NS",
+              "status": "FT",
               "homeTeamId": 16200,
               "homeTeam": "Brazil U20",
               "awayTeamId": 10306,
               "awayTeam": "United States U20",
               "injuriesChecked": true,
               "injuries": [],
-              "lineupsChecked": true,
+              "lineupsChecked": false,
               "lineups": []
             },
             {
