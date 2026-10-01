@@ -6,7 +6,7 @@
   return {
   "version": "team-context-v3",
   "date": "2026-10-01",
-  "updatedAt": "2026-09-30T22:10:10.306Z",
+  "updatedAt": "2026-09-30T22:10:10.302Z",
   "collection": {
     "dates": [
       "2026-10-01"
@@ -5091,7 +5091,7 @@
     },
     {
       "date": "2026-10-03",
-      "updatedAt": "2026-09-30T14:54:54.845Z",
+      "updatedAt": "2026-10-01T10:01:42.483Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -6097,10 +6097,17 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-10-01T10:01:42.483Z"
         }
       ]
     }
-  ]
+  ],
+  "standingsRefresh": {
+    "updatedAt": "2026-10-01T10:01:42.483Z",
+    "requested": 2,
+    "updated": 1,
+    "failures": 1
+  }
 };
 });
