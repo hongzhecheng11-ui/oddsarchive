@@ -6,7 +6,7 @@
   return {
   "version": "team-context-v3",
   "date": "2026-10-02",
-  "updatedAt": "2026-10-01T22:37:15.993Z",
+  "updatedAt": "2026-10-01T22:37:15.989Z",
   "collection": {
     "dates": [
       "2026-10-02"
@@ -3413,7 +3413,7 @@
     },
     {
       "date": "2026-10-03",
-      "updatedAt": "2026-10-01T15:25:44.327Z",
+      "updatedAt": "2026-10-02T09:39:09.789Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -4419,7 +4419,8 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-10-02T09:39:09.789Z"
         },
         {
           "key": "INTL_FRIENDLIES",
@@ -5613,7 +5614,7 @@
     },
     {
       "date": "2026-10-04",
-      "updatedAt": "2026-10-01T15:25:48.078Z",
+      "updatedAt": "2026-10-02T09:39:09.789Z",
       "leagues": [
         {
           "key": "J2LEAGUE",
@@ -6619,7 +6620,8 @@
               "lineupsChecked": false,
               "lineups": []
             }
-          ]
+          ],
+          "standingsUpdatedAt": "2026-10-02T09:39:09.789Z"
         }
       ]
     },
@@ -6628,6 +6630,12 @@
       "updatedAt": "2026-10-01T15:25:48.078Z",
       "leagues": []
     }
-  ]
+  ],
+  "standingsRefresh": {
+    "updatedAt": "2026-10-02T09:39:09.789Z",
+    "requested": 2,
+    "updated": 1,
+    "failures": 1
+  }
 };
 });
