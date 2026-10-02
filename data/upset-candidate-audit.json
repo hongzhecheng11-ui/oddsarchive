@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-10-02T09:39:04.380Z",
+  "updatedAt": "2026-10-02T14:42:53.670Z",
   "summary": {
     "trackedDays": 74,
-    "trackedCandidates": 144,
-    "resolvedCandidates": 122,
-    "favoriteFailures": 51,
-    "directionHits": 26
+    "trackedCandidates": 145,
+    "resolvedCandidates": 123,
+    "favoriteFailures": 52,
+    "directionHits": 27
   },
   "days": [
     {
@@ -557,22 +557,24 @@
     {
       "date": "2026-10-02",
       "firstEvaluatedAt": "2026-09-30T14:53:50.026Z",
-      "lastEvaluatedAt": "2026-10-02T09:39:04.380Z",
-      "eligibleMatchCount": 7,
-      "candidateIds": []
+      "lastEvaluatedAt": "2026-10-02T14:42:53.670Z",
+      "eligibleMatchCount": 4,
+      "candidateIds": [
+        "fixture:1640074"
+      ]
     },
     {
       "date": "2026-10-03",
       "firstEvaluatedAt": "2026-09-30T14:53:50.026Z",
-      "lastEvaluatedAt": "2026-10-02T09:39:04.380Z",
-      "eligibleMatchCount": 7,
+      "lastEvaluatedAt": "2026-10-02T14:42:53.670Z",
+      "eligibleMatchCount": 10,
       "candidateIds": []
     },
     {
       "date": "2026-10-04",
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
-      "lastEvaluatedAt": "2026-10-02T09:39:04.380Z",
-      "eligibleMatchCount": 5,
+      "lastEvaluatedAt": "2026-10-02T14:42:53.670Z",
+      "eligibleMatchCount": 10,
       "candidateIds": []
     }
   ],
@@ -4315,6 +4317,32 @@
       "sampleSize": 394,
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
       "lastSeenAt": "2026-10-02T02:11:06.329Z",
+      "result": "D",
+      "score": "0-0",
+      "resolvedAt": "2026-10-02T14:42:53.670Z",
+      "favoriteFailed": true,
+      "directionHit": true
+    },
+    {
+      "candidateId": "fixture:1640074",
+      "fixtureId": "1640074",
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Congo DR",
+      "awayTeam": "Uganda",
+      "homeOdds": "1.60",
+      "drawOdds": "3.30",
+      "awayOdds": "5.50",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 73,
+      "firstEvaluatedAt": "2026-10-02T14:42:53.670Z",
+      "lastSeenAt": "2026-10-02T14:42:53.670Z",
       "result": "UNKNOWN",
       "score": "",
       "resolvedAt": "",

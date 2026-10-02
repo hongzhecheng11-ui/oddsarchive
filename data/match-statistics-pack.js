@@ -5,7 +5,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-10-01T15:26:00.789Z",
+  "updatedAt": "2026-10-02T14:43:58.355Z",
   "collection": {
     "dates": [
       "2026-10-01",
@@ -14,9 +14,9 @@
     ],
     "requestGroups": 3,
     "skippedGroups": 75,
-    "finishedFixtures": 22,
-    "skippedComplete": 6,
-    "saved": 16,
+    "finishedFixtures": 25,
+    "skippedComplete": 22,
+    "saved": 3,
     "failures": 0,
     "errors": []
   },
@@ -289,6 +289,176 @@
       "lineupsChecked": true,
       "injuriesChecked": true,
       "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640073,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1549,
+      "homeTeam": "Maldives",
+      "awayTeamId": 1551,
+      "awayTeam": "Lebanon",
+      "home": {
+        "teamId": 1549,
+        "team": "Maldives",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1551,
+        "team": "Lebanon",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1549,
+          "team": "Maldives",
+          "formation": "",
+          "coach": "Ali Suzain",
+          "starters": []
+        },
+        {
+          "teamId": 1551,
+          "team": "Lebanon",
+          "formation": "",
+          "coach": "Miodrag Radulovic",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640512,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1568,
+      "homeTeam": "Uzbekistan",
+      "awayTeamId": 1565,
+      "awayTeam": "Syria",
+      "home": {
+        "teamId": 1568,
+        "team": "Uzbekistan",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1565,
+        "team": "Syria",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1568,
+          "team": "Uzbekistan",
+          "formation": "",
+          "coach": "Fabio Cannavaro",
+          "starters": [
+            "Abduvokhid Nematov",
+            "Bekhruz Karimov",
+            "Abdukodir Khusanov",
+            "Jakhongir Urozov",
+            "Makhmud Makhamadzhonov",
+            "Odiljon Khamrobekov",
+            "Akmal Mozgovoy",
+            "Azizbek Amanov",
+            "Sherzod Esanov",
+            "Abbosbek Fayzullaev",
+            "Khuisain Norchaev"
+          ]
+        },
+        {
+          "teamId": 1565,
+          "team": "Syria",
+          "formation": "",
+          "coach": "Jose Lana",
+          "starters": [
+            "Elias Hadaya",
+            "Ahmad Faqa",
+            "Aiham Ousou",
+            "Abdullah Al Shami",
+            "Johannes Danho",
+            "Ahmad Dali",
+            "Noah Shamoun",
+            "Mahmoud Al Aswad",
+            "Mohammed Osman",
+            "Can Yahya Moustfa",
+            "Alaa Al Dali"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642985,
+      "date": "2026-10-01",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10362,
+      "homeTeam": "Faroe Islands U19",
+      "awayTeamId": 10348,
+      "awayTeam": "Slovenia U19",
+      "home": {
+        "teamId": 10362,
+        "team": "Faroe Islands U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10348,
+        "team": "Slovenia U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10348,
+          "team": "Slovenia U19",
+          "formation": "",
+          "coach": "M. Brečko",
+          "starters": []
+        }
+      ],
       "injuries": []
     },
     {
