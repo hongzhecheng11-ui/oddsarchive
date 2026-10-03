@@ -1,9 +1,9 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-10-02T22:06:56.443Z",
+  "updatedAt": "2026-10-03T01:54:30.190Z",
   "summary": {
     "trackedDays": 74,
-    "trackedCandidates": 145,
+    "trackedCandidates": 146,
     "resolvedCandidates": 124,
     "favoriteFailures": 53,
     "directionHits": 27
@@ -566,16 +566,18 @@
     {
       "date": "2026-10-03",
       "firstEvaluatedAt": "2026-09-30T14:53:50.026Z",
-      "lastEvaluatedAt": "2026-10-02T22:06:56.443Z",
+      "lastEvaluatedAt": "2026-10-03T01:54:30.190Z",
       "eligibleMatchCount": 9,
       "candidateIds": []
     },
     {
       "date": "2026-10-04",
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
-      "lastEvaluatedAt": "2026-10-02T22:06:56.443Z",
+      "lastEvaluatedAt": "2026-10-03T01:54:30.190Z",
       "eligibleMatchCount": 10,
-      "candidateIds": []
+      "candidateIds": [
+        "fixture:1643002"
+      ]
     }
   ],
   "candidates": [
@@ -4348,6 +4350,32 @@
       "resolvedAt": "2026-10-02T17:50:31.468Z",
       "favoriteFailed": true,
       "directionHit": false
+    },
+    {
+      "candidateId": "fixture:1643002",
+      "fixtureId": "1643002",
+      "date": "2026-10-04",
+      "league": "INTL_FRIENDLIES",
+      "homeTeam": "Portugal U19",
+      "awayTeam": "Denmark U19",
+      "homeOdds": "1.62",
+      "drawOdds": "3.50",
+      "awayOdds": "4.60",
+      "favoriteKey": "H",
+      "candidateLabel": "무승부 주의",
+      "predictedDirection": "D",
+      "evidence": [
+        "배당 기준 초과 위험",
+        "무승부·역배 초과 발생"
+      ],
+      "sampleSize": 19,
+      "firstEvaluatedAt": "2026-10-03T01:54:30.190Z",
+      "lastSeenAt": "2026-10-03T01:54:30.190Z",
+      "result": "UNKNOWN",
+      "score": "",
+      "resolvedAt": "",
+      "favoriteFailed": null,
+      "directionHit": null
     }
   ]
 }
