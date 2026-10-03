@@ -5,15 +5,15 @@
 })(typeof window !== "undefined" ? window : globalThis, function createApiOddsPack() {
   return {
   "version": "api-odds-pack-v1",
-  "updatedAt": "2026-10-03T16:12:55.545Z",
+  "updatedAt": "2026-10-03T21:07:34.186Z",
   "collection": {
-    "lastAttemptAt": "2026-10-03T16:12:41.854Z",
-    "lastSuccessAt": "2026-10-03T16:12:55.545Z",
+    "lastAttemptAt": "2026-10-03T21:07:21.630Z",
+    "lastSuccessAt": "2026-10-03T21:07:34.186Z",
     "requestSuccesses": 27,
     "requestFailures": 0,
     "addedCount": 0,
-    "updatedCount": 2,
-    "duplicateCount": 13,
+    "updatedCount": 4,
+    "duplicateCount": 9,
     "errors": []
   },
   "matches": [
@@ -42505,7 +42505,7 @@
       "result": "UNKNOWN",
       "score": "",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-10-03T16:12:54.725Z",
+      "oddsUpdatedAt": "2026-10-03T21:07:33.473Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-10-03T09:03:47.331Z",
@@ -42514,7 +42514,7 @@
           "awayOdds": "2.44"
         },
         {
-          "capturedAt": "2026-10-03T16:12:54.725Z",
+          "capturedAt": "2026-10-03T21:07:33.473Z",
           "homeOdds": "2.03",
           "drawOdds": "3.60",
           "awayOdds": "3.16"
@@ -42695,13 +42695,13 @@
       "fixtureId": "1610879",
       "homeTeam": "Canada",
       "awayTeam": "Peru",
-      "homeOdds": "1.44",
+      "homeOdds": "1.50",
       "drawOdds": "3.80",
-      "awayOdds": "5.80",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "5.50",
+      "result": "H",
+      "score": "2-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-10-03T16:12:54.725Z",
+      "oddsUpdatedAt": "2026-10-03T21:07:33.473Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-10-02T14:42:43.970Z",
@@ -42735,13 +42735,13 @@
       "fixtureId": "1640077",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Cameroon",
-      "homeOdds": "1.75",
+      "homeOdds": "1.73",
       "drawOdds": "3.10",
-      "awayOdds": "4.40",
-      "result": "UNKNOWN",
-      "score": "",
+      "awayOdds": "4.80",
+      "result": "A",
+      "score": "0-1",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-10-03T16:12:54.725Z",
+      "oddsUpdatedAt": "2026-10-03T21:07:33.473Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-10-03T09:03:47.331Z",
@@ -42785,13 +42785,13 @@
       "fixtureId": "1643002",
       "homeTeam": "Portugal U19",
       "awayTeam": "Denmark U19",
-      "homeOdds": "1.55",
-      "drawOdds": "3.70",
-      "awayOdds": "5.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "homeOdds": "1.57",
+      "drawOdds": "3.60",
+      "awayOdds": "4.80",
+      "result": "D",
+      "score": "3-3",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-10-03T16:12:54.725Z",
+      "oddsUpdatedAt": "2026-10-03T21:07:33.473Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-10-02T14:42:43.970Z",
@@ -42822,10 +42822,10 @@
       "homeOdds": "1.12",
       "drawOdds": "7.30",
       "awayOdds": "22.00",
-      "result": "UNKNOWN",
-      "score": "",
+      "result": "H",
+      "score": "6-0",
       "source": "API 과거 배당",
-      "oddsUpdatedAt": "2026-10-03T16:12:54.725Z",
+      "oddsUpdatedAt": "2026-10-03T21:07:33.473Z",
       "oddsHistory": [
         {
           "capturedAt": "2026-10-02T14:42:43.970Z",

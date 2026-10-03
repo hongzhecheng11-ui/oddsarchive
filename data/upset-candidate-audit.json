@@ -1,12 +1,12 @@
 {
   "version": "upset-candidate-audit-v1",
-  "updatedAt": "2026-10-03T16:12:58.765Z",
+  "updatedAt": "2026-10-03T21:07:38.083Z",
   "summary": {
     "trackedDays": 75,
     "trackedCandidates": 146,
-    "resolvedCandidates": 124,
-    "favoriteFailures": 53,
-    "directionHits": 27
+    "resolvedCandidates": 125,
+    "favoriteFailures": 54,
+    "directionHits": 28
   },
   "days": [
     {
@@ -573,14 +573,14 @@
     {
       "date": "2026-10-04",
       "firstEvaluatedAt": "2026-10-01T15:25:11.631Z",
-      "lastEvaluatedAt": "2026-10-03T16:12:58.765Z",
-      "eligibleMatchCount": 12,
+      "lastEvaluatedAt": "2026-10-03T21:07:38.083Z",
+      "eligibleMatchCount": 8,
       "candidateIds": []
     },
     {
       "date": "2026-10-05",
       "firstEvaluatedAt": "2026-10-03T13:20:25.721Z",
-      "lastEvaluatedAt": "2026-10-03T16:12:58.765Z",
+      "lastEvaluatedAt": "2026-10-03T21:07:38.083Z",
       "eligibleMatchCount": 1,
       "candidateIds": []
     }
@@ -4376,11 +4376,11 @@
       "sampleSize": 19,
       "firstEvaluatedAt": "2026-10-03T01:54:30.190Z",
       "lastSeenAt": "2026-10-03T09:03:51.913Z",
-      "result": "UNKNOWN",
-      "score": "",
-      "resolvedAt": "",
-      "favoriteFailed": null,
-      "directionHit": null
+      "result": "D",
+      "score": "3-3",
+      "resolvedAt": "2026-10-03T21:07:38.083Z",
+      "favoriteFailed": true,
+      "directionHit": true
     }
   ]
 }
