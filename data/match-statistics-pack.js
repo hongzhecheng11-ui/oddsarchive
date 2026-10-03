@@ -5,22 +5,480 @@
 })(typeof window !== "undefined" ? window : globalThis, function createMatchStatisticsPack() {
   return {
   "version": "match-statistics-v1",
-  "updatedAt": "2026-10-02T14:43:58.355Z",
+  "updatedAt": "2026-10-03T13:21:32.801Z",
   "collection": {
     "dates": [
+      "2026-10-02",
       "2026-10-01",
-      "2026-09-30",
-      "2026-09-29"
+      "2026-09-30"
     ],
     "requestGroups": 3,
     "skippedGroups": 75,
-    "finishedFixtures": 25,
-    "skippedComplete": 22,
-    "saved": 3,
+    "finishedFixtures": 27,
+    "skippedComplete": 19,
+    "saved": 8,
     "failures": 0,
     "errors": []
   },
   "matches": [
+    {
+      "fixtureId": 1642988,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10179,
+      "homeTeam": "Morocco U23",
+      "awayTeamId": 20551,
+      "awayTeam": "Mali U23",
+      "home": {
+        "teamId": 10179,
+        "team": "Morocco U23",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 20551,
+        "team": "Mali U23",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642987,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 16200,
+      "homeTeam": "Brazil U20",
+      "awayTeamId": 10306,
+      "awayTeam": "United States U20",
+      "home": {
+        "teamId": 16200,
+        "team": "Brazil U20",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10306,
+        "team": "United States U20",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 16200,
+          "team": "Brazil U20",
+          "formation": "",
+          "coach": "Ramón Menezes",
+          "starters": []
+        },
+        {
+          "teamId": 10306,
+          "team": "United States U20",
+          "formation": "",
+          "coach": "M. Nsien",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640829,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10353,
+      "homeTeam": "Wales U19",
+      "awayTeamId": 10342,
+      "awayTeam": "Norway U19",
+      "home": {
+        "teamId": 10353,
+        "team": "Wales U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10342,
+        "team": "Norway U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10353,
+          "team": "Wales U19",
+          "formation": "",
+          "coach": "C. Gunter",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1629003,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 17,
+      "homeTeam": "South Korea",
+      "awayTeamId": 2379,
+      "awayTeam": "Venezuela",
+      "home": {
+        "teamId": 17,
+        "team": "South Korea",
+        "shots": 7,
+        "shotsOnGoal": 3,
+        "possession": 51,
+        "corners": 3,
+        "yellowCards": 3,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 2379,
+        "team": "Venezuela",
+        "shots": 12,
+        "shotsOnGoal": 4,
+        "possession": 49,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 17,
+          "team": "South Korea",
+          "formation": "4-4-2",
+          "coach": "",
+          "starters": [
+            "Song Bum-keun",
+            "Young-woo Seol",
+            "Han-Beom Lee",
+            "Kim Min-jae",
+            "Hyun-taek Cho",
+            "Kang-in Lee",
+            "Jin-seob Park",
+            "Hwang In-beom",
+            "Min-su Kim",
+            "Hyeon-gyu Oh",
+            "Son Heung-min"
+          ]
+        },
+        {
+          "teamId": 2379,
+          "team": "Venezuela",
+          "formation": "",
+          "coach": "Fernando Ariel Batista",
+          "starters": [
+            "José Contreras",
+            "Jon Aramburu",
+            "Nahuel Ferraresi",
+            "Teo Quintero",
+            "Luís Balbo",
+            "Delvin Alfonzo",
+            "Yangel Herrera",
+            "Cristian Cásseres Jr.",
+            "Gleiker Mendoza",
+            "Kevin Kelsy",
+            "Jesús Ramírez"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1637598,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1566,
+      "homeTeam": "China",
+      "awayTeamId": 1562,
+      "awayTeam": "Palestine",
+      "home": {
+        "teamId": 1566,
+        "team": "China",
+        "shots": 12,
+        "shotsOnGoal": 3,
+        "possession": 46,
+        "corners": 1,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1562,
+        "team": "Palestine",
+        "shots": 16,
+        "shotsOnGoal": 9,
+        "possession": 54,
+        "corners": 4,
+        "yellowCards": 1,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1566,
+          "team": "China",
+          "formation": "",
+          "coach": "Branko Ivanković",
+          "starters": [
+            "Yan Bingliang",
+            "Zhunyi Gao",
+            "Guangtai Jiang",
+            "Zhen Wei",
+            "Yang Liu",
+            "Yang Mingrui",
+            "Shangyuan Wang",
+            "Shenghao Huang",
+            "Chen Pu",
+            "Qianglong Tao",
+            "Wei Shihao"
+          ]
+        },
+        {
+          "teamId": 1562,
+          "team": "Palestine",
+          "formation": "",
+          "coach": "Ehab Abu Jazar",
+          "starters": [
+            "Rami Hamada",
+            "Ameed Sawafta",
+            "Michel Termanini",
+            "Khalid Abu El Haija",
+            "Wajdi Nabhan",
+            "Amid Mahajna",
+            "Agustín Manzur",
+            "Oday Dabbagh",
+            "Khaled Alnabrisi",
+            "Zaid Qunbar",
+            "Assad Al-Hamlawi"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1640074,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 1508,
+      "homeTeam": "Congo DR",
+      "awayTeamId": 1519,
+      "awayTeam": "Uganda",
+      "home": {
+        "teamId": 1508,
+        "team": "Congo DR",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 1519,
+        "team": "Uganda",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 1508,
+          "team": "Congo DR",
+          "formation": "",
+          "coach": "Sebastien Desabre",
+          "starters": [
+            "Dimitry Bertaud",
+            "Gedeon Kalulu",
+            "Willy Kambwala",
+            "Steve Kapuadi",
+            "Jordy Makengo",
+            "Théo Bongonda",
+            "Aaron Tshibola",
+            "Ezechiel Banzuzi",
+            "Stephy Mavididi",
+            "Afimico Pululu",
+            "Samuel Essende"
+          ]
+        },
+        {
+          "teamId": 1519,
+          "team": "Uganda",
+          "formation": "",
+          "coach": "Paul Put",
+          "starters": [
+            "Akpan Udoh",
+            "Gavin Kizito",
+            "Geoffrey Lubanga Kene",
+            "Hilary Mukundane",
+            "Jonathan Odongo",
+            "Abdoulaye Sissako",
+            "Allan Oyirwoth",
+            "Herbert Achai",
+            "Denis Omedi",
+            "Kelvin Boateng",
+            "James Bogere"
+          ]
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1642991,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10354,
+      "homeTeam": "Albania U19",
+      "awayTeamId": 10370,
+      "awayTeam": "Lithuania U19",
+      "home": {
+        "teamId": 10354,
+        "team": "Albania U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10370,
+        "team": "Lithuania U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10354,
+          "team": "Albania U19",
+          "formation": "",
+          "coach": "J. Ahmati",
+          "starters": []
+        },
+        {
+          "teamId": 10370,
+          "team": "Lithuania U19",
+          "formation": "",
+          "coach": "R. Breu",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
+    {
+      "fixtureId": 1643195,
+      "date": "2026-10-02",
+      "league": "INTL_FRIENDLIES",
+      "homeTeamId": 10374,
+      "homeTeam": "Montenegro U19",
+      "awayTeamId": 10366,
+      "awayTeam": "Israel U19",
+      "home": {
+        "teamId": 10374,
+        "team": "Montenegro U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "away": {
+        "teamId": 10366,
+        "team": "Israel U19",
+        "shots": null,
+        "shotsOnGoal": null,
+        "possession": null,
+        "corners": null,
+        "yellowCards": null,
+        "redCards": null,
+        "expectedGoals": null
+      },
+      "statisticsChecked": true,
+      "lineupsChecked": true,
+      "injuriesChecked": true,
+      "lineups": [
+        {
+          "teamId": 10374,
+          "team": "Montenegro U19",
+          "formation": "",
+          "coach": "Nenad Vukcevic",
+          "starters": []
+        },
+        {
+          "teamId": 10366,
+          "team": "Israel U19",
+          "formation": "",
+          "coach": "O. Haim",
+          "starters": []
+        }
+      ],
+      "injuries": []
+    },
     {
       "fixtureId": 1610878,
       "date": "2026-10-01",
