@@ -132,3 +132,4 @@ module.exports = handler;
 module.exports.buildTodaySignals = buildTodaySignals;
 module.exports.serializeStrong = serializeStrong;
 module.exports.serializeUpset = serializeUpset;
+module.exports.invokeLiveOdds = invokeLiveOdds;
